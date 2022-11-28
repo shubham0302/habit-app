@@ -7,6 +7,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData color = Theme.of(context);
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -20,7 +21,7 @@ class SplashScreen extends StatelessWidget {
             child: Container(
               height: 50,
               width: 50,
-              color: Theme.of(context).indicatorColor,
+              color: color.indicatorColor,
               child: Icon(Icons.arrow_forward_ios_rounded),
             ),
           ),
