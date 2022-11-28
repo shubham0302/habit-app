@@ -18,72 +18,69 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData color = Theme.of(context);
     return Scaffold(
-        drawer: Drawer(
-          backgroundColor: color.backgroundColor,
-          child: Column(
-            children: [Text("fsdfg")],
-          ),
-        ),
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: Column(children: [
-              SH.large(),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Padding(
+        padding: const EdgeInsets.all(0.0),
+        child: Column(children: [
+          SH.large(),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
                   children: [
-                    Row(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Scaffold.of(context).openDrawer();
-                          },
-                          child: Icon(
-                            Icons.format_list_bulleted_outlined,
-                            color: Colors.black,
-                          ),
-                        ),
-                        SW.small(),
-                        TitleText(text: "Today")
-                      ],
+                    GestureDetector(
+                      onTap: () => Scaffold.of(context).openDrawer(),
+                      // print('asd');
+
+                      child: const Icon(
+                        Icons.format_list_bulleted_outlined,
+                        color: Colors.black,
+                      ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Icon(Icons.search),
-                        SW.small(),
-                        const Icon(Icons.calendar_month_outlined)
-                      ],
-                    )
+                    SW.small(),
+                    const TitleText(text: "Today")
                   ],
                 ),
-              ),
-              SH.medium(),
-              Container(
-                color: Color.fromARGB(255, 146, 212, 243),
-                child: DatePicker(
-                  DateTime.now(),
-                  height: 80,
-                  width: 60,
-                  initialSelectedDate: DateTime.now(),
-                  selectionColor: Colors.blue,
-                  selectedTextColor: Colors.white,
-                  dateTextStyle: GoogleFonts.lato(
-                      textStyle: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black)),
-                  monthTextStyle: GoogleFonts.lato(
-                      textStyle: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black)),
-                ),
-              )
-            ]),
+                GestureDetector(
+                  onTap: (() => Scaffold.of(context).openDrawer()),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Icon(Icons.search),
+                      SW.small(),
+                      const Icon(Icons.calendar_month_outlined)
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
-        ));
+          SH.medium(),
+          // Container(
+          //   color: Color.fromARGB(255, 146, 212, 243),
+          //   child: DatePicker(
+          //     DateTime.now(),
+          //     height: 80,
+          //     width: 60,
+          //     initialSelectedDate: DateTime.now(),
+          //     selectionColor: Colors.blue,
+          //     selectedTextColor: Colors.white,
+          //     dateTextStyle: GoogleFonts.lato(
+          //         textStyle: TextStyle(
+          //             fontSize: 30,
+          //             fontWeight: FontWeight.w600,
+          //             color: Colors.black)),
+          //     monthTextStyle: GoogleFonts.lato(
+          //         textStyle: TextStyle(
+          //             fontSize: 10,
+          //             fontWeight: FontWeight.w600,
+          //             color: Colors.black)),
+          //   ),
+          // )
+        ]),
+      ),
+    ));
   }
 }

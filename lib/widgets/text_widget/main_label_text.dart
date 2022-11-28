@@ -4,6 +4,7 @@ import 'package:habbit_app/widgets/theme_config.dart';
 
 class MainLabelText extends StatelessWidget {
   final String text;
+  final Color? color;
   final bool? isWhite;
   final bool? isBold;
   final bool? isDotDot;
@@ -15,15 +16,15 @@ class MainLabelText extends StatelessWidget {
       this.alignment,
       this.isWhite,
       this.isBold,
-      this.isDotDot})
+      this.isDotDot,
+      this.color})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextSizeResponsive(
       string: text,
-      color:
-          isWhite == true ? ThemeConfig.whiteColor : ThemeConfig.mainTextColor,
+      color: color ?? ThemeConfig.mainTextColor,
       size: ThemeConfig.mainLabelSize,
       weight: isBold == true ? FontWeight.bold : FontWeight.normal,
       alignment: alignment,

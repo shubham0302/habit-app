@@ -29,7 +29,7 @@ class LabelText extends StatelessWidget {
               ? ThemeConfig.secondaryColor
               : ThemeConfig.mainTextColor,
       size: ThemeConfig.labelSize,
-      weight: isNormal == true ? FontWeight.w100 : FontWeight.w800,
+      weight: isNormal == true ? FontWeight.w300 : FontWeight.w800,
       alignment: alignment,
       isDotDot: isDotDot == true ? true : false,
     );
