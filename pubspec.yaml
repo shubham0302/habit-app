@@ -48,6 +48,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  sidebarx: ^0.14.0
+  date_picker_timeline: ^1.2.3
+  google_fonts: ^3.0.1
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
