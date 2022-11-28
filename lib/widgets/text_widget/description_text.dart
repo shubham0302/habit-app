@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:habbit_app/controllers/theme_controller.dart';
-import '../responsive_text.dart';
-import '../theme_config.dart';
+import 'package:habbit_app/widgets/responsive_text.dart';
+import 'package:habbit_app/widgets/theme_config.dart';
 
 class DescriptionText extends StatelessWidget {
   final String text;
@@ -11,7 +9,6 @@ class DescriptionText extends StatelessWidget {
   final TextAlign? alignment;
   final String? type;
   final bool? isDotDot;
-  final bool? isBold;
   const DescriptionText(
       {Key? key,
       required this.text,
@@ -19,26 +16,19 @@ class DescriptionText extends StatelessWidget {
       this.isWhite,
       this.type,
       this.color,
-      this.isDotDot,
-      this.isBold})
+      this.isDotDot})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    ThemeController themeController = Get.find<ThemeController>();
-
-    return Obx(
-      () => TextSizeResponsive(
-        string: text,
-        color: themeController.isDark.value == true
-            ? ThemeConfig.mainTextColor
-            : ThemeConfig.mainTextColorLight,
-        size: ThemeConfig.descriptionSize,
-        weight: FontWeight.normal,
-        alignment: alignment,
-        style: type == 'i' ? 'i' : null,
-        isDotDot: isDotDot,
-      ),
+    return TextSizeResponsive(
+      string: text,
+      color: color ?? ThemeConfig.mainTextColor,
+      size: ThemeConfig.descriptionSize,
+      weight: FontWeight.normal,
+      alignment: alignment,
+      style: type == 'i' ? 'i' : null,
+      isDotDot: isDotDot,
     );
   }
 }

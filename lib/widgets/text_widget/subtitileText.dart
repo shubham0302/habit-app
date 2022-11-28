@@ -1,9 +1,6 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
-
-import '../responsive_text.dart';
-import '../theme_config.dart';
+import 'package:habbit_app/widgets/responsive_text.dart';
+import 'package:habbit_app/widgets/theme_config.dart';
 
 class SubTitleText extends StatelessWidget {
   final String text;

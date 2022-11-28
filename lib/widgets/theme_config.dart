@@ -5,16 +5,9 @@ class ThemeConfig {
 
   static const primaryColor = Color(0xff4e7d96);
   static const primaryColorLite = Color(0xff9fc9dd);
-  // static const backgroundColor = Color(0xffe3edf2);
-  static Color backgroundColor = const Color.fromARGB(255, 18, 22, 30);
-  static const backgroundColorLight =  Colors.white;
-
-  static Color cardBackGround = const Color.fromARGB(255, 31, 40, 58);
-  static Color cardBackGroundLight = const Color.fromARGB(255, 197, 198, 202);
-
+  static const backgroundColor = Color(0xffe3edf2);
   static const whiteColor = Colors.white;
-  static const mainTextColor = Colors.white;
-  static const mainTextColorLight = Colors.black;
+  static const mainTextColor = Color(0xff0a0d25);
   static const secondaryColor = Color(0xffff844b);
   // static const secondaryColorLite = Color.fromARGB(255, 193, 223, 198);
   // static const descriptionColor = Colors.grey;
@@ -31,7 +24,7 @@ class ThemeConfig {
 
   static const smallTextSize = 8.0;
   static const mainLabelSize = 15.0;
-  static const labelSize = 13.0;
+  static const labelSize = 10.0;
   static const buttonSize = 15.0;
 
   static const searchBarSize = 20.0;
@@ -58,7 +51,7 @@ class ThemeConfig {
   static MaterialColor getStatusColor(int s) {
     var color;
 
-    switch (s) {
+    switch (s) {  
       case 4:
         color = Colors.red;
         break;

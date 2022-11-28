@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../responsive_text.dart';
-import '../theme_config.dart';
+import 'package:habbit_app/widgets/responsive_text.dart';
+import 'package:habbit_app/widgets/theme_config.dart';
 
 class SmallText extends StatelessWidget {
   final String text;
@@ -10,7 +9,6 @@ class SmallText extends StatelessWidget {
   final TextAlign? alignment;
 
   final bool? isNormal;
-  // ignore: use_key_in_widget_constructors
   const SmallText(
       {Key? key,
       required this.text,
