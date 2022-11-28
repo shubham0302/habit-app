@@ -10,81 +10,80 @@ import '../controllers/home_page_controller.dart';
 import '../widgets/bottomNavBar.dart';
 
 class HomePage extends StatelessWidget {
-   final HomePageController controller =
+  final HomePageController controller =
       Get.put(HomePageController(), permanent: false);
-   HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     ThemeData color = Theme.of(context);
     return Scaffold(
-
-        // drawer: Drawer(
-        //   backgroundColor: color.backgroundColor,
-        //   child: Column(
-        //     children: [Text("fsdfg")],
-        //   ),
-        // ),
+        drawer: Drawer(
+          backgroundColor: color.backgroundColor,
+          child: Column(
+            children: [Text("fsdfg")],
+          ),
+        ),
         body: SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(0.0),
-        child: Column(children: [
-          SH.large(),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        // Scaffold.of(context).openDrawer();
-                      },
-                      child: Icon(
-                        Icons.format_list_bulleted_outlined,
-                        color: Colors.black,
-                      ),
-                    ),
-                    SW.small(),
-                    TitleText(text: "Today")
-                  ],
-                ),
-                Row(
+          child: Padding(
+            padding: const EdgeInsets.all(0.0),
+            child: Column(children: [
+              SH.large(),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Icon(Icons.search),
-                    SW.small(),
-                    const Icon(Icons.calendar_month_outlined)
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Scaffold.of(context).openDrawer();
+                          },
+                          child: Icon(
+                            Icons.format_list_bulleted_outlined,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SW.small(),
+                        TitleText(text: "Today")
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Icon(Icons.search),
+                        SW.small(),
+                        const Icon(Icons.calendar_month_outlined)
+                      ],
+                    )
                   ],
-                )
-              ],
-            ),
+                ),
+              ),
+              SH.medium(),
+              // Container(
+              //   color: Color.fromARGB(255, 146, 212, 243),
+              //   child: DatePicker(
+              //     DateTime.now(),
+              //     height: 80,
+              //     width: 60,
+              //     initialSelectedDate: DateTime.now(),
+              //     selectionColor: Colors.blue,
+              //     selectedTextColor: Colors.white,
+              //     dateTextStyle: GoogleFonts.lato(
+              //         textStyle: TextStyle(
+              //             fontSize: 30,
+              //             fontWeight: FontWeight.w600,
+              //             color: Colors.black)),
+              //     monthTextStyle: GoogleFonts.lato(
+              //         textStyle: TextStyle(
+              //             fontSize: 10,
+              //             fontWeight: FontWeight.w600,
+              //             color: Colors.black)),
+              //   ),
+              // )
+            ]),
           ),
-          SH.medium(),
-          Container(
-            color: Color.fromARGB(255, 146, 212, 243),
-            child: DatePicker(
-              DateTime.now(),
-              height: 80,
-              width: 60,
-              initialSelectedDate: DateTime.now(),
-              selectionColor: Colors.blue,
-              selectedTextColor: Colors.white,
-              dateTextStyle: GoogleFonts.lato(
-                  textStyle: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black)),
-              monthTextStyle: GoogleFonts.lato(
-                  textStyle: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black)),
-            ),
-          )
-        ]),
-      ),
-    ));
+        ));
   }
 }

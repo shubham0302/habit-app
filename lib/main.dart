@@ -7,6 +7,7 @@ import 'package:habbit_app/screens/splash_screen.dart';
 import 'package:habbit_app/theme/theme_data.dart';
 
 import 'screens/home_screen.dart';
+import 'screens/main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
 class Routes {
   static final routes = [
     GetPage(name: '/', page: () => const SplashScreen()),
-    GetPage(name: '/home', page: () =>  HomePage()),
+    GetPage(name: '/home', page: () => MainScreen()),
     GetPage(name: '/intro', page: () => const IntroScreen()),
   ];
 }
