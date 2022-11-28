@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/screens/intro_screen.dart';
 import 'package:habbit_app/screens/splash_screen.dart';
 import 'package:habbit_app/theme/theme_data.dart';
 
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
 class Routes {
   static final routes = [
     GetPage(name: '/', page: () => const SplashScreen()),
-    GetPage(name: '/home', page: () => const HomePage()),
+    GetPage(name: '/home', page: () =>  HomePage()),
+    GetPage(name: '/intro', page: () => const IntroScreen()),
   ];
 }

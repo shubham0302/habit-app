@@ -16,7 +16,7 @@ class SplashScreen extends StatelessWidget {
         child: Center(
           child: InkWell(
             onTap: () {
-              Get.toNamed('/home');
+              Get.toNamed('/intro');
             },
             child: Container(
               height: 50,

@@ -20,7 +20,7 @@ class ThemeConfig {
   static const headingSize = 25.0;
   static const titleSize = 20.0;
   static const subtitleSize = 15.0;
-  static const descriptionSize = 10.0;
+  static const descriptionSize = 13.0;
 
   static const smallTextSize = 8.0;
   static const mainLabelSize = 15.0;
@@ -51,7 +51,7 @@ class ThemeConfig {
   static MaterialColor getStatusColor(int s) {
     var color;
 
-    switch (s) {  
+    switch (s) {
       case 4:
         color = Colors.red;
         break;
