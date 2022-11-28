@@ -61,27 +61,27 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SH.medium(),
-              // Container(
-              //   color: Color.fromARGB(255, 146, 212, 243),
-              //   child: DatePicker(
-              //     DateTime.now(),
-              //     height: 80,
-              //     width: 60,
-              //     initialSelectedDate: DateTime.now(),
-              //     selectionColor: Colors.blue,
-              //     selectedTextColor: Colors.white,
-              //     dateTextStyle: GoogleFonts.lato(
-              //         textStyle: TextStyle(
-              //             fontSize: 30,
-              //             fontWeight: FontWeight.w600,
-              //             color: Colors.black)),
-              //     monthTextStyle: GoogleFonts.lato(
-              //         textStyle: TextStyle(
-              //             fontSize: 10,
-              //             fontWeight: FontWeight.w600,
-              //             color: Colors.black)),
-              //   ),
-              // )
+              Container(
+                color: Color.fromARGB(255, 146, 212, 243),
+                child: DatePicker(
+                  DateTime.now(),
+                  height: 80,
+                  width: 60,
+                  initialSelectedDate: DateTime.now(),
+                  selectionColor: Colors.blue,
+                  selectedTextColor: Colors.white,
+                  dateTextStyle: GoogleFonts.lato(
+                      textStyle: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black)),
+                  monthTextStyle: GoogleFonts.lato(
+                      textStyle: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black)),
+                ),
+              )
             ]),
           ),
         ));
