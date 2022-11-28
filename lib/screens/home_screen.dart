@@ -11,6 +11,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DateTime _selectedDate = DateTime.now();
     ThemeData color = Theme.of(context);
     return Scaffold(
 
@@ -42,7 +43,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     SW.small(),
-                    TitleText(text: "Today")
+                    TitleText(text: _selectedDate.toString())
                   ],
                 ),
                 Row(
@@ -58,11 +59,12 @@ class HomePage extends StatelessWidget {
           ),
           SH.medium(),
           Container(
-            color: Color.fromARGB(255, 146, 212, 243),
+            // color: Color.fromARGB(255, 146, 212, 243),
             child: DatePicker(
               DateTime.now(),
               height: 80,
               width: 60,
+              daysCount: 150,
               initialSelectedDate: DateTime.now(),
               selectionColor: Colors.blue,
               selectedTextColor: Colors.white,
@@ -73,9 +75,13 @@ class HomePage extends StatelessWidget {
                       color: Colors.black)),
               monthTextStyle: GoogleFonts.lato(
                   textStyle: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black)),
+                fontSize: 10,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              )),
+              onDateChange: (date) {
+                _selectedDate = date;
+              },
             ),
           )
         ]),
