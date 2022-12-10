@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:habbit_app/widgets/responsive_text.dart';
 import 'package:habbit_app/widgets/theme_config.dart';
+
+import '../../controllers/theme_controller.dart';
 
 class DescriptionText extends StatelessWidget {
   final String text;
@@ -21,14 +24,13 @@ class DescriptionText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextSizeResponsive(
-      string: text,
-      color: color ?? ThemeConfig.mainTextColor,
-      size: ThemeConfig.descriptionSize,
-      weight: FontWeight.normal,
-      alignment: alignment,
-      style: type == 'i' ? 'i' : null,
-      isDotDot: isDotDot,
+    final sizeHeight = MediaQuery.of(context).size.height;
+    ThemeData color = Theme.of(context);
+    ThemeController themeController = Get.find<ThemeController>();
+    return Text(
+      text,
+      style: color.textTheme.subtitle1,
+      textAlign: alignment,
     );
   }
 }

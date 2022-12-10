@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:habbit_app/widgets/responsive_text.dart';
 import 'package:habbit_app/widgets/theme_config.dart';
+
+import '../../controllers/theme_controller.dart';
 
 class LabelText extends StatelessWidget {
   final String text;
@@ -21,17 +24,13 @@ class LabelText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextSizeResponsive(
-      string: text,
-      color: isWhite == true
-          ? ThemeConfig.whiteColor
-          : isSecondary == true
-              ? ThemeConfig.secondaryColor
-              : ThemeConfig.mainTextColor,
-      size: ThemeConfig.labelSize,
-      weight: isNormal == true ? FontWeight.w300 : FontWeight.w800,
-      alignment: alignment,
-      isDotDot: isDotDot == true ? true : false,
+    final sizeHeight = MediaQuery.of(context).size.height;
+    ThemeData color = Theme.of(context);
+    ThemeController themeController = Get.find<ThemeController>();
+    return Text(
+      text,
+      style: color.textTheme.bodyText1,
+      textAlign: alignment,
     );
   }
 }

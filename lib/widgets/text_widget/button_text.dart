@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/widgets/responsive_text.dart';
 import 'package:habbit_app/widgets/theme_config.dart';
 
-class HeadingText extends StatelessWidget {
-  final String text;
-  final TextAlign? alignment;
-  final bool? isWhite;
-  final bool? isColor;
-  final Color? color;
+import '../../controllers/theme_controller.dart';
 
-  const HeadingText(
+class ButtonText extends StatelessWidget {
+  final String text;
+  final bool? isWhite;
+  final Color? color;
+  final TextAlign? alignment;
+  final String? type;
+  final bool? isDotDot;
+  const ButtonText(
       {Key? key,
       required this.text,
       this.alignment,
-      this.isWhite = false,
-      this.isColor,
-      this.color})
+      this.isWhite,
+      this.type,
+      this.color,
+      this.isDotDot})
       : super(key: key);
 
   @override
@@ -27,8 +29,7 @@ class HeadingText extends StatelessWidget {
     ThemeController themeController = Get.find<ThemeController>();
     return Text(
       text,
-
-      style: color.textTheme.headline1,
+      style: color.textTheme.button,
       textAlign: alignment,
     );
   }

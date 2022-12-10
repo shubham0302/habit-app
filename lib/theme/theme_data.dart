@@ -4,31 +4,100 @@ import 'package:habbit_app/theme/color_scheme.dart';
 import 'package:habbit_app/theme/dark_theme.dart';
 
 class Styles {
-  static ThemeData themeData(BuildContext context,bool isDark, String mode) {
+  static ThemeData themeData(
+    BuildContext context,
+    bool isDark,
+    String mode,
+  ) {
     return ThemeData(
+      switchTheme: SwitchThemeData(
+          
+          thumbColor: MaterialStateProperty.all(
+            !isDark
+                ? ColorSchemeData.themeData[mode]!['primaryColor']
+                : ColorSchemeData.darkThemeData[mode]!['primaryColor'],
+          ),
+          trackColor: MaterialStateProperty.all(
+            isDark
+                ? ColorSchemeData.defaultBrightColors['secondaryText']
+                : ColorSchemeData.defaultDarkColors['secondaryText'],
+          )),
+      dividerTheme: DividerThemeData(
+        thickness: .1,
+        color: !isDark
+            ? ColorSchemeData.defaultBrightColors['secondaryText']!
+                .withOpacity(.5)
+            : ColorSchemeData.defaultDarkColors['secondaryText']!
+                .withOpacity(.5),
+      ),
+      iconTheme: IconThemeData(
+        size: 15,
+        color: isDark
+            ? ColorSchemeData.defaultDarkColors['primaryText']
+            : ColorSchemeData.defaultBrightColors['primaryText'],
+      ),
+      textTheme: TextTheme(
+        //Heading text
+        headline1: TextStyle(
+          fontSize: 23.0,
+          fontWeight: FontWeight.bold,
+          color: !isDark
+              ? ColorSchemeData.defaultBrightColors['primaryText']
+              : ColorSchemeData.defaultDarkColors['primaryText'],
+        ),
 
-    
-      
-      // primaryColor: isDark?,
+        //Title Text
+        headline2: TextStyle(
+          fontSize: 50.0,
+          fontWeight: FontWeight.bold,
+          color: !isDark
+              ? ColorSchemeData.defaultBrightColors['primaryText']
+              : ColorSchemeData.defaultDarkColors['primaryText'],
+        ),
 
-      // primarySwatch:isDark? DarkTheme.primaryColor:BrightTheme.primaryColor,
-      // primaryColor: isDark? DarkTheme.primaryColor:BrightTheme.primaryColor,
+        //Description Text
+        subtitle1: TextStyle(
+          fontSize: 12,
+          color: !isDark
+              ? ColorSchemeData.defaultBrightColors['secondaryText']
+              : ColorSchemeData.defaultDarkColors['secondaryText'],
+        ),
 
+        //button Text
+        button: TextStyle(
+          fontSize: 20,
+          color: !isDark
+              ? ColorSchemeData.defaultBrightColors['primaryText']
+              : ColorSchemeData.defaultDarkColors['primaryText'],
+        ),
 
+        //Label Text
+        bodyText1: TextStyle(
+          fontSize: 14.0,
+          color: !isDark
+              ? ColorSchemeData.defaultBrightColors['primaryText']
+              : ColorSchemeData.defaultDarkColors['primaryText'],
+        ),
 
+        //MainLabel Text
+        bodyText2: TextStyle(
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            color: !isDark
+                ? ColorSchemeData.defaultBrightColors['primaryText']
+                : ColorSchemeData.defaultDarkColors['primaryText']),
+      ),
 
+      backgroundColor: !isDark
+          ? ColorSchemeData.defaultBrightColors['backgroundColor']
+          : ColorSchemeData.defaultDarkColors['backgroundColor'],
 
-
-
-
-      // textTheme: Theme.of(context)
-      //     .textTheme
-      //     .copyWith(: const ColorScheme.light()),
-      
-      backgroundColor: isDark? DarkTheme.backgroundColor:BrightTheme.backgroundColor,
-
-      indicatorColor: !isDark? ColorSchemeData.themeData[mode]!['primaryColor']:ColorSchemeData.darkThemeData[mode]!['primaryColor'],
-      primaryColor: !isDark? ColorSchemeData.themeData[mode]!['primaryColor']:ColorSchemeData.darkThemeData[mode]!['primaryColor'],
+      indicatorColor: !isDark
+          ? ColorSchemeData.themeData[mode]!['primaryColor']
+          : ColorSchemeData.darkThemeData[mode]!['primaryColor'],
+      primaryColor: !isDark
+          ? ColorSchemeData.themeData[mode]!['primaryColor']
+          : ColorSchemeData.darkThemeData[mode]!['primaryColor'],
 
       hintColor: Colors.black,
 

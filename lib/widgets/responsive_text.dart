@@ -23,6 +23,7 @@ class TextSizeResponsive extends StatelessWidget {
     final sizeHeight = MediaQuery.of(context).size.height;
     return Text(
       string,
+      
       style: style == 'i'
           ? TextStyle(
               decoration: TextDecoration.lineThrough,
