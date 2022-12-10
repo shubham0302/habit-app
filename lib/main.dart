@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/screens/intro_screen.dart';
 import 'package:habbit_app/screens/splash_screen.dart';
 import 'package:habbit_app/theme/theme_data.dart';
@@ -18,17 +19,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController = Get.put(ThemeController(),permanent: true);
 // Timer(Duration(seconds: 3), () => Get.to(() => SplashScreen()));
-    return GetMaterialApp(
-      defaultTransition: Transition.cupertino,
-      transitionDuration: const Duration(milliseconds: 300),
-      title: 'Habit',
-      debugShowCheckedModeBanner: false,
-      theme: Styles.themeData(context),
-      initialRoute: '/',
-      getPages: Routes.routes,
-      unknownRoute:
-          GetPage(name: '/notfound', page: () => const SplashScreen()),
+    return Obx(()=> GetMaterialApp(
+        defaultTransition: Transition.cupertino,
+        transitionDuration: const Duration(milliseconds: 300),
+        title: 'Habit',
+        debugShowCheckedModeBanner: false,
+        theme: Styles.themeData(context,themeController.isDark,themeController.mode),
+        initialRoute: '/',
+        getPages: Routes.routes,
+        unknownRoute:
+            GetPage(name: '/notfound', page: () => const SplashScreen()),
+      ),
     );
   }
 }

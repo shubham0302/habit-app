@@ -1,17 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:habbit_app/theme/bright_theme.dart';
+import 'package:habbit_app/theme/color_scheme.dart';
+import 'package:habbit_app/theme/dark_theme.dart';
 
 class Styles {
-  static ThemeData themeData(BuildContext context) {
+  static ThemeData themeData(BuildContext context,bool isDark, String mode) {
     return ThemeData(
-      primarySwatch: Colors.red,
-      primaryColor: Colors.white,
+
+    
+      
+      // primaryColor: isDark?,
+
+      // primarySwatch:isDark? DarkTheme.primaryColor:BrightTheme.primaryColor,
+      // primaryColor: isDark? DarkTheme.primaryColor:BrightTheme.primaryColor,
+
+
+
+
+
+
+
+
       // textTheme: Theme.of(context)
       //     .textTheme
       //     .copyWith(: const ColorScheme.light()),
+      
+      backgroundColor: isDark? DarkTheme.backgroundColor:BrightTheme.backgroundColor,
 
-      backgroundColor: const Color(0xffF1F5FB),
-
-      indicatorColor: const Color(0xffCBDCF8),
+      indicatorColor: !isDark? ColorSchemeData.themeData[mode]!['primaryColor']:ColorSchemeData.darkThemeData[mode]!['primaryColor'],
+      primaryColor: !isDark? ColorSchemeData.themeData[mode]!['primaryColor']:ColorSchemeData.darkThemeData[mode]!['primaryColor'],
 
       hintColor: Colors.black,
 

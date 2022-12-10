@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/theme_controller.dart';
+import 'package:habbit_app/theme/color_scheme.dart';
 import 'package:habbit_app/theme/theme_data.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -7,24 +9,88 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController = Get.find<ThemeController>();
     ThemeData color = Theme.of(context);
     return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        color: Colors.white,
-        child: Center(
-          child: InkWell(
-            onTap: () {
-              Get.toNamed('/intro');
-            },
-            child: Container(
-              height: 50,
-              width: 50,
-              color: color.indicatorColor,
-              child: Icon(Icons.arrow_forward_ios_rounded),
+      appBar: AppBar(
+        title: const Text('Plannarize'),
+        backgroundColor: color.indicatorColor,
+      ),
+      backgroundColor: color.backgroundColor,
+      body: Obx(()=>Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Center(
+              child: InkWell(
+                onTap: () {
+                  themeController.changeThemeMode();
+                  // Get.toNamed('/intro');
+                },
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  color: themeController.isDark? Colors.white:Colors.black,
+                  child: Icon(Icons.brightness_1,color: themeController.isDark? Colors.black:Colors.white,),
+                ),
+              ),
             ),
-          ),
+            Center(
+              child: InkWell(
+                onTap: () {
+                  themeController.changeThemeColor('red');
+                  // Get.toNamed('/intro');
+                },
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  color: !themeController.isDark? ColorSchemeData.themeData['red']!['primaryColor']:ColorSchemeData.darkThemeData['red']!['primaryColor'],
+                  child: Icon(Icons.arrow_forward_ios_rounded),
+                ),
+              ),
+            ),
+            Center(
+              child: InkWell(
+                onTap: () {
+                  themeController.changeThemeColor('green');
+                  // Get.toNamed('/intro');
+                },
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  color: !themeController.isDark? ColorSchemeData.themeData['green']!['primaryColor']:ColorSchemeData.darkThemeData['green']!['primaryColor'],
+                  child: Icon(Icons.arrow_forward_ios_rounded),
+                ),
+              ),
+            ),
+            Center(
+              child: InkWell(
+                onTap: () {
+                  themeController.changeThemeColor('purple');
+                  // Get.toNamed('/intro');
+                },
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  color: !themeController.isDark? ColorSchemeData.themeData['purple']!['primaryColor']:ColorSchemeData.darkThemeData['purple']!['primaryColor'],
+                  child: Icon(Icons.arrow_forward_ios_rounded),
+                ),
+              ),
+            ),
+            Center(
+              child: InkWell(
+                onTap: () {
+                  themeController.changeThemeColor('blue');
+                  // Get.toNamed('/intro');
+                },
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  color:!themeController.isDark? ColorSchemeData.themeData['blue']!['primaryColor']:ColorSchemeData.darkThemeData['blue']!['primaryColor'],
+                  child: Icon(Icons.arrow_forward_ios_rounded),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
