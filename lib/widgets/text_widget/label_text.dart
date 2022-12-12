@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:habbit_app/widgets/responsive_text.dart';
-import 'package:habbit_app/widgets/theme_config.dart';
-
-import '../../controllers/theme_controller.dart';
 
 class LabelText extends StatelessWidget {
   final String text;
   final bool? isWhite;
-  final bool? isSecondary;
+  final bool? isBold;
   final TextAlign? alignment;
   final bool? isDotDot;
+  final bool? isColor;
+  final Color? color;
 
   final bool? isNormal;
   const LabelText(
@@ -19,17 +16,15 @@ class LabelText extends StatelessWidget {
       this.alignment,
       this.isWhite,
       this.isNormal,
-      this.isSecondary,
-      this.isDotDot});
+      this.isBold=false,
+      this.isDotDot,this.color,this.isColor,}):super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final sizeHeight = MediaQuery.of(context).size.height;
     ThemeData color = Theme.of(context);
-    ThemeController themeController = Get.find<ThemeController>();
     return Text(
       text,
-      style: color.textTheme.bodyText1,
+      style: color.textTheme.bodyText1!.copyWith(color:isColor==true? (this.color ?? color.primaryColor) :null,fontWeight: isBold==true?FontWeight.bold:FontWeight.normal),
       textAlign: alignment,
     );
   }

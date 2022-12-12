@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
-import 'package:habbit_app/screens/customize_screen.dart';
+import 'package:habbit_app/screens/customize_screen/screen.dart';
 import 'package:habbit_app/screens/intro_screen.dart';
 import 'package:habbit_app/screens/splash_screen.dart';
 import 'package:habbit_app/theme/theme_data.dart';
@@ -34,9 +34,20 @@ class MyApp extends StatelessWidget {
         title: 'Habit',
         debugShowCheckedModeBanner: false,
         theme: Styles.themeData(
-            context, themeController.isDark, themeController.mode),
+          context,
+          themeController.mode,
+        ),
+        darkTheme: Styles.darkThemeData(
+          context,
+          themeController.mode,
+        ),
         initialRoute: '/',
         getPages: Routes.routes,
+        themeMode: themeController.themeModeData['value'] == 'default'
+            ? ThemeMode.system
+            : themeController.themeModeData['value'] == 'dark'
+                ? ThemeMode.dark
+                : ThemeMode.light,
         unknownRoute:
             GetPage(name: '/notfound', page: () => const SplashScreen()),
       ),

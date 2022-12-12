@@ -11,11 +11,13 @@ class MainLabelText extends StatelessWidget {
   final bool? isWhite;
   final bool? isBold;
   final bool? isDotDot;
+  final bool? isColor;
 
   final TextAlign? alignment;
   const MainLabelText(
       {Key? key,
       required this.text,
+      this.isColor=false,
       this.alignment,
       this.isWhite,
       this.isBold,
@@ -30,7 +32,7 @@ class MainLabelText extends StatelessWidget {
     ThemeController themeController = Get.find<ThemeController>();
     return Text(
       text,
-      style: color.textTheme.bodyText2,
+      style: color.textTheme.bodyText2!.copyWith(color:isColor==true? (this.color ?? color.primaryColor) :null),
       textAlign: alignment,
     );
   }
