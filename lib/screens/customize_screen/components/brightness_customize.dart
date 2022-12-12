@@ -32,7 +32,7 @@ class BrightnessCustomize extends StatelessWidget {
             behavior: HitTestBehavior.translucent,
             child: Obx(
               () => LabelText(
-                  text: themeController.isDark == true ? 'Dark' : 'Light'),
+                  text: themeController.themeModeData['label'].toString()),
             ),
           ),
         ],

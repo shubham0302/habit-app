@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:habbit_app/app_labels/customize_screen.dart';
+import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
@@ -8,6 +10,7 @@ class AlertBoxCustomize extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController = Get.find<ThemeController>();
     return Container(
       alignment: Alignment.center,
       child: Container(
@@ -30,10 +33,17 @@ class AlertBoxCustomize extends StatelessWidget {
             ...CScreenLabels.oprionsForBrightness
                 .map((e) => Column(
                       children: [
-                        GlobalPadding(
-                          child: LabelText(
-                            text: e['label'].toString(),
-                            isBold: true,
+                        GestureDetector(
+                          onTap: (){
+                            themeController.changeThemeModeBy(e);
+                            Navigator.pop(context);
+                          },
+                          behavior: HitTestBehavior.translucent,
+                          child: GlobalPadding(
+                            child: LabelText(
+                              text: e['label'].toString(),
+                              isBold: true,
+                            ),
                           ),
                         ),
                         const Divider(),

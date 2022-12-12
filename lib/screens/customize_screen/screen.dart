@@ -19,7 +19,7 @@ class CustomizeScreen extends StatelessWidget {
           const Divider(),
           const BrightnessCustomize(),
           const Divider(),
-          const PrimumBrighnessCustomize(),
+          // const PrimumBrighnessCustomize(),
           // SH.medium(),
         ],
       ),
