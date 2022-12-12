@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:habbit_app/screens/customize_screen/components/brightness_customize.dart';
+import 'package:habbit_app/screens/customize_screen/components/category_icon_customize.dart';
+import 'package:habbit_app/screens/customize_screen/components/free_color_customize.dart';
 import 'package:habbit_app/screens/customize_screen/components/header_customize.dart';
 import 'package:habbit_app/screens/customize_screen/components/premium_brightness_customize.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
@@ -19,7 +21,13 @@ class CustomizeScreen extends StatelessWidget {
           const Divider(),
           const BrightnessCustomize(),
           const Divider(),
-          // const PrimumBrighnessCustomize(),
+          const PrimumBrighnessCustomize(),
+          const Divider(),
+          const CategoryIconStyle(),
+          const Divider(),
+
+          const FreeColor()
+
           // SH.medium(),
         ],
       ),

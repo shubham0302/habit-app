@@ -11,6 +11,7 @@ class AlertBoxCustomize extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeController themeController = Get.find<ThemeController>();
+
     return Container(
       alignment: Alignment.center,
       child: Container(
