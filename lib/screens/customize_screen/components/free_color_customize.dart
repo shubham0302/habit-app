@@ -22,98 +22,96 @@ class FreeColor extends StatelessWidget {
           children: [
             const LabelText(text: CScreenLabels.freeColorTitleText),
             GlobalPadding(
-              child: Obx(
-                () => Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 50),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Center(
-                        child: InkWell(
-                          onTap: () {
-                            themeController.changeThemeColor('red');
-                            // Get.toNamed('/intro');
-                          },
-                          child: Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25),
-                              color: !themeController.isDark
-                                  ? ColorSchemeData
-                                      .themeData['red']!['primaryColor']
-                                  : ColorSchemeData
-                                      .darkThemeData['red']!['primaryColor'],
-                            ),
-                            // child: Icon(Icons.arrow_forward_ios_rounded),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 50),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          themeController.changeThemeColor('red');
+                          // Get.toNamed('/intro');
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25),
+                            color: !themeController.isDark
+                                ? ColorSchemeData
+                                    .themeData['red']!['primaryColor']
+                                : ColorSchemeData
+                                    .darkThemeData['red']!['primaryColor'],
                           ),
+                          // child: Icon(Icons.arrow_forward_ios_rounded),
                         ),
                       ),
-                      Center(
-                        child: InkWell(
-                          onTap: () {
-                            themeController.changeThemeColor('green');
-                            // Get.toNamed('/intro');
-                          },
-                          child: Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25),
-                              color: !themeController.isDark
-                                  ? ColorSchemeData
-                                      .themeData['green']!['primaryColor']
-                                  : ColorSchemeData
-                                      .darkThemeData['green']!['primaryColor'],
-                            ),
-                            // child: Icon(Icons.arrow_forward_ios_rounded),
+                    ),
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          themeController.changeThemeColor('green');
+                          // Get.toNamed('/intro');
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25),
+                            color: !themeController.isDark
+                                ? ColorSchemeData
+                                    .themeData['green']!['primaryColor']
+                                : ColorSchemeData
+                                    .darkThemeData['green']!['primaryColor'],
                           ),
+                          // child: Icon(Icons.arrow_forward_ios_rounded),
                         ),
                       ),
-                      Center(
-                        child: InkWell(
-                          onTap: () {
-                            themeController.changeThemeColor('purple');
-                            // Get.toNamed('/intro');
-                          },
-                          child: Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25),
-                              color: !themeController.isDark
-                                  ? ColorSchemeData
-                                      .themeData['purple']!['primaryColor']
-                                  : ColorSchemeData
-                                      .darkThemeData['purple']!['primaryColor'],
-                            ),
-                            // child: Icon(Icons.arrow_forward_ios_rounded),
+                    ),
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          themeController.changeThemeColor('purple');
+                          // Get.toNamed('/intro');
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25),
+                            color: !themeController.isDark
+                                ? ColorSchemeData
+                                    .themeData['purple']!['primaryColor']
+                                : ColorSchemeData
+                                    .darkThemeData['purple']!['primaryColor'],
                           ),
+                          // child: Icon(Icons.arrow_forward_ios_rounded),
                         ),
                       ),
-                      Center(
-                        child: InkWell(
-                          onTap: () {
-                            themeController.changeThemeColor('blue');
-                            // Get.toNamed('/intro');
-                          },
-                          child: Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25),
-                              color: !themeController.isDark
-                                  ? ColorSchemeData
-                                      .themeData['blue']!['primaryColor']
-                                  : ColorSchemeData
-                                      .darkThemeData['blue']!['primaryColor'],
-                            ),
-                            // child: Icon(Icons.arrow_forward_ios_rounded),
+                    ),
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          themeController.changeThemeColor('blue');
+                          // Get.toNamed('/intro');
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25),
+                            color: !themeController.isDark
+                                ? ColorSchemeData
+                                    .themeData['blue']!['primaryColor']
+                                : ColorSchemeData
+                                    .darkThemeData['blue']!['primaryColor'],
                           ),
+                          // child: Icon(Icons.arrow_forward_ios_rounded),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             )
