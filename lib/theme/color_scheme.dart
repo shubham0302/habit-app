@@ -9,7 +9,7 @@ class ColorSchemeData {
   static Map<String, Color> defaultDarkColors = {
     'primaryText': Colors.white,
     'secondaryText': Colors.grey,
-    'backgroundColor': Color(0xff151515),
+    'backgroundColor': const Color(0xff151515),
   };
   static Map<String, Map<String, Color>> themeData = {
     'red': {

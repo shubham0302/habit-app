@@ -4,11 +4,7 @@ import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/title_text.dart';
-import 'package:date_picker_timeline/date_picker_timeline.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 import '../controllers/home_page_controller.dart';
-import '../widgets/bottomNavBar.dart';
 
 class HomePage extends StatelessWidget {
   final HomePageController controller =
@@ -83,7 +79,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                HeadingText(text: "abcd")
+                const HeadingText(text: "abcd")
                 // Container(
                 //   color: Color.fromARGB(255, 146, 212, 243),
                 //   child: DatePicker(

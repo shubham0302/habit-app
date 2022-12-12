@@ -1,7 +1,7 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/widgets/responsive_text.dart';
-import 'package:habbit_app/widgets/theme_config.dart';
 
 import '../../controllers/theme_controller.dart';
 
@@ -17,7 +17,7 @@ class MainLabelText extends StatelessWidget {
   const MainLabelText(
       {Key? key,
       required this.text,
-      this.isColor=false,
+      this.isColor = false,
       this.alignment,
       this.isWhite,
       this.isBold,
@@ -32,7 +32,8 @@ class MainLabelText extends StatelessWidget {
     ThemeController themeController = Get.find<ThemeController>();
     return Text(
       text,
-      style: color.textTheme.bodyText2!.copyWith(color:isColor==true? (this.color ?? color.primaryColor) :null),
+      style: color.textTheme.bodyText2!.copyWith(
+          color: isColor == true ? (this.color ?? color.primaryColor) : null),
       textAlign: alignment,
     );
   }

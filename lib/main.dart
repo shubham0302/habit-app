@@ -1,5 +1,4 @@
-import 'dart:async';
-
+// ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -8,8 +7,6 @@ import 'package:habbit_app/screens/customize_screen/screen.dart';
 import 'package:habbit_app/screens/intro_screen.dart';
 import 'package:habbit_app/screens/splash_screen.dart';
 import 'package:habbit_app/theme/theme_data.dart';
-
-import 'screens/home_screen.dart';
 import 'screens/main_screen.dart';
 
 void main() {

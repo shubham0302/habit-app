@@ -1,7 +1,8 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'package:get/get.dart';
 
-class HomePageController extends GetxController{
-
+class HomePageController extends GetxController {
   var tabIndex = 0.obs;
 
   void changeTabIndex(int index) async {
@@ -17,5 +18,4 @@ class HomePageController extends GetxController{
   void dispose() {
     super.dispose();
   }
-
 }

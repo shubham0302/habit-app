@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_if_null_operators, prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:habbit_app/widgets/theme_config.dart';
 
@@ -55,6 +57,7 @@ class InputField extends StatelessWidget {
       maxLength: maxLenght,
       maxLines: isDescription! ? 3 : 1,
       onTap: () {
+        // ignore: avoid_print
         ontap != null ? ontap!() : print('');
       },
       decoration: tailingIcon != null
@@ -110,20 +113,20 @@ class InputField extends StatelessWidget {
               labelStyle: const TextStyle(
                   color: ThemeConfig.mainTextColor, fontSize: 20),
               alignLabelWithHint: true,
-              floatingLabelStyle: TextStyle(
+              floatingLabelStyle: const TextStyle(
                 color: ThemeConfig.secondaryColor,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(ThemeConfig.radiusMin),
-                borderSide:
-                    BorderSide(color: ThemeConfig.secondaryColor, width: 1),
+                borderSide: const BorderSide(
+                    color: ThemeConfig.secondaryColor, width: 1),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(ThemeConfig.radiusMin),
-                borderSide:
-                    BorderSide(color: ThemeConfig.primaryColorLite, width: 1),
+                borderSide: const BorderSide(
+                    color: ThemeConfig.primaryColorLite, width: 1),
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(ThemeConfig.radiusMin),

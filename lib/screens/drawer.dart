@@ -76,12 +76,12 @@ class Drawerr extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25)),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.timer,
                       // color: color.hoverColor,
                     ),
                     SW.medium(),
-                    MainLabelText(
+                    const MainLabelText(
                       text: 'Timer',
                       // color: color.hoverColor,
                     ),
@@ -105,12 +105,12 @@ class Drawerr extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25)),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.category,
                       // color: color.hoverColor,
                     ),
                     SW.medium(),
-                    MainLabelText(
+                    const MainLabelText(
                       text: 'Categories',
                       // color: color.hoverColor,
                     ),
@@ -137,12 +137,12 @@ class Drawerr extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25)),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.dashboard_customize,
                       // color: color.hoverColor,
                     ),
                     SW.medium(),
-                    MainLabelText(
+                    const MainLabelText(
                       text: 'Customize',
                       // color: color.hoverColor,
                     ),
@@ -166,12 +166,12 @@ class Drawerr extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25)),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.settings,
                       // color: color.hoverColor,
                     ),
                     SW.medium(),
-                    MainLabelText(
+                    const MainLabelText(
                       text: 'Settings',
                       // color: color.hoverColor,
                     ),
@@ -195,12 +195,12 @@ class Drawerr extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25)),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.backup,
                       // color: color.hoverColor,
                     ),
                     SW.medium(),
-                    MainLabelText(
+                    const MainLabelText(
                       text: 'Backups',
                       // color: color.hoverColor,
                     ),
@@ -227,12 +227,12 @@ class Drawerr extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25)),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.verified,
                       // color: color.hoverColor,
                     ),
                     SW.medium(),
-                    MainLabelText(
+                    const MainLabelText(
                       text: 'Get Premium',
                       // color: color.hoverColor,
                     ),
@@ -256,12 +256,12 @@ class Drawerr extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25)),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.star,
                       // color: color.hoverColor,
                     ),
                     SW.medium(),
-                    MainLabelText(
+                    const MainLabelText(
                       text: 'Rate this app',
                       // color: color.hoverColor,
                     ),
@@ -285,12 +285,12 @@ class Drawerr extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25)),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.contact_page_rounded,
                       // color: color.hoverColor,
                     ),
                     SW.medium(),
-                    MainLabelText(
+                    const MainLabelText(
                       text: 'Contact us',
                       // color: color.hoverColor,
                     ),

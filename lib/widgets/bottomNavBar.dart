@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
@@ -114,8 +116,8 @@ Widget buildBottomNavItem(
       children: [
         SH.small(),
         AnimatedContainer(
-            duration: Duration(milliseconds: 400),
-            padding: EdgeInsets.all(10),
+            duration: const Duration(milliseconds: 400),
+            padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: selected ? color.cardColor : Colors.transparent,
@@ -125,6 +127,7 @@ Widget buildBottomNavItem(
                     icon,
                     color: ThemeConfig.mainTextColor,
                   )
+                // ignore: avoid_unnecessary_containers
                 : Container(
                     child: Center(
                       child: Icon(

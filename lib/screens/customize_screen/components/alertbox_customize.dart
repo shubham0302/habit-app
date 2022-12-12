@@ -3,9 +3,7 @@ import 'package:get/get.dart';
 import 'package:habbit_app/app_labels/customize_screen.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/widgets/padding.dart';
-import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
-import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 class AlertBoxCustomize extends StatelessWidget {
   const AlertBoxCustomize({super.key});
@@ -34,23 +32,14 @@ class AlertBoxCustomize extends StatelessWidget {
             ),
             const Divider(),
             ...CScreenLabels.oprionsForBrightness
-                .map((
-                  e,
-                ) =>
-                    Column(
+                .map((e) => Column(
                       children: [
-                        GestureDetector(
-                            onTap: () {
-                              themeController.changeThemeModeBy(CScreenLabels
-                                  .oprionsForBrightness
-                                  .indexOf(e));
-                            },
-                            child: GlobalPadding(
-                              child: LabelText(
-                                text: e['label'].toString(),
-                                isBold: true,
-                              ),
-                            )),
+                        GlobalPadding(
+                          child: LabelText(
+                            text: e['label'].toString(),
+                            isBold: true,
+                          ),
+                        ),
                         const Divider(),
                       ],
                     ))
