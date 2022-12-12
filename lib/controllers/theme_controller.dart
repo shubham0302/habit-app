@@ -15,7 +15,7 @@ class ThemeController extends GetxController{
   }
   changeThemeModeBy(int val){
     if(val<3 && val >0){
-      _themeModeData.value = CScreenLabels.oprionsForBrightness[0]; 
+      _themeModeData.value = CScreenLabels.oprionsForBrightness[val]; 
     }else{
       _themeModeData.value = CScreenLabels.oprionsForBrightness[2]; 
     }
