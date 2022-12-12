@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/theme/color_scheme.dart';
-import 'package:habbit_app/theme/theme_data.dart';
 import 'package:habbit_app/widgets/text_widget/button_text.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
@@ -19,7 +18,7 @@ class SplashScreen extends StatelessWidget {
     ThemeData color = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: HeadingText(
+        title: const HeadingText(
           text: 'Plannarize',
         ),
         backgroundColor: color.indicatorColor,
@@ -65,7 +64,7 @@ class SplashScreen extends StatelessWidget {
                           ? ColorSchemeData.themeData['red']!['primaryColor']
                           : ColorSchemeData
                               .darkThemeData['red']!['primaryColor'],
-                      child: Icon(Icons.arrow_forward_ios_rounded),
+                      child: const Icon(Icons.arrow_forward_ios_rounded),
                     ),
                   ),
                 ),
@@ -82,7 +81,7 @@ class SplashScreen extends StatelessWidget {
                           ? ColorSchemeData.themeData['green']!['primaryColor']
                           : ColorSchemeData
                               .darkThemeData['green']!['primaryColor'],
-                      child: Icon(Icons.arrow_forward_ios_rounded),
+                      child: const Icon(Icons.arrow_forward_ios_rounded),
                     ),
                   ),
                 ),
@@ -99,7 +98,7 @@ class SplashScreen extends StatelessWidget {
                           ? ColorSchemeData.themeData['purple']!['primaryColor']
                           : ColorSchemeData
                               .darkThemeData['purple']!['primaryColor'],
-                      child: Icon(Icons.arrow_forward_ios_rounded),
+                      child: const Icon(Icons.arrow_forward_ios_rounded),
                     ),
                   ),
                 ),
@@ -116,7 +115,7 @@ class SplashScreen extends StatelessWidget {
                           ? ColorSchemeData.themeData['blue']!['primaryColor']
                           : ColorSchemeData
                               .darkThemeData['blue']!['primaryColor'],
-                      child: Icon(Icons.arrow_forward_ios_rounded),
+                      child: const Icon(Icons.arrow_forward_ios_rounded),
                     ),
                   ),
                 ),
@@ -133,18 +132,18 @@ class SplashScreen extends StatelessWidget {
                           ? ColorSchemeData.themeData['blue']!['primaryColor']
                           : ColorSchemeData
                               .darkThemeData['blue']!['primaryColor'],
-                      child: Icon(Icons.skip_next),
+                      child: const Icon(Icons.skip_next),
                     ),
                   ),
                 ),
               ],
             ),
-            HeadingText(text: "Heading"),
-            LabelText(text: 'Label'),
-            MainLabelText(text: 'MainLabel'),
-            DescriptionText(text: 'Description'),
-            TitleText(text: 'Title'),
-            ButtonText(text: 'Button')
+            const HeadingText(text: "Heading"),
+            const LabelText(text: 'Label'),
+            const MainLabelText(text: 'MainLabel'),
+            const DescriptionText(text: 'Description'),
+            const TitleText(text: 'Title'),
+            const ButtonText(text: 'Button')
           ],
         ),
       ),

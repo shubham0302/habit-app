@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
-import 'package:habbit_app/widgets/responsive_text.dart';
-import 'package:habbit_app/widgets/theme_config.dart';
 
 class HeadingText extends StatelessWidget {
   final String text;
@@ -22,12 +20,13 @@ class HeadingText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     final sizeHeight = MediaQuery.of(context).size.height;
     ThemeData color = Theme.of(context);
+    // ignore: unused_local_variable
     ThemeController themeController = Get.find<ThemeController>();
     return Text(
       text,
-
       style: color.textTheme.headline1,
       textAlign: alignment,
     );

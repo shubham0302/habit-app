@@ -6,7 +6,6 @@ import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'dart:math' as math;
 
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
-import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
 import '../widgets/text_widget/main_label_text.dart';
 import '../widgets/theme_config.dart';
@@ -45,6 +44,7 @@ class IntroScreen extends StatelessWidget {
                 pageCntrl.selectedIndex.value = value;
               }),
               children: [
+                // ignore: sized_box_for_whitespace
                 Container(
                   height: size.height,
                   width: size.width,
@@ -64,6 +64,7 @@ class IntroScreen extends StatelessWidget {
                         )),
                   ]),
                 ),
+                // ignore: sized_box_for_whitespace
                 Container(
                   height: size.height,
                   width: size.width,
@@ -85,6 +86,7 @@ class IntroScreen extends StatelessWidget {
                         ))
                   ]),
                 ),
+                // ignore: sized_box_for_whitespace
                 Container(
                   height: size.height,
                   width: size.width,
@@ -219,10 +221,12 @@ class IntroScreen extends StatelessWidget {
                                         duration:
                                             const Duration(milliseconds: 200),
                                         height: 10,
+                                        // ignore: unrelated_type_equality_checks
                                         width: pageCntrl.selectedIndex == 0
                                             ? 15
                                             : 10,
                                         decoration: BoxDecoration(
+                                            // ignore: unrelated_type_equality_checks
                                             color: pageCntrl.selectedIndex == 0
                                                 ? color.indicatorColor
                                                 : color.primaryColor,
@@ -235,10 +239,12 @@ class IntroScreen extends StatelessWidget {
                                       duration:
                                           const Duration(milliseconds: 200),
                                       height: 10,
+                                      // ignore: unrelated_type_equality_checks
                                       width: pageCntrl.selectedIndex == 1
                                           ? 15
                                           : 10,
                                       decoration: BoxDecoration(
+                                          // ignore: unrelated_type_equality_checks
                                           color: pageCntrl.selectedIndex == 1
                                               ? color.indicatorColor
                                               : color.primaryColor,
@@ -252,10 +258,12 @@ class IntroScreen extends StatelessWidget {
                                       duration:
                                           const Duration(milliseconds: 200),
                                       height: 10,
+                                      // ignore: unrelated_type_equality_checks
                                       width: pageCntrl.selectedIndex == 2
                                           ? 15
                                           : 10,
                                       decoration: BoxDecoration(
+                                          // ignore: unrelated_type_equality_checks
                                           color: pageCntrl.selectedIndex == 2
                                               ? color.indicatorColor
                                               : color.primaryColor,
