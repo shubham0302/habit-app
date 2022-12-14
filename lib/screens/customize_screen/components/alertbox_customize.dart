@@ -34,10 +34,17 @@ class AlertBoxCustomize extends StatelessWidget {
             ...CScreenLabels.oprionsForBrightness
                 .map((e) => Column(
                       children: [
-                        GlobalPadding(
-                          child: LabelText(
-                            text: e['label'].toString(),
-                            isBold: true,
+                        GestureDetector(
+                          onTap: (){
+                            themeController.changeThemeModeBy(e);
+                            Navigator.pop(context);
+                          },
+                          behavior: HitTestBehavior.translucent,
+                          child: GlobalPadding(
+                            child: LabelText(
+                              text: e['label'].toString(),
+                              isBold: true,
+                            ),
                           ),
                         ),
                         const Divider(),
