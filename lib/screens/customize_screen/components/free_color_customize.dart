@@ -34,17 +34,27 @@ class FreeColor extends StatelessWidget {
                           // Get.toNamed('/intro');
                         },
                         child: Container(
-                          height: 40,
-                          width: 40,
+                          padding: EdgeInsets.all(2),
+                          height: 44,
+                          width: 44,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
-                            color: !themeController.isDark
-                                ? ColorSchemeData
-                                    .themeData['red']!['primaryColor']
-                                : ColorSchemeData
-                                    .darkThemeData['red']!['primaryColor'],
+                              border: Border.all(
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(22)),
+                          child: Container(
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25),
+                              color: !themeController.isDark
+                                  ? ColorSchemeData
+                                      .themeData['red']!['primaryColor']
+                                  : ColorSchemeData
+                                      .darkThemeData['red']!['primaryColor'],
+                            ),
+                            // child: Icon(Icons.arrow_forward_ios_rounded),
                           ),
-                          // child: Icon(Icons.arrow_forward_ios_rounded),
                         ),
                       ),
                     ),

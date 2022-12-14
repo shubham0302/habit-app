@@ -28,7 +28,8 @@ class MainScreen extends StatelessWidget {
                 HomePage(),
                 HomePage(),
               ],
-            )),
+            )
+            ),
         bottomNavigationBar: buildBottomNavigationMenu(context, 0, controller),
       ),
     );
