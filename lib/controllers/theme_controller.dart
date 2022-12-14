@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:habbit_app/app_labels/customize_screen.dart';
 
 class ThemeController extends GetxController {
-  
   RxBool _isDark = false.obs;
   var _themeModeData = CScreenLabels.oprionsForBrightness[0].obs;
   RxString _mode = 'red'.obs;
@@ -17,7 +16,7 @@ class ThemeController extends GetxController {
     _isDark.value = !_isDark.value;
   }
 
-  changeThemeModeBy(Map<String,String> val) {
+  changeThemeModeBy(Map<String, String> val) {
     _themeModeData.value = val;
   }
 

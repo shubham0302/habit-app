@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           context,
           themeController.mode,
         ),
-        initialRoute: '/',
+        initialRoute: '/intro',
         getPages: Routes.routes,
         themeMode: themeController.themeModeData['value'] == 'default'
             ? ThemeMode.system

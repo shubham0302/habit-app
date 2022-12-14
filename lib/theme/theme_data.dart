@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:habbit_app/theme/color_scheme.dart';
 
 class Styles {
@@ -78,7 +79,7 @@ class Styles {
       hoverColor: const Color(0xff4285F4),
 
       focusColor: const Color(0xffA8DAB5),
-      disabledColor: Colors.grey,
+      disabledColor: Colors.grey.shade300,
       // textSelectionColor:  Colors.black,
       cardColor: Colors.white,
       canvasColor: Colors.grey[50],
@@ -88,6 +89,7 @@ class Styles {
           .copyWith(colorScheme: const ColorScheme.light()),
       appBarTheme: const AppBarTheme(
         elevation: 0.0,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
     );
   }
@@ -166,7 +168,7 @@ class Styles {
       hoverColor: const Color(0xff4285F4),
 
       focusColor: const Color(0xffA8DAB5),
-      disabledColor: Colors.grey,
+      disabledColor: Colors.grey.shade800,
       // textSelectionColor:  Colors.black,
       cardColor: Colors.white,
       canvasColor: Colors.grey[50],
@@ -176,6 +178,7 @@ class Styles {
           .copyWith(colorScheme: const ColorScheme.light()),
       appBarTheme: const AppBarTheme(
         elevation: 0.0,
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
     );
   }

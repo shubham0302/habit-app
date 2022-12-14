@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
@@ -20,21 +21,26 @@ class Drawerr extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const HeadingText(text: 'HabitNow'),
+            const HeadingText(text: 'Plannarize'),
             SH.small(),
-            const LabelText(text: 'Monday'),
-            SH.small(),
-            const LabelText(
-              text: 'November 28,2022',
-              isNormal: true,
+            Row(
+              children: [
+                const LabelText(text: '20 SEP 2022'),
+                SW.medium(),
+                const LabelText(
+                  text: 'THURSDAY',
+                  isNormal: true,
+                ),
+              ],
             ),
+
             SH.large(),
             const Divider(),
             SH.large(),
             InkWell(
               onTap: () {},
               customBorder: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(21),
+                borderRadius: BorderRadius.circular(10),
               ),
               splashColor: color.hoverColor,
               child: Container(
@@ -43,8 +49,8 @@ class Drawerr extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    color: color.indicatorColor,
-                    borderRadius: BorderRadius.circular(25)),
+                    color: color.disabledColor,
+                    borderRadius: BorderRadius.circular(10)),
                 child: Row(
                   children: [
                     Icon(
@@ -135,18 +141,23 @@ class Drawerr extends StatelessWidget {
                 decoration: BoxDecoration(
                     // color: color.indicatorColor,
                     borderRadius: BorderRadius.circular(25)),
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.dashboard_customize,
-                      // color: color.hoverColor,
-                    ),
-                    SW.medium(),
-                    const MainLabelText(
-                      text: 'Customize',
-                      // color: color.hoverColor,
-                    ),
-                  ],
+                child: GestureDetector(
+                  onTap: () {
+                    Get.toNamed("/customize");
+                  },
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.dashboard_customize,
+                        // color: color.hoverColor,
+                      ),
+                      SW.medium(),
+                      const MainLabelText(
+                        text: 'Customize',
+                        // color: color.hoverColor,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
