@@ -3,6 +3,8 @@
 import 'package:get/get.dart';
 
 class HomePageController extends GetxController {
+    RxInt SelectedDateIndex = 0.obs;
+
   var tabIndex = 0.obs;
 
   void changeTabIndex(int index) async {
