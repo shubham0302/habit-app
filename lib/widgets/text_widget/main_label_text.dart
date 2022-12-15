@@ -31,9 +31,10 @@ class MainLabelText extends StatelessWidget {
     ThemeData color = Theme.of(context);
     ThemeController themeController = Get.find<ThemeController>();
     return Text(
+      
       text,
       style: color.textTheme.bodyText2!.copyWith(
-          color: isColor == true ? (this.color ?? color.primaryColor) : null),
+          color: isColor == true ? (this.color ?? color.primaryColor) : null,),
       textAlign: alignment,
     );
   }

@@ -9,21 +9,23 @@ class HeaderCustomize extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var color = Theme.of(context);
     return GlobalPadding(
       child: Row(
-                children: [
-                  GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: (() {
-                        Get.back();
-                      }),
-                      child: const Icon(
-                        Icons.arrow_back_ios_new_rounded,
-                      )),
-                  SW.medium(),
-                  const MainLabelText(text: 'Customize',isColor: true,),
-                ],
-              ),
+        children: [
+          GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: (() {
+                Get.back();
+              }),
+              child: Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: color.primaryColor,
+              )),
+          SW.medium(),
+          const MainLabelText(text: 'Customize'),
+        ],
+      ),
     );
   }
 }
