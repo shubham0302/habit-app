@@ -10,6 +10,7 @@ class ButtonText extends StatelessWidget {
   final TextAlign? alignment;
   final String? type;
   final bool? isDotDot;
+  final bool? isColor;
   const ButtonText(
       {Key? key,
       required this.text,
@@ -17,7 +18,8 @@ class ButtonText extends StatelessWidget {
       this.isWhite,
       this.type,
       this.color,
-      this.isDotDot})
+      this.isDotDot,
+      this.isColor})
       : super(key: key);
 
   @override
@@ -29,7 +31,9 @@ class ButtonText extends StatelessWidget {
     ThemeController themeController = Get.find<ThemeController>();
     return Text(
       text,
-      style: color.textTheme.button,
+      style: color.textTheme.button!.copyWith(
+        color: isColor == true ? (this.color ?? color.primaryColor) : null,
+      ),
       textAlign: alignment,
     );
   }

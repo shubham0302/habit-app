@@ -45,11 +45,12 @@ class InputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData color = Theme.of(context);
     return TextField(
       obscureText: obsecure == true ? true : false,
       autofocus: focus == true ? true : false,
       onSubmitted: onSubmit,
-      cursorColor: ThemeConfig.primaryColor,
+      cursorColor: color.disabledColor,
       controller: controller != null ? controller : null,
       keyboardType: textType,
       onChanged: onChange,
@@ -65,7 +66,7 @@ class InputField extends StatelessWidget {
               counterText: '',
               isDense: true,
               filled: true,
-              fillColor: ThemeConfig.primaryColorLite,
+              fillColor: color.backgroundColor,
               contentPadding:
                   const EdgeInsets.only(top: 10, bottom: 10, left: 20),
               hintText: hintText,
@@ -85,53 +86,46 @@ class InputField extends StatelessWidget {
                     ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(ThemeConfig.radiusMin),
-                borderSide: const BorderSide(
-                    color: ThemeConfig.primaryColorLite, width: 1),
+                borderSide: BorderSide(color: color.backgroundColor, width: 1),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(ThemeConfig.radiusMin),
-                borderSide: const BorderSide(
-                    color: ThemeConfig.primaryColorLite, width: 1),
+                borderSide: BorderSide(color: color.backgroundColor, width: 1),
               ),
               border: OutlineInputBorder(
                 gapPadding: 0,
                 borderRadius: BorderRadius.circular(ThemeConfig.radiusMin),
-                borderSide: const BorderSide(
-                    color: ThemeConfig.primaryColorLite, width: 1),
+                borderSide: BorderSide(color: color.backgroundColor, width: 1),
               ),
             )
           : InputDecoration(
               isDense: true,
               filled: true,
-              fillColor: ThemeConfig.primaryColorLite,
+              fillColor: color.backgroundColor,
               contentPadding:
                   const EdgeInsets.only(top: 13, bottom: 13, left: 20),
               hintText: hintText,
               labelText: labelText,
               counterText: '',
-              hintStyle: const TextStyle(color: ThemeConfig.mainTextColor),
-              labelStyle: const TextStyle(
-                  color: ThemeConfig.mainTextColor, fontSize: 20),
+              hintStyle: TextStyle(color: color.canvasColor),
+              labelStyle: TextStyle(color: color.canvasColor, fontSize: 20),
               alignLabelWithHint: true,
-              floatingLabelStyle: const TextStyle(
-                color: ThemeConfig.secondaryColor,
+              floatingLabelStyle: TextStyle(
+                color: color.disabledColor,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(ThemeConfig.radiusMin),
-                borderSide: const BorderSide(
-                    color: ThemeConfig.secondaryColor, width: 1),
+                borderSide: BorderSide(color: color.disabledColor, width: 1),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(ThemeConfig.radiusMin),
-                borderSide: const BorderSide(
-                    color: ThemeConfig.primaryColorLite, width: 1),
+                borderSide: BorderSide(color: color.disabledColor, width: 1),
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(ThemeConfig.radiusMin),
-                borderSide: const BorderSide(
-                    color: ThemeConfig.primaryColorLite, width: 1),
+                borderSide: BorderSide(color: color.disabledColor, width: 1),
               ),
             ),
     );

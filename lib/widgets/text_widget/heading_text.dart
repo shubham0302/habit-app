@@ -27,7 +27,9 @@ class HeadingText extends StatelessWidget {
     ThemeController themeController = Get.find<ThemeController>();
     return Text(
       text,
-      style: color.textTheme.headline1,
+      style: color.textTheme.headline1!.copyWith(
+        color: isColor == true ? (this.color ?? color.primaryColor) : null,
+      ),
       textAlign: alignment,
     );
   }

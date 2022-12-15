@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
+import 'package:habbit_app/screens/customize_screen/backUp_screen.dart';
+import 'package:habbit_app/screens/customize_screen/getpremium_screen.dart';
 import 'package:habbit_app/screens/customize_screen/screen.dart';
 import 'package:habbit_app/screens/intro_screen.dart';
 import 'package:habbit_app/screens/splash_screen.dart';
@@ -58,5 +60,7 @@ class Routes {
     GetPage(name: '/home', page: () => MainScreen()),
     GetPage(name: '/intro', page: () => const IntroScreen()),
     GetPage(name: '/customize', page: () => const CustomizeScreen()),
+    GetPage(name: '/backup', page: () => const BackUpScreen()),
+    GetPage(name: '/getpremium', page: () => const GetPremiumScreen())
   ];
 }

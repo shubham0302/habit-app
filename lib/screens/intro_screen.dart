@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/app_labels/customize_screen.dart';
@@ -48,7 +50,6 @@ class IntroScreen extends StatelessWidget {
                 pageCntrl.selectedIndex.value = value;
               }),
               children: [
-                // ignore: sized_box_for_whitespace
                 Container(
                   height: size.height,
                   width: size.width,
@@ -68,7 +69,7 @@ class IntroScreen extends StatelessWidget {
                         )),
                   ]),
                 ),
-                // ignore: sized_box_for_whitespace
+
                 Container(
                   height: size.height,
                   width: size.width,
@@ -90,7 +91,7 @@ class IntroScreen extends StatelessWidget {
                         ))
                   ]),
                 ),
-                // ignore: sized_box_for_whitespace
+
                 Container(
                   height: size.height,
                   width: size.width,
@@ -116,7 +117,7 @@ class IntroScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                // ignore: sized_box_for_whitespace
+
                 Container(
                   height: size.height,
                   width: size.width,
@@ -136,7 +137,7 @@ class IntroScreen extends StatelessWidget {
                         )),
                   ]),
                 ),
-                // ignore: sized_box_for_whitespace
+                
                 Container(
                   height: size.height,
                   width: size.width,

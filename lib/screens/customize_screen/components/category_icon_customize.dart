@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, unrelated_type_equality_checks
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/app_labels/customize_screen.dart';
@@ -38,7 +40,7 @@ class CategoryIconStyle extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10)),
                             height: 35,
                             width: 35,
-                            child: Icon(
+                            child: const Icon(
                               Icons.add,
                               color: Colors.white,
                               size: 28,
@@ -51,7 +53,7 @@ class CategoryIconStyle extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10)),
                             height: 35,
                             width: 35,
-                            child: Icon(
+                            child: const Icon(
                               Icons.local_activity,
                               color: Colors.white,
                               size: 28,
@@ -64,7 +66,7 @@ class CategoryIconStyle extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10)),
                             height: 35,
                             width: 35,
-                            child: Icon(
+                            child: const Icon(
                               Icons.bookmark_outlined,
                               color: Colors.white,
                               size: 28,
@@ -80,10 +82,10 @@ class CategoryIconStyle extends StatelessWidget {
                                 ? Colors.purple.withOpacity(.2)
                                 : Colors.transparent,
                           ),
-                          padding:
-                              EdgeInsets.symmetric(vertical: 2, horizontal: 8),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 2, horizontal: 8),
                           // color: Colors.purple.withOpacity(.2),
-                          child: DescriptionText(text: 'CLASSIC'))
+                          child: const DescriptionText(text: 'CLASSIC'))
                     ],
                   ),
                 ),
@@ -101,7 +103,7 @@ class CategoryIconStyle extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10)),
                             height: 35,
                             width: 35,
-                            child: Icon(
+                            child: const Icon(
                               Icons.add,
                               color: Colors.purple,
                               size: 28,
@@ -114,7 +116,7 @@ class CategoryIconStyle extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10)),
                             height: 35,
                             width: 35,
-                            child: Icon(
+                            child: const Icon(
                               Icons.local_activity,
                               color: Colors.green,
                               size: 28,
@@ -127,7 +129,7 @@ class CategoryIconStyle extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10)),
                             height: 35,
                             width: 35,
-                            child: Icon(
+                            child: const Icon(
                               Icons.bookmark_outlined,
                               color: Colors.lightBlue,
                               size: 28,
@@ -143,10 +145,10 @@ class CategoryIconStyle extends StatelessWidget {
                                 ? Colors.purple.withOpacity(.2)
                                 : Colors.transparent,
                           ),
-                          padding:
-                              EdgeInsets.symmetric(vertical: 2, horizontal: 8),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 2, horizontal: 8),
                           // color: Colors.purple.withOpacity(.2),
-                          child: DescriptionText(text: 'SIMPLE'))
+                          child: const DescriptionText(text: 'SIMPLE'))
                     ],
                   ),
                 )
