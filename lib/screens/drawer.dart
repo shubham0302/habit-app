@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/screens/customize_screen/components/custom_dialog_box.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
@@ -98,7 +97,7 @@ class Drawerr extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25)),
                 child: GestureDetector(
                   onTap: () {
-                    CustomDialogBox(context);
+                    // CustomDialogBox(context);
                   },
                   child: Row(
                     children: [

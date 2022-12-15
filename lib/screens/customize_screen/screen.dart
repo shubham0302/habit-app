@@ -4,6 +4,7 @@ import 'package:habbit_app/screens/customize_screen/components/category_icon_cus
 import 'package:habbit_app/screens/customize_screen/components/free_color_customize.dart';
 import 'package:habbit_app/screens/customize_screen/components/header_customize.dart';
 import 'package:habbit_app/screens/customize_screen/components/premium_brightness_customize.dart';
+import 'package:habbit_app/screens/customize_screen/components/premium_color_customize.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 
 class CustomizeScreen extends StatelessWidget {
@@ -12,24 +13,27 @@ class CustomizeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SH.large(),
-          SH.large(),
-          const HeaderCustomize(),
-          const Divider(),
-          const BrightnessCustomize(),
-          const Divider(),
-          const PrimumBrighnessCustomize(),
-          const Divider(),
-          const CategoryIconStyle(),
-          const Divider(),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SH.large(),
+            SH.large(),
+            const HeaderCustomize(),
+            const Divider(),
+            const BrightnessCustomize(),
+            const Divider(),
+            const PrimumBrighnessCustomize(),
+            const Divider(),
+            const CategoryIconStyle(),
+            const Divider(),
+            const FreeColor(),
+            const Divider(),
+            const PremiumColor(),
 
-          const FreeColor()
-
-          // SH.medium(),
-        ],
+            // SH.medium(),
+          ],
+        ),
       ),
     );
   }

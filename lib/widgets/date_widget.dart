@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
@@ -16,7 +15,7 @@ class DateList extends StatelessWidget {
     var color = Theme.of(context);
     return ListView.separated(
       separatorBuilder: (context, index) => SW.medium(),
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       shrinkWrap: true,
       scrollDirection: Axis.horizontal,
       itemCount: 30,

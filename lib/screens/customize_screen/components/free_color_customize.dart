@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,7 +24,7 @@ class FreeColor extends StatelessWidget {
             const LabelText(text: CScreenLabels.freeColorTitleText),
             GlobalPadding(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 50),
+                padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -33,6 +33,7 @@ class FreeColor extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50),
                         onTap: () {
                           themeController.changeThemeColor('red');
+                          print(Theme.of(context).brightness);
                           // Get.toNamed('/intro');
                         },
                         child: Container(
@@ -43,7 +44,8 @@ class FreeColor extends StatelessWidget {
                               border: Border.all(
                                 width: 2,
                                 color: themeController.mode == 'red'
-                                    ? (!themeController.isDark
+                                    ? (Theme.of(context).brightness ==
+                                            Brightness.light
                                         ? ColorSchemeData
                                             .themeData['red']!['primaryColor']
                                         : ColorSchemeData.darkThemeData['red']![
@@ -56,7 +58,8 @@ class FreeColor extends StatelessWidget {
                             width: 40,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(25),
-                              color: !themeController.isDark
+                              color: Theme.of(context).brightness ==
+                                      Brightness.light
                                   ? ColorSchemeData
                                       .themeData['red']!['primaryColor']
                                   : ColorSchemeData
@@ -72,6 +75,7 @@ class FreeColor extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50),
                         onTap: () {
                           themeController.changeThemeColor('green');
+                          print(Theme.of(context).brightness);
                           // Get.toNamed('/intro');
                         },
                         child: Container(
@@ -82,7 +86,8 @@ class FreeColor extends StatelessWidget {
                               border: Border.all(
                                 width: 2,
                                 color: themeController.mode == 'green'
-                                    ? (!themeController.isDark
+                                    ? (Theme.of(context).brightness ==
+                                            Brightness.light
                                         ? ColorSchemeData
                                             .themeData['green']!['primaryColor']
                                         : ColorSchemeData.darkThemeData[
@@ -95,7 +100,8 @@ class FreeColor extends StatelessWidget {
                             width: 40,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(25),
-                              color: !themeController.isDark
+                              color: Theme.of(context).brightness ==
+                                      Brightness.light
                                   ? ColorSchemeData
                                       .themeData['green']!['primaryColor']
                                   : ColorSchemeData
@@ -110,7 +116,50 @@ class FreeColor extends StatelessWidget {
                       child: InkWell(
                         borderRadius: BorderRadius.circular(50),
                         onTap: () {
+                          themeController.changeThemeColor('blue');
+                          print(Theme.of(context).brightness);
+                          // Get.toNamed('/intro');
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(2),
+                          height: 44,
+                          width: 44,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 2,
+                                color: themeController.mode == 'blue'
+                                    ? (Theme.of(context).brightness ==
+                                            Brightness.light
+                                        ? ColorSchemeData
+                                            .themeData['blue']!['primaryColor']
+                                        : ColorSchemeData.darkThemeData[
+                                            'blue']!['primaryColor'])!
+                                    : Colors.transparent,
+                              ),
+                              borderRadius: BorderRadius.circular(22)),
+                          child: Container(
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25),
+                              color: Theme.of(context).brightness ==
+                                      Brightness.light
+                                  ? ColorSchemeData
+                                      .themeData['blue']!['primaryColor']
+                                  : ColorSchemeData
+                                      .darkThemeData['blue']!['primaryColor'],
+                            ),
+                            // child: Icon(Icons.arrow_forward_ios_rounded),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(50),
+                        onTap: () {
                           themeController.changeThemeColor('purple');
+                          print(Theme.of(context).brightness);
                           // Get.toNamed('/intro');
                         },
                         child: Container(
@@ -121,7 +170,8 @@ class FreeColor extends StatelessWidget {
                               border: Border.all(
                                 width: 2,
                                 color: themeController.mode == 'purple'
-                                    ? (!themeController.isDark
+                                    ? (Theme.of(context).brightness ==
+                                            Brightness.light
                                         ? ColorSchemeData.themeData['purple']![
                                             'primaryColor']
                                         : ColorSchemeData.darkThemeData[
@@ -134,7 +184,8 @@ class FreeColor extends StatelessWidget {
                             width: 40,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(25),
-                              color: !themeController.isDark
+                              color: Theme.of(context).brightness ==
+                                      Brightness.light
                                   ? ColorSchemeData
                                       .themeData['purple']!['primaryColor']
                                   : ColorSchemeData
@@ -149,7 +200,8 @@ class FreeColor extends StatelessWidget {
                       child: InkWell(
                         borderRadius: BorderRadius.circular(50),
                         onTap: () {
-                          themeController.changeThemeColor('blue');
+                          themeController.changeThemeColor('yellow');
+                          print(Theme.of(context).brightness);
                           // Get.toNamed('/intro');
                         },
                         child: Container(
@@ -159,12 +211,13 @@ class FreeColor extends StatelessWidget {
                           decoration: BoxDecoration(
                               border: Border.all(
                                 width: 2,
-                                color: themeController.mode == 'blue'
-                                    ? (!themeController.isDark
-                                        ? ColorSchemeData
-                                            .themeData['blue']!['primaryColor']
+                                color: themeController.mode == 'yellow'
+                                    ? (Theme.of(context).brightness ==
+                                            Brightness.light
+                                        ? ColorSchemeData.themeData['yellow']![
+                                            'primaryColor']
                                         : ColorSchemeData.darkThemeData[
-                                            'blue']!['primaryColor'])!
+                                            'yellow']!['primaryColor'])!
                                     : Colors.transparent,
                               ),
                               borderRadius: BorderRadius.circular(22)),
@@ -173,11 +226,12 @@ class FreeColor extends StatelessWidget {
                             width: 40,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(25),
-                              color: !themeController.isDark
+                              color: Theme.of(context).brightness ==
+                                      Brightness.light
                                   ? ColorSchemeData
-                                      .themeData['blue']!['primaryColor']
+                                      .themeData['yellow']!['primaryColor']
                                   : ColorSchemeData
-                                      .darkThemeData['blue']!['primaryColor'],
+                                      .darkThemeData['yellow']!['primaryColor'],
                             ),
                             // child: Icon(Icons.arrow_forward_ios_rounded),
                           ),

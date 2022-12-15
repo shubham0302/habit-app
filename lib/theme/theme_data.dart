@@ -176,7 +176,7 @@ class Styles {
       // textSelectionColor:  Colors.black,
       cardColor: Colors.white,
       canvasColor: Colors.grey[50],
-      brightness: Brightness.light,
+      brightness: Brightness.dark,
       buttonTheme: Theme.of(context)
           .buttonTheme
           .copyWith(colorScheme: const ColorScheme.light()),

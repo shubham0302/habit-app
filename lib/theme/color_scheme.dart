@@ -28,11 +28,15 @@ class ColorSchemeData {
       "primaryColor": Colors.purple,
       "lightPrimary": Colors.purple.shade100,
     },
+    'yellow': {
+      "primaryColor": const Color(0xFFFBFF76),
+      "lightPrimary": const Color(0xFFFBFF76).withOpacity(0.5),
+    },
   };
   static Map<String, Map<String, Color>> darkThemeData = {
     'red': {
-      "primaryColor": Colors.orange,
-      "lightPrimary": Colors.orange.shade100,
+      "primaryColor": const Color(0xFFFF9665),
+      "lightPrimary": const Color(0xFFFF9665).withOpacity(0.2),
     },
     'green': {
       "primaryColor": Colors.lightGreen,
@@ -45,6 +49,10 @@ class ColorSchemeData {
     'purple': {
       "primaryColor": Colors.pink,
       "lightPrimary": Colors.pink.shade100,
+    },
+    'yellow': {
+      "primaryColor": const Color(0xFFFBFF76),
+      "lightPrimary": const Color(0xFFFBFF76).withOpacity(0.5),
     },
   };
 }

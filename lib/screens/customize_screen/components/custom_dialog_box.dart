@@ -1,7 +1,10 @@
+// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
+import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_widget/heading_text.dart';
-import 'package:habbit_app/widgets/text_widget/label_text.dart';
+import 'package:habbit_app/widgets/text_widget/description_text.dart';
+import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 void CustomDialogBox(BuildContext context) {
   ThemeData color = Theme.of(context);
@@ -9,12 +12,13 @@ void CustomDialogBox(BuildContext context) {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          insetPadding: EdgeInsets.symmetric(horizontal: 2),
-          shape: RoundedRectangleBorder(
+          insetPadding: const EdgeInsets.symmetric(horizontal: 2),
+          shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20.0))),
           backgroundColor: color.backgroundColor,
-          title: Container(
+          content: Container(
             width: 280,
+            height: 300,
             child: Column(mainAxisAlignment: MainAxisAlignment.start,
                 // crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -27,23 +31,25 @@ void CustomDialogBox(BuildContext context) {
                         size: 30,
                       ),
                       SW.large(),
-                      Container(
-                        height: 80,
-                        width: 230,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            HeadingText(text: "Habit"),
-                            SH.medium(),
-                            LabelText(
-                                text:
-                                    "Activity that repeats over time. It has detailed tracking and statistics.")
-                          ],
+                      GlobalPadding(
+                        child: Container(
+                          // height: 80,
+                          width: 200,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const MainLabelText(text: "Habit"),
+                              SH.medium(),
+                              const DescriptionText(
+                                  text:
+                                      "Activity that repeats over time. It has detailed tracking and statistics.")
+                            ],
+                          ),
                         ),
                       )
                     ],
                   ),
-                  Divider(thickness: 1),
+                  const Divider(thickness: 1),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -53,23 +59,25 @@ void CustomDialogBox(BuildContext context) {
                         size: 30,
                       ),
                       SW.large(),
-                      Container(
-                        height: 80,
-                        width: 230,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            HeadingText(text: "Recurring Task"),
-                            SH.medium(),
-                            LabelText(
-                                text:
-                                    "Activity that repeats over time without tracking or any statistics.")
-                          ],
+                      GlobalPadding(
+                        child: Container(
+                          // height: 80,
+                          width: 200,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const MainLabelText(text: "Recurring Task"),
+                              SH.medium(),
+                              const DescriptionText(
+                                  text:
+                                      "Activity that repeats over time without tracking or any statistics.")
+                            ],
+                          ),
                         ),
                       )
                     ],
                   ),
-                  Divider(thickness: 1),
+                  const Divider(thickness: 1),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -79,18 +87,20 @@ void CustomDialogBox(BuildContext context) {
                         size: 30,
                       ),
                       SW.large(),
-                      Container(
-                        height: 80,
-                        width: 230,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            HeadingText(text: "Task"),
-                            SH.medium(),
-                            LabelText(
-                                text:
-                                    "Single instance activity without tracking over time.")
-                          ],
+                      GlobalPadding(
+                        child: Container(
+                          // height: 80,
+                          width: 200,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const MainLabelText(text: "Task"),
+                              SH.medium(),
+                              const DescriptionText(
+                                  text:
+                                      "Single instance activity without tracking over time.")
+                            ],
+                          ),
                         ),
                       )
                     ],

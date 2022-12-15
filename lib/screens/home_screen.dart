@@ -1,14 +1,15 @@
+// ignore_for_file: unused_local_variable, sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/widgets/date_widget.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
-import 'package:habbit_app/widgets/text_widget/title_text.dart';
 import '../controllers/home_page_controller.dart';
 import '../widgets/text_widget/main_label_text.dart';
+import 'customize_screen/components/custom_dialog_box.dart';
 
 class HomePage extends StatelessWidget {
   final HomePageController controller =
@@ -22,7 +23,9 @@ class HomePage extends StatelessWidget {
     ThemeData color = Theme.of(context);
     return Scaffold(
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            CustomDialogBox(context);
+          },
           backgroundColor: color.primaryColor,
           child: const Icon(Icons.add),
         ),
@@ -191,8 +194,8 @@ class HomePage extends StatelessWidget {
                                             color:
                                                 Colors.purpleAccent.shade100)),
                                     child: Padding(
-                                      padding:
-                                          const EdgeInsets.symmetric(horizontal: 2),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 2),
                                       child: LabelText(
                                         text: '2P',
                                         isColor: true,
@@ -274,8 +277,8 @@ class HomePage extends StatelessWidget {
                                             width: 1,
                                             color: Colors.pinkAccent.shade100)),
                                     child: Padding(
-                                      padding:
-                                          const EdgeInsets.symmetric(horizontal: 2),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 2),
                                       child: LabelText(
                                         text: '2P',
                                         isColor: true,

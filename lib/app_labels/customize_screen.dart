@@ -5,7 +5,7 @@ class CScreenLabels {
   static const categoryIconTitleText = 'Category Icon Style';
   static const freeColorTitleText = 'Free accent colors';
 
-  static const premiumBrightnessSubtitleText = 'Only for premium users';
+  static const premiumBrightnessSubtitleText = 'Premium Accent Colors';
   static const oprionsForBrightness = [
     {'label': 'Light', 'value': 'light'},
     {'label': 'Dark', 'value': 'dark'},

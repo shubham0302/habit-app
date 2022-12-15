@@ -1,9 +1,9 @@
-// ignore_for_file: unnecessary_overrides
+// ignore_for_file: unnecessary_overrides, non_constant_identifier_names
 
 import 'package:get/get.dart';
 
 class HomePageController extends GetxController {
-    RxInt SelectedDateIndex = 0.obs;
+  RxInt SelectedDateIndex = 0.obs;
 
   var tabIndex = 0.obs;
 
