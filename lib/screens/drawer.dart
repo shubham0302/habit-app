@@ -37,7 +37,7 @@ class Drawerr extends StatelessWidget {
                   Row(
                     children: [
                       const LabelText(text: '20 SEP 2022'),
-                      SW.medium(),
+                      SW.large(),
                       const LabelText(
                         text: 'THURSDAY',
                         isNormal: true,
@@ -56,14 +56,13 @@ class Drawerr extends StatelessWidget {
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
-              splashColor: color.hoverColor,
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.only(left: 21),
                 alignment: Alignment.centerLeft,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    color: color.disabledColor,
+                    color: color.disabledColor.withOpacity(.3),
                     borderRadius: BorderRadius.circular(10)),
                 child: Row(
                   children: [
@@ -72,7 +71,7 @@ class Drawerr extends StatelessWidget {
                       color: color.primaryColor,
                       size: 30,
                     ),
-                    SW.medium(),
+                    SW.large(),
                     MainLabelText(
                       text: 'Home',
                       color: color.primaryColor,
@@ -87,14 +86,13 @@ class Drawerr extends StatelessWidget {
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(21),
               ),
-              splashColor: color.hoverColor,
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.only(left: 21),
                 alignment: Alignment.centerLeft,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    // color: color.indicatorColor,
+                    // color: color.disabledColor,
                     borderRadius: BorderRadius.circular(25)),
                 child: GestureDetector(
                   onTap: () {
@@ -105,11 +103,14 @@ class Drawerr extends StatelessWidget {
                       Icon(
                         Icons.timer,
                         size: 30,
-                        color: color.indicatorColor,
+                        // color: color.disabledColor,
+                        color: color.disabledColor,
                       ),
-                      SW.medium(),
-                      const MainLabelText(
+                      SW.large(),
+                      MainLabelText(
                         text: 'Timer',
+                        isColor: true,
+                        color: color.disabledColor,
                         // color: color.hoverColor,
                       ),
                     ],
@@ -122,27 +123,27 @@ class Drawerr extends StatelessWidget {
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(21),
               ),
-              splashColor: color.hoverColor,
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.only(left: 21),
                 alignment: Alignment.centerLeft,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    // color: color.indicatorColor,
+                    // color: color.disabledColor,
                     borderRadius: BorderRadius.circular(25)),
                 child: Row(
                   children: [
                     Icon(
                       Icons.category,
                       size: 30,
-                      color: color.indicatorColor,
+                      color: color.disabledColor,
                       // color: color.hoverColor,
                     ),
-                    SW.medium(),
-                    const MainLabelText(
+                    SW.large(),
+                    MainLabelText(
                       text: 'Categories',
-
+                      isColor: true,
+                      color: color.disabledColor,
                       // color: color.hoverColor,
                     ),
                   ],
@@ -150,13 +151,16 @@ class Drawerr extends StatelessWidget {
               ),
             ),
             // SH.large(),
+            SH.small(),
+
             const Divider(),
+            SH.small(),
+
             // SH.large(),
             InkWell(
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(21),
               ),
-              splashColor: color.hoverColor,
               onTap: () {},
               child: Container(
                 height: 45,
@@ -164,7 +168,7 @@ class Drawerr extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    // color: color.indicatorColor,
+                    // color: color.disabledColor,
                     borderRadius: BorderRadius.circular(25)),
                 child: GestureDetector(
                   onTap: () {
@@ -175,14 +179,17 @@ class Drawerr extends StatelessWidget {
                       Icon(
                         Icons.dashboard_customize,
                         size: 30,
-                        color: color.indicatorColor,
+                        color: color.disabledColor,
 
                         // color: color.hoverColor,
                       ),
-                      SW.medium(),
-                      const MainLabelText(
+                      SW.large(),
+                      MainLabelText(
                         text: 'Customize',
-                        // color: color.hoverColor,
+                        isColor: true,
+                        color: color.disabledColor,
+                        // color: color.hover
+                        // Color,
                       ),
                     ],
                   ),
@@ -194,27 +201,29 @@ class Drawerr extends StatelessWidget {
                 borderRadius: BorderRadius.circular(21),
               ),
               onTap: () {},
-              splashColor: color.hoverColor,
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.only(left: 21),
                 alignment: Alignment.centerLeft,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    // color: color.indicatorColor,
+                    // color: color.disabledColor,
                     borderRadius: BorderRadius.circular(25)),
                 child: Row(
                   children: [
                     Icon(
                       Icons.settings,
                       size: 30,
-                      color: color.indicatorColor,
+                      color: color.disabledColor,
 
                       // color: color.hoverColor,
                     ),
-                    SW.medium(),
-                    const MainLabelText(
+                    SW.large(),
+                    MainLabelText(
                       text: 'Settings',
+
+                      isColor: true,
+                      color: color.disabledColor,
                       // color: color.hoverColor,
                     ),
                   ],
@@ -226,14 +235,13 @@ class Drawerr extends StatelessWidget {
                 borderRadius: BorderRadius.circular(21),
               ),
               onTap: () {},
-              splashColor: color.hoverColor,
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.only(left: 21),
                 alignment: Alignment.centerLeft,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    // color: color.indicatorColor,
+                    // color: color.disabledColor,
                     borderRadius: BorderRadius.circular(25)),
                 child: GestureDetector(
                   onTap: () {
@@ -244,13 +252,15 @@ class Drawerr extends StatelessWidget {
                       Icon(
                         Icons.backup,
                         size: 30,
-                        color: color.indicatorColor,
+                        color: color.disabledColor,
 
                         // color: color.hoverColor,
                       ),
-                      SW.medium(),
-                      const MainLabelText(
+                      SW.large(),
+                      MainLabelText(
                         text: 'Backups',
+                        isColor: true,
+                        color: color.disabledColor,
                         // color: color.hoverColor,
                       ),
                     ],
@@ -259,21 +269,23 @@ class Drawerr extends StatelessWidget {
               ),
             ),
             // SH.large(),
+            SH.small(),
+
             const Divider(),
+            SH.small(),
             // SH.large(),
             InkWell(
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(21),
               ),
               onTap: () {},
-              splashColor: color.hoverColor,
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.only(left: 21),
                 alignment: Alignment.centerLeft,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    // color: color.indicatorColor,
+                    // color: color.disabledColor,
                     borderRadius: BorderRadius.circular(25)),
                 child: GestureDetector(
                   onTap: () {
@@ -284,12 +296,14 @@ class Drawerr extends StatelessWidget {
                       Icon(
                         Icons.verified,
                         size: 30,
-                        color: color.indicatorColor,
+                        color: color.disabledColor,
 
                         // color: color.hoverColor,
                       ),
-                      SW.medium(),
-                      const MainLabelText(
+                      SW.large(),
+                      MainLabelText(
+                        isColor: true,
+                        color: color.disabledColor,
                         text: 'Get Premium',
                         // color: color.hoverColor,
                       ),
@@ -303,26 +317,27 @@ class Drawerr extends StatelessWidget {
                 borderRadius: BorderRadius.circular(21),
               ),
               onTap: () {},
-              splashColor: color.hoverColor,
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.only(left: 21),
                 alignment: Alignment.centerLeft,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    // color: color.indicatorColor,
+                    // color: color.disabledColor,
                     borderRadius: BorderRadius.circular(25)),
                 child: Row(
                   children: [
                     Icon(
                       Icons.star,
                       size: 30,
-                      color: color.indicatorColor,
+                      color: color.disabledColor,
 
                       // color: color.hoverColor,
                     ),
-                    SW.medium(),
-                    const MainLabelText(
+                    SW.large(),
+                    MainLabelText(
+                      isColor: true,
+                      color: color.disabledColor,
                       text: 'Rate this app',
                       // color: color.hoverColor,
                     ),
@@ -334,7 +349,6 @@ class Drawerr extends StatelessWidget {
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(21),
               ),
-              splashColor: color.hoverColor,
               onTap: () {},
               child: Container(
                 height: 45,
@@ -342,19 +356,21 @@ class Drawerr extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    // color: color.indicatorColor,
+                    // color: color.disabledColor,
                     borderRadius: BorderRadius.circular(25)),
                 child: Row(
                   children: [
                     Icon(
                       Icons.contact_page_rounded,
                       size: 30,
-                      color: color.indicatorColor,
+                      color: color.disabledColor,
 
                       // color: color.hoverColor,
                     ),
-                    SW.medium(),
-                    const MainLabelText(
+                    SW.large(),
+                    MainLabelText(
+                      isColor: true,
+                      color: color.disabledColor,
                       text: 'Contact us',
                       // color: color.hoverColor,
                     ),

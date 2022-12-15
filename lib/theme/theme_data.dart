@@ -100,7 +100,7 @@ class Styles {
     String mode,
   ) {
     return ThemeData(
-      splashColor: ColorSchemeData.themeData[mode]!['primaryColor'],
+      splashColor: ColorSchemeData.darkThemeData[mode]!['primaryColor'],
 
       switchTheme: SwitchThemeData(
           thumbColor: MaterialStateProperty.all(
