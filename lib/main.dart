@@ -6,6 +6,12 @@ import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/screens/customize_screen/backUp_screen.dart';
 import 'package:habbit_app/screens/customize_screen/getpremium_screen.dart';
 import 'package:habbit_app/screens/customize_screen/screen.dart';
+import 'package:habbit_app/screens/customize_screen/setting_screens/setting_screen.dart';
+import 'package:habbit_app/screens/customize_screen/setting_screens/licenses_screen.dart';
+import 'package:habbit_app/screens/customize_screen/setting_screens/lock_screen.dart';
+import 'package:habbit_app/screens/customize_screen/setting_screens/notification_alarm_screen.dart';
+import 'package:habbit_app/screens/customize_screen/setting_screens/todohabbit_screen.dart';
+import 'package:habbit_app/screens/customize_screen/timer/timer_screen.dart';
 import 'package:habbit_app/screens/intro_screen.dart';
 import 'package:habbit_app/screens/splash_screen.dart';
 import 'package:habbit_app/theme/theme_data.dart';
@@ -61,6 +67,13 @@ class Routes {
     GetPage(name: '/intro', page: () => const IntroScreen()),
     GetPage(name: '/customize', page: () => const CustomizeScreen()),
     GetPage(name: '/backup', page: () => const BackUpScreen()),
-    GetPage(name: '/getpremium', page: () => const GetPremiumScreen())
+    GetPage(name: '/getpremium', page: () => const GetPremiumScreen()),
+    GetPage(name: '/setting', page: () => const SettingScreen()),
+    GetPage(name: "/todo", page: () => const ToDoHabbitListScreen()),
+    GetPage(
+        name: '/notiandalarm', page: () => const NotificationandAlarmScreen()),
+    GetPage(name: "/lock", page: () => const LockScreen()),
+    GetPage(name: "/lic", page: () => const LicScreen()),
+    GetPage(name: "/timer", page: () => const TimerScreen()),
   ];
 }

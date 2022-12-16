@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/home_page_controller.dart';
+import 'package:habbit_app/screens/customize_screen/timer/timer_main_screen.dart';
+import 'package:habbit_app/screens/customize_screen/timer/timer_screen.dart';
 import 'package:habbit_app/screens/home_screen.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
@@ -78,7 +80,7 @@ class MainScreen extends StatelessWidget {
                       HomePage(),
                       HomePage(),
                       HomePage(),
-                      HomePage(),
+                      TimerMainScreen(),
                     ],
                   ),
                 ),

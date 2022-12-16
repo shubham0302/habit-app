@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/screens/intro_screen.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
@@ -15,7 +16,9 @@ class BackUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var status = true;
+    SwitchController switchController =
+        Get.put(SwitchController(), permanent: false);
+    // bool status = true;
     ThemeData color = Theme.of(context);
     Size size = MediaQuery.of(context).size;
     ThemeController themeController = Get.find<ThemeController>();
@@ -134,24 +137,29 @@ class BackUpScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                FlutterSwitch(
-                  activeColor: color.primaryColor,
-                  activeToggleColor: color.backgroundColor,
+                Obx(
+                  () => FlutterSwitch(
+                    activeColor: color.primaryColor,
+                    activeToggleColor: color.backgroundColor,
 
-                  width: 50.0,
-                  height: 25.0,
-                  valueFontSize: 15.0,
-                  toggleSize: 20.0,
-                  value: status,
-                  borderRadius: 30.0,
-                  padding: 2.0,
-                  // showOnOff: true,
-                  onToggle: (val) {
-                    // status = val;
-                    // setState(() {
-                    //   status = val;
-                    // });
-                  },
+                    width: 50.0,
+                    height: 25.0,
+                    valueFontSize: 15.0,
+                    toggleSize: 20.0,
+                    value: switchController.SwichChange.value,
+                    borderRadius: 30.0,
+                    padding: 2.0,
+                    // showOnOff: true,
+                    onToggle: (val) {
+                      switchController.SwichChange.value == true
+                          ? switchController.SwichChange.value = false
+                          : switchController.SwichChange.value = true;
+                      // status = val;
+                      // setState(() {
+                      //   status = val;
+                      // });
+                    },
+                  ),
                 ),
               ],
             ),

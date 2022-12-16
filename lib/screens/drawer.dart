@@ -97,22 +97,27 @@ class Drawerr extends StatelessWidget {
                   onTap: () {
                     // CustomDialogBox(context);
                   },
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.timer,
-                        size: 30,
-                        // color: color.disabledColor,
-                        color: color.disabledColor,
-                      ),
-                      SW.large(),
-                      MainLabelText(
-                        text: 'Timer',
-                        isColor: true,
-                        color: color.disabledColor,
-                        // color: color.hoverColor,
-                      ),
-                    ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.toNamed("/timer");
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.timer,
+                          size: 30,
+                          // color: color.disabledColor,
+                          color: color.disabledColor,
+                        ),
+                        SW.large(),
+                        MainLabelText(
+                          text: 'Timer',
+                          isColor: true,
+                          color: color.disabledColor,
+                          // color: color.hoverColor,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -208,24 +213,29 @@ class Drawerr extends StatelessWidget {
                 decoration: BoxDecoration(
                     // color: color.disabledColor,
                     borderRadius: BorderRadius.circular(25)),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.settings,
-                      size: 30,
-                      color: color.disabledColor,
+                child: GestureDetector(
+                  onTap: () {
+                    Get.toNamed('/setting');
+                  },
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.settings,
+                        size: 30,
+                        color: color.disabledColor,
 
-                      // color: color.hoverColor,
-                    ),
-                    SW.large(),
-                    MainLabelText(
-                      text: 'Settings',
+                        // color: color.hoverColor,
+                      ),
+                      SW.large(),
+                      MainLabelText(
+                        text: 'Settings',
 
-                      isColor: true,
-                      color: color.disabledColor,
-                      // color: color.hoverColor,
-                    ),
-                  ],
+                        isColor: true,
+                        color: color.disabledColor,
+                        // color: color.hoverColor,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -68,7 +68,7 @@ class InputField extends StatelessWidget {
               filled: true,
               fillColor: color.backgroundColor,
               contentPadding:
-                  const EdgeInsets.only(top: 10, bottom: 10, left: 20),
+                  const EdgeInsets.only(top: 10, bottom: 10, left: 10),
               hintText: hintText,
               labelText: labelText,
               hintStyle: TextStyle(
@@ -103,7 +103,7 @@ class InputField extends StatelessWidget {
               filled: true,
               fillColor: color.backgroundColor,
               contentPadding:
-                  const EdgeInsets.only(top: 13, bottom: 13, left: 20),
+                  const EdgeInsets.only(top: 10, bottom: 10, left: 10),
               hintText: hintText,
               labelText: labelText,
               counterText: '',
