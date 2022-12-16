@@ -20,11 +20,11 @@ Widget buildBottomNavigationMenu(
         // margin: const EdgeInsets.all(5),
         width: sizeWidth,
         height: 80,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(ThemeConfig.radiusMin),
               topRight: Radius.circular(ThemeConfig.radiusMin)),
-          color: ThemeConfig.backgroundColor,
+          color: color.dividerColor,
         ),
         child: Container(
           padding: const EdgeInsets.all(5.0),
@@ -53,7 +53,7 @@ Widget buildBottomNavigationMenu(
                         ? Icons.stars_rounded
                         : Icons.stars,
                     controller.tabIndex.value == 1,
-                    'Habits',
+                    'Tasks',
                     context),
               ),
               SW.medium(),
@@ -65,7 +65,7 @@ Widget buildBottomNavigationMenu(
                         ? Icons.task_alt_outlined
                         : Icons.task_alt,
                     controller.tabIndex.value == 2,
-                    'Tasks',
+                    'Categories',
                     context),
               ),
               SW.medium(),
@@ -77,7 +77,7 @@ Widget buildBottomNavigationMenu(
                         ? Icons.category
                         : Icons.category_outlined,
                     controller.tabIndex.value == 3,
-                    'Categories',
+                    'Habit',
                     context),
               ),
               SW.medium(),
@@ -115,33 +115,35 @@ Widget buildBottomNavItem(
     child: Column(
       children: [
         SH.small(),
-        AnimatedContainer(
-            duration: const Duration(milliseconds: 400),
+        Container(
+            // duration: const Duration(milliseconds: 400),
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: selected ? color.cardColor : Colors.transparent,
+              color: Colors.transparent,
             ),
             child: selected
                 ? Icon(
                     icon,
-                    color: ThemeConfig.mainTextColor,
+                    size: 25,
+                    color: color.primaryColor,
                   )
                 // ignore: avoid_unnecessary_containers
                 : Container(
                     child: Center(
                       child: Icon(
                         icon,
-                        color: color.hintColor,
+                        size: 25,
+                        color: color.disabledColor,
                       ),
                     ),
                   )),
-        SH.small(),
+        // SH.small(),
         Expanded(
           child: Text(
             lable,
             style: TextStyle(
-              color: ThemeConfig.mainTextColor,
+              color: selected ? color.primaryColor : color.disabledColor,
               fontSize: 12,
               // fontSize: selected ? 10 : 10,
               fontWeight: selected ? FontWeight.bold : FontWeight.normal,

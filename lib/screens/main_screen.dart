@@ -4,6 +4,7 @@ import 'package:habbit_app/controllers/home_page_controller.dart';
 import 'package:habbit_app/screens/customize_screen/timer/timer_main_screen.dart';
 import 'package:habbit_app/screens/customize_screen/timer/timer_screen.dart';
 import 'package:habbit_app/screens/home_screen.dart';
+import 'package:habbit_app/screens/task_screen/screen.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
@@ -45,7 +46,10 @@ class MainScreen extends StatelessWidget {
                             ),
                           ),
                           SW.large(),
-                          const MainLabelText(text: 'Plannarize'),
+                          MainLabelText(
+                              text: controller.tabIndex.value == 0
+                                  ? 'Plannarize'
+                                  : 'Tasks'),
                         ],
                       ),
                       Row(
@@ -62,7 +66,9 @@ class MainScreen extends StatelessWidget {
                           GestureDetector(
                             onTap: () {},
                             child: Icon(
-                              Icons.calendar_month,
+                              controller.tabIndex.value == 0
+                                  ? Icons.calendar_month
+                                  : Icons.move_to_inbox_rounded,
                               color: color.disabledColor,
                               size: 30,
                             ),
@@ -77,7 +83,7 @@ class MainScreen extends StatelessWidget {
                     index: controller.tabIndex.value,
                     children: [
                       HomePage(),
-                      HomePage(),
+                      TaskScreen(),
                       HomePage(),
                       HomePage(),
                       TimerMainScreen(),
