@@ -55,6 +55,8 @@ dev_dependencies:
   flutter_time_picker_spinner: ^2.0.0
   numberpicker: ^2.1.1
   flutter_ringtone_player: ^3.2.0
+  table_calendar: ^3.0.8
+
 
 
 # For information on the generic Dart part of this file, see the
