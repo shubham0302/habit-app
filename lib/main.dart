@@ -14,6 +14,7 @@ import 'package:habbit_app/screens/customize_screen/setting_screens/lock_screen.
 import 'package:habbit_app/screens/customize_screen/setting_screens/notification_alarm_screen.dart';
 import 'package:habbit_app/screens/customize_screen/setting_screens/todohabbit_screen.dart';
 import 'package:habbit_app/screens/customize_screen/timer/timer_screen.dart';
+import 'package:habbit_app/screens/habbit/habbit_detailScreen.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits.dart';
 import 'package:habbit_app/screens/habbit/habbits_screen.dart';
 import 'package:habbit_app/screens/intro_screen.dart';
@@ -86,5 +87,6 @@ class Routes {
     GetPage(name: "/habbit", page: () => const HabbitsScreen()),
     GetPage(name: "/addhabbit", page: () => const AddHabbitsScreen()),
     GetPage(name: "/statistics", page: () => const StatisticsScreen()),
+    GetPage(name: "/habbit-detail", page: () => const HabbitDetailScreen()),
   ];
 }

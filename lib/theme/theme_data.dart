@@ -82,7 +82,7 @@ class Styles {
       focusColor: const Color(0xffA8DAB5),
       disabledColor: Colors.grey.shade600,
       // textSelectionColor:  Colors.black,
-      cardColor: Colors.white,
+      cardColor: Colors.black,
       canvasColor: Colors.grey[50],
       brightness: Brightness.light,
       buttonTheme: Theme.of(context)
@@ -116,7 +116,7 @@ class Styles {
       ),
       iconTheme: IconThemeData(
         size: 15,
-        color: ColorSchemeData.defaultBrightColors['primaryText'],
+        color: ColorSchemeData.darkThemeData[mode]!['primaryColor'],
       ),
       textTheme: TextTheme(
         //Heading text

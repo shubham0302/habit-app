@@ -127,183 +127,186 @@ class _TaskScreenState extends State<TaskScreen>
                   child: TabBarView(
                 controller: _controller,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SH.large(),
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(3),
-                            color: color.primaryColor.withOpacity(.2)),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 5, vertical: 2),
-                          child: LabelText(
-                            text: 'Habit',
-                            isColor: true,
-                            isBold: true,
-                            color: color.primaryColor,
+                  SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SH.large(),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(3),
+                              color: color.primaryColor.withOpacity(.2)),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 5, vertical: 2),
+                            child: LabelText(
+                              text: 'Habit',
+                              isColor: true,
+                              isBold: true,
+                              color: color.primaryColor,
+                            ),
                           ),
                         ),
-                      ),
-                      GlobalPadding(
-                          child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                height: 45,
-                                width: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: Colors.purpleAccent.shade100),
-                                child: const Icon(
-                                  Icons.brush,
-                                  size: 35,
+                        GlobalPadding(
+                            child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  height: 45,
+                                  width: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.purpleAccent.shade100),
+                                  child: const Icon(
+                                    Icons.brush,
+                                    size: 35,
+                                  ),
                                 ),
-                              ),
-                              SW.large(),
-                              const MainLabelText(text: 'Cooking')
-                            ],
-                          ),
-                          SH.large(),
-                          Row(
-                            children: [
-                              Container(
-                                height: 45,
-                                width: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: Colors.purpleAccent.shade100),
-                                child: const Icon(
-                                  Icons.brush,
-                                  size: 35,
+                                SW.large(),
+                                const MainLabelText(text: 'Cooking')
+                              ],
+                            ),
+                            SH.large(),
+                            Row(
+                              children: [
+                                Container(
+                                  height: 45,
+                                  width: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.purpleAccent.shade100),
+                                  child: const Icon(
+                                    Icons.brush,
+                                    size: 35,
+                                  ),
                                 ),
-                              ),
-                              SW.large(),
-                              const MainLabelText(text: 'Cooking')
-                            ],
-                          ),
-                        ],
-                      )),
-                      SH.small(),
-                      const Divider(thickness: 1),
-                      SH.small(),
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(3),
-                            color: color.primaryColor.withOpacity(.2)),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 5, vertical: 2),
-                          child: LabelText(
-                            text: 'Habit',
-                            isColor: true,
-                            isBold: true,
-                            color: color.primaryColor,
+                                SW.large(),
+                                const MainLabelText(text: 'Cooking')
+                              ],
+                            ),
+                          ],
+                        )),
+                        SH.small(),
+                        const Divider(thickness: 1),
+                        SH.small(),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(3),
+                              color: color.primaryColor.withOpacity(.2)),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 5, vertical: 2),
+                            child: LabelText(
+                              text: 'Habit',
+                              isColor: true,
+                              isBold: true,
+                              color: color.primaryColor,
+                            ),
                           ),
                         ),
-                      ),
-                      GlobalPadding(
-                          child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                height: 45,
-                                width: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: Colors.purpleAccent.shade100),
-                                child: const Icon(
-                                  Icons.brush,
-                                  size: 35,
+                        GlobalPadding(
+                            child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  height: 45,
+                                  width: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.purpleAccent.shade100),
+                                  child: const Icon(
+                                    Icons.brush,
+                                    size: 35,
+                                  ),
                                 ),
-                              ),
-                              SW.large(),
-                              const MainLabelText(text: 'Cooking')
-                            ],
-                          ),
-                          SH.large(),
-                          Row(
-                            children: [
-                              Container(
-                                height: 45,
-                                width: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: Colors.purpleAccent.shade100),
-                                child: const Icon(
-                                  Icons.brush,
-                                  size: 35,
+                                SW.large(),
+                                const MainLabelText(text: 'Cooking')
+                              ],
+                            ),
+                            SH.large(),
+                            Row(
+                              children: [
+                                Container(
+                                  height: 45,
+                                  width: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.purpleAccent.shade100),
+                                  child: const Icon(
+                                    Icons.brush,
+                                    size: 35,
+                                  ),
                                 ),
-                              ),
-                              SW.large(),
-                              const MainLabelText(text: 'Cooking')
-                            ],
-                          ),
-                        ],
-                      )),
-                      SH.small(),
-                      const Divider(thickness: 1),
-                      SH.small(),
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(3),
-                            color: color.primaryColor.withOpacity(.2)),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 5, vertical: 2),
-                          child: LabelText(
-                            text: 'Habit',
-                            isColor: true,
-                            isBold: true,
-                            color: color.primaryColor,
+                                SW.large(),
+                                const MainLabelText(text: 'Cooking')
+                              ],
+                            ),
+                          ],
+                        )),
+                        SH.small(),
+                        const Divider(thickness: 1),
+                        SH.small(),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(3),
+                              color: color.primaryColor.withOpacity(.2)),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 5, vertical: 2),
+                            child: LabelText(
+                              text: 'Habit',
+                              isColor: true,
+                              isBold: true,
+                              color: color.primaryColor,
+                            ),
                           ),
                         ),
-                      ),
-                      GlobalPadding(
-                          child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                height: 45,
-                                width: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: Colors.purpleAccent.shade100),
-                                child: const Icon(
-                                  Icons.brush,
-                                  size: 35,
+                        GlobalPadding(
+                            child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  height: 45,
+                                  width: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.purpleAccent.shade100),
+                                  child: const Icon(
+                                    Icons.brush,
+                                    size: 35,
+                                  ),
                                 ),
-                              ),
-                              SW.large(),
-                              const MainLabelText(text: 'Cooking')
-                            ],
-                          ),
-                          SH.large(),
-                          Row(
-                            children: [
-                              Container(
-                                height: 45,
-                                width: 45,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: Colors.purpleAccent.shade100),
-                                child: const Icon(
-                                  Icons.brush,
-                                  size: 35,
+                                SW.large(),
+                                const MainLabelText(text: 'Cooking')
+                              ],
+                            ),
+                            SH.large(),
+                            Row(
+                              children: [
+                                Container(
+                                  height: 45,
+                                  width: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.purpleAccent.shade100),
+                                  child: const Icon(
+                                    Icons.brush,
+                                    size: 35,
+                                  ),
                                 ),
-                              ),
-                              SW.large(),
-                              const MainLabelText(text: 'Cooking')
-                            ],
-                          ),
-                        ],
-                      )),
-                      SH.small(),
-                    ],
+                                SW.large(),
+                                const MainLabelText(text: 'Cooking')
+                              ],
+                            ),
+                          ],
+                        )),
+                        SH.small(),
+                      ],
+                    ),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
