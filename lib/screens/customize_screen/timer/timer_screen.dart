@@ -13,13 +13,13 @@ class TimerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // bool switchChange = true;
     ThemeData color = Theme.of(context);
-    return Scaffold(
-      body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: [
-            Row(
+    return Padding(
+      padding: const EdgeInsets.only(top: 30),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
@@ -45,13 +45,17 @@ class TimerScreen extends StatelessWidget {
                 )
               ],
             ),
-            SH.large(),
-            SH.large(),
-            SH.large(),
-            TimerMainScreen()
-          ],
-        ),
-      )),
+          ),
+          SH.large(),
+          SH.large(),
+
+          // TimerMainScreen()
+          SizedBox(
+              height: 700,
+              width: MediaQuery.of(context).size.width,
+              child: TimerMainScreen())
+        ],
+      ),
     );
   }
 }

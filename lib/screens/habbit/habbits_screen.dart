@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:get/get.dart';
+
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/descriptionText.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
@@ -13,7 +14,9 @@ class HabbitsScreen extends StatelessWidget {
     ThemeData color = Theme.of(context);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed("/addhabbit");
+        },
         backgroundColor: color.primaryColor,
         child: const Icon(Icons.add),
       ),
@@ -313,7 +316,7 @@ class HabbitsScreen extends StatelessWidget {
                               size: 25,
                             ),
                             SW.small(),
-                            DescriptionText2(
+                            const DescriptionText2(
                               text: "4",
                               isWhite: true,
                             ),
@@ -324,7 +327,7 @@ class HabbitsScreen extends StatelessWidget {
                               size: 25,
                             ),
                             SW.small(),
-                            DescriptionText2(
+                            const DescriptionText2(
                               text: "52%",
                               isWhite: true,
                             ),
