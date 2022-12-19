@@ -81,7 +81,9 @@ class Drawerr extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed("/timer");
+              },
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(21),
               ),
@@ -93,69 +95,56 @@ class Drawerr extends StatelessWidget {
                 decoration: BoxDecoration(
                     // color: color.disabledColor,
                     borderRadius: BorderRadius.circular(25)),
-                child: GestureDetector(
-                  onTap: () {
-                    // CustomDialogBox(context);
-                  },
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.toNamed("/timer");
-                    },
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.timer,
-                          size: 30,
-                          // color: color.disabledColor,
-                          color: color.disabledColor,
-                        ),
-                        SW.large(),
-                        MainLabelText(
-                          text: 'Timer',
-                          isColor: true,
-                          color: color.disabledColor,
-                          // color: color.hoverColor,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () {},
-              customBorder: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(21),
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  Get.toNamed('/categoriesdrawer');
-                },
-                child: Container(
-                  height: 45,
-                  padding: const EdgeInsets.only(left: 21),
-                  alignment: Alignment.centerLeft,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.timer,
+                      size: 30,
                       // color: color.disabledColor,
-                      borderRadius: BorderRadius.circular(25)),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.category,
-                        size: 30,
-                        color: color.disabledColor,
-                        // color: color.hoverColor,
-                      ),
-                      SW.large(),
-                      MainLabelText(
-                        text: 'Categories',
-                        isColor: true,
-                        color: color.disabledColor,
-                        // color: color.hoverColor,
-                      ),
-                    ],
-                  ),
+                      color: color.disabledColor,
+                    ),
+                    SW.large(),
+                    MainLabelText(
+                      text: 'Timer',
+                      isColor: true,
+                      color: color.disabledColor,
+                      // color: color.hoverColor,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                Get.toNamed('/categoriesdrawer');
+              },
+              customBorder: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(21),
+              ),
+              child: Container(
+                height: 45,
+                padding: const EdgeInsets.only(left: 21),
+                alignment: Alignment.centerLeft,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    // color: color.disabledColor,
+                    borderRadius: BorderRadius.circular(25)),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.category,
+                      size: 30,
+                      color: color.disabledColor,
+                      // color: color.hoverColor,
+                    ),
+                    SW.large(),
+                    MainLabelText(
+                      text: 'Categories',
+                      isColor: true,
+                      color: color.disabledColor,
+                      // color: color.hoverColor,
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -170,7 +159,9 @@ class Drawerr extends StatelessWidget {
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(21),
               ),
-              onTap: () {},
+              onTap: () {
+                Get.toNamed("/customize");
+              },
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.only(left: 21),
@@ -179,29 +170,24 @@ class Drawerr extends StatelessWidget {
                 decoration: BoxDecoration(
                     // color: color.disabledColor,
                     borderRadius: BorderRadius.circular(25)),
-                child: GestureDetector(
-                  onTap: () {
-                    Get.toNamed("/customize");
-                  },
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.dashboard_customize,
-                        size: 30,
-                        color: color.disabledColor,
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.dashboard_customize,
+                      size: 30,
+                      color: color.disabledColor,
 
-                        // color: color.hoverColor,
-                      ),
-                      SW.large(),
-                      MainLabelText(
-                        text: 'Customize',
-                        isColor: true,
-                        color: color.disabledColor,
-                        // color: color.hover
-                        // Color,
-                      ),
-                    ],
-                  ),
+                      // color: color.hoverColor,
+                    ),
+                    SW.large(),
+                    MainLabelText(
+                      text: 'Customize',
+                      isColor: true,
+                      color: color.disabledColor,
+                      // color: color.hover
+                      // Color,
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -209,7 +195,9 @@ class Drawerr extends StatelessWidget {
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(21),
               ),
-              onTap: () {},
+              onTap: () {
+                Get.toNamed('/setting');
+              },
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.only(left: 21),
@@ -218,29 +206,24 @@ class Drawerr extends StatelessWidget {
                 decoration: BoxDecoration(
                     // color: color.disabledColor,
                     borderRadius: BorderRadius.circular(25)),
-                child: GestureDetector(
-                  onTap: () {
-                    Get.toNamed('/setting');
-                  },
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.settings,
-                        size: 30,
-                        color: color.disabledColor,
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.settings,
+                      size: 30,
+                      color: color.disabledColor,
 
-                        // color: color.hoverColor,
-                      ),
-                      SW.large(),
-                      MainLabelText(
-                        text: 'Settings',
+                      // color: color.hoverColor,
+                    ),
+                    SW.large(),
+                    MainLabelText(
+                      text: 'Settings',
 
-                        isColor: true,
-                        color: color.disabledColor,
-                        // color: color.hoverColor,
-                      ),
-                    ],
-                  ),
+                      isColor: true,
+                      color: color.disabledColor,
+                      // color: color.hoverColor,
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -248,7 +231,9 @@ class Drawerr extends StatelessWidget {
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(21),
               ),
-              onTap: () {},
+              onTap: () {
+                Get.toNamed('/backup');
+              },
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.only(left: 21),
@@ -257,28 +242,23 @@ class Drawerr extends StatelessWidget {
                 decoration: BoxDecoration(
                     // color: color.disabledColor,
                     borderRadius: BorderRadius.circular(25)),
-                child: GestureDetector(
-                  onTap: () {
-                    Get.toNamed('/backup');
-                  },
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.backup,
-                        size: 30,
-                        color: color.disabledColor,
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.backup,
+                      size: 30,
+                      color: color.disabledColor,
 
-                        // color: color.hoverColor,
-                      ),
-                      SW.large(),
-                      MainLabelText(
-                        text: 'Backups',
-                        isColor: true,
-                        color: color.disabledColor,
-                        // color: color.hoverColor,
-                      ),
-                    ],
-                  ),
+                      // color: color.hoverColor,
+                    ),
+                    SW.large(),
+                    MainLabelText(
+                      text: 'Backups',
+                      isColor: true,
+                      color: color.disabledColor,
+                      // color: color.hoverColor,
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -292,7 +272,9 @@ class Drawerr extends StatelessWidget {
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(21),
               ),
-              onTap: () {},
+              onTap: () {
+                Get.toNamed("/getpremium");
+              },
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.only(left: 21),
@@ -301,28 +283,23 @@ class Drawerr extends StatelessWidget {
                 decoration: BoxDecoration(
                     // color: color.disabledColor,
                     borderRadius: BorderRadius.circular(25)),
-                child: GestureDetector(
-                  onTap: () {
-                    Get.toNamed("/getpremium");
-                  },
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.verified,
-                        size: 30,
-                        color: color.disabledColor,
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.verified,
+                      size: 30,
+                      color: color.disabledColor,
 
-                        // color: color.hoverColor,
-                      ),
-                      SW.large(),
-                      MainLabelText(
-                        isColor: true,
-                        color: color.disabledColor,
-                        text: 'Get Premium',
-                        // color: color.hoverColor,
-                      ),
-                    ],
-                  ),
+                      // color: color.hoverColor,
+                    ),
+                    SW.large(),
+                    MainLabelText(
+                      isColor: true,
+                      color: color.disabledColor,
+                      text: 'Get Premium',
+                      // color: color.hoverColor,
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -363,7 +340,9 @@ class Drawerr extends StatelessWidget {
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(21),
               ),
-              onTap: () {},
+              onTap: () {
+                Get.toNamed('/statistics');
+              },
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.only(left: 21),
