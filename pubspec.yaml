@@ -52,6 +52,9 @@ dev_dependencies:
   date_picker_timeline: ^1.2.3
   google_fonts: ^3.0.1
   flutter_switch: ^0.3.2
+  flutter_time_picker_spinner: ^2.0.0
+  numberpicker: ^2.1.1
+  flutter_ringtone_player: ^3.2.0
 
 
 # For information on the generic Dart part of this file, see the

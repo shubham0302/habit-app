@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, sized_box_for_whitespace
+// ignore_for_file: unused_local_variable, sized_box_for_whitespace, unused_import, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,7 +13,7 @@ import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 class TaskScreen extends StatefulWidget {
-  TaskScreen({Key? key}) : super(key: key);
+  const TaskScreen({Key? key}) : super(key: key);
 
   @override
   State<TaskScreen> createState() => _TaskScreenState();
@@ -25,6 +25,7 @@ class _TaskScreenState extends State<TaskScreen>
 
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     TaskTabController tabController =
         Get.put(TaskTabController(), permanent: false);
@@ -135,8 +136,8 @@ class _TaskScreenState extends State<TaskScreen>
                             borderRadius: BorderRadius.circular(3),
                             color: color.primaryColor.withOpacity(.2)),
                         child: Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 5, vertical: 2),
                           child: LabelText(
                             text: 'Habit',
                             isColor: true,
@@ -162,7 +163,7 @@ class _TaskScreenState extends State<TaskScreen>
                                 ),
                               ),
                               SW.large(),
-                              MainLabelText(text: 'Cooking')
+                              const MainLabelText(text: 'Cooking')
                             ],
                           ),
                           SH.large(),
@@ -180,21 +181,21 @@ class _TaskScreenState extends State<TaskScreen>
                                 ),
                               ),
                               SW.large(),
-                              MainLabelText(text: 'Cooking')
+                              const MainLabelText(text: 'Cooking')
                             ],
                           ),
                         ],
                       )),
                       SH.small(),
-                      Divider(thickness: 1),
+                      const Divider(thickness: 1),
                       SH.small(),
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(3),
                             color: color.primaryColor.withOpacity(.2)),
                         child: Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 5, vertical: 2),
                           child: LabelText(
                             text: 'Habit',
                             isColor: true,
@@ -220,7 +221,7 @@ class _TaskScreenState extends State<TaskScreen>
                                 ),
                               ),
                               SW.large(),
-                              MainLabelText(text: 'Cooking')
+                              const MainLabelText(text: 'Cooking')
                             ],
                           ),
                           SH.large(),
@@ -238,21 +239,21 @@ class _TaskScreenState extends State<TaskScreen>
                                 ),
                               ),
                               SW.large(),
-                              MainLabelText(text: 'Cooking')
+                              const MainLabelText(text: 'Cooking')
                             ],
                           ),
                         ],
                       )),
                       SH.small(),
-                      Divider(thickness: 1),
+                      const Divider(thickness: 1),
                       SH.small(),
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(3),
                             color: color.primaryColor.withOpacity(.2)),
                         child: Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 5, vertical: 2),
                           child: LabelText(
                             text: 'Habit',
                             isColor: true,
@@ -278,7 +279,7 @@ class _TaskScreenState extends State<TaskScreen>
                                 ),
                               ),
                               SW.large(),
-                              MainLabelText(text: 'Cooking')
+                              const MainLabelText(text: 'Cooking')
                             ],
                           ),
                           SH.large(),
@@ -296,7 +297,7 @@ class _TaskScreenState extends State<TaskScreen>
                                 ),
                               ),
                               SW.large(),
-                              MainLabelText(text: 'Cooking')
+                              const MainLabelText(text: 'Cooking')
                             ],
                           ),
                         ],
@@ -330,14 +331,14 @@ class _TaskScreenState extends State<TaskScreen>
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  MainLabelText(text: 'Cooking'),
+                                  const MainLabelText(text: 'Cooking'),
                                   Container(
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(3),
                                         color:
                                             color.primaryColor.withOpacity(.2)),
                                     child: Padding(
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                           horizontal: 5, vertical: 2),
                                       child: LabelText(
                                         text: 'Habit',
@@ -352,7 +353,7 @@ class _TaskScreenState extends State<TaskScreen>
                             ],
                           ),
                           SH.small(),
-                          Divider(
+                          const Divider(
                             thickness: 1,
                           ),
                           SH.small(),
@@ -375,14 +376,14 @@ class _TaskScreenState extends State<TaskScreen>
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  MainLabelText(text: 'Cooking'),
+                                  const MainLabelText(text: 'Cooking'),
                                   Container(
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(3),
                                         color:
                                             color.primaryColor.withOpacity(.2)),
                                     child: Padding(
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                           horizontal: 5, vertical: 2),
                                       child: LabelText(
                                         text: 'Habit',
@@ -397,7 +398,7 @@ class _TaskScreenState extends State<TaskScreen>
                             ],
                           ),
                           SH.small(),
-                          Divider(
+                          const Divider(
                             thickness: 1,
                           ),
                           SH.small(),
@@ -420,14 +421,14 @@ class _TaskScreenState extends State<TaskScreen>
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  MainLabelText(text: 'Cooking'),
+                                  const MainLabelText(text: 'Cooking'),
                                   Container(
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(3),
                                         color:
                                             color.primaryColor.withOpacity(.2)),
                                     child: Padding(
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                           horizontal: 5, vertical: 2),
                                       child: LabelText(
                                         text: 'Habit',
@@ -442,7 +443,7 @@ class _TaskScreenState extends State<TaskScreen>
                             ],
                           ),
                           SH.small(),
-                          Divider(
+                          const Divider(
                             thickness: 1,
                           ),
                           SH.small(),
@@ -465,14 +466,14 @@ class _TaskScreenState extends State<TaskScreen>
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  MainLabelText(text: 'Cooking'),
+                                  const MainLabelText(text: 'Cooking'),
                                   Container(
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(3),
                                         color:
                                             color.primaryColor.withOpacity(.2)),
                                     child: Padding(
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                           horizontal: 5, vertical: 2),
                                       child: LabelText(
                                         text: 'Habit',

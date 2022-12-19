@@ -1,13 +1,14 @@
-// ignore_for_file: sized_box_for_whitespace
+// ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
+
 import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 
 class ToDoHabbitListScreen extends StatelessWidget {
   const ToDoHabbitListScreen({super.key});

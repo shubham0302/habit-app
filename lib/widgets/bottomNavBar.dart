@@ -21,7 +21,7 @@ Widget buildBottomNavigationMenu(
         width: sizeWidth,
         height: 80,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(ThemeConfig.radiusMin),
               topRight: Radius.circular(ThemeConfig.radiusMin)),
           color: color.dividerColor,

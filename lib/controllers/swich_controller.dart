@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:get/state_manager.dart';
 
 class SwitchController extends GetxController {

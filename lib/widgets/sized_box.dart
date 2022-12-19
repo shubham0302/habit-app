@@ -1,6 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
 class SH {
+  static extrasmall() {
+    return const SizedBox(
+      height: 2,
+    );
+  }
+
   static small() {
     return const SizedBox(
       height: 5,
@@ -21,6 +27,12 @@ class SH {
 }
 
 class SW {
+  static extrasmall() {
+    return const SizedBox(
+      height: 5,
+    );
+  }
+
   static small() {
     return const SizedBox(
       width: 5,

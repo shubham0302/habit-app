@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/home_page_controller.dart';
+import 'package:habbit_app/screens/customize_screen/categories/categories.dart';
 import 'package:habbit_app/screens/customize_screen/timer/timer_main_screen.dart';
-import 'package:habbit_app/screens/customize_screen/timer/timer_screen.dart';
+import 'package:habbit_app/screens/habbit/habbits_screen.dart';
 import 'package:habbit_app/screens/home_screen.dart';
 import 'package:habbit_app/screens/task_screen/screen.dart';
 import 'package:habbit_app/widgets/padding.dart';
@@ -49,7 +50,15 @@ class MainScreen extends StatelessWidget {
                           MainLabelText(
                               text: controller.tabIndex.value == 0
                                   ? 'Plannarize'
-                                  : 'Tasks'),
+                                  : controller.tabIndex.value == 1
+                                      ? "Task"
+                                      : controller.tabIndex.value == 2
+                                          ? "Categories"
+                                          : controller.tabIndex.value == 3
+                                              ? "Habbit"
+                                              : controller.tabIndex.value == 4
+                                                  ? "Timer"
+                                                  : ""),
                         ],
                       ),
                       Row(
@@ -68,7 +77,15 @@ class MainScreen extends StatelessWidget {
                             child: Icon(
                               controller.tabIndex.value == 0
                                   ? Icons.calendar_month
-                                  : Icons.move_to_inbox_rounded,
+                                  : controller.tabIndex.value == 1
+                                      ? Icons.move_to_inbox
+                                      : controller.tabIndex.value == 2
+                                          ? Icons.category
+                                          : controller.tabIndex.value == 3
+                                              ? Icons.abc
+                                              : controller.tabIndex.value == 4
+                                                  ? Icons.notifications_active
+                                                  : Icons.not_accessible,
                               color: color.disabledColor,
                               size: 30,
                             ),
@@ -83,10 +100,10 @@ class MainScreen extends StatelessWidget {
                     index: controller.tabIndex.value,
                     children: [
                       HomePage(),
-                      TaskScreen(),
-                      HomePage(),
-                      HomePage(),
-                      TimerMainScreen(),
+                      const TaskScreen(),
+                      const CategoriesScreen(),
+                      const HabbitsScreen(),
+                      const TimerMainScreen(),
                     ],
                   ),
                 ),

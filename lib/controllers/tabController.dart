@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: file_names
+
 import 'package:get/get.dart';
 
-class TaskTabController extends GetxController{
+class TaskTabController extends GetxController {
   var tabIndex = 0.obs;
-
-
 }

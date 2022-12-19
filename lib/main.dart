@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/screens/customize_screen/backUp_screen.dart';
+import 'package:habbit_app/screens/customize_screen/categories/categories.dart';
 import 'package:habbit_app/screens/customize_screen/getpremium_screen.dart';
 import 'package:habbit_app/screens/customize_screen/screen.dart';
 import 'package:habbit_app/screens/customize_screen/setting_screens/setting_screen.dart';
@@ -12,6 +13,7 @@ import 'package:habbit_app/screens/customize_screen/setting_screens/lock_screen.
 import 'package:habbit_app/screens/customize_screen/setting_screens/notification_alarm_screen.dart';
 import 'package:habbit_app/screens/customize_screen/setting_screens/todohabbit_screen.dart';
 import 'package:habbit_app/screens/customize_screen/timer/timer_screen.dart';
+import 'package:habbit_app/screens/habbit/habbits_screen.dart';
 import 'package:habbit_app/screens/intro_screen.dart';
 import 'package:habbit_app/screens/splash_screen.dart';
 import 'package:habbit_app/theme/theme_data.dart';
@@ -75,5 +77,7 @@ class Routes {
     GetPage(name: "/lock", page: () => const LockScreen()),
     GetPage(name: "/lic", page: () => const LicScreen()),
     GetPage(name: "/timer", page: () => const TimerScreen()),
+    GetPage(name: "/categories", page: () => const CategoriesScreen()),
+    GetPage(name: "/habbit", page: () => const HabbitsScreen()),
   ];
 }

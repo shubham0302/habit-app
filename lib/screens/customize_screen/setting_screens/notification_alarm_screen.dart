@@ -110,7 +110,7 @@ class NotificationandAlarmScreen extends StatelessWidget {
               ),
             ),
             SH.large(),
-            Divider(
+            const Divider(
               thickness: 1,
             ),
             SH.large(),
@@ -179,7 +179,7 @@ class NotificationandAlarmScreen extends StatelessWidget {
               ],
             ),
             SH.large(),
-            Divider(
+            const Divider(
               thickness: 1,
             ),
             SH.large(),
