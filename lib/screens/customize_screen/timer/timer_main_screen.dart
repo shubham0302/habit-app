@@ -229,13 +229,13 @@ class _TimerMainScreenState extends State<TimerMainScreen>
 
     ThemeData color = Theme.of(context);
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            CustomDialogBox(context);
-          },
-          backgroundColor: color.primaryColor,
-          child: const Icon(Icons.add),
-        ),
+        // // floatingActionButton: FloatingActionButton(
+        // //   onPressed: () {
+        // //     CustomDialogBox(context);
+        // //   },
+        //   backgroundColor: color.primaryColor,
+        //   child: const Icon(Icons.add),
+        // ),
         backgroundColor: color.backgroundColor,
         body: SafeArea(
           child: GlobalPadding(

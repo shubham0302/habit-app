@@ -127,30 +127,35 @@ class Drawerr extends StatelessWidget {
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(21),
               ),
-              child: Container(
-                height: 45,
-                padding: const EdgeInsets.only(left: 21),
-                alignment: Alignment.centerLeft,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    // color: color.disabledColor,
-                    borderRadius: BorderRadius.circular(25)),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.category,
-                      size: 30,
-                      color: color.disabledColor,
-                      // color: color.hoverColor,
-                    ),
-                    SW.large(),
-                    MainLabelText(
-                      text: 'Categories',
-                      isColor: true,
-                      color: color.disabledColor,
-                      // color: color.hoverColor,
-                    ),
-                  ],
+              child: GestureDetector(
+                onTap: () {
+                  Get.toNamed('/categoriesdrawer');
+                },
+                child: Container(
+                  height: 45,
+                  padding: const EdgeInsets.only(left: 21),
+                  alignment: Alignment.centerLeft,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      // color: color.disabledColor,
+                      borderRadius: BorderRadius.circular(25)),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.category,
+                        size: 30,
+                        color: color.disabledColor,
+                        // color: color.hoverColor,
+                      ),
+                      SW.large(),
+                      MainLabelText(
+                        text: 'Categories',
+                        isColor: true,
+                        color: color.disabledColor,
+                        // color: color.hoverColor,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
