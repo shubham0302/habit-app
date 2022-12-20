@@ -42,7 +42,7 @@ class Styles {
 
         //Description Text
         subtitle1: TextStyle(
-          fontSize: 12,
+          fontSize: 10,
           color: ColorSchemeData.defaultBrightColors['secondaryText'],
         ),
 

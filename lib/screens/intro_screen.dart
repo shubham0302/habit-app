@@ -69,7 +69,6 @@ class IntroScreen extends StatelessWidget {
                         )),
                   ]),
                 ),
-
                 Container(
                   height: size.height,
                   width: size.width,
@@ -91,7 +90,6 @@ class IntroScreen extends StatelessWidget {
                         ))
                   ]),
                 ),
-
                 Container(
                   height: size.height,
                   width: size.width,
@@ -117,7 +115,6 @@ class IntroScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-
                 Container(
                   height: size.height,
                   width: size.width,
@@ -137,7 +134,6 @@ class IntroScreen extends StatelessWidget {
                         )),
                   ]),
                 ),
-                
                 Container(
                   height: size.height,
                   width: size.width,
@@ -162,7 +158,7 @@ class IntroScreen extends StatelessWidget {
             Obx(
               () => Container(
                 padding: const EdgeInsets.only(
-                  top: 420,
+                  top: 400,
                   // left: 30,
                   // right: 100,
                 ),
@@ -172,323 +168,332 @@ class IntroScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AnimatedContainer(
-                      padding: const EdgeInsets.all(35),
-                      duration: const Duration(milliseconds: 500),
-                      child: IndexedStack(
-                        index: pageCntrl.selectedIndex.value,
-                        children: [
-                          Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const HeadingText(
-                                text: 'Welcome to Plannarize',
-                                alignment: TextAlign.center,
-                              ),
-                              SH.medium(),
-                              const DescriptionText(
-                                text:
-                                    'This app will help you to keep an organised routine as you build new habits!',
-                                alignment: TextAlign.center,
-                              )
-                            ],
-                          ),
-                          Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const HeadingText(
-                                text: 'Create a routine',
-                                alignment: TextAlign.center,
-                              ),
-                              SH.medium(),
-                              const DescriptionText(
-                                text:
-                                    'To start using Plannarize record the habits you want to keep track in your life together with your pending tasks.',
-                                alignment: TextAlign.center,
-                              )
-                            ],
-                          ),
-                          Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const HeadingText(
-                                text: 'Check it dailly',
-                                alignment: TextAlign.center,
-                              ),
-                              SH.medium(),
-                              const DescriptionText(
-                                text:
-                                    'A list shown every day with all your scheduled activities. Take advantage of customisable reminders to complete then all!',
-                                alignment: TextAlign.center,
-                              )
-                            ],
-                          ),
-                          Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const HeadingText(
-                                text: 'Keep doing it!',
-                                alignment: TextAlign.center,
-                              ),
-                              SH.medium(),
-                              const DescriptionText(
-                                text:
-                                    'Create streaks of success for your habits and complete all your tasks. Use the charts and tools to deeply analyse your progress.',
-                                alignment: TextAlign.center,
-                              )
-                            ],
-                          ),
-                          Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const HeadingText(
-                                text: 'Make the app yours',
-                                alignment: TextAlign.center,
-                              ),
-                              SH.medium(),
-                              const DescriptionText(
-                                text:
-                                    'Try all the customisation options create a daily journal and protect your data. There are many features to discover!',
-                                alignment: TextAlign.center,
-                              ),
-                              SH.large(),
-                              SH.large(),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      themeController.changeThemeModeBy(
-                                          CScreenLabels
-                                              .oprionsForBrightness[1]);
-                                    },
-                                    child: Container(
-                                        height: 40,
-                                        width: 40,
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Colors.black,
-                                            border: Border.all(
-                                                color: color.primaryColor,
-                                                width: 2)),
-                                        child: Icon(
-                                          Icons.nightlight_outlined,
-                                          color: color.primaryColor,
-                                          size: 30,
-                                        )),
-                                  ),
-                                  SW.large(),
-                                  GestureDetector(
-                                    onTap: () {
-                                      themeController.changeThemeModeBy(
-                                          CScreenLabels
-                                              .oprionsForBrightness[0]);
-                                    },
-                                    child: Container(
-                                        height: 40,
-                                        width: 40,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: color.primaryColor,
-                                          // border: Border.all(
-                                          //     color: color.primaryColor,
-                                          //     width: 2)
-                                        ),
-                                        child: Icon(
-                                          Icons.light_mode,
-                                          color: color.backgroundColor,
-                                          size: 30,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              SH.large(),
-                              SH.medium(),
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: color.disabledColor,
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(5))),
-                                child: const Padding(
-                                  padding: EdgeInsets.all(3.0),
-                                  child: DescriptionText(
-                                    text: '30+ color themes',
-                                  ),
+                    Expanded(
+                      flex: 3,
+                      child: AnimatedContainer(
+                        padding: const EdgeInsets.all(35),
+                        duration: const Duration(milliseconds: 500),
+                        child: IndexedStack(
+                          index: pageCntrl.selectedIndex.value,
+                          children: [
+                            Column(
+                              // crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const HeadingText(
+                                  text: 'Welcome to Plannarize',
+                                  alignment: TextAlign.center,
                                 ),
-                              )
-                            ],
-                          ),
-                        ],
+                                SH.medium(),
+                                const DescriptionText(
+                                  text:
+                                      'This app will help you to keep an organised routine as you build new habits!',
+                                  alignment: TextAlign.center,
+                                )
+                              ],
+                            ),
+                            Column(
+                              // crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const HeadingText(
+                                  text: 'Create a routine',
+                                  alignment: TextAlign.center,
+                                ),
+                                SH.medium(),
+                                const DescriptionText(
+                                  text:
+                                      'To start using Plannarize record the habits you want to keep track in your life together with your pending tasks.',
+                                  alignment: TextAlign.center,
+                                )
+                              ],
+                            ),
+                            Column(
+                              // crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const HeadingText(
+                                  text: 'Check it dailly',
+                                  alignment: TextAlign.center,
+                                ),
+                                SH.medium(),
+                                const DescriptionText(
+                                  text:
+                                      'A list shown every day with all your scheduled activities. Take advantage of customisable reminders to complete then all!',
+                                  alignment: TextAlign.center,
+                                )
+                              ],
+                            ),
+                            Column(
+                              // crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const HeadingText(
+                                  text: 'Keep doing it!',
+                                  alignment: TextAlign.center,
+                                ),
+                                SH.medium(),
+                                const DescriptionText(
+                                  text:
+                                      'Create streaks of success for your habits and complete all your tasks. Use the charts and tools to deeply analyse your progress.',
+                                  alignment: TextAlign.center,
+                                )
+                              ],
+                            ),
+                            Column(
+                              // crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const HeadingText(
+                                  text: 'Make the app yours',
+                                  alignment: TextAlign.center,
+                                ),
+                                SH.medium(),
+                                const DescriptionText(
+                                  text:
+                                      'Try all the customisation options create a daily journal and protect your data. There are many features to discover!',
+                                  alignment: TextAlign.center,
+                                ),
+                                SH.large(),
+                                // SH.large(),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        themeController.changeThemeModeBy(
+                                            CScreenLabels
+                                                .oprionsForBrightness[1]);
+                                      },
+                                      child: Container(
+                                          height: 40,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Colors.black,
+                                              border: Border.all(
+                                                  color: color.primaryColor,
+                                                  width: 2)),
+                                          child: Icon(
+                                            Icons.nightlight_outlined,
+                                            color: color.primaryColor,
+                                            size: 30,
+                                          )),
+                                    ),
+                                    SW.large(),
+                                    GestureDetector(
+                                      onTap: () {
+                                        themeController.changeThemeModeBy(
+                                            CScreenLabels
+                                                .oprionsForBrightness[0]);
+                                      },
+                                      child: Container(
+                                          height: 40,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: color.primaryColor,
+                                            // border: Border.all(
+                                            //     color: color.primaryColor,
+                                            //     width: 2)
+                                          ),
+                                          child: Icon(
+                                            Icons.light_mode,
+                                            color: color.backgroundColor,
+                                            size: 30,
+                                          )),
+                                    )
+                                  ],
+                                ),
+                                SH.large(),
+                                // SH.medium(),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: color.disabledColor,
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(5))),
+                                  child: const Padding(
+                                    padding: EdgeInsets.all(3.0),
+                                    child: DescriptionText(
+                                      text: '30+ color themes',
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    AnimatedContainer(
-                      duration: const Duration(milliseconds: 300),
-                      // width: pageCntrl.selectedIndex.value == 2 ? 250 : 100,
-                      width: size.width,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {
-                                  Get.toNamed('/home');
-                                },
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  height: 50,
-                                  // width: 50,
-                                  // color: color.indicatorColor,
-                                  child: const MainLabelText(
-                                    text: 'Skip',
-                                    isBold: true,
-                                    alignment: TextAlign.center,
+                    Expanded(
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 300),
+                        // width: pageCntrl.selectedIndex.value == 2 ? 250 : 100,
+                        width: size.width,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.toNamed('/home');
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    height: 50,
+                                    // width: 50,
+                                    // color: color.indicatorColor,
+                                    child: const MainLabelText(
+                                      text: 'Skip',
+                                      isBold: true,
+                                      alignment: TextAlign.center,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                height: 50,
-                                alignment: Alignment.centerLeft,
-                                width: 70,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    AnimatedContainer(
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 50,
+                                  alignment: Alignment.centerLeft,
+                                  width: 70,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      AnimatedContainer(
+                                          duration:
+                                              const Duration(milliseconds: 200),
+                                          height: 10,
+                                          // ignore: unrelated_type_equality_checks
+                                          width: 10,
+                                          // pageCntrl.selectedIndex == 0
+                                          //     ? 15
+                                          //     : 10,
+                                          decoration: BoxDecoration(
+                                              // ignore: unrelated_type_equality_checks
+                                              color:
+                                                  pageCntrl.selectedIndex == 0
+                                                      ? color.indicatorColor
+                                                      : color.backgroundColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      ThemeConfig.radiusMid),
+                                              border: Border.all(
+                                                  width: 1,
+                                                  color:
+                                                      color.indicatorColor))),
+                                      SW.small(),
+                                      AnimatedContainer(
                                         duration:
                                             const Duration(milliseconds: 200),
                                         height: 10,
                                         // ignore: unrelated_type_equality_checks
                                         width: 10,
-                                        // pageCntrl.selectedIndex == 0
+                                        // pageCntrl.selectedIndex == 1
                                         //     ? 15
                                         //     : 10,
                                         decoration: BoxDecoration(
                                             // ignore: unrelated_type_equality_checks
-                                            color: pageCntrl.selectedIndex == 0
+                                            color: pageCntrl.selectedIndex == 1
                                                 ? color.indicatorColor
                                                 : color.backgroundColor,
                                             borderRadius: BorderRadius.circular(
                                                 ThemeConfig.radiusMid),
                                             border: Border.all(
                                                 width: 1,
-                                                color: color.indicatorColor))),
-                                    SW.small(),
-                                    AnimatedContainer(
-                                      duration:
-                                          const Duration(milliseconds: 200),
-                                      height: 10,
-                                      // ignore: unrelated_type_equality_checks
-                                      width: 10,
-                                      // pageCntrl.selectedIndex == 1
-                                      //     ? 15
-                                      //     : 10,
-                                      decoration: BoxDecoration(
-                                          // ignore: unrelated_type_equality_checks
-                                          color: pageCntrl.selectedIndex == 1
-                                              ? color.indicatorColor
-                                              : color.backgroundColor,
-                                          borderRadius: BorderRadius.circular(
-                                              ThemeConfig.radiusMid),
-                                          border: Border.all(
-                                              width: 1,
-                                              color: color.indicatorColor)),
-                                    ),
-                                    SW.small(),
-                                    AnimatedContainer(
-                                      duration:
-                                          const Duration(milliseconds: 200),
-                                      height: 10,
-                                      // ignore: unrelated_type_equality_checks
-                                      width: 10,
-                                      // pageCntrl.selectedIndex == 2
-                                      //     ? 15
-                                      //     : 10,
-                                      decoration: BoxDecoration(
-                                          // ignore: unrelated_type_equality_checks
-                                          color: pageCntrl.selectedIndex == 2
-                                              ? color.indicatorColor
-                                              : color.backgroundColor,
-                                          borderRadius: BorderRadius.circular(
-                                              ThemeConfig.radiusMid),
-                                          border: Border.all(
-                                              width: 1,
-                                              color: color.indicatorColor)),
-                                    ),
-                                    SW.small(),
-                                    AnimatedContainer(
-                                      duration:
-                                          const Duration(milliseconds: 200),
-                                      height: 10,
-                                      // ignore: unrelated_type_equality_checks
-                                      width: 10,
-                                      // pageCntrl.selectedIndex == 3
-                                      //     ? 15
-                                      //     : 10,
-                                      decoration: BoxDecoration(
-                                          // ignore: unrelated_type_equality_checks
-                                          color: pageCntrl.selectedIndex == 3
-                                              ? color.indicatorColor
-                                              : color.backgroundColor,
-                                          borderRadius: BorderRadius.circular(
-                                              ThemeConfig.radiusMid),
-                                          border: Border.all(
-                                              width: 1,
-                                              color: color.indicatorColor)),
-                                    ),
-                                    SW.small(),
-                                    AnimatedContainer(
-                                      duration:
-                                          const Duration(milliseconds: 200),
-                                      height: 10,
-                                      // ignore: unrelated_type_equality_checks
-                                      width: 10,
-                                      // pageCntrl.selectedIndex == 4
-                                      //     ? 15
-                                      //     : 10,
-                                      decoration: BoxDecoration(
-                                          // ignore: unrelated_type_equality_checks
-                                          color: pageCntrl.selectedIndex == 4
-                                              ? color.indicatorColor
-                                              : color.backgroundColor,
-                                          borderRadius: BorderRadius.circular(
-                                              ThemeConfig.radiusMid),
-                                          border: Border.all(
-                                              width: 1,
-                                              color: color.indicatorColor)),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: InkWell(
-                                onTap: () {
-                                  Get.toNamed('/home');
-                                },
-                                child: Container(
-                                  height: 50,
-                                  alignment: Alignment.center,
-
-                                  // width: 50,
-                                  // color: color.indicatorColor,
-                                  // ignore: prefer_const_constructors
-                                  child: MainLabelText(
-                                    text: 'Next',
-                                    isBold: true,
+                                                color: color.indicatorColor)),
+                                      ),
+                                      SW.small(),
+                                      AnimatedContainer(
+                                        duration:
+                                            const Duration(milliseconds: 200),
+                                        height: 10,
+                                        // ignore: unrelated_type_equality_checks
+                                        width: 10,
+                                        // pageCntrl.selectedIndex == 2
+                                        //     ? 15
+                                        //     : 10,
+                                        decoration: BoxDecoration(
+                                            // ignore: unrelated_type_equality_checks
+                                            color: pageCntrl.selectedIndex == 2
+                                                ? color.indicatorColor
+                                                : color.backgroundColor,
+                                            borderRadius: BorderRadius.circular(
+                                                ThemeConfig.radiusMid),
+                                            border: Border.all(
+                                                width: 1,
+                                                color: color.indicatorColor)),
+                                      ),
+                                      SW.small(),
+                                      AnimatedContainer(
+                                        duration:
+                                            const Duration(milliseconds: 200),
+                                        height: 10,
+                                        // ignore: unrelated_type_equality_checks
+                                        width: 10,
+                                        // pageCntrl.selectedIndex == 3
+                                        //     ? 15
+                                        //     : 10,
+                                        decoration: BoxDecoration(
+                                            // ignore: unrelated_type_equality_checks
+                                            color: pageCntrl.selectedIndex == 3
+                                                ? color.indicatorColor
+                                                : color.backgroundColor,
+                                            borderRadius: BorderRadius.circular(
+                                                ThemeConfig.radiusMid),
+                                            border: Border.all(
+                                                width: 1,
+                                                color: color.indicatorColor)),
+                                      ),
+                                      SW.small(),
+                                      AnimatedContainer(
+                                        duration:
+                                            const Duration(milliseconds: 200),
+                                        height: 10,
+                                        // ignore: unrelated_type_equality_checks
+                                        width: 10,
+                                        // pageCntrl.selectedIndex == 4
+                                        //     ? 15
+                                        //     : 10,
+                                        decoration: BoxDecoration(
+                                            // ignore: unrelated_type_equality_checks
+                                            color: pageCntrl.selectedIndex == 4
+                                                ? color.indicatorColor
+                                                : color.backgroundColor,
+                                            borderRadius: BorderRadius.circular(
+                                                ThemeConfig.radiusMid),
+                                            border: Border.all(
+                                                width: 1,
+                                                color: color.indicatorColor)),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                              Expanded(
+                                child: InkWell(
+                                  onTap: () {
+                                    Get.toNamed('/home');
+                                  },
+                                  child: Container(
+                                    height: 50,
+                                    alignment: Alignment.center,
+
+                                    // width: 50,
+                                    // color: color.indicatorColor,
+                                    // ignore: prefer_const_constructors
+                                    child: MainLabelText(
+                                      text: 'Next',
+                                      isBold: true,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    )
+                    ),
+                    // SH.large(),
                   ],
                 ),
               ),

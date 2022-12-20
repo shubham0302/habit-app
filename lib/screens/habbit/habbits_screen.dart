@@ -24,9 +24,10 @@ class HabbitsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(15.0),
         child: ListView.separated(
           itemBuilder: (BuildContext context, int index) {
-            return GestureDetector(onTap: (){
-              Get.toNamed('/habbit-detail');
-            },
+            return GestureDetector(
+              onTap: () {
+                Get.toNamed('/habbit-detail');
+              },
               child: Column(children: [
                 Container(
                   height: 210,
@@ -66,35 +67,44 @@ class HabbitsScreen extends StatelessWidget {
                                               borderRadius:
                                                   const BorderRadius.all(
                                                       Radius.circular(5)),
-                                              color: Colors.pinkAccent.shade100),
-                                          child: Text(
-                                            "Everyday",
-                                            style: TextStyle(
-                                                color: color.hintColor,
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w500),
+                                              color:
+                                                  Colors.pinkAccent.shade100),
+                                          child: DescriptionText(
+                                            text: 'Everyday',
+                                            isColor: true,
+                                            color: color.backgroundColor,
                                           )),
                                       SW.small(),
                                       Container(
                                         padding: const EdgeInsets.only(
-                                            top: 3, bottom: 3, left: 5, right: 5),
+                                            top: 3,
+                                            bottom: 3,
+                                            left: 5,
+                                            right: 5),
                                         decoration: BoxDecoration(
-                                            borderRadius: const BorderRadius.all(
-                                                Radius.circular(5)),
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(5)),
                                             color: Colors.transparent,
                                             border: Border.all(
-                                                color: Colors.pinkAccent.shade100,
+                                                color:
+                                                    Colors.pinkAccent.shade100,
                                                 width: 2)),
                                         child: Row(
                                           children: [
-                                            Text(
-                                              "2",
-                                              style: TextStyle(
-                                                  color:
-                                                      Colors.pinkAccent.shade100,
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w500),
+                                            DescriptionText(
+                                              text: '2',
+                                              isColor: true,
+                                              color: Colors.pinkAccent.shade100,
                                             ),
+                                            // Text(
+                                            //   "2",
+                                            //   style: TextStyle(
+                                            //       color: Colors
+                                            //           .pinkAccent.shade100,
+                                            //       fontSize: 12,
+                                            //       fontWeight: FontWeight.w500),
+                                            // ),
                                             Icon(
                                               Icons.flag_outlined,
                                               color: Colors.pinkAccent.shade100,
@@ -108,10 +118,18 @@ class HabbitsScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Icon(
-                            Icons.brush,
-                            color: Colors.pinkAccent.shade100,
-                            size: 40,
+                          Container(
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: Colors.pinkAccent.shade100,
+                            ),
+                            child: Icon(
+                              Icons.brush,
+                              size: 32,
+                              color: color.backgroundColor,
+                            ),
                           ),
                         ],
                       ),
@@ -136,166 +154,181 @@ class HabbitsScreen extends StatelessWidget {
                       SH.large(),
                       Row(
                         children: [
-                          Container(
-                            height: 41,
-                            width: 41,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: color.dialogBackgroundColor),
-                            child: Center(
-                              child: Column(children: [
-                                SH.small(),
-                                const DescriptionText(
-                                  text: "SUN",
-                                  isWhite: true,
-                                ),
-                                // SH.medium(),
-                                const DescriptionText(
-                                  text: "1",
-                                  isWhite: true,
-                                )
-                              ]),
+                          Expanded(
+                            child: Container(
+                              height: 41,
+                              width: 41,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: color.dialogBackgroundColor),
+                              child: Center(
+                                child: Column(children: [
+                                  SH.small(),
+                                  const DescriptionText(
+                                    text: "SUN",
+                                    isWhite: true,
+                                  ),
+                                  // SH.medium(),
+                                  const DescriptionText(
+                                    text: "1",
+                                    isWhite: true,
+                                  )
+                                ]),
+                              ),
                             ),
                           ),
                           SW.small(),
-                          Container(
-                            height: 41,
-                            width: 41,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: color.dialogBackgroundColor),
-                            child: Center(
-                              child: Column(children: [
-                                SH.small(),
-                                const DescriptionText(
-                                  text: "MON",
-                                  isWhite: true,
-                                ),
-                                // SH.medium(),
-                                const DescriptionText(
-                                  text: "2",
-                                  isWhite: true,
-                                )
-                              ]),
+                          Expanded(
+                            child: Container(
+                              height: 41,
+                              width: 41,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: color.dialogBackgroundColor),
+                              child: Center(
+                                child: Column(children: [
+                                  SH.small(),
+                                  const DescriptionText(
+                                    text: "MON",
+                                    isWhite: true,
+                                  ),
+                                  // SH.medium(),
+                                  const DescriptionText(
+                                    text: "2",
+                                    isWhite: true,
+                                  )
+                                ]),
+                              ),
                             ),
                           ),
                           SW.small(),
-                          Container(
-                            height: 41,
-                            width: 41,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: color.dialogBackgroundColor,
-                                border:
-                                    Border.all(color: Colors.green, width: 2)),
-                            child: Center(
-                              child: Column(children: [
-                                SH.small(),
-                                const DescriptionText(
-                                  text: "TUS",
-                                  isWhite: true,
-                                ),
-                                // SH.medium(),
-                                const DescriptionText(
-                                  text: "3",
-                                  isWhite: true,
-                                )
-                              ]),
+                          Expanded(
+                            child: Container(
+                              height: 41,
+                              width: 41,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: color.dialogBackgroundColor,
+                                  border: Border.all(
+                                      color: Colors.green, width: 2)),
+                              child: Center(
+                                child: Column(children: [
+                                  SH.small(),
+                                  const DescriptionText(
+                                    text: "TUS",
+                                    isWhite: true,
+                                  ),
+                                  // SH.medium(),
+                                  const DescriptionText(
+                                    text: "3",
+                                    isWhite: true,
+                                  )
+                                ]),
+                              ),
                             ),
                           ),
                           SW.small(),
-                          Container(
-                            height: 41,
-                            width: 41,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: color.dialogBackgroundColor,
-                                border:
-                                    Border.all(color: Colors.yellow, width: 2)),
-                            child: Center(
-                              child: Column(children: [
-                                SH.small(),
-                                const DescriptionText(
-                                  text: "WED",
-                                  isWhite: true,
-                                ),
-                                // SH.medium(),
-                                const DescriptionText(
-                                  text: "4",
-                                  isWhite: true,
-                                )
-                              ]),
+                          Expanded(
+                            child: Container(
+                              height: 41,
+                              width: 41,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: color.dialogBackgroundColor,
+                                  border: Border.all(
+                                      color: Colors.yellow, width: 2)),
+                              child: Center(
+                                child: Column(children: [
+                                  SH.small(),
+                                  const DescriptionText(
+                                    text: "WED",
+                                    isWhite: true,
+                                  ),
+                                  // SH.medium(),
+                                  const DescriptionText(
+                                    text: "4",
+                                    isWhite: true,
+                                  )
+                                ]),
+                              ),
                             ),
                           ),
                           SW.small(),
-                          Container(
-                            height: 41,
-                            width: 41,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: color.dialogBackgroundColor,
-                                border:
-                                    Border.all(color: Colors.yellow, width: 2)),
-                            child: Center(
-                              child: Column(children: [
-                                SH.small(),
-                                const DescriptionText(
-                                  text: "THU",
-                                  isWhite: true,
-                                ),
-                                // SH.medium(),
-                                const DescriptionText(
-                                  text: "5",
-                                  isWhite: true,
-                                )
-                              ]),
+                          Expanded(
+                            child: Container(
+                              height: 41,
+                              width: 41,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: color.dialogBackgroundColor,
+                                  border: Border.all(
+                                      color: Colors.yellow, width: 2)),
+                              child: Center(
+                                child: Column(children: [
+                                  SH.small(),
+                                  const DescriptionText(
+                                    text: "THU",
+                                    isWhite: true,
+                                  ),
+                                  // SH.medium(),
+                                  const DescriptionText(
+                                    text: "5",
+                                    isWhite: true,
+                                  )
+                                ]),
+                              ),
                             ),
                           ),
                           SW.small(),
-                          Container(
-                            height: 41,
-                            width: 41,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: color.dialogBackgroundColor,
-                                border: Border.all(color: Colors.red, width: 2)),
-                            child: Center(
-                              child: Column(children: [
-                                SH.small(),
-                                const DescriptionText(
-                                  text: "FRI",
-                                  isWhite: true,
-                                ),
-                                // SH.medium(),
-                                const DescriptionText(
-                                  text: "6",
-                                  isWhite: true,
-                                )
-                              ]),
+                          Expanded(
+                            child: Container(
+                              height: 41,
+                              width: 41,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: color.dialogBackgroundColor,
+                                  border:
+                                      Border.all(color: Colors.red, width: 2)),
+                              child: Center(
+                                child: Column(children: [
+                                  SH.small(),
+                                  const DescriptionText(
+                                    text: "FRI",
+                                    isWhite: true,
+                                  ),
+                                  // SH.medium(),
+                                  const DescriptionText(
+                                    text: "6",
+                                    isWhite: true,
+                                  )
+                                ]),
+                              ),
                             ),
                           ),
                           SW.small(),
-                          Container(
-                            height: 41,
-                            width: 41,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: color.dialogBackgroundColor,
-                                border:
-                                    Border.all(color: Colors.green, width: 2)),
-                            child: Center(
-                              child: Column(children: [
-                                SH.small(),
-                                const DescriptionText(
-                                  text: "SAT",
-                                  isWhite: true,
-                                ),
-                                // SH.medium(),
-                                const DescriptionText(
-                                  text: "7",
-                                  isWhite: true,
-                                )
-                              ]),
+                          Expanded(
+                            child: Container(
+                              height: 41,
+                              width: 41,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: color.dialogBackgroundColor,
+                                  border: Border.all(
+                                      color: Colors.green, width: 2)),
+                              child: Center(
+                                child: Column(children: [
+                                  SH.small(),
+                                  const DescriptionText(
+                                    text: "SAT",
+                                    isWhite: true,
+                                  ),
+                                  // SH.medium(),
+                                  const DescriptionText(
+                                    text: "7",
+                                    isWhite: true,
+                                  )
+                                ]),
+                              ),
                             ),
                           ),
                           // SW.small(),
@@ -319,9 +352,11 @@ class HabbitsScreen extends StatelessWidget {
                                 size: 25,
                               ),
                               SW.small(),
-                              const DescriptionText2(
+                              DescriptionText(
+                                isBold: true,
                                 text: "4",
-                                isWhite: true,
+                                isColor: true,
+                                color: color.canvasColor,
                               ),
                               SW.medium(),
                               Icon(
@@ -330,9 +365,11 @@ class HabbitsScreen extends StatelessWidget {
                                 size: 25,
                               ),
                               SW.small(),
-                              const DescriptionText2(
+                              DescriptionText(
+                                isBold: true,
                                 text: "52%",
-                                isWhite: true,
+                                isColor: true,
+                                color: color.canvasColor,
                               ),
                             ],
                           ),
@@ -340,19 +377,19 @@ class HabbitsScreen extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.calendar_month_outlined,
-                                color: Colors.pinkAccent.shade100,
+                                color: color.disabledColor,
                                 size: 25,
                               ),
                               SW.medium(),
                               Icon(
                                 Icons.stacked_bar_chart,
-                                color: Colors.pinkAccent.shade100,
+                                color: color.disabledColor,
                                 size: 25,
                               ),
                               SW.medium(),
                               Icon(
                                 Icons.more_vert,
-                                color: Colors.pinkAccent.shade100,
+                                color: color.disabledColor,
                                 size: 25,
                               ),
                             ],

@@ -6,6 +6,8 @@ import '../../controllers/theme_controller.dart';
 class DescriptionText extends StatelessWidget {
   final String text;
   final bool? isWhite;
+  final bool? isColor;
+  final bool? isBold;
   final Color? color;
   final TextAlign? alignment;
   final String? type;
@@ -17,7 +19,9 @@ class DescriptionText extends StatelessWidget {
       this.isWhite,
       this.type,
       this.color,
-      this.isDotDot})
+      this.isDotDot,
+      this.isColor,
+      this.isBold})
       : super(key: key);
 
   @override
@@ -29,7 +33,9 @@ class DescriptionText extends StatelessWidget {
     ThemeController themeController = Get.find<ThemeController>();
     return Text(
       text,
-      style: color.textTheme.subtitle1,
+      style: color.textTheme.subtitle1!.copyWith(
+          color: isColor == true ? (this.color ?? color.primaryColor) : null,
+          fontWeight: isBold == true ? FontWeight.bold : FontWeight.normal),
       textAlign: alignment,
     );
   }
