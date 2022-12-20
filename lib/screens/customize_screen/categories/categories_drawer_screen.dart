@@ -6,10 +6,12 @@ import 'package:get/get.dart';
 
 import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/screens/customize_screen/categories/categories.dart';
+import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
+import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 class CategoriesDrawerScreen extends StatelessWidget {
   const CategoriesDrawerScreen({super.key});
@@ -20,24 +22,33 @@ class CategoriesDrawerScreen extends StatelessWidget {
     ThemeData color = Theme.of(context);
     return Scaffold(
       body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.all(15.0),
+          child: GlobalPadding(
         child: Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Icon(
-                    Icons.arrow_back_ios_new_sharp,
-                    color: color.primaryColor,
-                    size: 20,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                        behavior: HitTestBehavior.translucent,
+                        onTap: (() {
+                          Get.back();
+                        }),
+                        child: Icon(
+                          Icons.arrow_back_ios_new_rounded,
+                          color: color.primaryColor,
+                        )),
+                    SW.medium(),
+                    const MainLabelText(text: 'Categories'),
+                  ],
                 ),
-                SW.medium(),
-                const HeadingText(text: "Categories"),
+                // Icon(
+                //   Icons.brush,
+                //   size: 20,
+                //   color: color.backgroundColor,
+                // ),
               ],
             ),
             SH.large(),

@@ -128,7 +128,7 @@ class _TaskScreenState extends State<TaskScreen>
                 controller: _controller,
                 children: [
                   SingleChildScrollView(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -312,8 +312,7 @@ class _TaskScreenState extends State<TaskScreen>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SH.large(),
-                      GlobalPadding(
-                          child: Column(
+                      Column(
                         children: [
                           Row(
                             children: [
@@ -491,7 +490,7 @@ class _TaskScreenState extends State<TaskScreen>
                             ],
                           ),
                         ],
-                      )),
+                      ),
                     ],
                   ),
                 ],

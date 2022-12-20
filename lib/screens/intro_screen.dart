@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace
+// ignore_for_file: sized_box_for_whitespace, unrelated_type_equality_checks, duplicate_ignore
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

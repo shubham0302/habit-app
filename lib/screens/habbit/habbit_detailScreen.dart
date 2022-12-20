@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace, file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/screens/habbit/Habbit_tabbar.dart';
@@ -53,7 +55,7 @@ class HabbitDetailScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(child: HabbitTabbar())
+              const Expanded(child: HabbitTabbar())
             ],
           ),
         ),

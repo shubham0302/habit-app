@@ -177,7 +177,7 @@ class StatisticsScreen extends StatelessWidget {
             ],
           ),
           SH.large(),
-          Divider(
+          const Divider(
             thickness: 2,
           ),
           SH.large(),

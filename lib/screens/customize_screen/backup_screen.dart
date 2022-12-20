@@ -5,11 +5,11 @@ import 'package:get/get.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/screens/intro_screen.dart';
+import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_field/input_fields.dart';
-import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 class BackUpScreen extends StatelessWidget {
   const BackUpScreen({super.key});
@@ -25,23 +25,32 @@ class BackUpScreen extends StatelessWidget {
     PageCntrl pageCntrl = Get.put(PageCntrl());
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(15),
+        child: GlobalPadding(
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Icon(
-                    Icons.arrow_back_ios_new_sharp,
-                    color: color.primaryColor,
-                    size: 20,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                        behavior: HitTestBehavior.translucent,
+                        onTap: (() {
+                          Get.back();
+                        }),
+                        child: Icon(
+                          Icons.arrow_back_ios_new_rounded,
+                          color: color.primaryColor,
+                        )),
+                    SW.medium(),
+                    const MainLabelText(text: 'Backups'),
+                  ],
                 ),
-                SW.medium(),
-                const HeadingText(text: "Backups"),
+                // Icon(
+                //   Icons.brush,
+                //   size: 20,
+                //   color: color.backgroundColor,
+                // ),
               ],
             ),
             SH.large(),
@@ -113,10 +122,21 @@ class BackUpScreen extends StatelessWidget {
                   text: "Cloud Backups Account",
                 ),
                 SW.medium(),
-                const Expanded(
-                    child: InputField(
-                  hintText: "hello@gmail.com",
-                ))
+                Expanded(
+                    child: Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 110,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.hintColor),
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: LabelText(
+                            text: "hello@gmail.com",
+                          ),
+                        )))
               ],
             ),
             SH.medium(),

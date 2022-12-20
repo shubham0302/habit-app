@@ -1,9 +1,10 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:async';
 import 'dart:math';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 
 class BarGraph extends StatefulWidget {
@@ -79,7 +80,7 @@ class BarGraphState extends State<BarGraph> {
       x: x,
       barRods: [
         BarChartRodData(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(15), topRight: Radius.circular(15)),
           toY: isTouched ? y + 1 : y,
           color: isTouched ? Colors.yellow : color.primaryColor,
@@ -210,14 +211,14 @@ class BarGraphState extends State<BarGraph> {
           width: 50,
           height: 40,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(15),
                 bottomRight: Radius.circular(15)),
             color: Colors.grey.withOpacity(.2),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: const [
               DescriptionText(text: 'This '),
               DescriptionText(text: 'week'),
             ],
@@ -229,14 +230,14 @@ class BarGraphState extends State<BarGraph> {
           width: 50,
           height: 40,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(15),
                 bottomRight: Radius.circular(15)),
             color: Colors.grey.withOpacity(.2),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: const [
               DescriptionText(text: 'This '),
               DescriptionText(text: 'month'),
             ],
@@ -248,14 +249,14 @@ class BarGraphState extends State<BarGraph> {
           width: 50,
           height: 40,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(15),
                 bottomRight: Radius.circular(15)),
             color: Colors.grey.withOpacity(.2),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: const [
               DescriptionText(text: 'This '),
               DescriptionText(text: 'year'),
             ],
@@ -267,14 +268,14 @@ class BarGraphState extends State<BarGraph> {
           width: 50,
           height: 40,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(15),
                 bottomRight: Radius.circular(15)),
             color: Colors.grey.withOpacity(.2),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: const [
               // SH.small(),
               DescriptionText(text: 'All '),
               // DescriptionText(text: 'week'),

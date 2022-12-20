@@ -5,8 +5,10 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 
 import 'package:habbit_app/controllers/swich_controller.dart';
+import 'package:habbit_app/screens/customize_screen/components/completed_activities_customBox.dart';
+import 'package:habbit_app/screens/customize_screen/components/textsize_custombox.dart';
+import 'package:habbit_app/screens/customize_screen/components/to_do_week_custombox.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
@@ -59,12 +61,25 @@ class ToDoHabbitListScreen extends StatelessWidget {
                       const LabelText(text: "First day of the week")
                     ],
                   ),
-                  Container(
-                      height: 30,
-                      width: 110,
-                      child: const InputField(
-                        hintText: "Sunday",
-                      ))
+                  GestureDetector(
+                    onTap: () {
+                      ToDoWeekCustomDialogBox(context);
+                    },
+                    child: Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 110,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.hintColor),
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: LabelText(
+                            text: "Sunday",
+                          ),
+                        )),
+                  )
                 ],
               ),
             ),
@@ -84,12 +99,25 @@ class ToDoHabbitListScreen extends StatelessWidget {
                     const LabelText(text: "Completed activity sorting")
                   ],
                 ),
-                Container(
-                    height: 30,
-                    width: 110,
-                    child: const InputField(
-                      hintText: "Send to bottom",
-                    ))
+                GestureDetector(
+                  onTap: () {
+                    CompActCustomDialogBox(context);
+                  },
+                  child: Container(
+                      alignment: Alignment.centerLeft,
+                      height: 35,
+                      width: 110,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: color.hintColor),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 5),
+                        child: LabelText(
+                          text: "Send to bottom",
+                        ),
+                      )),
+                )
               ],
             ),
             SH.medium(),
@@ -109,10 +137,18 @@ class ToDoHabbitListScreen extends StatelessWidget {
                   ],
                 ),
                 Container(
-                    height: 30,
+                    alignment: Alignment.centerLeft,
+                    height: 35,
                     width: 110,
-                    child: const InputField(
-                      hintText: "Alphabetical",
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        color: color.hintColor),
+                    child: const Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: LabelText(
+                        text: "ALphabetical",
+                      ),
                     ))
               ],
             ),
@@ -133,10 +169,18 @@ class ToDoHabbitListScreen extends StatelessWidget {
                   ],
                 ),
                 Container(
-                    height: 30,
+                    alignment: Alignment.centerLeft,
+                    height: 35,
                     width: 110,
-                    child: const InputField(
-                      hintText: "Date created",
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        color: color.hintColor),
+                    child: const Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: LabelText(
+                        text: "Date created",
+                      ),
                     ))
               ],
             ),
@@ -156,12 +200,25 @@ class ToDoHabbitListScreen extends StatelessWidget {
                     const LabelText(text: "Text sizing")
                   ],
                 ),
-                Container(
-                    height: 30,
-                    width: 110,
-                    child: const InputField(
-                      hintText: "Default",
-                    ))
+                GestureDetector(
+                  onTap: () {
+                    TextCustomDialogBox(context);
+                  },
+                  child: Container(
+                      alignment: Alignment.centerLeft,
+                      height: 35,
+                      width: 110,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: color.hintColor),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 10),
+                        child: LabelText(
+                          text: "Default",
+                        ),
+                      )),
+                )
               ],
             ),
             SH.medium(),

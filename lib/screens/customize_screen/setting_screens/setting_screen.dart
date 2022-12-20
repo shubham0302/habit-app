@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
+import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
@@ -12,24 +13,28 @@ class SettingScreen extends StatelessWidget {
     ThemeData color = Theme.of(context);
     return Scaffold(
       body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.all(15.0),
+          child: GlobalPadding(
         child: Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Icon(
-                    Icons.arrow_back_ios_new_sharp,
-                    color: color.primaryColor,
-                    size: 20,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                        behavior: HitTestBehavior.translucent,
+                        onTap: (() {
+                          Get.back();
+                        }),
+                        child: Icon(
+                          Icons.arrow_back_ios_new_rounded,
+                          color: color.primaryColor,
+                        )),
+                    SW.medium(),
+                    const MainLabelText(text: 'Setting'),
+                  ],
                 ),
-                SW.medium(),
-                const HeadingText(text: "Setting"),
               ],
             ),
             SH.large(),

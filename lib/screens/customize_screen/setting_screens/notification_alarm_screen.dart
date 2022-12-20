@@ -1,19 +1,33 @@
-// ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages
+// ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages, unnecessary_string_interpolations, unused_field, prefer_final_fields
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/reminder_time_controller.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
+import 'package:habbit_app/controllers/time_controller.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
-class NotificationandAlarmScreen extends StatelessWidget {
+class NotificationandAlarmScreen extends StatefulWidget {
   const NotificationandAlarmScreen({super.key});
 
   @override
+  State<NotificationandAlarmScreen> createState() =>
+      _NotificationandAlarmScreenState();
+}
+
+class _NotificationandAlarmScreenState
+    extends State<NotificationandAlarmScreen> {
+  TimeOfDay _time = TimeOfDay.now().replacing(hour: 11, minute: 30);
+
+  @override
   Widget build(BuildContext context) {
+    NotifyTimeController notifyTimeController =
+        Get.put(NotifyTimeController(), permanent: false);
+    ReminderTimeController reminderTimeController =
+        Get.put(ReminderTimeController(), permanent: false);
     SwitchController switchController =
         Get.put(SwitchController(), permanent: false);
     // bool switchChange = true;
@@ -100,12 +114,25 @@ class NotificationandAlarmScreen extends StatelessWidget {
                       const LabelText(text: "Time")
                     ],
                   ),
-                  Container(
-                      height: 30,
-                      width: 110,
-                      child: const InputField(
-                        hintText: "08:30 AM",
-                      ))
+                  GestureDetector(
+                    onTap: () {
+                      notifyTimeController.setTime(context);
+                    },
+                    child: Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 110,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.hintColor),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: LabelText(
+                            text: "${notifyTimeController.time.value}",
+                          ),
+                        )),
+                  )
                 ],
               ),
             ),
@@ -170,12 +197,25 @@ class NotificationandAlarmScreen extends StatelessWidget {
                     const LabelText(text: "Time")
                   ],
                 ),
-                Container(
-                    height: 30,
-                    width: 110,
-                    child: const InputField(
-                      hintText: "08:30 AM",
-                    ))
+                GestureDetector(
+                  onTap: () {
+                    reminderTimeController.setTime(context);
+                  },
+                  child: Container(
+                      alignment: Alignment.centerLeft,
+                      height: 35,
+                      width: 110,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: color.hintColor),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: LabelText(
+                          text: "${reminderTimeController.time.value}",
+                        ),
+                      )),
+                )
               ],
             ),
             SH.large(),
@@ -200,10 +240,18 @@ class NotificationandAlarmScreen extends StatelessWidget {
                   ],
                 ),
                 Container(
-                    height: 30,
+                    alignment: Alignment.centerLeft,
+                    height: 35,
                     width: 110,
-                    child: const InputField(
-                      hintText: "10 minutes",
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        color: color.hintColor),
+                    child: const Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: LabelText(
+                        text: "10 minutes",
+                      ),
                     ))
               ],
             ),
