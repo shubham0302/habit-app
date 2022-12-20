@@ -118,20 +118,22 @@ class _NotificationandAlarmScreenState
                     onTap: () {
                       notifyTimeController.setTime(context);
                     },
-                    child: Container(
-                        alignment: Alignment.centerLeft,
-                        height: 35,
-                        width: 110,
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10),
-                          child: LabelText(
-                            text: "${notifyTimeController.time.value}",
-                          ),
-                        )),
+                    child: Obx(
+                      () => Container(
+                          alignment: Alignment.centerLeft,
+                          height: 35,
+                          width: 110,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              color: color.hintColor),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: LabelText(
+                              text: "${notifyTimeController.time.value}",
+                            ),
+                          )),
+                    ),
                   )
                 ],
               ),
@@ -201,20 +203,22 @@ class _NotificationandAlarmScreenState
                   onTap: () {
                     reminderTimeController.setTime(context);
                   },
-                  child: Container(
-                      alignment: Alignment.centerLeft,
-                      height: 35,
-                      width: 110,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          color: color.hintColor),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: LabelText(
-                          text: "${reminderTimeController.time.value}",
-                        ),
-                      )),
+                  child: Obx(
+                    () => Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 110,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.hintColor),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: LabelText(
+                            text: "${reminderTimeController.time.value}",
+                          ),
+                        )),
+                  ),
                 )
               ],
             ),
