@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/home_page_controller.dart';
-import 'package:habbit_app/screens/customize_screen/categories/categories.dart';
-import 'package:habbit_app/screens/customize_screen/timer/timer_main_screen.dart';
+import 'package:habbit_app/screens/categories/categories.dart';
+import 'package:habbit_app/screens/timer/timer_main_screen.dart';
 import 'package:habbit_app/screens/habbit/habbits_screen.dart';
 import 'package:habbit_app/screens/home_screen.dart';
 import 'package:habbit_app/screens/task_screen/screen.dart';
@@ -23,11 +23,12 @@ class MainScreen extends StatelessWidget {
     // ignore: unused_local_variable
     ThemeData color = Theme.of(context);
 
-    return SafeArea(
-      child: Scaffold(
-        drawer: const Drawerr(),
-        body: Obx(() => Column(
+    return Scaffold(
+      drawer: const Drawerr(),
+      body: Obx(() => SafeArea(
+            child: Column(
               children: [
+                
                 GlobalPadding(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,7 +39,7 @@ class MainScreen extends StatelessWidget {
                             builder: (context) => GestureDetector(
                               onTap: () => Scaffold.of(context).openDrawer(),
                               // print('asd');
-
+      
                               child: Icon(
                                 Icons.format_list_bulleted_outlined,
                                 color: color.primaryColor,
@@ -108,9 +109,9 @@ class MainScreen extends StatelessWidget {
                   ),
                 ),
               ],
-            )),
-        bottomNavigationBar: buildBottomNavigationMenu(context, 0, controller),
-      ),
+            ),
+          )),
+      bottomNavigationBar: buildBottomNavigationMenu(context, 0, controller),
     );
   }
 }

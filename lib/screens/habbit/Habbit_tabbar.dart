@@ -13,7 +13,7 @@ import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/controllers/timer_tab_controller.dart';
 import 'package:habbit_app/screens/customize_screen/components/custom_dialog_box.dart';
-import 'package:habbit_app/screens/customize_screen/timer/set_timer_component.dart';
+import 'package:habbit_app/screens/timer/set_timer_component.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';

@@ -41,8 +41,8 @@ class Statistics extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               SizedBox(
-                  width: 200,
-                  height: 200,
+                  width: 150,
+                  height: 150,
                   child: CircularProgressIndicator(
                     color: color.primaryColor,
                     backgroundColor: color.disabledColor.withOpacity(0.6),
@@ -313,6 +313,10 @@ class Statistics extends StatelessWidget {
                 SW.small(),
                 DescriptionText(
                   text: "24",
+
+                  isBold: true,
+                  isColor: true,
+                  color: color.cardColor,
                   isWhite: true,
                 )
               ],
@@ -329,6 +333,10 @@ class Statistics extends StatelessWidget {
                 SW.small(),
                 DescriptionText(
                   text: "6",
+
+                  isBold: true,
+                  isColor: true,
+                  color: color.cardColor,
                   isWhite: true,
                 )
               ],
@@ -345,6 +353,9 @@ class Statistics extends StatelessWidget {
                 SW.small(),
                 DescriptionText(
                   text: "2",
+                  isBold: true,
+                  isColor: true,
+                  color: color.cardColor,
                   isWhite: true,
                 )
               ],

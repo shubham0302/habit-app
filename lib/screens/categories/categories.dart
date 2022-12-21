@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:habbit_app/screens/customize_screen/categories/custom_dialog_categories.dart';
+import 'package:habbit_app/screens/categories/custom_dialog_categories.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/descriptionText.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
@@ -36,7 +36,11 @@ class CategoriesScreen extends StatelessWidget {
                       size: 40,
                     ),
                   ),
-                  const DescriptionText2(
+                  SH.small(),
+                  DescriptionText(
+                    isColor: true,
+                    color: color.canvasColor,
+                    isBold: true,
                     text: "Quit a habit",
                     isWhite: true,
                   ),
@@ -68,7 +72,11 @@ class CategoriesScreen extends StatelessWidget {
                       size: 40,
                     ),
                   ),
-                  const DescriptionText2(
+                  SH.small(),
+                  DescriptionText(
+                    isColor: true,
+                    color: color.canvasColor,
+                    isBold: true,
                     text: "Exercise",
                     isWhite: true,
                   ),
@@ -98,7 +106,10 @@ class CategoriesScreen extends StatelessWidget {
                     ),
                     SH.medium(),
                     SH.small(),
-                    const DescriptionText2(
+                    DescriptionText(
+                      isColor: true,
+                      color: color.canvasColor,
+                      isBold: true,
                       text: "Add New",
                       isWhite: true,
                     ),

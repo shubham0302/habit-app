@@ -64,6 +64,10 @@ class Styles {
           fontWeight: FontWeight.bold,
           color: ColorSchemeData.defaultBrightColors['primaryText'],
         ),
+          subtitle2: TextStyle(
+            fontSize: 8,
+            color: ColorSchemeData.defaultBrightColors['secondaryText'],
+          )
       ),
 
       backgroundColor: ColorSchemeData.defaultBrightColors['backgroundColor'],
@@ -90,7 +94,15 @@ class Styles {
           .copyWith(colorScheme: const ColorScheme.light()),
       appBarTheme: const AppBarTheme(
         elevation: 0.0,
-        systemOverlayStyle: SystemUiOverlayStyle.light,
+        
+        systemOverlayStyle: SystemUiOverlayStyle(
+          // Status bar color
+          statusBarColor: Colors.transparent,
+
+          // Status bar brightness (optional)
+          statusBarIconBrightness: Brightness.light, // For Android (dark icons)
+          // statusBarBrightness: Brightness.light, // For iOS (dark icons)
+        ),
       ),
     );
   }
@@ -150,6 +162,10 @@ class Styles {
           fontSize: 14.0,
           color: ColorSchemeData.defaultDarkColors['primaryText'],
         ),
+        subtitle2: TextStyle(
+          fontSize: 8,
+          color: ColorSchemeData.defaultDarkColors['secondaryText'],
+        ),
 
         //MainLabel Text
         bodyText2: TextStyle(
@@ -182,7 +198,15 @@ class Styles {
           .copyWith(colorScheme: const ColorScheme.light()),
       appBarTheme: const AppBarTheme(
         elevation: 0.0,
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
+
+        systemOverlayStyle: SystemUiOverlayStyle(
+          // Status bar color
+          statusBarColor: Colors.transparent,
+
+          // Status bar brightness (optional)
+          statusBarIconBrightness: Brightness.light, // For Android (dark icons)
+          // statusBarBrightness: Brightness.dark, // For iOS (dark icons)
+        ),
       ),
     );
   }
