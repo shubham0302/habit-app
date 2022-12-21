@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages, unnecessary_import, implementation_imports, sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -281,11 +283,11 @@ class Statistics extends StatelessWidget {
                   startDegreeOffset: 270,
                   sectionsSpace: 0,
                   centerSpaceRadius: 80,
-                  sections: showingSections())),
+                  sections: showingSections(context))),
               Positioned(
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   DescriptionText(text: 'Total Days'),
                   TitleText(
                     text: '32',
@@ -299,17 +301,208 @@ class Statistics extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            DescriptionText(text: 'Success'),
-            DescriptionText(text: 'Skip'),
-            DescriptionText(text: 'Fall'),
+            Row(
+              children: [
+                Container(
+                  height: 15,
+                  width: 15,
+                  color: Color(0xFF22CF4B),
+                ),
+                SW.small(),
+                DescriptionText(text: 'Success -'),
+                SW.small(),
+                DescriptionText(
+                  text: "24",
+                  isWhite: true,
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Container(
+                  height: 15,
+                  width: 15,
+                  color: Color(0xFFFFD816),
+                ),
+                SW.small(),
+                DescriptionText(text: 'Skip -'),
+                SW.small(),
+                DescriptionText(
+                  text: "6",
+                  isWhite: true,
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Container(
+                  height: 15,
+                  width: 15,
+                  color: Color(0xFFDD2D2D),
+                ),
+                SW.small(),
+                DescriptionText(text: 'Fail -'),
+                SW.small(),
+                DescriptionText(
+                  text: "2",
+                  isWhite: true,
+                )
+              ],
+            ),
           ],
-        )
+        ),
+        SH.large(),
+        Divider(
+          thickness: 2,
+        ),
+        SH.large(),
+        Center(
+          child: Container(
+            decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(5)),
+                color: color.disabledColor.withOpacity(0.3)),
+            child: const Padding(
+              padding: EdgeInsets.all(5.0),
+              child: DescriptionText(text: "Streak challenge"),
+            ),
+          ),
+        ),
+        SH.large(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/badge.png",
+                  height: 40,
+                  width: 40,
+                  fit: BoxFit.fill,
+                ),
+                SH.medium(),
+                LabelText(
+                  text: "  1\nday",
+                  isColor: true,
+                  color: color.canvasColor,
+                )
+              ],
+            ),
+            // SW.medium(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/badge.png",
+                  height: 40,
+                  width: 40,
+                  fit: BoxFit.fill,
+                ),
+                SH.medium(),
+                LabelText(
+                  text: "  7\nday",
+                  isColor: true,
+                  color: color.canvasColor,
+                )
+              ],
+            ),
+            // SW.medium(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/badge3d.png",
+                  height: 40,
+                  width: 40,
+                  fit: BoxFit.fill,
+                ),
+                SH.medium(),
+                LabelText(
+                  text: " 15\nday",
+                  isColor: true,
+                  color: color.canvasColor,
+                )
+              ],
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/badge3d.png",
+                  height: 40,
+                  width: 40,
+                  fit: BoxFit.fill,
+                ),
+                SH.medium(),
+                LabelText(
+                  text: " 30\nday",
+                  isColor: true,
+                  color: color.canvasColor,
+                )
+              ],
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/badge3d.png",
+                  height: 40,
+                  width: 40,
+                  fit: BoxFit.fill,
+                ),
+                SH.medium(),
+                LabelText(
+                  text: " 60\nday",
+                  isColor: true,
+                  color: color.canvasColor,
+                )
+              ],
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/badge3d.png",
+                  height: 40,
+                  width: 40,
+                  fit: BoxFit.fill,
+                ),
+                SH.medium(),
+                LabelText(
+                  text: "100\nday",
+                  isColor: true,
+                  color: color.canvasColor,
+                )
+              ],
+            ),
+            Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    "assets/images/badge3d.png",
+                    height: 40,
+                    width: 40,
+                    fit: BoxFit.fill,
+                  ),
+                  SH.medium(),
+                  LabelText(
+                    text: "200\nday",
+                    isColor: true,
+                    color: color.canvasColor,
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ]),
     );
   }
 }
 
-List<PieChartSectionData> showingSections() {
+List<PieChartSectionData> showingSections(BuildContext context) {
+  ThemeData color = Theme.of(context);
   return List.generate(4, (index) {
     // final isTouched = index == touchedIndex;
     // final double opacity = isTouched ? 1 : 0.6;
@@ -318,54 +511,54 @@ List<PieChartSectionData> showingSections() {
     switch (index) {
       case 0:
         return PieChartSectionData(
-          color: ThemeConfig.backgroundColor,
+          color: Color(0xFF22CF4B),
 
-          // value: 1,
+          value: 6,
           // title: ctrl.taskCount.value.data!.pending!.toString(),
           radius: 20,
-          titleStyle: TextStyle(
+          titleStyle: const TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.bold,
-            color: ThemeConfig.primaryColor,
+            color: Color(0xFF22CF4B),
           ),
           titlePositionPercentageOffset: 0.5,
         );
       case 1:
         return PieChartSectionData(
-          color: ThemeConfig.secondaryColor,
-          // value: 2,
+          color: Color(0xFFDD2D2D),
+          value: 1,
           // title: ctrl.taskCount.value.data!.verify!.toString(),
           radius: 20,
-          titleStyle: TextStyle(
+          titleStyle: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
-              color: ThemeConfig.whiteColor),
+              color: Color(0xFFDD2D2D)),
           titlePositionPercentageOffset: 0.5,
         );
       case 2:
         return PieChartSectionData(
-          color: ThemeConfig.primaryColor,
-          // value: 3,
+          color: Color(0xFFFFD816),
+          value: 3,
           // title: ctrl.taskCount.value.data!.inProgress!.toString(),
           radius: 20,
-          titleStyle: TextStyle(
+          titleStyle: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
-              color: ThemeConfig.whiteColor),
+              color: Color(0xFFFFD816)),
           titlePositionPercentageOffset: 0.5,
         );
-      case 3:
-        return PieChartSectionData(
-          color: ThemeConfig.mainTextColor,
-          // value: 4,
-          // title: ctrl.taskCount.value.data!.completed!.toString(),
-          radius: 20,
-          titleStyle: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
-              color: ThemeConfig.whiteColor),
-          titlePositionPercentageOffset: 0.5,
-        );
+      // case 3:
+      //   return PieChartSectionData(
+      //     color: ThemeConfig.mainTextColor,
+      //     // value: 4,
+      //     // title: ctrl.taskCount.value.data!.completed!.toString(),
+      //     radius: 20,
+      //     titleStyle: const TextStyle(
+      //         fontSize: 12,
+      //         fontWeight: FontWeight.bold,
+      //         color: ThemeConfig.whiteColor),
+      //     titlePositionPercentageOffset: 0.5,
+      //   );
 
       default:
         return PieChartSectionData(
@@ -373,7 +566,7 @@ List<PieChartSectionData> showingSections() {
           value: 0,
           title: "yellow pie",
           radius: 20,
-          titleStyle: TextStyle(
+          titleStyle: const TextStyle(
               fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
           titlePositionPercentageOffset: 0.5,
         );

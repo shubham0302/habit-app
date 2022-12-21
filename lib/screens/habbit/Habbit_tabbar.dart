@@ -282,7 +282,7 @@ class _HabbitTabbarState extends State<HabbitTabbar>
               ],
             ),
             // index2
-            Statistics(),
+            const Statistics(),
             GlobalPadding(
                 child: Column(
               children: const [],
