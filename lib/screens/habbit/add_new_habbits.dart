@@ -6,6 +6,7 @@ import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
+import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 class AddHabbitsScreen extends StatelessWidget {
   const AddHabbitsScreen({super.key});
@@ -23,17 +24,16 @@ class AddHabbitsScreen extends StatelessWidget {
             Row(
               children: [
                 GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Icon(
-                    Icons.arrow_back_ios_new_sharp,
-                    color: color.primaryColor,
-                    size: 20,
-                  ),
-                ),
+                    behavior: HitTestBehavior.translucent,
+                    onTap: (() {
+                      Get.back();
+                    }),
+                    child: Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      color: color.primaryColor,
+                    )),
                 SW.medium(),
-                const HeadingText(text: "Add New Habit"),
+                const MainLabelText(text: 'Add New Habit'),
               ],
             ),
             SH.large(),
@@ -239,17 +239,19 @@ class AddHabbitsScreen extends StatelessWidget {
             SH.large(),
             SH.large(),
             SH.large(),
-            Container(
-              height: 50,
-              width: 180,
-              decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  border: Border.all(width: 2, color: color.primaryColor),
-                  color: color.backgroundColor),
-              child: const Center(
-                child: HeadingText(
-                  text: "Add Habit",
-                  isColor: true,
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    border: Border.all(width: 2, color: color.primaryColor),
+                    color: color.backgroundColor),
+                child: const Center(
+                  child: MainLabelText(
+                    text: "Add Habit",
+                    isColor: true,
+                  ),
                 ),
               ),
             )
