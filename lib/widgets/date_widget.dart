@@ -6,6 +6,8 @@ import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import '../controllers/home_page_controller.dart';
 
 class DateList extends StatelessWidget {
+  // var datenow = DateTime.now().day;
+  // var daynow = ;
   final HomePageController controller =
       Get.put(HomePageController(), permanent: false);
   DateList({Key? key}) : super(key: key);
@@ -40,7 +42,8 @@ class DateList extends StatelessWidget {
                   children: [
                     SH.small(),
                     LabelText(
-                      text: 'Thu',
+                      text:
+                          '${DateTime.now().add(Duration(days: index)).weekday}',
                       isColor: true,
                       color: controller.SelectedDateIndex.value == index
                           ? color.backgroundColor
@@ -55,7 +58,8 @@ class DateList extends StatelessWidget {
                           color: color.backgroundColor,
                           borderRadius: BorderRadius.circular(15)),
                       child: LabelText(
-                        text: '24',
+                        text:
+                            '${DateTime.now().add(Duration(days: index)).day}',
                         isColor: true,
                         color: color.primaryColor,
                         isBold: true,

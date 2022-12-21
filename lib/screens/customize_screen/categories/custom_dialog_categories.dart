@@ -46,8 +46,8 @@ void CategoriesCustomDialogBox(BuildContext context) {
                           child: InkWell(
                             borderRadius: BorderRadius.circular(50),
                             onTap: () {
-                              themeController.changeThemeColor('blue');
-                              print(Theme.of(context).brightness);
+                              // themeController.changeThemeColor('blue');
+                              // print(Theme.of(context).brightness);
                               // Get.toNamed('/intro');
                             },
                             child: Container(
@@ -89,8 +89,8 @@ void CategoriesCustomDialogBox(BuildContext context) {
                           child: InkWell(
                             borderRadius: BorderRadius.circular(50),
                             onTap: () {
-                              themeController.changeThemeColor('blue');
-                              print(Theme.of(context).brightness);
+                              // themeController.changeThemeColor('blue');
+                              // print(Theme.of(context).brightness);
                               // Get.toNamed('/intro');
                             },
                             child: Container(
@@ -132,8 +132,8 @@ void CategoriesCustomDialogBox(BuildContext context) {
                           child: InkWell(
                             borderRadius: BorderRadius.circular(50),
                             onTap: () {
-                              themeController.changeThemeColor('blue');
-                              print(Theme.of(context).brightness);
+                              // themeController.changeThemeColor('blue');
+                              // print(Theme.of(context).brightness);
                               // Get.toNamed('/intro');
                             },
                             child: Container(
@@ -175,8 +175,8 @@ void CategoriesCustomDialogBox(BuildContext context) {
                           child: InkWell(
                             borderRadius: BorderRadius.circular(50),
                             onTap: () {
-                              themeController.changeThemeColor('blue');
-                              print(Theme.of(context).brightness);
+                              // themeController.changeThemeColor('blue');
+                              // print(Theme.of(context).brightness);
                               // Get.toNamed('/intro');
                             },
                             child: Container(
@@ -218,8 +218,8 @@ void CategoriesCustomDialogBox(BuildContext context) {
                           child: InkWell(
                             borderRadius: BorderRadius.circular(50),
                             onTap: () {
-                              themeController.changeThemeColor('blue');
-                              print(Theme.of(context).brightness);
+                              // themeController.changeThemeColor('blue');
+                              // print(Theme.of(context).brightness);
                               // Get.toNamed('/intro');
                             },
                             child: Container(
