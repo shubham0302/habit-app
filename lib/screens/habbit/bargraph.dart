@@ -35,9 +35,9 @@ class BarGraphState extends State<BarGraph> {
   Widget build(BuildContext context) {
     var color = Theme.of(context);
     return AspectRatio(
-      aspectRatio: 1,
+      aspectRatio: 1.5,
       child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+        // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
         color: color.backgroundColor,
         child: Stack(
           children: <Widget>[
@@ -48,7 +48,7 @@ class BarGraphState extends State<BarGraph> {
                 children: <Widget>[
                   Expanded(
                     child: SizedBox(
-                      height: 200,
+                      height: 150,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 0),
                         child: BarChart(
@@ -102,11 +102,11 @@ class BarGraphState extends State<BarGraph> {
           case 0:
             return makeGroupData(0, 5, isTouched: i == touchedIndex);
           case 1:
-            return makeGroupData(1, 6.5, isTouched: i == touchedIndex);
+            return makeGroupData(1, 25, isTouched: i == touchedIndex);
           case 2:
-            return makeGroupData(2, 5, isTouched: i == touchedIndex);
+            return makeGroupData(2, 50, isTouched: i == touchedIndex);
           case 3:
-            return makeGroupData(3, 7.5, isTouched: i == touchedIndex);
+            return makeGroupData(3, 100, isTouched: i == touchedIndex);
 
           default:
             return throw Error();

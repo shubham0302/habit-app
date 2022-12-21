@@ -34,7 +34,7 @@ class BarChartSample1State extends State<BarGraph2> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 1,
+      aspectRatio: 1.5,
       child: Stack(
         children: <Widget>[
           Padding(
@@ -89,7 +89,7 @@ class BarChartSample1State extends State<BarGraph2> {
     double y, {
     bool isTouched = false,
     Color barColor = Colors.white,
-    double width = 10,
+    double width = 15,
     List<int> showTooltips = const [],
   }) {
     var color = Theme.of(context);
