@@ -54,12 +54,24 @@ class AddHabbitsScreen extends StatelessWidget {
                       const LabelText(text: "Habit Name")
                     ],
                   ),
-                  Container(
-                      height: 30,
-                      width: 110,
-                      child: const InputField(
-                        hintText: "Cook Boiled Egg",
-                      ))
+                  GestureDetector(
+                    onTap: () {
+                      // ToDoWeekCustomDialogBox(context);
+                    },
+                    child: Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 140,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.hintColor),
+                        child: const Center(
+                          child: LabelText(
+                            text: "Cook Boiled Egg",
+                          ),
+                        )),
+                  )
                 ],
               ),
             ),
@@ -79,12 +91,25 @@ class AddHabbitsScreen extends StatelessWidget {
                     const LabelText(text: "Description")
                   ],
                 ),
-                Container(
-                    height: 30,
-                    width: 110,
-                    child: const InputField(
-                      hintText: "Boild food is very...",
-                    ))
+                GestureDetector(
+                  onTap: () {
+                    // ToDoWeekCustomDialogBox(context);
+                  },
+                  child: Container(
+                      alignment: Alignment.centerLeft,
+                      height: 35,
+                      width: 140,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: color.hintColor),
+                      child: const Center(
+                        child: LabelText(
+                          text: "Boild food is very..",
+                          isDotDot: true,
+                        ),
+                      )),
+                )
               ],
             ),
             SH.medium(),
@@ -103,12 +128,24 @@ class AddHabbitsScreen extends StatelessWidget {
                     const LabelText(text: "Category")
                   ],
                 ),
-                Container(
-                    height: 30,
-                    width: 110,
-                    child: const InputField(
-                      hintText: "Cooking",
-                    ))
+                GestureDetector(
+                  onTap: () {
+                    // ToDoWeekCustomDialogBox(context);
+                  },
+                  child: Container(
+                      alignment: Alignment.centerLeft,
+                      height: 35,
+                      width: 140,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: color.hintColor),
+                      child: const Center(
+                        child: LabelText(
+                          text: "Cooking",
+                        ),
+                      )),
+                )
               ],
             ),
             SH.large(),
@@ -127,12 +164,24 @@ class AddHabbitsScreen extends StatelessWidget {
                     const LabelText(text: "Start Date")
                   ],
                 ),
-                Container(
-                    height: 30,
-                    width: 110,
-                    child: const InputField(
-                      hintText: "09/12/2022",
-                    ))
+                GestureDetector(
+                  onTap: () {
+                    // ToDoWeekCustomDialogBox(context);
+                  },
+                  child: Container(
+                      alignment: Alignment.centerLeft,
+                      height: 35,
+                      width: 140,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: color.hintColor),
+                      child: const Center(
+                        child: LabelText(
+                          text: "09/12/2022",
+                        ),
+                      )),
+                )
               ],
             ),
             SH.large(),
@@ -151,13 +200,24 @@ class AddHabbitsScreen extends StatelessWidget {
                     const LabelText(text: "End Date")
                   ],
                 ),
-                Container(
-                    height: 30,
-                    width: 110,
-                    child: InputField(
-                      hintText: "09/12/2022",
-                      fillColor: color.primaryColor,
-                    ))
+                GestureDetector(
+                  onTap: () {
+                    // ToDoWeekCustomDialogBox(context);
+                  },
+                  child: Container(
+                      alignment: Alignment.centerLeft,
+                      height: 35,
+                      width: 140,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: color.hintColor),
+                      child: const Center(
+                        child: LabelText(
+                          text: "09/12/2022",
+                        ),
+                      )),
+                )
               ],
             ),
             SH.medium(),
@@ -176,13 +236,24 @@ class AddHabbitsScreen extends StatelessWidget {
                     const LabelText(text: "Repetation")
                   ],
                 ),
-                Container(
-                    height: 30,
-                    width: 110,
-                    child: InputField(
-                      hintText: "Every day",
-                      fillColor: color.primaryColor,
-                    ))
+                GestureDetector(
+                  onTap: () {
+                    // ToDoWeekCustomDialogBox(context);
+                  },
+                  child: Container(
+                      alignment: Alignment.centerLeft,
+                      height: 35,
+                      width: 140,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: color.hintColor),
+                      child: const Center(
+                        child: LabelText(
+                          text: "every day",
+                        ),
+                      )),
+                )
               ],
             ),
             SH.medium(),
@@ -201,13 +272,24 @@ class AddHabbitsScreen extends StatelessWidget {
                     const LabelText(text: "Reminders")
                   ],
                 ),
-                Container(
-                    height: 30,
-                    width: 110,
-                    child: InputField(
-                      hintText: "1",
-                      fillColor: color.primaryColor,
-                    ))
+                GestureDetector(
+                  onTap: () {
+                    // ToDoWeekCustomDialogBox(context);
+                  },
+                  child: Container(
+                      alignment: Alignment.centerLeft,
+                      height: 35,
+                      width: 140,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: color.hintColor),
+                      child: const Center(
+                        child: LabelText(
+                          text: "1",
+                        ),
+                      )),
+                )
               ],
             ),
             SH.medium(),
@@ -226,13 +308,24 @@ class AddHabbitsScreen extends StatelessWidget {
                     const LabelText(text: "Priority")
                   ],
                 ),
-                Container(
-                    height: 30,
-                    width: 110,
-                    child: InputField(
-                      hintText: "1",
-                      fillColor: color.primaryColor,
-                    ))
+                GestureDetector(
+                  onTap: () {
+                    // ToDoWeekCustomDialogBox(context);
+                  },
+                  child: Container(
+                      alignment: Alignment.centerLeft,
+                      height: 35,
+                      width: 140,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: color.hintColor),
+                      child: const Center(
+                        child: LabelText(
+                          text: "1",
+                        ),
+                      )),
+                )
               ],
             ),
             SH.medium(),
@@ -242,7 +335,7 @@ class AddHabbitsScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 10),
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(10)),
                     border: Border.all(width: 2, color: color.primaryColor),

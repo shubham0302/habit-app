@@ -18,7 +18,7 @@ void CustomDialogBox(BuildContext context) {
           backgroundColor: color.backgroundColor,
           content: Container(
             width: 280,
-            height: 300,
+            height: 320,
             child: Column(mainAxisAlignment: MainAxisAlignment.start,
                 // crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
