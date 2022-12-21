@@ -2,22 +2,22 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/screens/customize_screen/timer/timer_main_screen.dart';
+// import 'package:habbit_app/screens/customize_screen/timer/timer_main_screen.dart';
+import 'package:habbit_app/screens/timer/timer_main_screen.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 import '../../../widgets/padding.dart';
 
-class TimerScreen extends StatelessWidget {
-  const TimerScreen({super.key});
+class DrawerTimer extends StatelessWidget {
+  const DrawerTimer({super.key});
 
   @override
   Widget build(BuildContext context) {
     // bool switchChange = true;
     ThemeData color = Theme.of(context);
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(top: 30),
+      body: SafeArea(
         child: Column(
           children: [
             GlobalPadding(
@@ -60,10 +60,7 @@ class TimerScreen extends StatelessWidget {
             // SH.large(),
 
             // TimerMainScreen()
-            SizedBox(
-                height: 690,
-                width: MediaQuery.of(context).size.width,
-                child: TimerMainScreen())
+            Expanded(child: TimerMainScreen())
           ],
         ),
       ),

@@ -3,9 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/timer_tab_controller.dart';
-import 'package:habbit_app/screens/customize_screen/timer/timer_main_screen.dart';
+import 'package:habbit_app/screens/timer/timer_main_screen.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
+import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 import 'package:numberpicker/numberpicker.dart';
 
@@ -31,6 +32,7 @@ class _SetTimerComponentState extends State<SetTimerComponent> {
     var color = Theme.of(context);
     return Obx(
       () => Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -149,6 +151,8 @@ class _SetTimerComponentState extends State<SetTimerComponent> {
             ],
           ),
           SH.large(),
+          SH.large(),
+          SH.large(),
           Center(
             child: GestureDetector(
               onTap: () {
@@ -163,7 +167,11 @@ class _SetTimerComponentState extends State<SetTimerComponent> {
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(30)),
                     color: color.primaryColor),
-                child: const Center(child: MainLabelText(text: "Start")),
+                child: const Center(
+                    child: LabelText(
+                  text: "START",
+                  isBold: true,
+                )),
               ),
             ),
           )

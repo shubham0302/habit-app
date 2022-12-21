@@ -50,8 +50,8 @@ Widget buildBottomNavigationMenu(
                   controller.changeTabIndex(1);
                 },
                     controller.tabIndex.value == 1
-                        ? Icons.stars_rounded
-                        : Icons.stars,
+                        ? Icons.task_alt_outlined
+                        : Icons.task_alt_outlined,
                     controller.tabIndex.value == 1,
                     'Tasks',
                     context),
@@ -62,8 +62,8 @@ Widget buildBottomNavigationMenu(
                   controller.changeTabIndex(2);
                 },
                     controller.tabIndex.value == 2
-                        ? Icons.task_alt_outlined
-                        : Icons.task_alt,
+                        ? Icons.category_outlined
+                        : Icons.category_outlined,
                     controller.tabIndex.value == 2,
                     'Categories',
                     context),
@@ -84,7 +84,10 @@ Widget buildBottomNavigationMenu(
               Expanded(
                 child: buildBottomNavItem(() {
                   controller.changeTabIndex(4);
-                }, controller.tabIndex.value == 4 ? Icons.timer : Icons.timer,
+                },
+                    controller.tabIndex.value == 4
+                        ? Icons.timer_outlined
+                        : Icons.timer_outlined,
                     controller.tabIndex.value == 4, 'Timer', context),
               ),
               SW.medium(),

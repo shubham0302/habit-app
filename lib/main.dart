@@ -4,16 +4,18 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/screens/customize_screen/backUp_screen.dart';
-import 'package:habbit_app/screens/customize_screen/categories/categories.dart';
-import 'package:habbit_app/screens/customize_screen/categories/categories_drawer_screen.dart';
+import 'package:habbit_app/screens/categories/categories.dart';
+import 'package:habbit_app/screens/categories/categories_drawer_screen.dart';
 import 'package:habbit_app/screens/customize_screen/getpremium_screen.dart';
+
 import 'package:habbit_app/screens/customize_screen/screen.dart';
-import 'package:habbit_app/screens/customize_screen/setting_screens/setting_screen.dart';
-import 'package:habbit_app/screens/customize_screen/setting_screens/licenses_screen.dart';
-import 'package:habbit_app/screens/customize_screen/setting_screens/lock_screen.dart';
-import 'package:habbit_app/screens/customize_screen/setting_screens/notification_alarm_screen.dart';
-import 'package:habbit_app/screens/customize_screen/setting_screens/todohabbit_screen.dart';
-import 'package:habbit_app/screens/customize_screen/timer/timer_screen.dart';
+import 'package:habbit_app/screens/setting_screens/setting_screen.dart';
+import 'package:habbit_app/screens/setting_screens/licenses_screen.dart';
+import 'package:habbit_app/screens/setting_screens/lock_screen.dart';
+import 'package:habbit_app/screens/setting_screens/notification_alarm_screen.dart';
+import 'package:habbit_app/screens/setting_screens/todohabbit_screen.dart';
+import 'package:habbit_app/screens/timer/drawer_timer.dart';
+import 'package:habbit_app/screens/timer/timer_screen.dart';
 import 'package:habbit_app/screens/habbit/habbit_detailScreen.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/add_new_habbits.dart';
 import 'package:habbit_app/screens/habbit/habbits_screen.dart';
@@ -80,7 +82,7 @@ class Routes {
         name: '/notiandalarm', page: () => const NotificationandAlarmScreen()),
     GetPage(name: "/lock", page: () => const LockScreen()),
     GetPage(name: "/lic", page: () => const LicScreen()),
-    GetPage(name: "/timer", page: () => const TimerScreen()),
+    GetPage(name: "/timer", page: () => const DrawerTimer()),
     GetPage(name: "/categories", page: () => const CategoriesScreen()),
     GetPage(
         name: "/categoriesdrawer", page: () => const CategoriesDrawerScreen()),

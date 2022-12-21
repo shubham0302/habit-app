@@ -66,12 +66,12 @@ class Drawerr extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.home,
+                      Icons.home_outlined,
                       color: color.primaryColor,
-                      size: 30,
+                      size: 25,
                     ),
                     SW.large(),
-                    MainLabelText(
+                    LabelText(
                       text: 'Home',
                       color: color.primaryColor,
                       isColor: true,
@@ -98,13 +98,13 @@ class Drawerr extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.timer,
-                      size: 30,
+                      Icons.timer_outlined,
+                      size: 25,
                       // color: color.disabledColor,
                       color: color.disabledColor,
                     ),
                     SW.large(),
-                    MainLabelText(
+                    LabelText(
                       text: 'Timer',
                       isColor: true,
                       color: color.disabledColor,
@@ -132,13 +132,13 @@ class Drawerr extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.category,
-                      size: 30,
+                      Icons.category_outlined,
+                      size: 25,
                       color: color.disabledColor,
                       // color: color.hoverColor,
                     ),
                     SW.large(),
-                    MainLabelText(
+                    LabelText(
                       text: 'Categories',
                       isColor: true,
                       color: color.disabledColor,
@@ -173,14 +173,14 @@ class Drawerr extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.dashboard_customize,
-                      size: 30,
+                      Icons.dashboard_customize_outlined,
+                      size: 25,
                       color: color.disabledColor,
 
                       // color: color.hoverColor,
                     ),
                     SW.large(),
-                    MainLabelText(
+                    LabelText(
                       text: 'Customize',
                       isColor: true,
                       color: color.disabledColor,
@@ -209,14 +209,14 @@ class Drawerr extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.settings,
-                      size: 30,
+                      Icons.settings_outlined,
+                      size: 25,
                       color: color.disabledColor,
 
                       // color: color.hoverColor,
                     ),
                     SW.large(),
-                    MainLabelText(
+                    LabelText(
                       text: 'Settings',
 
                       isColor: true,
@@ -245,14 +245,14 @@ class Drawerr extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.backup,
-                      size: 30,
+                      Icons.backup_outlined,
+                      size: 25,
                       color: color.disabledColor,
 
                       // color: color.hoverColor,
                     ),
                     SW.large(),
-                    MainLabelText(
+                    LabelText(
                       text: 'Backups',
                       isColor: true,
                       color: color.disabledColor,
@@ -286,14 +286,14 @@ class Drawerr extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.verified,
-                      size: 30,
+                      Icons.verified_outlined,
+                      size: 25,
                       color: color.disabledColor,
 
                       // color: color.hoverColor,
                     ),
                     SW.large(),
-                    MainLabelText(
+                    LabelText(
                       isColor: true,
                       color: color.disabledColor,
                       text: 'Get Premium',
@@ -319,14 +319,14 @@ class Drawerr extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.star,
-                      size: 30,
+                      Icons.star_outline,
+                      size: 25,
                       color: color.disabledColor,
 
                       // color: color.hoverColor,
                     ),
                     SW.large(),
-                    MainLabelText(
+                    LabelText(
                       isColor: true,
                       color: color.disabledColor,
                       text: 'Rate this app',
@@ -354,14 +354,14 @@ class Drawerr extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.contact_page_rounded,
-                      size: 30,
+                      Icons.contact_page_outlined,
+                      size: 25,
                       color: color.disabledColor,
 
                       // color: color.hoverColor,
                     ),
                     SW.large(),
-                    MainLabelText(
+                    LabelText(
                       isColor: true,
                       color: color.disabledColor,
                       text: 'Contact us',

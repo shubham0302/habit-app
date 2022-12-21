@@ -9,7 +9,9 @@ import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/controllers/timer_tab_controller.dart';
 import 'package:habbit_app/screens/customize_screen/components/custom_dialog_box.dart';
-import 'package:habbit_app/screens/customize_screen/timer/set_timer_component.dart';
+import 'package:habbit_app/screens/timer/set_timer_component.dart';
+import 'package:habbit_app/screens/timer/stopwatch.dart';
+import 'package:habbit_app/screens/timer/timer_screen.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
@@ -91,101 +93,39 @@ class TimerMainScreen extends StatefulWidget {
 
 class _TimerMainScreenState extends State<TimerMainScreen>
     with TickerProviderStateMixin {
-  late AnimationController animationController;
+  // late AnimationController animationController;
   TimerTabController tabController =
       Get.put(TimerTabController(), permanent: false);
 
   late TabController _controller;
 
-  bool isPlaying = false;
+  // bool isPlaying = false;
 
   // int get countText2 {
   //   int count = tabController.totalSeconds;
   //   return;
   // }
 
-  String get countText {
-    Duration count = animationController.duration! * animationController.value;
-    return animationController.isDismissed
-        ? '${animationController.duration!.inHours}:${(animationController.duration!.inMinutes % 60).toString().padLeft(2, '0')}:${(animationController.duration!.inSeconds % 60).toString().padLeft(2, '0')}'
-        : '${count.inHours}:${(count.inMinutes % 60).toString().padLeft(2, '0')}:${(count.inSeconds % 60).toString().padLeft(2, '0')}';
-  }
+  // String get countText {
+  //   Duration count = animationController.duration! * animationController.value;
+  //   return animationController.isDismissed
+  //       ? '${animationController.duration!.inHours}:${(animationController.duration!.inMinutes % 60).toString().padLeft(2, '0')}:${(animationController.duration!.inSeconds % 60).toString().padLeft(2, '0')}'
+  //       : '${count.inHours}:${(count.inMinutes % 60).toString().padLeft(2, '0')}:${(count.inSeconds % 60).toString().padLeft(2, '0')}';
+  // }
 
-  int second = 0, minutes = 0, hours = 0;
-  String digitSecound = "00", digitMinutes = "00", digitHours = "00";
-  Timer? timer;
-  bool started = false;
-  List laps = [];
+  // @override
+  // void dispose() {
+  //   animationController.dispose();
+  //   super.dispose();
+  // }
 
-  void stop() {
-    timer!.cancel();
-    setState(() {
-      started = false;
-    });
-  }
+  // double progress = 1.0;
 
-  void reset() {
-    timer!.cancel();
-    setState(() {
-      second = 0;
-      minutes = 0;
-      hours = 0;
-
-      digitSecound = "00";
-      digitMinutes = "00";
-      digitHours = "00";
-
-      started = false;
-    });
-  }
-
-  void addLaps() {
-    String lap = "$digitHours:$digitMinutes:$digitSecound";
-    setState(() {
-      laps.add(lap);
-    });
-  }
-
-  void start() {
-    started = true;
-    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      int localSecound = second + 1;
-      int localMinute = minutes;
-      int localHour = hours;
-
-      if (localSecound > 59) {
-        if (localMinute > 59) {
-          localHour++;
-          localMinute = 0;
-        } else {
-          localMinute++;
-          localSecound = 0;
-        }
-      }
-      setState(() {
-        second = localSecound;
-        minutes = localMinute;
-        hours = localHour;
-        digitSecound = (second >= 10) ? "$second" : "0$second";
-        digitMinutes = (minutes >= 10) ? "$minutes" : "0$minutes";
-        digitHours = (hours >= 10) ? "$hours" : "0$hours";
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    animationController.dispose();
-    super.dispose();
-  }
-
-  double progress = 1.0;
-
-  void notifiy() {
-    if (countText == "0:00:00") {
-      FlutterRingtonePlayer.playNotification();
-    }
-  }
+  // void notifiy() {
+  //   if (countText == "0:00:00") {
+  //     FlutterRingtonePlayer.playNotification();
+  //   }
+  // }
 
   @override
   void initState() {
@@ -200,21 +140,21 @@ class _TimerMainScreenState extends State<TimerMainScreen>
       // print(tabController.tabIndex.value);
     });
     super.initState();
-    animationController = AnimationController(
-        vsync: this, duration: Duration(seconds: tabController.totalSeconds));
-    animationController.addListener(() {
-      notifiy();
-      if (animationController.isAnimating) {
-        setState(() {
-          progress = animationController.value;
-        });
-      } else {
-        setState(() {
-          progress = 1.0;
-          isPlaying = false;
-        });
-      }
-    });
+    // animationController = AnimationController(
+    //     vsync: this, duration: Duration(seconds: tabController.totalSeconds));
+    // animationController.addListener(() {
+    //   // notifiy();
+    //   // if (animationController.isAnimating) {
+    //   //   setState(() {
+    //   //     progress = animationController.value;
+    //   //   });
+    //   // } else {
+    //   //   setState(() {
+    //   //     progress = 1.0;
+    //   //     isPlaying = false;
+    //   //   });
+    //   // }
+    // });
   }
 
   // final HomePageController controller =
@@ -322,239 +262,146 @@ class _TimerMainScreenState extends State<TimerMainScreen>
                   child: TabBarView(
                 controller: _controller,
                 children: [
-                  Column(children: [
-                    Column(
-                      children: [
-                        SH.medium(),
-                        HeadingText(
-                          // ignore: unnecessary_brace_in_string_interps
-                          text: "${digitHours}:${digitMinutes}:${digitSecound}",
-                          isColor: T,
-                        ),
-                        SH.medium(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: const [
-                            HeadingText(text: "Laps           "),
-                            HeadingText(text: "Time"),
-                          ],
-                        ),
-                        SH.large(),
-                        Container(
-                          // color: Colors.green,
-                          height: MediaQuery.of(context).size.height / 2.6,
-                          width: MediaQuery.of(context).size.width,
-                          child: ListView.builder(
-                            itemCount: laps.length,
-                            itemBuilder: (context, index) {
-                              return Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  MainLabelText(text: "${index + 1}"),
-                                  SW.medium(),
-                                  MainLabelText(text: "${laps[index]}")
-                                ],
-                              );
-                            },
-                          ),
-                        ),
-                        SH.large(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                !started ? start() : stop();
-                              },
-                              child: Container(
-                                height: 35,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(20)),
-                                    color: color.primaryColor),
-                                child: Center(
-                                    child: HeadingText(
-                                  text: !started ? "Start" : "Pause",
-                                  isWhite: false,
-                                  // isWhite: true,
-                                )),
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                addLaps();
-                              },
-                              child: Icon(
-                                Icons.flag,
-                                size: 40,
-                                color: color.primaryColor,
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                reset();
-                                laps.length = 0;
-                              },
-                              child: Container(
-                                height: 35,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(20)),
-                                    color:
-                                        color.disabledColor.withOpacity(0.2)),
-                                child: const Center(
-                                    child: HeadingText(text: "Reset")),
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    )
-                  ]),
+                  StopWatch(),
                   // index 1
-
-                  Obx(
-                    () => tabController.isFirst.value
-                        ? SetTimerComponent(
-                            changeAnimation: () {
-                              animationController.duration =
-                                  Duration(seconds: tabController.totalSeconds);
-                              tabController.changeFirst();
-                            },
-                          )
-                        : Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SH.large(),
-                              SH.large(),
-
-                              // start timer screen
-                              Container(
-                                height: 350,
-                                width: MediaQuery.of(context).size.width,
-                                // color: color.cardColor,
-                                child: Column(children: [
-                                  Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      SizedBox(
-                                          width: 300,
-                                          height: 300,
-                                          child: CircularProgressIndicator(
-                                            color: color.primaryColor,
-                                            backgroundColor: color.disabledColor
-                                                .withOpacity(0.6),
-                                            value: progress,
-                                            strokeWidth: 10,
-                                          )),
-                                      GestureDetector(
-                                        onTap: () {
-                                          if (animationController.isDismissed) {
-                                            showModalBottomSheet(
-                                                context: context,
-                                                builder: (context) => Container(
-                                                      height: 300,
-                                                      child:
-                                                          CupertinoTimerPicker(
-                                                        initialTimerDuration:
-                                                            animationController
-                                                                .duration!,
-                                                        backgroundColor: color
-                                                            .backgroundColor,
-                                                        onTimerDurationChanged:
-                                                            (time) {
-                                                          setState(() {
-                                                            animationController
-                                                                    .duration =
-                                                                time;
-                                                          });
-                                                        },
-                                                      ),
-                                                    ));
-                                          }
-                                        },
-                                        child: AnimatedBuilder(
-                                          animation: animationController,
-                                          builder: (context, child) => Text(
-                                            countText,
-                                            style: TextStyle(
-                                                fontSize: 60,
-                                                fontWeight: FontWeight.bold,
-                                                color: color.primaryColor),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ]),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      print(tabController.totalSeconds);
-                                      if (animationController.isAnimating) {
-                                        animationController.stop();
-                                        setState(() {
-                                          isPlaying = false;
-                                        });
-                                      } else {
-                                        animationController.reverse(
-                                            from: animationController.value == 0
-                                                ? 1.0
-                                                : animationController.value);
-                                        setState(() {
-                                          isPlaying = true;
-                                        });
-                                      }
-                                    },
-                                    child: Container(
-                                      height: 35,
-                                      width: 90,
-                                      decoration: BoxDecoration(
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(30)),
-                                          color: color.primaryColor),
-                                      child: Center(
-                                          child: MainLabelText(
-                                              text: isPlaying == true
-                                                  ? "Pause"
-                                                  : "Resume")),
-                                    ),
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      animationController.reset();
-                                      tabController.currentvalueHour.value = 0;
-                                      tabController.currentvalueMin.value = 0;
-                                      tabController.currentvalueSec.value = 0;
-                                      setState(() {
-                                        isPlaying = false;
-                                      });
-                                      tabController.changeFirst2();
-                                    },
-                                    child: Container(
-                                      height: 35,
-                                      width: 90,
-                                      decoration: BoxDecoration(
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(30)),
-                                          color: color.disabledColor
-                                              .withOpacity(0.7)),
-                                      child: const Center(
-                                          child: MainLabelText(text: "delete")),
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                  ),
+                  TimerTab(),
+                  // Obx(
+                  //   () => tabController.isFirst.value
+                  //       ? SetTimerComponent(
+                  //           changeAnimation: () {
+                  //             animationController.duration =
+                  //                 Duration(seconds: tabController.totalSeconds);
+                  //             tabController.changeFirst();
+                  //           },
+                  //         )
+                  //       : Column(
+                  //           mainAxisAlignment: MainAxisAlignment.center,
+                  //           crossAxisAlignment: CrossAxisAlignment.start,
+                  //           children: [
+                  //             // start timer screen
+                  //             Container(
+                  //               height: 350,
+                  //               width: MediaQuery.of(context).size.width,
+                  //               // color: color.cardColor,
+                  //               child: Column(children: [
+                  //                 Stack(
+                  //                   alignment: Alignment.center,
+                  //                   children: [
+                  //                     SizedBox(
+                  //                         width: 300,
+                  //                         height: 300,
+                  //                         child: CircularProgressIndicator(
+                  //                           color: color.primaryColor,
+                  //                           backgroundColor: color.disabledColor
+                  //                               .withOpacity(0.6),
+                  //                           value: progress,
+                  //                           strokeWidth: 10,
+                  //                         )),
+                  //                     GestureDetector(
+                  //                       onTap: () {
+                  //                         if (animationController.isDismissed) {
+                  //                           showModalBottomSheet(
+                  //                               context: context,
+                  //                               builder: (context) => Container(
+                  //                                     height: 300,
+                  //                                     child:
+                  //                                         CupertinoTimerPicker(
+                  //                                       initialTimerDuration:
+                  //                                           animationController
+                  //                                               .duration!,
+                  //                                       backgroundColor: color
+                  //                                           .backgroundColor,
+                  //                                       onTimerDurationChanged:
+                  //                                           (time) {
+                  //                                         setState(() {
+                  //                                           animationController
+                  //                                                   .duration =
+                  //                                               time;
+                  //                                         });
+                  //                                       },
+                  //                                     ),
+                  //                                   ));
+                  //                         }
+                  //                       },
+                  //                       child: AnimatedBuilder(
+                  //                         animation: animationController,
+                  //                         builder: (context, child) => Text(
+                  //                           countText,
+                  //                           style: TextStyle(
+                  //                               fontSize: 60,
+                  //                               fontWeight: FontWeight.bold,
+                  //                               color: color.primaryColor),
+                  //                         ),
+                  //                       ),
+                  //                     ),
+                  //                   ],
+                  //                 ),
+                  //               ]),
+                  //             ),
+                  //             Row(
+                  //               mainAxisAlignment:
+                  //                   MainAxisAlignment.spaceEvenly,
+                  //               children: [
+                  //                 GestureDetector(
+                  //                   onTap: () {
+                  //                     print(tabController.totalSeconds);
+                  //                     if (animationController.isAnimating) {
+                  //                       animationController.stop();
+                  //                       setState(() {
+                  //                         isPlaying = false;
+                  //                       });
+                  //                     } else {
+                  //                       animationController.reverse(
+                  //                           from: animationController.value == 0
+                  //                               ? 1.0
+                  //                               : animationController.value);
+                  //                       setState(() {
+                  //                         isPlaying = true;
+                  //                       });
+                  //                     }
+                  //                   },
+                  //                   child: Container(
+                  //                     height: 35,
+                  //                     width: 90,
+                  //                     decoration: BoxDecoration(
+                  //                         borderRadius: const BorderRadius.all(
+                  //                             Radius.circular(30)),
+                  //                         color: color.primaryColor),
+                  //                     child: Center(
+                  //                         child: LabelText(
+                  //                             text: isPlaying == true
+                  //                                 ? "Pause"
+                  //                                 : "Resume")),
+                  //                   ),
+                  //                 ),
+                  //                 GestureDetector(
+                  //                   onTap: () {
+                  //                     animationController.reset();
+                  //                     tabController.currentvalueHour.value = 0;
+                  //                     tabController.currentvalueMin.value = 0;
+                  //                     tabController.currentvalueSec.value = 0;
+                  //                     setState(() {
+                  //                       isPlaying = false;
+                  //                     });
+                  //                     tabController.changeFirst2();
+                  //                   },
+                  //                   child: Container(
+                  //                     height: 35,
+                  //                     width: 90,
+                  //                     decoration: BoxDecoration(
+                  //                         borderRadius: const BorderRadius.all(
+                  //                             Radius.circular(30)),
+                  //                         color: color.disabledColor
+                  //                             .withOpacity(0.7)),
+                  //                     child: const Center(
+                  //                         child: MainLabelText(text: "delete")),
+                  //                   ),
+                  //                 )
+                  //               ],
+                  //             )
+                  //           ],
+                  //         ),
+                  // ),
 
                   // index 2
                   Column(
