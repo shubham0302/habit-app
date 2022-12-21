@@ -15,7 +15,7 @@ import 'package:habbit_app/screens/customize_screen/setting_screens/notification
 import 'package:habbit_app/screens/customize_screen/setting_screens/todohabbit_screen.dart';
 import 'package:habbit_app/screens/customize_screen/timer/timer_screen.dart';
 import 'package:habbit_app/screens/habbit/habbit_detailScreen.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/add_new_habbits.dart';
 import 'package:habbit_app/screens/habbit/habbits_screen.dart';
 import 'package:habbit_app/screens/intro_screen.dart';
 import 'package:habbit_app/screens/splash_screen.dart';

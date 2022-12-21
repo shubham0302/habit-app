@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages, unnecessary_import, implementation_imports, sized_box_for_whitespace
+// ignore_for_file: depend_on_referenced_packages, unnecessary_import, implementation_imports, sized_box_for_whitespace, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -306,12 +306,12 @@ class Statistics extends StatelessWidget {
                 Container(
                   height: 15,
                   width: 15,
-                  color: Color(0xFF22CF4B),
+                  color: const Color(0xFF22CF4B),
                 ),
                 SW.small(),
-                DescriptionText(text: 'Success -'),
+                const DescriptionText(text: 'Success -'),
                 SW.small(),
-                DescriptionText(
+                const DescriptionText(
                   text: "24",
                   isWhite: true,
                 )
@@ -322,12 +322,12 @@ class Statistics extends StatelessWidget {
                 Container(
                   height: 15,
                   width: 15,
-                  color: Color(0xFFFFD816),
+                  color: const Color(0xFFFFD816),
                 ),
                 SW.small(),
-                DescriptionText(text: 'Skip -'),
+                const DescriptionText(text: 'Skip -'),
                 SW.small(),
-                DescriptionText(
+                const DescriptionText(
                   text: "6",
                   isWhite: true,
                 )
@@ -338,12 +338,12 @@ class Statistics extends StatelessWidget {
                 Container(
                   height: 15,
                   width: 15,
-                  color: Color(0xFFDD2D2D),
+                  color: const Color(0xFFDD2D2D),
                 ),
                 SW.small(),
-                DescriptionText(text: 'Fail -'),
+                const DescriptionText(text: 'Fail -'),
                 SW.small(),
-                DescriptionText(
+                const DescriptionText(
                   text: "2",
                   isWhite: true,
                 )
@@ -352,7 +352,7 @@ class Statistics extends StatelessWidget {
           ],
         ),
         SH.large(),
-        Divider(
+        const Divider(
           thickness: 2,
         ),
         SH.large(),
@@ -502,7 +502,6 @@ class Statistics extends StatelessWidget {
 }
 
 List<PieChartSectionData> showingSections(BuildContext context) {
-  ThemeData color = Theme.of(context);
   return List.generate(4, (index) {
     // final isTouched = index == touchedIndex;
     // final double opacity = isTouched ? 1 : 0.6;
@@ -511,7 +510,7 @@ List<PieChartSectionData> showingSections(BuildContext context) {
     switch (index) {
       case 0:
         return PieChartSectionData(
-          color: Color(0xFF22CF4B),
+          color: const Color(0xFF22CF4B),
 
           value: 6,
           // title: ctrl.taskCount.value.data!.pending!.toString(),
@@ -525,7 +524,7 @@ List<PieChartSectionData> showingSections(BuildContext context) {
         );
       case 1:
         return PieChartSectionData(
-          color: Color(0xFFDD2D2D),
+          color: const Color(0xFFDD2D2D),
           value: 1,
           // title: ctrl.taskCount.value.data!.verify!.toString(),
           radius: 20,
@@ -537,7 +536,7 @@ List<PieChartSectionData> showingSections(BuildContext context) {
         );
       case 2:
         return PieChartSectionData(
-          color: Color(0xFFFFD816),
+          color: const Color(0xFFFFD816),
           value: 3,
           // title: ctrl.taskCount.value.data!.inProgress!.toString(),
           radius: 20,

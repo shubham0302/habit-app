@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/addhabbit_controller.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/category_custom_dialog.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/reminder_custom_dilogbox.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/repetation_custom_dilogbox.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_field/input_fields.dart';
-import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
@@ -13,6 +15,9 @@ class AddHabbitsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AddHabbitSelectController addHabbitsScreen =
+        Get.put(AddHabbitSelectController(), permanent: false);
+
     // bool switchChange = true;
     ThemeData color = Theme.of(context);
     return Scaffold(
@@ -56,6 +61,7 @@ class AddHabbitsScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
+                      // CategoryCustomDialogBox(context);
                       // ToDoWeekCustomDialogBox(context);
                     },
                     child: Container(
@@ -130,8 +136,11 @@ class AddHabbitsScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
+                    CategoryCustomDialogBox(context);
                     // ToDoWeekCustomDialogBox(context);
                   },
+                  // ToDoWeekCustomDialogBox(context);
+
                   child: Container(
                       alignment: Alignment.centerLeft,
                       height: 35,
@@ -140,9 +149,18 @@ class AddHabbitsScreen extends StatelessWidget {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10)),
                           color: color.hintColor),
-                      child: const Center(
-                        child: LabelText(
-                          text: "Cooking",
+                      child: Center(
+                        child: Obx(
+                          () => Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              addHabbitsScreen.categoryIcon.value,
+                              SW.small(),
+                              LabelText(
+                                text: addHabbitsScreen.updateCategory.value,
+                              ),
+                            ],
+                          ),
                         ),
                       )),
                 )
@@ -165,7 +183,14 @@ class AddHabbitsScreen extends StatelessWidget {
                   ],
                 ),
                 GestureDetector(
-                  onTap: () {
+                  onTap: () async {
+                    DateTime? newDate = await showDatePicker(
+                        context: context,
+                        initialDate: addHabbitsScreen.startDate.value,
+                        firstDate: DateTime(1997),
+                        lastDate: DateTime(2030));
+                    if (newDate == null) return;
+                    addHabbitsScreen.startDate.value = newDate;
                     // ToDoWeekCustomDialogBox(context);
                   },
                   child: Container(
@@ -176,9 +201,12 @@ class AddHabbitsScreen extends StatelessWidget {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10)),
                           color: color.hintColor),
-                      child: const Center(
-                        child: LabelText(
-                          text: "09/12/2022",
+                      child: Center(
+                        child: Obx(
+                          () => LabelText(
+                            text:
+                                "${addHabbitsScreen.startDate.value.day}/${addHabbitsScreen.startDate.value.month}/${addHabbitsScreen.startDate.value.year}",
+                          ),
                         ),
                       )),
                 )
@@ -201,7 +229,14 @@ class AddHabbitsScreen extends StatelessWidget {
                   ],
                 ),
                 GestureDetector(
-                  onTap: () {
+                  onTap: () async {
+                    DateTime? newDate = await showDatePicker(
+                        context: context,
+                        initialDate: addHabbitsScreen.endDate.value,
+                        firstDate: DateTime(1997),
+                        lastDate: DateTime(2030));
+                    if (newDate == null) return;
+                    addHabbitsScreen.endDate.value = newDate;
                     // ToDoWeekCustomDialogBox(context);
                   },
                   child: Container(
@@ -212,9 +247,12 @@ class AddHabbitsScreen extends StatelessWidget {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10)),
                           color: color.hintColor),
-                      child: const Center(
-                        child: LabelText(
-                          text: "09/12/2022",
+                      child: Center(
+                        child: Obx(
+                          () => LabelText(
+                            text:
+                                "${addHabbitsScreen.endDate.value.day}/${addHabbitsScreen.endDate.value.month}/${addHabbitsScreen.endDate.value.year}",
+                          ),
                         ),
                       )),
                 )
@@ -238,6 +276,7 @@ class AddHabbitsScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
+                    RepetationCustomDialogBox(context);
                     // ToDoWeekCustomDialogBox(context);
                   },
                   child: Container(
@@ -248,9 +287,15 @@ class AddHabbitsScreen extends StatelessWidget {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10)),
                           color: color.hintColor),
-                      child: const Center(
-                        child: LabelText(
-                          text: "every day",
+                      child: Center(
+                        child: Obx(
+                          () => Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: LabelText(
+                              text: addHabbitsScreen.updateRepetation.value,
+                              isDotDot: true,
+                            ),
+                          ),
                         ),
                       )),
                 )
@@ -274,6 +319,7 @@ class AddHabbitsScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
+                    ReminderCustomDialogBox(context);
                     // ToDoWeekCustomDialogBox(context);
                   },
                   child: Container(
@@ -284,9 +330,18 @@ class AddHabbitsScreen extends StatelessWidget {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10)),
                           color: color.hintColor),
-                      child: const Center(
-                        child: LabelText(
-                          text: "1",
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Obx(
+                              () => LabelText(
+                                text: addHabbitsScreen.updateReminder.value,
+                              ),
+                            ),
+                            SW.small(),
+                            Icon(Icons.flag_sharp)
+                          ],
                         ),
                       )),
                 )

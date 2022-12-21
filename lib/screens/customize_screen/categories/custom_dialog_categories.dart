@@ -1,15 +1,12 @@
 // ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 void CategoriesCustomDialogBox(BuildContext context) {
-  ThemeController themeController = Get.find<ThemeController>();
   ThemeData color = Theme.of(context);
   showDialog(
       context: context,
