@@ -1,7 +1,7 @@
+// ignore_for_file: depend_on_referenced_packages, sized_box_for_whitespace, avoid_print
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/timer_tab_controller.dart';
 import 'package:habbit_app/screens/timer/set_timer_component.dart';

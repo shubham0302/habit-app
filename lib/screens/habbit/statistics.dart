@@ -311,9 +311,8 @@ class Statistics extends StatelessWidget {
                 SW.small(),
                 const DescriptionText(text: 'Success -'),
                 SW.small(),
-                const DescriptionText(
+                DescriptionText(
                   text: "24",
-
                   isBold: true,
                   isColor: true,
                   color: color.cardColor,
@@ -331,9 +330,8 @@ class Statistics extends StatelessWidget {
                 SW.small(),
                 const DescriptionText(text: 'Skip -'),
                 SW.small(),
-                const DescriptionText(
+                DescriptionText(
                   text: "6",
-
                   isBold: true,
                   isColor: true,
                   color: color.cardColor,
@@ -351,7 +349,7 @@ class Statistics extends StatelessWidget {
                 SW.small(),
                 const DescriptionText(text: 'Fail -'),
                 SW.small(),
-                const DescriptionText(
+                DescriptionText(
                   text: "2",
                   isBold: true,
                   isColor: true,

@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/category_custom_dialog.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits/reminder_custom_dilogbox.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/name_custom_dailogbox.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/priority_custom_dilogbox.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/reminder_custom_dailbox.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/repetation_custom_dilogbox.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
@@ -24,44 +26,88 @@ class AddHabbitsScreen extends StatelessWidget {
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                GestureDetector(
-                    behavior: HitTestBehavior.translucent,
-                    onTap: (() {
-                      Get.back();
-                    }),
-                    child: Icon(
-                      Icons.arrow_back_ios_new_rounded,
-                      color: color.primaryColor,
-                    )),
-                SW.medium(),
-                const MainLabelText(text: 'Add New Habit'),
-              ],
-            ),
-            SH.large(),
-            SH.large(),
-            GestureDetector(
-              onTap: () {},
-              child: Row(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: (() {
+                        Get.back();
+                      }),
+                      child: Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        color: color.primaryColor,
+                      )),
+                  SW.medium(),
+                  const MainLabelText(text: 'Add New Habit'),
+                ],
+              ),
+              SH.large(),
+              SH.large(),
+              GestureDetector(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.edit,
+                          size: 30,
+                          color: color.primaryColor,
+                        ),
+                        SW.small(),
+                        const LabelText(text: "Habit Name")
+                      ],
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        NameCustomDialogBox(context);
+                        // CategoryCustomDialogBox(context);
+                        // ToDoWeekCustomDialogBox(context);
+                      },
+                      child: Container(
+                          alignment: Alignment.centerLeft,
+                          height: 35,
+                          width: 140,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              color: color.hintColor),
+                          child: Center(
+                            child: Obx(
+                              () => LabelText(
+                                text: addHabbitsScreen.updateName.value == ''
+                                    ? "name"
+                                    : addHabbitsScreen.updateName.value,
+                              ),
+                            ),
+                          )),
+                    )
+                  ],
+                ),
+              ),
+              SH.large(),
+              SH.medium(),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
                       Icon(
-                        Icons.edit,
+                        Icons.info,
                         size: 30,
                         color: color.primaryColor,
                       ),
-                      SW.small(),
-                      const LabelText(text: "Habit Name")
+                      SW.medium(),
+                      const LabelText(text: "Description")
                     ],
                   ),
                   GestureDetector(
                     onTap: () {
-                      // CategoryCustomDialogBox(context);
+                      NameCustomDialogBox(context);
                       // ToDoWeekCustomDialogBox(context);
                     },
                     child: Container(
@@ -72,338 +118,315 @@ class AddHabbitsScreen extends StatelessWidget {
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
                             color: color.hintColor),
-                        child: const Center(
-                          child: LabelText(
-                            text: "Cook Boiled Egg",
+                        child: Center(
+                          child: Obx(
+                            () => Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: LabelText(
+                                text: addHabbitsScreen
+                                            .updateDescription.value ==
+                                        ''
+                                    ? "Description"
+                                    : addHabbitsScreen.updateDescription.value,
+                                isDotDot: true,
+                              ),
+                            ),
                           ),
                         )),
                   )
                 ],
               ),
-            ),
-            SH.large(),
-            SH.medium(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.info,
-                      size: 30,
-                      color: color.primaryColor,
-                    ),
-                    SW.medium(),
-                    const LabelText(text: "Description")
-                  ],
-                ),
-                GestureDetector(
-                  onTap: () {
+              SH.medium(),
+              SH.large(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.category_outlined,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.medium(),
+                      const LabelText(text: "Category")
+                    ],
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      CategoryCustomDialogBox(context);
+                      // ToDoWeekCustomDialogBox(context);
+                    },
                     // ToDoWeekCustomDialogBox(context);
-                  },
-                  child: Container(
-                      alignment: Alignment.centerLeft,
-                      height: 35,
-                      width: 140,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          color: color.hintColor),
-                      child: const Center(
-                        child: LabelText(
-                          text: "Boild food is very..",
-                          isDotDot: true,
-                        ),
-                      )),
-                )
-              ],
-            ),
-            SH.medium(),
-            SH.large(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.category_outlined,
-                      size: 30,
-                      color: color.primaryColor,
-                    ),
-                    SW.medium(),
-                    const LabelText(text: "Category")
-                  ],
-                ),
-                GestureDetector(
-                  onTap: () {
-                    CategoryCustomDialogBox(context);
-                    // ToDoWeekCustomDialogBox(context);
-                  },
-                  // ToDoWeekCustomDialogBox(context);
 
-                  child: Container(
-                      alignment: Alignment.centerLeft,
-                      height: 35,
-                      width: 140,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          color: color.hintColor),
-                      child: Center(
-                        child: Obx(
-                          () => Row(
+                    child: Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 140,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.hintColor),
+                        child: Center(
+                          child: Obx(
+                            () => Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                addHabbitsScreen.categoryIcon.value,
+                                SW.small(),
+                                LabelText(
+                                  text: addHabbitsScreen.updateCategory.value,
+                                ),
+                              ],
+                            ),
+                          ),
+                        )),
+                  )
+                ],
+              ),
+              SH.large(),
+              SH.medium(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.date_range,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.medium(),
+                      const LabelText(text: "Start Date")
+                    ],
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      DateTime? newDate = await showDatePicker(
+                          context: context,
+                          initialDate: addHabbitsScreen.startDate.value,
+                          firstDate: DateTime(1997),
+                          lastDate: DateTime(2030));
+                      if (newDate == null) return;
+                      addHabbitsScreen.startDate.value = newDate;
+                      // ToDoWeekCustomDialogBox(context);
+                    },
+                    child: Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 140,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.hintColor),
+                        child: Center(
+                          child: Obx(
+                            () => LabelText(
+                              text:
+                                  "${addHabbitsScreen.startDate.value.day}/${addHabbitsScreen.startDate.value.month}/${addHabbitsScreen.startDate.value.year}",
+                            ),
+                          ),
+                        )),
+                  )
+                ],
+              ),
+              SH.large(),
+              SH.medium(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.calendar_today,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.medium(),
+                      const LabelText(text: "End Date")
+                    ],
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      DateTime? newDate = await showDatePicker(
+                          context: context,
+                          initialDate: addHabbitsScreen.endDate.value,
+                          firstDate: DateTime(1997),
+                          lastDate: DateTime(2030));
+                      if (newDate == null) return;
+                      addHabbitsScreen.endDate.value = newDate;
+                      // ToDoWeekCustomDialogBox(context);
+                    },
+                    child: Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 140,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.hintColor),
+                        child: Center(
+                          child: Obx(
+                            () => LabelText(
+                              text:
+                                  "${addHabbitsScreen.endDate.value.day}/${addHabbitsScreen.endDate.value.month}/${addHabbitsScreen.endDate.value.year}",
+                            ),
+                          ),
+                        )),
+                  )
+                ],
+              ),
+              SH.medium(),
+              SH.large(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.note_add,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.medium(),
+                      const LabelText(text: "Repetation")
+                    ],
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      RepetationCustomDialogBox(context);
+                      // ToDoWeekCustomDialogBox(context);
+                    },
+                    child: Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 140,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.hintColor),
+                        child: Center(
+                          child: Obx(
+                            () => Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: LabelText(
+                                text: addHabbitsScreen.updateRepetation.value,
+                                isDotDot: true,
+                              ),
+                            ),
+                          ),
+                        )),
+                  )
+                ],
+              ),
+              SH.medium(),
+              SH.large(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.calendar_today_sharp,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.medium(),
+                      const LabelText(text: "Reminders")
+                    ],
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      ReminderCustomDialogBox(context);
+                      // ToDoWeekCustomDialogBox(context);
+                    },
+                    child: Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 140,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.hintColor),
+                        child: Center(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              addHabbitsScreen.categoryIcon.value,
-                              SW.small(),
+                            children: const [
                               LabelText(
-                                text: addHabbitsScreen.updateCategory.value,
+                                text: "0",
                               ),
                             ],
                           ),
-                        ),
-                      )),
-                )
-              ],
-            ),
-            SH.large(),
-            SH.medium(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.date_range,
-                      size: 30,
-                      color: color.primaryColor,
-                    ),
-                    SW.medium(),
-                    const LabelText(text: "Start Date")
-                  ],
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    DateTime? newDate = await showDatePicker(
-                        context: context,
-                        initialDate: addHabbitsScreen.startDate.value,
-                        firstDate: DateTime(1997),
-                        lastDate: DateTime(2030));
-                    if (newDate == null) return;
-                    addHabbitsScreen.startDate.value = newDate;
-                    // ToDoWeekCustomDialogBox(context);
-                  },
-                  child: Container(
-                      alignment: Alignment.centerLeft,
-                      height: 35,
-                      width: 140,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          color: color.hintColor),
-                      child: Center(
-                        child: Obx(
-                          () => LabelText(
-                            text:
-                                "${addHabbitsScreen.startDate.value.day}/${addHabbitsScreen.startDate.value.month}/${addHabbitsScreen.startDate.value.year}",
-                          ),
-                        ),
-                      )),
-                )
-              ],
-            ),
-            SH.large(),
-            SH.medium(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.calendar_today,
-                      size: 30,
-                      color: color.primaryColor,
-                    ),
-                    SW.medium(),
-                    const LabelText(text: "End Date")
-                  ],
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    DateTime? newDate = await showDatePicker(
-                        context: context,
-                        initialDate: addHabbitsScreen.endDate.value,
-                        firstDate: DateTime(1997),
-                        lastDate: DateTime(2030));
-                    if (newDate == null) return;
-                    addHabbitsScreen.endDate.value = newDate;
-                    // ToDoWeekCustomDialogBox(context);
-                  },
-                  child: Container(
-                      alignment: Alignment.centerLeft,
-                      height: 35,
-                      width: 140,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          color: color.hintColor),
-                      child: Center(
-                        child: Obx(
-                          () => LabelText(
-                            text:
-                                "${addHabbitsScreen.endDate.value.day}/${addHabbitsScreen.endDate.value.month}/${addHabbitsScreen.endDate.value.year}",
-                          ),
-                        ),
-                      )),
-                )
-              ],
-            ),
-            SH.medium(),
-            SH.large(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.note_add,
-                      size: 30,
-                      color: color.primaryColor,
-                    ),
-                    SW.medium(),
-                    const LabelText(text: "Repetation")
-                  ],
-                ),
-                GestureDetector(
-                  onTap: () {
-                    RepetationCustomDialogBox(context);
-                    // ToDoWeekCustomDialogBox(context);
-                  },
-                  child: Container(
-                      alignment: Alignment.centerLeft,
-                      height: 35,
-                      width: 140,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          color: color.hintColor),
-                      child: Center(
-                        child: Obx(
-                          () => Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: LabelText(
-                              text: addHabbitsScreen.updateRepetation.value,
-                              isDotDot: true,
-                            ),
-                          ),
-                        ),
-                      )),
-                )
-              ],
-            ),
-            SH.medium(),
-            SH.large(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.calendar_today_sharp,
-                      size: 30,
-                      color: color.primaryColor,
-                    ),
-                    SW.medium(),
-                    const LabelText(text: "Reminders")
-                  ],
-                ),
-                GestureDetector(
-                  onTap: () {
-                    ReminderCustomDialogBox(context);
-                    // ToDoWeekCustomDialogBox(context);
-                  },
-                  child: Container(
-                      alignment: Alignment.centerLeft,
-                      height: 35,
-                      width: 140,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          color: color.hintColor),
-                      child: Center(
+                        )),
+                  )
+                ],
+              ),
+              SH.medium(),
+              SH.large(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.flag,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.medium(),
+                      const LabelText(text: "Priority")
+                    ],
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      PriorityCustomDialogBox(context);
+                      // ToDoWeekCustomDialogBox(context);
+                    },
+                    child: Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 140,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.hintColor),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Obx(
                               () => LabelText(
-                                text: addHabbitsScreen.updateReminder.value,
+                                text: addHabbitsScreen.updatePriority.value,
                               ),
                             ),
                             SW.small(),
-                            Icon(Icons.flag_sharp)
+                            const Icon(Icons.flag_sharp)
                           ],
-                        ),
-                      )),
-                )
-              ],
-            ),
-            SH.medium(),
-            SH.large(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.flag,
-                      size: 30,
-                      color: color.primaryColor,
+                        )),
+                  )
+                ],
+              ),
+              SH.medium(),
+              SH.large(),
+              SH.large(),
+              SH.large(),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                      border: Border.all(width: 2, color: color.primaryColor),
+                      color: color.backgroundColor),
+                  child: const Center(
+                    child: MainLabelText(
+                      text: "Add Habit",
+                      isColor: true,
                     ),
-                    SW.medium(),
-                    const LabelText(text: "Priority")
-                  ],
-                ),
-                GestureDetector(
-                  onTap: () {
-                    // ToDoWeekCustomDialogBox(context);
-                  },
-                  child: Container(
-                      alignment: Alignment.centerLeft,
-                      height: 35,
-                      width: 140,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          color: color.hintColor),
-                      child: const Center(
-                        child: LabelText(
-                          text: "1",
-                        ),
-                      )),
-                )
-              ],
-            ),
-            SH.medium(),
-            SH.large(),
-            SH.large(),
-            SH.large(),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    border: Border.all(width: 2, color: color.primaryColor),
-                    color: color.backgroundColor),
-                child: const Center(
-                  child: MainLabelText(
-                    text: "Add Habit",
-                    isColor: true,
                   ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       )),
     );

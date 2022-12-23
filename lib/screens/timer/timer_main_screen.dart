@@ -2,7 +2,6 @@
 
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
@@ -262,9 +261,9 @@ class _TimerMainScreenState extends State<TimerMainScreen>
                   child: TabBarView(
                 controller: _controller,
                 children: [
-                  StopWatch(),
+                  const StopWatch(),
                   // index 1
-                  TimerTab(),
+                  const TimerTab(),
                   // Obx(
                   //   () => tabController.isFirst.value
                   //       ? SetTimerComponent(

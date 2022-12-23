@@ -74,7 +74,7 @@ class InputField extends StatelessWidget {
               hintStyle: TextStyle(
                   color: isWhiteHintText == true
                       ? ThemeConfig.whiteColor
-                      : ThemeConfig.mainTextColor),
+                      : color.disabledColor),
               suffixIcon: ontapSuffix == null
                   ? null
                   : GestureDetector(
@@ -107,7 +107,7 @@ class InputField extends StatelessWidget {
               hintText: hintText,
               labelText: labelText,
               counterText: '',
-              hintStyle: TextStyle(color: color.canvasColor),
+              hintStyle: TextStyle(color: color.disabledColor),
               labelStyle: TextStyle(color: color.canvasColor, fontSize: 20),
               alignLabelWithHint: true,
               floatingLabelStyle: TextStyle(

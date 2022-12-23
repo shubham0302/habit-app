@@ -4,8 +4,6 @@ import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
-import '../widgets/text_widget/main_label_text.dart';
-
 class Drawerr extends StatelessWidget {
   const Drawerr({Key? key}) : super(key: key);
 

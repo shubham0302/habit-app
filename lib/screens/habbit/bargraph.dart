@@ -6,7 +6,6 @@ import 'dart:math';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:habbit_app/widgets/text_widget/des_text.dart';
-import 'package:habbit_app/widgets/text_widget/description_text.dart';
 
 class BarGraph extends StatefulWidget {
   const BarGraph({super.key});

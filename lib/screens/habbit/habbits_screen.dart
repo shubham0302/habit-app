@@ -3,10 +3,8 @@ import 'package:get/get.dart';
 import 'package:habbit_app/screens/habbit/datechip.dart';
 
 import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_widget/des_text.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
-import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 class HabbitsScreen extends StatelessWidget {
   const HabbitsScreen({super.key});

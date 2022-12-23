@@ -72,7 +72,6 @@ class _TaskScreenState extends State<TaskScreen>
                     ),
                   ),
                   child: TabBar(
-                    
                     // isScrollable: false,
                     isScrollable: false,
                     onTap: (index) {},
@@ -128,18 +127,16 @@ class _TaskScreenState extends State<TaskScreen>
               SH.large(),
               Expanded(
                   child: TabBarView(
-
-                physics: NeverScrollableScrollPhysics(),
-
+                physics: const NeverScrollableScrollPhysics(),
                 controller: _controller,
                 children: [
                   ListView.separated(
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       itemCount: 10,
                       separatorBuilder: (context, index) => Column(
                             children: [
                               SH.small(),
-                              Divider(),
+                              const Divider(),
                               SH.small(),
                             ],
                           ),
@@ -163,18 +160,18 @@ class _TaskScreenState extends State<TaskScreen>
                               ),
                             ),
                             SH.small(),
-                            Divider(),
+                            const Divider(),
                             SH.small(),
                             ListView.separated(
                               separatorBuilder: (context, index) => Column(
                                 children: [
                                   SH.small(),
-                                  Divider(),
+                                  const Divider(),
                                   SH.small(),
                                 ],
                               ),
                               shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               itemCount: 2,
                               itemBuilder: (context, index) {
                                 return Column(
@@ -393,7 +390,7 @@ class _TaskScreenState extends State<TaskScreen>
                         separatorBuilder: (context, index) => Column(
                               children: [
                                 SH.small(),
-                                Divider(),
+                                const Divider(),
                                 SH.small(),
                               ],
                             ),
@@ -628,7 +625,6 @@ class _TaskScreenState extends State<TaskScreen>
                   //     ),
                   //   ],
                   // ),
-              
                 ],
               ))
             ]),

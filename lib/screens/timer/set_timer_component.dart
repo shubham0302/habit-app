@@ -7,7 +7,6 @@ import 'package:habbit_app/screens/timer/timer_main_screen.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
-import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class SetTimerComponent extends StatefulWidget {
