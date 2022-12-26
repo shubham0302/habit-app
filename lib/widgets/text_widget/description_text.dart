@@ -21,7 +21,7 @@ class DescriptionText extends StatelessWidget {
       this.color,
       this.isDotDot,
       this.isColor,
-      this.isBold})
+      this.isBold,})
       : super(key: key);
 
   @override

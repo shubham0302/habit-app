@@ -74,8 +74,8 @@ Widget buildBottomNavigationMenu(
                   controller.changeTabIndex(3);
                 },
                     controller.tabIndex.value == 3
-                        ? Icons.category
-                        : Icons.category_outlined,
+                        ? Icons.workspace_premium
+                        : Icons.workspace_premium_outlined,
                     controller.tabIndex.value == 3,
                     'Habit',
                     context),
@@ -88,7 +88,9 @@ Widget buildBottomNavigationMenu(
                     controller.tabIndex.value == 4
                         ? Icons.timer_outlined
                         : Icons.timer_outlined,
-                    controller.tabIndex.value == 4, 'Timer', context),
+                    controller.tabIndex.value == 4,
+                    'Timer',
+                    context),
               ),
               SW.medium(),
             ],

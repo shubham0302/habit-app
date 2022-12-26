@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 class AddHabbitSelectController extends GetxController {
   TextEditingController nameCtrl = TextEditingController();
   TextEditingController descriptionCtrl = TextEditingController();
+  TextEditingController goal = TextEditingController();
+  TextEditingController unit = TextEditingController();
   Rx<DateTime> startDate = DateTime(2022, 12, 20).obs;
   Rx<TimeOfDay> reminderTime = const TimeOfDay(hour: 8, minute: 30).obs;
   Rx<DateTime> endDate = DateTime(2022, 12, 20).obs;
@@ -15,16 +17,19 @@ class AddHabbitSelectController extends GetxController {
   RxString updatePriority = "0".obs;
   RxString updateName = "".obs;
   RxString updateDescription = "".obs;
+  RxString updateGoal = "".obs;
+  RxString updateUnit = "".obs;
+  RxString selectEvaluate = "YES OR NO".obs;
   RxBool alwaysenabled = true.obs;
   RxList<String> customDays = <String>[].obs;
-  RxBool sun = true.obs;
-  RxBool mon = true.obs;
-  RxBool tus = true.obs;
-  RxBool wed = true.obs;
-  RxBool thu = true.obs;
-  RxBool fri = true.obs;
-  RxBool sat = true.obs;
+
   RxBool customSound = true.obs;
   RxBool customVibration = true.obs;
   RxBool customAlarm = true.obs;
+  var currentvalueSec = 0.obs;
+  var currentvalueMin = 0.obs;
+  var currentvalueHour = 0.obs;
+
+  RxString timerDropDownValue = "At least".obs;
+  RxString numericDropDownValue = "At least".obs;
 }

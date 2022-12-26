@@ -8,6 +8,7 @@ import 'package:habbit_app/screens/habbit/add_new_habbits/name_custom_dailogbox.
 import 'package:habbit_app/screens/habbit/add_new_habbits/priority_custom_dilogbox.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/reminder_custom_dailbox.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/repetation_custom_dilogbox.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/evaluate_select_customdailbox.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
@@ -135,6 +136,273 @@ class AddHabbitsScreen extends StatelessWidget {
                         )),
                   )
                 ],
+              ),
+              SH.large(),
+              SH.medium(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.info,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.medium(),
+                      const LabelText(text: "Evaluate")
+                    ],
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      EvaluateCustomDialogBox(context);
+                      // ToDoWeekCustomDialogBox(context);
+                    },
+                    child: Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 140,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.hintColor),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Obx(
+                              () => LabelText(
+                                  text: addHabbitsScreen.selectEvaluate.value),
+                            ),
+                          ),
+                        )),
+                  )
+                ],
+              ),
+              Obx(
+                () => addHabbitsScreen.selectEvaluate.value == "NUMERIC"
+                    ? Column(
+                        children: [
+                          SH.large(),
+                          SH.medium(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.golf_course_sharp,
+                                    size: 30,
+                                    color: color.primaryColor,
+                                  ),
+                                  SW.medium(),
+                                  const LabelText(text: "Value")
+                                ],
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  // EvaluateCustomDialogBox(context);
+                                  // ToDoWeekCustomDialogBox(context);
+                                },
+                                child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    height: 35,
+                                    width: 140,
+                                    decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(10)),
+                                        color: color.hintColor),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Obx(
+                                          () => LabelText(
+                                              text: addHabbitsScreen
+                                                  .numericDropDownValue
+                                                  .toString()),
+                                        ),
+                                      ),
+                                    )),
+                              )
+                            ],
+                          ),
+                          SH.large(),
+                          SH.medium(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.info,
+                                    size: 30,
+                                    color: color.primaryColor,
+                                  ),
+                                  SW.medium(),
+                                  const LabelText(text: "Goal")
+                                ],
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  // EvaluateCustomDialogBox(context);
+                                  // ToDoWeekCustomDialogBox(context);
+                                },
+                                child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    height: 35,
+                                    width: 140,
+                                    decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(10)),
+                                        color: color.hintColor),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Obx(
+                                          () => LabelText(
+                                              text: addHabbitsScreen
+                                                  .updateGoal.value),
+                                        ),
+                                      ),
+                                    )),
+                              )
+                            ],
+                          ),
+                          SH.large(),
+                          SH.medium(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.golf_course_sharp,
+                                    size: 30,
+                                    color: color.primaryColor,
+                                  ),
+                                  SW.medium(),
+                                  const LabelText(text: "Unit")
+                                ],
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  // EvaluateCustomDialogBox(context);
+                                  // ToDoWeekCustomDialogBox(context);
+                                },
+                                child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    height: 35,
+                                    width: 140,
+                                    decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(10)),
+                                        color: color.hintColor),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Obx(
+                                          () => LabelText(
+                                              text: addHabbitsScreen
+                                                  .updateUnit.value),
+                                        ),
+                                      ),
+                                    )),
+                              )
+                            ],
+                          ),
+                        ],
+                      )
+                    : const SizedBox(),
+              ),
+              Obx(
+                () => addHabbitsScreen.selectEvaluate.value == "TIMER"
+                    ? Column(
+                        children: [
+                          SH.large(),
+                          SH.medium(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.info,
+                                    size: 30,
+                                    color: color.primaryColor,
+                                  ),
+                                  SW.medium(),
+                                  const LabelText(text: "Value")
+                                ],
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  // EvaluateCustomDialogBox(context);
+                                  // ToDoWeekCustomDialogBox(context);
+                                },
+                                child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    height: 35,
+                                    width: 140,
+                                    decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(10)),
+                                        color: color.hintColor),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: LabelText(
+                                            text: addHabbitsScreen
+                                                .timerDropDownValue.value
+                                                .toString()),
+                                      ),
+                                    )),
+                              )
+                            ],
+                          ),
+                          SH.large(),
+                          SH.medium(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.timer,
+                                    size: 30,
+                                    color: color.primaryColor,
+                                  ),
+                                  SW.medium(),
+                                  const LabelText(text: "Time")
+                                ],
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  // EvaluateCustomDialogBox(context);
+                                  // ToDoWeekCustomDialogBox(context);
+                                },
+                                child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    height: 35,
+                                    width: 140,
+                                    decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(10)),
+                                        color: color.hintColor),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Obx(
+                                          () => LabelText(
+                                              text:
+                                                  "${addHabbitsScreen.currentvalueHour.value}:${addHabbitsScreen.currentvalueMin.value}:${addHabbitsScreen.currentvalueSec.value}"),
+                                        ),
+                                      ),
+                                    )),
+                              )
+                            ],
+                          ),
+                        ],
+                      )
+                    : const SizedBox(),
               ),
               SH.medium(),
               SH.large(),
