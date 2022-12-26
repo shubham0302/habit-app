@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/checklist_dailbox.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/numeric_custom_dialbox.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/timer_custom_dialog.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
@@ -128,19 +129,24 @@ void EvaluateCustomDialogBox(BuildContext context) {
                     SH.large(),
                     Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 8),
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10)),
-                            color: color.primaryColor.withOpacity(0.4)),
-                        child: Center(
-                          child: LabelText(
-                            text: "WITH A CHECKLIST",
-                            isBold: true,
-                            isColor: true,
-                            color: color.canvasColor.withOpacity(0.4),
-                            // isColor: true,
+                      child: GestureDetector(
+                        onTap: () {
+                          ChecklistCustomDialogBox(context);
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              color: color.primaryColor.withOpacity(0.4)),
+                          child: Center(
+                            child: LabelText(
+                              text: "WITH A CHECKLIST",
+                              isBold: true,
+                              isColor: true,
+                              color: color.canvasColor.withOpacity(0.4),
+                              // isColor: true,
+                            ),
                           ),
                         ),
                       ),
