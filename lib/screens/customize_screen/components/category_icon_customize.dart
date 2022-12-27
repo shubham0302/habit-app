@@ -30,6 +30,7 @@ class CategoryIconStyle extends StatelessWidget {
                   onTap: () {
                     isClassic.value = true;
                   },
+                  behavior: HitTestBehavior.translucent,
                   child: Column(
                     children: [
                       Row(
@@ -93,6 +94,7 @@ class CategoryIconStyle extends StatelessWidget {
                   onTap: () {
                     isClassic.value = false;
                   },
+                  behavior: HitTestBehavior.translucent,
                   child: Column(
                     children: [
                       Row(

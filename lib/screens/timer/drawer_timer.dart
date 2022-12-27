@@ -32,9 +32,13 @@ class DrawerTimer extends StatelessWidget {
                           onTap: (() {
                             Get.back();
                           }),
-                          child: Icon(
-                            Icons.arrow_back_ios_new_rounded,
-                            color: color.primaryColor,
+                          child: SizedBox(
+                            height: 30,
+                            width: 30,
+                            child: Icon(
+                              Icons.arrow_back_ios_new_rounded,
+                              color: color.primaryColor,
+                            ),
                           )),
                       SW.medium(),
                       const MainLabelText(text: 'Timer'),
