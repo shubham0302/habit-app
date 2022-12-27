@@ -50,9 +50,9 @@ class CategoriesScreen extends StatelessWidget {
               ),
             ],
           ),
-          const HeadingText(text: "Default Categories"),
+          const HeadingText(text: "Custom Categories"),
           SH.small(),
-          const DescriptionText(text: "Editable for premium users"),
+          const DescriptionText(text: "4 Available"),
           SH.large(),
           SH.large(),
           Row(
