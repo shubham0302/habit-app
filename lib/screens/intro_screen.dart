@@ -45,7 +45,11 @@ class IntroScreen extends StatelessWidget {
         //         end: Alignment.topLeft)),
         child: Stack(
           children: [
+
             PageView(
+              
+              // allowImplicitScrolling: true,
+
               onPageChanged: ((value) {
                 pageCntrl.selectedIndex.value = value;
               }),
@@ -334,7 +338,7 @@ class IntroScreen extends StatelessWidget {
                               Expanded(
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.toNamed('/home');
+                                    Get.offAllNamed('/home');
                                   },
                                   child: Container(
                                     alignment: Alignment.center,
@@ -472,7 +476,12 @@ class IntroScreen extends StatelessWidget {
                               Expanded(
                                 child: InkWell(
                                   onTap: () {
-                                    Get.toNamed('/home');
+                                    if (pageCntrl.selectedIndex.value < 4) {
+                                      pageCntrl.selectedIndex.value =
+                                          pageCntrl.selectedIndex.value + 1;
+                                    } else {
+                                      Get.offAllNamed('/home');
+                                    }
                                   },
                                   child: Container(
                                     height: 50,
