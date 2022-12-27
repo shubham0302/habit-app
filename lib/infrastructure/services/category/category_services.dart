@@ -17,6 +17,9 @@ class CategoryClass extends _$CategoryClass{
   Future<List<CategoryModelData>> getCategories() async{
     return await select(categoryModel).get();
   }
+  Stream<List<CategoryModelData>> streamCategories(){
+    return select(categoryModel).watch();
+  }
   Future<CategoryModelData> getCategory(int id) async{
     return await (select(categoryModel)..where((tbl) => tbl.id.equals(id))).getSingle();
   }
