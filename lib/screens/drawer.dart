@@ -338,9 +338,7 @@ class Drawerr extends StatelessWidget {
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(21),
               ),
-              onTap: () {
-                Get.toNamed('/statistics');
-              },
+              onTap: () {},
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.only(left: 21),

@@ -15,13 +15,13 @@ import 'package:habbit_app/screens/setting_screens/licenses_screen.dart';
 import 'package:habbit_app/screens/setting_screens/lock_screen.dart';
 import 'package:habbit_app/screens/setting_screens/notification_alarm_screen.dart';
 import 'package:habbit_app/screens/setting_screens/todohabbit_screen.dart';
+import 'package:habbit_app/screens/task_screen/add_task_screen.dart';
 import 'package:habbit_app/screens/timer/drawer_timer.dart';
 import 'package:habbit_app/screens/habbit/habbit_detailScreen.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/add_new_habbits.dart';
 import 'package:habbit_app/screens/habbit/habbits_screen.dart';
 import 'package:habbit_app/screens/intro_screen.dart';
 import 'package:habbit_app/screens/splash_screen.dart';
-import 'package:habbit_app/screens/statistics.dart';
 import 'package:habbit_app/theme/theme_data.dart';
 import 'screens/main_screen.dart';
 
@@ -88,10 +88,10 @@ class Routes {
         name: "/categoriesdrawer", page: () => const CategoriesDrawerScreen()),
     GetPage(name: "/habbit", page: () => const HabbitsScreen()),
     GetPage(name: "/addhabbit", page: () => const AddHabbitsScreen()),
-    GetPage(name: "/statistics", page: () => const StatisticsScreen()),
     GetPage(name: "/habbit-detail", page: () => const HabbitDetailScreen()),
     GetPage(
         name: "/recurringTask-detail",
         page: () => const AddRecurringTaskScreen()),
+    GetPage(name: "/addtask", page: () => const AddTaskScreen()),
   ];
 }
