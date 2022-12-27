@@ -26,5 +26,8 @@ class CategoryClass extends _$CategoryClass{
   Future<int> insertCategory(CategoryModelCompanion entity) async{
     return await into(categoryModel).insert(entity);
   }
+  Future<int> deleteCategory(int id) async{
+    return await (delete(categoryModel)..where((tbl) => tbl.id.equals(id))).go();
+  }
 
 }
