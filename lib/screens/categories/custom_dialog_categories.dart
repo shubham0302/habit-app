@@ -37,7 +37,12 @@ void CategoriesCustomDialogBox(BuildContext context) {
                     SH.large(),
                     const LabelText(text: "Category Name"),
                     SH.large(),
-                    const InputField(hintText: "Ex. Travel"),
+                    InputField(
+                      hintText: "Ex. Travel",
+                      onChange: (e) {
+                        categoryController.category.value = e;
+                      },
+                    ),
                     SH.large(),
                     const LabelText(text: "Category Color"),
                     SH.large(),
@@ -100,226 +105,8 @@ void CategoriesCustomDialogBox(BuildContext context) {
                         },
                       ),
                     ),
-
-                    // Row(
-                    //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    //     children: [
-                    // Center(
-                    //   child: InkWell(
-                    //     borderRadius: BorderRadius.circular(50),
-                    //     onTap: () {
-                    //       // themeController.changeThemeColor('blue');
-                    //       // print(Theme.of(context).brightness);
-                    //       // Get.toNamed('/intro');
-                    //     },
-                    //     child: Container(
-                    //       padding: const EdgeInsets.all(2),
-                    //       height: 44,
-                    //       width: 44,
-                    //       decoration: BoxDecoration(
-                    //           border: Border.all(
-                    //               width: 2, color: color.canvasColor
-                    //               // color: themeController.mode == 'blue'
-                    //               //     ? (Theme.of(context).brightness ==
-                    //               //             Brightness.light
-                    //               //         ? ColorSchemeData.themeData[
-                    //               //             'blue']!['primaryColor']
-                    //               //         : ColorSchemeData.darkThemeData[
-                    //               //             'blue']!['primaryColor'])!
-                    //               //     : Colors.transparent,
-                    //               ),
-                    //           borderRadius: BorderRadius.circular(22)),
-                    //       child: Container(
-                    //         height: 40,
-                    //         width: 40,
-                    //         decoration: BoxDecoration(
-                    //             borderRadius: BorderRadius.circular(25),
-                    //             color: color.hoverColor
-                    //             // color: Theme.of(context).brightness ==
-                    //             //         Brightness.light
-                    //             //     ? ColorSchemeData
-                    //             //         .themeData['blue']!['primaryColor']
-                    //             //     : ColorSchemeData.darkThemeData['blue']![
-                    //             //         'primaryColor'],
-                    //             ),
-                    //         // child: Icon(Icons.arrow_forward_ios_rounded),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-                    //       Center(
-                    //         child: InkWell(
-                    //           borderRadius: BorderRadius.circular(50),
-                    //           onTap: () {
-
-                    //           },
-                    //           child: Container(
-                    //             padding: const EdgeInsets.all(2),
-                    //             height: 44,
-                    //             width: 44,
-                    //             decoration: BoxDecoration(
-                    //                 border: Border.all(
-                    //                   width: 2,
-                    //                   // color: themeController.mode == 'blue'
-                    //                   //     ? (Theme.of(context).brightness ==
-                    //                   //             Brightness.light
-                    //                   //         ? ColorSchemeData.themeData[
-                    //                   //             'blue']!['primaryColor']
-                    //                   //         : ColorSchemeData.darkThemeData[
-                    //                   //             'blue']!['primaryColor'])!
-                    //                   //     : Colors.transparent,
-                    //                 ),
-                    //                 borderRadius: BorderRadius.circular(22)),
-                    //             child: Container(
-                    //               height: 40,
-                    //               width: 40,
-                    //               decoration: BoxDecoration(
-                    //                   borderRadius: BorderRadius.circular(25),
-                    //                   color: color.focusColor
-                    //                   // color: Theme.of(context).brightness ==
-                    //                   //         Brightness.light
-                    //                   //     ? ColorSchemeData
-                    //                   //         .themeData['blue']!['primaryColor']
-                    //                   //     : ColorSchemeData.darkThemeData['blue']![
-                    //                   //         'primaryColor'],
-                    //                   ),
-                    //               // child: Icon(Icons.arrow_forward_ios_rounded),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //       ),
-                    //       Center(
-                    //         child: InkWell(
-                    //           borderRadius: BorderRadius.circular(50),
-                    //           onTap: () {
-                    //             // themeController.changeThemeColor('blue');
-                    //             // print(Theme.of(context).brightness);
-                    //             // Get.toNamed('/intro');
-                    //           },
-                    //           child: Container(
-                    //             padding: const EdgeInsets.all(2),
-                    //             height: 44,
-                    //             width: 44,
-                    //             decoration: BoxDecoration(
-                    //                 border: Border.all(
-                    //                   width: 2,
-                    //                   // color: themeController.mode == 'blue'
-                    //                   //     ? (Theme.of(context).brightness ==
-                    //                   //             Brightness.light
-                    //                   //         ? ColorSchemeData.themeData[
-                    //                   //             'blue']!['primaryColor']
-                    //                   //         : ColorSchemeData.darkThemeData[
-                    //                   //             'blue']!['primaryColor'])!
-                    //                   //     : Colors.transparent,
-                    //                 ),
-                    //                 borderRadius: BorderRadius.circular(22)),
-                    //             child: Container(
-                    //               height: 40,
-                    //               width: 40,
-                    //               decoration: BoxDecoration(
-                    //                   borderRadius: BorderRadius.circular(25),
-                    //                   color: color.highlightColor
-                    //                   // color: Theme.of(context).brightness ==
-                    //                   //         Brightness.light
-                    //                   //     ? ColorSchemeData
-                    //                   //         .themeData['blue']!['primaryColor']
-                    //                   //     : ColorSchemeData.darkThemeData['blue']![
-                    //                   //         'primaryColor'],
-                    //                   ),
-                    //               // child: Icon(Icons.arrow_forward_ios_rounded),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //       ),
-                    //       Center(
-                    //         child: InkWell(
-                    //           borderRadius: BorderRadius.circular(50),
-                    //           onTap: () {
-                    //             // themeController.changeThemeColor('blue');
-                    //             // print(Theme.of(context).brightness);
-                    //             // Get.toNamed('/intro');
-                    //           },
-                    //           child: Container(
-                    //             padding: const EdgeInsets.all(2),
-                    //             height: 44,
-                    //             width: 44,
-                    //             decoration: BoxDecoration(
-                    //                 border: Border.all(
-                    //                   width: 2,
-                    //                   // color: themeController.mode == 'blue'
-                    //                   //     ? (Theme.of(context).brightness ==
-                    //                   //             Brightness.light
-                    //                   //         ? ColorSchemeData.themeData[
-                    //                   //             'blue']!['primaryColor']
-                    //                   //         : ColorSchemeData.darkThemeData[
-                    //                   //             'blue']!['primaryColor'])!
-                    //                   //     : Colors.transparent,
-                    //                 ),
-                    //                 borderRadius: BorderRadius.circular(22)),
-                    //             child: Container(
-                    //               height: 40,
-                    //               width: 40,
-                    //               decoration: BoxDecoration(
-                    //                   borderRadius: BorderRadius.circular(25),
-                    //                   color: color.disabledColor
-                    //                   // color: Theme.of(context).brightness ==
-                    //                   //         Brightness.light
-                    //                   //     ? ColorSchemeData
-                    //                   //         .themeData['blue']!['primaryColor']
-                    //                   //     : ColorSchemeData.darkThemeData['blue']![
-                    //                   //         'primaryColor'],
-                    //                   ),
-                    //               // child: Icon(Icons.arrow_forward_ios_rounded),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //       ),
-                    //       Center(
-                    //         child: InkWell(
-                    //           borderRadius: BorderRadius.circular(50),
-                    //           onTap: () {
-                    //             // themeController.changeThemeColor('blue');
-                    //             // print(Theme.of(context).brightness);
-                    //             // Get.toNamed('/intro');
-                    //           },
-                    //           child: Container(
-                    //             padding: const EdgeInsets.all(2),
-                    //             height: 44,
-                    //             width: 44,
-                    //             decoration: BoxDecoration(
-                    //                 border: Border.all(
-                    //                     // width: 2, color: Colors.orange
-                    //                     // color: themeController.mode == 'blue'
-                    //                     //     ? (Theme.of(context).brightness ==
-                    //                     //             Brightness.light
-                    //                     //         ? ColorSchemeData.themeData[
-                    //                     //             'blue']!['primaryColor']
-                    //                     //         : ColorSchemeData.darkThemeData[
-                    //                     //             'blue']!['primaryColor'])!
-                    //                     //     : Colors.transparent,
-                    //                     ),
-                    //                 borderRadius: BorderRadius.circular(22)),
-                    //             child: Container(
-                    //               height: 40,
-                    //               width: 40,
-                    //               decoration: BoxDecoration(
-                    //                   borderRadius: BorderRadius.circular(25),
-                    //                   color: Colors.orange
-                    //                   // color: Theme.of(context).brightness ==
-                    //                   //         Brightness.light
-                    //                   //     ? ColorSchemeData
-                    //                   //         .themeData['blue']!['primaryColor']
-                    //                   //     : ColorSchemeData.darkThemeData['blue']![
-                    //                   //         'primaryColor'],
-                    //                   ),
-                    //               // child: Icon(Icons.arrow_forward_ios_rounded),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ]),
                     SH.large(),
-                    const LabelText(text: "Category Iocn"),
+                    const LabelText(text: "Category Icon"),
                     SH.large(),
                     Container(
                       height: 150,
@@ -328,120 +115,64 @@ void CategoriesCustomDialogBox(BuildContext context) {
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisSpacing: 5,
+                            mainAxisSpacing: 5,
                             crossAxisCount: 5),
                         itemCount: categoryController.icon.length,
                         itemBuilder: (context, index) {
-                          return Icon(
-                            categoryController.icon[index],
-                            color: color.disabledColor,
-                            size: 35,
+                          return GestureDetector(
+                            onTap: () {
+                              categoryController.iconType.value = index;
+                            },
+                            behavior: HitTestBehavior.translucent,
+                            child: Obx(
+                              () => Container(
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                        width: 2,
+                                        color:
+                                            categoryController.iconType.value ==
+                                                    index
+                                                ? color.primaryColor
+                                                : Colors.transparent)),
+                                // height: 30,
+                                // width: 30,
+                                // color: Colors.amber,
+                                child: Icon(
+                                  categoryController.icon[index],
+                                  color: color.disabledColor,
+                                  size: 35,
+                                ),
+                              ),
+                            ),
                           );
                         },
                       ),
                     ),
-                    // Container(
-                    //   width: MediaQuery.of(context).size.width,
-                    //   child: Wrap(
-                    //     // crossAxisAlignment: WrapCrossAlignment.start,
-                    //     alignment: WrapAlignment.start,
-
-                    //     // runAlignment: WrapAlignment.spaceBetween,
-                    //     // crossAxisAlignment: WrapCrossAlignment.center,
-                    //     children: [
-                    //       // ...categoryController.icon.map(
-                    //       //   (e) => Padding(
-                    //       //     padding: const EdgeInsets.all(8.0),
-                    //       //     child: Icon(
-                    //       //       e,
-                    //       //       color: color.disabledColor,
-                    //       //       size: 35,
-                    //       //     ),
-                    //       //   ),
-                    //       // )
-                    //       // Icon(
-                    //       //   Icons.business_center_rounded,
-                    //       //   color: color.disabledColor,
-                    //       //   size: 35,
-                    //       // ),
-                    //       // Icon(
-                    //       //   Icons.health_and_safety_outlined,
-                    //       //   color: color.disabledColor,
-                    //       //   size: 35,
-                    //       // ),
-                    //       // Icon(
-                    //       //   Icons.flight,
-                    //       //   color: color.disabledColor,
-                    //       //   size: 35,
-                    //       // ),
-                    //       // Icon(
-                    //       //   Icons.movie_creation,
-                    //       //   color: color.disabledColor,
-                    //       //   size: 35,
-                    //       // ),
-                    //       // Icon(
-                    //       //   Icons.monetization_on_outlined,
-                    //       //   color: color.disabledColor,
-                    //       //   size: 35,
-                    //       // ),
-                    //       // Icon(
-                    //       //   Icons.home_filled,
-                    //       //   color: color.disabledColor,
-                    //       //   size: 35,
-                    //       // ),
-                    //       // Icon(
-                    //       //   Icons.account_balance_rounded,
-                    //       //   color: color.disabledColor,
-                    //       //   size: 35,
-                    //       // ),
-                    //       // Icon(
-                    //       //   Icons.task_outlined,
-                    //       //   color: color.disabledColor,
-                    //       //   size: 35,
-                    //       // ),
-                    //       // Icon(
-                    //       //   Icons.baby_changing_station_rounded,
-                    //       //   color: color.disabledColor,
-                    //       //   size: 35,
-                    //       // ),
-                    //       // Icon(
-                    //       //   Icons.food_bank_outlined,
-                    //       //   color: color.disabledColor,
-                    //       //   size: 35,
-                    //       // ),
-                    //     ],
-                    //   ),
-                    // ),
-                    // SH.medium(),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    //   children: [
-                    //     Icon(
-                    //       Icons.home_filled,
-                    //       color: color.disabledColor,
-                    //       size: 35,
-                    //     ),
-                    //     Icon(
-                    //       Icons.account_balance_rounded,
-                    //       color: color.disabledColor,
-                    //       size: 35,
-                    //     ),
-                    //     Icon(
-                    //       Icons.task_outlined,
-                    //       color: color.disabledColor,
-                    //       size: 35,
-                    //     ),
-                    //     Icon(
-                    //       Icons.baby_changing_station_rounded,
-                    //       color: color.disabledColor,
-                    //       size: 35,
-                    //     ),
-                    //     Icon(
-                    //       Icons.food_bank_outlined,
-                    //       color: color.disabledColor,
-                    //       size: 35,
-                    //     )
-                    //   ],
-                    // )
+                    SH.small(),
+                    Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          categoryController.addCategory();
+                        },
+                        behavior: HitTestBehavior.translucent,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 8,
+                          ),
+                          decoration: BoxDecoration(
+                              color: color.primaryColor.withOpacity(.2),
+                              borderRadius: BorderRadius.circular(5)),
+                          child: LabelText(
+                            text: 'Create new Category'.toUpperCase(),
+                            isColor: true,
+                            color: color.primaryColor,
+                          ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ],
