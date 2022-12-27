@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
+import 'package:habbit_app/main.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
@@ -39,31 +40,71 @@ void ChecklistCustomDialogBox(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       LabelText(text: "Checklist"),
-                      LabelText(text: "ADD ITEM")
+                      GestureDetector(
+                          onTap: () {
+                            addHabbitSelectController.addcheckbox.value =
+                                addHabbitSelectController.addcheckbox.value + 1;
+                            print(addHabbitSelectController.addcheckbox.value);
+                          },
+                          child: LabelText(text: "ADD ITEM"))
                     ],
                   ),
                   SH.medium(),
                   Expanded(
-                    child: ListView.separated(
-                      itemCount: 5,
-                      separatorBuilder: (context, index) => SH.small(),
-                      itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            Row(children: [
-                              Expanded(
-                                  child: InputField(hintText: "item name")),
-                              Icon(
-                                Icons.delete,
-                                size: 25,
-                                color: color.disabledColor,
-                              )
-                            ]),
-                          ],
-                        );
-                      },
+                    child: Obx(
+                      () => ListView.separated(
+                        itemCount: addHabbitSelectController.addcheckbox.value,
+                        separatorBuilder: (context, index) => SH.small(),
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              Row(children: [
+                                Expanded(
+                                    child: InputField(hintText: "item name")),
+                                GestureDetector(
+                                  onTap: () {
+                                    if (addHabbitSelectController
+                                            .addcheckbox.value >
+                                        1) {
+                                      addHabbitSelectController.addcheckbox
+                                          .value = addHabbitSelectController
+                                              .addcheckbox.value -
+                                          1;
+                                    }
+                                    // addHabbitSelectController
+                                    //             .addcheckbox.value >
+                                    //         1
+                                    //     ? addHabbitSelectController
+                                    //             .addcheckbox.value -
+                                    //         1
+                                    //     : ;
+                                  },
+                                  child: Icon(
+                                    Icons.delete,
+                                    size: 25,
+                                    color: color.disabledColor,
+                                  ),
+                                )
+                              ]),
+                            ],
+                          );
+                        },
+                      ),
                     ),
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      MainLabelText(text: "BACK"),
+                      GestureDetector(
+                        onTap: () {},
+                        child: MainLabelText(
+                          text: "ADD",
+                          isColor: true,
+                        ),
+                      ),
+                    ],
+                  )
                 ]),
           ),
         );

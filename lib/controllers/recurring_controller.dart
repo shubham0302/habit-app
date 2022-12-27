@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AddHabbitSelectController extends GetxController {
+class AddRecurringTaskController extends GetxController {
   TextEditingController nameCtrl = TextEditingController();
   TextEditingController descriptionCtrl = TextEditingController();
   TextEditingController goal = TextEditingController();

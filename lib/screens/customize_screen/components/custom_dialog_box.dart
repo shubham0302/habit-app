@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
@@ -50,32 +51,37 @@ void CustomDialogBox(BuildContext context) {
                     ],
                   ),
                   const Divider(thickness: 1),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.edit_calendar,
-                        color: color.primaryColor,
-                        size: 30,
-                      ),
-                      SW.large(),
-                      GlobalPadding(
-                        child: Container(
-                          // height: 80,
-                          width: 200,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const MainLabelText(text: "Recurring Task"),
-                              SH.medium(),
-                              const DescriptionText(
-                                  text:
-                                      "Activity that repeats over time without tracking or any statistics.")
-                            ],
-                          ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed('/recurringTask-detail');
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(
+                          Icons.edit_calendar,
+                          color: color.primaryColor,
+                          size: 30,
                         ),
-                      )
-                    ],
+                        SW.large(),
+                        GlobalPadding(
+                          child: Container(
+                            // height: 80,
+                            width: 200,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const MainLabelText(text: "Recurring Task"),
+                                SH.medium(),
+                                const DescriptionText(
+                                    text:
+                                        "Activity that repeats over time without tracking or any statistics.")
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                   const Divider(thickness: 1),
                   Row(

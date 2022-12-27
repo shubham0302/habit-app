@@ -9,6 +9,7 @@ import 'package:habbit_app/screens/categories/categories_drawer_screen.dart';
 import 'package:habbit_app/screens/customize_screen/getpremium_screen.dart';
 
 import 'package:habbit_app/screens/customize_screen/screen.dart';
+import 'package:habbit_app/screens/recurring_task/add_recurring_task_screen.dart';
 import 'package:habbit_app/screens/setting_screens/setting_screen.dart';
 import 'package:habbit_app/screens/setting_screens/licenses_screen.dart';
 import 'package:habbit_app/screens/setting_screens/lock_screen.dart';
@@ -89,5 +90,8 @@ class Routes {
     GetPage(name: "/addhabbit", page: () => const AddHabbitsScreen()),
     GetPage(name: "/statistics", page: () => const StatisticsScreen()),
     GetPage(name: "/habbit-detail", page: () => const HabbitDetailScreen()),
+    GetPage(
+        name: "/recurringTask-detail",
+        page: () => const AddRecurringTaskScreen()),
   ];
 }
