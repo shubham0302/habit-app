@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_shake_animated/flutter_shake_animated.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/screens/categories/custom_dialog_categories.dart';
@@ -69,34 +71,100 @@ class CategoriesScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: categoryController.categories.length,
                 itemBuilder: (context, index) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  return Stack(
+                    clipBehavior: Clip.none,
                     children: [
-                      Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: color.disabledColor.withOpacity(0.2)),
-                        child: Icon(
-                          categoryController
-                              .icon[categoryController.categories[index].icon],
-                          color: categoryController.iconColor[
-                              categoryController.categories[index].color],
-                          size: 40,
-                        ),
-                      ),
-                      SH.small(),
-                      DescriptionText(
-                        isColor: true,
-                        color: color.canvasColor,
-                        isBold: true,
-                        text: categoryController.categories[index].name,
-                        isWhite: true,
-                      ),
-                      const DescriptionText(text: "0 entries"),
-                      SH.large(),
-                      SH.large(),
+                      GestureDetector(
+                          onTap: () {
+                            categoryController.colorIndex.value =
+                                categoryController.categories[index].color;
+                            categoryController.iconType.value =
+                                categoryController.categories[index].icon;
+                            categoryController.category.value =
+                                categoryController.categories[index].name;
+                            categoryController.selectedId.value =
+                                categoryController.categories[index].id;
+                            categoryController.ctrl.text =
+                                categoryController.categories[index].name;
+                            CategoriesCustomDialogBox(context, true);
+                          },
+                          onLongPress: () {
+                            HapticFeedback.vibrate();
+                            categoryController.shakeIndex.value = index + 1;
+                            categoryController.removeIndex.value = index + 1;
+                          },
+                          onLongPressEnd: (e) {
+                            categoryController.shakeIndex.value = 0;
+                            // categoryController.removeIndex.value = index + 1;
+                          },
+                          behavior: HitTestBehavior.translucent,
+                          child: Obx(
+                            () => ShakeWidget(
+                              autoPlay: categoryController.shakeIndex.value ==
+                                  index + 1,
+                              duration: Duration(seconds: 1),
+                              shakeConstant: ShakeChunkConstant(),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    height: 60,
+                                    width: 60,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: color.disabledColor
+                                            .withOpacity(0.2)),
+                                    child: Icon(
+                                      categoryController.icon[categoryController
+                                          .categories[index].icon],
+                                      color: categoryController.iconColor[
+                                          categoryController
+                                              .categories[index].color],
+                                      size: 40,
+                                    ),
+                                  ),
+                                  SH.small(),
+                                  DescriptionText(
+                                    isColor: true,
+                                    color: color.canvasColor,
+                                    isBold: true,
+                                    text: categoryController
+                                        .categories[index].name,
+                                    isWhite: true,
+                                  ),
+                                  const DescriptionText(text: "0 entries"),
+                                  SH.large(),
+                                  SH.large(),
+                                ],
+                              ),
+                            ),
+                          )),
+                      Obx(() => categoryController.removeIndex.value ==
+                              index + 1
+                          ? Positioned(
+                              top: 0,
+                              right: -8,
+                              child: GestureDetector(
+                                onTap: () {
+                                  categoryController.deleteCategory(
+                                      categoryController.categories[index].id);
+                                  categoryController.removeIndex.value = 0;
+                                },
+                                behavior: HitTestBehavior.translucent,
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height: 20,
+                                  width: 20,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    // borderRadius: BorderRadius.circular(radius),
+                                    color: color.primaryColor,
+                                  ),
+                                  child: Icon(Icons.remove,
+                                      color: color.backgroundColor),
+                                ),
+                              ))
+                          : SizedBox())
                     ],
                   );
                 },
@@ -140,7 +208,11 @@ class CategoriesScreen extends StatelessWidget {
               SW.large(),
               GestureDetector(
                 onTap: () {
-                  CategoriesCustomDialogBox(context);
+                  categoryController.category.value = '';
+                  categoryController.colorIndex.value = 0;
+                  categoryController.iconType.value = 0;
+                  categoryController.ctrl.text = '';
+                  CategoriesCustomDialogBox(context, false);
                 },
                 child: Column(
                   children: [

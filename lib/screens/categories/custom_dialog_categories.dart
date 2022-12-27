@@ -9,7 +9,7 @@ import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
-void CategoriesCustomDialogBox(BuildContext context) {
+void CategoriesCustomDialogBox(BuildContext context, bool fromUpdate) {
   CategoryController categoryController =
       Get.put(CategoryController(), permanent: false);
   ThemeData color = Theme.of(context);
@@ -39,6 +39,7 @@ void CategoriesCustomDialogBox(BuildContext context) {
                     SH.large(),
                     InputField(
                       hintText: "Ex. Travel",
+                      controller: categoryController.ctrl,
                       onChange: (e) {
                         categoryController.category.value = e;
                       },
@@ -154,7 +155,11 @@ void CategoriesCustomDialogBox(BuildContext context) {
                     Center(
                       child: GestureDetector(
                         onTap: () {
-                          categoryController.addCategory();
+                          if (fromUpdate) {
+                            categoryController.updateCategory();
+                          } else {
+                            categoryController.addCategory();
+                          }
                         },
                         behavior: HitTestBehavior.translucent,
                         child: Container(
