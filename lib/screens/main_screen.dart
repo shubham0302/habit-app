@@ -1,5 +1,8 @@
 // ignore_for_file: avoid_print
 
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/home_page_controller.dart';
@@ -17,6 +20,7 @@ import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 import '../widgets/bottomNavBar.dart';
 import 'drawer.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 // ignore: must_be_immutable
 class MainScreen extends StatelessWidget {
@@ -29,167 +33,330 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     ThemeData color = Theme.of(context);
+    openBottomSheet() {
+      Get.bottomSheet(Container(
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+          color: color.backgroundColor,
+        ),
+        padding: const EdgeInsets.only(bottom: 3, left: 20, right: 20, top: 20),
+        child: Wrap(
+          children: [
+            Column(
+              children: [
+                TableCalendar(
+                  // pageJumpingEnabled: true,
+
+                  currentDay:
+                      // appointmentController.isSelectedDay.value
+                      //     ? DateTime(
+                      //         int.parse(appointmentController.selectedDate
+                      //             .toString()
+                      //             .split(' ')[0]
+                      //             .split('-')[0]),
+                      //         int.parse(appointmentController.selectedDate
+                      //             .toString()
+                      //             .split(' ')[0]
+                      //             .split('-')[1]),
+                      //         int.parse(appointmentController.selectedDate
+                      //             .toString()
+                      //             .split(' ')[0]
+                      //             .split('-')[2]))
+
+                      //     :
+                      DateTime.now(),
+                  // onDaySelected: (selectedDay, focusedDay) async {
+                  //   appointmentController.selectedDate.value =
+                  //       selectedDay.toString();
+                  //   appointmentController.isSelectedDay.value = true;
+                  //   await appointmentController
+                  //       .getAppointmentFilteredListByDate(selectedDay);
+
+                  //   // print(selectedDay.toString().split(' ')[0].split('-')[0]);
+                  //   // print(selectedDay.toString().split(' ')[0].split('-')[1]);
+                  //   // print(selectedDay.toString().split(' ')[0].split('-')[2]);
+                  // },
+                  calendarStyle: CalendarStyle(
+                      weekendDecoration: BoxDecoration(
+                          color: color.primaryColor.withOpacity(.1),
+                          shape: BoxShape.circle),
+                      defaultDecoration: BoxDecoration(
+                          color: color.primaryColor.withOpacity(.1),
+                          shape: BoxShape.circle),
+                      todayDecoration: BoxDecoration(
+                          color: color.primaryColor, shape: BoxShape.circle),
+                      selectedDecoration:
+                          BoxDecoration(color: color.primaryColor),
+                      weekendTextStyle: TextStyle(color: color.primaryColor),
+                      outsideTextStyle: TextStyle(
+                        color: color.disabledColor,
+                      )),
+                  daysOfWeekStyle: DaysOfWeekStyle(
+                    weekdayStyle: TextStyle(color: color.primaryColor),
+                    weekendStyle: TextStyle(color: color.primaryColor),
+                  ),
+                  // calendarStyle: CalendarStyle(),
+                  calendarBuilders: CalendarBuilders(
+                    markerBuilder: (context, day, events) {
+                      return;
+                    },
+                  ),
+                  daysOfWeekHeight: 55,
+                  headerStyle: HeaderStyle(
+                    leftChevronIcon: Icon(
+                      Icons.arrow_back_ios,
+                      color: color.primaryColor,
+                    ),
+                    rightChevronIcon: Icon(
+                      Icons.arrow_forward_ios,
+                      color: color.primaryColor,
+                    ),
+                    formatButtonVisible: false,
+                    titleCentered: true,
+                    // titleTextFormatter: (date, locale) => Column(children: [],),
+                  ),
+
+                  headerVisible: true,
+                  firstDay: DateTime.utc(2010, 10, 16),
+                  lastDay: DateTime.utc(2030, 3, 14),
+                  focusedDay: DateTime.now(),
+                ),
+                SH.large(),
+                SH.large(),
+                Row(
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        behavior: HitTestBehavior.translucent,
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: MainLabelText(text: 'CLOSE'),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {},
+                        behavior: HitTestBehavior.translucent,
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: MainLabelText(text: 'TODAY'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SH.large(),
+              ],
+            ),
+          ],
+        ),
+      ));
+    }
 
     return Scaffold(
       drawer: const Drawerr(),
       body: Obx(() => SafeArea(
             child: Column(
               children: [
-                searchController.searchHome.value
-                    ? Container(
-                        height: 100,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                            color: color.disabledColor.withOpacity(0.1),
-                            borderRadius: const BorderRadius.only(
-                                bottomLeft: Radius.circular(20),
-                                bottomRight: Radius.circular(20))),
-                        child: Column(children: [
-                          Row(
-                            children: [
-                              Container(
-                                height: 50,
-                                width: 120,
-                                // color: color.canvasColor,
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        right: BorderSide(
-                                            width: 1,
-                                            color: color.disabledColor
-                                                .withOpacity(0.2)),
-                                        bottom: BorderSide(
-                                            width: 1,
-                                            color: color.disabledColor
-                                                .withOpacity(0.2)))),
-                                child: GlobalPadding(
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      const DescriptionText(text: "ALL"),
-                                      Icon(
-                                        Icons.keyboard_arrow_down_sharp,
-                                        color: color.disabledColor,
-                                        size: 25,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    SearchCategoryCustomDialogBox(context);
-                                  },
-                                  child: Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        border: Border(
-                                            right: BorderSide(
-                                                width: 1,
-                                                color: color.disabledColor
-                                                    .withOpacity(0.2)),
-                                            bottom: BorderSide(
-                                                width: 1,
-                                                color: color.disabledColor
-                                                    .withOpacity(0.2)))),
-                                    child: const Center(
-                                        child: DescriptionText(
-                                            text: "No categories selected")),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Container(
-                                    height: 50,
-                                    decoration: const BoxDecoration(),
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(left: 15),
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            Icons.search,
-                                            color: color.disabledColor
-                                              ..withOpacity(0.2),
-                                            size: 25,
-                                          ),
-                                          SW.medium(),
-                                          Expanded(
-                                            child: TextField(
-                                              showCursor: false,
-                                              decoration: InputDecoration(
-                                                  border: InputBorder.none,
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  onEnd: () {
+                    if (!searchController.childrenAnimation.value) {
+                      log('na na ${searchController.childrenAnimation.value}');
+                      // Timer(Duration(milliseconds: 300), () {
+                      searchController.childrenAnimation.value =
+                          !searchController.childrenAnimation.value;
+                      // log(' na na ha ha ${searchController.childrenAnimation.value}');
+                      // });
+                    }
+                  },
 
-                                                  // enabled: false,
-                                                  // border: OutlineInputBorder(),
-                                                  hintText:
-                                                      'Enter a search term',
-                                                  hintStyle: TextStyle(
-                                                      color:
-                                                          color.disabledColor),
-                                                  labelStyle: TextStyle(
-                                                      color: color.cardColor)),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    )),
-                              ),
-                              Container(
-                                height: 50,
-                                width: 130,
-                                // color: color.canvasColor,
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                  left: BorderSide(
+                  height: searchController.searchHome.value ? 100.0 : 0,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      color: color.disabledColor.withOpacity(0.1),
+                      borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20))),
+                  // duration: Duration(milliseconds: 300),
+                  child: Column(children: [
+                    Row(
+                      children: [
+                        Container(
+                          height:
+                              searchController.childrenAnimation.value ? 50 : 0,
+                          width: 120,
+                          // color: color.canvasColor,
+                          decoration: BoxDecoration(
+                              border: Border(
+                                  right: BorderSide(
                                       width: 1,
                                       color:
                                           color.disabledColor.withOpacity(0.2)),
-                                )),
-                                child: GlobalPadding(
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Icon(
-                                        Icons.archive_outlined,
-                                        color: color.disabledColor
-                                          ..withOpacity(0.2),
-                                        size: 25,
-                                      ),
-                                      Icon(
-                                        Icons.delete_outline,
-                                        color: color.disabledColor
-                                          ..withOpacity(0.2),
-                                        size: 25,
-                                      ),
-                                      GestureDetector(
-                                        onTap: () {
-                                          searchController.searchHome.value =
-                                              false;
-                                          print(searchController
-                                              .searchHome.value);
-                                        },
-                                        child: Icon(
-                                          Icons.keyboard_arrow_up,
+                                  bottom: BorderSide(
+                                      width: 1,
+                                      color: color.disabledColor
+                                          .withOpacity(0.2)))),
+                          child: GlobalPadding(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const DescriptionText(text: "ALL"),
+                                Icon(
+                                  Icons.keyboard_arrow_down_sharp,
+                                  color: color.disabledColor,
+                                  size: searchController.childrenAnimation.value
+                                      ? 25
+                                      : 0,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              SearchCategoryCustomDialogBox(context);
+                            },
+                            child: Container(
+                              height: searchController.childrenAnimation.value
+                                  ? 50
+                                  : 0,
+                              decoration: BoxDecoration(
+                                  border: Border(
+                                      right: BorderSide(
+                                          width: 1,
                                           color: color.disabledColor
-                                            ..withOpacity(0.2),
-                                          size: 25,
-                                        ),
+                                              .withOpacity(0.2)),
+                                      bottom: BorderSide(
+                                          width: 1,
+                                          color: color.disabledColor
+                                              .withOpacity(0.2)))),
+                              child: const Center(
+                                  child: DescriptionText(
+                                      text: "No categories selected")),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                              height: searchController.childrenAnimation.value
+                                  ? 50
+                                  : 0,
+                              decoration: const BoxDecoration(),
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.search,
+                                      color: color.disabledColor
+                                        ..withOpacity(0.2),
+                                      size: searchController
+                                              .childrenAnimation.value
+                                          ? 25
+                                          : 0,
+                                    ),
+                                    SW.medium(),
+                                    Expanded(
+                                      child: TextField(
+                                        showCursor: false,
+                                        decoration: InputDecoration(
+                                            border: InputBorder.none,
+
+                                            // enabled: false,
+                                            // border: OutlineInputBorder(),
+                                            hintText: 'Enter a search term',
+                                            hintStyle: TextStyle(
+                                                color: color.disabledColor),
+                                            labelStyle: TextStyle(
+                                                color: color.cardColor)),
                                       ),
-                                    ],
+                                    ),
+                                  ],
+                                ),
+                              )),
+                        ),
+                        Container(
+                          height:
+                              searchController.childrenAnimation.value ? 50 : 0,
+                          width: 130,
+                          // color: color.canvasColor,
+                          decoration: BoxDecoration(
+                              border: Border(
+                            left: BorderSide(
+                                width: 1,
+                                color: color.disabledColor.withOpacity(0.2)),
+                          )),
+                          child: GlobalPadding(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(
+                                  Icons.archive_outlined,
+                                  color: color.disabledColor..withOpacity(0.2),
+                                  size: searchController.childrenAnimation.value
+                                      ? 25
+                                      : 0,
+                                ),
+                                Icon(
+                                  Icons.delete_outline,
+                                  color: color.disabledColor..withOpacity(0.2),
+                                  size: searchController.childrenAnimation.value
+                                      ? 25
+                                      : 0,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    // searchController.childrenAnimation.value =
+                                    //     false;
+                                    print(searchController
+                                        .childrenAnimation.value);
+
+                                    searchController.searchHome.value =
+                                        !searchController.searchHome.value;
+
+                                    if (searchController
+                                        .childrenAnimation.value) {
+                                      log('${searchController.childrenAnimation.value}');
+                                      searchController.childrenAnimation.value =
+                                          !searchController
+                                              .childrenAnimation.value;
+                                      log('${searchController.childrenAnimation.value}');
+                                    }
+                                  },
+                                  behavior: HitTestBehavior.translucent,
+                                  child: Icon(
+                                    Icons.keyboard_arrow_up,
+                                    color: color.disabledColor
+                                      ..withOpacity(0.2),
+                                    size:
+                                        searchController.childrenAnimation.value
+                                            ? 25
+                                            : 0,
                                   ),
                                 ),
-                              ),
-                            ],
-                          )
-                        ]),
-                      )
-                    : const SizedBox(),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ]),
+                ),
+                // : const SizedBox(),
                 GlobalPadding(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -227,10 +394,13 @@ class MainScreen extends StatelessWidget {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              searchController.searchHome.value == true
-                                  ? searchController.searchHome.value = false
-                                  : searchController.searchHome.value = true;
-                              print(searchController.searchHome.value);
+                              searchController.searchHome.value =
+                                  !searchController.searchHome.value;
+
+                              if (searchController.childrenAnimation.value) {
+                                searchController.childrenAnimation.value =
+                                    !searchController.childrenAnimation.value;
+                              }
                             },
                             child: Icon(
                               Icons.search,
@@ -240,7 +410,11 @@ class MainScreen extends StatelessWidget {
                           ),
                           SW.medium(),
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              controller.tabIndex.value == 0
+                                  ? openBottomSheet()
+                                  : null;
+                            },
                             child: Icon(
                               controller.tabIndex.value == 0
                                   ? Icons.calendar_month
@@ -249,7 +423,7 @@ class MainScreen extends StatelessWidget {
                                       : controller.tabIndex.value == 2
                                           ? Icons.category
                                           : controller.tabIndex.value == 3
-                                              ? Icons.abc
+                                              ? Icons.move_to_inbox_sharp
                                               : controller.tabIndex.value == 4
                                                   ? Icons.notifications_active
                                                   : Icons.not_accessible,
