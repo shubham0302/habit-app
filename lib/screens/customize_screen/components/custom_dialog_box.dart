@@ -84,32 +84,37 @@ void CustomDialogBox(BuildContext context) {
                     ),
                   ),
                   const Divider(thickness: 1),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.task_outlined,
-                        color: color.primaryColor,
-                        size: 30,
-                      ),
-                      SW.large(),
-                      GlobalPadding(
-                        child: Container(
-                          // height: 80,
-                          width: 200,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const MainLabelText(text: "Task"),
-                              SH.medium(),
-                              const DescriptionText(
-                                  text:
-                                      "Single instance activity without tracking over time.")
-                            ],
-                          ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed('/addtask');
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(
+                          Icons.task_outlined,
+                          color: color.primaryColor,
+                          size: 30,
                         ),
-                      )
-                    ],
+                        SW.large(),
+                        GlobalPadding(
+                          child: Container(
+                            // height: 80,
+                            width: 200,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const MainLabelText(text: "Task"),
+                                SH.medium(),
+                                const DescriptionText(
+                                    text:
+                                        "Single instance activity without tracking over time.")
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                   // Divider(thickness: 1),
                 ]),
