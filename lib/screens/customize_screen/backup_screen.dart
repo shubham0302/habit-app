@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, unused_local_variable, depend_on_referenced_packages
+// ignore_for_file: file_names, unused_local_variable, depend_on_referenced_packages, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

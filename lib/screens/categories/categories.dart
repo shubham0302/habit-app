@@ -66,7 +66,7 @@ class CategoriesScreen extends StatelessWidget {
             child: Obx(
               () => ListView.separated(
                 separatorBuilder: (context, index) => SW.medium(),
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 // shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: categoryController.categories.length,
@@ -102,7 +102,7 @@ class CategoriesScreen extends StatelessWidget {
                             () => ShakeWidget(
                               autoPlay: categoryController.shakeIndex.value ==
                                   index + 1,
-                              duration: Duration(seconds: 1),
+                              duration: const Duration(seconds: 1),
                               shakeConstant: ShakeChunkConstant(),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -164,7 +164,7 @@ class CategoriesScreen extends StatelessWidget {
                                       color: color.backgroundColor),
                                 ),
                               ))
-                          : SizedBox())
+                          : const SizedBox())
                     ],
                   );
                 },

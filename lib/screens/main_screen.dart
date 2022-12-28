@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print
 
-import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -37,7 +36,7 @@ class MainScreen extends StatelessWidget {
       Get.bottomSheet(Container(
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
           ),
@@ -137,7 +136,7 @@ class MainScreen extends StatelessWidget {
                         behavior: HitTestBehavior.translucent,
                         child: Container(
                           alignment: Alignment.center,
-                          child: MainLabelText(text: 'CLOSE'),
+                          child: const MainLabelText(text: 'CLOSE'),
                         ),
                       ),
                     ),
@@ -147,7 +146,7 @@ class MainScreen extends StatelessWidget {
                         behavior: HitTestBehavior.translucent,
                         child: Container(
                           alignment: Alignment.center,
-                          child: MainLabelText(text: 'TODAY'),
+                          child: const MainLabelText(text: 'TODAY'),
                         ),
                       ),
                     ),

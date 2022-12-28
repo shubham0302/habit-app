@@ -51,10 +51,11 @@ void CategoriesCustomDialogBox(BuildContext context, bool fromUpdate) {
                       height: 55,
                       width: MediaQuery.of(context).size.width,
                       child: GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 5),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 5),
                         itemCount: categoryController.iconColor.length,
                         itemBuilder: (context, index) {
                           return Center(
@@ -113,12 +114,13 @@ void CategoriesCustomDialogBox(BuildContext context, bool fromUpdate) {
                       height: 150,
                       width: MediaQuery.of(context).size.width,
                       child: GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisSpacing: 5,
-                            mainAxisSpacing: 5,
-                            crossAxisCount: 5),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisSpacing: 5,
+                                mainAxisSpacing: 5,
+                                crossAxisCount: 5),
                         itemCount: categoryController.icon.length,
                         itemBuilder: (context, index) {
                           return GestureDetector(
@@ -163,7 +165,7 @@ void CategoriesCustomDialogBox(BuildContext context, bool fromUpdate) {
                         },
                         behavior: HitTestBehavior.translucent,
                         child: Container(
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             horizontal: 20,
                             vertical: 8,
                           ),

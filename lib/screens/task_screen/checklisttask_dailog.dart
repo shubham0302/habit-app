@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace
+// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,7 +7,6 @@ import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/main.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';
-import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
@@ -30,8 +29,8 @@ void ChecklistTaskCustomDialogBox(BuildContext context) {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(
-                    child: const LabelText(
+                  const Center(
+                    child: LabelText(
                       text: "Define your habit",
                       isColor: true,
                     ),
@@ -40,7 +39,7 @@ void ChecklistTaskCustomDialogBox(BuildContext context) {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      LabelText(text: "Checklist"),
+                      const LabelText(text: "Checklist"),
                       GestureDetector(
                           onTap: () {
                             addHabbitSelectController.checklist.add('');
@@ -48,7 +47,7 @@ void ChecklistTaskCustomDialogBox(BuildContext context) {
                             //     addHabbitSelectController.addcheckbox.value + 1;
                             // print(addHabbitSelectController.addcheckbox.value);
                           },
-                          child: LabelText(text: "ADD ITEM"))
+                          child: const LabelText(text: "ADD ITEM"))
                     ],
                   ),
                   SH.large(),
@@ -112,10 +111,10 @@ void ChecklistTaskCustomDialogBox(BuildContext context) {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      MainLabelText(text: "BACK"),
+                      const MainLabelText(text: "BACK"),
                       GestureDetector(
                         onTap: () {},
-                        child: MainLabelText(
+                        child: const MainLabelText(
                           text: "ADD",
                           isColor: true,
                         ),

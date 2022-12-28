@@ -4,11 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/db_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
+import 'package:habbit_app/language/localString.dart';
 import 'package:habbit_app/screens/customize_screen/backUp_screen.dart';
 import 'package:habbit_app/screens/categories/categories.dart';
 import 'package:habbit_app/screens/categories/categories_drawer_screen.dart';
 import 'package:habbit_app/screens/customize_screen/getpremium_screen.dart';
-
 import 'package:habbit_app/screens/customize_screen/screen.dart';
 import 'package:habbit_app/screens/recurring_task/add_recurring_task_screen.dart';
 import 'package:habbit_app/screens/setting_screens/setting_screen.dart';
@@ -44,6 +44,8 @@ class MyApp extends StatelessWidget {
 // Timer(Duration(seconds: 3), () => Get.to(() => SplashScreen()));
     return Obx(
       () => GetMaterialApp(
+        translations: LocalString(),
+        locale: Locale('en', 'US'),
         defaultTransition: Transition.cupertino,
         transitionDuration: const Duration(milliseconds: 300),
         title: 'Habit',
