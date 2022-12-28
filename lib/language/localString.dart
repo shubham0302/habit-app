@@ -3,6 +3,7 @@ import 'package:get/route_manager.dart';
 
 class LocalString extends Translations {
   @override
+  // ignore: todo
   // TODO: implement keys
   Map<String, Map<String, String>> get keys => {
         // English

@@ -1,20 +1,13 @@
-// ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages
+// ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/addtask_controller.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits/category_custom_dialog.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits/name_custom_dailogbox.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits/priority_custom_dilogbox.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/reminder_custom_dailbox.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits/repetation_custom_dilogbox.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits/evaluate_select_customdailbox.dart';
 import 'package:habbit_app/screens/task_screen/catagorytask_dailog.dart';
 import 'package:habbit_app/screens/task_screen/checklisttask_dailog.dart';
 import 'package:habbit_app/screens/task_screen/nametask_dailog.dart';
 import 'package:habbit_app/screens/task_screen/prioritytask_dailog.dart';
-import 'package:habbit_app/screens/task_screen/repetationtask_dailog.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
@@ -346,7 +339,7 @@ class AddTaskScreen extends StatelessWidget {
                           children: [
                             const LabelText(text: "Pending task"),
                             SH.small(),
-                            DescriptionText(
+                            const DescriptionText(
                                 text:
                                     "It will be shown each day unit completed")
                           ],
@@ -360,7 +353,7 @@ class AddTaskScreen extends StatelessWidget {
                               size: 30,
                               color: color.disabledColor,
                             )
-                          : Icon(
+                          : const Icon(
                               Icons.check_circle,
                               size: 30,
                               // color: color.disabledColor,

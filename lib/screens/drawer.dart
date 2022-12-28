@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/auth_path.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
@@ -338,7 +339,9 @@ class Drawerr extends StatelessWidget {
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(21),
               ),
-              onTap: () {},
+              onTap: () {
+                Get.to(AuthPath());
+              },
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.only(left: 21),

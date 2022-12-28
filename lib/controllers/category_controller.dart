@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_brace_in_string_interps, unused_local_variable
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -7,7 +9,7 @@ import 'package:drift/drift.dart' as drift;
 
 class CategoryController extends GetxController {
   TextEditingController ctrl = TextEditingController();
-  CategoryClass _categoryDb = CategoryClass();
+  final CategoryClass _categoryDb = CategoryClass();
   var colorIndex = 0.obs;
   var removeIndex = 0.obs;
   var shakeIndex = 0.obs;

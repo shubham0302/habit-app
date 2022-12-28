@@ -44,6 +44,7 @@ class ThemeController extends GetxController {
   @override
   void onInit() {
     setStoredData();
+    // ignore: todo
     // TODO: implement onInit
     super.onInit();
   }

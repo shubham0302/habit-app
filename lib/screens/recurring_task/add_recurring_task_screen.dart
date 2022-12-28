@@ -2,14 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/recurring_controller.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits/category_custom_dialog.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits/name_custom_dailogbox.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits/priority_custom_dilogbox.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits/reminder_custom_dailbox.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits/repetation_custom_dilogbox.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits/evaluate_select_customdailbox.dart';
 import 'package:habbit_app/screens/recurring_task/category_dailog.dart';
 import 'package:habbit_app/screens/recurring_task/evaluate_dailog.dart';
 import 'package:habbit_app/screens/recurring_task/name_recurring_dailog.dart';
