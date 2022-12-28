@@ -2,16 +2,19 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/addhabbit_controller.dart';
-import 'package:habbit_app/main.dart';
-import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_field/input_fields.dart';
-import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
-import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 void LanguageCustomDialogBox(BuildContext context) {
-  Locale? _locale;
+  final List locale = [
+    {'name': 'English', 'locale': const Locale('en', 'US')},
+    {'name': 'हिंदी', 'locale': const Locale('hi', 'IN')},
+    {'name': 'ಕನ್ನಡ', 'locale': const Locale('kn', 'IN')},
+  ];
+
+  updateLanguage(Locale locale) {
+    Get.updateLocale(locale);
+  }
+
   ThemeData color = Theme.of(context);
   showDialog(
       context: context,
@@ -29,20 +32,45 @@ void LanguageCustomDialogBox(BuildContext context) {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Center(
-                    child: const LabelText(
-                      text: "Lauguage",
+                    child: LabelText(
+                      text: "plannarize".tr,
                       isColor: true,
                     ),
                   ),
-                  SH.large(),
-                  Divider(),
-                  SH.large(),
-                  GestureDetector(child: LabelText(text: "English")),
-                  SH.large(),
-                  Divider(),
-                  SH.large(),
-                  LabelText(text: "Hindi"),
-                  SH.large(),
+                  Container(
+                    height: 300,
+                    child: ListView.separated(
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                              onTap: () {
+                                print(locale[index]['name']);
+                                updateLanguage(locale[index]['locale']);
+                              },
+                              child: LabelText(text: locale[index]['name']));
+                        },
+                        separatorBuilder: (context, index) {
+                          return const Divider();
+                        },
+                        itemCount: locale.length),
+                  )
+                  // SH.large(),
+                  // Divider(),
+                  // SH.large(),
+                  // GestureDetector(child: LabelText(text: "English")),
+                  // SH.large(),
+                  // Divider(),
+                  // SH.large(),
+                  // GestureDetector(
+                  //     onTap: () {
+                  //       var locale = Locale("hi", "IN");
+                  //       Get.updateLocale(locale);
+                  //     },
+                  //     child: LabelText(text: "Hindi")),
+                  // SH.large(),
+                  // LabelText(text: "Kannada"),
+                  // SH.large(),
+                  // LabelText(text: "Hindi"),
+                  // SH.large(),
                 ]),
           ),
         );

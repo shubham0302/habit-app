@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/screens/setting_screens/language_dailbox.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
@@ -188,26 +189,31 @@ class SettingScreen extends StatelessWidget {
               thickness: 1,
             ),
             SH.medium(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.language,
-                      size: 30,
-                      color: color.primaryColor,
-                    ),
-                    SW.large(),
-                    const LabelText(text: "Language")
-                  ],
-                ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: color.primaryColor,
-                )
-              ],
+            GestureDetector(
+              onTap: () {
+                LanguageCustomDialogBox(context);
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.language,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.large(),
+                      LabelText(text: "lang".tr)
+                    ],
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 20,
+                    color: color.primaryColor,
+                  )
+                ],
+              ),
             ),
             SH.medium(),
             const Divider(

@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
+import 'package:habbit_app/l10n/l10n.dart';
+import 'package:habbit_app/language/localString.dart';
 import 'package:habbit_app/screens/customize_screen/backUp_screen.dart';
 import 'package:habbit_app/screens/categories/categories.dart';
 import 'package:habbit_app/screens/categories/categories_drawer_screen.dart';
@@ -24,6 +27,7 @@ import 'package:habbit_app/screens/intro_screen.dart';
 import 'package:habbit_app/screens/splash_screen.dart';
 import 'package:habbit_app/theme/theme_data.dart';
 import 'screens/main_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -42,6 +46,8 @@ class MyApp extends StatelessWidget {
 // Timer(Duration(seconds: 3), () => Get.to(() => SplashScreen()));
     return Obx(
       () => GetMaterialApp(
+        translations: LocalString(),
+        locale: Locale('en', 'US'),
         defaultTransition: Transition.cupertino,
         transitionDuration: const Duration(milliseconds: 300),
         title: 'Habit',
