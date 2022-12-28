@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
-import 'package:habbit_app/controllers/addtask_controller.dart';
+import 'package:habbit_app/controllers/task_controller.dart';
+import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/category_custom_dialog.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/name_custom_dailogbox.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/priority_custom_dilogbox.dart';
@@ -27,6 +28,8 @@ class AddTaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     AddTaskController addTaskController =
         Get.put(AddTaskController(), permanent: false);
+    CategoryController categoryController =
+        Get.put(CategoryController(), permanent: false);
 
     // bool switchChange = true;
     ThemeData color = Theme.of(context);
@@ -87,9 +90,9 @@ class AddTaskScreen extends StatelessWidget {
                           child: Center(
                             child: Obx(
                               () => LabelText(
-                                text: addTaskController.updateName.value == ''
+                                text: addTaskController.taskName.value == ''
                                     ? "name"
-                                    : addTaskController.updateName.value,
+                                    : addTaskController.taskName.value,
                               ),
                             ),
                           )),
@@ -133,10 +136,37 @@ class AddTaskScreen extends StatelessWidget {
                             () => Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                addTaskController.categoryIcon.value,
+                                Icon(
+                                  addTaskController.categoryId.value != 0
+                                      ? categoryController.icon[
+                                          categoryController.categories
+                                              .firstWhere((element) =>
+                                                  element.id ==
+                                                  addTaskController
+                                                      .categoryId.value)
+                                              .icon]
+                                      : Icons.abc,
+                                  color: addTaskController.categoryId.value != 0
+                                      ? categoryController.iconColor[
+                                          categoryController.categories
+                                              .firstWhere((element) =>
+                                                  element.id ==
+                                                  addTaskController
+                                                      .categoryId.value)
+                                              .color]
+                                      : color.primaryColor,
+                                ),
+                                // addTaskController.categoryIcon.value,
                                 SW.small(),
                                 LabelText(
-                                  text: addTaskController.updateCategory.value,
+                                  text: addTaskController.categoryId != 0
+                                      ? categoryController.categories
+                                          .firstWhere((element) =>
+                                              element.id ==
+                                              addTaskController
+                                                  .categoryId.value)
+                                          .name
+                                      : 'Select',
                                 ),
                               ],
                             ),
@@ -163,13 +193,8 @@ class AddTaskScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      DateTime? newDate = await showDatePicker(
-                          context: context,
-                          initialDate: addTaskController.startDate.value,
-                          firstDate: DateTime(1997),
-                          lastDate: DateTime(2030));
-                      if (newDate == null) return;
-                      addTaskController.startDate.value = newDate;
+                      addTaskController.setDate(context);
+
                       // ToDoWeekCustomDialogBox(context);
                     },
                     child: Container(
@@ -184,7 +209,7 @@ class AddTaskScreen extends StatelessWidget {
                           child: Obx(
                             () => LabelText(
                               text:
-                                  "${addTaskController.startDate.value.day}/${addTaskController.startDate.value.month}/${addTaskController.startDate.value.year}",
+                                  "${addTaskController.date.value.day}/${addTaskController.date.value.month}/${addTaskController.date.value.year}",
                             ),
                           ),
                         )),
@@ -310,7 +335,8 @@ class AddTaskScreen extends StatelessWidget {
                           children: [
                             Obx(
                               () => LabelText(
-                                text: addTaskController.updatePriority.value,
+                                text: addTaskController.updatePriority.value
+                                    .toString(),
                               ),
                             ),
                             SW.small(),
@@ -375,16 +401,22 @@ class AddTaskScreen extends StatelessWidget {
               SH.large(),
               Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      border: Border.all(width: 2, color: color.primaryColor),
-                      color: color.backgroundColor),
-                  child: const Center(
-                    child: MainLabelText(
-                      text: "Add Task",
-                      isColor: true,
+                child: GestureDetector(
+                  onTap: () {
+                    addTaskController.addTask();
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        border: Border.all(width: 2, color: color.primaryColor),
+                        color: color.backgroundColor),
+                    child: const Center(
+                      child: MainLabelText(
+                        text: "Add Task",
+                        isColor: true,
+                      ),
                     ),
                   ),
                 ),
