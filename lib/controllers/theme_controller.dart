@@ -2,6 +2,7 @@
 
 import 'package:get/get.dart';
 import 'package:habbit_app/app_labels/customize_screen.dart';
+import 'package:habbit_app/screens/helpers/local_storage_helper.dart';
 
 class ThemeController extends GetxController {
   RxBool _isDark = false.obs;
@@ -16,13 +17,34 @@ class ThemeController extends GetxController {
     _isDark.value = !_isDark.value;
   }
 
-  changeThemeModeBy(Map<String, String> val) {
+  changeThemeModeBy(Map<String, String> val) async {
     _themeModeData.value = val;
+    await LocalStorageHelper.setItem('theme', val['value'].toString());
   }
 
   changeThemeColor(String val) {
     if (_mode.value != val) {
       _mode.value = val;
     }
+  }
+
+  setStoredData() async {
+    try {
+      String? themeMode = await LocalStorageHelper.getItem("theme");
+
+      var dta = CScreenLabels.oprionsForBrightness
+          .firstWhere((element) => element['value'] == (themeMode ?? 'light'));
+
+      await changeThemeModeBy(dta);
+    } catch (e) {
+      await changeThemeModeBy(CScreenLabels.oprionsForBrightness[0]);
+    }
+  }
+
+  @override
+  void onInit() {
+    setStoredData();
+    // TODO: implement onInit
+    super.onInit();
   }
 }
