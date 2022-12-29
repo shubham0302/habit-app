@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/controllers/home_page_controller.dart';
 import 'package:habbit_app/controllers/tabController.dart';
+import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/screens/customize_screen/components/custom_dialog_box.dart';
 import 'package:habbit_app/widgets/date_widget.dart';
@@ -43,8 +45,12 @@ class _TaskScreenState extends State<TaskScreen>
   @override
   Widget build(BuildContext context) {
     ThemeController themeController = Get.find<ThemeController>();
+    AddTaskController addTaskController =
+        Get.put(AddTaskController(), permanent: false);
     TaskTabController tabController =
         Get.put(TaskTabController(), permanent: false);
+    CategoryController categoryController =
+        Get.put(CategoryController(), permanent: false);
 
     ThemeData color = Theme.of(context);
     return Scaffold(
@@ -132,7 +138,7 @@ class _TaskScreenState extends State<TaskScreen>
                 children: [
                   ListView.separated(
                       physics: const BouncingScrollPhysics(),
-                      itemCount: 10,
+                      itemCount: 1,
                       separatorBuilder: (context, index) => Column(
                             children: [
                               SH.small(),
@@ -162,43 +168,62 @@ class _TaskScreenState extends State<TaskScreen>
                             SH.small(),
                             const Divider(),
                             SH.small(),
-                            ListView.separated(
-                              separatorBuilder: (context, index) => Column(
-                                children: [
-                                  SH.small(),
-                                  const Divider(),
-                                  SH.small(),
-                                ],
-                              ),
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: 2,
-                              itemBuilder: (context, index) {
-                                return Column(
+                            Obx(
+                              () => ListView.separated(
+                                separatorBuilder: (context, index) => Column(
                                   children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          height: 30,
-                                          width: 30,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              color:
-                                                  Colors.purpleAccent.shade100),
-                                          child: Icon(
-                                            Icons.brush,
-                                            size: 23,
-                                            color: color.backgroundColor,
-                                          ),
-                                        ),
-                                        SW.medium(),
-                                        const LabelText(text: 'Cooking')
-                                      ],
-                                    ),
+                                    SH.small(),
+                                    const Divider(),
+                                    SH.small(),
                                   ],
-                                );
-                              },
+                                ),
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: addTaskController.tasks.length,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Container(
+                                            height: 30,
+                                            width: 30,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                                color: categoryController
+                                                        .iconColor[
+                                                    categoryController
+                                                        .categories
+                                                        .firstWhere((element) =>
+                                                            element.id ==
+                                                            addTaskController
+                                                                .tasks[index]
+                                                                .categoryId)
+                                                        .color]),
+                                            child: Icon(
+                                              categoryController.icon[
+                                                  categoryController.categories
+                                                      .firstWhere((element) =>
+                                                          element.id ==
+                                                          addTaskController
+                                                              .tasks[index]
+                                                              .categoryId)
+                                                      .icon],
+                                              size: 23,
+                                              color: color.backgroundColor,
+                                            ),
+                                          ),
+                                          SW.medium(),
+                                          LabelText(
+                                              text: addTaskController
+                                                  .tasks.value[index].taskName)
+                                        ],
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ),
                             ),
                           ],
                         );

@@ -4,33 +4,35 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/infrastructure/services/category/category_services.dart';
+import 'package:habbit_app/controllers/db_controller.dart';
+import 'package:habbit_app/infrastructure/db/app_service.dart';
 import 'package:drift/drift.dart' as drift;
 
 class CategoryController extends GetxController {
+  DBController dbcontroller = Get.find<DBController>() ;
   TextEditingController ctrl = TextEditingController();
-  final CategoryClass _categoryDb = CategoryClass();
+  // AppDB dbcontroller = AppDB();
   var colorIndex = 0.obs;
   var removeIndex = 0.obs;
   var shakeIndex = 0.obs;
   List<IconData> icon = [
-    Icons.abc,
-    Icons.abc,
-    Icons.abc,
-    Icons.abc,
-    Icons.abc,
-    Icons.abc,
-    Icons.abc,
-    Icons.abc,
-    Icons.abc
+    Icons.health_and_safety_outlined,
+    Icons.flight,
+    Icons.movie,
+    Icons.currency_rupee_outlined,
+    Icons.home_filled,
+    Icons.cast_for_education_outlined,
+    Icons.yard,
+    Icons.task,
+    Icons.work
     // Icons.abc
   ];
   List<Color> iconColor = [
-    Colors.red,
-    Colors.red,
-    Colors.red,
-    Colors.red,
-    Colors.red,
+    Color(0xffFFCACB),
+    Color(0xff9BEAAE),
+    Color(0xffE03F6C),
+    Color(0xffFBFF76),
+    Color(0xffB186FD),
   ];
 
   var category = ''.obs;
@@ -44,7 +46,7 @@ class CategoryController extends GetxController {
           icon: drift.Value(iconType.value),
           color: drift.Value(colorIndex.value));
 
-      var data = await _categoryDb.insertCategory(entity);
+      var data = await dbcontroller.appDB.insertCategory(entity);
       category.value = '';
       iconType.value = 0;
       colorIndex.value = 0;
@@ -66,7 +68,7 @@ class CategoryController extends GetxController {
           icon: drift.Value(iconType.value),
           color: drift.Value(colorIndex.value));
 
-      var data = await _categoryDb.updateCategory(entity);
+      var data = await dbcontroller.appDB.updateCategory(entity);
       category.value = '';
       iconType.value = 0;
       colorIndex.value = 0;
@@ -81,7 +83,7 @@ class CategoryController extends GetxController {
   RxList<CategoryModelData> categories = <CategoryModelData>[].obs;
   getCategory() {
     try {
-      _categoryDb.streamCategories().forEach((element) {
+      dbcontroller.appDB.streamCategories().forEach((element) {
         categories.value = element;
         categories.refresh();
       });
@@ -92,7 +94,7 @@ class CategoryController extends GetxController {
 
   deleteCategory(int id) async {
     try {
-      await _categoryDb.deleteCategory(id);
+      await dbcontroller.appDB.deleteCategory(id);
     } catch (e) {
       log('hahaha error ${e}');
     }

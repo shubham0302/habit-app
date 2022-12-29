@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/category_controller.dart';
+import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/theme_config.dart';
 
@@ -9,6 +11,10 @@ import '../controllers/home_page_controller.dart';
 
 Widget buildBottomNavigationMenu(
     context, int selectedIndex, HomePageController controller) {
+  CategoryController categoryController =
+      Get.put(CategoryController(), permanent: false);
+  AddTaskController taskController =
+      Get.put(AddTaskController(), permanent: false);
   ThemeData color = Theme.of(context);
 
   final double sizeWidth = MediaQuery.of(context).size.width;
@@ -47,6 +53,8 @@ Widget buildBottomNavigationMenu(
               SW.medium(),
               Expanded(
                 child: buildBottomNavItem(() {
+                  categoryController.getCategory();
+                  taskController.getTasks();
                   controller.changeTabIndex(1);
                 },
                     controller.tabIndex.value == 1
@@ -59,6 +67,7 @@ Widget buildBottomNavigationMenu(
               SW.medium(),
               Expanded(
                 child: buildBottomNavItem(() {
+                  categoryController.getCategory();
                   controller.changeTabIndex(2);
                 },
                     controller.tabIndex.value == 2
