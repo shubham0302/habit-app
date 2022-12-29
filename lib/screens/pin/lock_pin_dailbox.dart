@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/lockpin_controller.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';
@@ -38,10 +37,11 @@ void LockPinCustomDialogBox(BuildContext context) {
                     SH.medium(),
                     InputField(
                       hintText: "Enter Pin",
-                      controller: lockPinController.pinCtrl,
+                      controller: lockPinController.pinSetCtrl,
                       isWhiteHintText: true,
+                      textType: TextInputType.phone,
                       onChange: (p0) {
-                        lockPinController.pin.value = p0;
+                        lockPinController.setpin.value = p0;
                       },
                     ),
                     SH.large(),
@@ -55,6 +55,7 @@ void LockPinCustomDialogBox(BuildContext context) {
                       hintText: "Re-enter Pin",
                       controller: lockPinController.pinconfirmCtrl,
                       isWhiteHintText: true,
+                      textType: TextInputType.phone,
                       onChange: (p0) {
                         lockPinController.confirmpin.value = p0;
                       },
@@ -69,6 +70,7 @@ void LockPinCustomDialogBox(BuildContext context) {
                       children: [
                         GestureDetector(
                           onTap: () {
+                            lockPinController.addPin();
                             Get.back();
                           },
                           child: const MainLabelText(
