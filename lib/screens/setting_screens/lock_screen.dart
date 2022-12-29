@@ -5,6 +5,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 
 import 'package:habbit_app/controllers/swich_controller.dart';
+import 'package:habbit_app/lockscreen_custom_dailboxdart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
@@ -74,6 +75,10 @@ class LockScreen extends StatelessWidget {
                       switchController.LockPinSwichChange.value == true
                           ? switchController.LockPinSwichChange.value = false
                           : switchController.LockPinSwichChange.value = true;
+
+                      switchController.LockPinSwichChange.value == true
+                          ? LockPinCustomDialogBox(context)
+                          : SizedBox();
                       // status = val;
                       // setState(() {
                       //   status = val;
@@ -100,28 +105,55 @@ class LockScreen extends StatelessWidget {
                   ],
                 ),
                 Obx(
-                  () => FlutterSwitch(
-                    activeColor: color.primaryColor,
-                    activeToggleColor: color.backgroundColor,
+                  () => switchController.LockPinSwichChange.value == true
+                      ? FlutterSwitch(
+                          activeColor: color.primaryColor,
+                          activeToggleColor: color.backgroundColor,
 
-                    width: 50.0,
-                    height: 25.0,
-                    valueFontSize: 15.0,
-                    toggleSize: 20.0,
-                    value: switchController.FingerSwichChange.value,
-                    borderRadius: 30.0,
-                    padding: 2.0,
-                    // showOnOff: true,
-                    onToggle: (val) {
-                      switchController.FingerSwichChange.value == true
-                          ? switchController.FingerSwichChange.value = false
-                          : switchController.FingerSwichChange.value = true;
-                      // status = val;
-                      // setState(() {
-                      //   status = val;
-                      // });
-                    },
-                  ),
+                          width: 50.0,
+                          height: 25.0,
+                          valueFontSize: 15.0,
+                          toggleSize: 20.0,
+                          value: switchController.FingerSwichChange.value,
+                          borderRadius: 30.0,
+                          padding: 2.0,
+                          // showOnOff: true,
+                          onToggle: (val) {
+                            switchController.FingerSwichChange.value == true
+                                ? switchController.FingerSwichChange.value =
+                                    false
+                                : switchController.FingerSwichChange.value =
+                                    true;
+                            // status = val;
+                            // setState(() {
+                            //   status = val;
+                            // });
+                          },
+                        )
+                      : FlutterSwitch(
+                          activeColor: color.primaryColor,
+                          activeToggleColor: color.backgroundColor,
+
+                          width: 50.0,
+                          height: 25.0,
+                          valueFontSize: 15.0,
+                          toggleSize: 20.0,
+                          value: false,
+                          borderRadius: 30.0,
+                          padding: 2.0, onToggle: (bool value) {},
+                          // showOnOff: true,
+                          // onToggle: (val) {
+                          //   switchController.FingerSwichChange.value == true
+                          //       ? switchController.FingerSwichChange.value =
+                          //           false
+                          //       : switchController.FingerSwichChange.value =
+                          //           true;
+                          //   // status = val;
+                          //   // setState(() {
+                          //   //   status = val;
+                          //   // });
+                          // },
+                        ),
                 ),
               ],
             ),

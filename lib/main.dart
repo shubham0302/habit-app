@@ -15,6 +15,7 @@ import 'package:habbit_app/screens/setting_screens/licenses_screen.dart';
 import 'package:habbit_app/screens/setting_screens/lock_screen.dart';
 import 'package:habbit_app/screens/setting_screens/notification_alarm_screen.dart';
 import 'package:habbit_app/screens/setting_screens/todohabbit_screen.dart';
+import 'package:habbit_app/screens/splash2_screen.dart';
 import 'package:habbit_app/screens/task_screen/add_task_screen.dart';
 import 'package:habbit_app/screens/timer/drawer_timer.dart';
 import 'package:habbit_app/screens/habbit/habbit_detailScreen.dart';
@@ -56,7 +57,7 @@ class MyApp extends StatelessWidget {
           context,
           themeController.mode,
         ),
-        initialRoute: '/intro',
+        initialRoute: '/splash',
         getPages: Routes.routes,
         themeMode: themeController.themeModeData['value'] == 'default'
             ? ThemeMode.system
@@ -95,5 +96,6 @@ class Routes {
         name: "/recurringTask-detail",
         page: () => const AddRecurringTaskScreen()),
     GetPage(name: "/addtask", page: () => const AddTaskScreen()),
+    GetPage(name: "/splash", page: () => const Splash()),
   ];
 }
