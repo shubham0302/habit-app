@@ -24,42 +24,118 @@ class CategoriesScreen extends StatelessWidget {
           SH.small(),
           const DescriptionText(text: "Editable for premium users"),
           SH.large(),
-          SH.large(),
+          // SH.large(),
+          SizedBox(
+            height: 120,
+            child: Obx(
+              () => ListView.separated(
+                separatorBuilder: (context, index) => SW.medium(),
+                scrollDirection: Axis.horizontal,
+                itemCount: categoryController.categories
+                    .where((p0) => p0.isDefault)
+                    .length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: color.disabledColor.withOpacity(0.2)),
+                        child: Icon(
+                          categoryController.icon[categoryController.categories
+                              .where((p0) => p0.isDefault)
+                              .toList()[index]
+                              .icon],
+                          color: categoryController.iconColor[categoryController
+                              .categories
+                              .where((p0) => p0.isDefault)
+                              .toList()[index]
+                              .color],
+                          size: 40,
+                        ),
+                      ),
+                      SH.small(),
+                      DescriptionText(
+                        isColor: true,
+                        color: color.canvasColor,
+                        isBold: true,
+                        text: categoryController.categories
+                            .where((p0) => p0.isDefault)
+                            .toList()[index]
+                            .name,
+                        isWhite: true,
+                      ),
+                      const DescriptionText(text: "0 entries"),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ),
+          // Row(
+          //   children: [
+          //     Column(
+          //       children: [
+          //         Container(
+          //           height: 60,
+          //           width: 60,
+          //           decoration: BoxDecoration(
+          //               borderRadius: BorderRadius.circular(8),
+          //               color: color.disabledColor.withOpacity(0.2)),
+          //           child: Icon(
+          //             Icons.remove_circle_outline_rounded,
+          //             color: color.focusColor,
+          //             size: 40,
+          //           ),
+          //         ),
+          //         SH.small(),
+
+          //         DescriptionText(
+          //           isColor: true,
+          //           color: color.canvasColor,
+          //           isBold: true,
+          //           text: "Quit a habit",
+          //           isWhite: true,
+          //         ),
+          //         const DescriptionText(text: "0 entries"),
+          //         SH.large(),
+          //         SH.large(),
+          //       ],
+          //     ),
+          //   ],
+          // ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                children: [
-                  Container(
-                    height: 60,
-                    width: 60,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: color.disabledColor.withOpacity(0.2)),
-                    child: Icon(
-                      Icons.remove_circle_outline_rounded,
-                      color: color.focusColor,
-                      size: 40,
-                    ),
+              const HeadingText(text: "Custom Categories"),
+              GestureDetector(
+                onTap: () {
+                  categoryController.category.value = '';
+                  categoryController.colorIndex.value = 0;
+                  categoryController.iconType.value = 0;
+                  categoryController.ctrl.text = '';
+                  CategoriesCustomDialogBox(context, false);
+                },
+                child: Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: color.disabledColor.withOpacity(0.2)),
+                  child: Icon(
+                    Icons.add,
+                    color: color.disabledColor,
+                    size: 23,
                   ),
-                  SH.small(),
-                  DescriptionText(
-                    isColor: true,
-                    color: color.canvasColor,
-                    isBold: true,
-                    text: "Quit a habit",
-                    isWhite: true,
-                  ),
-                  const DescriptionText(text: "0 entries"),
-                  SH.large(),
-                  SH.large(),
-                ],
+                ),
               ),
             ],
           ),
-          const HeadingText(text: "Custom Categories"),
           SH.small(),
           const DescriptionText(text: "4 Available"),
-          SH.large(),
+          // SH.large(),
           SH.large(),
           SizedBox(
             height: 150,
@@ -69,7 +145,9 @@ class CategoriesScreen extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 // shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: categoryController.categories.length,
+                itemCount: categoryController.categories
+                    .where((p0) => !p0.isDefault)
+                    .length,
                 itemBuilder: (context, index) {
                   return Stack(
                     clipBehavior: Clip.none,
@@ -77,15 +155,30 @@ class CategoriesScreen extends StatelessWidget {
                       GestureDetector(
                           onTap: () {
                             categoryController.colorIndex.value =
-                                categoryController.categories[index].color;
+                                categoryController.categories
+                                    .where((p0) => !p0.isDefault)
+                                    .toList()[index]
+                                    .color;
                             categoryController.iconType.value =
-                                categoryController.categories[index].icon;
+                                categoryController.categories
+                                    .where((p0) => !p0.isDefault)
+                                    .toList()[index]
+                                    .icon;
                             categoryController.category.value =
-                                categoryController.categories[index].name;
+                                categoryController.categories
+                                    .where((p0) => !p0.isDefault)
+                                    .toList()[index]
+                                    .name;
                             categoryController.selectedId.value =
-                                categoryController.categories[index].id;
-                            categoryController.ctrl.text =
-                                categoryController.categories[index].name;
+                                categoryController.categories
+                                    .where((p0) => !p0.isDefault)
+                                    .toList()[index]
+                                    .id;
+                            categoryController.ctrl.text = categoryController
+                                .categories
+                                .where((p0) => !p0.isDefault)
+                                .toList()[index]
+                                .name;
                             CategoriesCustomDialogBox(context, true);
                           },
                           onLongPress: () {
@@ -116,10 +209,15 @@ class CategoriesScreen extends StatelessWidget {
                                             .withOpacity(0.2)),
                                     child: Icon(
                                       categoryController.icon[categoryController
-                                          .categories[index].icon],
+                                          .categories
+                                          .where((p0) => !p0.isDefault)
+                                          .toList()[index]
+                                          .icon],
                                       color: categoryController.iconColor[
-                                          categoryController
-                                              .categories[index].color],
+                                          categoryController.categories
+                                              .where((p0) => !p0.isDefault)
+                                              .toList()[index]
+                                              .color],
                                       size: 40,
                                     ),
                                   ),
@@ -128,8 +226,10 @@ class CategoriesScreen extends StatelessWidget {
                                     isColor: true,
                                     color: color.canvasColor,
                                     isBold: true,
-                                    text: categoryController
-                                        .categories[index].name,
+                                    text: categoryController.categories
+                                        .where((p0) => !p0.isDefault)
+                                        .toList()[index]
+                                        .name,
                                     isWhite: true,
                                   ),
                                   const DescriptionText(text: "0 entries"),
@@ -139,112 +239,115 @@ class CategoriesScreen extends StatelessWidget {
                               ),
                             ),
                           )),
-                      Obx(() => categoryController.removeIndex.value ==
-                              index + 1
-                          ? Positioned(
-                              top: 0,
-                              right: -8,
-                              child: GestureDetector(
-                                onTap: () {
-                                  categoryController.deleteCategory(
-                                      categoryController.categories[index].id);
-                                  categoryController.removeIndex.value = 0;
-                                },
-                                behavior: HitTestBehavior.translucent,
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  height: 20,
-                                  width: 20,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    // borderRadius: BorderRadius.circular(radius),
-                                    color: color.primaryColor,
-                                  ),
-                                  child: Icon(Icons.remove,
-                                      color: color.backgroundColor),
-                                ),
-                              ))
-                          : const SizedBox())
+                      Obx(() =>
+                          categoryController.removeIndex.value == index + 1
+                              ? Positioned(
+                                  top: 0,
+                                  right: -8,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      categoryController.deleteCategory(
+                                          categoryController.categories
+                                              .where((p0) => !p0.isDefault)
+                                              .toList()[index]
+                                              .id);
+                                      categoryController.removeIndex.value = 0;
+                                    },
+                                    behavior: HitTestBehavior.translucent,
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      height: 20,
+                                      width: 20,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        // borderRadius: BorderRadius.circular(radius),
+                                        color: color.primaryColor,
+                                      ),
+                                      child: Icon(Icons.remove,
+                                          color: color.backgroundColor),
+                                    ),
+                                  ))
+                              : const SizedBox())
                     ],
                   );
                 },
               ),
             ),
           ),
-          Row(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  categoryController.getCategory();
-                },
-                child: Column(
-                  children: [
-                    Container(
-                      height: 60,
-                      width: 60,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: color.disabledColor.withOpacity(0.2)),
-                      child: Icon(
-                        Icons.sports_bar,
-                        color: color.highlightColor,
-                        size: 40,
-                      ),
-                    ),
-                    SH.small(),
-                    DescriptionText(
-                      isColor: true,
-                      color: color.canvasColor,
-                      isBold: true,
-                      text: "Exercise",
-                      isWhite: true,
-                    ),
-                    const DescriptionText(text: "0 entries"),
-                    SH.large(),
-                    SH.large(),
-                  ],
-                ),
-              ),
-              SW.large(),
-              GestureDetector(
-                onTap: () {
-                  categoryController.category.value = '';
-                  categoryController.colorIndex.value = 0;
-                  categoryController.iconType.value = 0;
-                  categoryController.ctrl.text = '';
-                  CategoriesCustomDialogBox(context, false);
-                },
-                child: Column(
-                  children: [
-                    Container(
-                      height: 60,
-                      width: 60,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: color.disabledColor.withOpacity(0.2)),
-                      child: Icon(
-                        Icons.add,
-                        color: color.disabledColor,
-                        size: 40,
-                      ),
-                    ),
-                    SH.medium(),
-                    SH.small(),
-                    DescriptionText(
-                      isColor: true,
-                      color: color.canvasColor,
-                      isBold: true,
-                      text: "Add New",
-                      isWhite: true,
-                    ),
-                    // DescriptionText(text: "0 entries"),
-                    SH.large(),
-                    SH.large(),
-                  ],
-                ),
-              ),
-            ],
-          ),
+          // Row(
+          //   children: [
+          //     GestureDetector(
+          //       onTap: () {
+          //         categoryController.getCategory();
+          //       },
+          //       child: Column(
+          //         children: [
+          //           Container(
+          //             height: 60,
+          //             width: 60,
+          //             decoration: BoxDecoration(
+          //                 borderRadius: BorderRadius.circular(8),
+          //                 color: color.disabledColor.withOpacity(0.2)),
+          //             child: Icon(
+          //               Icons.sports_bar,
+          //               color: color.highlightColor,
+          //               size: 40,
+          //             ),
+          //           ),
+          //           SH.small(),
+          //           DescriptionText(
+          //             isColor: true,
+          //             color: color.canvasColor,
+          //             isBold: true,
+          //             text: "Exercise",
+          //             isWhite: true,
+          //           ),
+          //           const DescriptionText(text: "0 entries"),
+          //           SH.large(),
+          //           SH.large(),
+          //         ],
+          //       ),
+          //     ),
+          //     SW.large(),
+          //     GestureDetector(
+          //       onTap: () {
+          //         categoryController.category.value = '';
+          //         categoryController.colorIndex.value = 0;
+          //         categoryController.iconType.value = 0;
+          //         categoryController.ctrl.text = '';
+          //         CategoriesCustomDialogBox(context, false);
+          //       },
+          //       child: Column(
+          //         children: [
+          //           Container(
+          //             height: 60,
+          //             width: 60,
+          //             decoration: BoxDecoration(
+          //                 borderRadius: BorderRadius.circular(8),
+          //                 color: color.disabledColor.withOpacity(0.2)),
+          //             child: Icon(
+          //               Icons.add,
+          //               color: color.disabledColor,
+          //               size: 40,
+          //             ),
+          //           ),
+          //           SH.medium(),
+          //           SH.small(),
+          //           DescriptionText(
+          //             isColor: true,
+          //             color: color.canvasColor,
+          //             isBold: true,
+          //             text: "Add New",
+          //             isWhite: true,
+          //           ),
+          //           // DescriptionText(text: "0 entries"),
+          //           SH.large(),
+          //           SH.large(),
+          //         ],
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ]),
       ),
     );

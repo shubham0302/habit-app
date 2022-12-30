@@ -26,73 +26,158 @@ void CategoryTaskCustomDialogBox(BuildContext context) {
           content: Container(
             width: 360,
             height: 620,
-            child: GridView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, childAspectRatio: 2),
-              itemCount: categoryController.categories.length,
-              itemBuilder: (context, index) {
-                return Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        // String v = "Quit";
-                        // Icon iv = const Icon(
-                        //   Icons.cancel_outlined,
-                        //   color: Colors.red,
-                        // );
+            child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  // GridView.builder(
+                  //   physics: NeverScrollableScrollPhysics(),
+                  //   shrinkWrap: true,
+                  //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  //       crossAxisCount: 2, childAspectRatio: 2),
+                  //   itemCount: categoryController.defaultString.length,
+                  //   itemBuilder: (context, index) {
+                  //     return Expanded(
+                  //       child: Padding(
+                  //         padding: const EdgeInsets.all(8.0),
+                  //         child: GestureDetector(
+                  //           onTap: () {
+                  //             // String v = "Quit";
+                  //             // Icon iv = const Icon(
+                  //             //   Icons.cancel_outlined,
+                  //             //   color: Colors.red,
+                  //             // );
 
-                        //
-                        // addHabbitSelectController.categoryIcon.value =
-                        // addHabbitSelectController.categoryIcon.value =
-                        addHabbitSelectController.categoryId.value =
-                            categoryController.categories[index].id;
-                        Get.back();
-                      },
-                      child: Container(
-                        height: 60,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10)),
-                            border: Border.all(
-                                color: color.disabledColor.withOpacity(0.3))),
+                  //             //
+                  //             // addHabbitSelectController.categoryIcon.value =
+                  //             // addHabbitSelectController.categoryIcon.value =
+                  //             // addHabbitSelectController.categoryId.value =
+                  //             //     categoryController.categories[index].id;
+                  //             Get.back();
+                  //           },
+                  //           child: Container(
+                  //             height: 60,
+                  //             width: MediaQuery.of(context).size.width,
+                  //             decoration: BoxDecoration(
+                  //                 borderRadius: const BorderRadius.all(
+                  //                     Radius.circular(10)),
+                  //                 border: Border.all(
+                  //                     color: color.disabledColor
+                  //                         .withOpacity(0.3))),
+                  //             child: Padding(
+                  //               padding: const EdgeInsets.all(8.0),
+                  //               child: Row(
+                  //                 mainAxisAlignment:
+                  //                     MainAxisAlignment.spaceBetween,
+                  //                 children: [
+                  //                   Expanded(
+                  //                     child: LabelText(
+                  //                         text: categoryController
+                  //                             .defaultString[index]['name']),
+                  //                   ),
+                  //                   Container(
+                  //                     height: 30,
+                  //                     width: 30,
+                  //                     decoration: BoxDecoration(
+                  //                         borderRadius: const BorderRadius.all(
+                  //                           Radius.circular(10),
+                  //                         ),
+                  //                         color: color.disabledColor
+                  //                             .withOpacity(0.3)),
+                  //                     child: Icon(
+                  //                       categoryController.icon[
+                  //                           categoryController
+                  //                               .defaultString[index]['icon']],
+                  //                       size: 20,
+                  //                       color: categoryController.iconColor[
+                  //                           categoryController
+                  //                               .defaultString[index]['color']],
+                  //                     ),
+                  //                   )
+                  //                 ],
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
+                  GridView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2, childAspectRatio: 2),
+                    itemCount: categoryController.categories.length,
+                    itemBuilder: (context, index) {
+                      return Expanded(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              LabelText(
-                                  text: categoryController
-                                      .categories[index].name),
-                              Container(
-                                height: 40,
-                                width: 40,
-                                decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.all(
-                                      Radius.circular(10),
+                          child: GestureDetector(
+                            onTap: () {
+                              // String v = "Quit";
+                              // Icon iv = const Icon(
+                              //   Icons.cancel_outlined,
+                              //   color: Colors.red,
+                              // );
+
+                              //
+                              // addHabbitSelectController.categoryIcon.value =
+                              // addHabbitSelectController.categoryIcon.value =
+                              addHabbitSelectController.categoryId.value =
+                                  categoryController.categories[index].id;
+                              Get.back();
+                            },
+                            child: Container(
+                              height: 60,
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
+                                  border: Border.all(
+                                      color: color.disabledColor
+                                          .withOpacity(0.3))),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(
+                                      child: LabelText(
+                                          text: categoryController
+                                              .categories[index].name),
                                     ),
-                                    color:
-                                        color.disabledColor.withOpacity(0.3)),
-                                child: Icon(
-                                  categoryController.icon[categoryController
-                                      .categories[index].icon],
-                                  size: 30,
-                                  color: categoryController.iconColor[
-                                      categoryController
-                                          .categories[index].color],
+                                    Container(
+                                      height: 30,
+                                      width: 30,
+                                      decoration: BoxDecoration(
+                                          borderRadius: const BorderRadius.all(
+                                            Radius.circular(10),
+                                          ),
+                                          color: color.disabledColor
+                                              .withOpacity(0.3)),
+                                      child: Icon(
+                                        categoryController.icon[
+                                            categoryController
+                                                .categories[index].icon],
+                                        size: 23,
+                                        color: categoryController.iconColor[
+                                            categoryController
+                                                .categories[index].color],
+                                      ),
+                                    )
+                                  ],
                                 ),
-                              )
-                            ],
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   ),
-                );
-              },
+                ],
+              ),
             ),
           ),
         );

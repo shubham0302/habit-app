@@ -26,49 +26,48 @@ class Styles {
         color: ColorSchemeData.defaultBrightColors['primaryText'],
       ),
       textTheme: TextTheme(
-        //Heading text
-        headline1: TextStyle(
-          fontSize: 23.0,
-          fontWeight: FontWeight.bold,
-          color: ColorSchemeData.defaultBrightColors['primaryText'],
-        ),
+          //Heading text
+          headline1: TextStyle(
+            fontSize: 23.0,
+            fontWeight: FontWeight.bold,
+            color: ColorSchemeData.defaultBrightColors['primaryText'],
+          ),
 
-        //Title Text
-        headline2: TextStyle(
-          fontSize: 50.0,
-          fontWeight: FontWeight.bold,
-          color: ColorSchemeData.defaultBrightColors['primaryText'],
-        ),
+          //Title Text
+          headline2: TextStyle(
+            fontSize: 50.0,
+            fontWeight: FontWeight.bold,
+            color: ColorSchemeData.defaultBrightColors['primaryText'],
+          ),
 
-        //Description Text
-        subtitle1: TextStyle(
-          fontSize: 10,
-          color: ColorSchemeData.defaultBrightColors['secondaryText'],
-        ),
+          //Description Text
+          subtitle1: TextStyle(
+            fontSize: 10,
+            color: ColorSchemeData.defaultBrightColors['secondaryText'],
+          ),
 
-        //button Text
-        button: TextStyle(
-          fontSize: 20,
-          color: ColorSchemeData.defaultBrightColors['primaryText'],
-        ),
+          //button Text
+          button: TextStyle(
+            fontSize: 20,
+            color: ColorSchemeData.defaultBrightColors['primaryText'],
+          ),
 
-        //Label Text
-        bodyText1: TextStyle(
-          fontSize: 14.0,
-          color: ColorSchemeData.defaultBrightColors['primaryText'],
-        ),
+          //Label Text
+          bodyText1: TextStyle(
+            fontSize: 14.0,
+            color: ColorSchemeData.defaultBrightColors['primaryText'],
+          ),
 
-        //MainLabel Text
-        bodyText2: TextStyle(
-          fontSize: 18.0,
-          fontWeight: FontWeight.bold,
-          color: ColorSchemeData.defaultBrightColors['primaryText'],
-        ),
+          //MainLabel Text
+          bodyText2: TextStyle(
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            color: ColorSchemeData.defaultBrightColors['primaryText'],
+          ),
           subtitle2: TextStyle(
             fontSize: 8,
             color: ColorSchemeData.defaultBrightColors['secondaryText'],
-          )
-      ),
+          )),
 
       backgroundColor: ColorSchemeData.defaultBrightColors['backgroundColor'],
       scaffoldBackgroundColor:
@@ -79,6 +78,9 @@ class Styles {
       primaryColor: ColorSchemeData.themeData[mode]!['primaryColor'],
       primaryColorDark: ColorSchemeData.defaultBrightColors['primaryText'],
       hintColor: Colors.black,
+      textButtonTheme: TextButtonThemeData(
+          style: ButtonStyle(
+              textStyle: MaterialStateProperty.all(TextStyle(fontSize: 14)))),
 
       highlightColor: const Color(0xffFCE192),
       hoverColor: const Color(0xff4285F4),
@@ -94,7 +96,6 @@ class Styles {
           .copyWith(colorScheme: const ColorScheme.light()),
       appBarTheme: const AppBarTheme(
         elevation: 0.0,
-        
         systemOverlayStyle: SystemUiOverlayStyle(
           // Status bar color
           statusBarColor: Colors.transparent,
@@ -198,7 +199,6 @@ class Styles {
           .copyWith(colorScheme: const ColorScheme.light()),
       appBarTheme: const AppBarTheme(
         elevation: 0.0,
-
         systemOverlayStyle: SystemUiOverlayStyle(
           // Status bar color
           statusBarColor: Colors.transparent,

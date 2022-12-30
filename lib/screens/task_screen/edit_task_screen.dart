@@ -1,25 +1,32 @@
-// ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages
+// ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/recurring_controller.dart';
-import 'package:habbit_app/screens/recurring_task/category_dailog.dart';
-import 'package:habbit_app/screens/recurring_task/evaluate_dailog.dart';
-import 'package:habbit_app/screens/recurring_task/name_recurring_dailog.dart';
-import 'package:habbit_app/screens/recurring_task/priority_recurring_dailog.dart';
-import 'package:habbit_app/screens/recurring_task/reminder_recurring_dailog.dart';
-import 'package:habbit_app/screens/recurring_task/repetation_recurring_dailog.dart';
+import 'package:habbit_app/controllers/addhabbit_controller.dart';
+import 'package:habbit_app/controllers/task_controller.dart';
+import 'package:habbit_app/controllers/category_controller.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/category_custom_dialog.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/name_custom_dailogbox.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/priority_custom_dilogbox.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/reminder_custom_dailbox.dart';
+import 'package:habbit_app/screens/task_screen/catagorytask_dailog.dart';
+import 'package:habbit_app/screens/task_screen/checklisttask_dailog.dart';
+import 'package:habbit_app/screens/task_screen/nametask_dailog.dart';
+import 'package:habbit_app/screens/task_screen/prioritytask_dailog.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
+import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
-class AddRecurringTaskScreen extends StatelessWidget {
-  const AddRecurringTaskScreen({super.key});
+class EditTask extends StatelessWidget {
+  const EditTask({super.key});
 
   @override
   Widget build(BuildContext context) {
-    AddRecurringTaskController addRecurringTaskController =
-        Get.put(AddRecurringTaskController(), permanent: false);
+    AddTaskController addTaskController =
+        Get.put(AddTaskController(), permanent: false);
+    CategoryController categoryController =
+        Get.put(CategoryController(), permanent: false);
 
     // bool switchChange = true;
     ThemeData color = Theme.of(context);
@@ -46,7 +53,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         ),
                       )),
                   SW.medium(),
-                  const MainLabelText(text: 'Add New Recurring Task'),
+                  const MainLabelText(text: 'Edit Task'),
                 ],
               ),
               SH.large(),
@@ -69,7 +76,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        NameRecurringCustomDialogBox(context);
+                        NameTaskCustomDialogBox(context);
                         // CategoryCustomDialogBox(context);
                         // ToDoWeekCustomDialogBox(context);
                       },
@@ -84,108 +91,15 @@ class AddRecurringTaskScreen extends StatelessWidget {
                           child: Center(
                             child: Obx(
                               () => LabelText(
-                                text: addRecurringTaskController
-                                            .updateName.value ==
-                                        ''
+                                text: addTaskController.taskName.value == ''
                                     ? "name"
-                                    : addRecurringTaskController
-                                        .updateName.value,
+                                    : addTaskController.taskName.value,
                               ),
                             ),
                           )),
                     )
                   ],
                 ),
-              ),
-              SH.large(),
-              SH.medium(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.info,
-                        size: 30,
-                        color: color.primaryColor,
-                      ),
-                      SW.medium(),
-                      const LabelText(text: "Description")
-                    ],
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      NameRecurringCustomDialogBox(context);
-                      // ToDoWeekCustomDialogBox(context);
-                    },
-                    child: Container(
-                        alignment: Alignment.centerLeft,
-                        height: 35,
-                        width: 140,
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
-                        child: Center(
-                          child: Obx(
-                            () => Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: LabelText(
-                                text: addRecurringTaskController
-                                            .updateDescription.value ==
-                                        ''
-                                    ? "Description"
-                                    : addRecurringTaskController
-                                        .updateDescription.value,
-                                isDotDot: true,
-                              ),
-                            ),
-                          ),
-                        )),
-                  )
-                ],
-              ),
-              SH.large(),
-              SH.medium(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.info,
-                        size: 30,
-                        color: color.primaryColor,
-                      ),
-                      SW.medium(),
-                      const LabelText(text: "Evaluate")
-                    ],
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      EvaluateRecurringDialogBox(context);
-                      // ToDoWeekCustomDialogBox(context);
-                    },
-                    child: Container(
-                        alignment: Alignment.centerLeft,
-                        height: 35,
-                        width: 140,
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
-                        child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Obx(
-                              () => LabelText(
-                                  text: addRecurringTaskController
-                                      .selectEvaluate.value),
-                            ),
-                          ),
-                        )),
-                  )
-                ],
               ),
               SH.medium(),
               SH.large(),
@@ -205,7 +119,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      CategoryRecurringCustomDialogBox(context);
+                      CategoryTaskCustomDialogBox(context);
                       // ToDoWeekCustomDialogBox(context);
                     },
                     // ToDoWeekCustomDialogBox(context);
@@ -223,11 +137,37 @@ class AddRecurringTaskScreen extends StatelessWidget {
                             () => Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                addRecurringTaskController.categoryIcon.value,
+                                Icon(
+                                  addTaskController.categoryId.value != 0
+                                      ? categoryController.icon[
+                                          categoryController.categories
+                                              .firstWhere((element) =>
+                                                  element.id ==
+                                                  addTaskController
+                                                      .categoryId.value)
+                                              .icon]
+                                      : Icons.abc,
+                                  color: addTaskController.categoryId.value != 0
+                                      ? categoryController.iconColor[
+                                          categoryController.categories
+                                              .firstWhere((element) =>
+                                                  element.id ==
+                                                  addTaskController
+                                                      .categoryId.value)
+                                              .color]
+                                      : color.primaryColor,
+                                ),
+                                // addTaskController.categoryIcon.value,
                                 SW.small(),
                                 LabelText(
-                                  text: addRecurringTaskController
-                                      .updateCategory.value,
+                                  text: addTaskController.categoryId != 0
+                                      ? categoryController.categories
+                                          .firstWhere((element) =>
+                                              element.id ==
+                                              addTaskController
+                                                  .categoryId.value)
+                                          .name
+                                      : 'Select',
                                 ),
                               ],
                             ),
@@ -249,19 +189,13 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Start Date")
+                      const LabelText(text: "Date")
                     ],
                   ),
                   GestureDetector(
                     onTap: () async {
-                      DateTime? newDate = await showDatePicker(
-                          context: context,
-                          initialDate:
-                              addRecurringTaskController.startDate.value,
-                          firstDate: DateTime(1997),
-                          lastDate: DateTime(2030));
-                      if (newDate == null) return;
-                      addRecurringTaskController.startDate.value = newDate;
+                      addTaskController.setDate(context);
+
                       // ToDoWeekCustomDialogBox(context);
                     },
                     child: Container(
@@ -276,53 +210,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                           child: Obx(
                             () => LabelText(
                               text:
-                                  "${addRecurringTaskController.startDate.value.day}/${addRecurringTaskController.startDate.value.month}/${addRecurringTaskController.startDate.value.year}",
-                            ),
-                          ),
-                        )),
-                  )
-                ],
-              ),
-              SH.large(),
-              SH.medium(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.calendar_today,
-                        size: 30,
-                        color: color.primaryColor,
-                      ),
-                      SW.medium(),
-                      const LabelText(text: "End Date")
-                    ],
-                  ),
-                  GestureDetector(
-                    onTap: () async {
-                      DateTime? newDate = await showDatePicker(
-                          context: context,
-                          initialDate: addRecurringTaskController.endDate.value,
-                          firstDate: DateTime(1997),
-                          lastDate: DateTime(2030));
-                      if (newDate == null) return;
-                      addRecurringTaskController.endDate.value = newDate;
-                      // ToDoWeekCustomDialogBox(context);
-                    },
-                    child: Container(
-                        alignment: Alignment.centerLeft,
-                        height: 35,
-                        width: 140,
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
-                        child: Center(
-                          child: Obx(
-                            () => LabelText(
-                              text:
-                                  "${addRecurringTaskController.endDate.value.day}/${addRecurringTaskController.endDate.value.month}/${addRecurringTaskController.endDate.value.year}",
+                                  "${addTaskController.date.value.day}/${addTaskController.date.value.month}/${addTaskController.date.value.year}",
                             ),
                           ),
                         )),
@@ -337,17 +225,17 @@ class AddRecurringTaskScreen extends StatelessWidget {
                   Row(
                     children: [
                       Icon(
-                        Icons.note_add,
+                        Icons.list_outlined,
                         size: 30,
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Repetation")
+                      const LabelText(text: "Checklist")
                     ],
                   ),
                   GestureDetector(
                     onTap: () {
-                      RepetationRecurringCustomDialogBox(context);
+                      ChecklistTaskCustomDialogBox(context);
                       // ToDoWeekCustomDialogBox(context);
                     },
                     child: Container(
@@ -363,8 +251,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                             () => Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: LabelText(
-                                text: addRecurringTaskController
-                                    .updateRepetation.value,
+                                text: addTaskController.updateRepetation.value,
                                 isDotDot: true,
                               ),
                             ),
@@ -391,7 +278,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      ReminderRecurringCustomDialogBox(context);
+                      ReminderCustomDialogBox(context);
                       // ToDoWeekCustomDialogBox(context);
                     },
                     child: Container(
@@ -433,7 +320,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      PriorityRecurringCustomDialogBox(context);
+                      PriorityTaskCustomDialogBox(context);
                       // ToDoWeekCustomDialogBox(context);
                     },
                     child: Container(
@@ -449,8 +336,8 @@ class AddRecurringTaskScreen extends StatelessWidget {
                           children: [
                             Obx(
                               () => LabelText(
-                                text: addRecurringTaskController
-                                    .updatePriority.value,
+                                text: addTaskController.updatePriority.value
+                                    .toString(),
                               ),
                             ),
                             SW.small(),
@@ -462,20 +349,75 @@ class AddRecurringTaskScreen extends StatelessWidget {
               ),
               SH.medium(),
               SH.large(),
+              GestureDetector(
+                onTap: () {
+                  addTaskController.pendingTask.value == true
+                      ? addTaskController.pendingTask.value = false
+                      : addTaskController.pendingTask.value = true;
+                  print(addTaskController.pendingTask.value);
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.calendar_month_outlined,
+                          size: 30,
+                          color: color.primaryColor,
+                        ),
+                        SW.medium(),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const LabelText(text: "Pending task"),
+                            SH.small(),
+                            const DescriptionText(
+                                text:
+                                    "It will be shown each day unit completed")
+                          ],
+                        )
+                      ],
+                    ),
+                    Obx(
+                      () => addTaskController.pendingTask.value == false
+                          ? Icon(
+                              Icons.circle_outlined,
+                              size: 30,
+                              color: color.disabledColor,
+                            )
+                          : const Icon(
+                              Icons.check_circle,
+                              size: 30,
+                              // color: color.disabledColor,
+                            ),
+                    )
+                  ],
+                ),
+              ),
+              SH.medium(),
+              SH.large(),
               SH.large(),
               SH.large(),
               Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      border: Border.all(width: 2, color: color.primaryColor),
-                      color: color.backgroundColor),
-                  child: const Center(
-                    child: MainLabelText(
-                      text: "Add Habit",
-                      isColor: true,
+                child: GestureDetector(
+                  onTap: () {
+                    addTaskController.addReminder();
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        border: Border.all(width: 2, color: color.primaryColor),
+                        color: color.backgroundColor),
+                    child: const Center(
+                      child: MainLabelText(
+                        text: "Add Task",
+                        isColor: true,
+                      ),
                     ),
                   ),
                 ),

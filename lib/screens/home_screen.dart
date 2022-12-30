@@ -9,7 +9,7 @@ import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import '../controllers/home_page_controller.dart';
 import '../widgets/text_widget/main_label_text.dart';
-import 'customize_screen/components/custom_dialog_box.dart';
+import '../widgets/custom_dialog_box.dart';
 
 class HomePage extends StatelessWidget {
   final HomePageController controller =

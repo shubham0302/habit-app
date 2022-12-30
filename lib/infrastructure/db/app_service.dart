@@ -2,12 +2,14 @@ import 'package:drift/drift.dart';
 import 'package:habbit_app/infrastructure/db/db_config.dart';
 import 'package:habbit_app/infrastructure/model/category_model.dart';
 import 'package:habbit_app/infrastructure/model/task_model.dart';
+import 'package:habbit_app/infrastructure/model/task_reminder_model.dart';
 
 import '../model/checklist_model.dart';
 
 part 'app_service.g.dart';
 
-@DriftDatabase(tables: [CategoryModel, TaskModel, ChecklistModel])
+@DriftDatabase(
+    tables: [CategoryModel, TaskModel, ChecklistModel, TaskReminderModel])
 class AppDB extends _$AppDB {
   AppDB() : super(openConnection());
 
@@ -27,8 +29,16 @@ class AppDB extends _$AppDB {
   }
 
   Stream<List<CategoryModelData>> streamCategories() {
-    return select(categoryModel).watch();
+    return (select(categoryModel)
+          ..orderBy([(tbl) => OrderingTerm.asc(tbl.name)]))
+        .watch();
   }
+  // Stream<List<CategoryModelData>> streamCategoriesDefault() {
+  //   return select(categoryModel).watch();
+  // }
+  // Stream<List<CategoryModelData>> streamCategories() {
+  //   return select(categoryModel).watch();
+  // }
 
   Future<CategoryModelData> getCategory(int id) async {
     return await (select(categoryModel)..where((tbl) => tbl.id.equals(id)))
@@ -82,9 +92,9 @@ class AppDB extends _$AppDB {
     return select(checklistModel).watch();
   }
 
-  Future<ChecklistModelData> getChecklist(int id) async {
-    return await (select(checklistModel)..where((tbl) => tbl.Id.equals(id)))
-        .getSingle();
+  Future<List<ChecklistModelData>> getChecklist(int id) async {
+    return await (select(checklistModel)..where((tbl) => tbl.taslId.equals(id)))
+        .get();
   }
 
   Future<bool> updateChecklist(ChecklistModelCompanion entity) async {
@@ -96,7 +106,33 @@ class AppDB extends _$AppDB {
   }
 
   Future<int> deleteChecklist(int id) async {
-    return await (delete(checklistModel)..where((tbl) => tbl.Id.equals(id)))
+    return await (delete(checklistModel)..where((tbl) => tbl.id.equals(id)))
+        .go();
+  }
+
+  Future<List<TaskReminderModelData>> getReminders() async {
+    return await select(taskReminderModel).get();
+  }
+
+  Stream<List<TaskReminderModelData>> streamReminders() {
+    return select(taskReminderModel).watch();
+  }
+
+  Future<TaskReminderModelData> getReminder(int id) async {
+    return await (select(taskReminderModel)..where((tbl) => tbl.id.equals(id)))
+        .getSingle();
+  }
+
+  Future<bool> updateReminder(TaskReminderModelCompanion entity) async {
+    return await update(taskReminderModel).replace(entity);
+  }
+
+  Future<int> insertReminder(TaskReminderModelCompanion entity) async {
+    return await into(taskReminderModel).insert(entity);
+  }
+
+  Future<int> deleteReminder(int id) async {
+    return await (delete(taskReminderModel)..where((tbl) => tbl.id.equals(id)))
         .go();
   }
 }

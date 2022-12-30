@@ -67,7 +67,7 @@ class BackUpScreen extends StatelessWidget {
                   height: 120,
                   width: 120,
                   decoration: BoxDecoration(
-                      color: color.disabledColor,
+                      color: color.disabledColor.withOpacity(.3),
                       borderRadius:
                           const BorderRadius.all(Radius.circular(20))),
                   child: Column(
@@ -80,7 +80,10 @@ class BackUpScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       // SH.small(),
-                      const LabelText(text: "Upload\nBackup")
+                      const LabelText(
+                        text: "Upload\nBackup",
+                        isBold: true,
+                      )
                     ],
                   ),
                 ),
@@ -88,7 +91,7 @@ class BackUpScreen extends StatelessWidget {
                   height: 120,
                   width: 120,
                   decoration: BoxDecoration(
-                      color: color.disabledColor,
+                      color: color.disabledColor.withOpacity(.3),
                       borderRadius:
                           const BorderRadius.all(Radius.circular(20))),
                   child: Column(
@@ -101,7 +104,11 @@ class BackUpScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       // SH.small(),
-                      const LabelText(text: "Import from\n     cloud")
+                      const LabelText(
+                        alignment: TextAlign.center,
+                        text: "Import from\ncloud",
+                        isBold: true,
+                      )
                     ],
                   ),
                 )
@@ -143,10 +150,11 @@ class BackUpScreen extends StatelessWidget {
                         )))
               ],
             ),
-            SH.medium(),
-            SH.small(),
+            SH.large(),
+            // SH.medium(),
+            // SH.small(),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
@@ -161,28 +169,30 @@ class BackUpScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Obx(
-                  () => FlutterSwitch(
-                    activeColor: color.primaryColor,
-                    activeToggleColor: color.backgroundColor,
+                Expanded(
+                  child: Obx(
+                    () => FlutterSwitch(
+                      activeColor: color.primaryColor,
+                      activeToggleColor: color.backgroundColor,
 
-                    width: 50.0,
-                    height: 25.0,
-                    valueFontSize: 15.0,
-                    toggleSize: 20.0,
-                    value: switchController.SwichChange.value,
-                    borderRadius: 30.0,
-                    padding: 2.0,
-                    // showOnOff: true,
-                    onToggle: (val) {
-                      switchController.SwichChange.value == true
-                          ? switchController.SwichChange.value = false
-                          : switchController.SwichChange.value = true;
-                      // status = val;
-                      // setState(() {
-                      //   status = val;
-                      // });
-                    },
+                      width: 50.0,
+                      height: 25.0,
+                      valueFontSize: 15.0,
+                      toggleSize: 20.0,
+                      value: switchController.SwichChange.value,
+                      borderRadius: 30.0,
+                      padding: 2.0,
+                      // showOnOff: true,
+                      onToggle: (val) {
+                        switchController.SwichChange.value == true
+                            ? switchController.SwichChange.value = false
+                            : switchController.SwichChange.value = true;
+                        // status = val;
+                        // setState(() {
+                        //   status = val;
+                        // });
+                      },
+                    ),
                   ),
                 ),
               ],
@@ -207,8 +217,8 @@ class BackUpScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SH.medium(),
-            SH.small(),
+            SH.large(),
+
             Row(
               children: [
                 Icon(

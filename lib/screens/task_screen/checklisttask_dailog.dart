@@ -42,7 +42,8 @@ void ChecklistTaskCustomDialogBox(BuildContext context) {
                       const LabelText(text: "Checklist"),
                       GestureDetector(
                           onTap: () {
-                            addHabbitSelectController.checklist.add('');
+                            addHabbitSelectController.checklist
+                                .add(TextEditingController(text: ''));
                             // addHabbitSelectController.addcheckbox.value =
                             //     addHabbitSelectController.addcheckbox.value + 1;
                             // print(addHabbitSelectController.addcheckbox.value);
@@ -67,18 +68,18 @@ void ChecklistTaskCustomDialogBox(BuildContext context) {
                                   children: [
                                     Expanded(
                                         child: InputField(
-                                      controller: TextEditingController(
-                                          text: addHabbitSelectController
-                                              .checklist[index]),
+                                      controller: addHabbitSelectController
+                                          .checklist[index],
                                       // key: ValueKey(addHabbitSelectController
                                       //     .checklist[index]),
                                       hintText: "item name",
                                       onChange: (e) {
-                                        addHabbitSelectController
-                                            .checklist[index] = e;
+                                        // addHabbitSelectController
+                                        //     .checklist[index] = e;
                                         // addHabbitSelectController.checklist.add(e);
                                       },
                                     )),
+                                    SW.medium(),
                                     GestureDetector(
                                       onTap: () {
                                         if (addHabbitSelectController
@@ -111,10 +112,20 @@ void ChecklistTaskCustomDialogBox(BuildContext context) {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const MainLabelText(text: "BACK"),
+                      GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        behavior: HitTestBehavior.translucent,
+                        child: const LabelText(
+                          text: "BACK",
+                          isBold: true,
+                        ),
+                      ),
                       GestureDetector(
                         onTap: () {},
-                        child: const MainLabelText(
+                        child: const LabelText(
+                          isBold: true,
                           text: "ADD",
                           isColor: true,
                         ),

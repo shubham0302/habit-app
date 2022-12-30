@@ -54,38 +54,37 @@ void ChecklistCustomDialogBox(BuildContext context) {
                         itemCount: addHabbitSelectController.addcheckbox.value,
                         separatorBuilder: (context, index) => SH.small(),
                         itemBuilder: (context, index) {
-                          return Column(
-                            children: [
-                              Row(children: [
-                                const Expanded(
-                                    child: InputField(hintText: "item name")),
-                                GestureDetector(
-                                  onTap: () {
-                                    if (addHabbitSelectController
-                                            .addcheckbox.value >
-                                        1) {
-                                      addHabbitSelectController.addcheckbox
-                                          .value = addHabbitSelectController
+                          return Row(children: [
+                            const Expanded(
+                                child: InputField(hintText: "item name")),
+                            SW.medium(),
+                            SW.medium(),
+                            SW.medium(),
+                            GestureDetector(
+                              onTap: () {
+                                if (addHabbitSelectController
+                                        .addcheckbox.value >
+                                    1) {
+                                  addHabbitSelectController.addcheckbox.value =
+                                      addHabbitSelectController
                                               .addcheckbox.value -
                                           1;
-                                    }
-                                    // addHabbitSelectController
-                                    //             .addcheckbox.value >
-                                    //         1
-                                    //     ? addHabbitSelectController
-                                    //             .addcheckbox.value -
-                                    //         1
-                                    //     : ;
-                                  },
-                                  child: Icon(
-                                    Icons.delete,
-                                    size: 25,
-                                    color: color.disabledColor,
-                                  ),
-                                )
-                              ]),
-                            ],
-                          );
+                                }
+                                // addHabbitSelectController
+                                //             .addcheckbox.value >
+                                //         1
+                                //     ? addHabbitSelectController
+                                //             .addcheckbox.value -
+                                //         1
+                                //     : ;
+                              },
+                              child: Icon(
+                                Icons.delete,
+                                size: 25,
+                                color: color.disabledColor,
+                              ),
+                            )
+                          ]);
                         },
                       ),
                     ),

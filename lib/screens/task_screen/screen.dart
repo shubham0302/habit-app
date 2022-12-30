@@ -7,7 +7,7 @@ import 'package:habbit_app/controllers/home_page_controller.dart';
 import 'package:habbit_app/controllers/tabController.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
-import 'package:habbit_app/screens/customize_screen/components/custom_dialog_box.dart';
+import 'package:habbit_app/widgets/custom_dialog_box.dart';
 import 'package:habbit_app/widgets/date_widget.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
@@ -136,98 +136,151 @@ class _TaskScreenState extends State<TaskScreen>
                 physics: const NeverScrollableScrollPhysics(),
                 controller: _controller,
                 children: [
-                  ListView.separated(
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: 1,
-                      separatorBuilder: (context, index) => Column(
+                  Obx(
+                    () => ListView.separated(
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: addTaskController.taskTimes.length,
+                        separatorBuilder: (context, index) => Column(
+                              children: [
+                                SH.small(),
+                                const Divider(),
+                                SH.small(),
+                              ],
+                            ),
+                        itemBuilder: (context, index) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(3),
+                                    color: color.primaryColor.withOpacity(.2)),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 5, vertical: 2),
+                                  child: LabelText(
+                                    text: addTaskController.taskTimes[index]
+                                        .toString(),
+                                    isColor: true,
+                                    // isBold: true,
+                                    color: color.primaryColor,
+                                  ),
+                                ),
+                              ),
                               SH.small(),
                               const Divider(),
                               SH.small(),
-                            ],
-                          ),
-                      itemBuilder: (context, index) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(3),
-                                  color: color.primaryColor.withOpacity(.2)),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 2),
-                                child: LabelText(
-                                  text: 'Habit',
-                                  isColor: true,
-                                  // isBold: true,
-                                  color: color.primaryColor,
-                                ),
-                              ),
-                            ),
-                            SH.small(),
-                            const Divider(),
-                            SH.small(),
-                            Obx(
-                              () => ListView.separated(
-                                separatorBuilder: (context, index) => Column(
-                                  children: [
-                                    SH.small(),
-                                    const Divider(),
-                                    SH.small(),
-                                  ],
-                                ),
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: addTaskController.tasks.length,
-                                itemBuilder: (context, index) {
-                                  return Column(
+                              Obx(
+                                () => ListView.separated(
+                                  separatorBuilder: (context, index) => Column(
                                     children: [
-                                      Row(
+                                      SH.small(),
+                                      const Divider(),
+                                      SH.small(),
+                                    ],
+                                  ),
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemCount: addTaskController.dataTasks[
+                                                  addTaskController
+                                                      .taskTimes[index]] !=
+                                              null &&
+                                          addTaskController
+                                              .dataTasks[addTaskController
+                                                  .taskTimes[index]]!
+                                              .isNotEmpty
+                                      ? addTaskController
+                                          .dataTasks[addTaskController
+                                              .taskTimes[index]]!
+                                          .length
+                                      : 0,
+                                  itemBuilder: (context, i) {
+                                    return GestureDetector(
+                                      onTap: () {
+                                        addTaskController.getTask(
+                                            addTaskController
+                                                .dataTasks[addTaskController
+                                                    .taskTimes[index]]![i]
+                                                .taskId);
+                                        // Get.toNamed(
+                                        //   '/edittask',
+                                        // );
+                                        // addTaskController.editIndex.value =
+                                        //     addTaskController.tasks[index].taskId;
+                                      },
+                                      behavior: HitTestBehavior.translucent,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Container(
-                                            height: 30,
-                                            width: 30,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                color: categoryController
-                                                        .iconColor[
-                                                    categoryController
-                                                        .categories
-                                                        .firstWhere((element) =>
-                                                            element.id ==
-                                                            addTaskController
-                                                                .tasks[index]
-                                                                .categoryId)
-                                                        .color]),
-                                            child: Icon(
-                                              categoryController.icon[
-                                                  categoryController.categories
+                                          Row(
+                                            children: [
+                                              Container(
+                                                height: 30,
+                                                width: 30,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                    color: categoryController
+                                                            .iconColor[
+                                                        categoryController
+                                                            .categories
+                                                            .firstWhere((element) =>
+                                                                element.id ==
+                                                                addTaskController
+                                                                    .dataTasks[
+                                                                        addTaskController
+                                                                            .taskTimes[index]]![
+                                                                        i]
+                                                                    .categoryId)
+                                                            .color]),
+                                                child: Icon(
+                                                  categoryController.icon[categoryController
+                                                      .categories
                                                       .firstWhere((element) =>
                                                           element.id ==
                                                           addTaskController
-                                                              .tasks[index]
+                                                              .dataTasks[
+                                                                  addTaskController
+                                                                          .taskTimes[
+                                                                      index]]![
+                                                                  i]
                                                               .categoryId)
                                                       .icon],
-                                              size: 23,
-                                              color: color.backgroundColor,
-                                            ),
+                                                  size: 23,
+                                                  color: color.backgroundColor,
+                                                ),
+                                              ),
+                                              SW.medium(),
+                                              LabelText(
+                                                  text: addTaskController
+                                                      .dataTasks[
+                                                          addTaskController
+                                                                  .taskTimes[
+                                                              index]]![i]
+                                                      .taskName)
+                                            ],
                                           ),
-                                          SW.medium(),
-                                          LabelText(
-                                              text: addTaskController
-                                                  .tasks.value[index].taskName)
+                                          Row(
+                                            children: [
+                                              Icon(Icons.done),
+                                              LabelText(
+                                                  text: addTaskController
+                                                      .checklists.length
+                                                      .toString())
+                                            ],
+                                          )
                                         ],
                                       ),
-                                    ],
-                                  );
-                                },
+                                    );
+                                  },
+                                ),
                               ),
-                            ),
-                          ],
-                        );
-                      }),
+                            ],
+                          );
+                        }),
+                  ),
                   // SingleChildScrollView(
                   //   physics: const BouncingScrollPhysics(),
                   //   child: Column(

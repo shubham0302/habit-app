@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
+// import 'dart:js_util';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,15 +11,14 @@ import 'db_controller.dart';
 
 class AddTaskController extends GetxController {
   DBController dbcontroller = Get.find<DBController>();
-
-  RxList<String> checklist = <String>[''].obs;
+  var editIndex = 0.obs;
 
   TextEditingController nameCtrl = TextEditingController();
   TextEditingController descriptionCtrl = TextEditingController();
   TextEditingController goal = TextEditingController();
   TextEditingController unit = TextEditingController();
   Rx<DateTime> startDate = DateTime(2022, 12, 20).obs;
-  Rx<TimeOfDay> reminderTime = const TimeOfDay(hour: 8, minute: 30).obs;
+  Rx<DateTime> reminderTime = DateTime(0000, 00, 00, 08, 30).obs;
   Rx<DateTime> endDate = DateTime(2022, 12, 20).obs;
   RxString updateCategory = "Select".obs;
   Rx<Icon> categoryIcon = const Icon(
@@ -33,6 +33,8 @@ class AddTaskController extends GetxController {
   RxString selectEvaluate = "YES OR NO".obs;
   RxBool alwaysenabled = true.obs;
   RxList<String> customDays = <String>[].obs;
+  RxMap<String, List<TaskModelData>> dataTasks =
+      <String, List<TaskModelData>>{}.obs;
 
   RxBool customSound = true.obs;
   RxBool customVibration = true.obs;
@@ -51,40 +53,179 @@ class AddTaskController extends GetxController {
   var categoryId = 0.obs;
   RxBool isPending = false.obs;
   Rx<DateTime> date = DateTime.now().obs;
-  addTask() async {
+  addTask(int reminder) async {
     try {
       var entity = TaskModelCompanion(
-          taskName: drift.Value(taskName.value),
-          categoryId: drift.Value(categoryId.value),
-          taskDate: drift.Value(date.value),
-          pendingTask: drift.Value(isPending.value),
-          priority: drift.Value(updatePriority.value));
+        taskName: drift.Value(taskName.value),
+        categoryId: drift.Value(categoryId.value),
+        taskDate: drift.Value(date.value),
+        pendingTask: drift.Value(isPending.value),
+        priority: drift.Value(updatePriority.value),
+        reminderId: drift.Value(reminder),
+      );
 
-      var data = await dbcontroller.appDB   .insertTask(entity);
+      var data = await dbcontroller.appDB.insertTask(entity);
+      taskName.value = '';
+      categoryId.value = 0;
+      date.value = DateTime.now();
+      isPending.value = false;
+      updatePriority.value = 0;
+
       // category.value = '';
       // iconType.value = 0;
       // colorIndex.value = 0;
       // log(data.toString());
+      await addCheckLists(data);
 
+      // Get.back();
+    } catch (e) {
+      log('hahaha error ${e}');
+    }
+  }
+
+  editTask() async {
+    try {
+      var entity = TaskModelCompanion(
+        taskId: drift.Value(editIndex.value),
+        taskName: drift.Value(taskName.value),
+        categoryId: drift.Value(categoryId.value),
+        taskDate: drift.Value(date.value),
+        pendingTask: drift.Value(isPending.value),
+        priority: drift.Value(updatePriority.value),
+        // reminderId: drift.Value(reminder),
+      );
+
+      var data = await dbcontroller.appDB.updateTask(entity);
+      taskName.value = '';
+      categoryId.value = 0;
+      date.value = DateTime.now();
+      isPending.value = false;
+      updatePriority.value = 0;
+
+      // category.value = '';
+      // iconType.value = 0;
+      // colorIndex.value = 0;
+      // log(data.toString());
+      // await editCheckLists();s
+
+      // Get.back();
+    } catch (e) {
+      log('hahaha error ${e}');
+    }
+  }
+
+  RxList<ChecklistModelData> checkListData = <ChecklistModelData>[].obs;
+  //  checkListData = .obs;
+  var taskReminderId = 0.obs;
+  addReminder() async {
+    try {
+      var entity = TaskReminderModelCompanion(
+          reminderTime: drift.Value(reminderTime.value),
+          isAlways: drift.Value(alwaysenabled.value),
+          isSound: drift.Value(customSound.value),
+          isVibration: drift.Value(customVibration.value),
+          isCompletedAc: drift.Value(customAlarm.value),
+          days: drift.Value(customDays.join(',')));
+
+      var data = await dbcontroller.appDB.insertReminder(entity);
+
+      reminderTime.value = DateTime.now();
+      alwaysenabled.value = true;
+      customSound.value = true;
+      customVibration.value = true;
+      customAlarm.value = true;
+      customDays.value = [];
+      // taskName.value = '';
+      // categoryId.value = 0;
+      // date.value = DateTime.now();
+      // isPending.value = false;
+      // updatePriority.value = 0;
+
+      // category.value = '';
+      // iconType.value = 0;
+      // colorIndex.value = 0;
+      // log(data.toString());
+      await addTask(data);
+      // await addCheckLists(data);
+
+      // Get.back();
+    } catch (e) {
+      log('hahaha error ${e}');
+    }
+  }
+
+  editReminder() async {
+    try {
+      var entity = TaskReminderModelCompanion(
+          id: drift.Value(taskReminderId.value),
+          reminderTime: drift.Value(reminderTime.value),
+          isAlways: drift.Value(alwaysenabled.value),
+          isSound: drift.Value(customSound.value),
+          isVibration: drift.Value(customVibration.value),
+          isCompletedAc: drift.Value(customAlarm.value),
+          days: drift.Value(customDays.join(',')));
+
+      var data = await dbcontroller.appDB.updateReminder(entity);
+
+      reminderTime.value = DateTime.now();
+      alwaysenabled.value = true;
+      customSound.value = true;
+      customVibration.value = true;
+      customAlarm.value = true;
+      customDays.value = [];
+      // taskName.value = '';
+      // categoryId.value = 0;
+      // date.value = DateTime.now();
+      // isPending.value = false;
+      // updatePriority.value = 0;
+
+      // category.value = '';
+      // iconType.value = 0;
+      // colorIndex.value = 0;
+      // log(data.toString());
+      await editTask();
+      // await addCheckLists(data);
+
+      // Get.back();
+    } catch (e) {
+      log('hahaha error ${e}');
+    }
+  }
+
+  RxList<TextEditingController> checklist =
+      <TextEditingController>[TextEditingController(text: '')].obs;
+  addCheckLists(int taskId) async {
+    try {
+      await Future.forEach(
+        checklist,
+        (element) async {
+          var entity = ChecklistModelCompanion(
+              checklistName: drift.Value(element.text),
+              taslId: drift.Value(taskId));
+          var data = await dbcontroller.appDB.insertChecklist(entity);
+        },
+      );
+      checklist.value = [TextEditingController(text: '')];
+      // getTask(editIndexTemp)
       Get.back();
     } catch (e) {
       log('hahaha error ${e}');
     }
   }
 
-  // addCheckLists() async {
+  // editCheckLists(int taskId) async {
   //   try {
-  //     var entity = CategoryModelCompanion(
-  //         name: drift.Value(category.value),
-  //          icon: drift.Value(),
-          
-          
-  //         );
-
-  //     var data = await dbcontroller.appDB.insertCategory(entity);
-     
-  //     log(data.toString());
-
+  //     await Future.forEach(
+  //       checkListData,
+  //       (element) async {
+  //         var entity = ChecklistModelCompanion(
+  //             id: drift.Value(element.id),
+  //             checklistName: drift.Value(element.),
+  //           );
+  //         var data = await dbcontroller.appDB.insertChecklist(entity);
+  //       },
+  //     );
+  //     checklist.value = [TextEditingController(text: '')];
   //     Get.back();
   //   } catch (e) {
   //     log('hahaha error ${e}');
@@ -92,12 +233,90 @@ class AddTaskController extends GetxController {
   // }
 
   RxList<TaskModelData> tasks = <TaskModelData>[].obs;
+  RxList<String> taskTimes = <String>[].obs;
   getTasks() {
     try {
-      dbcontroller.appDB    .streamTasks().forEach((element) {
+      tasks.value = [];
+      dbcontroller.appDB.streamTasks().forEach((element) {
         tasks.value = element;
+        taskTimes.value = [];
+        dataTasks.value = {};
+
+        // taskTimes.value = element.map((e) => e.taskDate).toList();
+
+        element.forEach((ele) {
+          if (!taskTimes.contains(
+              '${ele.taskDate.year}-${ele.taskDate.month}-${ele.taskDate.day}')) {
+            taskTimes.add(
+                '${ele.taskDate.year}-${ele.taskDate.month}-${ele.taskDate.day}');
+          }
+          if (dataTasks.containsKey(
+              '${ele.taskDate.year}-${ele.taskDate.month}-${ele.taskDate.day}')) {
+            dataTasks[
+                    '${ele.taskDate.year}-${ele.taskDate.month}-${ele.taskDate.day}']!
+                .add(ele);
+          } else {
+            dataTasks[
+                '${ele.taskDate.year}-${ele.taskDate.month}-${ele.taskDate.day}'] = [
+              ele
+            ];
+          }
+        });
+
+        taskTimes.refresh();
+        dataTasks.refresh();
+
+        // element
+        // element.reduce((value, element) => {})
         tasks.refresh();
         log(tasks.length.toString());
+      });
+
+      log(taskTimes.length.toString());
+    } catch (e) {
+      log('hahaha error ${e}');
+    }
+  }
+
+//  var task = ''.obs;
+  getTask(int editIndexTemp) async {
+    try {
+      // task.value =
+      var taskTemp = await dbcontroller.appDB.getTask(editIndexTemp);
+      var checklistData = await dbcontroller.appDB.getChecklist(editIndexTemp);
+      var reminderData =
+          await dbcontroller.appDB.getReminder(taskTemp.reminderId);
+
+      reminderTime.value = reminderData.reminderTime;
+      customDays.value = reminderData.days.split(',');
+      alwaysenabled.value = reminderData.isAlways;
+      customSound.value = reminderData.isSound;
+      customVibration.value = reminderData.isVibration;
+      customAlarm.value = reminderData.isCompletedAc;
+      // task.refresh();
+      taskName.value = taskTemp.taskName;
+      nameCtrl.text = taskTemp.taskName;
+      categoryId.value = taskTemp.categoryId;
+      updatePriority.value = taskTemp.priority;
+      date.value = taskTemp.taskDate;
+      isPending.value = taskTemp.pendingTask;
+      checklist.value = checklistData
+          .map((element) => TextEditingController(text: element.checklistName))
+          .toList();
+
+      Get.toNamed('/edittask');
+    } catch (e) {
+      log('hahaha error ${e}');
+    }
+  }
+
+  RxList<ChecklistModelData> checklists = <ChecklistModelData>[].obs;
+  getChecklistss() {
+    try {
+      dbcontroller.appDB.streamChecklist().forEach((element) {
+        checklists.value = element;
+        checklists.refresh();
+        log(checklists.length.toString());
       });
     } catch (e) {
       log('hahaha error ${e}');

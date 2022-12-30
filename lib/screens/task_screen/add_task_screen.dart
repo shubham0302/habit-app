@@ -44,9 +44,13 @@ class AddTaskScreen extends StatelessWidget {
                       onTap: (() {
                         Get.back();
                       }),
-                      child: Icon(
-                        Icons.arrow_back_ios_new_rounded,
-                        color: color.primaryColor,
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        child: Icon(
+                          Icons.arrow_back_ios_new_rounded,
+                          color: color.primaryColor,
+                        ),
                       )),
                   SW.medium(),
                   const MainLabelText(text: 'Add New Task'),
@@ -400,7 +404,8 @@ class AddTaskScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: GestureDetector(
                   onTap: () {
-                    addTaskController.addTask();
+                    addTaskController.addReminder();
+                    
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 10),

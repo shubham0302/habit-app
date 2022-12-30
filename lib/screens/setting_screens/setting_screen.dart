@@ -50,6 +50,7 @@ class SettingScreen extends StatelessWidget {
               onTap: () {
                 Get.toNamed("/todo");
               },
+              behavior: HitTestBehavior.translucent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -81,6 +82,7 @@ class SettingScreen extends StatelessWidget {
               onTap: () {
                 Get.toNamed('/notiandalarm');
               },
+              behavior: HitTestBehavior.translucent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -138,6 +140,7 @@ class SettingScreen extends StatelessWidget {
               onDoubleTap: () {
                 Get.toNamed("/lock");
               },
+              behavior: HitTestBehavior.translucent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -195,6 +198,7 @@ class SettingScreen extends StatelessWidget {
               onTap: () {
                 LanguageCustomDialogBox(context);
               },
+              behavior: HitTestBehavior.translucent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -226,6 +230,7 @@ class SettingScreen extends StatelessWidget {
               onTap: () {
                 Get.toNamed('/lic');
               },
+              behavior: HitTestBehavior.translucent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

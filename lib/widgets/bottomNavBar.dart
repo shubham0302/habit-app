@@ -55,6 +55,7 @@ Widget buildBottomNavigationMenu(
                 child: buildBottomNavItem(() {
                   categoryController.getCategory();
                   taskController.getTasks();
+                  taskController.getChecklistss();
                   controller.changeTabIndex(1);
                 },
                     controller.tabIndex.value == 1

@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/screens/customize_screen/components/completed_activities_customBox.dart';
 import 'package:habbit_app/screens/customize_screen/components/textsize_custombox.dart';
-import 'package:habbit_app/screens/customize_screen/components/to_do_week_custombox.dart';
+import 'package:habbit_app/screens/setting_screens/to_do_week_custombox.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
@@ -33,14 +33,17 @@ class ToDoHabbitListScreen extends StatelessWidget {
                   onTap: () {
                     Get.back();
                   },
-                  child: Icon(
-                    Icons.arrow_back_ios_new_sharp,
-                    color: color.primaryColor,
-                    size: 20,
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    child: Icon(
+                      Icons.arrow_back_ios_new_sharp,
+                      color: color.primaryColor,
+                    ),
                   ),
                 ),
                 SW.medium(),
-                const HeadingText(text: "Todo and Habit lists"),
+                const LabelText(text: "Todo and Habit lists"),
               ],
             ),
             SH.large(),

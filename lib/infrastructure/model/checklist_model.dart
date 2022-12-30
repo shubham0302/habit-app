@@ -4,12 +4,12 @@ import 'package:habbit_app/infrastructure/model/task_model.dart';
 import 'category_model.dart';
 
 class ChecklistModel extends Table {
-  IntColumn get Id => integer().autoIncrement()();
+  IntColumn get id => integer().autoIncrement()();
   TextColumn get checklistName => text().named('checklist_name')();
   IntColumn get taslId => integer()
       .named('checklist_task_id')
       .withDefault(const Constant(1))
-      .references(TaskModel, #id,
+      .references(TaskModel, #taskId,
           onDelete: KeyAction.setDefault, onUpdate: KeyAction.cascade)();
 
   BoolColumn get isDone =>

@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:habbit_app/controllers/home_page_controller.dart';
 import 'package:habbit_app/controllers/search_controller.dart';
 import 'package:habbit_app/screens/categories/categories.dart';
-import 'package:habbit_app/screens/customize_screen/components/search_categories_customdailog.dart';
+import 'package:habbit_app/widgets/search_categories_customdailog.dart';
 import 'package:habbit_app/screens/timer/timer_main_screen.dart';
 import 'package:habbit_app/screens/habbit/habbits_screen.dart';
 import 'package:habbit_app/screens/home_screen.dart';
@@ -18,6 +18,7 @@ import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 import '../widgets/bottomNavBar.dart';
+import '../widgets/text_widget/label_text.dart';
 import 'drawer.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -48,37 +49,8 @@ class MainScreen extends StatelessWidget {
             Column(
               children: [
                 TableCalendar(
-                  // pageJumpingEnabled: true,
+                  currentDay: DateTime.now(),
 
-                  currentDay:
-                      // appointmentController.isSelectedDay.value
-                      //     ? DateTime(
-                      //         int.parse(appointmentController.selectedDate
-                      //             .toString()
-                      //             .split(' ')[0]
-                      //             .split('-')[0]),
-                      //         int.parse(appointmentController.selectedDate
-                      //             .toString()
-                      //             .split(' ')[0]
-                      //             .split('-')[1]),
-                      //         int.parse(appointmentController.selectedDate
-                      //             .toString()
-                      //             .split(' ')[0]
-                      //             .split('-')[2]))
-
-                      //     :
-                      DateTime.now(),
-                  // onDaySelected: (selectedDay, focusedDay) async {
-                  //   appointmentController.selectedDate.value =
-                  //       selectedDay.toString();
-                  //   appointmentController.isSelectedDay.value = true;
-                  //   await appointmentController
-                  //       .getAppointmentFilteredListByDate(selectedDay);
-
-                  //   // print(selectedDay.toString().split(' ')[0].split('-')[0]);
-                  //   // print(selectedDay.toString().split(' ')[0].split('-')[1]);
-                  //   // print(selectedDay.toString().split(' ')[0].split('-')[2]);
-                  // },
                   calendarStyle: CalendarStyle(
                       weekendDecoration: BoxDecoration(
                           color: color.primaryColor.withOpacity(.1),
@@ -116,7 +88,6 @@ class MainScreen extends StatelessWidget {
                     ),
                     formatButtonVisible: false,
                     titleCentered: true,
-                    // titleTextFormatter: (date, locale) => Column(children: [],),
                   ),
 
                   headerVisible: true,
@@ -124,7 +95,6 @@ class MainScreen extends StatelessWidget {
                   lastDay: DateTime.utc(2030, 3, 14),
                   focusedDay: DateTime.now(),
                 ),
-                SH.large(),
                 SH.large(),
                 Row(
                   children: [
@@ -136,7 +106,10 @@ class MainScreen extends StatelessWidget {
                         behavior: HitTestBehavior.translucent,
                         child: Container(
                           alignment: Alignment.center,
-                          child: const MainLabelText(text: 'CLOSE'),
+                          child: const LabelText(
+                            text: 'CLOSE',
+                            isBold: true,
+                          ),
                         ),
                       ),
                     ),
@@ -146,12 +119,16 @@ class MainScreen extends StatelessWidget {
                         behavior: HitTestBehavior.translucent,
                         child: Container(
                           alignment: Alignment.center,
-                          child: const MainLabelText(text: 'TODAY'),
+                          child: const LabelText(
+                            text: 'TODAY',
+                            isBold: true,
+                          ),
                         ),
                       ),
                     ),
                   ],
                 ),
+                SH.large(),
                 SH.large(),
               ],
             ),

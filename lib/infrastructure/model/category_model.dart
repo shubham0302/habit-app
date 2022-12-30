@@ -5,4 +5,5 @@ class CategoryModel extends Table{
   TextColumn get name => text().named('category_name')();
   IntColumn get color => integer().named('category_color')();
   IntColumn get icon => integer().named('category_icon')();
+  BoolColumn get isDefault => boolean().named('is_default').withDefault(const Constant(false))();
 }
