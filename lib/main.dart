@@ -10,12 +10,14 @@ import 'package:habbit_app/screens/categories/categories.dart';
 import 'package:habbit_app/screens/categories/categories_drawer_screen.dart';
 import 'package:habbit_app/screens/getpremium_screen.dart';
 import 'package:habbit_app/screens/customize_screen/screen.dart';
+import 'package:habbit_app/screens/pin/pin_screen.dart';
 import 'package:habbit_app/screens/recurring_task/add_recurring_task_screen.dart';
 import 'package:habbit_app/screens/setting_screens/setting_screen.dart';
 import 'package:habbit_app/screens/setting_screens/licenses_screen.dart';
 import 'package:habbit_app/screens/setting_screens/lock_screen.dart';
 import 'package:habbit_app/screens/setting_screens/notification_alarm_screen.dart';
 import 'package:habbit_app/screens/setting_screens/todohabbit_screen.dart';
+import 'package:habbit_app/screens/splash2_screen.dart';
 import 'package:habbit_app/screens/task_screen/add_task_screen.dart';
 import 'package:habbit_app/screens/task_screen/edit_task_screen.dart';
 import 'package:habbit_app/screens/timer/drawer_timer.dart';
@@ -60,7 +62,7 @@ class MyApp extends StatelessWidget {
           context,
           themeController.mode,
         ),
-        initialRoute: '/intro',
+        initialRoute: '/splash',
         getPages: Routes.routes,
         themeMode: themeController.themeModeData['value'] == 'default'
             ? ThemeMode.system
@@ -100,5 +102,7 @@ class Routes {
         page: () => const AddRecurringTaskScreen()),
     GetPage(name: "/addtask", page: () => const AddTaskScreen()),
     GetPage(name: "/edittask", page: () => const EditTask()),
+    GetPage(name: "/splash", page: () => const Splash()),
+    GetPage(name: "/pin", page: () => const PinScreen()),
   ];
 }

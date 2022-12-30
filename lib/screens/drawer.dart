@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import 'package:habbit_app/auth_path.dart';
+import 'package:habbit_app/screens/contactUS/contact_custom_dailog.dart';
+import 'package:habbit_app/screens/rate_us/rate_us_dailbox.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
+
+import '../controllers/email_send_controller.dart';
 
 class Drawerr extends StatelessWidget {
   const Drawerr({Key? key}) : super(key: key);
@@ -11,6 +15,8 @@ class Drawerr extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData color = Theme.of(context);
+    EmailSendController emailSendController =
+        Get.put(EmailSendController(), permanent: false);
 
     return Drawer(
       width: MediaQuery.of(context).size.width * .7,
@@ -306,7 +312,9 @@ class Drawerr extends StatelessWidget {
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(21),
               ),
-              onTap: () {},
+              onTap: () {
+                RateUsCustomDialogBox(context);
+              },
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.only(left: 21),
@@ -341,6 +349,8 @@ class Drawerr extends StatelessWidget {
               ),
               onTap: () {
                 // Get.to(AuthPath());
+                ContactCustomDialogBox(context);
+                emailSendController.controllerMessage.clear();
               },
               child: Container(
                 height: 45,

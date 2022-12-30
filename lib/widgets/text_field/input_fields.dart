@@ -56,7 +56,7 @@ class InputField extends StatelessWidget {
       onChanged: onChange,
       focusNode: focusNode,
       maxLength: maxLenght,
-      maxLines: isDescription! ? 3 : 1,
+      maxLines: isDescription! ? 5 : 1,
       onTap: () {
         // ignore: avoid_print
         ontap != null ? ontap!() : print('');

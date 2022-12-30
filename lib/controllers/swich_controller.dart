@@ -1,6 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
+import 'package:habbit_app/screens/helpers/local_storage_helper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SwitchController extends GetxController {
   RxBool SwichChange = true.obs;
