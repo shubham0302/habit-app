@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -141,6 +143,7 @@ class LockPinController extends GetxController {
 
   @override
   void onInit() {
+    // ignore: todo
     // TODO: implement onInit
     getPinType();
 

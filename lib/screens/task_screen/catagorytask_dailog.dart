@@ -2,11 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
-import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
 void CategoryTaskCustomDialogBox(BuildContext context) {
@@ -27,7 +24,7 @@ void CategoryTaskCustomDialogBox(BuildContext context) {
             width: 360,
             height: 620,
             child: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   // GridView.builder(
@@ -104,10 +101,11 @@ void CategoryTaskCustomDialogBox(BuildContext context) {
                   //   },
                   // ),
                   GridView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2, childAspectRatio: 2),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2, childAspectRatio: 2),
                     itemCount: categoryController.categories.length,
                     itemBuilder: (context, index) {
                       return Expanded(

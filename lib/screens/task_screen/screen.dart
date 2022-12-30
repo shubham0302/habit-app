@@ -264,7 +264,7 @@ class _TaskScreenState extends State<TaskScreen>
                                           ),
                                           Row(
                                             children: [
-                                              Icon(Icons.done),
+                                              const Icon(Icons.done),
                                               LabelText(
                                                   text: addTaskController
                                                       .checklists.length

@@ -18,8 +18,6 @@ class LockScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SwitchController switchController =
-        Get.put(SwitchController(), permanent: false);
     LockPinController lockPinController = Get.find<LockPinController>();
     // bool switchChange = true;
     ThemeData color = Theme.of(context);

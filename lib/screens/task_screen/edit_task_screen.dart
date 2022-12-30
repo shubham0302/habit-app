@@ -1,13 +1,9 @@
-// ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages, avoid_print
+// ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages, avoid_print, unrelated_type_equality_checks
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits/category_custom_dialog.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits/name_custom_dailogbox.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits/priority_custom_dilogbox.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/reminder_custom_dailbox.dart';
 import 'package:habbit_app/screens/task_screen/catagorytask_dailog.dart';
 import 'package:habbit_app/screens/task_screen/checklisttask_dailog.dart';

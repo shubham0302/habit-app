@@ -41,6 +41,7 @@ class DBController extends GetxController {
   @override
   void onInit() {
     addDefault();
+    // ignore: todo
     // TODO: implement onInit
     super.onInit();
   }

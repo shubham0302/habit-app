@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:lottie/lottie.dart';
@@ -41,7 +40,7 @@ void ReminderSupportCustomDialogBox(BuildContext context) {
                       textAlign: TextAlign.center,
                     ),
                     SH.large(),
-                    Text(
+                    const Text(
                       "Make sure that HabitNow is excluded from your optimizer to ensure the correct execution of the reminders.",
                       style: TextStyle(
                         fontSize: 15,
@@ -54,7 +53,7 @@ void ReminderSupportCustomDialogBox(BuildContext context) {
                         onTap: () {
                           Get.back();
                         },
-                        child: LabelText(
+                        child: const LabelText(
                           text: 'GOT IT!',
                           isColor: true,
                           // color: color.primaryColor,

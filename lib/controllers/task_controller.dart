@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, unnecessary_brace_in_string_interps, unused_local_variable, avoid_function_literals_in_foreach_calls, avoid_print
 import 'dart:developer';
 // import 'dart:js_util';
 

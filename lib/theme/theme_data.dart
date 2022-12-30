@@ -80,7 +80,8 @@ class Styles {
       hintColor: Colors.black,
       textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
-              textStyle: MaterialStateProperty.all(TextStyle(fontSize: 14)))),
+              textStyle:
+                  MaterialStateProperty.all(const TextStyle(fontSize: 14)))),
 
       highlightColor: const Color(0xffFCE192),
       hoverColor: const Color(0xff4285F4),

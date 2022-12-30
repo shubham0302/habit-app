@@ -1,13 +1,10 @@
-// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace
+// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:habbit_app/screens/contactUS/sendsuggestion_dailbox.dart';
 import 'package:habbit_app/screens/rate_us/love_it_dailog.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_field/input_fields.dart';
-import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
-import 'package:lottie/lottie.dart';
 
 void RateUsCustomDialogBox(BuildContext context) {
   ThemeData color = Theme.of(context);
@@ -26,8 +23,12 @@ void RateUsCustomDialogBox(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Center(
-                        child: DescriptionText(text: "Notice about reminders")),
+                    Center(
+                        child: LabelText(
+                      text: "Notice about reminders",
+                      isColor: true,
+                      color: color.disabledColor,
+                    )),
                     SH.medium(),
                     const Divider(),
                     SH.large(),
@@ -39,16 +40,22 @@ void RateUsCustomDialogBox(BuildContext context) {
                           fit: BoxFit.fill,
                         )),
                     SH.large(),
-                    Divider(),
+                    const Divider(),
                     SH.medium(),
                     Row(
                       children: [
                         Expanded(
                           child: Center(
-                            child: Container(
-                              child: LabelText(
-                                text: "NOT REALLY",
-                                isBold: true,
+                            child: GestureDetector(
+                              onTap: () {
+                                SuggestionSupportCustomDialogBox(context);
+                                // Get.back();
+                              },
+                              child: Container(
+                                child: const LabelText(
+                                  text: "NOT REALLY",
+                                  isBold: true,
+                                ),
                               ),
                             ),
                           ),
@@ -58,9 +65,10 @@ void RateUsCustomDialogBox(BuildContext context) {
                             child: GestureDetector(
                               onTap: () {
                                 LoveItCustomDialogBox(context);
+                                // Get.back();
                               },
                               child: Container(
-                                child: LabelText(
+                                child: const LabelText(
                                   text: "LOVE IT!",
                                   isBold: true,
                                   isColor: true,

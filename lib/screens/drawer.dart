@@ -6,7 +6,7 @@ import 'package:habbit_app/screens/rate_us/rate_us_dailbox.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
-
+import 'package:intl/intl.dart';
 import '../controllers/email_send_controller.dart';
 
 class Drawerr extends StatelessWidget {
@@ -14,6 +14,10 @@ class Drawerr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    String currentDateformate =
+        DateFormat('${now.day}-${now.month}-${now.year}').format(now);
+    String currentDayFormate = DateFormat('EEEE').format(now);
     ThemeData color = Theme.of(context);
     EmailSendController emailSendController =
         Get.put(EmailSendController(), permanent: false);
@@ -40,10 +44,10 @@ class Drawerr extends StatelessWidget {
                   SH.small(),
                   Row(
                     children: [
-                      const LabelText(text: '20 SEP 2022'),
-                      SW.large(),
-                      const LabelText(
-                        text: 'THURSDAY',
+                      LabelText(text: currentDateformate),
+                      SW.medium(),
+                      LabelText(
+                        text: currentDayFormate,
                         isNormal: true,
                       ),
                     ],
