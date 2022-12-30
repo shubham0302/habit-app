@@ -28,6 +28,7 @@ void CompActCustomDialogBox(BuildContext context) {
                   SH.medium(),
                   const LabelText(
                     text: "Hide",
+                    isBold: true,
                     // isColor: true,
                   ),
                   SH.medium(),
@@ -37,6 +38,8 @@ void CompActCustomDialogBox(BuildContext context) {
                   SH.medium(),
                   const LabelText(
                     text: "Keep in place",
+                    isBold: true,
+
                     // isColor: true,
                   ),
                   SH.medium(),
@@ -46,6 +49,7 @@ void CompActCustomDialogBox(BuildContext context) {
                   SH.medium(),
                   const LabelText(
                     text: "Send to bottom",
+                    isBold: true,
                     isColor: true,
                   ),
                   SH.medium(),
@@ -55,6 +59,8 @@ void CompActCustomDialogBox(BuildContext context) {
                   SH.medium(),
                   const LabelText(
                     text: "CLOSE",
+                    isBold: true,
+
                     // isColor: true,
                     // color: Color.fromARGB(255, 94, 6, 0),
                   ),

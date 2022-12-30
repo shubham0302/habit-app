@@ -206,7 +206,7 @@ class _TimerMainScreenState extends State<TimerMainScreen>
                       color: Colors.transparent,
                     ),
 
-                    labelColor: Colors.white,
+                    labelColor: color.cardColor,
                     unselectedLabelColor: color.disabledColor,
                     // indicatorSize: TabBarIndicatorSize.label,
                     tabs: [

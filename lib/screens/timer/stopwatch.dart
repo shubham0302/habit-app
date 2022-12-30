@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
+import 'package:habbit_app/widgets/text_widget/title_text.dart';
 
 import '../../widgets/text_widget/main_label_text.dart';
 
@@ -83,16 +84,22 @@ class _StopWatchState extends State<StopWatch> {
   @override
   Widget build(BuildContext context) {
     var color = Theme.of(context);
-    return Column(children: [
+    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Column(
         children: [
-          SH.medium(),
-          HeadingText(
-            // ignore: unnecessary_brace_in_string_interps
-            text: "${digitHours}:${digitMinutes}:${digitSecound}",
-            isColor: true,
+          // SH.medium(),
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                border: Border.all(width: 2, color: color.primaryColor)),
+            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 8),
+            child: TitleText(
+              // ignore: unnecessary_brace_in_string_interps
+              text: "${digitHours}:${digitMinutes}:${digitSecound}",
+              isColor: true,
+            ),
           ),
-          SH.medium(),
+          SH.large(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: const [
@@ -109,9 +116,10 @@ class _StopWatchState extends State<StopWatch> {
           SH.large(),
           Container(
             // color: Colors.green,
-            height: MediaQuery.of(context).size.height / 2.6,
+            height: MediaQuery.of(context).size.height / 3.6,
             width: MediaQuery.of(context).size.width,
-            child: ListView.builder(
+            child: ListView.separated(
+              separatorBuilder: (context, index) => Divider(),
               itemCount: laps.length,
               itemBuilder: (context, index) {
                 return Row(
@@ -133,6 +141,7 @@ class _StopWatchState extends State<StopWatch> {
                 onTap: () {
                   !started ? start() : stop();
                 },
+                behavior: HitTestBehavior.translucent,
                 child: Container(
                   height: 35,
                   width: 100,

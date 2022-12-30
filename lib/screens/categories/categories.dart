@@ -4,6 +4,7 @@ import 'package:flutter_shake_animated/flutter_shake_animated.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/screens/categories/custom_dialog_categories.dart';
+import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
@@ -17,8 +18,7 @@ class CategoriesScreen extends StatelessWidget {
         Get.put(CategoryController(), permanent: false);
     ThemeData color = Theme.of(context);
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
+      body: GlobalPadding(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const HeadingText(text: "Default Categories"),
           SH.small(),
@@ -29,46 +29,57 @@ class CategoriesScreen extends StatelessWidget {
             height: 120,
             child: Obx(
               () => ListView.separated(
+                physics: BouncingScrollPhysics(),
                 separatorBuilder: (context, index) => SW.medium(),
                 scrollDirection: Axis.horizontal,
                 itemCount: categoryController.categories
                     .where((p0) => p0.isDefault)
                     .length,
                 itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: color.disabledColor.withOpacity(0.2)),
-                        child: Icon(
-                          categoryController.icon[categoryController.categories
-                              .where((p0) => p0.isDefault)
-                              .toList()[index]
-                              .icon],
-                          color: categoryController.iconColor[categoryController
-                              .categories
-                              .where((p0) => p0.isDefault)
-                              .toList()[index]
-                              .color],
-                          size: 40,
+                  return SizedBox(
+                    width: 63,
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 60,
+                          width: 60,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: categoryController.iconColor[
+                                      categoryController.categories
+                                          .where((p0) => p0.isDefault)
+                                          .toList()[index]
+                                          .color]
+                                  .withOpacity(0.3)),
+                          child: Icon(
+                            categoryController.icon[categoryController
+                                .categories
+                                .where((p0) => p0.isDefault)
+                                .toList()[index]
+                                .icon],
+                            color: categoryController.iconColor[
+                                categoryController.categories
+                                    .where((p0) => p0.isDefault)
+                                    .toList()[index]
+                                    .color],
+                            size: 40,
+                          ),
                         ),
-                      ),
-                      SH.small(),
-                      DescriptionText(
-                        isColor: true,
-                        color: color.canvasColor,
-                        isBold: true,
-                        text: categoryController.categories
-                            .where((p0) => p0.isDefault)
-                            .toList()[index]
-                            .name,
-                        isWhite: true,
-                      ),
-                      const DescriptionText(text: "0 entries"),
-                    ],
+                        SH.medium(),
+                        DescriptionText(
+                          isDotDot: true,
+                          isColor: true,
+                          color: color.cardColor,
+                          isBold: true,
+                          text: categoryController.categories
+                              .where((p0) => p0.isDefault)
+                              .toList()[index]
+                              .name,
+                          isWhite: true,
+                        ),
+                        const DescriptionText(text: "0 entries"),
+                      ],
+                    ),
                   );
                 },
               ),
@@ -106,6 +117,9 @@ class CategoriesScreen extends StatelessWidget {
           //     ),
           //   ],
           // ),
+          SH.medium(),
+          Divider(),
+          SH.medium(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -205,8 +219,13 @@ class CategoriesScreen extends StatelessWidget {
                                     width: 60,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(8),
-                                        color: color.disabledColor
-                                            .withOpacity(0.2)),
+                                        color: categoryController
+                                            .iconColor[categoryController
+                                                .categories
+                                                .where((p0) => !p0.isDefault)
+                                                .toList()[index]
+                                                .color]
+                                            .withOpacity(0.3)),
                                     child: Icon(
                                       categoryController.icon[categoryController
                                           .categories
@@ -224,7 +243,7 @@ class CategoriesScreen extends StatelessWidget {
                                   SH.small(),
                                   DescriptionText(
                                     isColor: true,
-                                    color: color.canvasColor,
+                                    color: color.cardColor,
                                     isBold: true,
                                     text: categoryController.categories
                                         .where((p0) => !p0.isDefault)

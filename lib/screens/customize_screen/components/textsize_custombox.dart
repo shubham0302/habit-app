@@ -28,6 +28,8 @@ void TextCustomDialogBox(BuildContext context) {
                   SH.medium(),
                   const LabelText(
                     text: "Default",
+                    isBold: true,
+
                     // isColor: true,
                   ),
                   SH.medium(),
@@ -36,46 +38,19 @@ void TextCustomDialogBox(BuildContext context) {
                       ),
                   SH.medium(),
                   const LabelText(
+                    isBold: true,
                     text: "Large",
                     isColor: true,
                   ),
-                  // SH.medium(),
-                  // Divider(
-                  //     // thickness: 1,
-                  //     ),
-                  // SH.medium(),
-                  // MainLabelText(
-                  //   text: "Send to bottom",
-                  //   isColor: true,
-                  // ),
                   SH.medium(),
                   const Divider(
                       // thickness: ,
                       ),
                   SH.medium(),
                   const LabelText(
+                    isBold: true,
                     text: "CLOSE",
-                    // isColor: true,
-                    // color: Color.fromARGB(255, 94, 6, 0),
                   ),
-                  // SH.medium(),
-                  // Divider(
-                  //   thickness: 1,
-                  // ),
-                  // SH.medium(),
-                  // MainLabelText(
-                  //   text: "Friday",
-                  //   // isColor: true,
-                  // ),
-                  // SH.medium(),
-                  // Divider(
-                  //   thickness: 1,
-                  // ),
-                  // SH.medium(),
-                  // MainLabelText(
-                  //   text: "Saturday",
-                  //   // isColor: true,
-                  // )
                 ],
               )),
         );

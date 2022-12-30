@@ -42,7 +42,7 @@ class Styles {
 
           //Description Text
           subtitle1: TextStyle(
-            fontSize: 10,
+            fontSize: 14,
             color: ColorSchemeData.defaultBrightColors['secondaryText'],
           ),
 
@@ -86,10 +86,10 @@ class Styles {
       hoverColor: const Color(0xff4285F4),
 
       focusColor: const Color(0xffA8DAB5),
-      disabledColor: Colors.grey.shade600,
+      disabledColor: Colors.black87,
       // textSelectionColor:  Colors.black,
       cardColor: Colors.black,
-      canvasColor: Colors.grey[50],
+      canvasColor: Colors.grey.withOpacity(.3),
       brightness: Brightness.light,
       buttonTheme: Theme.of(context)
           .buttonTheme

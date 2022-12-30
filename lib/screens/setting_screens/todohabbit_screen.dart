@@ -23,420 +23,441 @@ class ToDoHabbitListScreen extends StatelessWidget {
     ThemeData color = Theme.of(context);
     return Scaffold(
       body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Container(
-                    height: 30,
-                    width: 30,
-                    child: Icon(
-                      Icons.arrow_back_ios_new_sharp,
-                      color: color.primaryColor,
+          child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Container(
+                      height: 30,
+                      width: 30,
+                      child: Icon(
+                        Icons.arrow_back_ios_new_sharp,
+                        color: color.primaryColor,
+                      ),
                     ),
                   ),
+                  SW.medium(),
+                  const LabelText(text: "Todo and Habit lists"),
+                ],
+              ),
+              SH.large(),
+              SH.large(),
+              GestureDetector(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.calendar_month,
+                          size: 30,
+                          color: color.primaryColor,
+                        ),
+                        SW.small(),
+                        const LabelText(text: "First day of the week")
+                      ],
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        ToDoWeekCustomDialogBox(context);
+                      },
+                      child: Container(
+                          alignment: Alignment.centerLeft,
+                          height: 35,
+                          width: 110,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  width: 2, color: color.canvasColor),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              color: color.backgroundColor),
+                          child: const Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: LabelText(
+                              text: "Sunday",
+                            ),
+                          )),
+                    )
+                  ],
                 ),
-                SW.medium(),
-                const LabelText(text: "Todo and Habit lists"),
-              ],
-            ),
-            SH.large(),
-            SH.large(),
-            GestureDetector(
-              onTap: () {},
-              child: Row(
+              ),
+              SH.large(),
+              SH.medium(),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
                       Icon(
-                        Icons.calendar_month,
+                        Icons.check_circle,
                         size: 30,
                         color: color.primaryColor,
                       ),
-                      SW.small(),
-                      const LabelText(text: "First day of the week")
+                      SW.medium(),
+                      const LabelText(text: "Completed activity sorting")
                     ],
                   ),
                   GestureDetector(
                     onTap: () {
-                      ToDoWeekCustomDialogBox(context);
+                      CompActCustomDialogBox(context);
                     },
                     child: Container(
                         alignment: Alignment.centerLeft,
                         height: 35,
                         width: 110,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: const Padding(
-                          padding: EdgeInsets.only(left: 10),
+                          padding: EdgeInsets.only(left: 5),
                           child: LabelText(
-                            text: "Sunday",
+                            text: "Send to bottom",
                           ),
                         )),
                   )
                 ],
               ),
-            ),
-            SH.large(),
-            SH.medium(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.check_circle,
-                      size: 30,
-                      color: color.primaryColor,
-                    ),
-                    SW.medium(),
-                    const LabelText(text: "Completed activity sorting")
-                  ],
-                ),
-                GestureDetector(
-                  onTap: () {
-                    CompActCustomDialogBox(context);
-                  },
-                  child: Container(
+              SH.medium(),
+              SH.large(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.list_alt_sharp,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.medium(),
+                      const LabelText(text: "Todo list order sorting")
+                    ],
+                  ),
+                  Container(
                       alignment: Alignment.centerLeft,
                       height: 35,
                       width: 110,
                       decoration: BoxDecoration(
+                          border:
+                              Border.all(width: 2, color: color.canvasColor),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10)),
-                          color: color.hintColor),
-                      child: const Padding(
-                        padding: EdgeInsets.only(left: 5),
-                        child: LabelText(
-                          text: "Send to bottom",
-                        ),
-                      )),
-                )
-              ],
-            ),
-            SH.medium(),
-            SH.large(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.list_alt_sharp,
-                      size: 30,
-                      color: color.primaryColor,
-                    ),
-                    SW.medium(),
-                    const LabelText(text: "Todo list order sorting")
-                  ],
-                ),
-                Container(
-                    alignment: Alignment.centerLeft,
-                    height: 35,
-                    width: 110,
-                    decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                        color: color.hintColor),
-                    child: const Padding(
-                      padding: EdgeInsets.only(left: 10),
-                      child: LabelText(
-                        text: "ALphabetical",
-                      ),
-                    ))
-              ],
-            ),
-            SH.large(),
-            SH.medium(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.format_list_bulleted_rounded,
-                      size: 30,
-                      color: color.primaryColor,
-                    ),
-                    SW.medium(),
-                    const LabelText(text: "Habit section order sorting")
-                  ],
-                ),
-                Container(
-                    alignment: Alignment.centerLeft,
-                    height: 35,
-                    width: 110,
-                    decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                        color: color.hintColor),
-                    child: const Padding(
-                      padding: EdgeInsets.only(left: 10),
-                      child: LabelText(
-                        text: "Date created",
-                      ),
-                    ))
-              ],
-            ),
-            SH.large(),
-            SH.medium(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.text_fields,
-                      size: 30,
-                      color: color.primaryColor,
-                    ),
-                    SW.medium(),
-                    const LabelText(text: "Text sizing")
-                  ],
-                ),
-                GestureDetector(
-                  onTap: () {
-                    TextCustomDialogBox(context);
-                  },
-                  child: Container(
-                      alignment: Alignment.centerLeft,
-                      height: 35,
-                      width: 110,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          color: color.hintColor),
+                          color: color.backgroundColor),
                       child: const Padding(
                         padding: EdgeInsets.only(left: 10),
                         child: LabelText(
-                          text: "Default",
+                          text: "ALphabetical",
                         ),
-                      )),
-                )
-              ],
-            ),
-            SH.medium(),
-            SH.large(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
+                      ))
+                ],
+              ),
+              SH.large(),
+              SH.medium(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.format_list_bulleted_rounded,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.medium(),
+                      const LabelText(text: "Habit section order sorting")
+                    ],
+                  ),
+                  Container(
+                      alignment: Alignment.centerLeft,
+                      height: 35,
+                      width: 110,
+                      decoration: BoxDecoration(
+                          border:
+                              Border.all(width: 2, color: color.canvasColor),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: color.backgroundColor),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 10),
+                        child: LabelText(
+                          text: "Date created",
+                        ),
+                      ))
+                ],
+              ),
+              SH.large(),
+              SH.medium(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.text_fields,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.medium(),
+                      const LabelText(text: "Text sizing")
+                    ],
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      TextCustomDialogBox(context);
+                    },
+                    child: Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 110,
+                        decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.backgroundColor),
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: LabelText(
+                            text: "Default",
+                          ),
+                        )),
+                  )
+                ],
+              ),
+              SH.medium(),
+              SH.large(),
+              GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onTap: (() {
+                  
+                }),
+                
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(
-                      Icons.touch_app,
-                      size: 30,
-                      color: color.primaryColor,
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.touch_app,
+                          size: 30,
+                          color: color.primaryColor,
+                        ),
+                        SW.medium(),
+                        const LabelText(text: "Swap tap and long tap")
+                      ],
                     ),
-                    SW.medium(),
-                    const LabelText(text: "Swap tap and long tap")
+                    Obx(
+                      () => FlutterSwitch(
+                        activeColor: color.primaryColor,
+                        activeToggleColor: color.backgroundColor,
+              
+                        width: 50.0,
+                        height: 25.0,
+                        valueFontSize: 15.0,
+                        toggleSize: 20.0,
+                        value: switchController.SwipSwichChange.value,
+                        borderRadius: 30.0,
+                        padding: 2.0,
+                        // showOnOff: true,
+                        onToggle: (val) {
+                          switchController.SwipSwichChange.value == true
+                              ? switchController.SwipSwichChange.value = false
+                              : switchController.SwipSwichChange.value = true;
+                          // status = val;
+                          // setState(() {
+                          //   status = val;
+                          // });
+                        },
+                      ),
+                    ),
                   ],
                 ),
-                Obx(
-                  () => FlutterSwitch(
-                    activeColor: color.primaryColor,
-                    activeToggleColor: color.backgroundColor,
-
-                    width: 50.0,
-                    height: 25.0,
-                    valueFontSize: 15.0,
-                    toggleSize: 20.0,
-                    value: switchController.SwipSwichChange.value,
-                    borderRadius: 30.0,
-                    padding: 2.0,
-                    // showOnOff: true,
-                    onToggle: (val) {
-                      switchController.SwipSwichChange.value == true
-                          ? switchController.SwipSwichChange.value = false
-                          : switchController.SwipSwichChange.value = true;
-                      // status = val;
-                      // setState(() {
-                      //   status = val;
-                      // });
-                    },
+              ),
+              SH.medium(),
+              SH.large(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.vibration,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.medium(),
+                      const LabelText(text: "Vibration")
+                    ],
                   ),
-                ),
-              ],
-            ),
-            SH.medium(),
-            SH.large(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.vibration,
-                      size: 30,
-                      color: color.primaryColor,
+                  Obx(
+                    () => FlutterSwitch(
+                      activeColor: color.primaryColor,
+                      activeToggleColor: color.backgroundColor,
+
+                      width: 50.0,
+                      height: 25.0,
+                      valueFontSize: 15.0,
+                      toggleSize: 20.0,
+                      value: switchController.SwichChange.value,
+                      borderRadius: 30.0,
+                      padding: 2.0,
+                      // showOnOff: true,
+                      onToggle: (val) {
+                        switchController.SwichChange.value == true
+                            ? switchController.SwichChange.value = false
+                            : switchController.SwichChange.value = true;
+                        // status = val;
+                        // setState(() {
+                        //   status = val;
+                        // });
+                      },
                     ),
-                    SW.medium(),
-                    const LabelText(text: "Vibration")
-                  ],
-                ),
-                Obx(
-                  () => FlutterSwitch(
-                    activeColor: color.primaryColor,
-                    activeToggleColor: color.backgroundColor,
-
-                    width: 50.0,
-                    height: 25.0,
-                    valueFontSize: 15.0,
-                    toggleSize: 20.0,
-                    value: switchController.SwichChange.value,
-                    borderRadius: 30.0,
-                    padding: 2.0,
-                    // showOnOff: true,
-                    onToggle: (val) {
-                      switchController.SwichChange.value == true
-                          ? switchController.SwichChange.value = false
-                          : switchController.SwichChange.value = true;
-                      // status = val;
-                      // setState(() {
-                      //   status = val;
-                      // });
-                    },
                   ),
-                ),
-              ],
-            ),
-            SH.medium(),
-            SH.large(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.library_books,
-                      size: 30,
-                      color: color.primaryColor,
+                ],
+              ),
+              SH.medium(),
+              SH.large(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.library_books,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.medium(),
+                      const LabelText(text: "Collapse habit cards")
+                    ],
+                  ),
+                  Obx(
+                    () => FlutterSwitch(
+                      activeColor: color.primaryColor,
+                      activeToggleColor: color.backgroundColor,
+
+                      width: 50.0,
+                      height: 25.0,
+                      valueFontSize: 15.0,
+                      toggleSize: 20.0,
+                      value: switchController.CollapseSwichChange.value,
+                      borderRadius: 30.0,
+                      padding: 2.0,
+                      // showOnOff: true,
+                      onToggle: (val) {
+                        switchController.CollapseSwichChange.value == true
+                            ? switchController.CollapseSwichChange.value = false
+                            : switchController.CollapseSwichChange.value = true;
+                        // status = val;
+                        // setState(() {
+                        //   status = val;
+                        // });
+                      },
                     ),
-                    SW.medium(),
-                    const LabelText(text: "Collapse habit cards")
-                  ],
-                ),
-                Obx(
-                  () => FlutterSwitch(
-                    activeColor: color.primaryColor,
-                    activeToggleColor: color.backgroundColor,
-
-                    width: 50.0,
-                    height: 25.0,
-                    valueFontSize: 15.0,
-                    toggleSize: 20.0,
-                    value: switchController.CollapseSwichChange.value,
-                    borderRadius: 30.0,
-                    padding: 2.0,
-                    // showOnOff: true,
-                    onToggle: (val) {
-                      switchController.CollapseSwichChange.value == true
-                          ? switchController.CollapseSwichChange.value = false
-                          : switchController.CollapseSwichChange.value = true;
-                      // status = val;
-                      // setState(() {
-                      //   status = val;
-                      // });
-                    },
                   ),
-                ),
-              ],
-            ),
-            SH.medium(),
-            SH.large(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.animation,
-                      size: 30,
-                      color: color.primaryColor,
+                ],
+              ),
+              SH.medium(),
+              SH.large(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.animation,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.medium(),
+                      const LabelText(text: "Animations")
+                    ],
+                  ),
+                  Obx(
+                    () => FlutterSwitch(
+                      activeColor: color.primaryColor,
+                      activeToggleColor: color.backgroundColor,
+
+                      width: 50.0,
+                      height: 25.0,
+                      valueFontSize: 15.0,
+                      toggleSize: 20.0,
+                      value: switchController.AnimationSwichChange.value,
+                      borderRadius: 30.0,
+                      padding: 2.0,
+                      // showOnOff: true,
+                      onToggle: (val) {
+                        switchController.AnimationSwichChange.value == true
+                            ? switchController.AnimationSwichChange.value =
+                                false
+                            : switchController.AnimationSwichChange.value =
+                                true;
+                        // status = val;
+                        // setState(() {
+                        //   status = val;
+                        // });
+                      },
                     ),
-                    SW.medium(),
-                    const LabelText(text: "Animations")
-                  ],
-                ),
-                Obx(
-                  () => FlutterSwitch(
-                    activeColor: color.primaryColor,
-                    activeToggleColor: color.backgroundColor,
-
-                    width: 50.0,
-                    height: 25.0,
-                    valueFontSize: 15.0,
-                    toggleSize: 20.0,
-                    value: switchController.AnimationSwichChange.value,
-                    borderRadius: 30.0,
-                    padding: 2.0,
-                    // showOnOff: true,
-                    onToggle: (val) {
-                      switchController.AnimationSwichChange.value == true
-                          ? switchController.AnimationSwichChange.value = false
-                          : switchController.AnimationSwichChange.value = true;
-                      // status = val;
-                      // setState(() {
-                      //   status = val;
-                      // });
-                    },
                   ),
-                ),
-              ],
-            ),
-            SH.medium(),
-            SH.large(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.star_outline_sharp,
-                      size: 30,
-                      color: color.primaryColor,
+                ],
+              ),
+              SH.medium(),
+              SH.large(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.star_outline_sharp,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.medium(),
+                      const LabelText(text: "Show awards")
+                    ],
+                  ),
+                  Obx(
+                    () => FlutterSwitch(
+                      activeColor: color.primaryColor,
+                      activeToggleColor: color.backgroundColor,
+
+                      width: 50.0,
+                      height: 25.0,
+                      valueFontSize: 15.0,
+                      toggleSize: 20.0,
+                      value: switchController.AwardsSwichChange.value,
+                      borderRadius: 30.0,
+                      padding: 2.0,
+                      // showOnOff: true,
+                      onToggle: (val) {
+                        switchController.AwardsSwichChange.value == true
+                            ? switchController.AwardsSwichChange.value = false
+                            : switchController.AwardsSwichChange.value = true;
+                        // status = val;
+                        // setState(() {
+                        //   status = val;
+                        // });
+                      },
                     ),
-                    SW.medium(),
-                    const LabelText(text: "Show awards")
-                  ],
-                ),
-                Obx(
-                  () => FlutterSwitch(
-                    activeColor: color.primaryColor,
-                    activeToggleColor: color.backgroundColor,
-
-                    width: 50.0,
-                    height: 25.0,
-                    valueFontSize: 15.0,
-                    toggleSize: 20.0,
-                    value: switchController.AwardsSwichChange.value,
-                    borderRadius: 30.0,
-                    padding: 2.0,
-                    // showOnOff: true,
-                    onToggle: (val) {
-                      switchController.AwardsSwichChange.value == true
-                          ? switchController.AwardsSwichChange.value = false
-                          : switchController.AwardsSwichChange.value = true;
-                      // status = val;
-                      // setState(() {
-                      //   status = val;
-                      // });
-                    },
                   ),
-                ),
-              ],
-            ),
-            SH.medium(),
-            SH.large(),
-          ],
+                ],
+              ),
+              SH.medium(),
+              SH.large(),
+            ],
+          ),
         ),
       )),
     );

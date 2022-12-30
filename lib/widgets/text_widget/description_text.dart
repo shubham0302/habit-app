@@ -12,17 +12,17 @@ class DescriptionText extends StatelessWidget {
   final TextAlign? alignment;
   final String? type;
   final bool? isDotDot;
-  const DescriptionText(
-      {Key? key,
-      required this.text,
-      this.alignment,
-      this.isWhite,
-      this.type,
-      this.color,
-      this.isDotDot,
-      this.isColor,
-      this.isBold,})
-      : super(key: key);
+  const DescriptionText({
+    Key? key,
+    required this.text,
+    this.alignment,
+    this.isWhite,
+    this.type,
+    this.color,
+    this.isDotDot,
+    this.isColor,
+    this.isBold,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +37,7 @@ class DescriptionText extends StatelessWidget {
           color: isColor == true ? (this.color ?? color.primaryColor) : null,
           fontWeight: isBold == true ? FontWeight.bold : FontWeight.normal),
       textAlign: alignment,
+      overflow: TextOverflow.ellipsis,
     );
   }
 }

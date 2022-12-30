@@ -64,12 +64,14 @@ class BrightnessCustomize extends StatelessWidget {
                             // height: 130,
                             // color: Colors.red,
                             decoration: BoxDecoration(
+                                // border:
+                                //     Border.all(width: 1, color: Colors.white),
                                 borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(15),
                                     topRight: Radius.circular(15),
                                     bottomLeft: Radius.circular(10),
                                     bottomRight: Radius.circular(10)),
-                                color: color.cardColor.withOpacity(0.9)),
+                                color: Colors.grey.withOpacity(.9)),
                             child: GlobalPadding(
                               child: Column(
                                 children: [
@@ -80,7 +82,7 @@ class BrightnessCustomize extends StatelessWidget {
                                             topRight: Radius.circular(10),
                                             bottomLeft: Radius.circular(10),
                                             bottomRight: Radius.circular(10)),
-                                        color: color.cardColor),
+                                        color: Colors.white),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Column(children: [
@@ -114,7 +116,8 @@ class BrightnessCustomize extends StatelessWidget {
                                                             bottomRight:
                                                                 Radius.circular(
                                                                     5)),
-                                                    color: color.disabledColor),
+                                                    color: Colors.grey
+                                                        .withOpacity(.5)),
                                               ),
                                             ),
                                           ],
@@ -150,7 +153,8 @@ class BrightnessCustomize extends StatelessWidget {
                                                             bottomRight:
                                                                 Radius.circular(
                                                                     5)),
-                                                    color: color.disabledColor),
+                                                    color: Colors.grey
+                                                        .withOpacity(.5)),
                                               ),
                                             ),
                                           ],
@@ -166,7 +170,7 @@ class BrightnessCustomize extends StatelessWidget {
                                             topRight: Radius.circular(10),
                                             bottomLeft: Radius.circular(10),
                                             bottomRight: Radius.circular(10)),
-                                        color: color.cardColor),
+                                        color: Colors.white),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Row(
@@ -199,7 +203,8 @@ class BrightnessCustomize extends StatelessWidget {
                                                           bottomRight:
                                                               Radius.circular(
                                                                   5)),
-                                                  color: color.disabledColor),
+                                                  color: Colors.grey
+                                                      .withOpacity(.5)),
                                             ),
                                           ),
                                         ],
@@ -269,7 +274,7 @@ class BrightnessCustomize extends StatelessWidget {
                                     topRight: Radius.circular(15),
                                     bottomLeft: Radius.circular(10),
                                     bottomRight: Radius.circular(10)),
-                                color: color.disabledColor.withOpacity(0.2)),
+                                color: Colors.black),
                             child: GlobalPadding(
                               child: Column(
                                 children: [
@@ -280,7 +285,7 @@ class BrightnessCustomize extends StatelessWidget {
                                             topRight: Radius.circular(10),
                                             bottomLeft: Radius.circular(10),
                                             bottomRight: Radius.circular(10)),
-                                        color: color.backgroundColor),
+                                        color: Colors.grey),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Column(children: [
@@ -314,8 +319,8 @@ class BrightnessCustomize extends StatelessWidget {
                                                             bottomRight:
                                                                 Radius.circular(
                                                                     5)),
-                                                    color: color.disabledColor
-                                                        .withOpacity(0.3)),
+                                                    color: Colors.black
+                                                        .withOpacity(0.6)),
                                               ),
                                             ),
                                           ],
@@ -351,8 +356,8 @@ class BrightnessCustomize extends StatelessWidget {
                                                             bottomRight:
                                                                 Radius.circular(
                                                                     5)),
-                                                    color: color.disabledColor
-                                                        .withOpacity(0.3)),
+                                                    color: Colors.black
+                                                        .withOpacity(0.6)),
                                               ),
                                             ),
                                           ],
@@ -368,7 +373,7 @@ class BrightnessCustomize extends StatelessWidget {
                                             topRight: Radius.circular(10),
                                             bottomLeft: Radius.circular(10),
                                             bottomRight: Radius.circular(10)),
-                                        color: color.backgroundColor),
+                                        color: Colors.grey),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Row(
@@ -401,8 +406,8 @@ class BrightnessCustomize extends StatelessWidget {
                                                           bottomRight:
                                                               Radius.circular(
                                                                   5)),
-                                                  color: color.disabledColor
-                                                      .withOpacity(0.3)),
+                                                  color: Colors.black
+                                                      .withOpacity(0.6)),
                                             ),
                                           ),
                                         ],

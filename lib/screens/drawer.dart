@@ -66,7 +66,7 @@ class Drawerr extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    color: color.disabledColor.withOpacity(.3),
+                    color: color.disabledColor.withOpacity(.1),
                     borderRadius: BorderRadius.circular(10)),
                 child: Row(
                   children: [

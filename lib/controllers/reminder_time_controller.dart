@@ -31,8 +31,7 @@ class ReminderTimeController extends GetxController {
           //     child: child ?? Container());
         });
     if (timeTemp != null) {
-      time.value =
-          timeTemp.hour.toString() + ':' + timeTemp.minute.toString() + ':';
+      time.value = timeTemp.hour.toString() + ':' + timeTemp.minute.toString();
     }
   }
 }

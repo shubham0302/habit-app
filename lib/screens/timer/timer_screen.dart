@@ -183,7 +183,9 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
                             color: color.primaryColor),
                         child: Center(
                             child: LabelText(
-                                text: isPlaying == true ? "Pause" : "Resume")),
+                          text: isPlaying == true ? "PAUSE" : "RESUME",
+                          isBold: true,
+                        )),
                       ),
                     ),
                     GestureDetector(
@@ -203,9 +205,12 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
                         decoration: BoxDecoration(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(30)),
-                            color: color.disabledColor.withOpacity(0.7)),
-                        child:
-                            const Center(child: MainLabelText(text: "delete")),
+                            color: color.disabledColor.withOpacity(0.5)),
+                        child: const Center(
+                            child: LabelText(
+                          text: "DELETE",
+                          isBold: true,
+                        )),
                       ),
                     )
                   ],

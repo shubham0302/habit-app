@@ -22,13 +22,13 @@ class CategoriesDrawerScreen extends StatelessWidget {
     ThemeData color = Theme.of(context);
     return Scaffold(
       body: SafeArea(
-        child: GlobalPadding(
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GlobalPadding(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
@@ -48,23 +48,21 @@ class CategoriesDrawerScreen extends StatelessWidget {
                       const MainLabelText(text: 'Categories'),
                     ],
                   ),
-                  // Icon(
-                  //   Icons.brush,
-                  //   size: 20,
-                  //   color: color.backgroundColor,
-                  // ),
-                ],
-              ),
-              SH.large(),
-              SH.large(),
-              Container(
-                  height: 500,
-                  width: MediaQuery.of(context).size.width,
-                  child: const CategoriesScreen()),
-              SH.medium(),
-              SH.large(),
-            ],
-          ),
+                ),
+                // Icon(
+                //   Icons.brush,
+                //   size: 20,
+                //   color: color.backgroundColor,
+                // ),
+              ],
+            ),
+            Container(
+                height: 500,
+                width: MediaQuery.of(context).size.width,
+                child: const CategoriesScreen()),
+            SH.medium(),
+            SH.large(),
+          ],
         ),
       ),
     );

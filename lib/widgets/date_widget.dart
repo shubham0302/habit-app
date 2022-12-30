@@ -42,8 +42,8 @@ class DateList extends StatelessWidget {
                   children: [
                     SH.small(),
                     LabelText(
-                      text:
-                          '${DateTime.now().add(Duration(days: index)).weekday}',
+                      text: DateFormat('EEEE').format(DateTime.now().add(Duration(days: index)).weekday).toString(),
+                          // '${}',
                       isColor: true,
                       color: controller.SelectedDateIndex.value == index
                           ? color.backgroundColor
