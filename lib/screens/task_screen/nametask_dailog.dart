@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';
@@ -16,8 +15,6 @@ void NameTaskCustomDialogBox(BuildContext context) {
       builder: (BuildContext context) {
         AddTaskController addTaskController =
             Get.put(AddTaskController(), permanent: false);
-        AddHabbitSelectController addHabbitSelectController =
-            Get.put(AddHabbitSelectController(), permanent: false);
         return AlertDialog(
             insetPadding: const EdgeInsets.symmetric(horizontal: 2),
             shape: const RoundedRectangleBorder(

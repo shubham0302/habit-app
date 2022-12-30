@@ -1,25 +1,15 @@
-// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace
+// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_unnecessary_containers
 
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
-import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void LoveItCustomDialogBox(BuildContext context) {
-  final Uri _url =
-      Uri.parse('https://play.google.com/store/apps/details?id=com.habitnow');
-  Future<void> _launchUrl() async {
-    if (!await launchUrl(_url)) {
-      throw 'Could not launch $_url';
-    }
-  }
-
   ThemeData color = Theme.of(context);
   showDialog(
       context: context,
@@ -36,8 +26,12 @@ void LoveItCustomDialogBox(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Center(
-                        child: DescriptionText(text: "Notice about reminders")),
+                    Center(
+                        child: LabelText(
+                      text: "Notice about reminders",
+                      isColor: true,
+                      color: color.disabledColor,
+                    )),
                     SH.medium(),
                     const Divider(),
                     Container(
@@ -47,23 +41,28 @@ void LoveItCustomDialogBox(BuildContext context) {
                           'assets/images/5star.png',
                           fit: BoxFit.fitWidth,
                         )),
-                    LabelText(
+                    const LabelText(
                       text: "Your 5 stars would be of great help!",
                       isColor: true,
                     ),
                     SH.small(),
-                    DescriptionText(text: "It only takes a minute"),
+                    const DescriptionText(text: "It only takes a minute"),
                     SH.medium(),
-                    Divider(),
+                    const Divider(),
                     SH.medium(),
                     Row(
                       children: [
                         Expanded(
                           child: Center(
-                            child: Container(
-                              child: LabelText(
-                                text: "MAYBE LATER",
-                                isBold: true,
+                            child: GestureDetector(
+                              onTap: () {
+                                Get.back();
+                              },
+                              child: Container(
+                                child: const LabelText(
+                                  text: "MAYBE LATER",
+                                  isBold: true,
+                                ),
                               ),
                             ),
                           ),
@@ -88,7 +87,7 @@ void LoveItCustomDialogBox(BuildContext context) {
                                 }
                               },
                               child: Container(
-                                child: LabelText(
+                                child: const LabelText(
                                   text: "RATE US!",
                                   isBold: true,
                                   isColor: true,

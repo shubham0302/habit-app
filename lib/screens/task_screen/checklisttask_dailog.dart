@@ -2,13 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
-import 'package:habbit_app/main.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
-import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 void ChecklistTaskCustomDialogBox(BuildContext context) {
   ThemeData color = Theme.of(context);

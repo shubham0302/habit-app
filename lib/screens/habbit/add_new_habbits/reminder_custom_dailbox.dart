@@ -1,13 +1,8 @@
-// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, no_leading_underscores_for_local_identifiers, avoid_print
-
-import 'dart:ui';
+// ignore_for_file: non_constant_identifier_names, no_leading_underscores_for_local_identifiers, sized_box_for_whitespace, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/addhabbit_controller.dart';
-import 'package:habbit_app/controllers/recurring_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
-import 'package:habbit_app/theme/color_scheme.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';

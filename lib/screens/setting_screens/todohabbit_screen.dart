@@ -9,7 +9,6 @@ import 'package:habbit_app/screens/customize_screen/components/completed_activit
 import 'package:habbit_app/screens/customize_screen/components/textsize_custombox.dart';
 import 'package:habbit_app/screens/setting_screens/to_do_week_custombox.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
 class ToDoHabbitListScreen extends StatelessWidget {

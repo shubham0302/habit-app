@@ -1,11 +1,9 @@
 import 'package:drift/drift.dart';
-import 'package:habbit_app/infrastructure/model/task_model.dart';
 
 class TaskReminderModel extends Table {
   IntColumn get id => integer().autoIncrement()();
   // TextColumn get reminderTime => text().named('reminder_name')();
   DateTimeColumn get reminderTime => dateTime().named('reminder_name')();
-  
 
   BoolColumn get isSound =>
       boolean().named('soung').withDefault(const Constant(false))();

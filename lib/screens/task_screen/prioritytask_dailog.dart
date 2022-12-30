@@ -1,8 +1,7 @@
-// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, file_names
+// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, file_names, unrelated_type_equality_checks
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
@@ -13,7 +12,6 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
   showDialog(
       context: context,
       builder: (BuildContext context) {
-     
         AddTaskController addHabbitSelectController =
             Get.put(AddTaskController(), permanent: false);
         return AlertDialog(
@@ -149,8 +147,7 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                       Expanded(
                         child: GestureDetector(
                           onTap: () {
-                            addHabbitSelectController.updatePriority.value =
-                                6;
+                            addHabbitSelectController.updatePriority.value = 6;
                             Get.back();
                           },
                           child: Container(
@@ -184,8 +181,7 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                       Expanded(
                         child: GestureDetector(
                           onTap: () {
-                            addHabbitSelectController.updatePriority.value =
-                                5;
+                            addHabbitSelectController.updatePriority.value = 5;
                             Get.back();
                           },
                           child: Container(
@@ -219,8 +215,7 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                       Expanded(
                         child: GestureDetector(
                           onTap: () {
-                            addHabbitSelectController.updatePriority.value =
-                                4;
+                            addHabbitSelectController.updatePriority.value = 4;
                             Get.back();
                           },
                           child: Container(
@@ -259,8 +254,7 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                       Expanded(
                         child: GestureDetector(
                           onTap: () {
-                            addHabbitSelectController.updatePriority.value =
-                                3;
+                            addHabbitSelectController.updatePriority.value = 3;
                             Get.back();
                           },
                           child: Container(
@@ -294,8 +288,7 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                       Expanded(
                         child: GestureDetector(
                           onTap: () {
-                            addHabbitSelectController.updatePriority.value =
-                                2;
+                            addHabbitSelectController.updatePriority.value = 2;
                             Get.back();
                           },
                           child: Container(
@@ -329,8 +322,7 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                       Expanded(
                         child: GestureDetector(
                           onTap: () {
-                            addHabbitSelectController.updatePriority.value =
-                                1;
+                            addHabbitSelectController.updatePriority.value = 1;
                             Get.back();
                           },
                           child: Container(

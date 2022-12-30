@@ -1,8 +1,6 @@
 import 'package:drift/drift.dart';
 import 'package:habbit_app/infrastructure/model/task_model.dart';
 
-import 'category_model.dart';
-
 class ChecklistModel extends Table {
   IntColumn get id => integer().autoIncrement()();
   TextColumn get checklistName => text().named('checklist_name')();
