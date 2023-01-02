@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
+import 'package:habbit_app/controllers/recurring_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/theme_config.dart';
@@ -15,6 +16,8 @@ Widget buildBottomNavigationMenu(
       Get.put(CategoryController(), permanent: false);
   AddTaskController taskController =
       Get.put(AddTaskController(), permanent: false);
+  AddRecurringTaskController recurringTaskController =
+      Get.put(AddRecurringTaskController(), permanent: false);
   ThemeData color = Theme.of(context);
 
   final double sizeWidth = MediaQuery.of(context).size.width;
@@ -55,7 +58,9 @@ Widget buildBottomNavigationMenu(
                 child: buildBottomNavItem(() {
                   categoryController.getCategory();
                   taskController.getTasks();
-                  taskController.getChecklistss();
+                  recurringTaskController.getTasks();
+
+                  recurringTaskController.getChecklistss();
                   controller.changeTabIndex(1);
                 },
                     controller.tabIndex.value == 1

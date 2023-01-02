@@ -1,15 +1,17 @@
 import 'package:drift/drift.dart';
 import 'package:habbit_app/infrastructure/db/db_config.dart';
 import 'package:habbit_app/infrastructure/model/category_model.dart';
+import 'package:habbit_app/infrastructure/model/recurring_checklist_model.dart';
 import 'package:habbit_app/infrastructure/model/task_model.dart';
 import 'package:habbit_app/infrastructure/model/task_reminder_model.dart';
 
 import '../model/checklist_model.dart';
+import '../model/recurring_task_model.dart';
 
 part 'app_service.g.dart';
 
 @DriftDatabase(
-    tables: [CategoryModel, TaskModel, ChecklistModel, TaskReminderModel])
+    tables: [CategoryModel, TaskModel, ChecklistModel, TaskReminderModel,RecurringTaskModel,RecurringChecklistModel])
 class AppDB extends _$AppDB {
   AppDB() : super(openConnection());
 
@@ -84,6 +86,32 @@ class AppDB extends _$AppDB {
         .go();
   }
 
+  Future<List<RecurringTaskModelData>> getRecurringTasks() async {
+    return await select(recurringTaskModel).get();
+  }
+
+  Stream<List<RecurringTaskModelData>> streamRecurringTasks() {
+    return select(recurringTaskModel).watch();
+  }
+
+  Future<RecurringTaskModelData> getRecurringTask(int id) async {
+    return await (select(recurringTaskModel)..where((tbl) => tbl.rTaskId.equals(id)))
+        .getSingle();
+  }
+
+  Future<bool> updateRecurringTask(RecurringTaskModelCompanion entity) async {
+    return await update(recurringTaskModel).replace(entity);
+  }
+
+  Future<int> insertRecurringTask(RecurringTaskModelCompanion entity) async {
+    return await into(recurringTaskModel).insert(entity);
+  }
+
+  Future<int> deleteRecurringTask(int id) async {
+    return await (delete(recurringTaskModel)..where((tbl) => tbl.rTaskId.equals(id)))
+        .go();
+  }
+
   Future<List<ChecklistModelData>> getChecklists() async {
     return await select(checklistModel).get();
   }
@@ -107,6 +135,32 @@ class AppDB extends _$AppDB {
 
   Future<int> deleteChecklist(int id) async {
     return await (delete(checklistModel)..where((tbl) => tbl.id.equals(id)))
+        .go();
+  }
+
+  Future<List<RecurringChecklistModelData>> getRecurringChecklists() async {
+    return await select(recurringChecklistModel).get();
+  }
+
+  Stream<List<RecurringChecklistModelData>> streamRecurringChecklist() {
+    return select(recurringChecklistModel).watch();
+  }
+
+  Future<List<RecurringChecklistModelData>> getRecurringChecklist(int id) async {
+    return await (select(recurringChecklistModel)..where((tbl) => tbl.rTaskId.equals(id)))
+        .get();
+  }
+
+  Future<bool> updateRecurringChecklist(RecurringChecklistModelCompanion entity) async {
+    return await update(recurringChecklistModel).replace(entity);
+  }
+
+  Future<int> insertRecurringChecklist(RecurringChecklistModelCompanion entity) async {
+    return await into(recurringChecklistModel).insert(entity);
+  }
+
+  Future<int> deleteRecurringChecklist(int id) async {
+    return await (delete(recurringChecklistModel)..where((tbl) => tbl.id.equals(id)))
         .go();
   }
 

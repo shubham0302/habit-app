@@ -3,23 +3,26 @@ import 'package:habbit_app/infrastructure/model/task_reminder_model.dart';
 
 import 'category_model.dart';
 
-class TaskModel extends Table {
-  IntColumn get taskId => integer().autoIncrement()();
-  IntColumn get priority => integer().named('task_priority')();
+class RecurringTaskModel extends Table {
+  IntColumn get rTaskId => integer().autoIncrement()();
+  IntColumn get priority => integer().named('r_priority')();
   IntColumn get reminderId => integer()
-      .named('task_reminder_id')
+      .named('r_reminder_id')
       .withDefault(const Constant(1))
       .references(TaskReminderModel, #id,
           onDelete: KeyAction.setDefault, onUpdate: KeyAction.cascade)();
   IntColumn get categoryId => integer()
-      .named('task_category_id')
+      .named('r_category_id')
       .withDefault(const Constant(1))
       .references(CategoryModel, #id,
           onDelete: KeyAction.setDefault, onUpdate: KeyAction.cascade)();
-  TextColumn get taskName => text().named('task_name')();
-  DateTimeColumn get taskDate => dateTime().named('task_date')();
-  BoolColumn get pendingTask =>
-      boolean().named('task_pending').withDefault(const Constant(false))();
+  TextColumn get rTaskName => text().named('r_name')();
+  TextColumn get evaluate => text().named('r_evaluate')();
+  TextColumn get repetition => text().named('r_repetition')();
+  TextColumn get rDescription => text().named('r_description')();
+  DateTimeColumn get startDate => dateTime().named('r_start_date')();
+  DateTimeColumn get endDate => dateTime().named('r_end_date')();
+
   // IntColumn get color => integer().named('category_color')();
   // IntColumn get icon => integer().named('category_icon')();
 }

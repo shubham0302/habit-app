@@ -19,25 +19,135 @@ void PriorityRecurringCustomDialogBox(BuildContext context) {
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20.0))),
           backgroundColor: color.backgroundColor,
-          content: Container(
-            width: 340,
-            height: 320,
-            child: Column(mainAxisAlignment: MainAxisAlignment.start,
-                // crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const MainLabelText(text: "Seletct a Priority"),
-                  SH.large(),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    // height: 100,
-                    child: Row(
-                      // mainAxisAlignment: MainAxisAlignment.s,
+          content: Wrap(
+            children: [
+              Column(mainAxisAlignment: MainAxisAlignment.start,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const MainLabelText(text: "Seletct a Priority"),
+                    SH.large(),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      // height: 100,
+                      child: Row(
+                        // mainAxisAlignment: MainAxisAlignment.s,
+                        children: [
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                addRecurringTaskController
+                                    .updatePriority.value = 9;
+                                Get.back();
+                              },
+                              child: Container(
+                                height: 60,
+                                // width: 100,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: color.disabledColor
+                                            .withOpacity(0.4))),
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const LabelText(text: "9"),
+                                      SW.small(),
+                                      addRecurringTaskController
+                                                  .updatePriority.value ==
+                                              "9"
+                                          ? const Icon(
+                                              Icons.flag_rounded,
+                                              size: 20,
+                                            )
+                                          : const Icon(
+                                              Icons.flag_outlined,
+                                              size: 20,
+                                              color: Colors.white,
+                                            ),
+                                    ]),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                addRecurringTaskController
+                                    .updatePriority.value = 8;
+                                Get.back();
+                              },
+                              child: Container(
+                                height: 60,
+                                // width: 100,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: color.disabledColor
+                                            .withOpacity(0.4))),
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const LabelText(text: "8"),
+                                      SW.small(),
+                                      addRecurringTaskController
+                                                  .updatePriority.value ==
+                                              "8"
+                                          ? const Icon(
+                                              Icons.flag_rounded,
+                                              size: 20,
+                                            )
+                                          : const Icon(
+                                              Icons.flag_outlined,
+                                              size: 20,
+                                              color: Colors.white,
+                                            ),
+                                    ]),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                addRecurringTaskController
+                                    .updatePriority.value = 7;
+                                Get.back();
+                              },
+                              child: Container(
+                                height: 60,
+                                // width: 100,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: color.disabledColor
+                                            .withOpacity(0.4))),
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const LabelText(text: "7"),
+                                      SW.small(),
+                                      addRecurringTaskController
+                                                  .updatePriority.value ==
+                                              "7"
+                                          ? const Icon(
+                                              Icons.flag_rounded,
+                                              size: 20,
+                                            )
+                                          : const Icon(
+                                              Icons.flag_outlined,
+                                              size: 20,
+                                              color: Colors.white,
+                                            ),
+                                    ]),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
                               addRecurringTaskController.updatePriority.value =
-                                  "9";
+                                  6;
                               Get.back();
                             },
                             child: Container(
@@ -50,11 +160,11 @@ void PriorityRecurringCustomDialogBox(BuildContext context) {
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    const LabelText(text: "9"),
+                                    const LabelText(text: "6"),
                                     SW.small(),
                                     addRecurringTaskController
                                                 .updatePriority.value ==
-                                            "9"
+                                            "6"
                                         ? const Icon(
                                             Icons.flag_rounded,
                                             size: 20,
@@ -72,7 +182,7 @@ void PriorityRecurringCustomDialogBox(BuildContext context) {
                           child: GestureDetector(
                             onTap: () {
                               addRecurringTaskController.updatePriority.value =
-                                  "8";
+                                  5;
                               Get.back();
                             },
                             child: Container(
@@ -85,11 +195,11 @@ void PriorityRecurringCustomDialogBox(BuildContext context) {
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    const LabelText(text: "8"),
+                                    const LabelText(text: "5"),
                                     SW.small(),
                                     addRecurringTaskController
                                                 .updatePriority.value ==
-                                            "8"
+                                            "5"
                                         ? const Icon(
                                             Icons.flag_rounded,
                                             size: 20,
@@ -107,7 +217,7 @@ void PriorityRecurringCustomDialogBox(BuildContext context) {
                           child: GestureDetector(
                             onTap: () {
                               addRecurringTaskController.updatePriority.value =
-                                  "7";
+                                  4;
                               Get.back();
                             },
                             child: Container(
@@ -120,11 +230,11 @@ void PriorityRecurringCustomDialogBox(BuildContext context) {
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    const LabelText(text: "7"),
+                                    const LabelText(text: "4"),
                                     SW.small(),
                                     addRecurringTaskController
                                                 .updatePriority.value ==
-                                            "7"
+                                            "4"
                                         ? const Icon(
                                             Icons.flag_rounded,
                                             size: 20,
@@ -140,252 +250,31 @@ void PriorityRecurringCustomDialogBox(BuildContext context) {
                         ),
                       ],
                     ),
-                  ),
-                  Row(
-                    // mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            addRecurringTaskController.updatePriority.value =
-                                "6";
-                            Get.back();
-                          },
-                          child: Container(
-                            height: 60,
-                            // width: 100,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color:
-                                        color.disabledColor.withOpacity(0.4))),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const LabelText(text: "6"),
-                                  SW.small(),
-                                  addRecurringTaskController
-                                              .updatePriority.value ==
-                                          "6"
-                                      ? const Icon(
-                                          Icons.flag_rounded,
-                                          size: 20,
-                                        )
-                                      : const Icon(
-                                          Icons.flag_outlined,
-                                          size: 20,
-                                          color: Colors.white,
-                                        ),
-                                ]),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            addRecurringTaskController.updatePriority.value =
-                                "5";
-                            Get.back();
-                          },
-                          child: Container(
-                            height: 60,
-                            // width: 100,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color:
-                                        color.disabledColor.withOpacity(0.4))),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const LabelText(text: "5"),
-                                  SW.small(),
-                                  addRecurringTaskController
-                                              .updatePriority.value ==
-                                          "5"
-                                      ? const Icon(
-                                          Icons.flag_rounded,
-                                          size: 20,
-                                        )
-                                      : const Icon(
-                                          Icons.flag_outlined,
-                                          size: 20,
-                                          color: Colors.white,
-                                        ),
-                                ]),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            addRecurringTaskController.updatePriority.value =
-                                "4";
-                            Get.back();
-                          },
-                          child: Container(
-                            height: 60,
-                            // width: 100,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color:
-                                        color.disabledColor.withOpacity(0.4))),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const LabelText(text: "4"),
-                                  SW.small(),
-                                  addRecurringTaskController
-                                              .updatePriority.value ==
-                                          "4"
-                                      ? const Icon(
-                                          Icons.flag_rounded,
-                                          size: 20,
-                                        )
-                                      : const Icon(
-                                          Icons.flag_outlined,
-                                          size: 20,
-                                          color: Colors.white,
-                                        ),
-                                ]),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    // mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            addRecurringTaskController.updatePriority.value =
-                                "3";
-                            Get.back();
-                          },
-                          child: Container(
-                            height: 60,
-                            width: 100,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color:
-                                        color.disabledColor.withOpacity(0.4))),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const LabelText(text: "3"),
-                                  SW.small(),
-                                  addRecurringTaskController
-                                              .updatePriority.value ==
-                                          "3"
-                                      ? const Icon(
-                                          Icons.flag_rounded,
-                                          size: 20,
-                                        )
-                                      : const Icon(
-                                          Icons.flag_outlined,
-                                          size: 20,
-                                          color: Colors.white,
-                                        ),
-                                ]),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            addRecurringTaskController.updatePriority.value =
-                                "2";
-                            Get.back();
-                          },
-                          child: Container(
-                            height: 60,
-                            // width: 100,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color:
-                                        color.disabledColor.withOpacity(0.4))),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const LabelText(text: "2"),
-                                  SW.small(),
-                                  addRecurringTaskController
-                                              .updatePriority.value ==
-                                          "2"
-                                      ? const Icon(
-                                          Icons.flag_rounded,
-                                          size: 20,
-                                        )
-                                      : const Icon(
-                                          Icons.flag_outlined,
-                                          size: 20,
-                                          color: Colors.white,
-                                        ),
-                                ]),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            addRecurringTaskController.updatePriority.value =
-                                "1";
-                            Get.back();
-                          },
-                          child: Container(
-                            height: 60,
-                            // width: 100,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color:
-                                        color.disabledColor.withOpacity(0.4))),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const LabelText(text: "1"),
-                                  SW.small(),
-                                  addRecurringTaskController
-                                              .updatePriority.value ==
-                                          "1"
-                                      ? const Icon(
-                                          Icons.flag_rounded,
-                                          size: 20,
-                                        )
-                                      : const Icon(
-                                          Icons.flag_outlined,
-                                          size: 20,
-                                          color: Colors.white,
-                                        ),
-                                ]),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Container(
-                    height: 60,
-                    child: Expanded(
-                      child: GestureDetector(
-                        onTap: () {
-                          addRecurringTaskController.updatePriority.value = "0";
-                          Get.back();
-                        },
-                        child: Container(
-                          height: 20,
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: color.disabledColor.withOpacity(0.4))),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
+                    Row(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              addRecurringTaskController.updatePriority.value =
+                                  3;
+                              Get.back();
+                            },
+                            child: Container(
+                              height: 60,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: color.disabledColor
+                                          .withOpacity(0.4))),
+                              child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    const LabelText(text: "0"),
+                                    const LabelText(text: "3"),
                                     SW.small(),
                                     addRecurringTaskController
                                                 .updatePriority.value ==
-                                            "0"
+                                            "3"
                                         ? const Icon(
                                             Icons.flag_rounded,
                                             size: 20,
@@ -396,24 +285,137 @@ void PriorityRecurringCustomDialogBox(BuildContext context) {
                                             color: Colors.white,
                                           ),
                                   ]),
-                              const LabelText(text: "Default")
-                            ],
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              addRecurringTaskController.updatePriority.value =
+                                  2;
+                              Get.back();
+                            },
+                            child: Container(
+                              height: 60,
+                              // width: 100,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: color.disabledColor
+                                          .withOpacity(0.4))),
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const LabelText(text: "2"),
+                                    SW.small(),
+                                    addRecurringTaskController
+                                                .updatePriority.value ==
+                                            "2"
+                                        ? const Icon(
+                                            Icons.flag_rounded,
+                                            size: 20,
+                                          )
+                                        : const Icon(
+                                            Icons.flag_outlined,
+                                            size: 20,
+                                            color: Colors.white,
+                                          ),
+                                  ]),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              addRecurringTaskController.updatePriority.value =
+                                  1;
+                              Get.back();
+                            },
+                            child: Container(
+                              height: 60,
+                              // width: 100,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: color.disabledColor
+                                          .withOpacity(0.4))),
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const LabelText(text: "1"),
+                                    SW.small(),
+                                    addRecurringTaskController
+                                                .updatePriority.value ==
+                                            "1"
+                                        ? const Icon(
+                                            Icons.flag_rounded,
+                                            size: 20,
+                                          )
+                                        : const Icon(
+                                            Icons.flag_outlined,
+                                            size: 20,
+                                            color: Colors.white,
+                                          ),
+                                  ]),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      height: 60,
+                      child: Expanded(
+                        child: GestureDetector(
+                          onTap: () {
+                            addRecurringTaskController.updatePriority.value =
+                                0;
+                            Get.back();
+                          },
+                          child: Container(
+                            height: 20,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color:
+                                        color.disabledColor.withOpacity(0.4))),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const LabelText(text: "0"),
+                                      SW.small(),
+                                      addRecurringTaskController
+                                                  .updatePriority.value ==
+                                              "0"
+                                          ? const Icon(
+                                              Icons.flag_rounded,
+                                              size: 20,
+                                            )
+                                          : const Icon(
+                                              Icons.flag_outlined,
+                                              size: 20,
+                                              color: Colors.white,
+                                            ),
+                                    ]),
+                                const LabelText(text: "Default")
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  SH.large(),
-                  GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: const LabelText(
-                      text: "Close",
-                      isColor: true,
-                    ),
-                  )
-                ]),
+                    SH.large(),
+                    GestureDetector(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: const LabelText(
+                        text: "Close",
+                        isColor: true,
+                      ),
+                    )
+                  ]),
+            ],
           ),
         );
       });
