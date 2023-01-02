@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/screens/helpers/local_storage_helper.dart';
 import 'package:habbit_app/screens/pin/lock_pin_dailbox.dart';
+import 'package:habbit_app/widgets/custom_snackbar.dart';
 import 'package:local_auth/local_auth.dart';
 
 class LockPinController extends GetxController {
@@ -45,6 +46,7 @@ class LockPinController extends GetxController {
       switch (val) {
         case 'bio':
           if (lockType.value != 'pin') {
+            CustomSnackbar.errorSnackbar2("Enable lock PIN first", context);
             print('le');
           } else {
             await checkBioPermissions();
@@ -82,6 +84,25 @@ class LockPinController extends GetxController {
           options: const AuthenticationOptions(biometricOnly: true));
       if (done) {
         Get.offAllNamed('/intro');
+      } else {
+        print('skc');
+      }
+    } on PlatformException catch (e) {
+      print(e.details);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  authenticateResume() async {
+    try {
+      LocalAuthentication auth = LocalAuthentication();
+      // var canAuthenticate = await auth
+      var done = await auth.authenticate(
+          localizedReason: 'Please authenticate to go to your app',
+          options: const AuthenticationOptions(biometricOnly: true));
+      if (done) {
+        Get.offAllNamed('/home');
       } else {
         print('skc');
       }
@@ -135,6 +156,19 @@ class LockPinController extends GetxController {
       Get.offAllNamed('/pin');
       if (lockType.value == 'bio') {
         await authenticate();
+      }
+    } else {
+      Get.offAllNamed('/intro');
+    }
+  }
+
+  getPinTypeResume() async {
+    var pin = await LocalStorageHelper.getItem('lock_type');
+    lockType.value = ['none', 'pin', 'bio'].contains(pin) ? pin : 'none';
+    if (lockType.value == 'pin' || lockType.value == 'bio') {
+      Get.offAllNamed('/pin');
+      if (lockType.value == 'bio') {
+        await authenticateResume();
       }
     } else {
       Get.offAllNamed('/intro');

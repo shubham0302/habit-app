@@ -7,7 +7,6 @@ import 'package:habbit_app/controllers/timer_tab_controller.dart';
 import 'package:habbit_app/screens/timer/set_timer_component.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
-import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 class TimerTab extends StatefulWidget {
   const TimerTab({super.key});
