@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/db_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/language/localString.dart';
 // import 'package:habbit_app/screens/customize_screen/backUp_screen.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeController themeController =
         Get.put(ThemeController(), permanent: true);
+    DBController dbController = Get.put(DBController(), permanent: true);
 // Timer(Duration(seconds: 3), () => Get.to(() => SplashScreen()));
     return Obx(
       () => GetMaterialApp(

@@ -51,7 +51,9 @@ class DateList extends StatelessWidget {
                               //     .weekday
 
                               ))
-                          .toString(),
+                          .toString()
+                          .substring(0, 3)
+                          .toUpperCase(),
                       // '${}',
                       isColor: true,
                       color: controller.SelectedDateIndex.value == index
