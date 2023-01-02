@@ -78,9 +78,11 @@ class AddRecurringTaskScreen extends StatelessWidget {
                           height: 35,
                           width: 140,
                           decoration: BoxDecoration(
+                              border: Border.all(
+                                  width: 2, color: color.canvasColor),
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
-                              color: color.hintColor),
+                              color: color.backgroundColor),
                           child: Center(
                             child: Obx(
                               () => LabelText(
@@ -123,9 +125,11 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: Center(
                           child: Obx(
                             () => Padding(
@@ -171,9 +175,11 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: Center(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -215,9 +221,11 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: Center(
                           child: Obx(
                             () => Row(
@@ -269,9 +277,11 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: Center(
                           child: Obx(
                             () => LabelText(
@@ -315,9 +325,11 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: Center(
                           child: Obx(
                             () => LabelText(
@@ -355,9 +367,11 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: Center(
                           child: Obx(
                             () => Padding(
@@ -399,9 +413,11 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -441,9 +457,11 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

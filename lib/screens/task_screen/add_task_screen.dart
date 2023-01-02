@@ -81,9 +81,12 @@ class AddTaskScreen extends StatelessWidget {
                           height: 35,
                           width: 140,
                           decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
-                              color: color.hintColor),
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
+                            color: color.backgroundColor,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                          ),
                           child: Center(
                             child: Obx(
                               () => LabelText(
@@ -125,9 +128,12 @@ class AddTaskScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                          border:
+                              Border.all(width: 2, color: color.canvasColor),
+                          color: color.backgroundColor,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                        ),
                         child: Center(
                           child: Obx(
                             () => Row(
@@ -199,9 +205,12 @@ class AddTaskScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                          border:
+                              Border.all(width: 2, color: color.canvasColor),
+                          color: color.backgroundColor,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                        ),
                         child: Center(
                           child: Obx(
                             () => LabelText(
@@ -239,9 +248,12 @@ class AddTaskScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                          border:
+                              Border.all(width: 2, color: color.canvasColor),
+                          color: color.backgroundColor,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                        ),
                         child: Center(
                           child: Obx(
                             () => Padding(
@@ -282,9 +294,12 @@ class AddTaskScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                          border:
+                              Border.all(width: 2, color: color.canvasColor),
+                          color: color.backgroundColor,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                        ),
                         child: Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -324,9 +339,12 @@ class AddTaskScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                          border:
+                              Border.all(width: 2, color: color.canvasColor),
+                          color: color.backgroundColor,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -381,10 +399,12 @@ class AddTaskScreen extends StatelessWidget {
                           ? Icon(
                               Icons.circle_outlined,
                               size: 30,
-                              color: color.disabledColor,
+                              color: color.primaryColor,
                             )
-                          : const Icon(
+                          : Icon(
                               Icons.check_circle,
+                              color: color.primaryColor,
+
                               size: 30,
                               // color: color.disabledColor,
                             ),

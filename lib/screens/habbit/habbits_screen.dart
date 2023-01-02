@@ -35,7 +35,7 @@ class HabbitsScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10)),
-                        color: color.dialogBackgroundColor.withOpacity(0.4)),
+                        color: color.disabledColor.withOpacity(0.1)),
                     width: MediaQuery.of(context).size.width,
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),

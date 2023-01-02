@@ -55,7 +55,7 @@ class HomePage extends StatelessWidget {
               SH.large(),
               const Divider(),
               SH.large(),
-Expanded(
+              Expanded(
                 child: ListView.separated(
                   itemCount: 3,
                   separatorBuilder: (context, index) => SH.large(),
@@ -64,7 +64,7 @@ Expanded(
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: color.disabledColor.withOpacity(.3)),
+                          color: color.disabledColor.withOpacity(.1)),
                       child: GlobalPadding(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -81,7 +81,6 @@ Expanded(
                                     Icons.brush,
                                     color: color.backgroundColor,
                                     size: 40,
-                                    
                                   ),
                                 ),
                                 SW.medium(),
@@ -150,7 +149,7 @@ Expanded(
                   },
                 ),
               )
-              
+
               // SH.large(),
 
               // Container(

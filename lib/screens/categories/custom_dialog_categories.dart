@@ -137,14 +137,20 @@ void CategoriesCustomDialogBox(BuildContext context, bool fromUpdate) {
                                         color:
                                             categoryController.iconType.value ==
                                                     index
-                                                ? color.primaryColor
+                                                ? categoryController.iconColor[
+                                                    categoryController
+                                                        .colorIndex.value]
                                                 : Colors.transparent)),
                                 // height: 30,
                                 // width: 30,
                                 // color: Colors.amber,
                                 child: Icon(
                                   categoryController.icon[index],
-                                  color: color.disabledColor,
+                                  color: categoryController.iconType.value ==
+                                          index
+                                      ? categoryController.iconColor[
+                                          categoryController.colorIndex.value]
+                                      : color.disabledColor,
                                   size: 35,
                                 ),
                               ),

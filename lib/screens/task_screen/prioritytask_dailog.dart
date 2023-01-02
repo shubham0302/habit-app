@@ -30,6 +30,7 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     // height: 100,
+
                     child: Row(
                       // mainAxisAlignment: MainAxisAlignment.s,
                       children: [
@@ -59,10 +60,10 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                                             Icons.flag_rounded,
                                             size: 20,
                                           )
-                                        : const Icon(
+                                        : Icon(
                                             Icons.flag_outlined,
                                             size: 20,
-                                            color: Colors.white,
+                                            color: color.primaryColor,
                                           ),
                                   ]),
                             ),
@@ -94,10 +95,10 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                                             Icons.flag_rounded,
                                             size: 20,
                                           )
-                                        : const Icon(
+                                        : Icon(
                                             Icons.flag_outlined,
                                             size: 20,
-                                            color: Colors.white,
+                                            color: color.primaryColor,
                                           ),
                                   ]),
                             ),
@@ -129,10 +130,10 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                                             Icons.flag_rounded,
                                             size: 20,
                                           )
-                                        : const Icon(
+                                        : Icon(
                                             Icons.flag_outlined,
                                             size: 20,
-                                            color: Colors.white,
+                                            color: color.primaryColor,
                                           ),
                                   ]),
                             ),
@@ -169,10 +170,10 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                                           Icons.flag_rounded,
                                           size: 20,
                                         )
-                                      : const Icon(
+                                      : Icon(
                                           Icons.flag_outlined,
                                           size: 20,
-                                          color: Colors.white,
+                                          color: color.primaryColor,
                                         ),
                                 ]),
                           ),
@@ -203,10 +204,10 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                                           Icons.flag_rounded,
                                           size: 20,
                                         )
-                                      : const Icon(
+                                      : Icon(
                                           Icons.flag_outlined,
                                           size: 20,
-                                          color: Colors.white,
+                                          color: color.primaryColor,
                                         ),
                                 ]),
                           ),
@@ -237,10 +238,10 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                                           Icons.flag_rounded,
                                           size: 20,
                                         )
-                                      : const Icon(
+                                      : Icon(
                                           Icons.flag_outlined,
                                           size: 20,
-                                          color: Colors.white,
+                                          color: color.primaryColor,
                                         ),
                                 ]),
                           ),
@@ -276,10 +277,10 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                                           Icons.flag_rounded,
                                           size: 20,
                                         )
-                                      : const Icon(
+                                      : Icon(
                                           Icons.flag_outlined,
                                           size: 20,
-                                          color: Colors.white,
+                                          color: color.primaryColor,
                                         ),
                                 ]),
                           ),
@@ -310,10 +311,10 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                                           Icons.flag_rounded,
                                           size: 20,
                                         )
-                                      : const Icon(
+                                      : Icon(
                                           Icons.flag_outlined,
                                           size: 20,
-                                          color: Colors.white,
+                                          color: color.primaryColor,
                                         ),
                                 ]),
                           ),
@@ -344,10 +345,10 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                                           Icons.flag_rounded,
                                           size: 20,
                                         )
-                                      : const Icon(
+                                      : Icon(
                                           Icons.flag_outlined,
                                           size: 20,
-                                          color: Colors.white,
+                                          color: color.primaryColor,
                                         ),
                                 ]),
                           ),
@@ -384,10 +385,10 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                                             Icons.flag_rounded,
                                             size: 20,
                                           )
-                                        : const Icon(
+                                        : Icon(
                                             Icons.flag_outlined,
                                             size: 20,
-                                            color: Colors.white,
+                                            color: color.primaryColor,
                                           ),
                                   ]),
                               const LabelText(text: "Default")

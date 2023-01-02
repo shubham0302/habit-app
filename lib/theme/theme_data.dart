@@ -114,6 +114,7 @@ class Styles {
     String mode,
   ) {
     return ThemeData(
+      
       splashColor: ColorSchemeData.darkThemeData[mode]!['primaryColor'],
 
       switchTheme: SwitchThemeData(

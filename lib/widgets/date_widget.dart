@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
+import 'package:intl/intl.dart';
 
 import '../controllers/home_page_controller.dart';
 
@@ -42,8 +43,16 @@ class DateList extends StatelessWidget {
                   children: [
                     SH.small(),
                     LabelText(
-                      text: DateFormat('EEEE').format(DateTime.now().add(Duration(days: index)).weekday).toString(),
-                          // '${}',
+                      text: DateFormat('EEEE')
+                          .format(DateTime(DateTime.now().year,
+                              DateTime.now().month, DateTime.now().day + index
+                              // DateTime.now()
+                              //     .add(Duration(days: index))
+                              //     .weekday
+
+                              ))
+                          .toString(),
+                      // '${}',
                       isColor: true,
                       color: controller.SelectedDateIndex.value == index
                           ? color.backgroundColor
