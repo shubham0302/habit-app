@@ -14,8 +14,8 @@ import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
-class AddRecurringTaskScreen extends StatelessWidget {
-  const AddRecurringTaskScreen({super.key});
+class EditRecurringTask extends StatelessWidget {
+  const EditRecurringTask({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         ),
                       )),
                   SW.medium(),
-                  const MainLabelText(text: 'Add New Recurring Task'),
+                  const MainLabelText(text: 'Edit Recurring Task'),
                 ],
               ),
               SH.large(),
@@ -522,7 +522,6 @@ class AddRecurringTaskScreen extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {
                     addRecurringTaskController.addReminder();
-                    
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 10),

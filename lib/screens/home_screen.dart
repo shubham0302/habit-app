@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
               Expanded(
                 child: ListView.separated(
                   itemCount: 3,
-                  separatorBuilder: (context, index) => SH.large(),
+                  separatorBuilder: (context, index) => SH.medium(),
                   itemBuilder: (context, index) {
                     return Container(
                       width: MediaQuery.of(context).size.width,

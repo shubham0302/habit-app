@@ -173,20 +173,9 @@ class AddTaskController extends GetxController {
       customVibration.value = true;
       customAlarm.value = true;
       customDays.value = [];
-      // taskName.value = '';
-      // categoryId.value = 0;
-      // date.value = DateTime.now();
-      // isPending.value = false;
-      // updatePriority.value = 0;
 
-      // category.value = '';
-      // iconType.value = 0;
-      // colorIndex.value = 0;
-      // log(data.toString());
       await editTask();
-      // await addCheckLists(data);
 
-      // Get.back();
     } catch (e) {
       log('hahaha error ${e}');
     }
