@@ -110,26 +110,32 @@ class SettingScreen extends StatelessWidget {
               thickness: 1,
             ),
             SH.medium(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.format_paint_outlined,
-                      size: 30,
-                      color: color.primaryColor,
-                    ),
-                    SW.large(),
-                    const LabelText(text: "Customize")
-                  ],
-                ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: color.primaryColor,
-                )
-              ],
+            GestureDetector(
+              onTap: () {
+                Get.toNamed('/customize');
+              },
+              behavior: HitTestBehavior.translucent,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.format_paint_outlined,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.large(),
+                      const LabelText(text: "Customize")
+                    ],
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 20,
+                    color: color.primaryColor,
+                  )
+                ],
+              ),
             ),
             SH.medium(),
             const Divider(
@@ -171,16 +177,22 @@ class SettingScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.backup_sharp,
-                      size: 30,
-                      color: color.primaryColor,
-                    ),
-                    SW.large(),
-                    const LabelText(text: "Backups")
-                  ],
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed('/backup');
+                  },
+                  behavior: HitTestBehavior.translucent,
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.backup_sharp,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.large(),
+                      const LabelText(text: "Backups")
+                    ],
+                  ),
                 ),
                 Icon(
                   Icons.arrow_forward_ios,

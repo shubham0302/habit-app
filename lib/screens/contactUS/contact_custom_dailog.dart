@@ -21,8 +21,9 @@ void ContactCustomDialogBox(BuildContext context) {
             backgroundColor: color.backgroundColor,
             content: Container(
               width: 220,
-              height: 290,
+              // height: 290,
               child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

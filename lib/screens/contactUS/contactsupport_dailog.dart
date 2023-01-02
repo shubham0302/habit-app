@@ -37,8 +37,9 @@ void ContactSupportCustomDialogBox(BuildContext context) {
             backgroundColor: color.backgroundColor,
             content: Container(
               width: 220,
-              height: 220,
+              // height: 220,
               child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -53,7 +54,9 @@ void ContactSupportCustomDialogBox(BuildContext context) {
                     ),
                     SH.large(),
                     const DescriptionText(
-                        text: "Your feedback is very valuable to us"),
+                      text: "Your feedback is very valuable to us",
+                      isDotDot: false,
+                    ),
                     SH.large(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,

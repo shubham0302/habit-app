@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/db_controller.dart';
+import 'package:habbit_app/controllers/lockpin_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/language/localString.dart';
 // import 'package:habbit_app/screens/customize_screen/backUp_screen.dart';
@@ -37,8 +39,49 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+  LockPinController lockPinController =
+      Get.put(LockPinController(), permanent: true);
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
+    switch (state) {
+      case AppLifecycleState.resumed:
+        lockPinController.getPinTypeResume();
+
+        break;
+
+      case AppLifecycleState.inactive:
+        // lockPinController.getPinTypeResume();
+        print("app in inactive");
+        break;
+      case AppLifecycleState.paused:
+        print("app in paused");
+        break;
+      case AppLifecycleState.detached:
+        print("app in detached");
+        break;
+    }
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
