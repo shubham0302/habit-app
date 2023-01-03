@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 
 class IntervalTabController extends GetxController {
+  RxBool breakSwitch = false.obs;
+
   var tabIndex = 0.obs;
 
   var currentvalueHour = 0.obs;

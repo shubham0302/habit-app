@@ -123,29 +123,50 @@ class _SetTimerComponentState extends State<SetTimerComponent> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Container(
-                height: 80,
-                width: 80,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: color.disabledColor.withOpacity(0.10)),
-                child: const Center(child: DescriptionText(text: "00.00.00")),
+              GestureDetector(
+                onTap: () {
+                  tabController.currentvalueHour.value = 00;
+                  tabController.currentvalueMin.value = 10;
+                  tabController.currentvalueSec.value = 00;
+                },
+                child: Container(
+                  height: 80,
+                  width: 80,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: color.disabledColor.withOpacity(0.10)),
+                  child: const Center(child: DescriptionText(text: "00.10.00")),
+                ),
               ),
-              Container(
-                height: 80,
-                width: 80,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: color.disabledColor.withOpacity(0.10)),
-                child: const Center(child: DescriptionText(text: "00.00.00")),
+              GestureDetector(
+                onTap: () {
+                  tabController.currentvalueHour.value = 00;
+                  tabController.currentvalueMin.value = 20;
+                  tabController.currentvalueSec.value = 00;
+                },
+                child: Container(
+                  height: 80,
+                  width: 80,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: color.disabledColor.withOpacity(0.10)),
+                  child: const Center(child: DescriptionText(text: "00.20.00")),
+                ),
               ),
-              Container(
-                height: 80,
-                width: 80,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: color.disabledColor.withOpacity(0.10)),
-                child: const Center(child: DescriptionText(text: "00.00.00")),
+              GestureDetector(
+                onTap: () {
+                  tabController.currentvalueHour.value = 00;
+                  tabController.currentvalueMin.value = 30;
+                  tabController.currentvalueSec.value = 00;
+                },
+                child: Container(
+                  height: 80,
+                  width: 80,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: color.disabledColor.withOpacity(0.10)),
+                  child: const Center(child: DescriptionText(text: "00.30.00")),
+                ),
               )
             ],
           ),

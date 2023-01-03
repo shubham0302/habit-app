@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -7,7 +7,6 @@ import 'package:habbit_app/controllers/db_controller.dart';
 import 'package:habbit_app/controllers/lockpin_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/language/localString.dart';
-// import 'package:habbit_app/screens/customize_screen/backUp_screen.dart';
 import 'package:habbit_app/screens/categories/categories.dart';
 import 'package:habbit_app/screens/categories/categories_drawer_screen.dart';
 import 'package:habbit_app/screens/getpremium_screen.dart';
