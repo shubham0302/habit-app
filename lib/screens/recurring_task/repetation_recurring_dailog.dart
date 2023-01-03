@@ -70,7 +70,7 @@ void RepetationRecurringCustomDialogBox(BuildContext context) {
                         },
                         behavior: HitTestBehavior.translucent,
                         child: const LabelText(
-                            text: "Specific days of the month")),
+                            text: "Specific day of the month")),
                     SH.large(),
                     const Divider(
                       thickness: 1,
@@ -80,7 +80,7 @@ void RepetationRecurringCustomDialogBox(BuildContext context) {
                         onTap: () {
                           addRecurringTaskController.repiDate(context);
                           addRecurringTaskController.updateRepetation.value =
-                              "Specific days of the year";
+                              "Specific day of the year";
                         },
                         behavior: HitTestBehavior.translucent,
                         child:
@@ -117,4 +117,6 @@ void RepetationRecurringCustomDialogBox(BuildContext context) {
           ),
         );
       });
+
 }
+

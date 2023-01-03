@@ -521,7 +521,7 @@ class EditRecurringTask extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: GestureDetector(
                   onTap: () {
-                    addRecurringTaskController.addReminder();
+                    addRecurringTaskController.addRepetition();
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 10),

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/recurring_controller.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
@@ -9,13 +10,13 @@ import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
-void DayOfMonth(BuildContext context) {
+void DayOfMonthHabbit(BuildContext context) {
   ThemeData color = Theme.of(context);
   showDialog(
       context: context,
       builder: (BuildContext context) {
-        AddRecurringTaskController addRecurringTaskController =
-            Get.put(AddRecurringTaskController(), permanent: false);
+        AddHabbitSelectController addRecurringTaskController =
+            Get.put(AddHabbitSelectController(), permanent: false);
         return AlertDialog(
           insetPadding: const EdgeInsets.symmetric(horizontal: 20),
           shape: const RoundedRectangleBorder(

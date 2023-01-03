@@ -306,7 +306,7 @@ class AddTaskController extends GetxController {
         checklists.value = element;
         checklists.refresh();
         log(checklists.length.toString());
-      });
+      }); 
     } catch (e) {
       log('hahaha error ${e}');
     }

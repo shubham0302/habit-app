@@ -7,6 +7,7 @@ import 'package:drift/drift.dart' as drift;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/db_controller.dart';
+import 'package:intl/date_time_patterns.dart';
 
 import '../infrastructure/db/app_service.dart';
 
@@ -72,10 +73,11 @@ class AddRecurringTaskController extends GetxController {
 
   // weekDay
   var categoryId = 0.obs;
-  addTask(int reminder) async {
+  addTask(int reminder , int repetition) async {
     try {
       var entity = RecurringTaskModelCompanion(
-        repetition: drift.Value(updateRepetation.value),
+        repetitonId: drift.Value(repetition),
+        // repetition: drift.Value(updateRepetation.value),
         rTaskName: drift.Value(updateName.value),
         categoryId: drift.Value(categoryId.value),
         startDate: drift.Value(startDate.value),
@@ -122,7 +124,7 @@ class AddRecurringTaskController extends GetxController {
   Rx<DateTime> reminderTime = DateTime(0000, 00, 00, 08, 30).obs;
 
   var taskReminderId = 0.obs;
-  addReminder() async {
+  addReminder(int repetition) async {
     try {
       var entity = TaskReminderModelCompanion(
           reminderTime: drift.Value(reminderTime.value),
@@ -141,7 +143,32 @@ class AddRecurringTaskController extends GetxController {
       customAlarm.value = true;
       customDays.value = [];
 
-      await addTask(data);
+      await addTask(data,repetition );
+    } catch (e) {
+      log('hahaha error ${e}');
+    }
+  }
+
+  var times = 0.obs;
+  var repeatTime = 0.obs;
+  var repeatPeriod = ''.obs;
+
+  var timeWeek = ''.obs;
+  addRepetition() async {
+    try {
+      var entity = RecurringRepetitionModelCompanion(
+        daysMonth: drift.Value(monthIndex.join(',')),
+        daysWeek: drift.Value(weekIndex.join(',')),
+        repeat: drift.Value('${repeatTime.value},${repeatPeriod.value},${flexible.value}'),
+        specificDay: drift.Value(singleDate.value),
+        timePeriod: drift.Value('${times.value},${timeWeek.value}' ),
+        type: drift.Value(updateRepetation.value),
+      );
+
+      var data = await dbController.appDB.insertRecurringRepetition(entity);
+
+
+      await addReminder(data);
     } catch (e) {
       log('hahaha error ${e}');
     }

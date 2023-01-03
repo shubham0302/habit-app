@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
+import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/category_custom_dialog.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/name_custom_dailogbox.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/priority_custom_dilogbox.dart';
@@ -18,8 +19,10 @@ class AddHabbitsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AddHabbitSelectController addHabbitsScreen =
+    AddHabbitSelectController addRecurringTaskController =
         Get.put(AddHabbitSelectController(), permanent: false);
+    CategoryController categoryController =
+        Get.put(CategoryController(), permanent: false);
 
     // bool switchChange = true;
     ThemeData color = Theme.of(context);
@@ -37,12 +40,16 @@ class AddHabbitsScreen extends StatelessWidget {
                       onTap: (() {
                         Get.back();
                       }),
-                      child: Icon(
-                        Icons.arrow_back_ios_new_rounded,
-                        color: color.primaryColor,
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        child: Icon(
+                          Icons.arrow_back_ios_new_rounded,
+                          color: color.primaryColor,
+                        ),
                       )),
                   SW.medium(),
-                  const MainLabelText(text: 'Add New Habit'),
+                  const MainLabelText(text: 'Add New Habbit'),
                 ],
               ),
               SH.large(),
@@ -60,29 +67,32 @@ class AddHabbitsScreen extends StatelessWidget {
                           color: color.primaryColor,
                         ),
                         SW.small(),
-                        const LabelText(text: "Habit Name")
+                        const LabelText(text: "Task Name")
                       ],
                     ),
                     GestureDetector(
                       onTap: () {
                         NameCustomDialogBox(context);
-                        // CategoryCustomDialogBox(context);
-                        // ToDoWeekCustomDialogBox(context);
                       },
                       child: Container(
                           alignment: Alignment.centerLeft,
                           height: 35,
                           width: 140,
                           decoration: BoxDecoration(
+                              border: Border.all(
+                                  width: 2, color: color.canvasColor),
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
-                              color: color.hintColor),
+                              color: color.backgroundColor),
                           child: Center(
                             child: Obx(
                               () => LabelText(
-                                text: addHabbitsScreen.updateName.value == ''
+                                text: addRecurringTaskController
+                                            .updateName.value ==
+                                        ''
                                     ? "name"
-                                    : addHabbitsScreen.updateName.value,
+                                    : addRecurringTaskController
+                                        .updateName.value,
                               ),
                             ),
                           )),
@@ -116,19 +126,22 @@ class AddHabbitsScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: Center(
                           child: Obx(
                             () => Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: LabelText(
-                                text: addHabbitsScreen
+                                text: addRecurringTaskController
                                             .updateDescription.value ==
                                         ''
                                     ? "Description"
-                                    : addHabbitsScreen.updateDescription.value,
+                                    : addRecurringTaskController
+                                        .updateDescription.value,
                                 isDotDot: true,
                               ),
                             ),
@@ -163,246 +176,23 @@ class AddHabbitsScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: Center(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Obx(
                               () => LabelText(
-                                  text: addHabbitsScreen.selectEvaluate.value),
+                                  text: addRecurringTaskController
+                                      .selectEvaluate.value),
                             ),
                           ),
                         )),
                   )
                 ],
-              ),
-              Obx(
-                () => addHabbitsScreen.selectEvaluate.value == "NUMERIC"
-                    ? Column(
-                        children: [
-                          SH.large(),
-                          SH.medium(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.golf_course_sharp,
-                                    size: 30,
-                                    color: color.primaryColor,
-                                  ),
-                                  SW.medium(),
-                                  const LabelText(text: "Value")
-                                ],
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  // EvaluateCustomDialogBox(context);
-                                  // ToDoWeekCustomDialogBox(context);
-                                },
-                                child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    height: 35,
-                                    width: 140,
-                                    decoration: BoxDecoration(
-                                        borderRadius: const BorderRadius.all(
-                                            Radius.circular(10)),
-                                        color: color.hintColor),
-                                    child: Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Obx(
-                                          () => LabelText(
-                                              text: addHabbitsScreen
-                                                  .numericDropDownValue
-                                                  .toString()),
-                                        ),
-                                      ),
-                                    )),
-                              )
-                            ],
-                          ),
-                          SH.large(),
-                          SH.medium(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.info,
-                                    size: 30,
-                                    color: color.primaryColor,
-                                  ),
-                                  SW.medium(),
-                                  const LabelText(text: "Goal")
-                                ],
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  // EvaluateCustomDialogBox(context);
-                                  // ToDoWeekCustomDialogBox(context);
-                                },
-                                child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    height: 35,
-                                    width: 140,
-                                    decoration: BoxDecoration(
-                                        borderRadius: const BorderRadius.all(
-                                            Radius.circular(10)),
-                                        color: color.hintColor),
-                                    child: Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Obx(
-                                          () => LabelText(
-                                              text: addHabbitsScreen
-                                                  .updateGoal.value),
-                                        ),
-                                      ),
-                                    )),
-                              )
-                            ],
-                          ),
-                          SH.large(),
-                          SH.medium(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.golf_course_sharp,
-                                    size: 30,
-                                    color: color.primaryColor,
-                                  ),
-                                  SW.medium(),
-                                  const LabelText(text: "Unit")
-                                ],
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  // EvaluateCustomDialogBox(context);
-                                  // ToDoWeekCustomDialogBox(context);
-                                },
-                                child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    height: 35,
-                                    width: 140,
-                                    decoration: BoxDecoration(
-                                        borderRadius: const BorderRadius.all(
-                                            Radius.circular(10)),
-                                        color: color.hintColor),
-                                    child: Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Obx(
-                                          () => LabelText(
-                                              text: addHabbitsScreen
-                                                  .updateUnit.value),
-                                        ),
-                                      ),
-                                    )),
-                              )
-                            ],
-                          ),
-                        ],
-                      )
-                    : const SizedBox(),
-              ),
-              Obx(
-                () => addHabbitsScreen.selectEvaluate.value == "TIMER"
-                    ? Column(
-                        children: [
-                          SH.large(),
-                          SH.medium(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.info,
-                                    size: 30,
-                                    color: color.primaryColor,
-                                  ),
-                                  SW.medium(),
-                                  const LabelText(text: "Value")
-                                ],
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  // EvaluateCustomDialogBox(context);
-                                  // ToDoWeekCustomDialogBox(context);
-                                },
-                                child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    height: 35,
-                                    width: 140,
-                                    decoration: BoxDecoration(
-                                        borderRadius: const BorderRadius.all(
-                                            Radius.circular(10)),
-                                        color: color.hintColor),
-                                    child: Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: LabelText(
-                                            text: addHabbitsScreen
-                                                .timerDropDownValue.value
-                                                .toString()),
-                                      ),
-                                    )),
-                              )
-                            ],
-                          ),
-                          SH.large(),
-                          SH.medium(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.timer,
-                                    size: 30,
-                                    color: color.primaryColor,
-                                  ),
-                                  SW.medium(),
-                                  const LabelText(text: "Time")
-                                ],
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  // EvaluateCustomDialogBox(context);
-                                  // ToDoWeekCustomDialogBox(context);
-                                },
-                                child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    height: 35,
-                                    width: 140,
-                                    decoration: BoxDecoration(
-                                        borderRadius: const BorderRadius.all(
-                                            Radius.circular(10)),
-                                        color: color.hintColor),
-                                    child: Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Obx(
-                                          () => LabelText(
-                                              text:
-                                                  "${addHabbitsScreen.currentvalueHour.value}:${addHabbitsScreen.currentvalueMin.value}:${addHabbitsScreen.currentvalueSec.value}"),
-                                        ),
-                                      ),
-                                    )),
-                              )
-                            ],
-                          ),
-                        ],
-                      )
-                    : const SizedBox(),
               ),
               SH.medium(),
               SH.large(),
@@ -432,18 +222,52 @@ class AddHabbitsScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: Center(
                           child: Obx(
                             () => Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                addHabbitsScreen.categoryIcon.value,
+                                Icon(
+                                  addRecurringTaskController.categoryId.value !=
+                                          0
+                                      ? categoryController.icon[
+                                          categoryController
+                                              .categories
+                                              .firstWhere((element) =>
+                                                  element.id ==
+                                                  addRecurringTaskController
+                                                      .categoryId.value)
+                                              .icon]
+                                      : Icons.abc,
+                                  color: addRecurringTaskController
+                                              .categoryId.value !=
+                                          0
+                                      ? categoryController.iconColor[
+                                          categoryController.categories
+                                              .firstWhere((element) =>
+                                                  element.id ==
+                                                  addRecurringTaskController
+                                                      .categoryId.value)
+                                              .color]
+                                      : color.primaryColor,
+                                ),
+                                // addRecurringTaskController.categoryIcon.value,
                                 SW.small(),
                                 LabelText(
-                                  text: addHabbitsScreen.updateCategory.value,
+                                  text:
+                                      addRecurringTaskController.categoryId != 0
+                                          ? categoryController.categories
+                                              .firstWhere((element) =>
+                                                  element.id ==
+                                                  addRecurringTaskController
+                                                      .categoryId.value)
+                                              .name
+                                          : 'Select',
                                 ),
                               ],
                             ),
@@ -472,11 +296,12 @@ class AddHabbitsScreen extends StatelessWidget {
                     onTap: () async {
                       DateTime? newDate = await showDatePicker(
                           context: context,
-                          initialDate: addHabbitsScreen.startDate.value,
+                          initialDate:
+                              addRecurringTaskController.startDate.value,
                           firstDate: DateTime(1997),
                           lastDate: DateTime(2030));
                       if (newDate == null) return;
-                      addHabbitsScreen.startDate.value = newDate;
+                      addRecurringTaskController.startDate.value = newDate;
                       // ToDoWeekCustomDialogBox(context);
                     },
                     child: Container(
@@ -484,14 +309,16 @@ class AddHabbitsScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: Center(
                           child: Obx(
                             () => LabelText(
                               text:
-                                  "${addHabbitsScreen.startDate.value.day}/${addHabbitsScreen.startDate.value.month}/${addHabbitsScreen.startDate.value.year}",
+                                  "${addRecurringTaskController.startDate.value.day}/${addRecurringTaskController.startDate.value.month}/${addRecurringTaskController.startDate.value.year}",
                             ),
                           ),
                         )),
@@ -518,11 +345,11 @@ class AddHabbitsScreen extends StatelessWidget {
                     onTap: () async {
                       DateTime? newDate = await showDatePicker(
                           context: context,
-                          initialDate: addHabbitsScreen.endDate.value,
+                          initialDate: addRecurringTaskController.endDate.value,
                           firstDate: DateTime(1997),
                           lastDate: DateTime(2030));
                       if (newDate == null) return;
-                      addHabbitsScreen.endDate.value = newDate;
+                      addRecurringTaskController.endDate.value = newDate;
                       // ToDoWeekCustomDialogBox(context);
                     },
                     child: Container(
@@ -530,14 +357,16 @@ class AddHabbitsScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: Center(
                           child: Obx(
                             () => LabelText(
                               text:
-                                  "${addHabbitsScreen.endDate.value.day}/${addHabbitsScreen.endDate.value.month}/${addHabbitsScreen.endDate.value.year}",
+                                  "${addRecurringTaskController.endDate.value.day}/${addRecurringTaskController.endDate.value.month}/${addRecurringTaskController.endDate.value.year}",
                             ),
                           ),
                         )),
@@ -570,15 +399,18 @@ class AddHabbitsScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: Center(
                           child: Obx(
                             () => Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: LabelText(
-                                text: addHabbitsScreen.updateRepetation.value,
+                                text: addRecurringTaskController
+                                    .updateRepetation.value,
                                 isDotDot: true,
                               ),
                             ),
@@ -613,9 +445,11 @@ class AddHabbitsScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -655,15 +489,19 @@ class AddHabbitsScreen extends StatelessWidget {
                         height: 35,
                         width: 140,
                         decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.backgroundColor),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Obx(
                               () => LabelText(
-                                text: addHabbitsScreen.updatePriority.value,
+                                text: addRecurringTaskController
+                                    .updatePriority.value
+                                    .toString(),
                               ),
                             ),
                             SW.small(),
@@ -679,16 +517,22 @@ class AddHabbitsScreen extends StatelessWidget {
               SH.large(),
               Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      border: Border.all(width: 2, color: color.primaryColor),
-                      color: color.backgroundColor),
-                  child: const Center(
-                    child: MainLabelText(
-                      text: "Add Habit",
-                      isColor: true,
+                child: GestureDetector(
+                  onTap: () {
+                    addRecurringTaskController.addRepetition();
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        border: Border.all(width: 2, color: color.primaryColor),
+                        color: color.backgroundColor),
+                    child: const Center(
+                      child: MainLabelText(
+                        text: "Add Habbit",
+                        isColor: true,
+                      ),
                     ),
                   ),
                 ),

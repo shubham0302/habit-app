@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/recurring_controller.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
@@ -9,69 +10,65 @@ import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
-void DayOfMonth(BuildContext context) {
+void DayOfWeekHabbit(BuildContext context) {
   ThemeData color = Theme.of(context);
   showDialog(
       context: context,
       builder: (BuildContext context) {
-        AddRecurringTaskController addRecurringTaskController =
-            Get.put(AddRecurringTaskController(), permanent: false);
+        AddHabbitSelectController addRecurringTaskController =
+            Get.put(AddHabbitSelectController(), permanent: false);
         return AlertDialog(
           insetPadding: const EdgeInsets.symmetric(horizontal: 20),
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20.0))),
           backgroundColor: color.backgroundColor,
           content: SizedBox(
-            height: 350,
+            height: 250,
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
                 Expanded(
-                  child: Center(
-                    child: GridView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 7,
-                              childAspectRatio: 1,
-                              crossAxisSpacing: 10,
-                              mainAxisSpacing: 15),
-                      itemCount: 31,
-                      itemBuilder: (context, index) {
-                        return Obx(
-                          () => GestureDetector(
-                              onTap: () {
-                                addRecurringTaskController.monthIndex
-                                        .contains(index+1)
-                                    ? addRecurringTaskController.monthIndex
-                                        .remove(index+1)
-                                    : addRecurringTaskController.monthIndex
-                                        .add(index+1);
-                                // addHabbitSelectController.categoryId.value =
-                                //     categoryController.categories[index].id;
-                              },
-                              behavior: HitTestBehavior.translucent,
-                              child: Container(
-                                // height: 70,
-                                padding: EdgeInsets.all(8),
-                                alignment: Alignment.center,
-
-                                decoration: BoxDecoration(
-                                    // borderRadius: BorderRadius.circular(1),
-                                    shape: BoxShape.circle,
-                                    color: addRecurringTaskController.monthIndex
-                                            .contains(index+1)
-                                        ? color.primaryColor
-                                        : color.disabledColor),
-                                // color: color.primaryColor,
-                                child: LabelText(
-                                  text: "${index + 1}",
-                                ),
-                              )),
-                        );
-                      },
-                    ),
+                  child: GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3, childAspectRatio: 2),
+                    itemCount: 7,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          // addHabbitSelectController.categoryId.value =
+                          //     categoryController.categories[index].id;
+                          Get.back();
+                        },
+                        child: Obx(
+                          () => Row(
+                            // crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Checkbox(
+                                  value: addRecurringTaskController.weekIndex
+                                          .contains(index)
+                                      ? true
+                                      : false,
+                                  onChanged: (v) { 
+                                    addRecurringTaskController.weekIndex
+                                            .contains(index)
+                                        ? addRecurringTaskController.weekIndex
+                                            .remove(index)
+                                        : addRecurringTaskController.weekIndex
+                                            .add(index);
+                                  }),
+                              Expanded(
+                                child: DescriptionText(
+                                    text: addRecurringTaskController
+                                        .weekDayString[index]),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
                 // DescriptionText(text: 'Monday'),

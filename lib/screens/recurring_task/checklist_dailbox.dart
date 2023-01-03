@@ -9,13 +9,13 @@ import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
-void HabbitChecklistCustomDialogBox(BuildContext context) {
+void ChecklistCustomDialogBox(BuildContext context) {
   ThemeData color = Theme.of(context);
   showDialog(
       context: context,
       builder: (BuildContext context) {
-        AddHabbitSelectController addHabbitSelectController =
-            Get.put(AddHabbitSelectController(), permanent: false);
+        AddRecurringTaskController addHabbitSelectController =
+            Get.put(AddRecurringTaskController(), permanent: false);
         return AlertDialog(
           insetPadding: const EdgeInsets.symmetric(horizontal: 2),
           shape: const RoundedRectangleBorder(
