@@ -7,9 +7,12 @@ import 'package:get/get.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/screens/customize_screen/components/completed_activities_customBox.dart';
 import 'package:habbit_app/screens/customize_screen/components/textsize_custombox.dart';
+import 'package:habbit_app/screens/setting_screens/habbit_sort_dialog.dart';
 import 'package:habbit_app/screens/setting_screens/to_do_week_custombox.dart';
+import 'package:habbit_app/screens/setting_screens/todo_sorting_dialog.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ToDoHabbitListScreen extends StatelessWidget {
   const ToDoHabbitListScreen({super.key});
@@ -78,10 +81,12 @@ class ToDoHabbitListScreen extends StatelessWidget {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
                               color: color.backgroundColor),
-                          child: const Padding(
+                          child: Padding(
                             padding: EdgeInsets.only(left: 10),
-                            child: LabelText(
-                              text: "Sunday",
+                            child: Obx(
+                              () => LabelText(
+                                text: switchController.dayOfWeek.value,
+                              ),
                             ),
                           )),
                     )
@@ -107,6 +112,8 @@ class ToDoHabbitListScreen extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       CompActCustomDialogBox(context);
+                      // launchUrl(Uri.parse(
+                      //     'upi://pay?pa=7698769876@sib&pn=ludogame&am=10&tn=Ludo%20rockland%20fees&cu=INR'));
                     },
                     child: Container(
                         alignment: Alignment.centerLeft,
@@ -118,10 +125,12 @@ class ToDoHabbitListScreen extends StatelessWidget {
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
                             color: color.backgroundColor),
-                        child: const Padding(
+                        child: Padding(
                           padding: EdgeInsets.only(left: 5),
-                          child: LabelText(
-                            text: "Send to bottom",
+                          child: Obx(
+                            () => LabelText(
+                              text: switchController.activitySorting.value,
+                            ),
                           ),
                         )),
                   )
@@ -143,22 +152,30 @@ class ToDoHabbitListScreen extends StatelessWidget {
                       const LabelText(text: "Todo list order sorting")
                     ],
                   ),
-                  Container(
-                      alignment: Alignment.centerLeft,
-                      height: 35,
-                      width: 110,
-                      decoration: BoxDecoration(
-                          border:
-                              Border.all(width: 2, color: color.canvasColor),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          color: color.backgroundColor),
-                      child: const Padding(
-                        padding: EdgeInsets.only(left: 10),
-                        child: LabelText(
-                          text: "ALphabetical",
-                        ),
-                      ))
+                  GestureDetector(
+                    onTap: () {
+                      ToDoSortingDialogBox(context);
+                    },
+                    behavior: HitTestBehavior.translucent,
+                    child: Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 110,
+                        decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.backgroundColor),
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: Obx(
+                            () => LabelText(
+                              text: switchController.todoSorting.value,
+                            ),
+                          ),
+                        )),
+                  )
                 ],
               ),
               SH.large(),
@@ -177,22 +194,30 @@ class ToDoHabbitListScreen extends StatelessWidget {
                       const LabelText(text: "Habit section order sorting")
                     ],
                   ),
-                  Container(
-                      alignment: Alignment.centerLeft,
-                      height: 35,
-                      width: 110,
-                      decoration: BoxDecoration(
-                          border:
-                              Border.all(width: 2, color: color.canvasColor),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          color: color.backgroundColor),
-                      child: const Padding(
-                        padding: EdgeInsets.only(left: 10),
-                        child: LabelText(
-                          text: "Date created",
-                        ),
-                      ))
+                  GestureDetector(
+                    onTap: () {
+                      HabbitSortDialogBox(context);
+                    },
+                    behavior: HitTestBehavior.translucent,
+                    child: Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 110,
+                        decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.backgroundColor),
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: Obx(
+                            () => LabelText(
+                              text: switchController.habbitSorting.value,
+                            ),
+                          ),
+                        )),
+                  )
                 ],
               ),
               SH.large(),
@@ -225,10 +250,12 @@ class ToDoHabbitListScreen extends StatelessWidget {
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
                             color: color.backgroundColor),
-                        child: const Padding(
+                        child: Padding(
                           padding: EdgeInsets.only(left: 10),
-                          child: LabelText(
-                            text: "Default",
+                          child: Obx(
+                            () => LabelText(
+                              text: switchController.textSizing.value,
+                            ),
                           ),
                         )),
                   )
@@ -238,10 +265,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
               SH.large(),
               GestureDetector(
                 behavior: HitTestBehavior.translucent,
-                onTap: (() {
-                  
-                }),
-                
+                onTap: (() {}),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -260,7 +284,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                       () => FlutterSwitch(
                         activeColor: color.primaryColor,
                         activeToggleColor: color.backgroundColor,
-              
+
                         width: 50.0,
                         height: 25.0,
                         valueFontSize: 15.0,
@@ -273,6 +297,9 @@ class ToDoHabbitListScreen extends StatelessWidget {
                           switchController.SwipSwichChange.value == true
                               ? switchController.SwipSwichChange.value = false
                               : switchController.SwipSwichChange.value = true;
+
+                          switchController.setSwapData();
+
                           // status = val;
                           // setState(() {
                           //   status = val;
@@ -316,6 +343,9 @@ class ToDoHabbitListScreen extends StatelessWidget {
                         switchController.SwichChange.value == true
                             ? switchController.SwichChange.value = false
                             : switchController.SwichChange.value = true;
+
+                        switchController.setVibrationData();
+
                         // status = val;
                         // setState(() {
                         //   status = val;
@@ -358,6 +388,9 @@ class ToDoHabbitListScreen extends StatelessWidget {
                         switchController.CollapseSwichChange.value == true
                             ? switchController.CollapseSwichChange.value = false
                             : switchController.CollapseSwichChange.value = true;
+
+                        switchController.setCollapseData();
+
                         // status = val;
                         // setState(() {
                         //   status = val;
@@ -402,6 +435,8 @@ class ToDoHabbitListScreen extends StatelessWidget {
                                 false
                             : switchController.AnimationSwichChange.value =
                                 true;
+                        switchController.setAnimationData();
+
                         // status = val;
                         // setState(() {
                         //   status = val;
@@ -444,6 +479,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                         switchController.AwardsSwichChange.value == true
                             ? switchController.AwardsSwichChange.value = false
                             : switchController.AwardsSwichChange.value = true;
+                        switchController.setAwardData();
                         // status = val;
                         // setState(() {
                         //   status = val;

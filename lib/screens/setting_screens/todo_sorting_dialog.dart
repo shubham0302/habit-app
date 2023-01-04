@@ -8,7 +8,7 @@ import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
-void ToDoWeekCustomDialogBox(BuildContext context) {
+void ToDoSortingDialogBox(BuildContext context) {
   SwitchController switchController =
       Get.put(SwitchController(), permanent: false);
   ThemeData color = Theme.of(context);
@@ -23,7 +23,7 @@ void ToDoWeekCustomDialogBox(BuildContext context) {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const DescriptionText(text: "First day of week"),
+              const DescriptionText(text: "To-do order Sort"),
               SH.medium(),
               const Divider(
                 thickness: 1,
@@ -31,16 +31,16 @@ void ToDoWeekCustomDialogBox(BuildContext context) {
               SH.medium(),
               GestureDetector(
                 onTap: () {
-                  switchController.dayOfWeek.value = 'Sunday';
-                  switchController.setDayOfWeekData();
+                  switchController.todoSorting.value = 'By priority';
+                  switchController.setTodoSortingData();
 
                   Get.back();
                 },
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Sunday",
-                  isColor: switchController.dayOfWeek.value == 'Sunday'
+                  text: "By priority",
+                  isColor: switchController.todoSorting.value == 'By priority'
                       ? true
                       : false,
                 ),
@@ -52,16 +52,16 @@ void ToDoWeekCustomDialogBox(BuildContext context) {
               SH.medium(),
               GestureDetector(
                 onTap: () {
-                  switchController.dayOfWeek.value = 'Monday';
-                  switchController.setDayOfWeekData();
+                  switchController.todoSorting.value = 'By time';
+                  switchController.setTodoSortingData();
 
                   Get.back();
                 },
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Monday",
-                  isColor: switchController.dayOfWeek.value == 'Monday'
+                  text: "By time",
+                  isColor: switchController.todoSorting.value == 'By time'
                       ? true
                       : false,
                 ),
@@ -73,15 +73,15 @@ void ToDoWeekCustomDialogBox(BuildContext context) {
               SH.medium(),
               GestureDetector(
                 onTap: () {
-                  switchController.dayOfWeek.value = 'Tuesday';
-                  switchController.setDayOfWeekData();
+                  switchController.todoSorting.value = 'Alphabetical';
+                  switchController.setTodoSortingData();
                   Get.back();
                 },
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Tuesday",
-                  isColor: switchController.dayOfWeek.value == 'Tuesday'
+                  text: "Alphabetical",
+                  isColor: switchController.todoSorting.value == 'Alphabetical'
                       ? true
                       : false,
                 ),
@@ -93,16 +93,16 @@ void ToDoWeekCustomDialogBox(BuildContext context) {
               SH.medium(),
               GestureDetector(
                 onTap: () {
-                  switchController.dayOfWeek.value = 'Wednesday';
-                  switchController.setDayOfWeekData();
+                  switchController.todoSorting.value = 'By category';
+                  switchController.setTodoSortingData();
 
                   Get.back();
                 },
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Wednesday",
-                  isColor: switchController.dayOfWeek.value == 'Wednesday'
+                  text: "By category",
+                  isColor: switchController.todoSorting.value == 'By category'
                       ? true
                       : false,
                 ),
@@ -114,16 +114,16 @@ void ToDoWeekCustomDialogBox(BuildContext context) {
               SH.medium(),
               GestureDetector(
                 onTap: () {
-                  switchController.dayOfWeek.value = 'Thursday';
-                  switchController.setDayOfWeekData();
+                  switchController.todoSorting.value = 'Tasks first';
+                  switchController.setTodoSortingData();
 
                   Get.back();
                 },
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Thursday",
-                  isColor: switchController.dayOfWeek.value == 'Thursday'
+                  text: "Tasks first",
+                  isColor: switchController.todoSorting.value == 'Tasks first'
                       ? true
                       : false,
                 ),
@@ -135,37 +135,16 @@ void ToDoWeekCustomDialogBox(BuildContext context) {
               SH.medium(),
               GestureDetector(
                 onTap: () {
-                  switchController.dayOfWeek.value = 'Friday';
-                  switchController.setDayOfWeekData();
+                  switchController.todoSorting.value = 'Habits firsts';
+                  switchController.setTodoSortingData();
 
                   Get.back();
                 },
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Friday",
-                  isColor: switchController.dayOfWeek.value == 'Friday'
-                      ? true
-                      : false,
-                ),
-              ),
-              SH.medium(),
-              const Divider(
-                thickness: 1,
-              ),
-              SH.medium(),
-              GestureDetector(
-                onTap: () {
-                  switchController.dayOfWeek.value = 'Saturday';
-                  switchController.setDayOfWeekData();
-
-                  Get.back();
-                },
-                behavior: HitTestBehavior.translucent,
-                child: LabelText(
-                  isBold: true,
-                  text: "Saturday",
-                  isColor: switchController.dayOfWeek.value == 'Saturday'
+                  text: "Habits firsts",
+                  isColor: switchController.todoSorting.value == 'Habits firsts'
                       ? true
                       : false,
                 ),
