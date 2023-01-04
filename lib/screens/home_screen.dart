@@ -1,20 +1,70 @@
 // ignore_for_file: unused_local_variable, sized_box_for_whitespace
 
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
+import 'package:habbit_app/main.dart';
+import 'package:habbit_app/screens/notification/notifications.dart';
+import 'package:habbit_app/utilities/notification_utilities.dart';
 import 'package:habbit_app/widgets/date_widget.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../controllers/home_page_controller.dart';
 import '../widgets/text_widget/main_label_text.dart';
 import '../widgets/custom_dialog_box.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+    //   showDialog(
+    //       context: context,
+    //       builder: (context) => AlertDialog(
+    //             title: Text('Allow Notifications'),
+    //             content: Text('Habbit app like to send you notifications'),
+    //             actions: [
+    //               TextButton(
+    //                   onPressed: () {
+    //                     Navigator.pop(context);
+    //                   },
+    //                   child: Text(
+    //                     'Don\'t allow',
+    //                     style: TextStyle(
+    //                       color: Colors.grey,
+    //                       fontSize: 18,
+    //                     ),
+    //                   )),
+    //               TextButton(
+    //                   onPressed: () => AwesomeNotifications()
+    //                       .requestPermissionToSendNotifications()
+    //                       .then((_) => Navigator.pop(context)),
+    //                   child: Text(
+    //                     'Allow',
+    //                     style: TextStyle(
+    //                         color: Colors.teal,
+    //                         fontSize: 18,
+    //                         fontWeight: FontWeight.bold),
+    //                   )),
+    //             ],
+    //           ));
+    // },
+    // );
+  }
+
   final HomePageController controller =
       Get.put(HomePageController(), permanent: false);
-  HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +73,17 @@ class HomePage extends StatelessWidget {
     ThemeData color = Theme.of(context);
     return Scaffold(
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            CustomDialogBox(context);
+          onPressed: () async {
+            NotificationWeekAndTime? pickerSchedule =
+                await pickSchedule(context);
+
+            if (pickerSchedule != null) {
+              createReminderNotification(pickerSchedule);
+            }
+            // createFirstNotification();
+            // launchUrl(Uri.parse(
+            //     'upi://pay?pa=7698769876@sib&pn=ludogame&am=10&tn=Ludo%20rockland%20fees&cu=INR'));
+            // CustomDialogBox(context);
           },
           backgroundColor: color.primaryColor,
           child: const Icon(Icons.add),

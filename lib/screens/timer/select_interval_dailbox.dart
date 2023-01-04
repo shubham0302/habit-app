@@ -10,12 +10,14 @@ import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void SelectInterTimeCustomDialogBox(BuildContext context) {
   ThemeData color = Theme.of(context);
   IntervalTabController intervalTabController =
       Get.put(IntervalTabController(), permanent: false);
+
   showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -170,10 +172,20 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                             text: 'CLOSE',
                             isBold: true,
                           ),
-                          LabelText(
-                            text: 'OK',
-                            isBold: true,
-                            isColor: true,
+                          GestureDetector(
+                            onTap: () {
+                              intervalTabController.addInterval(
+                                  intervalTabController.currentvalueHour.value,
+                                  intervalTabController.currentvalueMin.value,
+                                  intervalTabController.currentvalueSec.value,
+                                  intervalTabController.breakSwitch.value);
+                              Get.back();
+                            },
+                            child: LabelText(
+                              text: 'OK',
+                              isBold: true,
+                              isColor: true,
+                            ),
                           )
                         ],
                       )

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/screens/helpers/local_storage_helper.dart';
+import 'package:habbit_app/helpers/local_storage_helper.dart';
 import 'package:habbit_app/screens/pin/lock_pin_dailbox.dart';
 import 'package:habbit_app/widgets/custom_snackbar.dart';
 import 'package:local_auth/local_auth.dart';

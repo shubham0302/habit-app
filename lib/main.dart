@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors
-
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -32,9 +32,29 @@ import 'screens/backup_screen.dart';
 import 'screens/main_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
   ));
+
+  AwesomeNotifications().initialize(null, [
+    NotificationChannel(
+      channelKey: 'basic_channel',
+      channelDescription: 'Notification channel for basic tests',
+      channelName: 'Basic notifications',
+      defaultColor: Colors.teal,
+      importance: NotificationImportance.High,
+      channelShowBadge: true,
+    ),
+    NotificationChannel(
+        channelKey: 'scheduled_channel',
+        channelName: 'scheduled Notifications',
+        channelDescription: 'Notification for schedualed test',
+        defaultColor: Colors.red,
+        importance: NotificationImportance.High,
+        channelShowBadge: true)
+  ]);
   runApp(const MyApp());
 }
 
@@ -52,6 +72,40 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     super.initState();
+    AwesomeNotifications().isNotificationAllowed().then(
+      (isAllowed) {
+        showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+                  title: Text('Allow Notifications'),
+                  content: Text('Habbit app like to send you notifications'),
+                  actions: [
+                    TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text(
+                          'Don\'t allow',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 18,
+                          ),
+                        )),
+                    TextButton(
+                        onPressed: () => AwesomeNotifications()
+                            .requestPermissionToSendNotifications()
+                            .then((_) => Navigator.pop(context)),
+                        child: Text(
+                          'Allow',
+                          style: TextStyle(
+                              color: Colors.teal,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        )),
+                  ],
+                ));
+      },
+    );
   }
 
   @override

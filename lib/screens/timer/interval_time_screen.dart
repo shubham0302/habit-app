@@ -60,8 +60,8 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
   void initState() {
     // ignore: todo
     // TODO: implement initState
-    TimerTabController tabController =
-        Get.put(TimerTabController(), permanent: false);
+    IntervalTabController tabController =
+        Get.put(IntervalTabController(), permanent: false);
     super.initState();
     _controller = TabController(length: 3, vsync: this);
     _controller.addListener(() {
@@ -88,6 +88,8 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
 
   @override
   Widget build(BuildContext context) {
+    IntervalTabController intervalTabController =
+        Get.put(IntervalTabController(), permanent: false);
     var color = Theme.of(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -110,39 +112,47 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                   Container(
                     height: 90,
                     width: MediaQuery.of(context).size.width,
-                    child: ListView.separated(
-                        itemBuilder: (context, index) {
-                          return Container(
-                            height: 40,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                color: color.backgroundColor),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        LabelText(text: '00:05'),
-                                        SW.medium(),
-                                        DescriptionText(text: 'Break')
-                                      ],
-                                    ),
-                                    Icon(
-                                      Icons.delete_outline,
-                                      color: color.disabledColor,
-                                      size: 20,
-                                    )
-                                  ]),
-                            ),
-                          );
-                        },
-                        separatorBuilder: (context, index) => SH.small(),
-                        itemCount: 10),
+                    child: Obx(
+                      () => ListView.separated(
+                          itemBuilder: (context, index) {
+                            return Container(
+                              height: 40,
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: color.backgroundColor),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          LabelText(
+                                              text:
+                                                  '${intervalTabController.intervals[index].hour}:${intervalTabController.intervals[index].min}:${intervalTabController.intervals[index].sec}'),
+                                          SW.medium(),
+                                          DescriptionText(
+                                              text: intervalTabController
+                                                      .intervals[index].breaktog
+                                                  ? "break"
+                                                  : '')
+                                        ],
+                                      ),
+                                      Icon(
+                                        Icons.delete_outline,
+                                        color: color.disabledColor,
+                                        size: 20,
+                                      )
+                                    ]),
+                              ),
+                            );
+                          },
+                          separatorBuilder: (context, index) => SH.small(),
+                          itemCount: intervalTabController.intervals.length),
+                    ),
                   ),
                   // Container(
                   //   height: 40,
@@ -243,11 +253,19 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(10)),
                 color: color.primaryColor),
-            child: const Center(
-              child: LabelText(
-                text: "Start",
-                isBold: true,
-                // isColor: true,
+            child: Center(
+              child: GestureDetector(
+                onTap: () {
+                  intervalTabController.start.value == true
+                      ? intervalTabController.start.value = false
+                      : intervalTabController.start.value = true;
+                  print(intervalTabController.start.value);
+                },
+                child: LabelText(
+                  text: "Start",
+                  isBold: true,
+                  // isColor: true,
+                ),
               ),
             ),
           ),

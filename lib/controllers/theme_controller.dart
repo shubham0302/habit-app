@@ -2,7 +2,7 @@
 
 import 'package:get/get.dart';
 import 'package:habbit_app/app_labels/customize_screen.dart';
-import 'package:habbit_app/screens/helpers/local_storage_helper.dart';
+import 'package:habbit_app/helpers/local_storage_helper.dart';
 
 class ThemeController extends GetxController {
   RxBool _isDark = false.obs;
