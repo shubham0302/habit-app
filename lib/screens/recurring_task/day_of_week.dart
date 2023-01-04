@@ -50,7 +50,7 @@ void DayOfWeek(BuildContext context) {
                                           .contains(index)
                                       ? true
                                       : false,
-                                  onChanged: (v) {
+                                  onChanged: (v) { 
                                     addRecurringTaskController.weekIndex
                                             .contains(index)
                                         ? addRecurringTaskController.weekIndex

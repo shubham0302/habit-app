@@ -158,15 +158,14 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           context,
           themeController.mode,
         ),
-        initialRoute: '/splash',
+        initialRoute: '/',
         getPages: Routes.routes,
         themeMode: themeController.themeModeData['value'] == 'default'
             ? ThemeMode.system
             : themeController.themeModeData['value'] == 'dark'
                 ? ThemeMode.dark
                 : ThemeMode.light,
-        unknownRoute:
-            GetPage(name: '/notfound', page: () => const SplashScreen()),
+        unknownRoute: GetPage(name: '/notfound', page: () => const Splash()),
       ),
     );
   }
@@ -174,7 +173,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
 class Routes {
   static final routes = [
-    GetPage(name: '/', page: () => const SplashScreen()),
+    GetPage(name: '/', page: () => const Splash()),
     GetPage(name: '/home', page: () => MainScreen()),
     GetPage(name: '/intro', page: () => const IntroScreen()),
     GetPage(name: '/customize', page: () => const CustomizeScreen()),

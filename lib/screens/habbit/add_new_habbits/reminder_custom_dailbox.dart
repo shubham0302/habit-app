@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
@@ -11,9 +12,9 @@ import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 void ReminderCustomDialogBox(BuildContext context) {
   // TimeOfDay _timeOfDay = TimeOfDay(hour: 12, minute: 30);
-  AddTaskController addHabbitSelectController =
-      Get.put(AddTaskController(), permanent: false);
-  void _showTimePicker() {
+  AddHabbitSelectController addHabbitSelectController =
+      Get.put(AddHabbitSelectController(), permanent: false);
+ void _showTimePicker() {
     ThemeData color = Theme.of(context);
     showTimePicker(
       context: context,
@@ -36,9 +37,9 @@ void ReminderCustomDialogBox(BuildContext context) {
       },
     ).then((v) {
       addHabbitSelectController.reminderTime.value = DateTime(
-          addHabbitSelectController.date.value.year,
-          addHabbitSelectController.date.value.month,
-          addHabbitSelectController.date.value.day,
+          addHabbitSelectController.startDate.value.year,
+          addHabbitSelectController.startDate.value.month,
+          addHabbitSelectController.startDate.value.day,
           v!.hour,
           v.minute,
           00);
@@ -50,8 +51,6 @@ void ReminderCustomDialogBox(BuildContext context) {
   showDialog(
       context: context,
       builder: (BuildContext context) {
-        AddTaskController addHabbitSelectController =
-            Get.put(AddTaskController(), permanent: false);
         return GlobalPadding(
           child: AlertDialog(
               insetPadding: const EdgeInsets.symmetric(horizontal: 2),
@@ -756,4 +755,6 @@ void ReminderCustomDialogBox(BuildContext context) {
               )),
         );
       });
+
+
 }

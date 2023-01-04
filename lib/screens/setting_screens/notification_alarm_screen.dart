@@ -1,10 +1,12 @@
 // ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages, unnecessary_string_interpolations, unused_field, prefer_final_fields
 
+import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/reminder_time_controller.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/time_controller.dart';
+import 'package:habbit_app/screens/setting_screens/snooze_timer_dialog.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
@@ -26,10 +28,10 @@ class _NotificationandAlarmScreenState
   Widget build(BuildContext context) {
     NotifyTimeController notifyTimeController =
         Get.put(NotifyTimeController(), permanent: false);
-    ReminderTimeController reminderTimeController =
-        Get.put(ReminderTimeController(), permanent: false);
-    SwitchController switchController =
-        Get.put(SwitchController(), permanent: false);
+    // ReminderTimeController reminderTimeController =
+    //     Get.put(ReminderTimeController(), permanent: false);
+    // SwitchController notifyTimeController =
+    //     Get.put(SwitchController(), permanent: false);
     // bool switchChange = true;
     ThemeData color = Theme.of(context);
     return Scaffold(
@@ -80,14 +82,15 @@ class _NotificationandAlarmScreenState
                       height: 25.0,
                       valueFontSize: 15.0,
                       toggleSize: 20.0,
-                      value: switchController.NotifySwichChange.value,
+                      value: notifyTimeController.dailyProgram.value,
                       borderRadius: 30.0,
                       padding: 2.0,
                       // showOnOff: true,
                       onToggle: (val) {
-                        switchController.NotifySwichChange.value == true
-                            ? switchController.NotifySwichChange.value = false
-                            : switchController.NotifySwichChange.value = true;
+                        notifyTimeController.dailyProgram.value == true
+                            ? notifyTimeController.dailyProgram.value = false
+                            : notifyTimeController.dailyProgram.value = true;
+                        notifyTimeController.setDailyData();
                         // status = val;
                         // setState(() {
                         //   status = val;
@@ -133,9 +136,9 @@ class _NotificationandAlarmScreenState
                             child: Padding(
                               padding: const EdgeInsets.only(left: 10),
                               child: LabelText(
-                                text: notifyTimeController.time.value == ''
-                                    ? 'Select time'
-                                    : "${notifyTimeController.time.value}",
+                                text: notifyTimeController.dailyTime.value == ''
+                                    ? 'select time'
+                                    : "${notifyTimeController.dailyTime.value}",
                               ),
                             )),
                       ),
@@ -171,14 +174,16 @@ class _NotificationandAlarmScreenState
                       height: 25.0,
                       valueFontSize: 15.0,
                       toggleSize: 20.0,
-                      value: switchController.RemindSwichChange.value,
+                      value: notifyTimeController.appNoti.value,
                       borderRadius: 30.0,
                       padding: 2.0,
                       // showOnOff: true,
                       onToggle: (val) {
-                        switchController.RemindSwichChange.value == true
-                            ? switchController.RemindSwichChange.value = false
-                            : switchController.RemindSwichChange.value = true;
+                        notifyTimeController.appNoti.value == true
+                            ? notifyTimeController.appNoti.value = false
+                            : notifyTimeController.appNoti.value = true;
+                        notifyTimeController.setAppData();
+
                         // status = val;
                         // setState(() {
                         //   status = val;
@@ -206,7 +211,7 @@ class _NotificationandAlarmScreenState
                   ),
                   GestureDetector(
                     onTap: () {
-                      reminderTimeController.setTime(context);
+                      notifyTimeController.setAppTime(context);
                     },
                     child: Obx(
                       () => Container(
@@ -222,9 +227,9 @@ class _NotificationandAlarmScreenState
                           child: Padding(
                             padding: const EdgeInsets.only(left: 10),
                             child: LabelText(
-                              text: reminderTimeController.time.value == ''
+                              text: notifyTimeController.appTime.value == ''
                                   ? 'select time'
-                                  : "${reminderTimeController.time.value}",
+                                  : "${notifyTimeController.appTime.value}",
                             ),
                           )),
                     ),
@@ -252,22 +257,32 @@ class _NotificationandAlarmScreenState
                       const LabelText(text: "Alarm snooze time")
                     ],
                   ),
-                  Container(
-                      alignment: Alignment.centerLeft,
-                      height: 35,
-                      width: 110,
-                      decoration: BoxDecoration(
-                          border:
-                              Border.all(width: 2, color: color.canvasColor),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          color: color.backgroundColor),
-                      child: const Padding(
-                        padding: EdgeInsets.only(left: 10),
-                        child: LabelText(
-                          text: "10 minutes",
-                        ),
-                      ))
+                  GestureDetector(
+                    onTap: () {
+                      snoozeTimeDialog(context);
+                    },
+                    behavior: HitTestBehavior.translucent,
+                    child: Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 110,
+                        decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 2, color: color.canvasColor),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.backgroundColor),
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: Obx(
+                            () => LabelText(
+                              text: notifyTimeController.minute.value == 0
+                                  ? 'select time'
+                                  : "${notifyTimeController.minute.value.toString()} minutes",
+                            ),
+                          ),
+                        )),
+                  )
                 ],
               ),
               SH.large(),
@@ -290,23 +305,20 @@ class _NotificationandAlarmScreenState
                     () => FlutterSwitch(
                       activeColor: color.primaryColor,
                       activeToggleColor: color.backgroundColor,
-
                       width: 50.0,
                       height: 25.0,
                       valueFontSize: 15.0,
                       toggleSize: 20.0,
-                      value: switchController.SwipSwichChange.value,
+                      value: notifyTimeController.completedActivities.value,
                       borderRadius: 30.0,
                       padding: 2.0,
-                      // showOnOff: true,
                       onToggle: (val) {
-                        switchController.SwipSwichChange.value == true
-                            ? switchController.SwipSwichChange.value = false
-                            : switchController.SwipSwichChange.value = true;
-                        // status = val;
-                        // setState(() {
-                        //   status = val;
-                        // });
+                        notifyTimeController.completedActivities.value == true
+                            ? notifyTimeController.completedActivities.value =
+                                false
+                            : notifyTimeController.completedActivities.value =
+                                true;
+                        notifyTimeController.setCompletedData();
                       },
                     ),
                   ),
@@ -314,27 +326,28 @@ class _NotificationandAlarmScreenState
               ),
               SH.medium(),
               SH.large(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.alarm_add_sharp,
-                        size: 30,
-                        color: color.primaryColor,
-                      ),
-                      SW.medium(),
-                      const LabelText(text: "Alarm settings")
-                    ],
-                  ),
-                  // Container(
-                  //     height: 30,
-                  //     width: 110,
-                  //     child: const InputField(
-                  //       hintText: "Default",
-                  //     ))
-                ],
+              GestureDetector(
+                onTap: ()  {
+                   AppSettings.openNotificationSettings();
+                  print('object');
+                },
+                behavior: HitTestBehavior.translucent,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.alarm_add_sharp,
+                          size: 30,
+                          color: color.primaryColor,
+                        ),
+                        SW.medium(),
+                        const LabelText(text: "Alarm settings")
+                      ],
+                    ),
+                  ],
+                ),
               ),
               SH.medium(),
               SH.large(),
@@ -352,30 +365,6 @@ class _NotificationandAlarmScreenState
                       const LabelText(text: "Reprogram reminders")
                     ],
                   ),
-                  // Obx(
-                  //   () => FlutterSwitch(
-                  //     activeColor: color.primaryColor,
-                  //     activeToggleColor: color.backgroundColor,
-
-                  //     width: 50.0,
-                  //     height: 25.0,
-                  //     valueFontSize: 15.0,
-                  //     toggleSize: 20.0,
-                  //     value: switchController.SwichChange.value,
-                  //     borderRadius: 30.0,
-                  //     padding: 2.0,
-                  //     // showOnOff: true,
-                  //     onToggle: (val) {
-                  //       switchController.SwichChange.value == true
-                  //           ? switchController.SwichChange.value = false
-                  //           : switchController.SwichChange.value = true;
-                  //       // status = val;
-                  //       // setState(() {
-                  //       //   status = val;
-                  //       // });
-                  //     },
-                  //   ),
-                  // ),
                 ],
               ),
               SH.medium(),
@@ -394,30 +383,6 @@ class _NotificationandAlarmScreenState
                       const LabelText(text: "Reminders not working")
                     ],
                   ),
-                  // Obx(
-                  //   () => FlutterSwitch(
-                  //     activeColor: color.primaryColor,
-                  //     activeToggleColor: color.backgroundColor,
-
-                  //     width: 50.0,
-                  //     height: 25.0,
-                  //     valueFontSize: 15.0,
-                  //     toggleSize: 20.0,
-                  //     value: switchController.CollapseSwichChange.value,
-                  //     borderRadius: 30.0,
-                  //     padding: 2.0,
-                  //     // showOnOff: true,
-                  //     onToggle: (val) {
-                  //       switchController.CollapseSwichChange.value == true
-                  //           ? switchController.CollapseSwichChange.value = false
-                  //           : switchController.CollapseSwichChange.value = true;
-                  //       // status = val;
-                  //       // setState(() {
-                  //       //   status = val;
-                  //       // });
-                  //     },
-                  //   ),
-                  // ),
                 ],
               ),
               SH.medium(),

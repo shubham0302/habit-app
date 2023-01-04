@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/controllers/recurring_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
@@ -18,6 +19,8 @@ Widget buildBottomNavigationMenu(
       Get.put(AddTaskController(), permanent: false);
   AddRecurringTaskController recurringTaskController =
       Get.put(AddRecurringTaskController(), permanent: false);
+  AddHabbitSelectController habbitSelectController =
+      Get.put(AddHabbitSelectController(), permanent: false);
   ThemeData color = Theme.of(context);
 
   final double sizeWidth = MediaQuery.of(context).size.width;
@@ -87,6 +90,9 @@ Widget buildBottomNavigationMenu(
               Expanded(
                 child: buildBottomNavItem(() {
                   controller.changeTabIndex(3);
+                  habbitSelectController.getTasks();
+                  habbitSelectController.getRepetitions();
+                  
                 },
                     controller.tabIndex.value == 3
                         ? Icons.workspace_premium

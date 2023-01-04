@@ -521,8 +521,8 @@ class AddRecurringTaskScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: GestureDetector(
                   onTap: () {
-                    addRecurringTaskController.addReminder();
-                    
+                    addRecurringTaskController.addRepetition();
+
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 10),
@@ -530,7 +530,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10)),
                         border: Border.all(width: 2, color: color.primaryColor),
-                        color: color.backgroundColor),
+                        color: color.backgroundColor), 
                     child: const Center(
                       child: MainLabelText(
                         text: "Add Recurring Task",
@@ -545,5 +545,6 @@ class AddRecurringTaskScreen extends StatelessWidget {
         ),
       )),
     );
+ 
   }
 }

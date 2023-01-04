@@ -3,6 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/day_of_month.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/day_of_week.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/repeat.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/time_per_period.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
@@ -12,97 +16,105 @@ void RepetationCustomDialogBox(BuildContext context) {
   showDialog(
       context: context,
       builder: (BuildContext context) {
-        AddHabbitSelectController addHabbitSelectController =
+        AddHabbitSelectController addRecurringTaskController =
             Get.put(AddHabbitSelectController(), permanent: false);
         return AlertDialog(
           insetPadding: const EdgeInsets.symmetric(horizontal: 2),
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20.0))),
           backgroundColor: color.backgroundColor,
-          content: Container(
-            width: 360,
-            height: 480,
-            child: Column(mainAxisAlignment: MainAxisAlignment.start,
-                // crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const MainLabelText(text: "How often do you want to do it?"),
-                  SH.large(),
-                  const Divider(
-                    thickness: 1,
-                  ),
-                  SH.large(),
-                  GestureDetector(
-                      onTap: () {
-                        addHabbitSelectController.updateRepetation.value =
-                            "Everyday";
-                        Get.back();
-                      },
-                      child: const LabelText(text: "Everyday")),
-                  SH.large(),
-                  const Divider(
-                    thickness: 1,
-                  ),
-                  SH.large(),
-                  GestureDetector(
-                      onTap: () {
-                        addHabbitSelectController.updateRepetation.value =
-                            "Some days of the week";
-                        Get.back();
-                      },
-                      child: const LabelText(text: "Some days of the week")),
-                  SH.large(),
-                  const Divider(
-                    thickness: 1,
-                  ),
-                  SH.large(),
-                  GestureDetector(
-                      onDoubleTap: () {
-                        addHabbitSelectController.updateRepetation.value =
-                            "Specific days of the month";
-                        Get.back();
-                      },
-                      child:
-                          const LabelText(text: "Specific days of the month")),
-                  SH.large(),
-                  const Divider(
-                    thickness: 1,
-                  ),
-                  SH.large(),
-                  GestureDetector(
-                      onTap: () {
-                        addHabbitSelectController.updateRepetation.value =
-                            "Specific days of the year";
-                        Get.back();
-                      },
-                      child:
-                          const LabelText(text: "Specific days of the year")),
-                  SH.large(),
-                  const Divider(
-                    thickness: 1,
-                  ),
-                  SH.large(),
-                  GestureDetector(
-                      onTap: () {
-                        addHabbitSelectController.updateRepetation.value =
-                            "Some time per period";
-                        Get.back();
-                      },
-                      child: const LabelText(text: "Some time per period")),
-                  SH.large(),
-                  const Divider(
-                    thickness: 1,
-                  ),
-                  SH.large(),
-                  GestureDetector(
-                      onTap: () {
-                        addHabbitSelectController.updateRepetation.value =
-                            "Repeat";
-                        Get.back();
-                      },
-                      child: const LabelText(text: "Repeat")),
-                  SH.large(),
-                ]),
+          content: Wrap(
+            children: [
+              Column(mainAxisAlignment: MainAxisAlignment.start,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const MainLabelText(
+                        text: "How often do you want to do it?"),
+                    SH.large(),
+                    const Divider(
+                      thickness: 1,
+                    ),
+                    SH.large(),
+                    GestureDetector(
+                        onTap: () {
+                          addRecurringTaskController.updateRepetation.value =
+                              "Everyday";
+                          Get.back();
+                        },
+                        behavior: HitTestBehavior.translucent,
+                        child: const LabelText(text: "Everyday")),
+                    SH.large(),
+                    const Divider(
+                      thickness: 1,
+                    ),
+                    SH.large(),
+                    GestureDetector(
+                        onTap: () {
+                          addRecurringTaskController.updateRepetation.value =
+                              "Some days of the week";
+                          DayOfWeekHabbit(context);
+                        },
+                        behavior: HitTestBehavior.translucent,
+                        child: const LabelText(text: "Some days of the week")),
+                    SH.large(),
+                    const Divider(
+                      thickness: 1,
+                    ),
+                    SH.large(),
+                    GestureDetector(
+                        onTap: () {
+                          DayOfMonthHabbit(context);
+                          addRecurringTaskController.updateRepetation.value =
+                              "Specific days of the month";
+                        },
+                        behavior: HitTestBehavior.translucent,
+                        child: const LabelText(
+                            text: "Specific day of the month")),
+                    SH.large(),
+                    const Divider(
+                      thickness: 1,
+                    ),
+                    SH.large(),
+                    GestureDetector(
+                        onTap: () {
+                          addRecurringTaskController.repiDate(context);
+                          addRecurringTaskController.updateRepetation.value =
+                              "Specific day of the year";
+                        },
+                        behavior: HitTestBehavior.translucent,
+                        child:
+                            const LabelText(text: "Specific days of the year")),
+                    SH.large(),
+                    const Divider(
+                      thickness: 1,
+                    ),
+                    SH.large(),
+                    GestureDetector(
+                        onTap: () {
+                          addRecurringTaskController.updateRepetation.value =
+                              "Some time per period";
+                          TimePeriodHabbit(context);
+                        },
+                        behavior: HitTestBehavior.translucent,
+                        child: const LabelText(text: "Some time per period")),
+                    SH.large(),
+                    const Divider(
+                      thickness: 1,
+                    ),
+                    SH.large(),
+                    GestureDetector(
+                        onTap: () {
+                          repeatBoxHabbit(context);
+                          addRecurringTaskController.updateRepetation.value =
+                              "Repeat";
+                        },
+                        behavior: HitTestBehavior.translucent,
+                        child: const LabelText(text: "Repeat")),
+                    SH.large(),
+                  ]),
+            ],
           ),
         );
       });
+
 }
