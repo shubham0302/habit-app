@@ -1,20 +1,17 @@
 // ignore_for_file: unused_local_variable, sized_box_for_whitespace
 
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
-import 'package:habbit_app/main.dart';
 import 'package:habbit_app/screens/notification/notifications.dart';
 import 'package:habbit_app/utilities/notification_utilities.dart';
 import 'package:habbit_app/widgets/date_widget.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../controllers/home_page_controller.dart';
 import '../widgets/text_widget/main_label_text.dart';
-import '../widgets/custom_dialog_box.dart';
+import 'package:vibration/vibration.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -80,6 +77,7 @@ class _HomePageState extends State<HomePage> {
             if (pickerSchedule != null) {
               createReminderNotification(pickerSchedule);
             }
+            Vibration.vibrate(duration: 1000);
             // createFirstNotification();
             // launchUrl(Uri.parse(
             //     'upi://pay?pa=7698769876@sib&pn=ludogame&am=10&tn=Ludo%20rockland%20fees&cu=INR'));

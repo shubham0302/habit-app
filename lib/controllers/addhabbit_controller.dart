@@ -54,6 +54,7 @@ class AddHabbitSelectController extends GetxController {
     "Saturday",
     "Sunday"
   ];
+  RxList<int> openHabbits = <int>[].obs;
   List<int> weekIndex = [0].obs;
   List<int> monthIndex = [0].obs;
   var singleDate = DateTime.now().obs;

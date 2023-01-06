@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
+import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/screens/habbit/datechip.dart';
 
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class HabbitsScreen extends StatelessWidget {
   const HabbitsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    SwitchController switchController = Get.put(SwitchController());
     AddHabbitSelectController habbitSelectController =
         Get.put(AddHabbitSelectController());
     CategoryController categoryController = Get.put(CategoryController());
@@ -35,7 +38,7 @@ class HabbitsScreen extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () {
-                    Get.toNamed('/habbit-detail');
+                    // Get.toNamed('/habbit-detail');
                   },
                   child: Column(children: [
                     Container(
@@ -232,154 +235,168 @@ class HabbitsScreen extends StatelessWidget {
                           //   ),
                           // )
                           SH.large(),
-                          Row(
-                            children: [
-                              DateChip(
-                                day: DateFormat('EEEE')
-                                    .format(DateTime(
-                                        DateTime.now().year,
-                                        DateTime.now().month,
-                                        DateTime.now()
-                                            .add(Duration(days: -6))
-                                            .day
-                                        // DateTime.now()
-                                        //     .add(Duration(days: index))
-                                        //     .weekday
+                          Obx(
+                            () => habbitSelectController.openHabbits.contains(
+                                    habbitSelectController
+                                        .tasks[index].habbitId)
+                                ? Row(
+                                    children: [
+                                      DateChip(
+                                        day: DateFormat('EEEE')
+                                            .format(DateTime(
+                                                DateTime.now().year,
+                                                DateTime.now().month,
+                                                DateTime.now()
+                                                    .add(Duration(days: -6))
+                                                    .day
+                                                // DateTime.now()
+                                                //     .add(Duration(days: index))
+                                                //     .weekday
 
-                                        ))
-                                    .toString()
-                                    .substring(0, 3),
-                                date:
-                                    (DateTime.now().add(Duration(days: -6)).day)
-                                        .toString(),
-                                isColor: true,
-                                selectColor: Colors.red,
-                              ),
-                              SW.small(),
-                              DateChip(
-                                day: DateFormat('EEEE')
-                                    .format(DateTime(
-                                        DateTime.now().year,
-                                        DateTime.now().month,
-                                        DateTime.now()
-                                            .add(Duration(days: -5))
-                                            .day
-                                        // DateTime.now()
-                                        //     .add(Duration(days: index))
-                                        //     .weekday
+                                                ))
+                                            .toString()
+                                            .substring(0, 3),
+                                        date: (DateTime.now()
+                                                .add(Duration(days: -6))
+                                                .day)
+                                            .toString(),
+                                        isColor: true,
+                                        selectColor: Colors.red,
+                                      ),
+                                      SW.small(),
+                                      DateChip(
+                                        day: DateFormat('EEEE')
+                                            .format(DateTime(
+                                                DateTime.now().year,
+                                                DateTime.now().month,
+                                                DateTime.now()
+                                                    .add(Duration(days: -5))
+                                                    .day
+                                                // DateTime.now()
+                                                //     .add(Duration(days: index))
+                                                //     .weekday
 
-                                        ))
-                                    .toString()
-                                    .substring(0, 3),
-                                date:
-                                    (DateTime.now().add(Duration(days: -5)).day)
-                                        .toString(),
-                                isColor: true,
-                                selectColor: Colors.red,
-                              ),
-                              SW.small(),
-                              DateChip(
-                                day: DateFormat('EEEE')
-                                    .format(DateTime(
-                                        DateTime.now().year,
-                                        DateTime.now().month,
-                                        DateTime.now()
-                                            .add(Duration(days: -4))
-                                            .day
-                                        // DateTime.now()
-                                        //     .add(Duration(days: index))
-                                        //     .weekday
+                                                ))
+                                            .toString()
+                                            .substring(0, 3),
+                                        date: (DateTime.now()
+                                                .add(Duration(days: -5))
+                                                .day)
+                                            .toString(),
+                                        isColor: true,
+                                        selectColor: Colors.red,
+                                      ),
+                                      SW.small(),
+                                      DateChip(
+                                        day: DateFormat('EEEE')
+                                            .format(DateTime(
+                                                DateTime.now().year,
+                                                DateTime.now().month,
+                                                DateTime.now()
+                                                    .add(Duration(days: -4))
+                                                    .day
+                                                // DateTime.now()
+                                                //     .add(Duration(days: index))
+                                                //     .weekday
 
-                                        ))
-                                    .toString()
-                                    .substring(0, 3),
-                                date:
-                                    (DateTime.now().add(Duration(days: -4)).day)
-                                        .toString(),
-                                isColor: true,
-                                selectColor: Colors.yellow,
-                              ),
-                              SW.small(),
-                              DateChip(
-                                day: DateFormat('EEEE')
-                                    .format(DateTime(
-                                        DateTime.now().year,
-                                        DateTime.now().month,
-                                        DateTime.now()
-                                            .add(Duration(days: -3))
-                                            .day
-                                        // DateTime.now()
-                                        //     .add(Duration(days: index))
-                                        //     .weekday
+                                                ))
+                                            .toString()
+                                            .substring(0, 3),
+                                        date: (DateTime.now()
+                                                .add(Duration(days: -4))
+                                                .day)
+                                            .toString(),
+                                        isColor: true,
+                                        selectColor: Colors.yellow,
+                                      ),
+                                      SW.small(),
+                                      DateChip(
+                                        day: DateFormat('EEEE')
+                                            .format(DateTime(
+                                                DateTime.now().year,
+                                                DateTime.now().month,
+                                                DateTime.now()
+                                                    .add(Duration(days: -3))
+                                                    .day
+                                                // DateTime.now()
+                                                //     .add(Duration(days: index))
+                                                //     .weekday
 
-                                        ))
-                                    .toString()
-                                    .substring(0, 3),
-                                date:
-                                    (DateTime.now().add(Duration(days: -3)).day)
-                                        .toString(),
-                              ),
-                              SW.small(),
-                              DateChip(
-                                day: DateFormat('EEEE')
-                                    .format(DateTime(
-                                        DateTime.now().year,
-                                        DateTime.now().month,
-                                        DateTime.now()
-                                            .add(Duration(days: -2))
-                                            .day
-                                        // DateTime.now()
-                                        //     .add(Duration(days: index))
-                                        //     .weekday
+                                                ))
+                                            .toString()
+                                            .substring(0, 3),
+                                        date: (DateTime.now()
+                                                .add(Duration(days: -3))
+                                                .day)
+                                            .toString(),
+                                      ),
+                                      SW.small(),
+                                      DateChip(
+                                        day: DateFormat('EEEE')
+                                            .format(DateTime(
+                                                DateTime.now().year,
+                                                DateTime.now().month,
+                                                DateTime.now()
+                                                    .add(Duration(days: -2))
+                                                    .day
+                                                // DateTime.now()
+                                                //     .add(Duration(days: index))
+                                                //     .weekday
 
-                                        ))
-                                    .toString()
-                                    .substring(0, 3),
-                                date:
-                                    (DateTime.now().add(Duration(days: -2)).day)
-                                        .toString(),
-                              ),
-                              SW.small(),
-                              DateChip(
-                                day: DateFormat('EEEE')
-                                    .format(DateTime(
-                                        DateTime.now().year,
-                                        DateTime.now().month,
-                                        DateTime.now()
-                                            .add(Duration(days: -1))
-                                            .day
-                                        // DateTime.now()
-                                        //     .add(Duration(days: index))
-                                        //     .weekday
+                                                ))
+                                            .toString()
+                                            .substring(0, 3),
+                                        date: (DateTime.now()
+                                                .add(Duration(days: -2))
+                                                .day)
+                                            .toString(),
+                                      ),
+                                      SW.small(),
+                                      DateChip(
+                                        day: DateFormat('EEEE')
+                                            .format(DateTime(
+                                                DateTime.now().year,
+                                                DateTime.now().month,
+                                                DateTime.now()
+                                                    .add(Duration(days: -1))
+                                                    .day
+                                                // DateTime.now()
+                                                //     .add(Duration(days: index))
+                                                //     .weekday
 
-                                        ))
-                                    .toString()
-                                    .substring(0, 3),
-                                date:
-                                    (DateTime.now().add(Duration(days: -1)).day)
-                                        .toString(),
-                                isColor: true,
-                                selectColor: Colors.red,
-                              ),
+                                                ))
+                                            .toString()
+                                            .substring(0, 3),
+                                        date: (DateTime.now()
+                                                .add(Duration(days: -1))
+                                                .day)
+                                            .toString(),
+                                        isColor: true,
+                                        selectColor: Colors.red,
+                                      ),
 
-                              SW.small(),
-                              DateChip(
-                                day: DateFormat('EEEE')
-                                    .format(DateTime(DateTime.now().year,
-                                        DateTime.now().month, DateTime.now().day
-                                        // DateTime.now()
-                                        //     .add(Duration(days: index))
-                                        //     .weekday
+                                      SW.small(),
+                                      DateChip(
+                                        day: DateFormat('EEEE')
+                                            .format(DateTime(
+                                                DateTime.now().year,
+                                                DateTime.now().month,
+                                                DateTime.now().day
+                                                // DateTime.now()
+                                                //     .add(Duration(days: index))
+                                                //     .weekday
 
-                                        ))
-                                    .toString()
-                                    .substring(0, 3),
-                                date: (DateTime.now().day).toString(),
-                                isColor: true,
-                                selectColor: Colors.green,
-                              ),
-                              // SW.small(),
-                            ],
+                                                ))
+                                            .toString()
+                                            .substring(0, 3),
+                                        date: (DateTime.now().day).toString(),
+                                        isColor: true,
+                                        selectColor: Colors.green,
+                                      ),
+                                      // SW.small(),
+                                    ],
+                                  )
+                                : SizedBox(),
                           ),
                           SH.large(),
                           Divider(
@@ -444,6 +461,72 @@ class HabbitsScreen extends StatelessWidget {
                                     Icons.stacked_bar_chart,
                                     color: color.disabledColor,
                                     size: 25,
+                                  ),
+                                  SW.medium(),
+                                  GestureDetector(
+                                    onTap: () {
+                                      switchController
+                                                  .CollapseSwichChange.value ==
+                                              true
+                                          ? switchController
+                                              .CollapseSwichChange.value = false
+                                          : switchController
+                                              .CollapseSwichChange.value = true;
+                                      // print(switchController
+                                      //     .CollapseSwichChange.value);
+                                    },
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        if (habbitSelectController.openHabbits
+                                            .contains(habbitSelectController
+                                                .tasks[index].habbitId)) {
+                                          habbitSelectController.openHabbits
+                                              .remove(habbitSelectController
+                                                  .tasks[index].habbitId);
+                                        } else {
+                                          habbitSelectController.openHabbits
+                                              .add(habbitSelectController
+                                                  .tasks[index].habbitId);
+                                        }
+                                      },
+                                      child: Obx(
+                                        () => habbitSelectController.openHabbits
+                                                .contains(habbitSelectController
+                                                    .tasks[index].habbitId)
+                                            ? Column(
+                                                children: [
+                                                  Icon(
+                                                    Icons
+                                                        .keyboard_arrow_up_sharp,
+                                                    color: color.disabledColor,
+                                                    size: 15,
+                                                  ),
+                                                  Icon(
+                                                    Icons
+                                                        .keyboard_arrow_down_sharp,
+                                                    color: color.disabledColor,
+                                                    size: 15,
+                                                  ),
+                                                ],
+                                              )
+                                            : Column(
+                                                children: [
+                                                  Icon(
+                                                    Icons
+                                                        .keyboard_arrow_down_sharp,
+                                                    color: color.disabledColor,
+                                                    size: 15,
+                                                  ),
+                                                  Icon(
+                                                    Icons
+                                                        .keyboard_arrow_up_sharp,
+                                                    color: color.disabledColor,
+                                                    size: 15,
+                                                  ),
+                                                ],
+                                              ),
+                                      ),
+                                    ),
                                   ),
                                   SW.medium(),
                                   Icon(
