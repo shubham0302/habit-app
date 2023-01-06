@@ -17,7 +17,7 @@ class IntervalTimerStartScreen extends StatefulWidget {
 
 class _IntervalTimerStartScreenState extends State<IntervalTimerStartScreen>
     with TickerProviderStateMixin {
-  late AnimationController animationController;
+  AnimationController? animationController;
   IntervalTabController intervalTabController =
       Get.put(IntervalTabController(), permanent: false);
 
@@ -25,15 +25,16 @@ class _IntervalTimerStartScreenState extends State<IntervalTimerStartScreen>
 
   bool isPlaying = false;
   String get countText {
-    Duration count = animationController.duration! * animationController.value;
-    return animationController.isDismissed
-        ? '${animationController.duration!.inHours}:${(animationController.duration!.inMinutes % 60).toString().padLeft(2, '0')}:${(animationController.duration!.inSeconds % 60).toString().padLeft(2, '0')}'
+    Duration count =
+        animationController!.duration! * animationController!.value;
+    return animationController!.isDismissed
+        ? '${animationController!.duration!.inHours}:${(animationController!.duration!.inMinutes % 60).toString().padLeft(2, '0')}:${(animationController!.duration!.inSeconds % 60).toString().padLeft(2, '0')}'
         : '${count.inHours}:${(count.inMinutes % 60).toString().padLeft(2, '0')}:${(count.inSeconds % 60).toString().padLeft(2, '0')}';
   }
 
   @override
   void dispose() {
-    animationController.dispose();
+    animationController!.dispose();
     super.dispose();
   }
 
@@ -61,15 +62,15 @@ class _IntervalTimerStartScreenState extends State<IntervalTimerStartScreen>
       // print(tabController.tabIndex.value);
     });
     super.initState();
-    tabController.startLoop(this, animationController);
+    tabController.startLoop(this, animationController!);
     // animationController = AnimationController(
     //     vsync: this, duration: Duration(seconds: tabController.totalSeconds));
-    animationController.addListener(() {
+    animationController!.addListener(() {
       notifiy();
       // animationController.
-      if (animationController.isAnimating) {
+      if (animationController!.isAnimating) {
         setState(() {
-          progress = animationController.value;
+          progress = animationController!.value;
         });
       } else {
         setState(() {
@@ -111,18 +112,18 @@ class _IntervalTimerStartScreenState extends State<IntervalTimerStartScreen>
                       )),
                   GestureDetector(
                     onTap: () {
-                      if (animationController.isDismissed) {
+                      if (animationController!.isDismissed) {
                         showModalBottomSheet(
                             context: context,
                             builder: (context) => Container(
                                   height: 300,
                                   child: CupertinoTimerPicker(
                                     initialTimerDuration:
-                                        animationController.duration!,
+                                        animationController!.duration!,
                                     backgroundColor: color.backgroundColor,
                                     onTimerDurationChanged: (time) {
                                       setState(() {
-                                        animationController.duration = time;
+                                        animationController!.duration = time;
                                       });
                                     },
                                   ),
@@ -130,7 +131,7 @@ class _IntervalTimerStartScreenState extends State<IntervalTimerStartScreen>
                       }
                     },
                     child: AnimatedBuilder(
-                      animation: animationController,
+                      animation: animationController!,
                       builder: (context, child) => Text(
                         countText,
                         style: TextStyle(
@@ -150,16 +151,16 @@ class _IntervalTimerStartScreenState extends State<IntervalTimerStartScreen>
               GestureDetector(
                 onTap: () {
                   print(intervalTabController.intervals);
-                  if (animationController.isAnimating) {
-                    animationController.stop();
+                  if (animationController!.isAnimating) {
+                    animationController!.stop();
                     setState(() {
                       isPlaying = false;
                     });
                   } else {
-                    animationController.reverse(
-                        from: animationController.value == 0
+                    animationController!.reverse(
+                        from: animationController!.value == 0
                             ? 1.0
-                            : animationController.value);
+                            : animationController!.value);
                     setState(() {
                       isPlaying = true;
                     });
@@ -176,7 +177,7 @@ class _IntervalTimerStartScreenState extends State<IntervalTimerStartScreen>
               ),
               GestureDetector(
                 onTap: () {
-                  animationController.reset();
+                  animationController!.reset();
                   intervalTabController.currentvalueHour.value = 0;
                   intervalTabController.currentvalueMin.value = 0;
                   intervalTabController.currentvalueSec.value = 0;

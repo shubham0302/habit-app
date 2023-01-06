@@ -1,8 +1,68 @@
+import 'dart:developer';
+
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/infrastructure/model/interval_model.dart';
 
 class IntervalTabController extends GetxController {
+  final CountDownController controller = CountDownController();
+  RxBool paused = false.obs;
+  pause() {
+    controller.pause();
+    paused.value = true;
+  }
+
+  resumed() {
+    controller.resume();
+    paused.value = false;
+  }
+
+  var indexPos = 0.obs;
+  startInterval() {
+    if (loopI.value == 0) {
+      if (indexPos.value < intervals.length) {
+        log('ere');
+        controller.restart(
+            duration: intervals[indexPos.value].getTotalSceconds());
+        indexPos.value = indexPos.value + 1;
+        loopIterator.value = loopIterator.value + 1;
+      } else {
+        indexPos.value = 0;
+        controller.restart(
+            duration: intervals[indexPos.value].getTotalSceconds());
+      }
+    } else if (loopI.value >= loopIterator.value) {
+      if (indexPos.value < intervals.length) {
+        log('ere fjfj ${indexPos.value} ${loopI.value} ${loopIterator.value}');
+        controller.restart(
+            duration: intervals[indexPos.value].getTotalSceconds());
+        indexPos.value = indexPos.value + 1;
+      } else {
+        log('ere fjfjf ddffd ${indexPos.value} ${loopI.value} ${loopIterator.value}');
+        indexPos.value = 1;
+        controller.restart(duration: intervals[0].getTotalSceconds());
+        loopIterator.value = loopIterator.value + 1;
+      }
+      // loopIterator.value = loopIterator.value + 1;
+    } else {
+      log('ere fjfjf ddffd fdfd ${indexPos.value} ${loopI.value} ${loopIterator.value}');
+      controller.reset();
+      start.value = false;
+      indexPos.value = 0;
+      loopIterator.value = 0;
+    }
+  }
+
+  var loopI = 0.obs;
+  var loopIterator = 0.obs;
+
+  stop() {
+    indexPos.value = 0;
+    controller.reset();
+    start.value = false;
+  }
+
   RxBool breakSwitch = false.obs;
 
   var tabIndex = 0.obs;
@@ -20,7 +80,7 @@ class IntervalTabController extends GetxController {
 
   var isFirst = true.obs;
 
-  var start = true.obs;
+  var start = false.obs;
 
   int get totalSeconds =>
       (currentvalueHour.value * 3600) +
