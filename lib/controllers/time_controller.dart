@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../screens/helpers/local_storage_helper.dart';
+import '../helpers/local_storage_helper.dart';
 
 class NotifyTimeController extends GetxController {
   RxBool dailyProgram = true.obs;

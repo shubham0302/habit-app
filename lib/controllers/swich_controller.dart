@@ -2,7 +2,7 @@
 
 import 'package:get/get.dart';
 
-import '../screens/helpers/local_storage_helper.dart';
+import '../helpers/local_storage_helper.dart';
 
 class SwitchController extends GetxController {
   var dayOfWeek = 'Sunday'.obs;
