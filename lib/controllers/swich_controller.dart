@@ -1,8 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:get/get.dart';
-
-import '../screens/helpers/local_storage_helper.dart';
+import 'package:habbit_app/helpers/local_storage_helper.dart';
 
 class SwitchController extends GetxController {
   var dayOfWeek = 'Sunday'.obs;
