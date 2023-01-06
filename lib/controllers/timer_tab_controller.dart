@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 class TimerTabController extends GetxController {
+  RxBool animation = false.obs;
   var tabIndex = 0.obs;
 
   var currentvalueHour = 0.obs;

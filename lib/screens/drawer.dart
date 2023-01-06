@@ -7,6 +7,7 @@ import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:intl/intl.dart';
+import 'package:vibration/vibration.dart';
 import '../controllers/email_send_controller.dart';
 
 class Drawerr extends StatelessWidget {
@@ -60,7 +61,9 @@ class Drawerr extends StatelessWidget {
             // const Divider(),
             SH.large(),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Vibration.vibrate(duration: 1000);
+              },
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),

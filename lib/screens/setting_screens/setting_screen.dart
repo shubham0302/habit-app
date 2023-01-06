@@ -46,226 +46,287 @@ class SettingScreen extends StatelessWidget {
             ),
             SH.large(),
             SH.large(),
-            GestureDetector(
+            InkWell(
+              customBorder: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              splashColor: color.primaryColor,
+              highlightColor: color.primaryColor.withOpacity(0.5),
               onTap: () {
                 Get.toNamed("/todo");
               },
-              behavior: HitTestBehavior.translucent,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.list_alt,
-                        size: 30,
-                        color: color.primaryColor,
-                      ),
-                      SW.large(),
-                      const LabelText(text: "Todo and Habit lists")
-                    ],
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 20,
-                    color: color.primaryColor,
-                  )
-                ],
+              // behavior: HitTestBehavior.translucent,
+              child: Container(
+                height: 45,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.list_alt,
+                          size: 30,
+                          color: color.primaryColor,
+                        ),
+                        SW.large(),
+                        const LabelText(text: "Todo and Habit lists")
+                      ],
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                      color: color.primaryColor,
+                    )
+                  ],
+                ),
               ),
             ),
-            SH.medium(),
+            // SH.medium(),
             const Divider(
               thickness: 1,
             ),
-            SH.medium(),
-            GestureDetector(
+            // SH.medium(),
+            InkWell(
+              customBorder: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              splashColor: color.primaryColor,
+              highlightColor: color.primaryColor.withOpacity(0.5),
+
               onTap: () {
                 Get.toNamed('/notiandalarm');
               },
-              behavior: HitTestBehavior.translucent,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.notifications_active,
-                        size: 30,
-                        color: color.primaryColor,
-                      ),
-                      SW.large(),
-                      const LabelText(text: "Notifications and Alarms")
-                    ],
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 20,
-                    color: color.primaryColor,
-                  )
-                ],
+              // behavior: HitTestBehavior.translucent,
+              child: Container(
+                height: 45,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.notifications_active,
+                          size: 30,
+                          color: color.primaryColor,
+                        ),
+                        SW.large(),
+                        const LabelText(text: "Notifications and Alarms")
+                      ],
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                      color: color.primaryColor,
+                    )
+                  ],
+                ),
               ),
             ),
-            SH.medium(),
+            // SH.medium(),
             const Divider(
               thickness: 1,
             ),
-            SH.medium(),
-            GestureDetector(
+            // SH.medium(),
+            InkWell(
+              customBorder: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              splashColor: color.primaryColor,
+              highlightColor: color.primaryColor.withOpacity(0.5),
+
               onTap: () {
                 Get.toNamed('/customize');
               },
-              behavior: HitTestBehavior.translucent,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.format_paint_outlined,
-                        size: 30,
-                        color: color.primaryColor,
-                      ),
-                      SW.large(),
-                      const LabelText(text: "Customize")
-                    ],
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 20,
-                    color: color.primaryColor,
-                  )
-                ],
+              // behavior: HitTestBehavior.translucent,
+              child: Container(
+                height: 45,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.format_paint_outlined,
+                          size: 30,
+                          color: color.primaryColor,
+                        ),
+                        SW.large(),
+                        const LabelText(text: "Customize")
+                      ],
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                      color: color.primaryColor,
+                    )
+                  ],
+                ),
               ),
             ),
-            SH.medium(),
+            // SH.medium(),
             const Divider(
               thickness: 1,
             ),
-            SH.medium(),
-            GestureDetector(
-              onDoubleTap: () {
+            // SH.medium(),
+            InkWell(
+              customBorder: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              splashColor: color.primaryColor,
+              highlightColor: color.primaryColor.withOpacity(0.5),
+
+              onTap: () {
                 Get.toNamed("/lock");
               },
-              behavior: HitTestBehavior.translucent,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.screen_lock_portrait_outlined,
-                        size: 30,
-                        color: color.primaryColor,
-                      ),
-                      SW.large(),
-                      const LabelText(text: "Lock Screen")
-                    ],
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 20,
-                    color: color.primaryColor,
-                  )
-                ],
+              // behavior: HitTestBehavior.translucent,
+              child: Container(
+                height: 45,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.screen_lock_portrait_outlined,
+                          size: 30,
+                          color: color.primaryColor,
+                        ),
+                        SW.large(),
+                        const LabelText(text: "Lock Screen")
+                      ],
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                      color: color.primaryColor,
+                    )
+                  ],
+                ),
               ),
             ),
-            SH.medium(),
+            // SH.medium(),
             const Divider(
               thickness: 1,
             ),
-            SH.medium(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Get.toNamed('/backup');
-                  },
-                  behavior: HitTestBehavior.translucent,
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.backup_sharp,
-                        size: 30,
-                        color: color.primaryColor,
-                      ),
-                      SW.large(),
-                      const LabelText(text: "Backups")
-                    ],
-                  ),
+            // SH.medium(),
+            InkWell(
+              customBorder: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              splashColor: color.primaryColor,
+              highlightColor: color.primaryColor.withOpacity(0.5),
+              onTap: () {
+                Get.toNamed('/backup');
+              },
+              child: Container(
+                height: 45,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.backup_sharp,
+                          size: 30,
+                          color: color.primaryColor,
+                        ),
+                        SW.large(),
+                        const LabelText(text: "Backups")
+                      ],
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                      color: color.primaryColor,
+                    )
+                  ],
                 ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: color.primaryColor,
-                )
-              ],
+              ),
             ),
-            SH.medium(),
+            // SH.medium(),
             const Divider(
               thickness: 1,
             ),
-            SH.medium(),
-            GestureDetector(
+            // SH.medium(),
+            InkWell(
+              customBorder: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              splashColor: color.primaryColor,
+              highlightColor: color.primaryColor.withOpacity(0.5),
+
               onTap: () {
                 LanguageCustomDialogBox(context);
               },
-              behavior: HitTestBehavior.translucent,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.language,
-                        size: 30,
-                        color: color.primaryColor,
-                      ),
-                      SW.large(),
-                      LabelText(text: "lang".tr)
-                    ],
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 20,
-                    color: color.primaryColor,
-                  )
-                ],
+              // behavior: HitTestBehavior.translucent,
+              child: Container(
+                height: 45,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.language,
+                          size: 30,
+                          color: color.primaryColor,
+                        ),
+                        SW.large(),
+                        LabelText(text: "lang".tr)
+                      ],
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                      color: color.primaryColor,
+                    )
+                  ],
+                ),
               ),
             ),
-            SH.medium(),
+            // SH.medium(),
             const Divider(
               thickness: 1,
             ),
-            SH.medium(),
-            GestureDetector(
+            // SH.medium(),
+            InkWell(
+              customBorder: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              splashColor: color.primaryColor,
+              highlightColor: color.primaryColor.withOpacity(0.5),
+
               onTap: () {
                 Get.toNamed('/lic');
               },
-              behavior: HitTestBehavior.translucent,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.list_alt_outlined,
-                        size: 30,
-                        color: color.primaryColor,
-                      ),
-                      SW.large(),
-                      const LabelText(text: "Licenses")
-                    ],
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 20,
-                    color: color.primaryColor,
-                  )
-                ],
+              // behavior: HitTestBehavior.translucent,
+              child: Container(
+                height: 45,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.list_alt_outlined,
+                          size: 30,
+                          color: color.primaryColor,
+                        ),
+                        SW.large(),
+                        const LabelText(text: "Licenses")
+                      ],
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                      color: color.primaryColor,
+                    )
+                  ],
+                ),
               ),
             ),
-            SH.medium(),
+            // SH.medium(),
             const Divider(
               thickness: 1,
             ),

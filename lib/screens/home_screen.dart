@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
             if (pickerSchedule != null) {
               createReminderNotification(pickerSchedule);
             }
-            Vibration.vibrate(duration: 1000);
+
             // createFirstNotification();
             // launchUrl(Uri.parse(
             //     'upi://pay?pa=7698769876@sib&pn=ludogame&am=10&tn=Ludo%20rockland%20fees&cu=INR'));

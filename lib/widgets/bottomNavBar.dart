@@ -83,7 +83,7 @@ Widget buildBottomNavigationMenu(
                         ? Icons.category_outlined
                         : Icons.category_outlined,
                     controller.tabIndex.value == 2,
-                    'Categories',
+                    'Categorie',
                     context),
               ),
               SW.medium(),
@@ -92,7 +92,6 @@ Widget buildBottomNavigationMenu(
                   controller.changeTabIndex(3);
                   habbitSelectController.getTasks();
                   habbitSelectController.getRepetitions();
-                  
                 },
                     controller.tabIndex.value == 3
                         ? Icons.workspace_premium
