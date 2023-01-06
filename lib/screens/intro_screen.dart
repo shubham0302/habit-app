@@ -45,9 +45,7 @@ class IntroScreen extends StatelessWidget {
         //         end: Alignment.topLeft)),
         child: Stack(
           children: [
-
             PageView(
-              
               // allowImplicitScrolling: true,
 
               onPageChanged: ((value) {
@@ -336,7 +334,7 @@ class IntroScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Expanded(
-                                child: GestureDetector(
+                                child: InkWell(
                                   onTap: () {
                                     Get.offAllNamed('/home');
                                   },

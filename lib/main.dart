@@ -66,44 +66,45 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
-  LockPinController lockPinController =
-      Get.put(LockPinController(), permanent: true);
+  // LockPinController lockPinController = Get.find<LockPinController>();
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     super.initState();
     AwesomeNotifications().isNotificationAllowed().then(
       (isAllowed) {
-        showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-                  title: Text('Allow Notifications'),
-                  content: Text('Habbit app like to send you notifications'),
-                  actions: [
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text(
-                          'Don\'t allow',
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 18,
-                          ),
-                        )),
-                    TextButton(
-                        onPressed: () => AwesomeNotifications()
-                            .requestPermissionToSendNotifications()
-                            .then((_) => Navigator.pop(context)),
-                        child: Text(
-                          'Allow',
-                          style: TextStyle(
-                              color: Colors.teal,
+        if (!isAllowed) {
+          showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                    title: Text('Allow Notifications'),
+                    content: Text('Habbit app like to send you notifications'),
+                    actions: [
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text(
+                            'Don\'t allow',
+                            style: TextStyle(
+                              color: Colors.grey,
                               fontSize: 18,
-                              fontWeight: FontWeight.bold),
-                        )),
-                  ],
-                ));
+                            ),
+                          )),
+                      TextButton(
+                          onPressed: () => AwesomeNotifications()
+                              .requestPermissionToSendNotifications()
+                              .then((_) => Navigator.pop(context)),
+                          child: Text(
+                            'Allow',
+                            style: TextStyle(
+                                color: Colors.teal,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          )),
+                    ],
+                  ));
+        }
       },
     );
   }
@@ -114,26 +115,26 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     super.dispose();
   }
 
-  @override
-  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
-    switch (state) {
-      case AppLifecycleState.resumed:
-        lockPinController.getPinTypeResume();
+  // @override
+  // Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
+  //   switch (state) {
+  //     case AppLifecycleState.resumed:
+  //       lockPinController.getPinTypeResume();
 
-        break;
+  //       break;
 
-      case AppLifecycleState.inactive:
-        // lockPinController.getPinTypeResume();
-        print("app in inactive");
-        break;
-      case AppLifecycleState.paused:
-        print("app in paused");
-        break;
-      case AppLifecycleState.detached:
-        print("app in detached");
-        break;
-    }
-  }
+  //     case AppLifecycleState.inactive:
+  //       // lockPinController.getPinTypeResume();
+  //       print("app in inactive");
+  //       break;
+  //     case AppLifecycleState.paused:
+  //       print("app in paused");
+  //       break;
+  //     case AppLifecycleState.detached:
+  //       print("app in detached");
+  //       break;
+  //   }
+  // }
 
   // This widget is the root of your application.
   @override

@@ -14,7 +14,7 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> {
   LockPinController switchController =
-      Get.put(LockPinController(), permanent: false);
+      Get.put(LockPinController(), permanent: true);
   @override
   Widget build(BuildContext context) {
     // Future.delayed(const Duration(seconds: 3), () {});
