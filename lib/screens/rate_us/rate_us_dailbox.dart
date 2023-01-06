@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:habbit_app/screens/contactUS/sendsuggestion_dailbox.dart';
 import 'package:habbit_app/screens/rate_us/love_it_dailog.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
@@ -48,8 +49,7 @@ void RateUsCustomDialogBox(BuildContext context) {
                           child: Center(
                             child: GestureDetector(
                               onTap: () {
-                                SuggestionSupportCustomDialogBox(context);
-                                // Get.back();
+                                Get.back();
                               },
                               child: Container(
                                 child: const LabelText(

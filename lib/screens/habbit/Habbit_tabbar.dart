@@ -47,7 +47,8 @@ class _HabbitTabbarState extends State<HabbitTabbar>
     TimerTabController tabController =
         Get.put(TimerTabController(), permanent: false);
     super.initState();
-    _controller = TabController(length: 3, vsync: this);
+    _controller = TabController(
+        length: 3, vsync: this, initialIndex: tabController.tabIndex.value);
     _controller.addListener(() {
       tabController.tabIndex.value = _controller.index;
       // print(tabController.tabIndex.value);

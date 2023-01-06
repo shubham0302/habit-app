@@ -57,6 +57,7 @@ void LoveItCustomDialogBox(BuildContext context) {
                             child: GestureDetector(
                               onTap: () {
                                 Get.back();
+                                Get.back();
                               },
                               child: Container(
                                 child: const LabelText(

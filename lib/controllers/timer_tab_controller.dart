@@ -4,6 +4,8 @@ class TimerTabController extends GetxController {
   RxBool animation = false.obs;
   var tabIndex = 0.obs;
 
+  var changeTabIdex = 0.obs;
+
   var currentvalueHour = 0.obs;
   var currentvalueMin = 0.obs;
   var currentvalueSec = 0.obs;

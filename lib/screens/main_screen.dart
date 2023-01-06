@@ -47,6 +47,7 @@ class MainScreen extends StatelessWidget {
         child: Wrap(
           children: [
             Column(
+              // mainAxisSize: MainAxisSize.max,
               children: [
                 TableCalendar(
                   currentDay: DateTime.now(),

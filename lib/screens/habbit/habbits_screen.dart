@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
+import 'package:habbit_app/controllers/timer_tab_controller.dart';
 import 'package:habbit_app/screens/habbit/datechip.dart';
 import 'package:habbit_app/screens/habbit/habbit_detailScreen.dart';
 
@@ -18,6 +19,8 @@ class HabbitsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SwitchController switchController = Get.put(SwitchController());
+    TimerTabController tabController =
+        Get.put(TimerTabController(), permanent: false);
     AddHabbitSelectController habbitSelectController =
         Get.put(AddHabbitSelectController());
     CategoryController categoryController = Get.put(CategoryController());
@@ -627,8 +630,10 @@ class HabbitsScreen extends StatelessWidget {
                                   SW.medium(),
                                   GestureDetector(
                                     onTap: () {
-                                      Get.to(HabbitDetailScreen());
+                                      Get.toNamed('/habbit-detail');
+                                      tabController.tabIndex.value = 1;
                                     },
+                                    behavior: HitTestBehavior.translucent,
                                     child: Icon(
                                       Icons.stacked_bar_chart,
                                       color: color.disabledColor,
@@ -710,10 +715,13 @@ class HabbitsScreen extends StatelessWidget {
                                     ),
                                   ),
                                   SW.medium(),
-                                  Icon(
-                                    Icons.more_vert,
-                                    color: color.disabledColor,
-                                    size: 25,
+                                  GestureDetector(
+                                    onTap: () {},
+                                    child: Icon(
+                                      Icons.more_vert,
+                                      color: color.disabledColor,
+                                      size: 25,
+                                    ),
                                   ),
                                 ],
                               )
