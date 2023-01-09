@@ -12,6 +12,8 @@ import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
+import '../../widgets/text_widget/main_label_text.dart';
+
 class NotificationandAlarmScreen extends StatefulWidget {
   const NotificationandAlarmScreen({super.key});
 
@@ -42,19 +44,23 @@ class _NotificationandAlarmScreenState
           child: Column(
             children: [
               Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: Icon(
-                      Icons.arrow_back_ios_new_sharp,
-                      color: color.primaryColor,
-                      size: 20,
-                    ),
-                  ),
+                      behavior: HitTestBehavior.translucent,
+                      onTap: (() {
+                        Get.back();
+                      }),
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        child: Icon(
+                          Icons.arrow_back_ios_new_rounded,
+                          color: color.primaryColor,
+                        ),
+                      )),
                   SW.medium(),
-                  const HeadingText(text: "Notifications and Alarms"),
+                  const MainLabelText(text: 'Notification and alarms'),
                 ],
               ),
               SH.large(),
@@ -327,8 +333,8 @@ class _NotificationandAlarmScreenState
               SH.medium(),
               SH.large(),
               GestureDetector(
-                onTap: ()  {
-                   AppSettings.openNotificationSettings();
+                onTap: () {
+                  AppSettings.openNotificationSettings();
                   print('object');
                 },
                 behavior: HitTestBehavior.translucent,

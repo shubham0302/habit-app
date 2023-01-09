@@ -14,55 +14,55 @@ class HabbitDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var color = Theme.of(context);
     return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          children: [
-            SH.large(),
-            SH.large(),
-            GlobalPadding(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                          behavior: HitTestBehavior.translucent,
-                          onTap: (() {
-                            Get.back();
-                          }),
-                          child: Container(
-                            height: 30,
-                            width: 30,
-                            // color: Colors.white,
-                            child: Icon(
-                              Icons.arrow_back_ios_new_rounded,
-                              color: color.primaryColor,
-                            ),
-                          )),
-                      SW.medium(),
-                      const MainLabelText(text: 'Cooking'),
-                    ],
-                  ),
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Colors.purpleAccent.shade100),
-                    child: Icon(
-                      Icons.brush,
-                      size: 20,
-                      color: color.backgroundColor,
+      body: SafeArea(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: [
+              GlobalPadding(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                            behavior: HitTestBehavior.translucent,
+                            onTap: (() {
+                              Get.back();
+                            }),
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              // color: Colors.white,
+                              child: Icon(
+                                Icons.arrow_back_ios_new_rounded,
+                                color: color.primaryColor,
+                              ),
+                            )),
+                        SW.medium(),
+                        const MainLabelText(text: 'Cooking'),
+                      ],
                     ),
-                  ),
-                ],
+                    Container(
+                      height: 25,
+                      width: 25,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.purpleAccent.shade100),
+                      child: Icon(
+                        Icons.brush,
+                        size: 20,
+                        color: color.backgroundColor,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const Expanded(child: HabbitTabbar())
-          ],
+              const Expanded(child: HabbitTabbar())
+            ],
+          ),
         ),
       ),
     );

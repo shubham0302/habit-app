@@ -400,7 +400,7 @@ class EditTask extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: GestureDetector(
                   onTap: () {
-                    addTaskController.addReminder();
+                    addTaskController.editReminder();
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 10),

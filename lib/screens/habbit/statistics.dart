@@ -21,6 +21,7 @@ class Statistics extends StatelessWidget {
   Widget build(BuildContext context) {
     var color = Theme.of(context);
     return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
       child: Column(children: [
         SH.large(),
         Center(

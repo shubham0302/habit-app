@@ -42,7 +42,7 @@ class Styles {
 
           //Description Text
           subtitle1: TextStyle(
-            fontSize: 14,
+            fontSize: 12,
             color: ColorSchemeData.defaultBrightColors['secondaryText'],
           ),
 
@@ -114,7 +114,6 @@ class Styles {
     String mode,
   ) {
     return ThemeData(
-      
       splashColor: ColorSchemeData.darkThemeData[mode]!['primaryColor'],
 
       switchTheme: SwitchThemeData(

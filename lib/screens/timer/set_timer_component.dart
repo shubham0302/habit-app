@@ -191,6 +191,8 @@ class _SetTimerComponentState extends State<SetTimerComponent> {
                     child: LabelText(
                   text: "START",
                   isBold: true,
+                  isColor: true,
+                  color: Colors.white,
                 )),
               ),
             ),

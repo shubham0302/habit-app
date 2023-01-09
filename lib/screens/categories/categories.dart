@@ -9,6 +9,8 @@ import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 
+import '../../widgets/text_widget/label_text.dart';
+
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
 
@@ -148,149 +150,187 @@ class CategoriesScreen extends StatelessWidget {
             ],
           ),
           SH.small(),
-          const DescriptionText(text: "4 Available"),
+          DescriptionText(
+              text:
+                  "${categoryController.categories.where((p0) => !p0.isDefault).length} Available"),
           // SH.large(),
           SH.large(),
           SizedBox(
             height: 150,
             child: Obx(
-              () => ListView.separated(
-                separatorBuilder: (context, index) => SW.medium(),
-                physics: const BouncingScrollPhysics(),
-                // shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: categoryController.categories
-                    .where((p0) => !p0.isDefault)
-                    .length,
-                itemBuilder: (context, index) {
-                  return Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      GestureDetector(
-                          onTap: () {
-                            categoryController.colorIndex.value =
-                                categoryController.categories
-                                    .where((p0) => !p0.isDefault)
-                                    .toList()[index]
-                                    .color;
-                            categoryController.iconType.value =
-                                categoryController.categories
-                                    .where((p0) => !p0.isDefault)
-                                    .toList()[index]
-                                    .icon;
-                            categoryController.category.value =
-                                categoryController.categories
-                                    .where((p0) => !p0.isDefault)
-                                    .toList()[index]
-                                    .name;
-                            categoryController.selectedId.value =
-                                categoryController.categories
-                                    .where((p0) => !p0.isDefault)
-                                    .toList()[index]
-                                    .id;
-                            categoryController.ctrl.text = categoryController
-                                .categories
-                                .where((p0) => !p0.isDefault)
-                                .toList()[index]
-                                .name;
-                            CategoriesCustomDialogBox(context, true);
-                          },
-                          onLongPress: () {
-                            HapticFeedback.vibrate();
-                            categoryController.shakeIndex.value = index + 1;
-                            categoryController.removeIndex.value = index + 1;
-                          },
-                          onLongPressEnd: (e) {
-                            categoryController.shakeIndex.value = 0;
-                            // categoryController.removeIndex.value = index + 1;
-                          },
-                          behavior: HitTestBehavior.translucent,
-                          child: Obx(
-                            () => ShakeWidget(
-                              autoPlay: categoryController.shakeIndex.value ==
-                                  index + 1,
-                              duration: const Duration(seconds: 1),
-                              shakeConstant: ShakeChunkConstant(),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    height: 60,
-                                    width: 60,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        color: categoryController
-                                            .iconColor[categoryController
-                                                .categories
-                                                .where((p0) => !p0.isDefault)
-                                                .toList()[index]
-                                                .color]
-                                            .withOpacity(0.3)),
-                                    child: Icon(
-                                      categoryController.icon[categoryController
-                                          .categories
+              () => categoryController.categories
+                      .where((p0) => !p0.isDefault)
+                      .isEmpty
+                  ? Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // const Image(
+                          //   height: 150,
+                          //   width: 250,
+                          //   image: AssetImage('assets/images/tasks.png'),
+                          // ),
+                          // SH.large(),
+                          Icon(
+                            Icons.category_outlined,
+                            color: color.disabledColor.withAlpha(100),
+                            size: 30,
+                          ),
+                          SH.small(),
+                          const DescriptionText(
+                            text: 'There are no custom categories',
+                            // isBold: true,
+                          ),
+                        ],
+                      ),
+                    )
+                  : ListView.separated(
+                      separatorBuilder: (context, index) => SW.medium(),
+                      physics: const BouncingScrollPhysics(),
+                      // shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: categoryController.categories
+                          .where((p0) => !p0.isDefault)
+                          .length,
+                      itemBuilder: (context, index) {
+                        return Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            GestureDetector(
+                                onTap: () {
+                                  categoryController.colorIndex.value =
+                                      categoryController.categories
                                           .where((p0) => !p0.isDefault)
                                           .toList()[index]
-                                          .icon],
-                                      color: categoryController.iconColor[
-                                          categoryController.categories
+                                          .color;
+                                  categoryController.iconType.value =
+                                      categoryController.categories
+                                          .where((p0) => !p0.isDefault)
+                                          .toList()[index]
+                                          .icon;
+                                  categoryController.category.value =
+                                      categoryController.categories
+                                          .where((p0) => !p0.isDefault)
+                                          .toList()[index]
+                                          .name;
+                                  categoryController.selectedId.value =
+                                      categoryController.categories
+                                          .where((p0) => !p0.isDefault)
+                                          .toList()[index]
+                                          .id;
+                                  categoryController.ctrl.text =
+                                      categoryController.categories
+                                          .where((p0) => !p0.isDefault)
+                                          .toList()[index]
+                                          .name;
+                                  CategoriesCustomDialogBox(context, true);
+                                },
+                                onLongPress: () {
+                                  HapticFeedback.vibrate();
+                                  categoryController.shakeIndex.value =
+                                      index + 1;
+                                  categoryController.removeIndex.value =
+                                      index + 1;
+                                },
+                                onLongPressEnd: (e) {
+                                  categoryController.shakeIndex.value = 0;
+                                  // categoryController.removeIndex.value = index + 1;
+                                },
+                                behavior: HitTestBehavior.translucent,
+                                child: Obx(
+                                  () => ShakeWidget(
+                                    autoPlay:
+                                        categoryController.shakeIndex.value ==
+                                            index + 1,
+                                    duration: const Duration(seconds: 1),
+                                    shakeConstant: ShakeChunkConstant(),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          height: 60,
+                                          width: 60,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              color: categoryController
+                                                  .iconColor[categoryController
+                                                      .categories
+                                                      .where(
+                                                          (p0) => !p0.isDefault)
+                                                      .toList()[index]
+                                                      .color]
+                                                  .withOpacity(0.3)),
+                                          child: Icon(
+                                            categoryController.icon[
+                                                categoryController.categories
+                                                    .where(
+                                                        (p0) => !p0.isDefault)
+                                                    .toList()[index]
+                                                    .icon],
+                                            color: categoryController.iconColor[
+                                                categoryController.categories
+                                                    .where(
+                                                        (p0) => !p0.isDefault)
+                                                    .toList()[index]
+                                                    .color],
+                                            size: 40,
+                                          ),
+                                        ),
+                                        SH.small(),
+                                        DescriptionText(
+                                          isColor: true,
+                                          color: color.cardColor,
+                                          isBold: true,
+                                          text: categoryController.categories
                                               .where((p0) => !p0.isDefault)
                                               .toList()[index]
-                                              .color],
-                                      size: 40,
+                                              .name,
+                                          isWhite: true,
+                                        ),
+                                        const DescriptionText(
+                                            text: "0 entries"),
+                                        SH.large(),
+                                        SH.large(),
+                                      ],
                                     ),
                                   ),
-                                  SH.small(),
-                                  DescriptionText(
-                                    isColor: true,
-                                    color: color.cardColor,
-                                    isBold: true,
-                                    text: categoryController.categories
-                                        .where((p0) => !p0.isDefault)
-                                        .toList()[index]
-                                        .name,
-                                    isWhite: true,
-                                  ),
-                                  const DescriptionText(text: "0 entries"),
-                                  SH.large(),
-                                  SH.large(),
-                                ],
-                              ),
-                            ),
-                          )),
-                      Obx(() =>
-                          categoryController.removeIndex.value == index + 1
-                              ? Positioned(
-                                  top: 0,
-                                  right: -8,
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      categoryController.deleteCategory(
-                                          categoryController.categories
-                                              .where((p0) => !p0.isDefault)
-                                              .toList()[index]
-                                              .id);
-                                      categoryController.removeIndex.value = 0;
-                                    },
-                                    behavior: HitTestBehavior.translucent,
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      height: 20,
-                                      width: 20,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        // borderRadius: BorderRadius.circular(radius),
-                                        color: color.primaryColor,
+                                )),
+                            Obx(() => categoryController.removeIndex.value ==
+                                    index + 1
+                                ? Positioned(
+                                    top: 0,
+                                    right: -8,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        categoryController.deleteCategory(
+                                            categoryController.categories
+                                                .where((p0) => !p0.isDefault)
+                                                .toList()[index]
+                                                .id);
+                                        categoryController.removeIndex.value =
+                                            0;
+                                      },
+                                      behavior: HitTestBehavior.translucent,
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        height: 20,
+                                        width: 20,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          // borderRadius: BorderRadius.circular(radius),
+                                          color: color.primaryColor,
+                                        ),
+                                        child: Icon(Icons.remove,
+                                            color: color.backgroundColor),
                                       ),
-                                      child: Icon(Icons.remove,
-                                          color: color.backgroundColor),
-                                    ),
-                                  ))
-                              : const SizedBox())
-                    ],
-                  );
-                },
-              ),
+                                    ))
+                                : const SizedBox())
+                          ],
+                        );
+                      },
+                    ),
             ),
           ),
           // Row(

@@ -27,19 +27,23 @@ class LicScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: Icon(
-                      Icons.arrow_back_ios_new_sharp,
-                      color: color.primaryColor,
-                      size: 20,
-                    ),
-                  ),
+                      behavior: HitTestBehavior.translucent,
+                      onTap: (() {
+                        Get.back();
+                      }),
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        child: Icon(
+                          Icons.arrow_back_ios_new_rounded,
+                          color: color.primaryColor,
+                        ),
+                      )),
                   SW.medium(),
-                  const HeadingText(text: "Licenses"),
+                  const MainLabelText(text: 'Licenses'),
                 ],
               ),
               SH.large(),

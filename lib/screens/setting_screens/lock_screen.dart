@@ -12,6 +12,7 @@ import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
+import '../../widgets/text_widget/main_label_text.dart';
 import '../pin/lock_pin_dailbox.dart';
 
 class LockScreen extends StatelessWidget {
@@ -29,19 +30,23 @@ class LockScreen extends StatelessWidget {
         child: Column(
           children: [
             Row(
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Icon(
-                    Icons.arrow_back_ios_new_sharp,
-                    color: color.primaryColor,
-                    size: 20,
-                  ),
-                ),
+                    behavior: HitTestBehavior.translucent,
+                    onTap: (() {
+                      Get.back();
+                    }),
+                    child: Container(
+                      height: 30,
+                      width: 30,
+                      child: Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        color: color.primaryColor,
+                      ),
+                    )),
                 SW.medium(),
-                const HeadingText(text: "Lock"),
+                const MainLabelText(text: 'Lock'),
               ],
             ),
             SH.large(),

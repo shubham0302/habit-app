@@ -54,51 +54,48 @@ class AddTaskScreen extends StatelessWidget {
               ),
               SH.large(),
               SH.large(),
-              GestureDetector(
-                onTap: () {},
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.edit,
-                          size: 30,
-                          color: color.primaryColor,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.edit,
+                        size: 30,
+                        color: color.primaryColor,
+                      ),
+                      SW.small(),
+                      const LabelText(text: "Task Name")
+                    ],
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      NameTaskCustomDialogBox(context);
+                      // CategoryCustomDialogBox(context);
+                      // ToDoWeekCustomDialogBox(context);
+                    },
+                    child: Container(
+                        alignment: Alignment.centerLeft,
+                        height: 35,
+                        width: 140,
+                        decoration: BoxDecoration(
+                          border:
+                              Border.all(width: 2, color: color.canvasColor),
+                          color: color.backgroundColor,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
                         ),
-                        SW.small(),
-                        const LabelText(text: "Task Name")
-                      ],
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        NameTaskCustomDialogBox(context);
-                        // CategoryCustomDialogBox(context);
-                        // ToDoWeekCustomDialogBox(context);
-                      },
-                      child: Container(
-                          alignment: Alignment.centerLeft,
-                          height: 35,
-                          width: 140,
-                          decoration: BoxDecoration(
-                            border:
-                                Border.all(width: 2, color: color.canvasColor),
-                            color: color.backgroundColor,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10)),
-                          ),
-                          child: Center(
-                            child: Obx(
-                              () => LabelText(
-                                text: addTaskController.taskName.value == ''
-                                    ? "name"
-                                    : addTaskController.taskName.value,
-                              ),
+                        child: Center(
+                          child: Obx(
+                            () => LabelText(
+                              text: addTaskController.taskName.value == ''
+                                  ? "name"
+                                  : addTaskController.taskName.value,
                             ),
-                          )),
-                    )
-                  ],
-                ),
+                          ),
+                        )),
+                  )
+                ],
               ),
               SH.medium(),
               SH.large(),
@@ -414,8 +411,8 @@ class AddTaskScreen extends StatelessWidget {
               ),
               SH.medium(),
               SH.large(),
-              SH.large(),
-              SH.large(),
+              // SH.large(),
+              // SH.large(),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: GestureDetector(

@@ -14,6 +14,8 @@ import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../widgets/text_widget/main_label_text.dart';
+
 class ToDoHabbitListScreen extends StatelessWidget {
   const ToDoHabbitListScreen({super.key});
 
@@ -26,27 +28,29 @@ class ToDoHabbitListScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
             children: [
               Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      child: Icon(
-                        Icons.arrow_back_ios_new_sharp,
-                        color: color.primaryColor,
-                      ),
-                    ),
-                  ),
+                      behavior: HitTestBehavior.translucent,
+                      onTap: (() {
+                        Get.back();
+                      }),
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        child: Icon(
+                          Icons.arrow_back_ios_new_rounded,
+                          color: color.primaryColor,
+                        ),
+                      )),
                   SW.medium(),
-                  const LabelText(text: "Todo and Habit lists"),
+                  const MainLabelText(text: 'Todo and Habit lists'),
                 ],
               ),
               SH.large(),

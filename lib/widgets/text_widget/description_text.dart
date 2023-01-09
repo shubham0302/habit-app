@@ -12,6 +12,7 @@ class DescriptionText extends StatelessWidget {
   final TextAlign? alignment;
   final String? type;
   final bool? isDotDot;
+  
   const DescriptionText({
     Key? key,
     required this.text,

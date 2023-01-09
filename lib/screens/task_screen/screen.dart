@@ -15,6 +15,8 @@ import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
+import '../../widgets/text_widget/description_text.dart';
+
 class TaskScreen extends StatefulWidget {
   const TaskScreen({Key? key}) : super(key: key);
 
@@ -142,221 +144,275 @@ class _TaskScreenState extends State<TaskScreen>
                 controller: _controller,
                 children: [
                   Obx(
-                    () => ListView.separated(
-                        physics: const BouncingScrollPhysics(),
-                        itemCount: addTaskController.taskTimes.length,
-                        separatorBuilder: (context, index) => Column(
+                    () => addTaskController.taskTimes.isEmpty
+                        ? Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                const Image(
+                                  height: 150,
+                                  width: 250,
+                                  image: AssetImage('assets/images/tasks.png'),
+                                ),
+                                SH.large(),
+                                const LabelText(
+                                  text: 'No upcoming tasks',
+                                  isBold: true,
+                                ),
                                 SH.small(),
-                                const Divider(),
-                                SH.small(),
+                                const DescriptionText(
+                                  text: 'There are no upcoming tasks',
+                                  // isBold: true,
+                                ),
                               ],
                             ),
-                        itemBuilder: (context, index) {
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(3),
-                                    color: color.primaryColor.withOpacity(.2)),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 5, vertical: 2),
-                                  child: LabelText(
-                                    text: addTaskController.taskTimes[index]
-                                        .toString(),
-                                    isColor: true,
-                                    // isBold: true,
-                                    color: color.primaryColor,
-                                  ),
+                          )
+                        : ListView.separated(
+                            physics: const BouncingScrollPhysics(),
+                            itemCount: addTaskController.taskTimes.length,
+                            separatorBuilder: (context, index) => Column(
+                                  children: [
+                                    SH.small(),
+                                    const Divider(),
+                                    SH.small(),
+                                  ],
                                 ),
+                            itemBuilder: (context, index) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
+                                        color:
+                                            color.primaryColor.withOpacity(.2)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5, vertical: 2),
+                                      child: LabelText(
+                                        text: addTaskController.taskTimes[index]
+                                            .toString(),
+                                        isColor: true,
+                                        // isBold: true,
+                                        color: color.primaryColor,
+                                      ),
+                                    ),
+                                  ),
+                                  SH.small(),
+                                  const Divider(),
+                                  SH.small(),
+                                  Obx(
+                                    () => ListView.separated(
+                                      separatorBuilder: (context, index) =>
+                                          Column(
+                                        children: [
+                                          SH.small(),
+                                          const Divider(),
+                                          SH.small(),
+                                        ],
+                                      ),
+                                      shrinkWrap: true,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      itemCount: addTaskController.dataTasks[
+                                                      addTaskController
+                                                          .taskTimes[index]] !=
+                                                  null &&
+                                              addTaskController
+                                                  .dataTasks[addTaskController
+                                                      .taskTimes[index]]!
+                                                  .isNotEmpty
+                                          ? addTaskController
+                                              .dataTasks[addTaskController
+                                                  .taskTimes[index]]!
+                                              .length
+                                          : 0,
+                                      itemBuilder: (context, i) {
+                                        return GestureDetector(
+                                          onTap: () {
+                                            addTaskController.getTask(
+                                                addTaskController
+                                                    .dataTasks[addTaskController
+                                                        .taskTimes[index]]![i]
+                                                    .taskId);
+                                            // Get.toNamed(
+                                            //   '/edittask',
+                                            // );
+                                            // addTaskController.editIndex.value =
+                                            //     addTaskController.tasks[index].taskId;
+                                          },
+                                          behavior: HitTestBehavior.translucent,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Container(
+                                                    height: 30,
+                                                    width: 30,
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8),
+                                                        color: categoryController
+                                                                .iconColor[
+                                                            categoryController
+                                                                .categories
+                                                                .firstWhere((element) =>
+                                                                    element.id ==
+                                                                    addTaskController
+                                                                        .dataTasks[
+                                                                            addTaskController.taskTimes[index]]![
+                                                                            i]
+                                                                        .categoryId)
+                                                                .color]),
+                                                    child: Icon(
+                                                      categoryController.icon[categoryController
+                                                          .categories
+                                                          .firstWhere((element) =>
+                                                              element.id ==
+                                                              addTaskController
+                                                                  .dataTasks[
+                                                                      addTaskController
+                                                                              .taskTimes[
+                                                                          index]]![
+                                                                      i]
+                                                                  .categoryId)
+                                                          .icon],
+                                                      size: 23,
+                                                      color:
+                                                          color.backgroundColor,
+                                                    ),
+                                                  ),
+                                                  SW.medium(),
+                                                  LabelText(
+                                                      text: addTaskController
+                                                          .dataTasks[
+                                                              addTaskController
+                                                                      .taskTimes[
+                                                                  index]]![i]
+                                                          .taskName)
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  const Icon(Icons.done),
+                                                  LabelText(
+                                                      text: addTaskController
+                                                          .checklists.length
+                                                          .toString())
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              );
+                            }),
+                  ),
+                  Expanded(
+                    child: Obx(
+                      () => recurringTaskController.tasks.isEmpty
+                          ? Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Image(
+                                    height: 150,
+                                    width: 250,
+                                    image:
+                                        AssetImage('assets/images/tasks.png'),
+                                  ),
+                                  SH.large(),
+                                  const LabelText(
+                                    text: 'No recurring tasks',
+                                    isBold: true,
+                                  ),
+                                  SH.small(),
+                                  const DescriptionText(
+                                    text: 'There are no recurring tasks',
+                                    // isBold: true,
+                                  ),
+                                ],
                               ),
-                              SH.small(),
-                              const Divider(),
-                              SH.small(),
-                              Obx(
-                                () => ListView.separated(
-                                  separatorBuilder: (context, index) => Column(
+                            )
+                          : ListView.separated(
+                              physics: const BouncingScrollPhysics(),
+                              itemCount: recurringTaskController.tasks.length,
+                              separatorBuilder: (context, index) => Column(
                                     children: [
                                       SH.small(),
                                       const Divider(),
                                       SH.small(),
                                     ],
                                   ),
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemCount: addTaskController.dataTasks[
-                                                  addTaskController
-                                                      .taskTimes[index]] !=
-                                              null &&
-                                          addTaskController
-                                              .dataTasks[addTaskController
-                                                  .taskTimes[index]]!
-                                              .isNotEmpty
-                                      ? addTaskController
-                                          .dataTasks[addTaskController
-                                              .taskTimes[index]]!
-                                          .length
-                                      : 0,
-                                  itemBuilder: (context, i) {
-                                    return GestureDetector(
-                                      onTap: () {
-                                        addTaskController.getTask(
-                                            addTaskController
-                                                .dataTasks[addTaskController
-                                                    .taskTimes[index]]![i]
-                                                .taskId);
-                                        // Get.toNamed(
-                                        //   '/edittask',
-                                        // );
-                                        // addTaskController.editIndex.value =
-                                        //     addTaskController.tasks[index].taskId;
-                                      },
-                                      behavior: HitTestBehavior.translucent,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Container(
-                                                height: 30,
-                                                width: 30,
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                    color: categoryController
-                                                            .iconColor[
-                                                        categoryController
-                                                            .categories
-                                                            .firstWhere((element) =>
-                                                                element.id ==
-                                                                addTaskController
-                                                                    .dataTasks[
-                                                                        addTaskController
-                                                                            .taskTimes[index]]![
-                                                                        i]
-                                                                    .categoryId)
-                                                            .color]),
-                                                child: Icon(
-                                                  categoryController.icon[categoryController
-                                                      .categories
-                                                      .firstWhere((element) =>
-                                                          element.id ==
-                                                          addTaskController
-                                                              .dataTasks[
-                                                                  addTaskController
-                                                                          .taskTimes[
-                                                                      index]]![
-                                                                  i]
-                                                              .categoryId)
-                                                      .icon],
-                                                  size: 23,
-                                                  color: color.backgroundColor,
-                                                ),
-                                              ),
-                                              SW.medium(),
-                                              LabelText(
-                                                  text: addTaskController
-                                                      .dataTasks[
-                                                          addTaskController
-                                                                  .taskTimes[
-                                                              index]]![i]
-                                                      .taskName)
-                                            ],
-                                          ),
-                                          Row(
-                                            children: [
-                                              const Icon(Icons.done),
-                                              LabelText(
-                                                  text: addTaskController
-                                                      .checklists.length
-                                                      .toString())
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                            ],
-                          );
-                        }),
-                  ),
-                  Expanded(
-                    child: Obx(
-                      () => ListView.separated(
-                          physics: BouncingScrollPhysics(),
-                          itemCount: recurringTaskController.tasks.length,
-                          separatorBuilder: (context, index) => Column(
-                                children: [
-                                  SH.small(),
-                                  const Divider(),
-                                  SH.small(),
-                                ],
-                              ),
-                          itemBuilder: (context, index) {
-                            return Row(
-                              children: [
-                                Container(
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                      color: categoryController.iconColor[
-                                          categoryController.categories
-                                              .firstWhere((element) =>
-                                                  element.id ==
-                                                  recurringTaskController
-                                                      .tasks[index].categoryId)
-                                              .color]),
-                                  child: Icon(
-                                    categoryController.icon[categoryController
-                                        .categories
-                                        .firstWhere((element) =>
-                                            element.id ==
-                                            recurringTaskController
-                                                .tasks[index].categoryId)
-                                        .icon],
-                                    size: 23,
-                                    color: color.backgroundColor,
-                                  ),
-                                ),
-                                SW.medium(),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                              itemBuilder: (context, index) {
+                                return Row(
                                   children: [
-                                    LabelText(
-                                        text: recurringTaskController
-                                            .tasks[index].rTaskName),
-                                    SH.medium(),
                                     Container(
+                                      height: 30,
+                                      width: 30,
                                       decoration: BoxDecoration(
                                           borderRadius:
-                                              BorderRadius.circular(3),
-                                          color: color.primaryColor
-                                              .withOpacity(.2)),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 5, vertical: 2),
-                                        child: LabelText(
-                                          text: 'Habit',
-                                          isColor: true,
-                                          isBold: true,
-                                          color: color.primaryColor,
-                                        ),
+                                              BorderRadius.circular(8),
+                                          color: categoryController.iconColor[
+                                              categoryController.categories
+                                                  .firstWhere((element) =>
+                                                      element.id ==
+                                                      recurringTaskController
+                                                          .tasks[index]
+                                                          .categoryId)
+                                                  .color]),
+                                      child: Icon(
+                                        categoryController.icon[
+                                            categoryController.categories
+                                                .firstWhere((element) =>
+                                                    element.id ==
+                                                    recurringTaskController
+                                                        .tasks[index]
+                                                        .categoryId)
+                                                .icon],
+                                        size: 23,
+                                        color: color.backgroundColor,
                                       ),
                                     ),
+                                    SW.medium(),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        LabelText(
+                                            text: recurringTaskController
+                                                .tasks[index].rTaskName),
+                                        SH.medium(),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(3),
+                                              color: color.primaryColor
+                                                  .withOpacity(.2)),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 5, vertical: 2),
+                                            child: LabelText(
+                                              text: 'Habit',
+                                              isColor: true,
+                                              isBold: true,
+                                              color: color.primaryColor,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    )
                                   ],
-                                )
-                              ],
-                            );
-                          }),
+                                );
+                              }),
                     ),
                   ),
                 ],

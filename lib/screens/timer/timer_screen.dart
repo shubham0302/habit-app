@@ -16,7 +16,7 @@ class TimerTab extends StatefulWidget {
 }
 
 class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
-  late AnimationController animationController;
+  AnimationController? animationController;
   TimerTabController tabController =
       Get.put(TimerTabController(), permanent: false);
 
@@ -30,15 +30,16 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
   // }
 
   String get countText {
-    Duration count = animationController.duration! * animationController.value;
-    return animationController.isDismissed
-        ? '${animationController.duration!.inHours}:${(animationController.duration!.inMinutes % 60).toString().padLeft(2, '0')}:${(animationController.duration!.inSeconds % 60).toString().padLeft(2, '0')}'
+    Duration count =
+        animationController!.duration! * animationController!.value;
+    return animationController!.isDismissed
+        ? '${animationController!.duration!.inHours}:${(animationController!.duration!.inMinutes % 60).toString().padLeft(2, '0')}:${(animationController!.duration!.inSeconds % 60).toString().padLeft(2, '0')}'
         : '${count.inHours}:${(count.inMinutes % 60).toString().padLeft(2, '0')}:${(count.inSeconds % 60).toString().padLeft(2, '0')}';
   }
 
   @override
   void dispose() {
-    animationController.dispose();
+    animationController!.dispose();
     super.dispose();
   }
 
@@ -65,11 +66,11 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
     super.initState();
     animationController = AnimationController(
         vsync: this, duration: Duration(seconds: tabController.totalSeconds));
-    animationController.addListener(() {
+    animationController!.addListener(() {
       notifiy();
-      if (animationController.isAnimating) {
+      if (animationController!.isAnimating) {
         setState(() {
-          progress = animationController.value;
+          progress = animationController!.value;
         });
       } else {
         setState(() {
@@ -87,7 +88,7 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
       () => tabController.isFirst.value
           ? SetTimerComponent(
               changeAnimation: () {
-                animationController.duration =
+                animationController!.duration =
                     Duration(seconds: tabController.totalSeconds);
                 tabController.changeFirst();
               },
@@ -117,19 +118,19 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
                             )),
                         GestureDetector(
                           onTap: () {
-                            if (animationController.isDismissed) {
+                            if (animationController!.isDismissed) {
                               showModalBottomSheet(
                                   context: context,
                                   builder: (context) => Container(
                                         height: 300,
                                         child: CupertinoTimerPicker(
                                           initialTimerDuration:
-                                              animationController.duration!,
+                                              animationController!.duration!,
                                           backgroundColor:
                                               color.backgroundColor,
                                           onTimerDurationChanged: (time) {
                                             setState(() {
-                                              animationController.duration =
+                                              animationController!.duration =
                                                   time;
                                             });
                                           },
@@ -138,7 +139,7 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
                             }
                           },
                           child: AnimatedBuilder(
-                            animation: animationController,
+                            animation: animationController!,
                             builder: (context, child) => Text(
                               countText,
                               style: TextStyle(
@@ -158,16 +159,16 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
                     GestureDetector(
                       onTap: () {
                         print(tabController.totalSeconds);
-                        if (animationController.isAnimating) {
-                          animationController.stop();
+                        if (animationController!.isAnimating) {
+                          animationController!.stop();
                           setState(() {
                             isPlaying = false;
                           });
                         } else {
-                          animationController.reverse(
-                              from: animationController.value == 0
+                          animationController!.reverse(
+                              from: animationController!.value == 0
                                   ? 1.0
-                                  : animationController.value);
+                                  : animationController!.value);
                           setState(() {
                             isPlaying = true;
                           });
@@ -184,12 +185,14 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
                             child: LabelText(
                           text: isPlaying == true ? "PAUSE" : "RESUME",
                           isBold: true,
+                          isColor: true,
+                          color: Colors.white,
                         )),
                       ),
                     ),
                     GestureDetector(
                       onTap: () {
-                        animationController.reset();
+                        animationController!.reset();
                         tabController.currentvalueHour.value = 0;
                         tabController.currentvalueMin.value = 0;
                         tabController.currentvalueSec.value = 0;
@@ -208,6 +211,8 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
                         child: const Center(
                             child: LabelText(
                           text: "DELETE",
+                          isColor: true,
+                          color: Colors.white,
                           isBold: true,
                         )),
                       ),

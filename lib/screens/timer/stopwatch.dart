@@ -167,8 +167,8 @@ class _StopWatchState extends State<StopWatch>
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: Container(
-                    width: 280,
-                    height: 280,
+                    width: 240,
+                    height: 240,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: color.backgroundColor,
@@ -187,39 +187,9 @@ class _StopWatchState extends State<StopWatch>
                 ),
               ),
         SH.large(),
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-        //   children: const [
-        //     LabelText(
-        //       text: "LAPS",
-        //       isBold: true,
-        //     ),
-        //     LabelText(
-        //       text: "TIME",
-        //       isBold: true,
-        //     ),
-        //   ],
-        // ),
-        SH.large(),
-        // Container(
-        //   // color: Colors.green,
-        //   height: MediaQuery.of(context).size.height / 3.6,
-        //   width: MediaQuery.of(context).size.width,
-        //   child: ListView.separated(
-        //     separatorBuilder: (context, index) => Divider(),
-        //     itemCount: laps.length,
-        //     itemBuilder: (context, index) {
-        //       return Row(
-        //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //         children: [
-        //           MainLabelText(text: "${index + 1}"),
-        //           SW.medium(),
-        //           MainLabelText(text: "${laps[index]}")
-        //         ],
-        //       );
-        //     },
-        //   ),
-        // ),
+
+        // SH.large(),
+
         SH.large(),
         startStopwatch.value == true
             ? Row(
@@ -245,7 +215,9 @@ class _StopWatchState extends State<StopWatch>
                           child: LabelText(
                         text: !started ? "START" : "PAUSE",
                         isBold: true,
-                        isWhite: false,
+                        // isWhite: false,s
+                        isColor: true,
+                        color: Colors.white,
                         // isWhite: true,
                       )),
                     ),
@@ -277,6 +249,8 @@ class _StopWatchState extends State<StopWatch>
                       child: const Center(
                           child: LabelText(
                         text: "RESET",
+                        isColor: true,
+                        color: Colors.white,
                         isBold: true,
                       )),
                     ),
@@ -302,7 +276,9 @@ class _StopWatchState extends State<StopWatch>
                       child: LabelText(
                     text: !started ? "START" : "PAUSE",
                     isBold: true,
-                    isWhite: false,
+                    // isWhite: false,
+                    isColor: true,
+                    color: Colors.white,
                     // isWhite: true,
                   )),
                 ),

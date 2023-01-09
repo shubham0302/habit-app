@@ -41,7 +41,8 @@ void ContactCustomDialogBox(BuildContext context) {
                           Get.back();
                           ContactSupportCustomDialogBox(context);
                         },
-                        child: const LabelText(text: "CONTACT SUPPORT")),
+                        child: const LabelText(
+                            text: "CONTACT SUPPORT", isBold: true)),
                     SH.medium(),
                     const Divider(),
                     SH.medium(),
@@ -50,7 +51,8 @@ void ContactCustomDialogBox(BuildContext context) {
                           Get.back();
                           SuggestionSupportCustomDialogBox(context);
                         },
-                        child: const LabelText(text: "SEND SUGGESTIONS")),
+                        child: const LabelText(
+                            text: "SEND SUGGESTIONS", isBold: true)),
                     SH.medium(),
                     const Divider(),
                     SH.medium(),
@@ -59,7 +61,8 @@ void ContactCustomDialogBox(BuildContext context) {
                           Get.back();
                           ReportSupportCustomDialogBox(context);
                         },
-                        child: const LabelText(text: "REPORT A BUG")),
+                        child: const LabelText(
+                            text: "REPORT A BUG", isBold: true)),
                     SH.medium(),
                     const Divider(),
                     SH.medium(),
@@ -68,8 +71,10 @@ void ContactCustomDialogBox(BuildContext context) {
                           Get.back();
                           ReminderSupportCustomDialogBox(context);
                         },
-                        child:
-                            const LabelText(text: "REMINDER ARE NOT WORKING")),
+                        child: const LabelText(
+                          text: "REMINDER ARE NOT WORKING",
+                          isBold: true,
+                        )),
                     SH.medium(),
                     const Divider(),
                     SH.medium(),
@@ -78,10 +83,9 @@ void ContactCustomDialogBox(BuildContext context) {
                         Get.back();
                       },
                       child: const LabelText(
-                        text: "CLOSE",
-                        isColor: true,
-                        // color: color.primaryColor,
-                      ),
+                          text: "CLOSE", isColor: true, isBold: true
+                          // color: color.primaryColor,
+                          ),
                     ),
                     SH.medium(),
                   ]),

@@ -7,6 +7,7 @@ import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
+import 'package:intl/intl.dart';
 
 void NameRecurringCustomDialogBox(BuildContext context) {
   ThemeData color = Theme.of(context);
@@ -40,7 +41,7 @@ void NameRecurringCustomDialogBox(BuildContext context) {
                         controller: addRecurringTaskController.nameCtrl,
                         isWhiteHintText: true,
                         onChange: (p0) {
-                          addRecurringTaskController.updateName.value = p0;
+                          addRecurringTaskController.updateName.value = toBeginningOfSentenceCase(p0).toString();
                         },
                       ),
                       SH.large(),

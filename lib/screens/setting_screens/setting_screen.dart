@@ -20,28 +20,23 @@ class SettingScreen extends StatelessWidget {
         child: Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                        behavior: HitTestBehavior.translucent,
-                        onTap: (() {
-                          Get.back();
-                        }),
-                        child: Container(
-                          height: 30,
-                          width: 30,
-                          child: Icon(
-                            Icons.arrow_back_ios_new_rounded,
-                            color: color.primaryColor,
-                          ),
-                        )),
-                    SW.medium(),
-                    const MainLabelText(text: 'Setting'),
-                  ],
-                ),
+                GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onTap: (() {
+                      Get.back();
+                    }),
+                    child: Container(
+                      height: 30,
+                      width: 30,
+                      child: Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        color: color.primaryColor,
+                      ),
+                    )),
+                SW.medium(),
+                const MainLabelText(text: 'Setting'),
               ],
             ),
             SH.large(),

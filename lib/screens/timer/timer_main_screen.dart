@@ -173,111 +173,113 @@ class _TimerMainScreenState extends State<TimerMainScreen>
         Get.put(TimerTabController(), permanent: false);
 
     ThemeData color = Theme.of(context);
-    return Scaffold(
-        // // floatingActionButton: FloatingActionButton(
-        // //   onPressed: () {
-        // //     CustomDialogBox(context);
-        // //   },
-        //   backgroundColor: color.primaryColor,
-        //   child: const Icon(Icons.add),
-        // ),
-        backgroundColor: color.backgroundColor,
-        body: SafeArea(
-          child: GlobalPadding(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              // SH.med(),
-              Obx(() {
-                // tabController.tabIndex.value = _controller.index;
-                return Container(
-                  height: 55,
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(
-                      10.0,
-                    ),
+    return
+        // Scaffold(
+        //     // // floatingActionButton: FloatingActionButton(
+        //     // //   onPressed: () {
+        //     // //     CustomDialogBox(context);
+        //     // //   },
+        //     //   backgroundColor: color.primaryColor,
+        //     //   child: const Icon(Icons.add),
+        //     // ),
+        //     backgroundColor: color.backgroundColor,
+        //     body:
+        SafeArea(
+      child: GlobalPadding(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          // SH.med(),
+          Obx(() {
+            // tabController.tabIndex.value = _controller.index;
+            return Container(
+              height: 55,
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(
+                  10.0,
+                ),
+              ),
+              child: TabBar(
+                onTap: (index) {},
+                overlayColor: MaterialStateProperty.all(Colors.transparent),
+                controller: _controller,
+                splashFactory: NoSplash.splashFactory,
+                indicatorColor: Colors.transparent,
+                indicator: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    10.0,
                   ),
-                  child: TabBar(
-                    onTap: (index) {},
-                    overlayColor: MaterialStateProperty.all(Colors.transparent),
-                    controller: _controller,
-                    splashFactory: NoSplash.splashFactory,
-                    indicatorColor: Colors.transparent,
-                    indicator: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        10.0,
-                      ),
-                      color: Colors.transparent,
-                    ),
+                  color: Colors.transparent,
+                ),
 
-                    labelColor: color.cardColor,
-                    unselectedLabelColor: color.disabledColor,
-                    // indicatorSize: TabBarIndicatorSize.label,
-                    tabs: [
-                      Column(
-                        children: [
-                          const Tab(
-                            text: 'Stopwatch',
-                          ),
-                          Container(
-                            height: 2,
-                            // width: ,
-                            color: tabController.tabIndex.value == 0
-                                ? color.primaryColor
-                                : Colors.transparent,
-                          )
-                        ],
+                labelColor: color.cardColor,
+                unselectedLabelColor: color.disabledColor,
+                // indicatorSize: TabBarIndicatorSize.label,
+                tabs: [
+                  Column(
+                    children: [
+                      const Tab(
+                        text: 'Stopwatch',
                       ),
-                      // SizedBox(width: 5,),
-                      Column(
-                        children: [
-                          const Tab(
-                            text: 'Timer',
-                          ),
-                          Container(
-                            height: 2,
-                            // width: ,
-                            color: tabController.tabIndex.value == 1
-                                ? color.primaryColor
-                                : Colors.transparent,
-                          )
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          const Tab(
-                            text: 'Intervals',
-                          ),
-                          Container(
-                            height: 2,
-                            // width: ,
-                            color: tabController.tabIndex.value == 2
-                                ? color.primaryColor
-                                : Colors.transparent,
-                          )
-                        ],
-                      ),
+                      Container(
+                        height: 2,
+                        // width: ,
+                        color: tabController.tabIndex.value == 0
+                            ? color.primaryColor
+                            : Colors.transparent,
+                      )
                     ],
                   ),
-                );
-              }),
-
-              SH.large(),
-              Expanded(
-                  child: TabBarView(
-                controller: _controller,
-                children: const [
-                  StopWatch(),
-                  // index 1
-                  TimerTab(),
-
-                  // index 2
-                  IntervalTimeScreen()
-                  // : const IntervalTimerStartScreen(),
+                  // SizedBox(width: 5,),
+                  Column(
+                    children: [
+                      const Tab(
+                        text: 'Timer',
+                      ),
+                      Container(
+                        height: 2,
+                        // width: ,
+                        color: tabController.tabIndex.value == 1
+                            ? color.primaryColor
+                            : Colors.transparent,
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      const Tab(
+                        text: 'Intervals',
+                      ),
+                      Container(
+                        height: 2,
+                        // width: ,
+                        color: tabController.tabIndex.value == 2
+                            ? color.primaryColor
+                            : Colors.transparent,
+                      )
+                    ],
+                  ),
                 ],
-              ))
-            ]),
-          ),
-        ));
+              ),
+            );
+          }),
+
+          SH.large(),
+          Expanded(
+              child: TabBarView(
+            controller: _controller,
+            children: const [
+              StopWatch(),
+              // index 1
+              TimerTab(),
+
+              // index 2
+              IntervalTimeScreen()
+              // : const IntervalTimerStartScreen(),
+            ],
+          ))
+        ]),
+      ),
+    );
+    // );
   }
 }

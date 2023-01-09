@@ -170,117 +170,65 @@ class _HabbitTabbarState extends State<HabbitTabbar>
             child: TabBarView(
           controller: _controller,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     GestureDetector(
-                //         behavior: HitTestBehavior.translucent,
-                //         onTap: (() {
-                //           Get.back();
-                //         }),
-                //         child: Row(
-                //           children: [
-                //             Icon(
-                //               Icons.arrow_back_ios_new_rounded,
-                //               color: color.primaryColor,
-                //             ),
-                //             SW.small(),
-                //             DescriptionText(
-                //                 text: months[
-                //                         current_mon == 1 ? 11 : current_mon - 2]
-                //                     .toString()
-                //                     .toUpperCase())
-                //           ],
-                //         )),
-                //     Column(
-                //       children: [
-                //         LabelText(
-                //           text:
-                //               months[current_mon - 1].toString().toUpperCase(),
-                //           isBold: true,
-                //         ),
-                //         SH.small(),
-                //         DescriptionText(text: DateTime.now().year.toString())
-                //       ],
-                //     ),
-                //     GestureDetector(
-                //         behavior: HitTestBehavior.translucent,
-                //         onTap: (() {
-                //           Get.back();
-                //         }),
-                //         child: Row(
-                //           children: [
-                //             DescriptionText(
-                //                 text: months[
-                //                         current_mon == 12 ? 0 : current_mon + 1]
-                //                     .toString()
-                //                     .toUpperCase()),
-                //             SW.small(),
-                //             Icon(
-                //               Icons.arrow_forward_ios_rounded,
-                //               color: color.primaryColor,
-                //             ),
-                //           ],
-                //         ))
-                //   ],
-                // ),
-                // SH.small(),
-                TableCalendar(
-                  calendarStyle: CalendarStyle(
-                      weekendTextStyle: TextStyle(color: color.cardColor),
-                      outsideTextStyle: TextStyle(
-                        color: color.disabledColor,
-                      )),
-                  daysOfWeekStyle: DaysOfWeekStyle(
-                    weekdayStyle: TextStyle(color: color.cardColor),
-                    weekendStyle: TextStyle(color: color.cardColor),
-                  ),
-// calendarStyle: CalendarStyle(),
-                  calendarBuilders: CalendarBuilders(
-                    markerBuilder: (context, day, events) {
-                      return;
-                    },
-                  ),
-                  daysOfWeekHeight: 55,
-                  headerStyle: const HeaderStyle(
-                    formatButtonVisible: false,
-                    titleCentered: true,
-                    // titleTextFormatter: (date, locale) => Column(children: [],),
-                  ),
+            SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TableCalendar(
+                    calendarStyle: CalendarStyle(
+                        weekendTextStyle: TextStyle(color: color.cardColor),
+                        outsideTextStyle: TextStyle(
+                          color: color.disabledColor,
+                        )),
+                    daysOfWeekStyle: DaysOfWeekStyle(
+                      weekdayStyle: TextStyle(color: color.cardColor),
+                      weekendStyle: TextStyle(color: color.cardColor),
+                    ),
+                    // calendarStyle: CalendarStyle(),
+                    calendarBuilders: CalendarBuilders(
+                      markerBuilder: (context, day, events) {
+                        return;
+                      },
+                    ),
+                    daysOfWeekHeight: 55,
+                    headerStyle: const HeaderStyle(
+                      formatButtonVisible: false,
+                      titleCentered: true,
+                      // titleTextFormatter: (date, locale) => Column(children: [],),
+                    ),
 
-                  headerVisible: true,
-                  firstDay: DateTime.utc(2010, 10, 16),
-                  lastDay: DateTime.utc(2030, 3, 14),
-                  focusedDay: DateTime.now(),
-                ),
-                const Divider(
-                  thickness: 1,
-                ),
-                SH.large(),
-                Center(
-                  child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2),
-                        color: color.disabledColor.withOpacity(.3)),
-                    child: const DescriptionText(
-                      text: 'Notes',
+                    headerVisible: true,
+                    firstDay: DateTime.utc(2010, 10, 16),
+                    lastDay: DateTime.utc(2030, 3, 14),
+                    focusedDay: DateTime.now(),
+                  ),
+                  const Divider(
+                    thickness: 1,
+                  ),
+                  SH.large(),
+                  Center(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 2),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(2),
+                          color: color.disabledColor.withOpacity(.3)),
+                      child: const DescriptionText(
+                        text: 'Notes',
+                      ),
                     ),
                   ),
-                ),
-                SH.medium(),
-                const LabelText(
-                    text:
-                        'This is to notif thhat tasks are important for you asjdnn dksfn'),
-                const Divider(),
-                const LabelText(
-                    text:
-                        'This is to notif thhat tasks are important for you asjdnn dksfn')
-              ],
+                  SH.medium(),
+                  const LabelText(
+                      text:
+                          'This is to notif thhat tasks are important for you asjdnn dksfn'),
+                  const Divider(),
+                  const LabelText(
+                      text:
+                          'This is to notif thhat tasks are important for you asjdnn dksfn')
+                ],
+              ),
             ),
             // index2
             const Statistics(),

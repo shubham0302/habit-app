@@ -76,7 +76,7 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                           Column(
                             children: [
                               NumberPicker(
-                                // itemCount: 12, 
+                                // itemCount: 12,
                                 infiniteLoop: true,
                                 value:
                                     intervalTabController.currentvalueMin.value,
@@ -181,6 +181,7 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                                   intervalTabController.breakSwitch.value);
                               Get.back();
                             },
+                            behavior: HitTestBehavior.translucent,
                             child: LabelText(
                               text: 'OK',
                               isBold: true,

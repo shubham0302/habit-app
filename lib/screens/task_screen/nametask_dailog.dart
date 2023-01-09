@@ -7,6 +7,7 @@ import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
+import 'package:intl/intl.dart';
 
 void NameTaskCustomDialogBox(BuildContext context) {
   ThemeData color = Theme.of(context);
@@ -40,7 +41,8 @@ void NameTaskCustomDialogBox(BuildContext context) {
                         isWhiteHintText: true,
                         onChange: (p0) {
                           // addHabbitSelectController.updateName.value = p0;
-                          addTaskController.taskName.value = p0;
+                          addTaskController.taskName.value =
+                              toBeginningOfSentenceCase(p0).toString();
                         },
                       ),
                       SH.large(),

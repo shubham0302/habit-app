@@ -13,26 +13,26 @@ class CustomizeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SH.large(),
-            SH.large(),
-            const HeaderCustomize(),
-            const Divider(),
-            const BrightnessCustomize(),
-            const Divider(),
-            const PrimumBrighnessCustomize(),
-            const Divider(),
-            const CategoryIconStyle(),
-            const Divider(),
-            const FreeColor(),
-            const Divider(),
-            const PremiumColor(),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: const [
+              HeaderCustomize(),
+              Divider(),
+              BrightnessCustomize(),
+              Divider(),
+              PrimumBrighnessCustomize(),
+              Divider(),
+              CategoryIconStyle(),
+              Divider(),
+              FreeColor(),
+              Divider(),
+              PremiumColor(),
 
-            // SH.medium(),
-          ],
+              // SH.medium(),
+            ],
+          ),
         ),
       ),
     );
