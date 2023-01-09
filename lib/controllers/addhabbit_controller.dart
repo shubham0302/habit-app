@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, unused_local_variable
 
 import 'dart:developer';
 
@@ -91,7 +91,7 @@ class AddHabbitSelectController extends GetxController {
 
       await addCheckLists(data);
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -113,7 +113,7 @@ class AddHabbitSelectController extends GetxController {
       // getTask(editIndexTemp)
       Get.back();
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -144,7 +144,7 @@ class AddHabbitSelectController extends GetxController {
 
       await addHabbit(data, repetition);
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -169,7 +169,7 @@ class AddHabbitSelectController extends GetxController {
 
       await addReminder(data);
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -184,7 +184,7 @@ class AddHabbitSelectController extends GetxController {
         log("tasks ${tasks.length.toString()}");
       });
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -200,7 +200,7 @@ class AddHabbitSelectController extends GetxController {
         log(repetitionsData.length.toString());
       });
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -214,7 +214,7 @@ class AddHabbitSelectController extends GetxController {
         log(checklists.length.toString());
       });
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 }

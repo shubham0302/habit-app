@@ -3,8 +3,6 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/db_controller.dart';
-import 'package:habbit_app/controllers/lockpin_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/language/localString.dart';
 import 'package:habbit_app/screens/categories/categories.dart';
@@ -26,7 +24,6 @@ import 'package:habbit_app/screens/habbit/habbit_detailScreen.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/add_new_habbits.dart';
 import 'package:habbit_app/screens/habbit/habbits_screen.dart';
 import 'package:habbit_app/screens/intro_screen.dart';
-import 'package:habbit_app/screens/splash_screen.dart';
 import 'package:habbit_app/theme/theme_data.dart';
 import 'screens/backup_screen.dart';
 import 'screens/main_screen.dart';
@@ -141,7 +138,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     ThemeController themeController =
         Get.put(ThemeController(), permanent: true);
-    DBController dbController = Get.put(DBController(), permanent: true);
 // Timer(Duration(seconds: 3), () => Get.to(() => SplashScreen()));
     return Obx(
       () => GetMaterialApp(

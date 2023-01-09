@@ -1,6 +1,5 @@
 import 'package:drift/drift.dart';
 import 'package:habbit_app/infrastructure/model/habbit_model.dart';
-import 'package:habbit_app/infrastructure/model/recurring_task_model.dart';
 
 class HabbitChecklistModel extends Table {
   IntColumn get id => integer().autoIncrement()();

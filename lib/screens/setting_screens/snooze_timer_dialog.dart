@@ -1,18 +1,12 @@
 // ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_unnecessary_containers
 
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/interval_controller.dart';
 import 'package:habbit_app/controllers/time_controller.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:numberpicker/numberpicker.dart';
-import 'package:path/path.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 void snoozeTimeDialog(BuildContext context) {
   ThemeData color = Theme.of(context);
@@ -42,7 +36,7 @@ void snoozeTimeDialog(BuildContext context) {
                         color: color.disabledColor,
                       )),
                       SH.medium(),
-                      Divider(),
+                      const Divider(),
                       SH.medium(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -70,13 +64,13 @@ void snoozeTimeDialog(BuildContext context) {
                                     notifyTimeController.setMinuteData();
                                   }),
                               SH.medium(),
-                              DescriptionText(text: 'Minutes')
+                              const DescriptionText(text: 'Minutes')
                             ],
                           ),
                         ],
                       ),
                       SH.large(),
-                      Divider(),
+                      const Divider(),
                       SH.large(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,7 +80,7 @@ void snoozeTimeDialog(BuildContext context) {
                               Get.back();
                             },
                             behavior: HitTestBehavior.translucent,
-                            child: LabelText(
+                            child: const LabelText(
                               text: 'CLOSE',
                               isBold: true,
                             ),
@@ -96,7 +90,7 @@ void snoozeTimeDialog(BuildContext context) {
                               Get.back();
                             },
                             behavior: HitTestBehavior.translucent,
-                            child: LabelText(
+                            child: const LabelText(
                               text: 'OK',
                               isBold: true,
                               isColor: true,

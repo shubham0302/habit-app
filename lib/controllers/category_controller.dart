@@ -62,11 +62,11 @@ class CategoryController extends GetxController {
     // Icons.abc
   ];
   List<Color> iconColor = [
-    Color(0xffFFCACB),
-    Color(0xff9BEAAE),
-    Color(0xffE03F6C),
+    const Color(0xffFFCACB),
+    const Color(0xff9BEAAE),
+    const Color(0xffE03F6C),
     Colors.yellow,
-    Color(0xffB186FD),
+    const Color(0xffB186FD),
   ];
 
   var category = ''.obs;

@@ -16,10 +16,9 @@ import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import '../controllers/home_page_controller.dart';
 import '../widgets/text_widget/main_label_text.dart';
-import 'package:vibration/vibration.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -28,7 +27,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     // AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
     //   showDialog(
@@ -125,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                       )
                     : Expanded(
                         child: SingleChildScrollView(
-                          physics: BouncingScrollPhysics(
+                          physics: const BouncingScrollPhysics(
                               parent: AlwaysScrollableScrollPhysics()),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/timer_tab_controller.dart';
 import 'package:habbit_app/helpers/local_storage_helper.dart';
-
-import '../helpers/local_storage_helper.dart';
 
 class NotifyTimeController extends GetxController {
   RxBool dailyProgram = true.obs;
@@ -37,8 +34,7 @@ class NotifyTimeController extends GetxController {
           //     child: child ?? Container());
         });
     if (timeTemp != null) {
-      appTime.value =
-          timeTemp.hour.toString() + ':' + timeTemp.minute.toString();
+      appTime.value = '${timeTemp.hour}:${timeTemp.minute}';
       setAppTimeData();
     }
   }
@@ -70,8 +66,7 @@ class NotifyTimeController extends GetxController {
           //     child: child ?? Container());
         });
     if (timeTemp != null) {
-      dailyTime.value =
-          timeTemp.hour.toString() + ':' + timeTemp.minute.toString();
+      dailyTime.value = '${timeTemp.hour}:${timeTemp.minute}';
       setDailyTimeData();
     }
   }
@@ -155,7 +150,6 @@ class NotifyTimeController extends GetxController {
   @override
   void onInit() {
     getFromLoacal();
-    // TODO: implement onInit
     super.onInit();
   }
 }

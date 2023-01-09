@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers, sized_box_for_whitespace, avoid_print
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
@@ -172,7 +174,7 @@ class _IntervalTimerStartScreenState extends State<IntervalTimerStartScreen>
                   decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(30)),
                       color: color.primaryColor),
-                  child: Center(child: LabelText(text: "Start")),
+                  child: const Center(child: LabelText(text: "Start")),
                 ),
               ),
               GestureDetector(

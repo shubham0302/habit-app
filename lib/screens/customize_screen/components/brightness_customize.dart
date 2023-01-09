@@ -76,8 +76,8 @@ class BrightnessCustomize extends StatelessWidget {
                               child: Column(
                                 children: [
                                   Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: const BorderRadius.only(
+                                    decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(10),
                                             topRight: Radius.circular(10),
                                             bottomLeft: Radius.circular(10),
@@ -164,8 +164,8 @@ class BrightnessCustomize extends StatelessWidget {
                                   ),
                                   SH.medium(),
                                   Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: const BorderRadius.only(
+                                    decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(10),
                                             topRight: Radius.circular(10),
                                             bottomLeft: Radius.circular(10),
@@ -268,8 +268,8 @@ class BrightnessCustomize extends StatelessWidget {
                             width: 150,
                             // height: 130,
                             // color: Colors.red,
-                            decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
+                            decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(15),
                                     topRight: Radius.circular(15),
                                     bottomLeft: Radius.circular(10),
@@ -279,8 +279,8 @@ class BrightnessCustomize extends StatelessWidget {
                               child: Column(
                                 children: [
                                   Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: const BorderRadius.only(
+                                    decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(10),
                                             topRight: Radius.circular(10),
                                             bottomLeft: Radius.circular(10),
@@ -367,8 +367,8 @@ class BrightnessCustomize extends StatelessWidget {
                                   ),
                                   SH.medium(),
                                   Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: const BorderRadius.only(
+                                    decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(10),
                                             topRight: Radius.circular(10),
                                             bottomLeft: Radius.circular(10),

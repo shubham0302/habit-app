@@ -1,7 +1,5 @@
 // ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_unnecessary_containers
 
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
@@ -10,8 +8,6 @@ import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:numberpicker/numberpicker.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 void SelectInterTimeCustomDialogBox(BuildContext context) {
   ThemeData color = Theme.of(context);
@@ -42,7 +38,7 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                         color: color.disabledColor,
                       )),
                       SH.medium(),
-                      Divider(),
+                      const Divider(),
                       SH.medium(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -70,7 +66,7 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                                         .currentvalueHour.value = value),
                               ),
                               SH.medium(),
-                              DescriptionText(text: 'Hours')
+                              const DescriptionText(text: 'Hours')
                             ],
                           ),
                           Column(
@@ -96,7 +92,7 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                                         .currentvalueMin.value = value),
                               ),
                               SH.medium(),
-                              DescriptionText(text: 'Minutes')
+                              const DescriptionText(text: 'Minutes')
                             ],
                           ),
                           Column(
@@ -122,7 +118,7 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                                         .currentvalueSec.value = value),
                               ),
                               SH.medium(),
-                              DescriptionText(text: 'Secounds')
+                              const DescriptionText(text: 'Secounds')
                             ],
                           ),
                         ],
@@ -131,7 +127,7 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          LabelText(
+                          const LabelText(
                             text: 'Break',
                           ),
                           Obx(
@@ -163,12 +159,12 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                         ],
                       ),
                       SH.large(),
-                      Divider(),
+                      const Divider(),
                       SH.large(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          LabelText(
+                          const LabelText(
                             text: 'CLOSE',
                             isBold: true,
                           ),
@@ -182,7 +178,7 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                               Get.back();
                             },
                             behavior: HitTestBehavior.translucent,
-                            child: LabelText(
+                            child: const LabelText(
                               text: 'OK',
                               isBold: true,
                               isColor: true,

@@ -1,7 +1,4 @@
 import 'package:drift/drift.dart';
-import 'package:habbit_app/infrastructure/model/task_reminder_model.dart';
-
-import 'category_model.dart';
 
 class RecurringRepetitionModel extends Table {
   IntColumn get id => integer().autoIncrement()();

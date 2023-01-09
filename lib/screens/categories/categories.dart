@@ -9,8 +9,6 @@ import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 
-import '../../widgets/text_widget/label_text.dart';
-
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
 
@@ -31,7 +29,7 @@ class CategoriesScreen extends StatelessWidget {
             height: 120,
             child: Obx(
               () => ListView.separated(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 separatorBuilder: (context, index) => SW.medium(),
                 scrollDirection: Axis.horizontal,
                 itemCount: categoryController.categories
@@ -120,7 +118,7 @@ class CategoriesScreen extends StatelessWidget {
           //   ],
           // ),
           SH.medium(),
-          Divider(),
+          const Divider(),
           SH.medium(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, unused_local_variable
 
 import 'dart:developer';
 
@@ -7,7 +7,6 @@ import 'package:drift/drift.dart' as drift;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/db_controller.dart';
-import 'package:intl/date_time_patterns.dart';
 
 import '../infrastructure/db/app_service.dart';
 
@@ -73,7 +72,7 @@ class AddRecurringTaskController extends GetxController {
 
   // weekDay
   var categoryId = 0.obs;
-  addTask(int reminder , int repetition) async {
+  addTask(int reminder, int repetition) async {
     try {
       var entity = RecurringTaskModelCompanion(
         repetitonId: drift.Value(repetition),
@@ -92,7 +91,7 @@ class AddRecurringTaskController extends GetxController {
 
       await addCheckLists(data);
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -114,7 +113,7 @@ class AddRecurringTaskController extends GetxController {
       // getTask(editIndexTemp)
       Get.back();
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -143,9 +142,9 @@ class AddRecurringTaskController extends GetxController {
       customAlarm.value = true;
       customDays.value = [];
 
-      await addTask(data,repetition );
+      await addTask(data, repetition);
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -159,18 +158,18 @@ class AddRecurringTaskController extends GetxController {
       var entity = RecurringRepetitionModelCompanion(
         daysMonth: drift.Value(monthIndex.join(',')),
         daysWeek: drift.Value(weekIndex.join(',')),
-        repeat: drift.Value('${repeatTime.value},${repeatPeriod.value},${flexible.value}'),
+        repeat: drift.Value(
+            '${repeatTime.value},${repeatPeriod.value},${flexible.value}'),
         specificDay: drift.Value(singleDate.value),
-        timePeriod: drift.Value('${times.value},${timeWeek.value}' ),
+        timePeriod: drift.Value('${times.value},${timeWeek.value}'),
         type: drift.Value(updateRepetation.value),
       );
 
       var data = await dbController.appDB.insertRecurringRepetition(entity);
 
-
       await addReminder(data);
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -185,7 +184,7 @@ class AddRecurringTaskController extends GetxController {
         log(tasks.length.toString());
       });
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -199,7 +198,7 @@ class AddRecurringTaskController extends GetxController {
         log(checklists.length.toString());
       });
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 }

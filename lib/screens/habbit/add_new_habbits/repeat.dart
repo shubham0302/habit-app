@@ -1,15 +1,12 @@
-// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace
+// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
-import 'package:habbit_app/controllers/recurring_controller.dart';
-import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
-import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 void repeatBoxHabbit(BuildContext context) {
   ThemeData color = Theme.of(context);
@@ -38,7 +35,7 @@ void repeatBoxHabbit(BuildContext context) {
                               int.parse(e);
                         },
                       ))),
-                  LabelText(text: '  times per  '),
+                  const LabelText(text: '  times per  '),
                   DropdownButton(
                       items: const [
                         DropdownMenuItem(

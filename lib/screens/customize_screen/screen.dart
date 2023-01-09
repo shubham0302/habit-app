@@ -5,7 +5,6 @@ import 'package:habbit_app/screens/customize_screen/components/free_color_custom
 import 'package:habbit_app/screens/customize_screen/components/header_customize.dart';
 import 'package:habbit_app/screens/customize_screen/components/premium_brightness_customize.dart';
 import 'package:habbit_app/screens/customize_screen/components/premium_color_customize.dart';
-import 'package:habbit_app/widgets/sized_box.dart';
 
 class CustomizeScreen extends StatelessWidget {
   const CustomizeScreen({Key? key}) : super(key: key);

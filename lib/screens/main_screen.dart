@@ -416,12 +416,12 @@ class MainScreen extends StatelessWidget {
                 Expanded(
                   child: IndexedStack(
                     index: controller.tabIndex.value,
-                    children: [
+                    children: const [
                       HomePage(),
-                      const TaskScreen(),
-                      const CategoriesScreen(),
-                      const HabbitsScreen(),
-                      const TimerMainScreen(),
+                      TaskScreen(),
+                      CategoriesScreen(),
+                      HabbitsScreen(),
+                      TimerMainScreen(),
                     ],
                   ),
                 ),

@@ -1,20 +1,16 @@
-// ignore_for_file: depend_on_referenced_packages, sized_box_for_whitespace, avoid_print
+// ignore_for_file: depend_on_referenced_packages, sized_box_for_whitespace, avoid_print, unused_local_variable, no_leading_underscores_for_local_identifiers, prefer_is_empty
 
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/interval_controller.dart';
-import 'package:habbit_app/controllers/timer_tab_controller.dart';
 import 'package:habbit_app/screens/timer/select_interval_dailbox.dart';
-import 'package:habbit_app/screens/timer/set_interval_component.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:habbit_app/widgets/custom_snackbar.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
-import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 class IntervalTimeScreen extends StatefulWidget {
   const IntervalTimeScreen({super.key});

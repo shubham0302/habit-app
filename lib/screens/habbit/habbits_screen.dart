@@ -5,13 +5,11 @@ import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/timer_tab_controller.dart';
 import 'package:habbit_app/screens/habbit/datechip.dart';
-import 'package:habbit_app/screens/habbit/habbit_detailScreen.dart';
 
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 
 class HabbitsScreen extends StatelessWidget {
   const HabbitsScreen({super.key});
@@ -288,7 +286,7 @@ class HabbitsScreen extends StatelessWidget {
                                                             DateTime.now()
                                                                 .month,
                                                             DateTime.now()
-                                                                .add(Duration(
+                                                                .add(const Duration(
                                                                     days: -6))
                                                                 .day
                                                             // DateTime.now()
@@ -299,7 +297,7 @@ class HabbitsScreen extends StatelessWidget {
                                                         .toString()
                                                         .substring(0, 3),
                                                     date: (DateTime.now()
-                                                            .add(Duration(
+                                                            .add(const Duration(
                                                                 days: -6))
                                                             .day)
                                                         .toString(),
@@ -314,7 +312,7 @@ class HabbitsScreen extends StatelessWidget {
                                                             DateTime.now()
                                                                 .month,
                                                             DateTime.now()
-                                                                .add(Duration(
+                                                                .add(const Duration(
                                                                     days: -5))
                                                                 .day
                                                             // DateTime.now()
@@ -325,7 +323,7 @@ class HabbitsScreen extends StatelessWidget {
                                                         .toString()
                                                         .substring(0, 3),
                                                     date: (DateTime.now()
-                                                            .add(Duration(
+                                                            .add(const Duration(
                                                                 days: -5))
                                                             .day)
                                                         .toString(),
@@ -340,7 +338,7 @@ class HabbitsScreen extends StatelessWidget {
                                                             DateTime.now()
                                                                 .month,
                                                             DateTime.now()
-                                                                .add(Duration(
+                                                                .add(const Duration(
                                                                     days: -4))
                                                                 .day
                                                             // DateTime.now()
@@ -351,7 +349,7 @@ class HabbitsScreen extends StatelessWidget {
                                                         .toString()
                                                         .substring(0, 3),
                                                     date: (DateTime.now()
-                                                            .add(Duration(
+                                                            .add(const Duration(
                                                                 days: -4))
                                                             .day)
                                                         .toString(),
@@ -366,7 +364,7 @@ class HabbitsScreen extends StatelessWidget {
                                                             DateTime.now()
                                                                 .month,
                                                             DateTime.now()
-                                                                .add(Duration(
+                                                                .add(const Duration(
                                                                     days: -3))
                                                                 .day
                                                             // DateTime.now()
@@ -377,7 +375,7 @@ class HabbitsScreen extends StatelessWidget {
                                                         .toString()
                                                         .substring(0, 3),
                                                     date: (DateTime.now()
-                                                            .add(Duration(
+                                                            .add(const Duration(
                                                                 days: -3))
                                                             .day)
                                                         .toString(),
@@ -390,7 +388,7 @@ class HabbitsScreen extends StatelessWidget {
                                                             DateTime.now()
                                                                 .month,
                                                             DateTime.now()
-                                                                .add(Duration(
+                                                                .add(const Duration(
                                                                     days: -2))
                                                                 .day
                                                             // DateTime.now()
@@ -401,7 +399,7 @@ class HabbitsScreen extends StatelessWidget {
                                                         .toString()
                                                         .substring(0, 3),
                                                     date: (DateTime.now()
-                                                            .add(Duration(
+                                                            .add(const Duration(
                                                                 days: -2))
                                                             .day)
                                                         .toString(),
@@ -414,7 +412,7 @@ class HabbitsScreen extends StatelessWidget {
                                                             DateTime.now()
                                                                 .month,
                                                             DateTime.now()
-                                                                .add(Duration(
+                                                                .add(const Duration(
                                                                     days: -1))
                                                                 .day
                                                             // DateTime.now()
@@ -425,7 +423,7 @@ class HabbitsScreen extends StatelessWidget {
                                                         .toString()
                                                         .substring(0, 3),
                                                     date: (DateTime.now()
-                                                            .add(Duration(
+                                                            .add(const Duration(
                                                                 days: -1))
                                                             .day)
                                                         .toString(),
@@ -456,7 +454,7 @@ class HabbitsScreen extends StatelessWidget {
                                                   // SW.small(),
                                                 ],
                                               )
-                                            : SizedBox(),
+                                            : const SizedBox(),
                                       )
                                     : Row(
                                         children: [
@@ -466,7 +464,7 @@ class HabbitsScreen extends StatelessWidget {
                                                     DateTime.now().year,
                                                     DateTime.now().month,
                                                     DateTime.now()
-                                                        .add(Duration(days: -6))
+                                                        .add(const Duration(days: -6))
                                                         .day
                                                     // DateTime.now()
                                                     //     .add(Duration(days: index))
@@ -476,7 +474,7 @@ class HabbitsScreen extends StatelessWidget {
                                                 .toString()
                                                 .substring(0, 3),
                                             date: (DateTime.now()
-                                                    .add(Duration(days: -6))
+                                                    .add(const Duration(days: -6))
                                                     .day)
                                                 .toString(),
                                             isColor: true,
@@ -489,7 +487,7 @@ class HabbitsScreen extends StatelessWidget {
                                                     DateTime.now().year,
                                                     DateTime.now().month,
                                                     DateTime.now()
-                                                        .add(Duration(days: -5))
+                                                        .add(const Duration(days: -5))
                                                         .day
                                                     // DateTime.now()
                                                     //     .add(Duration(days: index))
@@ -499,7 +497,7 @@ class HabbitsScreen extends StatelessWidget {
                                                 .toString()
                                                 .substring(0, 3),
                                             date: (DateTime.now()
-                                                    .add(Duration(days: -5))
+                                                    .add(const Duration(days: -5))
                                                     .day)
                                                 .toString(),
                                             isColor: true,
@@ -512,7 +510,7 @@ class HabbitsScreen extends StatelessWidget {
                                                     DateTime.now().year,
                                                     DateTime.now().month,
                                                     DateTime.now()
-                                                        .add(Duration(days: -4))
+                                                        .add(const Duration(days: -4))
                                                         .day
                                                     // DateTime.now()
                                                     //     .add(Duration(days: index))
@@ -522,7 +520,7 @@ class HabbitsScreen extends StatelessWidget {
                                                 .toString()
                                                 .substring(0, 3),
                                             date: (DateTime.now()
-                                                    .add(Duration(days: -4))
+                                                    .add(const Duration(days: -4))
                                                     .day)
                                                 .toString(),
                                             isColor: true,
@@ -535,7 +533,7 @@ class HabbitsScreen extends StatelessWidget {
                                                     DateTime.now().year,
                                                     DateTime.now().month,
                                                     DateTime.now()
-                                                        .add(Duration(days: -3))
+                                                        .add(const Duration(days: -3))
                                                         .day
                                                     // DateTime.now()
                                                     //     .add(Duration(days: index))
@@ -545,7 +543,7 @@ class HabbitsScreen extends StatelessWidget {
                                                 .toString()
                                                 .substring(0, 3),
                                             date: (DateTime.now()
-                                                    .add(Duration(days: -3))
+                                                    .add(const Duration(days: -3))
                                                     .day)
                                                 .toString(),
                                           ),
@@ -556,7 +554,7 @@ class HabbitsScreen extends StatelessWidget {
                                                     DateTime.now().year,
                                                     DateTime.now().month,
                                                     DateTime.now()
-                                                        .add(Duration(days: -2))
+                                                        .add(const Duration(days: -2))
                                                         .day
                                                     // DateTime.now()
                                                     //     .add(Duration(days: index))
@@ -566,7 +564,7 @@ class HabbitsScreen extends StatelessWidget {
                                                 .toString()
                                                 .substring(0, 3),
                                             date: (DateTime.now()
-                                                    .add(Duration(days: -2))
+                                                    .add(const Duration(days: -2))
                                                     .day)
                                                 .toString(),
                                           ),
@@ -577,7 +575,7 @@ class HabbitsScreen extends StatelessWidget {
                                                     DateTime.now().year,
                                                     DateTime.now().month,
                                                     DateTime.now()
-                                                        .add(Duration(days: -1))
+                                                        .add(const Duration(days: -1))
                                                         .day
                                                     // DateTime.now()
                                                     //     .add(Duration(days: index))
@@ -587,7 +585,7 @@ class HabbitsScreen extends StatelessWidget {
                                                 .toString()
                                                 .substring(0, 3),
                                             date: (DateTime.now()
-                                                    .add(Duration(days: -1))
+                                                    .add(const Duration(days: -1))
                                                     .day)
                                                 .toString(),
                                             isColor: true,
@@ -772,7 +770,7 @@ class HabbitsScreen extends StatelessWidget {
                                                           ),
                                                         ],
                                                       )
-                                                : SizedBox()),
+                                                : const SizedBox()),
                                           ),
                                         ),
                                         SW.medium(),

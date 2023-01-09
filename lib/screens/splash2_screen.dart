@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 import '../controllers/lockpin_controller.dart';

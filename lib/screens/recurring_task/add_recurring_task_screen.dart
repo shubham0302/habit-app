@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages
+// ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages, unrelated_type_equality_checks
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -522,7 +522,6 @@ class AddRecurringTaskScreen extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {
                     addRecurringTaskController.addRepetition();
-
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 10),
@@ -530,7 +529,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10)),
                         border: Border.all(width: 2, color: color.primaryColor),
-                        color: color.backgroundColor), 
+                        color: color.backgroundColor),
                     child: const Center(
                       child: MainLabelText(
                         text: "Add Recurring Task",
@@ -545,6 +544,5 @@ class AddRecurringTaskScreen extends StatelessWidget {
         ),
       )),
     );
- 
   }
 }
