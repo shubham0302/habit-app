@@ -44,96 +44,95 @@ class MainScreen extends StatelessWidget {
           color: color.backgroundColor,
         ),
         padding: const EdgeInsets.only(bottom: 3, left: 20, right: 20, top: 20),
-        child: Wrap(
-          children: [
-            Column(
-              // mainAxisSize: MainAxisSize.max,
-              children: [
-                TableCalendar(
-                  currentDay: DateTime.now(),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            // mainAxisSize: MainAxisSize.max,
+            children: [
+              TableCalendar(
+                currentDay: DateTime.now(),
 
-                  calendarStyle: CalendarStyle(
-                      weekendDecoration: BoxDecoration(
-                          color: color.primaryColor.withOpacity(.1),
-                          shape: BoxShape.circle),
-                      defaultDecoration: BoxDecoration(
-                          color: color.primaryColor.withOpacity(.1),
-                          shape: BoxShape.circle),
-                      todayDecoration: BoxDecoration(
-                          color: color.primaryColor, shape: BoxShape.circle),
-                      selectedDecoration:
-                          BoxDecoration(color: color.primaryColor),
-                      weekendTextStyle: TextStyle(color: color.primaryColor),
-                      outsideTextStyle: TextStyle(
-                        color: color.disabledColor,
-                      )),
-                  daysOfWeekStyle: DaysOfWeekStyle(
-                    weekdayStyle: TextStyle(color: color.primaryColor),
-                    weekendStyle: TextStyle(color: color.primaryColor),
-                  ),
-                  // calendarStyle: CalendarStyle(),
-                  calendarBuilders: CalendarBuilders(
-                    markerBuilder: (context, day, events) {
-                      return;
-                    },
-                  ),
-                  daysOfWeekHeight: 55,
-                  headerStyle: HeaderStyle(
-                    leftChevronIcon: Icon(
-                      Icons.arrow_back_ios,
-                      color: color.primaryColor,
-                    ),
-                    rightChevronIcon: Icon(
-                      Icons.arrow_forward_ios,
-                      color: color.primaryColor,
-                    ),
-                    formatButtonVisible: false,
-                    titleCentered: true,
-                  ),
-
-                  headerVisible: true,
-                  firstDay: DateTime.utc(2010, 10, 16),
-                  lastDay: DateTime.utc(2030, 3, 14),
-                  focusedDay: DateTime.now(),
+                calendarStyle: CalendarStyle(
+                    weekendDecoration: BoxDecoration(
+                        color: color.primaryColor.withOpacity(.1),
+                        shape: BoxShape.circle),
+                    defaultDecoration: BoxDecoration(
+                        color: color.primaryColor.withOpacity(.1),
+                        shape: BoxShape.circle),
+                    todayDecoration: BoxDecoration(
+                        color: color.primaryColor, shape: BoxShape.circle),
+                    selectedDecoration:
+                        BoxDecoration(color: color.primaryColor),
+                    weekendTextStyle: TextStyle(color: color.primaryColor),
+                    outsideTextStyle: TextStyle(
+                      color: color.disabledColor,
+                    )),
+                daysOfWeekStyle: DaysOfWeekStyle(
+                  weekdayStyle: TextStyle(color: color.primaryColor),
+                  weekendStyle: TextStyle(color: color.primaryColor),
                 ),
-                SH.large(),
-                Row(
-                  children: [
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () {
-                          Get.back();
-                        },
-                        behavior: HitTestBehavior.translucent,
-                        child: Container(
-                          alignment: Alignment.center,
-                          child: const LabelText(
-                            text: 'CLOSE',
-                            isBold: true,
-                          ),
+                // calendarStyle: CalendarStyle(),
+                calendarBuilders: CalendarBuilders(
+                  markerBuilder: (context, day, events) {
+                    return;
+                  },
+                ),
+                daysOfWeekHeight: 55,
+                headerStyle: HeaderStyle(
+                  leftChevronIcon: Icon(
+                    Icons.arrow_back_ios,
+                    color: color.primaryColor,
+                  ),
+                  rightChevronIcon: Icon(
+                    Icons.arrow_forward_ios,
+                    color: color.primaryColor,
+                  ),
+                  formatButtonVisible: false,
+                  titleCentered: true,
+                ),
+
+                headerVisible: true,
+                firstDay: DateTime.utc(2010, 10, 16),
+                lastDay: DateTime.utc(2030, 3, 14),
+                focusedDay: DateTime.now(),
+              ),
+              SH.large(),
+              Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.back();
+                      },
+                      behavior: HitTestBehavior.translucent,
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: const LabelText(
+                          text: 'CLOSE',
+                          isBold: true,
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () {},
-                        behavior: HitTestBehavior.translucent,
-                        child: Container(
-                          alignment: Alignment.center,
-                          child: const LabelText(
-                            text: 'TODAY',
-                            isBold: true,
-                          ),
+                  ),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {},
+                      behavior: HitTestBehavior.translucent,
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: const LabelText(
+                          text: 'TODAY',
+                          isBold: true,
                         ),
                       ),
                     ),
-                  ],
-                ),
-                SH.large(),
-                SH.large(),
-              ],
-            ),
-          ],
+                  ),
+                ],
+              ),
+              SH.large(),
+              SH.large(),
+            ],
+          ),
         ),
       ));
     }
