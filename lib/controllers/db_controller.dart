@@ -1,10 +1,23 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../infrastructure/db/app_service.dart';
 import 'package:drift/drift.dart' as drift;
 
 class DBController extends GetxController {
   AppDB appDB = AppDB();
+  // Future<String> getFilePath() async {
+  //   Directory appDocumentsDirectory =
+  //       await getApplicationDocumentsDirectory(); // 1
+  //   String appDocumentsPath = appDocumentsDirectory.path; // 2
+  //   String filePath = '$appDocumentsPath/my_database.db'; // 3
+
+  //   return filePath;
+  // }
+
+  
 
   List<Map<String, dynamic>> defaultString = [
     {"id": 1, "name": "Quit a habbit", "icon": 0, "color": 0},

@@ -63,28 +63,30 @@ class BackUpScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                  height: 120,
-                  width: 120,
-                  decoration: BoxDecoration(
-                      color: color.disabledColor.withOpacity(.3),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(20))),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.backup,
-                        size: 50,
-                        color: color.primaryColor,
-                      ),
-                      // SH.small(),
-                      const LabelText(
-                        text: "Upload\nBackup",
-                        isBold: true,
-                      )
-                    ],
+                GestureDetector(onTap:(){},
+                  child: Container(
+                    height: 120,
+                    width: 120,
+                    decoration: BoxDecoration(
+                        color: color.disabledColor.withOpacity(.3),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(20))),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.backup,
+                          size: 50,
+                          color: color.primaryColor,
+                        ),
+                        // SH.small(),
+                        const LabelText(
+                          text: "Upload\nBackup",
+                          isBold: true,
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Container(

@@ -57,6 +57,9 @@ dependencies:
   intl:
   awesome_notifications: ^0.7.4+1
   flutter_slidable: ^2.0.0
+  permission_handler: ^10.2.0
+  flutter_downloader: ^1.10.1
+  # flowder: ^0.2.0
   vibration: ^1.7.6
 
   # The following adds the Cupertino Icons font to your application.
@@ -96,6 +99,8 @@ flutter:
   assets:
     - assets/images/
     - assets/lottie/
+    - assets/my_database.db
+
 
   # assets:
   #   - images/a_dot_burr.jpeg

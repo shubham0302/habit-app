@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:drift/drift.dart';
 import 'package:habbit_app/infrastructure/db/db_config.dart';
 import 'package:habbit_app/infrastructure/model/category_model.dart';
@@ -5,6 +8,7 @@ import 'package:habbit_app/infrastructure/model/habbit_model.dart';
 import 'package:habbit_app/infrastructure/model/recurring_checklist_model.dart';
 import 'package:habbit_app/infrastructure/model/task_model.dart';
 import 'package:habbit_app/infrastructure/model/task_reminder_model.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../model/checklist_model.dart';
 import '../model/habbit_checklist_model.dart';
@@ -36,6 +40,28 @@ class AppDB extends _$AppDB {
         await m.createAll();
       },
     );
+  }
+
+  Future<void> exportInto(String file) async {
+    Directory root =
+        await getTemporaryDirectory(); // this is using path_provider
+    String directoryPath = root.path + file;
+    await Directory(directoryPath).parent.create(recursive: true);
+    // Make sure the directory of the target file exists
+    // await file.parent.create(recursive: true);
+
+    // Override an existing backup, sqlite expects the target file to be empty
+    if (Directory(directoryPath).existsSync()) {
+      Directory(directoryPath).deleteSync();
+    }
+
+    await customStatement('VACUUM INTO ?', [Directory(directoryPath).path]);
+   
+ 
+      // 2
+  
+
+    log("sdfsdf sdfsdf${Directory(directoryPath).path}");
   }
 
   Future<List<CategoryModelData>> getCategories() async {
