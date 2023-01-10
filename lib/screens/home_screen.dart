@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
+import 'package:habbit_app/controllers/db_controller.dart';
 import 'package:habbit_app/controllers/recurring_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
@@ -76,6 +77,8 @@ class _HomePageState extends State<HomePage> {
         Get.put(AddHabbitSelectController(), permanent: false);
     CategoryController categoryController =
         Get.put(CategoryController(), permanent: false);
+    DBController dbController = Get.put(DBController(), permanent: false);
+
     ThemeController themeController = Get.find<ThemeController>();
 
     ThemeData color = Theme.of(context);
