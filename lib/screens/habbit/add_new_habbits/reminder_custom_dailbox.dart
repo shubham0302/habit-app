@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
-import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
@@ -14,7 +13,7 @@ void ReminderCustomDialogBox(BuildContext context) {
   // TimeOfDay _timeOfDay = TimeOfDay(hour: 12, minute: 30);
   AddHabbitSelectController addHabbitSelectController =
       Get.put(AddHabbitSelectController(), permanent: false);
- void _showTimePicker() {
+  void _showTimePicker() {
     ThemeData color = Theme.of(context);
     showTimePicker(
       context: context,
@@ -755,6 +754,4 @@ void ReminderCustomDialogBox(BuildContext context) {
               )),
         );
       });
-
-
 }

@@ -1,17 +1,14 @@
-// ignore_for_file: sized_box_for_whitespace
+// ignore_for_file: sized_box_for_whitespace, curly_braces_in_flow_control_structures, prefer_const_constructors
 
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/title_text.dart';
 
 import '../../controllers/timer_tab_controller.dart';
-import '../../widgets/text_widget/main_label_text.dart';
 
 class StopWatch extends StatefulWidget {
   const StopWatch({super.key});
@@ -28,7 +25,6 @@ class _StopWatchState extends State<StopWatch>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _animationController =
         AnimationController(vsync: this, duration: Duration(seconds: 2));

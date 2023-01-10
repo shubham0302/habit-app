@@ -171,7 +171,7 @@ class _HabbitTabbarState extends State<HabbitTabbar>
           controller: _controller,
           children: [
             SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

@@ -12,7 +12,6 @@ import 'package:habbit_app/screens/setting_screens/to_do_week_custombox.dart';
 import 'package:habbit_app/screens/setting_screens/todo_sorting_dialog.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../widgets/text_widget/main_label_text.dart';
 
@@ -28,7 +27,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
@@ -86,7 +85,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                                   const BorderRadius.all(Radius.circular(10)),
                               color: color.backgroundColor),
                           child: Padding(
-                            padding: EdgeInsets.only(left: 10),
+                            padding: const EdgeInsets.only(left: 10),
                             child: Obx(
                               () => LabelText(
                                 text: switchController.dayOfWeek.value,
@@ -130,7 +129,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                                 const BorderRadius.all(Radius.circular(10)),
                             color: color.backgroundColor),
                         child: Padding(
-                          padding: EdgeInsets.only(left: 5),
+                          padding: const EdgeInsets.only(left: 5),
                           child: Obx(
                             () => LabelText(
                               text: switchController.activitySorting.value,
@@ -172,7 +171,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                                 const BorderRadius.all(Radius.circular(10)),
                             color: color.backgroundColor),
                         child: Padding(
-                          padding: EdgeInsets.only(left: 10),
+                          padding: const EdgeInsets.only(left: 10),
                           child: Obx(
                             () => LabelText(
                               text: switchController.todoSorting.value,
@@ -214,7 +213,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                                 const BorderRadius.all(Radius.circular(10)),
                             color: color.backgroundColor),
                         child: Padding(
-                          padding: EdgeInsets.only(left: 10),
+                          padding: const EdgeInsets.only(left: 10),
                           child: Obx(
                             () => LabelText(
                               text: switchController.habbitSorting.value,
@@ -255,7 +254,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                                 const BorderRadius.all(Radius.circular(10)),
                             color: color.backgroundColor),
                         child: Padding(
-                          padding: EdgeInsets.only(left: 10),
+                          padding: const EdgeInsets.only(left: 10),
                           child: Obx(
                             () => LabelText(
                               text: switchController.textSizing.value,

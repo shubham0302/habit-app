@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages
+// ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages, unrelated_type_equality_checks
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

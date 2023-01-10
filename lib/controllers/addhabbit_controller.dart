@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, unused_local_variable
 
 import 'dart:developer';
 
@@ -6,10 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:drift/drift.dart' as drift;
 import 'package:habbit_app/controllers/db_controller.dart';
+import 'package:habbit_app/controllers/theme_controller.dart';
+import 'package:habbit_app/helpers/local_storage_helper.dart';
+import 'package:path/path.dart';
 
 import '../infrastructure/db/app_service.dart';
 
 class AddHabbitSelectController extends GetxController {
+  // AddHabbitSelectController habbitSelectController =
+  //     Get.put(AddHabbitSelectController(), permanent: true);
   DBController dbController = Get.find<DBController>();
   TextEditingController nameCtrl = TextEditingController();
 
@@ -91,7 +96,7 @@ class AddHabbitSelectController extends GetxController {
 
       await addCheckLists(data);
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -113,7 +118,7 @@ class AddHabbitSelectController extends GetxController {
       // getTask(editIndexTemp)
       Get.back();
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -144,7 +149,7 @@ class AddHabbitSelectController extends GetxController {
 
       await addHabbit(data, repetition);
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -169,7 +174,7 @@ class AddHabbitSelectController extends GetxController {
 
       await addReminder(data);
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -184,7 +189,7 @@ class AddHabbitSelectController extends GetxController {
         log("tasks ${tasks.length.toString()}");
       });
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -200,7 +205,7 @@ class AddHabbitSelectController extends GetxController {
         log(repetitionsData.length.toString());
       });
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
     }
   }
 
@@ -214,7 +219,33 @@ class AddHabbitSelectController extends GetxController {
         log(checklists.length.toString());
       });
     } catch (e) {
-      log('hahaha error ${e}');
+      log('hahaha error $e');
+    }
+  }
+
+  RxString colorChange = 'red'.obs;
+
+  var selectColor = Colors.red;
+
+  colorChange1() {
+    if (colorChange.value == 'yellow') {
+      selectColor = Colors.yellow;
+    } else if (colorChange.value == 'green') {
+      selectColor = Colors.green;
+    } else if (colorChange.value == 'red') {
+      selectColor = Colors.red;
+    } else {}
+  }
+
+  colorChangeTap() {
+    if (colorChange.value == 'red') {
+      colorChange.value = 'yellow';
+    } else if (colorChange.value == 'yellow') {
+      colorChange.value = 'green';
+    } else if (colorChange.value == 'green') {
+      colorChange.value = 'red';
+    } else {
+      print('tap error');
     }
   }
 }

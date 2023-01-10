@@ -3,10 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
-import 'package:habbit_app/controllers/recurring_controller.dart';
-import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
@@ -44,25 +41,25 @@ void DayOfMonthHabbit(BuildContext context) {
                           () => GestureDetector(
                               onTap: () {
                                 addRecurringTaskController.monthIndex
-                                        .contains(index+1)
+                                        .contains(index + 1)
                                     ? addRecurringTaskController.monthIndex
-                                        .remove(index+1)
+                                        .remove(index + 1)
                                     : addRecurringTaskController.monthIndex
-                                        .add(index+1);
+                                        .add(index + 1);
                                 // addHabbitSelectController.categoryId.value =
                                 //     categoryController.categories[index].id;
                               },
                               behavior: HitTestBehavior.translucent,
                               child: Container(
                                 // height: 70,
-                                padding: EdgeInsets.all(8),
+                                padding: const EdgeInsets.all(8),
                                 alignment: Alignment.center,
 
                                 decoration: BoxDecoration(
                                     // borderRadius: BorderRadius.circular(1),
                                     shape: BoxShape.circle,
                                     color: addRecurringTaskController.monthIndex
-                                            .contains(index+1)
+                                            .contains(index + 1)
                                         ? color.primaryColor
                                         : color.disabledColor),
                                 // color: color.primaryColor,

@@ -1,14 +1,11 @@
-// ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages, unnecessary_string_interpolations, unused_field, prefer_final_fields
+// ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages, unnecessary_string_interpolations, unused_field, prefer_final_fields, avoid_print
 
 import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/reminder_time_controller.dart';
-import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/time_controller.dart';
 import 'package:habbit_app/screens/setting_screens/snooze_timer_dialog.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
@@ -279,7 +276,7 @@ class _NotificationandAlarmScreenState
                                 const BorderRadius.all(Radius.circular(10)),
                             color: color.backgroundColor),
                         child: Padding(
-                          padding: EdgeInsets.only(left: 10),
+                          padding: const EdgeInsets.only(left: 10),
                           child: Obx(
                             () => LabelText(
                               text: notifyTimeController.minute.value == 0

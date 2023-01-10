@@ -1,8 +1,9 @@
-// ignore_for_file: sized_box_for_whitespace, unrelated_type_equality_checks, duplicate_ignore
+// ignore_for_file: sized_box_for_whitespace, unrelated_type_equality_checks, duplicate_ignore, unused_local_variable
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/app_labels/customize_screen.dart';
+import 'package:habbit_app/controllers/db_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
@@ -10,7 +11,6 @@ import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'dart:math' as math;
 
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
-import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
 import '../widgets/text_widget/main_label_text.dart';
 import '../widgets/theme_config.dart';
@@ -34,6 +34,7 @@ class IntroScreen extends StatelessWidget {
     ];
     Size size = MediaQuery.of(context).size;
     ThemeController themeController = Get.find<ThemeController>();
+    DBController dbController = Get.put(DBController(), permanent: true);
     PageCntrl pageCntrl = Get.put(PageCntrl());
     return Scaffold(
       body: Container(

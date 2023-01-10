@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/recurring_controller.dart';
-import 'package:habbit_app/screens/habbit/add_new_habbits/checklist_dailbox.dart';
 import 'package:habbit_app/screens/recurring_task/checklist_dailbox.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
@@ -105,5 +104,4 @@ void EvaluateRecurringDialogBox(BuildContext context) {
               ],
             ));
       });
-
 }

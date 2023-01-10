@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
-import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
 void CategoryCustomDialogBox(BuildContext context) {

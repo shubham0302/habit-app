@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, file_names
+// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, file_names, unrelated_type_equality_checks
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -365,8 +365,7 @@ void PriorityCustomDialogBox(BuildContext context) {
                       child: Expanded(
                         child: GestureDetector(
                           onTap: () {
-                            addRecurringTaskController.updatePriority.value =
-                                0;
+                            addRecurringTaskController.updatePriority.value = 0;
                             Get.back();
                           },
                           child: Container(
@@ -419,5 +418,4 @@ void PriorityCustomDialogBox(BuildContext context) {
           ),
         );
       });
-
 }
