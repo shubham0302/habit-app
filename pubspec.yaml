@@ -97,7 +97,6 @@ flutter:
   assets:
     - assets/images/
     - assets/lottie/
-    - assets/my_database.db
 
   # assets:
   #   - images/a_dot_burr.jpeg
