@@ -128,8 +128,8 @@ class _StopWatchState extends State<StopWatch>
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: Container(
-                    width: 280,
-                    height: 280,
+                    width: MediaQuery.of(context).size.height * .35,
+                    height: MediaQuery.of(context).size.height * .35,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: color.backgroundColor,
@@ -163,8 +163,8 @@ class _StopWatchState extends State<StopWatch>
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: Container(
-                    width: 240,
-                    height: 240,
+                    width: MediaQuery.of(context).size.height * .35,
+                    height: MediaQuery.of(context).size.height * .35,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: color.backgroundColor,

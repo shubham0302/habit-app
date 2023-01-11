@@ -1,5 +1,7 @@
 // ignore_for_file: unused_local_variable, sized_box_for_whitespace
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
@@ -15,6 +17,7 @@ import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
+import 'package:path_provider/path_provider.dart';
 import '../controllers/home_page_controller.dart';
 import '../widgets/text_widget/main_label_text.dart';
 
@@ -69,6 +72,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    DBController dbController = Get.put(DBController(), permanent: false);
     AddTaskController taskController =
         Get.put(AddTaskController(), permanent: false);
     AddRecurringTaskController recurringTaskController =
@@ -84,13 +88,11 @@ class _HomePageState extends State<HomePage> {
     ThemeData color = Theme.of(context);
     return Scaffold(
         floatingActionButton: FloatingActionButton(
-          onPressed: () async {
-            NotificationWeekAndTime? pickerSchedule =
-                await pickSchedule(context);
-
-            if (pickerSchedule != null) {
-              createReminderNotification(pickerSchedule);
-            }
+          onPressed: () {
+    //         
+            dbController.appDB
+                .exportInto('assets/my_database.db');
+                
           },
           backgroundColor: color.primaryColor,
           child: const Icon(Icons.add),
