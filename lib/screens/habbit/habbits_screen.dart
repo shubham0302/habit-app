@@ -881,14 +881,14 @@ class HabbitsScreen extends StatelessWidget {
                                                           children: [
                                                             Icon(
                                                               Icons
-                                                                  .keyboard_arrow_up_sharp,
+                                                                  .keyboard_arrow_down_sharp,
                                                               color: color
                                                                   .disabledColor,
                                                               size: 15,
                                                             ),
                                                             Icon(
                                                               Icons
-                                                                  .keyboard_arrow_down_sharp,
+                                                                  .keyboard_arrow_up_sharp,
                                                               color: color
                                                                   .disabledColor,
                                                               size: 15,
@@ -899,14 +899,14 @@ class HabbitsScreen extends StatelessWidget {
                                                           children: [
                                                             Icon(
                                                               Icons
-                                                                  .keyboard_arrow_down_sharp,
+                                                                  .keyboard_arrow_up_sharp,
                                                               color: color
                                                                   .disabledColor,
                                                               size: 15,
                                                             ),
                                                             Icon(
                                                               Icons
-                                                                  .keyboard_arrow_up_sharp,
+                                                                  .keyboard_arrow_down_sharp,
                                                               color: color
                                                                   .disabledColor,
                                                               size: 15,

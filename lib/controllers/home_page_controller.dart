@@ -6,6 +6,7 @@ class HomePageController extends GetxController {
   RxInt SelectedDateIndex = 0.obs;
 
   var tabIndex = 0.obs;
+  var selectedDay = DateTime.now();
 
   void changeTabIndex(int index) async {
     tabIndex.value = index;

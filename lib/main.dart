@@ -50,6 +50,13 @@ void main() {
         channelDescription: 'Notification for schedualed test',
         defaultColor: Colors.red,
         importance: NotificationImportance.High,
+        channelShowBadge: true),
+    NotificationChannel(
+        channelKey: 'scheduledRemind_channel',
+        channelName: 'scheduledRemind Notifications',
+        channelDescription: 'Notification for schedualed test',
+        defaultColor: Colors.red,
+        importance: NotificationImportance.High,
         channelShowBadge: true)
   ]);
   runApp(const MyApp());

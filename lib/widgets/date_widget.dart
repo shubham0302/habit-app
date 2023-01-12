@@ -18,7 +18,6 @@ class _DateListState extends State<DateList> {
   // var datenow = DateTime.now().day;
   final HomePageController controller =
       Get.put(HomePageController(), permanent: false);
-  var _selectedDay = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -107,9 +106,9 @@ class _DateListState extends State<DateList> {
       digitsColor: color.disabledColor,
       backgroundColor: color.backgroundColor,
 
-      selectedDay: _selectedDay, // DateTime
+      selectedDay: controller.selectedDay, // DateTime
       changeDay: (value) => setState(() {
-        _selectedDay = value;
+        controller.selectedDay = value;
       }),
     );
   }
