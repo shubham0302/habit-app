@@ -81,7 +81,6 @@ class _HomePageState extends State<HomePage> {
         Get.put(AddHabbitSelectController(), permanent: false);
     CategoryController categoryController =
         Get.put(CategoryController(), permanent: false);
-    DBController dbController = Get.put(DBController(), permanent: false);
 
     ThemeController themeController = Get.find<ThemeController>();
 
@@ -89,10 +88,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-    //         
-            dbController.appDB
-                .exportInto('assets/my_database.db');
-                
+            //
+            dbController.appDB.exportInto('assets/my_database.db');
           },
           backgroundColor: color.primaryColor,
           child: const Icon(Icons.add),
@@ -112,169 +109,174 @@ class _HomePageState extends State<HomePage> {
                 taskController.tasks.isEmpty &&
                         recurringTaskController.tasks.isEmpty &&
                         habbitSelectController.tasks.isEmpty
-                    ? Column(
-                        children: [
-                          SH.large(),
-                          SH.large(),
-                          SH.large(),
-                          SH.large(),
-                          const Center(
-                              child: MainLabelText(text: 'No upcoming plans')),
-                          SH.medium(),
-                          const Center(
-                              child: DescriptionText(
-                                  text: 'Add your upcoming plans')),
-                        ],
+                    ? Obx(
+                        () => Column(
+                          children: [
+                            SH.large(),
+                            SH.large(),
+                            SH.large(),
+                            SH.large(),
+                            const Center(
+                                child:
+                                    MainLabelText(text: 'No upcoming plans')),
+                            SH.medium(),
+                            const Center(
+                                child: DescriptionText(
+                                    text: 'Add your upcoming plans')),
+                          ],
+                        ),
                       )
-                    : Expanded(
-                        child: SingleChildScrollView(
-                          physics: const BouncingScrollPhysics(
-                              parent: AlwaysScrollableScrollPhysics()),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              taskController.tasks.isEmpty
-                                  ? Container()
-                                  : SH.large(),
-                              taskController.tasks.isEmpty
-                                  ? Container()
-                                  : LabelText(
-                                      text: 'All tasks',
-                                      isBold: true,
-                                      isColor: true,
-                                      color: color.primaryColor,
-                                    ),
-                              taskController.tasks.isEmpty
-                                  ? Container()
-                                  : SH.medium(),
-                              taskController.tasks.isEmpty
-                                  ? Container()
-                                  : ListView.separated(
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      shrinkWrap: true,
-                                      itemCount: taskController.tasks.length,
-                                      separatorBuilder: (context, index) =>
-                                          SH.medium(),
-                                      itemBuilder: (context, index) {
-                                        return HomeCard(
-                                            icon: categoryController.icon[
-                                                categoryController.categories
-                                                    .firstWhere((element) =>
-                                                        element.id ==
-                                                        taskController
-                                                            .tasks[index]
-                                                            .categoryId)
-                                                    .icon],
-                                            cardColor: categoryController
-                                                    .iconColor[
-                                                categoryController.categories
-                                                    .firstWhere((element) =>
-                                                        element.id ==
-                                                        taskController
-                                                            .tasks[index]
-                                                            .categoryId)
-                                                    .color],
-                                            name: taskController
-                                                .tasks[index].taskName);
-                                      },
-                                    ),
-                              habbitSelectController.tasks.isEmpty
-                                  ? Container()
-                                  : SH.large(),
-                              habbitSelectController.tasks.isEmpty
-                                  ? Container()
-                                  : LabelText(
-                                      text: 'All habits',
-                                      isBold: true,
-                                      isColor: true,
-                                      color: color.primaryColor,
-                                    ),
-                              habbitSelectController.tasks.isEmpty
-                                  ? Container()
-                                  : SH.medium(),
-                              habbitSelectController.tasks.isEmpty
-                                  ? Container()
-                                  : ListView.separated(
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      shrinkWrap: true,
-                                      itemCount:
-                                          habbitSelectController.tasks.length,
-                                      separatorBuilder: (context, index) =>
-                                          SH.medium(),
-                                      itemBuilder: (context, index) {
-                                        return HomeCard(
-                                            icon: categoryController.icon[
-                                                categoryController.categories
-                                                    .firstWhere((element) =>
-                                                        element.id ==
-                                                        habbitSelectController
-                                                            .tasks[index]
-                                                            .categoryId)
-                                                    .icon],
-                                            cardColor: categoryController
-                                                    .iconColor[
-                                                categoryController.categories
-                                                    .firstWhere((element) =>
-                                                        element.id ==
-                                                        habbitSelectController
-                                                            .tasks[index]
-                                                            .categoryId)
-                                                    .color],
-                                            name: habbitSelectController
-                                                .tasks[index].habitName);
-                                      },
-                                    ),
-                              recurringTaskController.tasks.isEmpty
-                                  ? Container()
-                                  : SH.large(),
-                              recurringTaskController.tasks.isEmpty
-                                  ? Container()
-                                  : LabelText(
-                                      text: 'All recurring tasks',
-                                      isBold: true,
-                                      isColor: true,
-                                      color: color.primaryColor,
-                                    ),
-                              recurringTaskController.tasks.isEmpty
-                                  ? Container()
-                                  : SH.medium(),
-                              recurringTaskController.tasks.isEmpty
-                                  ? Container()
-                                  : ListView.separated(
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      shrinkWrap: true,
-                                      itemCount:
-                                          recurringTaskController.tasks.length,
-                                      separatorBuilder: (context, index) =>
-                                          SH.medium(),
-                                      itemBuilder: (context, index) {
-                                        return HomeCard(
-                                            icon: categoryController.icon[
-                                                categoryController.categories
-                                                    .firstWhere((element) =>
-                                                        element.id ==
-                                                        recurringTaskController
-                                                            .tasks[index]
-                                                            .categoryId)
-                                                    .icon],
-                                            cardColor: categoryController
-                                                    .iconColor[
-                                                categoryController.categories
-                                                    .firstWhere((element) =>
-                                                        element.id ==
-                                                        recurringTaskController
-                                                            .tasks[index]
-                                                            .categoryId)
-                                                    .color],
-                                            name: recurringTaskController
-                                                .tasks[index].rTaskName);
-                                      },
-                                    ),
-                            ],
+                    : Obx(
+                        () => Expanded(
+                          child: SingleChildScrollView(
+                            physics: const BouncingScrollPhysics(
+                                parent: AlwaysScrollableScrollPhysics()),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                taskController.tasks.isEmpty
+                                    ? Container()
+                                    : SH.large(),
+                                taskController.tasks.isEmpty
+                                    ? Container()
+                                    : LabelText(
+                                        text: 'All tasks',
+                                        isBold: true,
+                                        isColor: true,
+                                        color: color.primaryColor,
+                                      ),
+                                taskController.tasks.isEmpty
+                                    ? Container()
+                                    : SH.medium(),
+                                taskController.tasks.isEmpty
+                                    ? Container()
+                                    : ListView.separated(
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        shrinkWrap: true,
+                                        itemCount: taskController.tasks.length,
+                                        separatorBuilder: (context, index) =>
+                                            SH.medium(),
+                                        itemBuilder: (context, index) {
+                                          return HomeCard(
+                                              icon: categoryController.icon[
+                                                  categoryController.categories
+                                                      .firstWhere((element) =>
+                                                          element.id ==
+                                                          taskController
+                                                              .tasks[index]
+                                                              .categoryId)
+                                                      .icon],
+                                              cardColor: categoryController
+                                                      .iconColor[
+                                                  categoryController.categories
+                                                      .firstWhere((element) =>
+                                                          element.id ==
+                                                          taskController
+                                                              .tasks[index]
+                                                              .categoryId)
+                                                      .color],
+                                              name: taskController
+                                                  .tasks[index].taskName);
+                                        },
+                                      ),
+                                habbitSelectController.tasks.isEmpty
+                                    ? Container()
+                                    : SH.large(),
+                                habbitSelectController.tasks.isEmpty
+                                    ? Container()
+                                    : LabelText(
+                                        text: 'All habits',
+                                        isBold: true,
+                                        isColor: true,
+                                        color: color.primaryColor,
+                                      ),
+                                habbitSelectController.tasks.isEmpty
+                                    ? Container()
+                                    : SH.medium(),
+                                habbitSelectController.tasks.isEmpty
+                                    ? Container()
+                                    : ListView.separated(
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        shrinkWrap: true,
+                                        itemCount:
+                                            habbitSelectController.tasks.length,
+                                        separatorBuilder: (context, index) =>
+                                            SH.medium(),
+                                        itemBuilder: (context, index) {
+                                          return HomeCard(
+                                              icon: categoryController.icon[
+                                                  categoryController.categories
+                                                      .firstWhere((element) =>
+                                                          element.id ==
+                                                          habbitSelectController
+                                                              .tasks[index]
+                                                              .categoryId)
+                                                      .icon],
+                                              cardColor: categoryController
+                                                      .iconColor[
+                                                  categoryController.categories
+                                                      .firstWhere((element) =>
+                                                          element.id ==
+                                                          habbitSelectController
+                                                              .tasks[index]
+                                                              .categoryId)
+                                                      .color],
+                                              name: habbitSelectController
+                                                  .tasks[index].habitName);
+                                        },
+                                      ),
+                                recurringTaskController.tasks.isEmpty
+                                    ? Container()
+                                    : SH.large(),
+                                recurringTaskController.tasks.isEmpty
+                                    ? Container()
+                                    : LabelText(
+                                        text: 'All recurring tasks',
+                                        isBold: true,
+                                        isColor: true,
+                                        color: color.primaryColor,
+                                      ),
+                                recurringTaskController.tasks.isEmpty
+                                    ? Container()
+                                    : SH.medium(),
+                                recurringTaskController.tasks.isEmpty
+                                    ? Container()
+                                    : ListView.separated(
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        shrinkWrap: true,
+                                        itemCount: recurringTaskController
+                                            .tasks.length,
+                                        separatorBuilder: (context, index) =>
+                                            SH.medium(),
+                                        itemBuilder: (context, index) {
+                                          return HomeCard(
+                                              icon: categoryController.icon[
+                                                  categoryController.categories
+                                                      .firstWhere((element) =>
+                                                          element.id ==
+                                                          recurringTaskController
+                                                              .tasks[index]
+                                                              .categoryId)
+                                                      .icon],
+                                              cardColor: categoryController
+                                                      .iconColor[
+                                                  categoryController.categories
+                                                      .firstWhere((element) =>
+                                                          element.id ==
+                                                          recurringTaskController
+                                                              .tasks[index]
+                                                              .categoryId)
+                                                      .color],
+                                              name: recurringTaskController
+                                                  .tasks[index].rTaskName);
+                                        },
+                                      ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

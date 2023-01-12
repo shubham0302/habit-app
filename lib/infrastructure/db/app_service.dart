@@ -56,10 +56,8 @@ class AppDB extends _$AppDB {
     }
 
     await customStatement('VACUUM INTO ?', [Directory(directoryPath).path]);
-   
- 
-      // 2
-  
+
+    // 2
 
     log("sdfsdf sdfsdf${Directory(directoryPath).path}");
   }
