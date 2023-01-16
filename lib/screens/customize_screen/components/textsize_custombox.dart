@@ -51,6 +51,7 @@ void TextCustomDialogBox(BuildContext context) {
                 onTap: () {
                   switchController.textSizing.value = 'Large';
                   Get.back();
+                  print(switchController.textSizing.value);
                 },
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(

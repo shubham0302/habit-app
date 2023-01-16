@@ -13,7 +13,10 @@ import 'package:habbit_app/widgets/custom_snackbar.dart';
 
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
+import 'package:habbit_app/widgets/text_widget/description_text_large.dart';
+import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
+import 'package:habbit_app/widgets/text_widget/label_text_large.dart';
 import 'package:intl/intl.dart';
 
 class HabbitsScreen extends StatelessWidget {
@@ -159,10 +162,24 @@ class HabbitsScreen extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              LabelText(
-                                                text: habbitSelectController
-                                                    .tasks[index].habitName,
-                                                isBold: true,
+                                              Obx(
+                                                () => switchController
+                                                            .textSizing.value ==
+                                                        'Default'
+                                                    ? LabelText(
+                                                        text:
+                                                            habbitSelectController
+                                                                .tasks[index]
+                                                                .habitName,
+                                                        isBold: true,
+                                                      )
+                                                    : LabelTextLarge(
+                                                        text:
+                                                            habbitSelectController
+                                                                .tasks[index]
+                                                                .habitName,
+                                                        // isBold: true,
+                                                      ),
                                               ),
                                               SH.small(),
                                               Row(
@@ -188,21 +205,39 @@ class HabbitsScreen extends StatelessWidget {
                                                           borderRadius: const BorderRadius.all(
                                                               Radius.circular(5)),
                                                           color: categoryController.iconColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks[index].categoryId).color]),
-                                                      child: DescriptionText(
-                                                        text: habbitSelectController
-                                                            .repetitionsData
-                                                            .firstWhere((element) =>
-                                                                element.id ==
-                                                                habbitSelectController
-                                                                    .tasks[
-                                                                        index]
-                                                                    .repetitonId)
-                                                            .type,
-                                                        isBold: true,
-                                                        isColor: true,
-                                                        color: color
-                                                            .backgroundColor,
-                                                      )),
+                                                      child: switchController.textSizing.value == 'Default'
+                                                          ? DescriptionText(
+                                                              text: habbitSelectController
+                                                                  .repetitionsData
+                                                                  .firstWhere((element) =>
+                                                                      element
+                                                                          .id ==
+                                                                      habbitSelectController
+                                                                          .tasks[
+                                                                              index]
+                                                                          .repetitonId)
+                                                                  .type,
+                                                              isBold: true,
+                                                              isColor: true,
+                                                              color: color
+                                                                  .backgroundColor,
+                                                            )
+                                                          : DescriptionTextLarge(
+                                                              text: habbitSelectController
+                                                                  .repetitionsData
+                                                                  .firstWhere((element) =>
+                                                                      element
+                                                                          .id ==
+                                                                      habbitSelectController
+                                                                          .tasks[
+                                                                              index]
+                                                                          .repetitonId)
+                                                                  .type,
+                                                              isBold: true,
+                                                              isColor: true,
+                                                              color: color
+                                                                  .backgroundColor,
+                                                            )),
                                                   SW.small(),
                                                   Container(
                                                     padding:

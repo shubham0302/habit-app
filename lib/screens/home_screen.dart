@@ -8,6 +8,7 @@ import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/controllers/db_controller.dart';
 import 'package:habbit_app/controllers/recurring_controller.dart';
+import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/screens/notification/notifications.dart';
@@ -17,6 +18,7 @@ import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
+import 'package:habbit_app/widgets/text_widget/main_text_large.dart';
 import 'package:path_provider/path_provider.dart';
 import '../controllers/home_page_controller.dart';
 import '../widgets/text_widget/main_label_text.dart';
@@ -298,6 +300,8 @@ class HomeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SwitchController switchController =
+        Get.put(SwitchController(), permanent: false);
     var color = Theme.of(context);
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -325,7 +329,13 @@ class HomeCard extends StatelessWidget {
                 Column(
                   // crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [MainLabelText(text: name)],
+                  children: [
+                    Obx(
+                      () => switchController.textSizing.value == 'Default'
+                          ? MainLabelText(text: name)
+                          : MainLabelTextLarge(text: name),
+                    )
+                  ],
                 )
               ],
             ),
