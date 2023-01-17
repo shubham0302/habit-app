@@ -47,6 +47,12 @@ Widget buildBottomNavigationMenu(
               SW.medium(),
               Expanded(
                 child: buildBottomNavItem(() {
+                  categoryController.getCategory();
+                  taskController.getTasks();
+                  recurringTaskController.getTasks();
+                  habbitSelectController.getTasks();
+                  habbitSelectController.getRepetitions();
+                  recurringTaskController.getChecklistss();
                   controller.changeTabIndex(0);
                 },
                     controller.tabIndex.value == 0

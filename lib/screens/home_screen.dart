@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
@@ -154,35 +155,49 @@ class _HomePageState extends State<HomePage> {
                                     : SH.medium(),
                                 taskController.tasks.isEmpty
                                     ? Container()
-                                    : ListView.separated(
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        shrinkWrap: true,
-                                        itemCount: taskController.tasks.length,
-                                        separatorBuilder: (context, index) =>
-                                            SH.medium(),
-                                        itemBuilder: (context, index) {
-                                          return HomeCard(
-                                              icon: categoryController.icon[
-                                                  categoryController.categories
-                                                      .firstWhere((element) =>
-                                                          element.id ==
-                                                          taskController
-                                                              .tasks[index]
-                                                              .categoryId)
-                                                      .icon],
-                                              cardColor: categoryController
-                                                      .iconColor[
-                                                  categoryController.categories
-                                                      .firstWhere((element) =>
-                                                          element.id ==
-                                                          taskController
-                                                              .tasks[index]
-                                                              .categoryId)
-                                                      .color],
-                                              name: taskController
-                                                  .tasks[index].taskName);
-                                        },
+                                    : AnimationLimiter(
+                                        child: ListView.separated(
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          shrinkWrap: true,
+                                          itemCount:
+                                              taskController.tasks.length,
+                                          separatorBuilder: (context, index) =>
+                                              SH.medium(),
+                                          itemBuilder: (context, index) {
+                                            return AnimationConfiguration
+                                                .staggeredList(
+                                              position: index,
+                                              duration: const Duration(
+                                                  milliseconds: 375),
+                                              child: SlideAnimation(
+                                                verticalOffset: 50.0,
+                                                child: FadeInAnimation(
+                                                  child: HomeCard(
+                                                      icon: categoryController.icon[categoryController
+                                                          .categories
+                                                          .firstWhere((element) =>
+                                                              element.id ==
+                                                              taskController
+                                                                  .tasks[index]
+                                                                  .categoryId)
+                                                          .icon],
+                                                      cardColor: categoryController
+                                                              .iconColor[
+                                                          categoryController
+                                                              .categories
+                                                              .firstWhere((element) =>
+                                                                  element.id ==
+                                                                  taskController
+                                                                      .tasks[index]
+                                                                      .categoryId)
+                                                              .color],
+                                                      name: taskController.tasks[index].taskName),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ),
                                       ),
                                 habbitSelectController.tasks.isEmpty
                                     ? Container()
