@@ -4,9 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/recurring_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
+import 'package:habbit_app/controllers/swich_controller.dart';
+import 'package:habbit_app/widgets/icon_widget.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
 void CategoryRecurringCustomDialogBox(BuildContext context) {
+  SwitchController switchController =
+      Get.put(SwitchController(), permanent: false);
   AddRecurringTaskController addHabbitSelectController =
       Get.put(AddRecurringTaskController(), permanent: false);
   CategoryController categoryController =
@@ -64,27 +68,57 @@ void CategoryRecurringCustomDialogBox(BuildContext context) {
                                           text: categoryController
                                               .categories[index].name),
                                     ),
-                                    Container(
-                                      height: 30,
-                                      width: 30,
-                                      decoration: BoxDecoration(
-                                          borderRadius: const BorderRadius.all(
-                                            Radius.circular(10),
-                                          ),
-                                          color: categoryController.iconColor[
+                                    // Container(
+                                    //   height: 30,
+                                    //   width: 30,
+                                    //   decoration: BoxDecoration(
+                                    //       borderRadius: const BorderRadius.all(
+                                    //         Radius.circular(10),
+                                    //       ),
+                                    //       color: categoryController.iconColor[
+                                    //               categoryController
+                                    //                   .categories[index].color]
+                                    //           .withOpacity(0.3)),
+                                    //   child: Icon(
+                                    //     categoryController.icon[
+                                    //         categoryController
+                                    //             .categories[index].icon],
+                                    //     size: 23,
+                                    //     color: categoryController.iconColor[
+                                    //         categoryController
+                                    //             .categories[index].color],
+                                    //   ),
+                                    // ),
+                                    Obx(
+                                      () => switchController.isClassic.value ==
+                                              true
+                                          ? IconWidgetClassic(
+                                              contanerSize: true,
+                                              contanerHight: 30,
+                                              contanerWidth: 30,
+                                              icon: categoryController.icon[
                                                   categoryController
-                                                      .categories[index].color]
-                                              .withOpacity(0.3)),
-                                      child: Icon(
-                                        categoryController.icon[
-                                            categoryController
-                                                .categories[index].icon],
-                                        size: 23,
-                                        color: categoryController.iconColor[
-                                            categoryController
-                                                .categories[index].color],
-                                      ),
-                                    )
+                                                      .categories[index].icon],
+                                              contanerColor:
+                                                  categoryController.iconColor[
+                                                      categoryController
+                                                          .categories[index]
+                                                          .color],
+                                            )
+                                          : IconWidgetSimple(
+                                              contanerSize: true,
+                                              contanerHight: 30,
+                                              contanerWidth: 30,
+                                              icon: categoryController.icon[
+                                                  categoryController
+                                                      .categories[index].icon],
+                                              contanerColor:
+                                                  categoryController.iconColor[
+                                                      categoryController
+                                                          .categories[index]
+                                                          .color],
+                                            ),
+                                    ),
                                   ],
                                 ),
                               ),

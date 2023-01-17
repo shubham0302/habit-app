@@ -8,19 +8,19 @@ Future<void> createFirstNotification() async {
         channelKey: 'basic_channel',
         title: 'yo yo',
         body: 'Its working good',
-        bigPicture: 'assets://assets/images/middle.jpeg',
+        // bigPicture: 'assets://assets/images/middle.jpeg',
         notificationLayout: NotificationLayout.BigPicture),
   );
 }
 
 Future<void> createReminderNotification(
-    NotificationWeekAndTime notificationSchedule) async {
+    NotificationRemindPrograme notificationScheduled) async {
   await AwesomeNotifications().createNotification(
       content: NotificationContent(
           id: createUniqueId(),
-          channelKey: 'scheduled_channel',
+          channelKey: 'scheduledRemind_channel',
           title: 'yo yo',
-          body: 'Lodu Lalit',
+          body: 'Lodu ',
           // bigPicture: 'assets://assets/images/middle.jpeg',
           notificationLayout: NotificationLayout.Default),
       actionButtons: [
@@ -30,7 +30,32 @@ Future<void> createReminderNotification(
         ),
       ],
       schedule: NotificationCalendar(
-          weekday: notificationSchedule.dayOfTheWeek,
+          // weekday: notificationSchedule.dayOfTheWeek,
+          hour: notificationScheduled.timeOfDay.hour,
+          minute: notificationScheduled.timeOfDay.minute,
+          second: 0,
+          millisecond: 0,
+          repeats: true));
+}
+
+Future<void> createDailyNotification(
+    NotificationDailyPrograme notificationSchedule) async {
+  await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+          id: createUniqueId(),
+          channelKey: 'scheduled_channel',
+          title: 'yo yo',
+          body: 'Lodu Lalit',
+          bigPicture: 'assets://assets/images/middle.jpeg',
+          notificationLayout: NotificationLayout.Default),
+      actionButtons: [
+        NotificationActionButton(
+          key: 'MARK_DONE',
+          label: 'Mark Done',
+        ),
+      ],
+      schedule: NotificationCalendar(
+          // weekday: notificationSchedule.dayOfTheWeek,
           hour: notificationSchedule.timeOfDay.hour,
           minute: notificationSchedule.timeOfDay.minute,
           second: 0,

@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_shake_animated/flutter_shake_animated.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
+import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/screens/categories/custom_dialog_categories.dart';
+import 'package:habbit_app/widgets/icon_widget.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
@@ -14,6 +16,8 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SwitchController switchController =
+        Get.put(SwitchController(), permanent: false);
     CategoryController categoryController =
         Get.put(CategoryController(), permanent: false);
     ThemeData color = Theme.of(context);
@@ -40,30 +44,63 @@ class CategoriesScreen extends StatelessWidget {
                     width: 63,
                     child: Column(
                       children: [
-                        Container(
-                          height: 60,
-                          width: 60,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: categoryController.iconColor[
+                        // Container(
+                        //   height: 60,
+                        //   width: 60,
+                        //   decoration: BoxDecoration(
+                        //       borderRadius: BorderRadius.circular(8),
+                        //       color: categoryController.iconColor[
+                        //               categoryController.categories
+                        //                   .where((p0) => p0.isDefault)
+                        //                   .toList()[index]
+                        //                   .color]
+                        //           .withOpacity(0.3)),
+                        //   child: Icon(
+                        //     categoryController.icon[categoryController
+                        //         .categories
+                        //         .where((p0) => p0.isDefault)
+                        //         .toList()[index]
+                        //         .icon],
+                        //     color: categoryController.iconColor[
+                        //         categoryController.categories
+                        //             .where((p0) => p0.isDefault)
+                        //             .toList()[index]
+                        //             .color],
+                        //     size: 40,
+                        //   ),
+                        // ),
+                        Obx(
+                          () => switchController.isClassic.value == true
+                              ? IconWidgetClassic(
+                                  contanerSize: true,
+                                  contanerHight: 60,
+                                  contanerWidth: 60,
+                                  icon: categoryController.icon[
                                       categoryController.categories
                                           .where((p0) => p0.isDefault)
                                           .toList()[index]
-                                          .color]
-                                  .withOpacity(0.3)),
-                          child: Icon(
-                            categoryController.icon[categoryController
-                                .categories
-                                .where((p0) => p0.isDefault)
-                                .toList()[index]
-                                .icon],
-                            color: categoryController.iconColor[
-                                categoryController.categories
-                                    .where((p0) => p0.isDefault)
-                                    .toList()[index]
-                                    .color],
-                            size: 40,
-                          ),
+                                          .icon],
+                                  contanerColor: categoryController.iconColor[
+                                      categoryController.categories
+                                          .where((p0) => p0.isDefault)
+                                          .toList()[index]
+                                          .color],
+                                )
+                              : IconWidgetSimple(
+                                  contanerSize: true,
+                                  contanerHight: 60,
+                                  contanerWidth: 60,
+                                  icon: categoryController.icon[
+                                      categoryController.categories
+                                          .where((p0) => p0.isDefault)
+                                          .toList()[index]
+                                          .icon],
+                                  contanerColor: categoryController.iconColor[
+                                      categoryController.categories
+                                          .where((p0) => p0.isDefault)
+                                          .toList()[index]
+                                          .color],
+                                ),
                         ),
                         SH.medium(),
                         DescriptionText(
@@ -246,35 +283,82 @@ class CategoriesScreen extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Container(
-                                          height: 60,
-                                          width: 60,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              color: categoryController
-                                                  .iconColor[categoryController
-                                                      .categories
-                                                      .where(
-                                                          (p0) => !p0.isDefault)
-                                                      .toList()[index]
-                                                      .color]
-                                                  .withOpacity(0.3)),
-                                          child: Icon(
-                                            categoryController.icon[
-                                                categoryController.categories
-                                                    .where(
-                                                        (p0) => !p0.isDefault)
-                                                    .toList()[index]
-                                                    .icon],
-                                            color: categoryController.iconColor[
-                                                categoryController.categories
-                                                    .where(
-                                                        (p0) => !p0.isDefault)
-                                                    .toList()[index]
-                                                    .color],
-                                            size: 40,
-                                          ),
+                                        // Container(
+                                        //   height: 60,
+                                        //   width: 60,
+                                        //   decoration: BoxDecoration(
+                                        //       borderRadius:
+                                        //           BorderRadius.circular(8),
+                                        //       color: categoryController
+                                        //           .iconColor[categoryController
+                                        //               .categories
+                                        //               .where(
+                                        //                   (p0) => !p0.isDefault)
+                                        //               .toList()[index]
+                                        //               .color]
+                                        //           .withOpacity(0.3)),
+                                        //   child: Icon(
+                                        //     categoryController.icon[
+                                        //         categoryController.categories
+                                        //             .where(
+                                        //                 (p0) => !p0.isDefault)
+                                        //             .toList()[index]
+                                        //             .icon],
+                                        //     color: categoryController.iconColor[
+                                        //         categoryController.categories
+                                        //             .where(
+                                        //                 (p0) => !p0.isDefault)
+                                        //             .toList()[index]
+                                        //             .color],
+                                        //     size: 40,
+                                        //   ),
+                                        // ),
+                                        Obx(
+                                          () => switchController
+                                                      .isClassic.value ==
+                                                  true
+                                              ? IconWidgetClassic(
+                                                  contanerSize: true,
+                                                  contanerHight: 60,
+                                                  contanerWidth: 60,
+                                                  icon: categoryController.icon[
+                                                      categoryController
+                                                          .categories
+                                                          .where((p0) =>
+                                                              !p0.isDefault)
+                                                          .toList()[index]
+                                                          .icon],
+                                                  contanerColor:
+                                                      categoryController
+                                                              .iconColor[
+                                                          categoryController
+                                                              .categories
+                                                              .where((p0) =>
+                                                                  !p0.isDefault)
+                                                              .toList()[index]
+                                                              .color],
+                                                )
+                                              : IconWidgetSimple(
+                                                  contanerSize: true,
+                                                  contanerHight: 60,
+                                                  contanerWidth: 60,
+                                                  icon: categoryController.icon[
+                                                      categoryController
+                                                          .categories
+                                                          .where((p0) =>
+                                                              !p0.isDefault)
+                                                          .toList()[index]
+                                                          .icon],
+                                                  contanerColor:
+                                                      categoryController
+                                                              .iconColor[
+                                                          categoryController
+                                                              .categories
+                                                              .where((p0) =>
+                                                                  !p0.isDefault)
+                                                              .toList()[index]
+                                                              .color],
+                                                ),
                                         ),
                                         SH.small(),
                                         DescriptionText(

@@ -4,7 +4,9 @@ import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/time_controller.dart';
+import 'package:habbit_app/screens/notification/notifications.dart';
 import 'package:habbit_app/screens/setting_screens/snooze_timer_dialog.dart';
+import 'package:habbit_app/utilities/notification_utilities.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:flutter_switch/flutter_switch.dart';
@@ -27,6 +29,7 @@ class _NotificationandAlarmScreenState
   Widget build(BuildContext context) {
     NotifyTimeController notifyTimeController =
         Get.put(NotifyTimeController(), permanent: false);
+
     // ReminderTimeController reminderTimeController =
     //     Get.put(ReminderTimeController(), permanent: false);
     // SwitchController notifyTimeController =
@@ -106,50 +109,68 @@ class _NotificationandAlarmScreenState
               SH.medium(),
               SH.large(),
               GestureDetector(
-                onTap: () {},
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.watch_later_sharp,
-                          size: 30,
-                          color: color.primaryColor,
-                        ),
-                        SW.small(),
-                        const LabelText(text: "Time")
-                      ],
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        notifyTimeController.setTime(context);
-                      },
-                      child: Obx(
-                        () => Container(
-                            alignment: Alignment.centerLeft,
-                            height: 35,
-                            width: 110,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    width: 2, color: color.canvasColor),
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
-                                color: color.backgroundColor),
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: LabelText(
-                                text: notifyTimeController.dailyTime.value == ''
-                                    ? 'select time'
-                                    : "${notifyTimeController.dailyTime.value}",
+                  onTap: () {},
+                  child: Obx(
+                    () => notifyTimeController.dailyProgram.value == true
+                        ? Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.watch_later_sharp,
+                                        size: 30,
+                                        color: color.primaryColor,
+                                      ),
+                                      SW.small(),
+                                      const LabelText(text: "Time")
+                                    ],
+                                  ),
+                                  GestureDetector(
+                                    onTap: () async {
+                                      // notifyTimeController.setTime(context);
+                                      if (notifyTimeController
+                                              .dailyProgram.value ==
+                                          true) {
+                                        NotificationDailyPrograme?
+                                            pickedSchedule =
+                                            await pickSchedule(context);
+
+                                        if (pickedSchedule != null) {
+                                          createDailyNotification(
+                                              pickedSchedule);
+                                        }
+                                      } else {}
+                                    },
+                                    child: Container(
+                                        alignment: Alignment.centerLeft,
+                                        height: 35,
+                                        width: 110,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                width: 2,
+                                                color: color.canvasColor),
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(10)),
+                                            color: color.backgroundColor),
+                                        child: const Padding(
+                                          padding: EdgeInsets.only(left: 10),
+                                          child: LabelText(
+                                            text: 'Select Time',
+                                          ),
+                                        )),
+                                  )
+                                ],
                               ),
-                            )),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              SH.large(),
+                              SH.large(),
+                            ],
+                          )
+                        : SizedBox(),
+                  )),
               const Divider(
                 thickness: 1,
               ),
@@ -198,48 +219,65 @@ class _NotificationandAlarmScreenState
               ),
               SH.medium(),
               SH.large(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.watch_later_sharp,
-                        size: 30,
-                        color: color.primaryColor,
-                      ),
-                      SW.medium(),
-                      const LabelText(text: "Time")
-                    ],
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      notifyTimeController.setAppTime(context);
-                    },
-                    child: Obx(
-                      () => Container(
-                          alignment: Alignment.centerLeft,
-                          height: 35,
-                          width: 110,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  width: 2, color: color.canvasColor),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
-                              color: color.backgroundColor),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: LabelText(
-                              text: notifyTimeController.appTime.value == ''
-                                  ? 'select time'
-                                  : "${notifyTimeController.appTime.value}",
+              Obx(() => notifyTimeController.appNoti.value == true
+                  ? Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.watch_later_sharp,
+                                  size: 30,
+                                  color: color.primaryColor,
+                                ),
+                                SW.medium(),
+                                const LabelText(text: "Time")
+                              ],
                             ),
-                          )),
-                    ),
-                  )
-                ],
-              ),
-              SH.large(),
+                            GestureDetector(
+                              onTap: () async {
+                                // notifyTimeController.setAppTime(context);
+                                if (notifyTimeController.appNoti.value ==
+                                    true) {
+                                  NotificationRemindPrograme? pickedSchedule =
+                                      await pickScheduled(context);
+
+                                  if (pickedSchedule != null) {
+                                    createReminderNotification(pickedSchedule);
+                                  }
+                                } else {}
+                              },
+                              child: Obx(
+                                () => Container(
+                                    alignment: Alignment.centerLeft,
+                                    height: 35,
+                                    width: 110,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            width: 2, color: color.canvasColor),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(10)),
+                                        color: color.backgroundColor),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: LabelText(
+                                        text: notifyTimeController
+                                                    .appTime.value ==
+                                                ''
+                                            ? 'select time'
+                                            : "${notifyTimeController.appTime.value}",
+                                      ),
+                                    )),
+                              ),
+                            )
+                          ],
+                        ),
+                        SH.large(),
+                      ],
+                    )
+                  : SizedBox()),
               const Divider(
                 thickness: 1,
               ),
