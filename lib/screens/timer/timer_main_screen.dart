@@ -30,110 +30,15 @@ class TimerMainScreen extends StatefulWidget {
   State<TimerMainScreen> createState() => _TimerMainScreenState();
 }
 
-// class _TimerMainScreenState extends State<TimerMainScreen> {
-// int second = 0, minutes = 0, hours = 0;
-// String digitSecound = "00", digitMinutes = "00", digitHours = "00";
-// Timer? timer;
-// bool started = false;
-// List laps = [];
-
-// void stop() {
-//   timer!.cancel();
-//   setState(() {
-//     started = false;
-//   });
-// }
-
-// void reset() {
-//   timer!.cancel();
-//   setState(() {
-//     second = 0;
-//     minutes = 0;
-//     hours = 0;
-
-//     digitSecound = "00";
-//     digitMinutes = "00";
-//     digitHours = "00";
-
-//     started = false;
-//   });
-// }
-
-// void addLaps() {
-//   String lap = "$digitHours:$digitMinutes:$digitSecound";
-//   setState(() {
-//     laps.add(lap);
-//   });
-// }
-
-// void start() {
-//   started = true;
-//   timer = Timer.periodic(Duration(seconds: 1), (timer) {
-//     int localSecound = second + 1;
-//     int localMinute = minutes;
-//     int localHour = hours;
-
-//     if (localSecound > 59) {
-//       if (localMinute > 59) {
-//         localHour++;
-//         localMinute = 0;
-//       } else {
-//         localMinute++;
-//         localSecound = 0;
-//       }
-//     }
-//     setState(() {
-//       second = localSecound;
-//       minutes = localMinute;
-//       hours = localHour;
-//       digitSecound = (second >= 10) ? "$second" : "0$second";
-//       digitMinutes = (minutes >= 10) ? "$minutes" : "0$minutes";
-//       digitHours = (hours >= 10) ? "$hours" : "0$hours";
-//     });
-//   });
-// }
-// }
-
 class _TimerMainScreenState extends State<TimerMainScreen>
     with TickerProviderStateMixin {
-  // late AnimationController animationController;
   TimerTabController tabController =
       Get.put(TimerTabController(), permanent: false);
 
   late TabController _controller;
 
-  // bool isPlaying = false;
-
-  // int get countText2 {
-  //   int count = tabController.totalSeconds;
-  //   return;
-  // }
-
-  // String get countText {
-  //   Duration count = animationController.duration! * animationController.value;
-  //   return animationController.isDismissed
-  //       ? '${animationController.duration!.inHours}:${(animationController.duration!.inMinutes % 60).toString().padLeft(2, '0')}:${(animationController.duration!.inSeconds % 60).toString().padLeft(2, '0')}'
-  //       : '${count.inHours}:${(count.inMinutes % 60).toString().padLeft(2, '0')}:${(count.inSeconds % 60).toString().padLeft(2, '0')}';
-  // }
-
-  // @override
-  // void dispose() {
-  //   animationController.dispose();
-  //   super.dispose();
-  // }
-
-  // double progress = 1.0;
-
-  // void notifiy() {
-  //   if (countText == "0:00:00") {
-  //     FlutterRingtonePlayer.playNotification();
-  //   }
-  // }
-
   @override
   void initState() {
-    // ignore: todo
-    // TODO: implement initState
     TimerTabController tabController =
         Get.put(TimerTabController(), permanent: false);
     super.initState();
@@ -143,25 +48,7 @@ class _TimerMainScreenState extends State<TimerMainScreen>
       // print(tabController.tabIndex.value);
     });
     super.initState();
-    // animationController = AnimationController(
-    //     vsync: this, duration: Duration(seconds: tabController.totalSeconds));
-    // animationController.addListener(() {
-    //   // notifiy();
-    //   // if (animationController.isAnimating) {
-    //   //   setState(() {
-    //   //     progress = animationController.value;
-    //   //   });
-    //   // } else {
-    //   //   setState(() {
-    //   //     progress = 1.0;
-    //   //     isPlaying = false;
-    //   //   });
-    //   // }
-    // });
   }
-
-  // final HomePageController controller =
-  //     Get.put(HomePageController(), permanent: false);
 
   @override
   Widget build(BuildContext context) {
@@ -173,23 +60,10 @@ class _TimerMainScreenState extends State<TimerMainScreen>
         Get.put(TimerTabController(), permanent: false);
 
     ThemeData color = Theme.of(context);
-    return
-        // Scaffold(
-        //     // // floatingActionButton: FloatingActionButton(
-        //     // //   onPressed: () {
-        //     // //     CustomDialogBox(context);
-        //     // //   },
-        //     //   backgroundColor: color.primaryColor,
-        //     //   child: const Icon(Icons.add),
-        //     // ),
-        //     backgroundColor: color.backgroundColor,
-        //     body:
-        SafeArea(
+    return SafeArea(
       child: GlobalPadding(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          // SH.med(),
           Obx(() {
-            // tabController.tabIndex.value = _controller.index;
             return Container(
               height: 55,
               decoration: BoxDecoration(
@@ -262,7 +136,6 @@ class _TimerMainScreenState extends State<TimerMainScreen>
               ),
             );
           }),
-
           SH.large(),
           Expanded(
               child: TabBarView(

@@ -78,7 +78,7 @@ class AddRecurringTaskController extends GetxController {
         repetitonId: drift.Value(repetition),
         // repetition: drift.Value(updateRepetation.value),
         rTaskName: drift.Value(updateName.value),
-        categoryId: drift.Value(categoryId.value),
+        categoryId: drift.Value(categoryId.value == 0 ? 1 : categoryId.value),
         startDate: drift.Value(startDate.value),
         endDate: drift.Value(endDate.value),
         evaluate: drift.Value(selectEvaluate.value),

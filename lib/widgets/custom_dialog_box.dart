@@ -21,34 +21,34 @@ void CustomDialogBox(BuildContext context) {
             backgroundColor: color.backgroundColor,
             content: Wrap(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(
-                      Icons.refresh,
-                      color: color.primaryColor,
-                      size: 30,
-                    ),
-                    SW.large(),
-                    GlobalPadding(
-                      child: Container(
-                        // height: 80,
-                        width: 200,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const MainLabelText(text: "Habit"),
-                            SH.medium(),
-                            const DescriptionText(
-                                text:
-                                    "Activity that repeats over time. It has detailed tracking and statistics.")
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                const Divider(thickness: 1),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.start,
+                //   children: [
+                //     Icon(
+                //       Icons.refresh,
+                //       color: color.primaryColor,
+                //       size: 30,
+                //     ),
+                //     SW.large(),
+                //     GlobalPadding(
+                //       child: Container(
+                //         // height: 80,
+                //         width: 200,
+                //         child: Column(
+                //           crossAxisAlignment: CrossAxisAlignment.start,
+                //           children: [
+                //             const MainLabelText(text: "Habit"),
+                //             SH.medium(),
+                //             const DescriptionText(
+                //                 text:
+                //                     "Activity that repeats over time. It has detailed tracking and statistics.")
+                //           ],
+                //         ),
+                //       ),
+                //     )
+                //   ],
+                // ),
+                // const Divider(thickness: 1),
                 GestureDetector(
                   onTap: () {
                     Get.toNamed('/recurringTask-detail');

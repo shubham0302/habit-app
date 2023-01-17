@@ -295,15 +295,15 @@ class _TaskScreenState extends State<TaskScreen>
                                                           .taskName)
                                                 ],
                                               ),
-                                              Row(
-                                                children: [
-                                                  const Icon(Icons.done),
-                                                  LabelText(
-                                                      text: addTaskController
-                                                          .checklists.length
-                                                          .toString())
-                                                ],
-                                              )
+                                              // Row(
+                                              //   children: [
+                                              //     const Icon(Icons.done),
+                                              //     LabelText(
+                                              //         text: addTaskController
+                                              //             .checklists.length
+                                              //             .toString())
+                                              //   ],
+                                              // )
                                             ],
                                           ),
                                         );
@@ -391,23 +391,23 @@ class _TaskScreenState extends State<TaskScreen>
                                             text: recurringTaskController
                                                 .tasks[index].rTaskName),
                                         SH.medium(),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(3),
-                                              color: color.primaryColor
-                                                  .withOpacity(.2)),
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 5, vertical: 2),
-                                            child: LabelText(
-                                              text: 'Habit',
-                                              isColor: true,
-                                              isBold: true,
-                                              color: color.primaryColor,
-                                            ),
-                                          ),
-                                        ),
+                                        // Container(
+                                        //   decoration: BoxDecoration(
+                                        //       borderRadius:
+                                        //           BorderRadius.circular(3),
+                                        //       color: color.primaryColor
+                                        //           .withOpacity(.2)),
+                                        //   child: Padding(
+                                        //     padding: const EdgeInsets.symmetric(
+                                        //         horizontal: 5, vertical: 2),
+                                        //     child: LabelText(
+                                        //       text: 'Habit',
+                                        //       isColor: true,
+                                        //       isBold: true,
+                                        //       color: color.primaryColor,
+                                        //     ),
+                                        //   ),
+                                        // ),
                                       ],
                                     )
                                   ],

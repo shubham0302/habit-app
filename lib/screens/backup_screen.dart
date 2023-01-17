@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/db_controller.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/screens/intro_screen.dart';
@@ -16,6 +17,8 @@ class BackUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DBController dbController = Get.find<DBController>();
+
     SwitchController switchController =
         Get.put(SwitchController(), permanent: false);
     // bool status = true;
@@ -63,7 +66,8 @@ class BackUpScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                GestureDetector(onTap:(){},
+                GestureDetector(
+                  onTap: () {},
                   child: Container(
                     height: 120,
                     width: 120,
@@ -143,7 +147,7 @@ class BackUpScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            color: color.hintColor),
+                            color: color.disabledColor.withOpacity(.3)),
                         child: const Padding(
                           padding: EdgeInsets.only(left: 10),
                           child: LabelText(
@@ -205,34 +209,47 @@ class BackUpScreen extends StatelessWidget {
               thickness: 0.5,
             ),
             SH.large(),
-            SH.large(),
-            Row(
-              children: [
-                Icon(
-                  Icons.file_present_rounded,
-                  color: color.primaryColor,
-                  size: 20,
-                ),
-                SW.medium(),
-                const LabelText(
-                  text: "Create Backup File",
-                ),
-              ],
-            ),
+
             SH.large(),
 
-            Row(
-              children: [
-                Icon(
-                  Icons.data_saver_off_outlined,
-                  color: color.primaryColor,
-                  size: 20,
-                ),
-                SW.medium(),
-                const LabelText(
-                  text: "Import Backup File",
-                ),
-              ],
+            GestureDetector(
+              onTap: () {
+                dbController.appDB.exportInto('assets/my_database.db');
+              },
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.file_present_rounded,
+                    color: color.primaryColor,
+                    size: 20,
+                  ),
+                  SW.medium(),
+                  const LabelText(
+                    text: "Create Backup File",
+                  ),
+                ],
+              ),
+            ),
+
+            SH.large(),
+
+            GestureDetector(
+              onTap: () {
+                dbController.appDB.importDB();
+              },
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.data_saver_off_outlined,
+                    color: color.primaryColor,
+                    size: 20,
+                  ),
+                  SW.medium(),
+                  const LabelText(
+                    text: "Import Backup File",
+                  ),
+                ],
+              ),
             ),
           ]),
         ),
