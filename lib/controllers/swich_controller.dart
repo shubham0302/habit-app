@@ -18,6 +18,7 @@ class SwitchController extends GetxController {
   RxBool RemindSwichChange = true.obs;
   RxBool LockPinSwichChange = true.obs;
   RxBool FingerSwichChange = true.obs;
+  RxBool isClassic = true.obs;
 
   setAwardData() async {
     await LocalStorageHelper.setItem(
@@ -44,6 +45,10 @@ class SwitchController extends GetxController {
   setHabbitSortingData() async {
     await LocalStorageHelper.setItem(
         "habbitsort", habbitSorting.value.toString());
+  }
+
+  setIconTypeData() async {
+    await LocalStorageHelper.setItem("icontype", isClassic.value.toString());
   }
 
   setAnimationData() async {
@@ -82,6 +87,7 @@ class SwitchController extends GetxController {
     habbitSorting.value = habbitsort ?? 'Alphabetical';
     var textsize = await LocalStorageHelper.getItem('textsize');
     textSizing.value = textsize ?? 'Default';
+    var isIconType = await LocalStorageHelper.getItem('icontype');
 
     if (val == 'false') {
       AwardsSwichChange.value = false;
@@ -107,6 +113,11 @@ class SwitchController extends GetxController {
       SwipSwichChange.value = false;
     } else {
       SwipSwichChange.value = true;
+    }
+    if (isIconType == 'false') {
+      isClassic.value = false;
+    } else {
+      isClassic.value = true;
     }
   }
 

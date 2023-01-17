@@ -14,6 +14,7 @@ import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/screens/notification/notifications.dart';
 import 'package:habbit_app/utilities/notification_utilities.dart';
 import 'package:habbit_app/widgets/date_widget.dart';
+import 'package:habbit_app/widgets/icon_widget.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
@@ -314,16 +315,33 @@ class HomeCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                Container(
-                  height: 30,
-                  width: 30,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8), color: cardColor),
-                  child: Icon(
-                    icon,
-                    color: color.backgroundColor,
-                    size: 23,
-                  ),
+                // Container(
+                //   height: 30,
+                //   width: 30,
+                //   decoration: BoxDecoration(
+                //       borderRadius: BorderRadius.circular(8), color: cardColor),
+                //   child: Icon(
+                //     icon,
+                //     color: color.backgroundColor,
+                //     size: 23,
+                //   ),
+                // ),
+                Obx(
+                  () => switchController.isClassic.value == true
+                      ? IconWidgetClassic(
+                          contanerSize: true,
+                          contanerHight: 30,
+                          contanerWidth: 30,
+                          icon: icon,
+                          contanerColor: cardColor,
+                        )
+                      : IconWidgetSimple(
+                          contanerSize: true,
+                          contanerHight: 30,
+                          contanerWidth: 30,
+                          icon: icon,
+                          contanerColor: cardColor,
+                        ),
                 ),
                 SW.large(),
                 Column(

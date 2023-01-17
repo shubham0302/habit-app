@@ -5,11 +5,13 @@ import 'package:get/get.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/controllers/home_page_controller.dart';
 import 'package:habbit_app/controllers/recurring_controller.dart';
+import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/tabController.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/widgets/custom_dialog_box.dart';
 import 'package:habbit_app/widgets/date_widget.dart';
+import 'package:habbit_app/widgets/icon_widget.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
@@ -49,7 +51,8 @@ class _TaskScreenState extends State<TaskScreen>
   @override
   Widget build(BuildContext context) {
     ThemeController themeController = Get.find<ThemeController>();
-
+    SwitchController switchController =
+        Get.put(SwitchController(), permanent: true);
     AddTaskController addTaskController =
         Get.put(AddTaskController(), permanent: false);
     AddRecurringTaskController recurringTaskController =
@@ -248,42 +251,101 @@ class _TaskScreenState extends State<TaskScreen>
                                             children: [
                                               Row(
                                                 children: [
-                                                  Container(
-                                                    height: 30,
-                                                    width: 30,
-                                                    decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8),
-                                                        color: categoryController
-                                                                .iconColor[
-                                                            categoryController
-                                                                .categories
-                                                                .firstWhere((element) =>
-                                                                    element.id ==
-                                                                    addTaskController
-                                                                        .dataTasks[
-                                                                            addTaskController.taskTimes[index]]![
-                                                                            i]
-                                                                        .categoryId)
-                                                                .color]),
-                                                    child: Icon(
-                                                      categoryController.icon[categoryController
-                                                          .categories
-                                                          .firstWhere((element) =>
-                                                              element.id ==
-                                                              addTaskController
-                                                                  .dataTasks[
-                                                                      addTaskController
-                                                                              .taskTimes[
-                                                                          index]]![
-                                                                      i]
-                                                                  .categoryId)
-                                                          .icon],
-                                                      size: 23,
-                                                      color:
-                                                          color.backgroundColor,
-                                                    ),
+                                                  // Container(
+                                                  //   height: 30,
+                                                  //   width: 30,
+                                                  //   decoration: BoxDecoration(
+                                                  //       borderRadius:
+                                                  //           BorderRadius
+                                                  //               .circular(8),
+                                                  //       color: categoryController
+                                                  //               .iconColor[
+                                                  //           categoryController
+                                                  //               .categories
+                                                  //               .firstWhere((element) =>
+                                                  //                   element.id ==
+                                                  //                   addTaskController
+                                                  //                       .dataTasks[
+                                                  //                           addTaskController.taskTimes[index]]![
+                                                  //                           i]
+                                                  //                       .categoryId)
+                                                  //               .color]),
+                                                  //   child: Icon(
+                                                  //     categoryController.icon[categoryController
+                                                  //         .categories
+                                                  //         .firstWhere((element) =>
+                                                  //             element.id ==
+                                                  //             addTaskController
+                                                  //                 .dataTasks[
+                                                  //                     addTaskController
+                                                  //                             .taskTimes[
+                                                  //                         index]]![
+                                                  //                     i]
+                                                  //                 .categoryId)
+                                                  //         .icon],
+                                                  //     size: 23,
+                                                  //     color:
+                                                  //         color.backgroundColor,
+                                                  //   ),
+                                                  // ),
+                                                  Obx(
+                                                    () =>
+                                                        switchController
+                                                                    .isClassic
+                                                                    .value ==
+                                                                true
+                                                            ? IconWidgetClassic(
+                                                                contanerSize:
+                                                                    true,
+                                                                contanerHight:
+                                                                    30,
+                                                                contanerWidth:
+                                                                    30,
+                                                                icon: categoryController.icon[categoryController
+                                                                    .categories
+                                                                    .firstWhere((element) =>
+                                                                        element
+                                                                            .id ==
+                                                                        addTaskController
+                                                                            .dataTasks[addTaskController.taskTimes[index]]![i]
+                                                                            .categoryId)
+                                                                    .icon],
+                                                                contanerColor: categoryController.iconColor[categoryController
+                                                                    .categories
+                                                                    .firstWhere((element) =>
+                                                                        element
+                                                                            .id ==
+                                                                        addTaskController
+                                                                            .dataTasks[addTaskController.taskTimes[index]]![i]
+                                                                            .categoryId)
+                                                                    .color],
+                                                              )
+                                                            : IconWidgetSimple(
+                                                                contanerSize:
+                                                                    true,
+                                                                contanerHight:
+                                                                    30,
+                                                                contanerWidth:
+                                                                    30,
+                                                                icon: categoryController.icon[categoryController
+                                                                    .categories
+                                                                    .firstWhere((element) =>
+                                                                        element
+                                                                            .id ==
+                                                                        addTaskController
+                                                                            .dataTasks[addTaskController.taskTimes[index]]![i]
+                                                                            .categoryId)
+                                                                    .icon],
+                                                                contanerColor: categoryController.iconColor[categoryController
+                                                                    .categories
+                                                                    .firstWhere((element) =>
+                                                                        element
+                                                                            .id ==
+                                                                        addTaskController
+                                                                            .dataTasks[addTaskController.taskTimes[index]]![i]
+                                                                            .categoryId)
+                                                                    .color],
+                                                              ),
                                                   ),
                                                   SW.medium(),
                                                   LabelText(
@@ -353,32 +415,80 @@ class _TaskScreenState extends State<TaskScreen>
                               itemBuilder: (context, index) {
                                 return Row(
                                   children: [
-                                    Container(
-                                      height: 30,
-                                      width: 30,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                          color: categoryController.iconColor[
-                                              categoryController.categories
-                                                  .firstWhere((element) =>
-                                                      element.id ==
-                                                      recurringTaskController
-                                                          .tasks[index]
-                                                          .categoryId)
-                                                  .color]),
-                                      child: Icon(
-                                        categoryController.icon[
-                                            categoryController.categories
-                                                .firstWhere((element) =>
-                                                    element.id ==
-                                                    recurringTaskController
-                                                        .tasks[index]
-                                                        .categoryId)
-                                                .icon],
-                                        size: 23,
-                                        color: color.backgroundColor,
-                                      ),
+                                    // Container(
+                                    //   height: 30,
+                                    //   width: 30,
+                                    //   decoration: BoxDecoration(
+                                    //       borderRadius:
+                                    //           BorderRadius.circular(8),
+                                    //       color: categoryController.iconColor[
+                                    //           categoryController.categories
+                                    //               .firstWhere((element) =>
+                                    //                   element.id ==
+                                    //                   recurringTaskController
+                                    //                       .tasks[index]
+                                    //                       .categoryId)
+                                    //               .color]),
+                                    //   child: Icon(
+                                    //     categoryController.icon[
+                                    //         categoryController.categories
+                                    //             .firstWhere((element) =>
+                                    //                 element.id ==
+                                    //                 recurringTaskController
+                                    //                     .tasks[index]
+                                    //                     .categoryId)
+                                    //             .icon],
+                                    //     size: 23,
+                                    //     color: color.backgroundColor,
+                                    //   ),
+                                    // ),
+                                    Obx(
+                                      () => switchController.isClassic.value ==
+                                              true
+                                          ? IconWidgetClassic(
+                                              contanerSize: true,
+                                              contanerHight: 30,
+                                              contanerWidth: 30,
+                                              icon: categoryController.icon[
+                                                  categoryController.categories
+                                                      .firstWhere((element) =>
+                                                          element.id ==
+                                                          recurringTaskController
+                                                              .tasks[index]
+                                                              .categoryId)
+                                                      .icon],
+                                              contanerColor: categoryController
+                                                      .iconColor[
+                                                  categoryController.categories
+                                                      .firstWhere((element) =>
+                                                          element.id ==
+                                                          recurringTaskController
+                                                              .tasks[index]
+                                                              .categoryId)
+                                                      .color],
+                                            )
+                                          : IconWidgetSimple(
+                                              contanerSize: true,
+                                              contanerHight: 30,
+                                              contanerWidth: 30,
+                                              icon: categoryController.icon[
+                                                  categoryController.categories
+                                                      .firstWhere((element) =>
+                                                          element.id ==
+                                                          recurringTaskController
+                                                              .tasks[index]
+                                                              .categoryId)
+                                                      .icon],
+                                              contanerColor: categoryController
+                                                      .iconColor[
+                                                  categoryController.categories
+                                                      .firstWhere((element) =>
+                                                          element.id ==
+                                                          recurringTaskController
+                                                              .tasks[index]
+                                                              .categoryId)
+                                                      .color],
+                                            ),
                                     ),
                                     SW.medium(),
                                     Column(

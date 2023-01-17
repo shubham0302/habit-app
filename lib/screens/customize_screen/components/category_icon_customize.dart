@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/app_labels/customize_screen.dart';
+import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
@@ -14,7 +15,8 @@ class CategoryIconStyle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RxBool isClassic = false.obs;
+    SwitchController switchController =
+        Get.put(SwitchController(), permanent: false);
     ThemeController themeController = Get.find<ThemeController>();
     return GlobalPadding(
       child: Obx(
@@ -28,7 +30,8 @@ class CategoryIconStyle extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    isClassic.value = true;
+                    switchController.isClassic.value = true;
+                    switchController.setIconTypeData();
                   },
                   behavior: HitTestBehavior.translucent,
                   child: Column(
@@ -79,7 +82,7 @@ class CategoryIconStyle extends StatelessWidget {
                       Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: isClassic == true
+                            color: switchController.isClassic == true
                                 ? Colors.purple.withOpacity(.2)
                                 : Colors.transparent,
                           ),
@@ -92,7 +95,8 @@ class CategoryIconStyle extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    isClassic.value = false;
+                    switchController.isClassic.value = false;
+                    switchController.setIconTypeData();
                   },
                   behavior: HitTestBehavior.translucent,
                   child: Column(
@@ -143,7 +147,7 @@ class CategoryIconStyle extends StatelessWidget {
                       Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: isClassic == false
+                            color: switchController.isClassic == false
                                 ? Colors.purple.withOpacity(.2)
                                 : Colors.transparent,
                           ),
