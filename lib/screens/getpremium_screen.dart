@@ -81,21 +81,31 @@ class GetPremiumScreen extends StatelessWidget {
                       height: 140,
                       width: 190,
                       decoration: BoxDecoration(
-                          color: color.disabledColor,
+                          color: color.disabledColor.withOpacity(.4),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10))),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const LabelText(text: "One time purchase plan"),
+                          const LabelText(
+                            text: "One time purchase plan",
+                            isColor: true,
+                            color: Colors.white,
+                          ),
                           SH.medium(),
                           SH.small(),
                           const LabelText(text: "SAVE 50%", isColor: true),
                           SH.small(),
-                          const HeadingText(text: "₹300.00"),
+                          const HeadingText(
+                              text: "₹300.00",
+                              isColor: true,
+                              color: Colors.white),
                           SH.small(),
-                          const DescriptionText(text: "Price: ₹890.00")
+                          const DescriptionText(
+                              text: "Price: ₹890.00",
+                              isColor: true,
+                              color: Colors.white)
                         ],
                       ),
                     ),
@@ -106,7 +116,7 @@ class GetPremiumScreen extends StatelessWidget {
                         Icon(
                           Icons.check_circle_outline,
                           color: color.primaryColor,
-                          size: 30,
+                          size: 23,
                         ),
                         SW.medium(),
                         const LabelText(text: "Track unlimited habits")
@@ -118,7 +128,7 @@ class GetPremiumScreen extends StatelessWidget {
                         Icon(
                           Icons.check_circle_outline,
                           color: color.primaryColor,
-                          size: 30,
+                          size: 23,
                         ),
                         SW.medium(),
                         const LabelText(
@@ -131,7 +141,7 @@ class GetPremiumScreen extends StatelessWidget {
                         Icon(
                           Icons.check_circle_outline,
                           color: color.primaryColor,
-                          size: 30,
+                          size: 23,
                         ),
                         SW.medium(),
                         const LabelText(text: "Ultra dark theme")
@@ -143,7 +153,7 @@ class GetPremiumScreen extends StatelessWidget {
                         Icon(
                           Icons.check_circle_outline,
                           color: color.primaryColor,
-                          size: 30,
+                          size: 23,
                         ),
                         SW.medium(),
                         const LabelText(
@@ -157,7 +167,7 @@ class GetPremiumScreen extends StatelessWidget {
                         Icon(
                           Icons.check_circle_outline,
                           color: color.primaryColor,
-                          size: 30,
+                          size: 23,
                         ),
                         SW.medium(),
                         const LabelText(
@@ -170,7 +180,7 @@ class GetPremiumScreen extends StatelessWidget {
                         Icon(
                           Icons.check_circle_outline,
                           color: color.primaryColor,
-                          size: 30,
+                          size: 23,
                         ),
                         SW.medium(),
                         const LabelText(text: "Premium accent colors")
@@ -185,8 +195,10 @@ class GetPremiumScreen extends StatelessWidget {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10))),
                       child: const Center(
-                          child: ButtonText(
+                          child: MainLabelText(
                         text: "GET PREMIUM",
+                        color: Colors.white,
+                        isColor: true,
                       )),
                     ),
                   ]),

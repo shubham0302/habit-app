@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             //
-            dbController.appDB.exportInto('assets/my_database.db');
+            // taskController.getDownloadPath();
           },
           backgroundColor: color.primaryColor,
           child: const Icon(Icons.add),
@@ -110,11 +110,11 @@ class _HomePageState extends State<HomePage> {
                     child: DateList()),
                 SH.large(),
                 const Divider(),
-                taskController.tasks.isEmpty &&
-                        recurringTaskController.tasks.isEmpty &&
-                        habbitSelectController.tasks.isEmpty
-                    ? Obx(
-                        () => Column(
+                Obx(
+                  () => taskController.tasks.isEmpty &&
+                          recurringTaskController.tasks.isEmpty &&
+                          habbitSelectController.tasks.isEmpty
+                      ? Column(
                           children: [
                             SH.large(),
                             SH.large(),
@@ -128,10 +128,8 @@ class _HomePageState extends State<HomePage> {
                                 child: DescriptionText(
                                     text: 'Add your upcoming plans')),
                           ],
-                        ),
-                      )
-                    : Obx(
-                        () => Expanded(
+                        )
+                      : Expanded(
                           child: SingleChildScrollView(
                             physics: const BouncingScrollPhysics(
                                 parent: AlwaysScrollableScrollPhysics()),
@@ -297,7 +295,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
-                      ),
+                ),
               ]),
         ));
   }

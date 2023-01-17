@@ -46,6 +46,7 @@ void CategoryCustomDialogBox(BuildContext context) {
                             onTap: () {
                               addHabbitSelectController.categoryId.value =
                                   categoryController.categories[index].id;
+                              print(addHabbitSelectController.categoryId.value);
                               Get.back();
                             },
                             child: Container(

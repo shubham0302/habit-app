@@ -83,7 +83,7 @@ class AddHabbitSelectController extends GetxController {
         repetitonId: drift.Value(repetition),
         // repetition: drift.Value(updateRepetation.value),
         habitName: drift.Value(updateName.value),
-        categoryId: drift.Value(categoryId.value),
+        categoryId: drift.Value(categoryId.value == 0 ? 1 : categoryId.value),
         startDate: drift.Value(startDate.value),
         endDate: drift.Value(endDate.value),
         evaluate: drift.Value(selectEvaluate.value),
@@ -225,17 +225,15 @@ class AddHabbitSelectController extends GetxController {
 
   RxString colorChange = 'red'.obs;
 
-  var selectColor = Colors.red;
-
-  colorChange1() {
-    if (colorChange.value == 'yellow') {
-      selectColor = Colors.yellow;
-    } else if (colorChange.value == 'green') {
-      selectColor = Colors.green;
-    } else if (colorChange.value == 'red') {
-      selectColor = Colors.red;
-    } else {}
-  }
+  // colorChange1() {
+  //   if (colorChange.value == 'yellow') {
+  //     selectColor.value = Colors.yellow;
+  //   } else if (colorChange.value == 'green') {
+  //     selectColor.value = Colors.green;
+  //   } else if (colorChange.value == 'red') {
+  //     selectColor.value = Colors.red;
+  //   } else {}
+  // }
 
   colorChangeTap() {
     if (colorChange.value == 'red') {

@@ -393,6 +393,11 @@ class ToDoHabbitListScreen extends StatelessWidget {
                             : switchController.CollapseSwichChange.value = true;
 
                         switchController.setCollapseData();
+                        // if (switchController.CollapseSwichChange.value ==
+                        //     false) {
+                        //   print('object');
+                        //   switchController.isOpen.value == true;
+                        // }
 
                         // status = val;
                         // setState(() {

@@ -1,17 +1,39 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, unnecessary_brace_in_string_interps, unused_local_variable, avoid_function_literals_in_foreach_calls, avoid_print
 import 'dart:developer';
+import 'dart:io';
 // import 'dart:js_util';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/infrastructure/db/app_service.dart';
 import 'package:drift/drift.dart' as drift;
+import 'package:path_provider/path_provider.dart';
 
 import 'db_controller.dart';
 
 class AddTaskController extends GetxController {
   DBController dbcontroller = Get.find<DBController>();
   var editIndex = 0.obs;
+
+  Future<String?> getDownloadPath() async {
+    Directory? directory;
+    try {
+      if (Platform.isIOS) {
+        directory = await getApplicationDocumentsDirectory();
+      } else {
+        directory = Directory('/storage/emulated/0/Download');
+        // Put file in global download folder, if for an unknown reason it didn't exist, we fallback
+        // ignore: avoid_slow_async_io
+        if (!await directory.exists()) {
+          directory = await getExternalStorageDirectory();
+          print('object');
+        }
+      }
+    } catch (err, stack) {
+      print("Cannot get download folder path");
+    }
+    print(directory?.path);
+  }
 
   TextEditingController nameCtrl = TextEditingController();
   TextEditingController descriptionCtrl = TextEditingController();
@@ -57,7 +79,7 @@ class AddTaskController extends GetxController {
     try {
       var entity = TaskModelCompanion(
         taskName: drift.Value(taskName.value),
-        categoryId: drift.Value(categoryId.value),
+        categoryId: drift.Value(categoryId.value == 0 ? 1 : categoryId.value),
         taskDate: drift.Value(date.value),
         pendingTask: drift.Value(isPending.value),
         priority: drift.Value(updatePriority.value),
@@ -175,7 +197,6 @@ class AddTaskController extends GetxController {
       customDays.value = [];
 
       await editTask();
-
     } catch (e) {
       log('hahaha error ${e}');
     }
@@ -306,7 +327,7 @@ class AddTaskController extends GetxController {
         checklists.value = element;
         checklists.refresh();
         log(checklists.length.toString());
-      }); 
+      });
     } catch (e) {
       log('hahaha error ${e}');
     }

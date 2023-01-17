@@ -39,9 +39,11 @@ dependencies:
   sidebarx: ^0.14.0
   date_picker_timeline: ^1.2.3
   google_fonts: ^3.0.1
+  flutter_share: ^2.0.0
   flutter_switch: ^0.3.2
   flutter_time_picker_spinner: ^2.0.0
   numberpicker: ^2.1.1
+  file_picker: ^5.2.5
   table_calendar: ^3.0.8
   fl_chart: ^0.55.2
   pie_chart: ^5.3.2

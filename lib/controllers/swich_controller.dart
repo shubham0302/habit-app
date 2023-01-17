@@ -10,6 +10,7 @@ class SwitchController extends GetxController {
   var habbitSorting = 'Alphabetical'.obs;
   var textSizing = 'Default'.obs;
   RxBool SwichChange = true.obs;
+  RxBool isOpen = true.obs;
   RxBool CollapseSwichChange = true.obs;
   RxBool SwipSwichChange = true.obs;
   RxBool AnimationSwichChange = true.obs;

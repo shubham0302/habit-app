@@ -2,6 +2,10 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:drift/drift.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter_share/flutter_share.dart';
+import 'package:path/path.dart' as path;
+import 'package:get/get.dart' as gt;
 import 'package:habbit_app/infrastructure/db/db_config.dart';
 import 'package:habbit_app/infrastructure/model/category_model.dart';
 import 'package:habbit_app/infrastructure/model/habbit_model.dart';
@@ -43,23 +47,36 @@ class AppDB extends _$AppDB {
   }
 
   Future<void> exportInto(String file) async {
-    Directory root =
-        await getTemporaryDirectory(); // this is using path_provider
+    File root =
+        File('/storage/emulated/0/Download/'); // this is using path_provider
     String directoryPath = root.path + file;
-    await Directory(directoryPath).parent.create(recursive: true);
-    // Make sure the directory of the target file exists
-    // await file.parent.create(recursive: true);
+    await File(directoryPath).parent.create(recursive: true);
 
-    // Override an existing backup, sqlite expects the target file to be empty
-    if (Directory(directoryPath).existsSync()) {
-      Directory(directoryPath).deleteSync();
+    if (File(directoryPath).existsSync()) {
+      File(directoryPath).delete();
     }
-
-    await customStatement('VACUUM INTO ?', [Directory(directoryPath).path]);
-
-    // 2
-
+    await customStatement('VACUUM INTO ? ', [File(directoryPath).path]);
     log("sdfsdf sdfsdf${Directory(directoryPath).path}");
+  }
+
+  Future<void> importDB() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      File? file = File(result.files.single.path!);
+      final dbFolder = await getApplicationDocumentsDirectory();
+      final dbFile = File(path.join(dbFolder.path, 'db.sqlite'));
+
+      dbFile.writeAsBytesSync(file.readAsBytesSync());
+      // if (dbFile.existsSync()) {
+      //   dbFile.deleteSync();
+      // }
+      // await customStatement('VACUUM INTO ? ', [dbFile.path]);
+      gt.Get.offAllNamed('/home');
+      print(file.path);
+    } else {
+      print("No file selected");
+    }
   }
 
   Future<List<CategoryModelData>> getCategories() async {
