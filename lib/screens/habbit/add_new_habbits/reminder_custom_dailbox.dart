@@ -236,7 +236,7 @@ void ReminderCustomDialogBox(BuildContext context) {
                                               ? color.disabledColor
                                               : color.primaryColor,
                                           width: 2,
-                                          strokeAlign: StrokeAlign.outside,
+                                          //   strokeAlign: StrokeAlign.outside,
                                         )),
                                     child: Padding(
                                       padding: const EdgeInsets.all(4.0),
@@ -278,7 +278,7 @@ void ReminderCustomDialogBox(BuildContext context) {
                                               ? color.disabledColor
                                               : color.primaryColor,
                                           width: 2,
-                                          strokeAlign: StrokeAlign.outside,
+                                          // strokeAlign: StrokeAlign.outside,
                                         )),
                                     child: Padding(
                                       padding: const EdgeInsets.all(4.0),
