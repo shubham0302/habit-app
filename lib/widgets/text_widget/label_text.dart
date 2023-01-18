@@ -31,7 +31,7 @@ class LabelText extends StatelessWidget {
           color: isColor == true ? (this.color ?? color.primaryColor) : null,
           fontWeight: isBold == true ? FontWeight.bold : FontWeight.normal),
       textAlign: alignment,
-      overflow: TextOverflow.ellipsis,
+      overflow: TextOverflow.clip,
     );
   }
 }

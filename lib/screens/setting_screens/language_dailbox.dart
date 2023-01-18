@@ -8,7 +8,13 @@ void LanguageCustomDialogBox(BuildContext context) {
   final List locale = [
     {'name': 'English', 'locale': const Locale('en', 'US')},
     {'name': 'हिंदी', 'locale': const Locale('hi', 'IN')},
-    {'name': 'ಕನ್ನಡ', 'locale': const Locale('kn', 'IN')},
+    {'name': 'española', 'locale': const Locale('es', 'ES')},
+    {'name': 'Português', 'locale': const Locale('pt', 'PT')},
+    {'name': 'Deutsch', 'locale': const Locale('de', 'DE')},
+    {'name': 'Italiano', 'locale': const Locale('it', 'IT')},
+    {'name': 'Français', 'locale': const Locale('fr', 'FR')},
+    {'name': '한국어', 'locale': const Locale('ko', 'KO')},
+    {'name': '日本語', 'locale': const Locale('ja', 'JA')},
   ];
 
   updateLanguage(Locale locale) {
@@ -33,7 +39,7 @@ void LanguageCustomDialogBox(BuildContext context) {
                 children: [
                   Center(
                     child: LabelText(
-                      text: "plannarize".tr,
+                      text: "Check it daily".tr,
                       isColor: true,
                     ),
                   ),
