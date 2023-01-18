@@ -69,6 +69,14 @@ class CategoryController extends GetxController {
     const Color(0xffB186FD),
   ];
 
+  List<Color> iconLightColor = [
+    Color.fromARGB(255, 185, 100, 102),
+    Color.fromARGB(255, 83, 164, 102),
+    Color.fromARGB(255, 168, 106, 124),
+    Color.fromARGB(255, 132, 126, 72),
+    Color.fromARGB(255, 136, 113, 176),
+  ];
+
   var category = ''.obs;
   // var color = 0.obs;
   var iconType = 0.obs;

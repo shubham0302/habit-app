@@ -147,13 +147,29 @@ class AddTaskScreen extends StatelessWidget {
                                               .icon]
                                       : Icons.abc,
                                   color: addTaskController.categoryId.value != 0
-                                      ? categoryController.iconColor[
-                                          categoryController.categories
-                                              .firstWhere((element) =>
-                                                  element.id ==
-                                                  addTaskController
-                                                      .categoryId.value)
-                                              .color]
+                                      ?
+                                      // categoryController.iconColor[
+                                      //     categoryController.categories
+                                      //         .firstWhere((element) =>
+                                      //             element.id ==
+                                      //             addTaskController
+                                      //                 .categoryId.value)
+                                      //         .color]
+                                      color.brightness == Brightness.dark
+                                          ? categoryController.iconColor[
+                                              categoryController.categories
+                                                  .firstWhere((element) =>
+                                                      element.id ==
+                                                      addTaskController
+                                                          .categoryId.value)
+                                                  .color]
+                                          : categoryController.iconLightColor[
+                                              categoryController.categories
+                                                  .firstWhere((element) =>
+                                                      element.id ==
+                                                      addTaskController
+                                                          .categoryId.value)
+                                                  .color]
                                       : color.primaryColor,
                                 ),
                                 // addTaskController.categoryIcon.value,

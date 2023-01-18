@@ -2,8 +2,10 @@
 
 import 'dart:developer';
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:habbit_app/controllers/home_page_controller.dart';
 import 'package:habbit_app/controllers/search_controller.dart';
 import 'package:habbit_app/screens/categories/categories.dart';
@@ -353,18 +355,93 @@ class MainScreen extends StatelessWidget {
                             ),
                           ),
                           SW.large(),
-                          MainLabelText(
-                              text: controller.tabIndex.value == 0
-                                  ? 'Plannarize'
-                                  : controller.tabIndex.value == 1
-                                      ? "Task"
-                                      : controller.tabIndex.value == 2
-                                          ? "Categories"
-                                          : controller.tabIndex.value == 3
-                                              ? "Habbit"
-                                              : controller.tabIndex.value == 4
-                                                  ? "Timer"
-                                                  : ""),
+                          Container(
+                            width: 150,
+                            height: 23,
+                            child: ListView(
+                              children: [
+                                AnimatedContainer(
+                                  duration: Duration(milliseconds: 350),
+                                  height: 0,
+                                  child: MainLabelText(
+                                    text: 'Planarize',
+                                    isColor: true,
+                                    color: controller.tabIndex.value == 0
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
+                                ),
+                                AnimatedContainer(
+                                  duration: Duration(milliseconds: 350),
+                                  height:
+                                      controller.tabIndex.value == 0 ? 20 : 0,
+                                  child: MainLabelText(
+                                    text: 'Planarize',
+                                    isColor: true,
+                                    color: controller.tabIndex.value == 0
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
+                                ),
+                                AnimatedContainer(
+                                  duration: Duration(milliseconds: 350),
+                                  height:
+                                      controller.tabIndex.value == 1 ? 20 : 0,
+                                  child: MainLabelText(
+                                      text: 'Tasks',
+                                      isColor: true,
+                                      color: controller.tabIndex.value == 1
+                                          ? Colors.white
+                                          : Colors.black),
+                                ),
+                                AnimatedContainer(
+                                  duration: Duration(milliseconds: 350),
+                                  height:
+                                      controller.tabIndex.value == 2 ? 20 : 0,
+                                  child: MainLabelText(
+                                      text: 'Category',
+                                      isColor: true,
+                                      color: controller.tabIndex.value == 2
+                                          ? Colors.white
+                                          : Colors.black),
+                                ),
+                                AnimatedContainer(
+                                  duration: Duration(milliseconds: 350),
+                                  height:
+                                      controller.tabIndex.value == 3 ? 20 : 0,
+                                  child: MainLabelText(
+                                      text: 'Habit',
+                                      isColor: true,
+                                      color: controller.tabIndex.value == 3
+                                          ? Colors.white
+                                          : Colors.black),
+                                ),
+                                AnimatedContainer(
+                                  duration: Duration(milliseconds: 350),
+                                  height:
+                                      controller.tabIndex.value == 4 ? 20 : 0,
+                                  child: MainLabelText(
+                                      text: 'Timer',
+                                      isColor: true,
+                                      color: controller.tabIndex.value == 4
+                                          ? Colors.white
+                                          : Colors.black),
+                                ),
+                              ],
+                            ),
+                          )
+                          // MainLabelText(
+                          //     text: controller.tabIndex.value == 0
+                          //         ? 'Plannarize'
+                          //         : controller.tabIndex.value == 1
+                          //             ? "Task"
+                          //             : controller.tabIndex.value == 2
+                          //                 ? "Categories"
+                          //                 : controller.tabIndex.value == 3
+                          //                     ? "Habbit"
+                          //                     : controller.tabIndex.value == 4
+                          //                         ? "Timer"
+                          //                         : ""),
                         ],
                       ),
                       Row(

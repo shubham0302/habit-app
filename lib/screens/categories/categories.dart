@@ -69,39 +69,27 @@ class CategoriesScreen extends StatelessWidget {
                         //     size: 40,
                         //   ),
                         // ),
-                        Obx(
-                          () => switchController.isClassic.value == true
-                              ? IconWidgetClassic(
-                                  contanerSize: true,
-                                  contanerHight: 60,
-                                  contanerWidth: 60,
-                                  icon: categoryController.icon[
+                        Obx(() => IconWidgetClassic(
+                              contanerSize: true,
+                              contanerHight: 60,
+                              contanerWidth: 60,
+                              icon: categoryController.icon[categoryController
+                                  .categories
+                                  .where((p0) => p0.isDefault)
+                                  .toList()[index]
+                                  .icon],
+                              contanerColor: color.brightness == Brightness.dark
+                                  ? categoryController.iconColor[
                                       categoryController.categories
                                           .where((p0) => p0.isDefault)
                                           .toList()[index]
-                                          .icon],
-                                  contanerColor: categoryController.iconColor[
-                                      categoryController.categories
-                                          .where((p0) => p0.isDefault)
-                                          .toList()[index]
-                                          .color],
-                                )
-                              : IconWidgetSimple(
-                                  contanerSize: true,
-                                  contanerHight: 60,
-                                  contanerWidth: 60,
-                                  icon: categoryController.icon[
-                                      categoryController.categories
-                                          .where((p0) => p0.isDefault)
-                                          .toList()[index]
-                                          .icon],
-                                  contanerColor: categoryController.iconColor[
+                                          .color]
+                                  : categoryController.iconLightColor[
                                       categoryController.categories
                                           .where((p0) => p0.isDefault)
                                           .toList()[index]
                                           .color],
-                                ),
-                        ),
+                            )),
                         SH.medium(),
                         DescriptionText(
                           isDotDot: true,
@@ -313,53 +301,35 @@ class CategoriesScreen extends StatelessWidget {
                                         //     size: 40,
                                         //   ),
                                         // ),
-                                        Obx(
-                                          () => switchController
-                                                      .isClassic.value ==
-                                                  true
-                                              ? IconWidgetClassic(
-                                                  contanerSize: true,
-                                                  contanerHight: 60,
-                                                  contanerWidth: 60,
-                                                  icon: categoryController.icon[
+                                        Obx(() => IconWidgetClassic(
+                                              contanerSize: true,
+                                              contanerHight: 60,
+                                              contanerWidth: 60,
+                                              icon: categoryController.icon[
+                                                  categoryController.categories
+                                                      .where(
+                                                          (p0) => !p0.isDefault)
+                                                      .toList()[index]
+                                                      .icon],
+                                              contanerColor: color.brightness ==
+                                                      Brightness.dark
+                                                  ? categoryController
+                                                          .iconColor[
                                                       categoryController
                                                           .categories
                                                           .where((p0) =>
                                                               !p0.isDefault)
                                                           .toList()[index]
-                                                          .icon],
-                                                  contanerColor:
-                                                      categoryController
-                                                              .iconColor[
-                                                          categoryController
-                                                              .categories
-                                                              .where((p0) =>
-                                                                  !p0.isDefault)
-                                                              .toList()[index]
-                                                              .color],
-                                                )
-                                              : IconWidgetSimple(
-                                                  contanerSize: true,
-                                                  contanerHight: 60,
-                                                  contanerWidth: 60,
-                                                  icon: categoryController.icon[
+                                                          .color]
+                                                  : categoryController
+                                                          .iconLightColor[
                                                       categoryController
                                                           .categories
                                                           .where((p0) =>
                                                               !p0.isDefault)
                                                           .toList()[index]
-                                                          .icon],
-                                                  contanerColor:
-                                                      categoryController
-                                                              .iconColor[
-                                                          categoryController
-                                                              .categories
-                                                              .where((p0) =>
-                                                                  !p0.isDefault)
-                                                              .toList()[index]
-                                                              .color],
-                                                ),
-                                        ),
+                                                          .color],
+                                            )),
                                         SH.small(),
                                         DescriptionText(
                                           isColor: true,

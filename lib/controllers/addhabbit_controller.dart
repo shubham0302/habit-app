@@ -3,16 +3,21 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:get/get.dart';
 import 'package:drift/drift.dart' as drift;
 import 'package:habbit_app/controllers/db_controller.dart';
+import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/helpers/local_storage_helper.dart';
 import 'package:path/path.dart';
+import 'package:vibration/vibration.dart';
 
 import '../infrastructure/db/app_service.dart';
 
 class AddHabbitSelectController extends GetxController {
+  SwitchController switchController =
+      Get.put(SwitchController(), permanent: false);
   // AddHabbitSelectController habbitSelectController =
   //     Get.put(AddHabbitSelectController(), permanent: true);
   DBController dbController = Get.find<DBController>();
@@ -244,6 +249,20 @@ class AddHabbitSelectController extends GetxController {
       colorChange.value = 'red';
     } else {
       print('tap error');
+    }
+  }
+
+  void notifiy() {
+    if (colorChange.value == "green") {
+      switchController.NotifySwichChange.value == true
+          ? FlutterRingtonePlayer.playNotification()
+          : SizedBox();
+    }
+  }
+
+  void isVibration() async {
+    if (colorChange.value == "green") {
+      Vibration.vibrate();
     }
   }
 }

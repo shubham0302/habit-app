@@ -247,13 +247,29 @@ class AddHabbitsScreen extends StatelessWidget {
                                   color: addRecurringTaskController
                                               .categoryId.value !=
                                           0
-                                      ? categoryController.iconColor[
-                                          categoryController.categories
-                                              .firstWhere((element) =>
-                                                  element.id ==
-                                                  addRecurringTaskController
-                                                      .categoryId.value)
-                                              .color]
+                                      ?
+                                      // categoryController.iconColor[
+                                      //     categoryController.categories
+                                      //         .firstWhere((element) =>
+                                      //             element.id ==
+                                      //             addRecurringTaskController
+                                      //                 .categoryId.value)
+                                      //         .color]
+                                      color.brightness == Brightness.dark
+                                          ? categoryController.iconColor[
+                                              categoryController.categories
+                                                  .firstWhere((element) =>
+                                                      element.id ==
+                                                      addRecurringTaskController
+                                                          .categoryId.value)
+                                                  .color]
+                                          : categoryController.iconLightColor[
+                                              categoryController.categories
+                                                  .firstWhere((element) =>
+                                                      element.id ==
+                                                      addRecurringTaskController
+                                                          .categoryId.value)
+                                                  .color]
                                       : color.primaryColor,
                                 ),
                                 // addRecurringTaskController.categoryIcon.value,

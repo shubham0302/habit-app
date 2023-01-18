@@ -90,36 +90,21 @@ void CategoryCustomDialogBox(BuildContext context) {
                                     //             .categories[index].color],
                                     //   ),
                                     // ),
-                                    Obx(
-                                      () => switchController.isClassic.value ==
-                                              true
-                                          ? IconWidgetClassic(
-                                              contanerSize: true,
-                                              contanerHight: 30,
-                                              contanerWidth: 30,
-                                              icon: categoryController.icon[
-                                                  categoryController
-                                                      .categories[index].icon],
-                                              contanerColor:
-                                                  categoryController.iconColor[
-                                                      categoryController
-                                                          .categories[index]
-                                                          .color],
-                                            )
-                                          : IconWidgetSimple(
-                                              contanerSize: true,
-                                              contanerHight: 30,
-                                              contanerWidth: 30,
-                                              icon: categoryController.icon[
-                                                  categoryController
-                                                      .categories[index].icon],
-                                              contanerColor:
-                                                  categoryController.iconColor[
-                                                      categoryController
-                                                          .categories[index]
-                                                          .color],
-                                            ),
-                                    ),
+                                    Obx(() => IconWidgetClassic(
+                                        contanerSize: true,
+                                        contanerHight: 30,
+                                        contanerWidth: 30,
+                                        icon: categoryController.icon[
+                                            categoryController
+                                                .categories[index].icon],
+                                        contanerColor: color.brightness ==
+                                                Brightness.dark
+                                            ? categoryController.iconColor[
+                                                categoryController
+                                                    .categories[index].color]
+                                            : categoryController.iconLightColor[
+                                                categoryController
+                                                    .categories[index].color])),
                                   ],
                                 ),
                               ),

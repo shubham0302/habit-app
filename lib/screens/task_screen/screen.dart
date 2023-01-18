@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable, sized_box_for_whitespace, unused_import, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/controllers/home_page_controller.dart';
@@ -170,211 +171,215 @@ class _TaskScreenState extends State<TaskScreen>
                               ],
                             ),
                           )
-                        : ListView.separated(
-                            physics: const BouncingScrollPhysics(),
-                            itemCount: addTaskController.taskTimes.length,
-                            separatorBuilder: (context, index) => Column(
-                                  children: [
-                                    SH.small(),
-                                    const Divider(),
-                                    SH.small(),
-                                  ],
-                                ),
-                            itemBuilder: (context, index) {
-                              return Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(3),
-                                        color:
-                                            color.primaryColor.withOpacity(.2)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5, vertical: 2),
-                                      child: LabelText(
-                                        text: addTaskController.taskTimes[index]
-                                            .toString(),
-                                        isColor: true,
-                                        // isBold: true,
-                                        color: color.primaryColor,
-                                      ),
+                        : AnimationLimiter(
+                            child: ListView.separated(
+                                physics: const BouncingScrollPhysics(),
+                                itemCount: addTaskController.taskTimes.length,
+                                separatorBuilder: (context, index) => Column(
+                                      children: [
+                                        SH.small(),
+                                        const Divider(),
+                                        SH.small(),
+                                      ],
                                     ),
-                                  ),
-                                  SH.small(),
-                                  const Divider(),
-                                  SH.small(),
-                                  Obx(
-                                    () => ListView.separated(
-                                      separatorBuilder: (context, index) =>
-                                          Column(
-                                        children: [
-                                          SH.small(),
-                                          const Divider(),
-                                          SH.small(),
-                                        ],
-                                      ),
-                                      shrinkWrap: true,
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      itemCount: addTaskController.dataTasks[
-                                                      addTaskController
-                                                          .taskTimes[index]] !=
-                                                  null &&
-                                              addTaskController
-                                                  .dataTasks[addTaskController
-                                                      .taskTimes[index]]!
-                                                  .isNotEmpty
-                                          ? addTaskController
-                                              .dataTasks[addTaskController
-                                                  .taskTimes[index]]!
-                                              .length
-                                          : 0,
-                                      itemBuilder: (context, i) {
-                                        return GestureDetector(
-                                          onTap: () {
-                                            addTaskController.getTask(
-                                                addTaskController
-                                                    .dataTasks[addTaskController
-                                                        .taskTimes[index]]![i]
-                                                    .taskId);
-                                            // Get.toNamed(
-                                            //   '/edittask',
-                                            // );
-                                            // addTaskController.editIndex.value =
-                                            //     addTaskController.tasks[index].taskId;
-                                          },
-                                          behavior: HitTestBehavior.translucent,
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  // Container(
-                                                  //   height: 30,
-                                                  //   width: 30,
-                                                  //   decoration: BoxDecoration(
-                                                  //       borderRadius:
-                                                  //           BorderRadius
-                                                  //               .circular(8),
-                                                  //       color: categoryController
-                                                  //               .iconColor[
-                                                  //           categoryController
-                                                  //               .categories
-                                                  //               .firstWhere((element) =>
-                                                  //                   element.id ==
-                                                  //                   addTaskController
-                                                  //                       .dataTasks[
-                                                  //                           addTaskController.taskTimes[index]]![
-                                                  //                           i]
-                                                  //                       .categoryId)
-                                                  //               .color]),
-                                                  //   child: Icon(
-                                                  //     categoryController.icon[categoryController
-                                                  //         .categories
-                                                  //         .firstWhere((element) =>
-                                                  //             element.id ==
-                                                  //             addTaskController
-                                                  //                 .dataTasks[
-                                                  //                     addTaskController
-                                                  //                             .taskTimes[
-                                                  //                         index]]![
-                                                  //                     i]
-                                                  //                 .categoryId)
-                                                  //         .icon],
-                                                  //     size: 23,
-                                                  //     color:
-                                                  //         color.backgroundColor,
-                                                  //   ),
-                                                  // ),
-                                                  Obx(
-                                                    () =>
-                                                        switchController
-                                                                    .isClassic
-                                                                    .value ==
-                                                                true
-                                                            ? IconWidgetClassic(
-                                                                contanerSize:
-                                                                    true,
-                                                                contanerHight:
-                                                                    30,
-                                                                contanerWidth:
-                                                                    30,
-                                                                icon: categoryController.icon[categoryController
-                                                                    .categories
-                                                                    .firstWhere((element) =>
-                                                                        element
-                                                                            .id ==
-                                                                        addTaskController
-                                                                            .dataTasks[addTaskController.taskTimes[index]]![i]
-                                                                            .categoryId)
-                                                                    .icon],
-                                                                contanerColor: categoryController.iconColor[categoryController
-                                                                    .categories
-                                                                    .firstWhere((element) =>
-                                                                        element
-                                                                            .id ==
-                                                                        addTaskController
-                                                                            .dataTasks[addTaskController.taskTimes[index]]![i]
-                                                                            .categoryId)
-                                                                    .color],
-                                                              )
-                                                            : IconWidgetSimple(
-                                                                contanerSize:
-                                                                    true,
-                                                                contanerHight:
-                                                                    30,
-                                                                contanerWidth:
-                                                                    30,
-                                                                icon: categoryController.icon[categoryController
-                                                                    .categories
-                                                                    .firstWhere((element) =>
-                                                                        element
-                                                                            .id ==
-                                                                        addTaskController
-                                                                            .dataTasks[addTaskController.taskTimes[index]]![i]
-                                                                            .categoryId)
-                                                                    .icon],
-                                                                contanerColor: categoryController.iconColor[categoryController
-                                                                    .categories
-                                                                    .firstWhere((element) =>
-                                                                        element
-                                                                            .id ==
-                                                                        addTaskController
-                                                                            .dataTasks[addTaskController.taskTimes[index]]![i]
-                                                                            .categoryId)
-                                                                    .color],
-                                                              ),
-                                                  ),
-                                                  SW.medium(),
-                                                  LabelText(
-                                                      text: addTaskController
-                                                          .dataTasks[
-                                                              addTaskController
-                                                                      .taskTimes[
-                                                                  index]]![i]
-                                                          .taskName)
-                                                ],
+                                itemBuilder: (context, index) {
+                                  return AnimationConfiguration.staggeredList(
+                                    position: index,
+                                    duration: const Duration(milliseconds: 375),
+                                    child: SlideAnimation(
+                                      verticalOffset: 50.0,
+                                      child: FadeInAnimation(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(3),
+                                                  color: color.primaryColor
+                                                      .withOpacity(.2)),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 5,
+                                                        vertical: 2),
+                                                child: LabelText(
+                                                  text: addTaskController
+                                                      .taskTimes[index]
+                                                      .toString(),
+                                                  isColor: true,
+                                                  // isBold: true,
+                                                  color: color.primaryColor,
+                                                ),
                                               ),
-                                              // Row(
-                                              //   children: [
-                                              //     const Icon(Icons.done),
-                                              //     LabelText(
-                                              //         text: addTaskController
-                                              //             .checklists.length
-                                              //             .toString())
-                                              //   ],
-                                              // )
-                                            ],
-                                          ),
-                                        );
-                                      },
+                                            ),
+                                            SH.small(),
+                                            const Divider(),
+                                            SH.small(),
+                                            Obx(
+                                              () => ListView.separated(
+                                                separatorBuilder:
+                                                    (context, index) => Column(
+                                                  children: [
+                                                    SH.small(),
+                                                    const Divider(),
+                                                    SH.small(),
+                                                  ],
+                                                ),
+                                                shrinkWrap: true,
+                                                physics:
+                                                    const NeverScrollableScrollPhysics(),
+                                                itemCount: addTaskController
+                                                                    .dataTasks[
+                                                                addTaskController
+                                                                        .taskTimes[
+                                                                    index]] !=
+                                                            null &&
+                                                        addTaskController
+                                                            .dataTasks[
+                                                                addTaskController
+                                                                        .taskTimes[
+                                                                    index]]!
+                                                            .isNotEmpty
+                                                    ? addTaskController
+                                                        .dataTasks[
+                                                            addTaskController
+                                                                    .taskTimes[
+                                                                index]]!
+                                                        .length
+                                                    : 0,
+                                                itemBuilder: (context, i) {
+                                                  return GestureDetector(
+                                                    onTap: () {
+                                                      addTaskController.getTask(
+                                                          addTaskController
+                                                              .dataTasks[
+                                                                  addTaskController
+                                                                          .taskTimes[
+                                                                      index]]![
+                                                                  i]
+                                                              .taskId);
+                                                      // Get.toNamed(
+                                                      //   '/edittask',
+                                                      // );
+                                                      // addTaskController.editIndex.value =
+                                                      //     addTaskController.tasks[index].taskId;
+                                                    },
+                                                    behavior: HitTestBehavior
+                                                        .translucent,
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Row(
+                                                          children: [
+                                                            // Container(
+                                                            //   height: 30,
+                                                            //   width: 30,
+                                                            //   decoration: BoxDecoration(
+                                                            //       borderRadius:
+                                                            //           BorderRadius
+                                                            //               .circular(8),
+                                                            //       color: categoryController
+                                                            //               .iconColor[
+                                                            //           categoryController
+                                                            //               .categories
+                                                            //               .firstWhere((element) =>
+                                                            //                   element.id ==
+                                                            //                   addTaskController
+                                                            //                       .dataTasks[
+                                                            //                           addTaskController.taskTimes[index]]![
+                                                            //                           i]
+                                                            //                       .categoryId)
+                                                            //               .color]),
+                                                            //   child: Icon(
+                                                            //     categoryController.icon[categoryController
+                                                            //         .categories
+                                                            //         .firstWhere((element) =>
+                                                            //             element.id ==
+                                                            //             addTaskController
+                                                            //                 .dataTasks[
+                                                            //                     addTaskController
+                                                            //                             .taskTimes[
+                                                            //                         index]]![
+                                                            //                     i]
+                                                            //                 .categoryId)
+                                                            //         .icon],
+                                                            //     size: 23,
+                                                            //     color:
+                                                            //         color.backgroundColor,
+                                                            //   ),
+                                                            // ),
+                                                            Obx(() =>
+                                                                IconWidgetClassic(
+                                                                  contanerSize:
+                                                                      true,
+                                                                  contanerHight:
+                                                                      30,
+                                                                  contanerWidth:
+                                                                      30,
+                                                                  icon: categoryController.icon[categoryController
+                                                                      .categories
+                                                                      .firstWhere((element) =>
+                                                                          element
+                                                                              .id ==
+                                                                          addTaskController
+                                                                              .dataTasks[addTaskController.taskTimes[index]]![i]
+                                                                              .categoryId)
+                                                                      .icon],
+                                                                  contanerColor: color
+                                                                              .brightness ==
+                                                                          Brightness
+                                                                              .dark
+                                                                      ? categoryController.iconColor[categoryController
+                                                                          .categories
+                                                                          .firstWhere((element) =>
+                                                                              element.id ==
+                                                                              addTaskController
+                                                                                  .dataTasks[addTaskController.taskTimes[index]]![
+                                                                                      i]
+                                                                                  .categoryId)
+                                                                          .color]
+                                                                      : categoryController.iconLightColor[categoryController
+                                                                          .categories
+                                                                          .firstWhere(
+                                                                              (element) => element.id == addTaskController.dataTasks[addTaskController.taskTimes[index]]![i].categoryId)
+                                                                          .color],
+                                                                )),
+                                                            SW.medium(),
+                                                            LabelText(
+                                                                text: addTaskController
+                                                                    .dataTasks[
+                                                                        addTaskController
+                                                                            .taskTimes[index]]![
+                                                                        i]
+                                                                    .taskName)
+                                                          ],
+                                                        ),
+                                                        // Row(
+                                                        //   children: [
+                                                        //     const Icon(Icons.done),
+                                                        //     LabelText(
+                                                        //         text: addTaskController
+                                                        //             .checklists.length
+                                                        //             .toString())
+                                                        //   ],
+                                                        // )
+                                                      ],
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              );
-                            }),
+                                  );
+                                }),
+                          ),
                   ),
                   Expanded(
                     child: Obx(
@@ -402,127 +407,131 @@ class _TaskScreenState extends State<TaskScreen>
                                 ],
                               ),
                             )
-                          : ListView.separated(
-                              physics: const BouncingScrollPhysics(),
-                              itemCount: recurringTaskController.tasks.length,
-                              separatorBuilder: (context, index) => Column(
-                                    children: [
-                                      SH.small(),
-                                      const Divider(),
-                                      SH.small(),
-                                    ],
-                                  ),
-                              itemBuilder: (context, index) {
-                                return Row(
-                                  children: [
-                                    // Container(
-                                    //   height: 30,
-                                    //   width: 30,
-                                    //   decoration: BoxDecoration(
-                                    //       borderRadius:
-                                    //           BorderRadius.circular(8),
-                                    //       color: categoryController.iconColor[
-                                    //           categoryController.categories
-                                    //               .firstWhere((element) =>
-                                    //                   element.id ==
-                                    //                   recurringTaskController
-                                    //                       .tasks[index]
-                                    //                       .categoryId)
-                                    //               .color]),
-                                    //   child: Icon(
-                                    //     categoryController.icon[
-                                    //         categoryController.categories
-                                    //             .firstWhere((element) =>
-                                    //                 element.id ==
-                                    //                 recurringTaskController
-                                    //                     .tasks[index]
-                                    //                     .categoryId)
-                                    //             .icon],
-                                    //     size: 23,
-                                    //     color: color.backgroundColor,
-                                    //   ),
-                                    // ),
-                                    Obx(
-                                      () => switchController.isClassic.value ==
-                                              true
-                                          ? IconWidgetClassic(
-                                              contanerSize: true,
-                                              contanerHight: 30,
-                                              contanerWidth: 30,
-                                              icon: categoryController.icon[
-                                                  categoryController.categories
-                                                      .firstWhere((element) =>
-                                                          element.id ==
+                          : AnimationLimiter(
+                              child: ListView.separated(
+                                  physics: const BouncingScrollPhysics(),
+                                  itemCount:
+                                      recurringTaskController.tasks.length,
+                                  separatorBuilder: (context, index) => Column(
+                                        children: [
+                                          SH.small(),
+                                          const Divider(),
+                                          SH.small(),
+                                        ],
+                                      ),
+                                  itemBuilder: (context, index) {
+                                    return AnimationConfiguration.staggeredList(
+                                      position: index,
+                                      duration:
+                                          const Duration(milliseconds: 375),
+                                      child: SlideAnimation(
+                                        verticalOffset: 50.0,
+                                        child: FadeInAnimation(
+                                          child: Row(
+                                            children: [
+                                              // Container(
+                                              //   height: 30,
+                                              //   width: 30,
+                                              //   decoration: BoxDecoration(
+                                              //       borderRadius:
+                                              //           BorderRadius.circular(8),
+                                              //       color: categoryController.iconColor[
+                                              //           categoryController.categories
+                                              //               .firstWhere((element) =>
+                                              //                   element.id ==
+                                              //                   recurringTaskController
+                                              //                       .tasks[index]
+                                              //                       .categoryId)
+                                              //               .color]),
+                                              //   child: Icon(
+                                              //     categoryController.icon[
+                                              //         categoryController.categories
+                                              //             .firstWhere((element) =>
+                                              //                 element.id ==
+                                              //                 recurringTaskController
+                                              //                     .tasks[index]
+                                              //                     .categoryId)
+                                              //             .icon],
+                                              //     size: 23,
+                                              //     color: color.backgroundColor,
+                                              //   ),
+                                              // ),
+                                              Obx(() => IconWidgetClassic(
+                                                    contanerSize: true,
+                                                    contanerHight: 30,
+                                                    contanerWidth: 30,
+                                                    icon: categoryController
+                                                            .icon[
+                                                        categoryController
+                                                            .categories
+                                                            .firstWhere((element) =>
+                                                                element.id ==
+                                                                recurringTaskController
+                                                                    .tasks[
+                                                                        index]
+                                                                    .categoryId)
+                                                            .icon],
+                                                    contanerColor: color.brightness ==
+                                                            Brightness.dark
+                                                        ? categoryController.iconColor[categoryController
+                                                            .categories
+                                                            .firstWhere((element) =>
+                                                                element.id ==
+                                                                recurringTaskController
+                                                                    .tasks[
+                                                                        index]
+                                                                    .categoryId)
+                                                            .color]
+                                                        : categoryController
+                                                                .iconLightColor[
+                                                            categoryController.categories
+                                                                .firstWhere((element) =>
+                                                                    element.id ==
+                                                                    recurringTaskController
+                                                                        .tasks[index]
+                                                                        .categoryId)
+                                                                .color],
+                                                  )),
+                                              SW.medium(),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  LabelText(
+                                                      text:
                                                           recurringTaskController
                                                               .tasks[index]
-                                                              .categoryId)
-                                                      .icon],
-                                              contanerColor: categoryController
-                                                      .iconColor[
-                                                  categoryController.categories
-                                                      .firstWhere((element) =>
-                                                          element.id ==
-                                                          recurringTaskController
-                                                              .tasks[index]
-                                                              .categoryId)
-                                                      .color],
-                                            )
-                                          : IconWidgetSimple(
-                                              contanerSize: true,
-                                              contanerHight: 30,
-                                              contanerWidth: 30,
-                                              icon: categoryController.icon[
-                                                  categoryController.categories
-                                                      .firstWhere((element) =>
-                                                          element.id ==
-                                                          recurringTaskController
-                                                              .tasks[index]
-                                                              .categoryId)
-                                                      .icon],
-                                              contanerColor: categoryController
-                                                      .iconColor[
-                                                  categoryController.categories
-                                                      .firstWhere((element) =>
-                                                          element.id ==
-                                                          recurringTaskController
-                                                              .tasks[index]
-                                                              .categoryId)
-                                                      .color],
-                                            ),
-                                    ),
-                                    SW.medium(),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        LabelText(
-                                            text: recurringTaskController
-                                                .tasks[index].rTaskName),
-                                        SH.medium(),
-                                        // Container(
-                                        //   decoration: BoxDecoration(
-                                        //       borderRadius:
-                                        //           BorderRadius.circular(3),
-                                        //       color: color.primaryColor
-                                        //           .withOpacity(.2)),
-                                        //   child: Padding(
-                                        //     padding: const EdgeInsets.symmetric(
-                                        //         horizontal: 5, vertical: 2),
-                                        //     child: LabelText(
-                                        //       text: 'Habit',
-                                        //       isColor: true,
-                                        //       isBold: true,
-                                        //       color: color.primaryColor,
-                                        //     ),
-                                        //   ),
-                                        // ),
-                                      ],
-                                    )
-                                  ],
-                                );
-                              }),
+                                                              .rTaskName),
+                                                  SH.medium(),
+                                                  // Container(
+                                                  //   decoration: BoxDecoration(
+                                                  //       borderRadius:
+                                                  //           BorderRadius.circular(3),
+                                                  //       color: color.primaryColor
+                                                  //           .withOpacity(.2)),
+                                                  //   child: Padding(
+                                                  //     padding: const EdgeInsets.symmetric(
+                                                  //         horizontal: 5, vertical: 2),
+                                                  //     child: LabelText(
+                                                  //       text: 'Habit',
+                                                  //       isColor: true,
+                                                  //       isBold: true,
+                                                  //       color: color.primaryColor,
+                                                  //     ),
+                                                  //   ),
+                                                  // ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  }),
+                            ),
                     ),
                   ),
                 ],
