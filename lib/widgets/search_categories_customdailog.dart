@@ -65,8 +65,7 @@ void SearchCategoryCustomDialogBox(BuildContext context) {
                                         decoration: BoxDecoration(
                                             border: Border.all(
                                                 width: 5,
-                                                strokeAlign:
-                                                    StrokeAlign.outside,
+                                                //  strokeAlign:StrokeAlign.outside,
                                                 color: color.primaryColor
                                                     .withOpacity(0.3)),
                                             color: color.primaryColor,
