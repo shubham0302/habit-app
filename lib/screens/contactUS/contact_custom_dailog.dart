@@ -29,7 +29,7 @@ void ContactCustomDialogBox(BuildContext context) {
                   children: [
                     Center(
                         child: LabelText(
-                      text: "Contact us",
+                      text: "Contact us".tr,
                       isColor: true,
                       color: color.disabledColor,
                     )),
@@ -41,8 +41,8 @@ void ContactCustomDialogBox(BuildContext context) {
                           Get.back();
                           ContactSupportCustomDialogBox(context);
                         },
-                        child: const LabelText(
-                            text: "CONTACT SUPPORT", isBold: true)),
+                        child: LabelText(
+                            text: "CONTACT SUPPORT".tr, isBold: true)),
                     SH.medium(),
                     const Divider(),
                     SH.medium(),
@@ -51,8 +51,8 @@ void ContactCustomDialogBox(BuildContext context) {
                           Get.back();
                           SuggestionSupportCustomDialogBox(context);
                         },
-                        child: const LabelText(
-                            text: "SEND SUGGESTIONS", isBold: true)),
+                        child: LabelText(
+                            text: "SEND SUGGESTIONS".tr, isBold: true)),
                     SH.medium(),
                     const Divider(),
                     SH.medium(),
@@ -61,8 +61,8 @@ void ContactCustomDialogBox(BuildContext context) {
                           Get.back();
                           ReportSupportCustomDialogBox(context);
                         },
-                        child: const LabelText(
-                            text: "REPORT A BUG", isBold: true)),
+                        child:
+                            LabelText(text: "REPORT A BUG".tr, isBold: true)),
                     SH.medium(),
                     const Divider(),
                     SH.medium(),
@@ -71,8 +71,8 @@ void ContactCustomDialogBox(BuildContext context) {
                           Get.back();
                           ReminderSupportCustomDialogBox(context);
                         },
-                        child: const LabelText(
-                          text: "REMINDER ARE NOT WORKING",
+                        child: LabelText(
+                          text: "REMINDER ARE NOT WORKING".tr,
                           isBold: true,
                         )),
                     SH.medium(),
@@ -82,8 +82,8 @@ void ContactCustomDialogBox(BuildContext context) {
                       onTap: () {
                         Get.back();
                       },
-                      child: const LabelText(
-                          text: "CLOSE", isColor: true, isBold: true
+                      child: LabelText(
+                          text: "CLOSE".tr, isColor: true, isBold: true
                           // color: color.primaryColor,
                           ),
                     ),

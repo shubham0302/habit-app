@@ -209,7 +209,7 @@ class _StopWatchState extends State<StopWatch>
                           color: color.primaryColor),
                       child: Center(
                           child: LabelText(
-                        text: !started ? "START" : "PAUSE",
+                        text: !started ? "Start".tr : "Pause".tr,
                         isBold: true,
                         // isWhite: false,s
                         isColor: true,
@@ -270,7 +270,7 @@ class _StopWatchState extends State<StopWatch>
                       color: color.primaryColor),
                   child: Center(
                       child: LabelText(
-                    text: !started ? "START" : "PAUSE",
+                    text: !started ? "Start".tr : "Pause".tr,
                     isBold: true,
                     // isWhite: false,
                     isColor: true,

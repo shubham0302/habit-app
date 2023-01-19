@@ -38,7 +38,7 @@ class SettingScreen extends StatelessWidget {
                         ),
                       )),
                   SW.medium(),
-                  const MainLabelText(text: 'Setting'),
+                  MainLabelText(text: 'Settings'.tr),
                 ],
               ),
               SH.large(),
@@ -67,7 +67,7 @@ class SettingScreen extends StatelessWidget {
                             color: color.primaryColor,
                           ),
                           SW.large(),
-                          const LabelText(text: "Todo and Habit lists")
+                          LabelText(text: "Todo and Habit Lists".tr)
                         ],
                       ),
                       Icon(
@@ -108,7 +108,7 @@ class SettingScreen extends StatelessWidget {
                             color: color.primaryColor,
                           ),
                           SW.large(),
-                          const LabelText(text: "Notifications and Alarms")
+                          LabelText(text: "Notifications and Alarms".tr)
                         ],
                       ),
                       Icon(
@@ -149,7 +149,7 @@ class SettingScreen extends StatelessWidget {
                             color: color.primaryColor,
                           ),
                           SW.large(),
-                          const LabelText(text: "Customize")
+                          LabelText(text: "Customize".tr)
                         ],
                       ),
                       Icon(
@@ -190,7 +190,7 @@ class SettingScreen extends StatelessWidget {
                             color: color.primaryColor,
                           ),
                           SW.large(),
-                          const LabelText(text: "Lock Screen")
+                          LabelText(text: "Lock Screen".tr)
                         ],
                       ),
                       Icon(
@@ -229,7 +229,7 @@ class SettingScreen extends StatelessWidget {
                             color: color.primaryColor,
                           ),
                           SW.large(),
-                          const LabelText(text: "Backups")
+                          LabelText(text: "Backups".tr)
                         ],
                       ),
                       Icon(
@@ -270,7 +270,7 @@ class SettingScreen extends StatelessWidget {
                             color: color.primaryColor,
                           ),
                           SW.large(),
-                          LabelText(text: "lang".tr)
+                          LabelText(text: "Change Language".tr)
                         ],
                       ),
                       Icon(
@@ -311,7 +311,7 @@ class SettingScreen extends StatelessWidget {
                             color: color.primaryColor,
                           ),
                           SW.large(),
-                          const LabelText(text: "Licenses")
+                          LabelText(text: "Licenses".tr)
                         ],
                       ),
                       Icon(

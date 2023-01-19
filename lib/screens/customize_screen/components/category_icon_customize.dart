@@ -23,7 +23,7 @@ class CategoryIconStyle extends StatelessWidget {
         () => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const LabelText(text: CScreenLabels.categoryIconTitleText),
+            LabelText(text: CScreenLabels.categoryIconTitleText.tr),
             GlobalPadding(
                 child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -89,7 +89,7 @@ class CategoryIconStyle extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               vertical: 2, horizontal: 8),
                           // color: Colors.purple.withOpacity(.2),
-                          child: const DescriptionText(text: 'CLASSIC'))
+                          child: DescriptionText(text: 'Classic'.tr))
                     ],
                   ),
                 ),
@@ -154,7 +154,7 @@ class CategoryIconStyle extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               vertical: 2, horizontal: 8),
                           // color: Colors.purple.withOpacity(.2),
-                          child: const DescriptionText(text: 'SIMPLE'))
+                          child: DescriptionText(text: 'Simple'.tr))
                     ],
                   ),
                 )

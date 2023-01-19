@@ -182,8 +182,8 @@ void DayOfMonthHabbit(BuildContext context) {
                       onTap: () {
                         Get.back();
                       },
-                      child: const MainLabelText(
-                        text: "Add",
+                      child: MainLabelText(
+                        text: "ADD".tr,
                         isColor: true,
                         isBold: true,
                       ),

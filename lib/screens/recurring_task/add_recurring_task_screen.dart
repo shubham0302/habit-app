@@ -49,7 +49,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         ),
                       )),
                   SW.medium(),
-                  const MainLabelText(text: 'Add New Recurring Task'),
+                   MainLabelText(text: 'Add New Recurring Task'.tr),
                 ],
               ),
               SH.large(),
@@ -67,7 +67,8 @@ class AddRecurringTaskScreen extends StatelessWidget {
                           color: color.primaryColor,
                         ),
                         SW.small(),
-                        const LabelText(text: "Task Name")
+                        
+                         LabelText(text: "Task Name".tr)
                       ],
                     ),
                     GestureDetector(
@@ -92,7 +93,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                                 text: addRecurringTaskController
                                             .updateName.value ==
                                         ''
-                                    ? "name"
+                                    ? "name".tr
                                     : addRecurringTaskController
                                         .updateName.value,
                               ),
@@ -115,7 +116,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Description")
+                       LabelText(text: "Description".tr)
                     ],
                   ),
                   GestureDetector(
@@ -141,7 +142,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                                 text: addRecurringTaskController
                                             .updateDescription.value ==
                                         ''
-                                    ? "Description"
+                                    ? "Description".tr
                                     : addRecurringTaskController
                                         .updateDescription.value,
                                 isDotDot: true,
@@ -165,7 +166,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Evaluate")
+                       LabelText(text: "Evaluate".tr)
                     ],
                   ),
                   GestureDetector(
@@ -209,7 +210,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Category")
+                       LabelText(text: "Category".tr)
                     ],
                   ),
                   GestureDetector(
@@ -285,7 +286,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                                                   addRecurringTaskController
                                                       .categoryId.value)
                                               .name
-                                          : 'Select',
+                                          : 'Select'.tr,
                                 ),
                               ],
                             ),
@@ -307,7 +308,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Start Date")
+                       LabelText(text: "Start Date".tr)
                     ],
                   ),
                   GestureDetector(
@@ -356,7 +357,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "End Date")
+                       LabelText(text: "End Date".tr)
                     ],
                   ),
                   GestureDetector(
@@ -404,7 +405,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Repetation")
+                       LabelText(text: "Repetation".tr)
                     ],
                   ),
                   GestureDetector(
@@ -450,7 +451,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Reminders")
+                       LabelText(text: "Reminders".tr)
                     ],
                   ),
                   GestureDetector(
@@ -494,7 +495,7 @@ class AddRecurringTaskScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Priority")
+                       LabelText(text: "Priority".tr)
                     ],
                   ),
                   GestureDetector(
@@ -546,9 +547,9 @@ class AddRecurringTaskScreen extends StatelessWidget {
                             const BorderRadius.all(Radius.circular(10)),
                         border: Border.all(width: 2, color: color.primaryColor),
                         color: color.backgroundColor),
-                    child: const Center(
+                    child:  Center(
                       child: MainLabelText(
-                        text: "Add Recurring Task",
+                        text: "Add Recurring Task".tr,
                         isColor: true,
                       ),
                     ),

@@ -174,7 +174,7 @@ class _IntervalTimerStartScreenState extends State<IntervalTimerStartScreen>
                   decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(30)),
                       color: color.primaryColor),
-                  child: const Center(child: LabelText(text: "Start")),
+                  child: Center(child: LabelText(text: "Start".tr)),
                 ),
               ),
               GestureDetector(
@@ -200,8 +200,7 @@ class _IntervalTimerStartScreenState extends State<IntervalTimerStartScreen>
                             ? intervalTabController.start.value = false
                             : intervalTabController.start.value = true;
                       },
-                      child:
-                          const Center(child: MainLabelText(text: "delete"))),
+                      child: Center(child: MainLabelText(text: "Delete".tr))),
                 ),
               )
             ],

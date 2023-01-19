@@ -50,7 +50,7 @@ class BackUpScreen extends StatelessWidget {
                           ),
                         )),
                     SW.medium(),
-                    const MainLabelText(text: 'Backups'),
+                    MainLabelText(text: 'Backups'.tr),
                   ],
                 ),
                 // Icon(
@@ -85,8 +85,8 @@ class BackUpScreen extends StatelessWidget {
                           color: color.primaryColor,
                         ),
                         // SH.small(),
-                        const LabelText(
-                          text: "Upload\nBackup",
+                        LabelText(
+                          text: "Upload Backup".tr,
                           isBold: true,
                         )
                       ],
@@ -110,9 +110,9 @@ class BackUpScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       // SH.small(),
-                      const LabelText(
+                      LabelText(
                         alignment: TextAlign.center,
-                        text: "Import from\ncloud",
+                        text: "Import from cloud".tr,
                         isBold: true,
                       )
                     ],
@@ -135,8 +135,8 @@ class BackUpScreen extends StatelessWidget {
                   size: 20,
                 ),
                 SW.medium(),
-                const LabelText(
-                  text: "Cloud Backups Account",
+                LabelText(
+                  text: "Cloud Backups Account".tr,
                 ),
                 SW.medium(),
                 Expanded(
@@ -170,8 +170,8 @@ class BackUpScreen extends StatelessWidget {
                       size: 20,
                     ),
                     SW.medium(),
-                    const LabelText(
-                      text: "Automatic Cloud Backups",
+                    LabelText(
+                      text: "Automatic Cloud Backups".tr,
                     ),
                   ],
                 ),
@@ -224,8 +224,8 @@ class BackUpScreen extends StatelessWidget {
                     size: 20,
                   ),
                   SW.medium(),
-                  const LabelText(
-                    text: "Create Backup File",
+                  LabelText(
+                    text: "Create Backup File".tr,
                   ),
                 ],
               ),
@@ -245,8 +245,8 @@ class BackUpScreen extends StatelessWidget {
                     size: 20,
                   ),
                   SW.medium(),
-                  const LabelText(
-                    text: "Import Backup File",
+                  LabelText(
+                    text: "Import Backup File".tr,
                   ),
                 ],
               ),

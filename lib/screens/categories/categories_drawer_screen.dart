@@ -45,7 +45,7 @@ class CategoriesDrawerScreen extends StatelessWidget {
                             ),
                           )),
                       SW.medium(),
-                      const MainLabelText(text: 'Categories'),
+                      MainLabelText(text: 'Categories'.tr),
                     ],
                   ),
                 ),

@@ -16,17 +16,15 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SwitchController switchController =
-        Get.put(SwitchController(), permanent: false);
     CategoryController categoryController =
         Get.put(CategoryController(), permanent: false);
     ThemeData color = Theme.of(context);
     return Scaffold(
       body: GlobalPadding(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const HeadingText(text: "Default Categories"),
+          HeadingText(text: "Default Categories".tr),
           SH.small(),
-          const DescriptionText(text: "Editable for premium users"),
+          DescriptionText(text: "Editable for premium users".tr),
           SH.large(),
           // SH.large(),
           SizedBox(
@@ -148,7 +146,7 @@ class CategoriesScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const HeadingText(text: "Custom Categories"),
+              HeadingText(text: "Custom Categories".tr),
               GestureDetector(
                 onTap: () {
                   categoryController.category.value = '';
@@ -200,8 +198,8 @@ class CategoriesScreen extends StatelessWidget {
                             size: 30,
                           ),
                           SH.small(),
-                          const DescriptionText(
-                            text: 'There are no custom categories',
+                          DescriptionText(
+                            text: 'There are no categories'.tr,
                             // isBold: true,
                           ),
                         ],

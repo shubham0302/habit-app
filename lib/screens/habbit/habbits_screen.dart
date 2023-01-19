@@ -60,13 +60,13 @@ class HabbitsScreen extends StatelessWidget {
                           image: AssetImage('assets/images/tasks.png'),
                         ),
                         SH.large(),
-                        const LabelText(
-                          text: 'There are no active habits',
+                        LabelText(
+                          text: 'There are no active habits'.tr,
                           isBold: true,
                         ),
                         SH.small(),
-                        const DescriptionText(
-                          text: 'Add new habit for a fresh start!',
+                        DescriptionText(
+                          text: 'Add new habit for a fresh start!'.tr,
                           // isBold: true,
                         ),
                       ],

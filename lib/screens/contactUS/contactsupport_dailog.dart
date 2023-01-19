@@ -43,18 +43,18 @@ void ContactSupportCustomDialogBox(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Center(child: DescriptionText(text: "Contact us")),
+                    Center(child: DescriptionText(text: "Contact us".tr)),
                     SH.medium(),
                     const Divider(),
                     SH.medium(),
                     InputField(
-                      hintText: "Write your comments here",
+                      hintText: "Write your comments here".tr,
                       isDescription: true,
                       controller: emailSendController.controllerMessage,
                     ),
                     SH.large(),
-                    const DescriptionText(
-                      text: "Your feedback is very valuable to us",
+                    DescriptionText(
+                      text: "Your feedback is very valuable to us".tr,
                       isDotDot: false,
                     ),
                     SH.large(),
@@ -65,8 +65,8 @@ void ContactSupportCustomDialogBox(BuildContext context) {
                           onTap: () {
                             Get.back();
                           },
-                          child: const LabelText(
-                            text: "CANCEL",
+                          child: LabelText(
+                            text: "CANCEL".tr,
                             isBold: true,
                           ),
                         ),
@@ -79,8 +79,8 @@ void ContactSupportCustomDialogBox(BuildContext context) {
                                 toMessage:
                                     emailSendController.controllerMessage.text);
                           },
-                          child: const LabelText(
-                            text: "SEND",
+                          child: LabelText(
+                            text: "SEND".tr,
                             isColor: true,
                             isBold: true,
                           ),

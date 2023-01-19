@@ -76,7 +76,7 @@ class _NotificationandAlarmScreenState
                         color: color.primaryColor,
                       ),
                       SW.small(),
-                      const LabelText(text: "Notify daily programme")
+                      LabelText(text: "Notify daily programme".tr)
                     ],
                   ),
                   Obx(
@@ -126,7 +126,7 @@ class _NotificationandAlarmScreenState
                                         color: color.primaryColor,
                                       ),
                                       SW.small(),
-                                      const LabelText(text: "Time")
+                                      LabelText(text: "Time".tr)
                                     ],
                                   ),
                                   GestureDetector(
@@ -157,10 +157,11 @@ class _NotificationandAlarmScreenState
                                                 const BorderRadius.all(
                                                     Radius.circular(10)),
                                             color: color.backgroundColor),
-                                        child: const Padding(
-                                          padding: EdgeInsets.only(left: 10),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10),
                                           child: LabelText(
-                                            text: 'Select Time',
+                                            text: 'Select Time'.tr,
                                           ),
                                         )),
                                   )
@@ -169,7 +170,7 @@ class _NotificationandAlarmScreenState
                               SH.large(),
                             ],
                           )
-                        : SizedBox(),
+                        : const SizedBox(),
                   )),
               const Divider(
                 thickness: 1,
@@ -186,7 +187,7 @@ class _NotificationandAlarmScreenState
                         color: color.primaryColor,
                       ),
                       SW.small(),
-                      const LabelText(text: "Remind me to use the app")
+                      LabelText(text: "Remind me to use the app".tr)
                     ],
                   ),
                   Obx(
@@ -233,7 +234,7 @@ class _NotificationandAlarmScreenState
                                   color: color.primaryColor,
                                 ),
                                 SW.medium(),
-                                const LabelText(text: "Time")
+                                LabelText(text: "Time".tr)
                               ],
                             ),
                             GestureDetector(
@@ -266,7 +267,7 @@ class _NotificationandAlarmScreenState
                                         text: notifyTimeController
                                                     .appTime.value ==
                                                 ''
-                                            ? 'select time'
+                                            ? 'Select time'.tr
                                             : "${notifyTimeController.appTime.value}",
                                       ),
                                     )),
@@ -295,7 +296,7 @@ class _NotificationandAlarmScreenState
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Alarm snooze time")
+                      LabelText(text: "Alarm snooze time".tr)
                     ],
                   ),
                   GestureDetector(
@@ -318,7 +319,7 @@ class _NotificationandAlarmScreenState
                           child: Obx(
                             () => LabelText(
                               text: notifyTimeController.minute.value == 0
-                                  ? 'select time'
+                                  ? 'Select time'.tr
                                   : "${notifyTimeController.minute.value.toString()} minutes",
                             ),
                           ),
@@ -339,7 +340,7 @@ class _NotificationandAlarmScreenState
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Enabled for completed activities")
+                      LabelText(text: "Enabled for completed activities".tr)
                     ],
                   ),
                   Obx(
@@ -384,7 +385,7 @@ class _NotificationandAlarmScreenState
                           color: color.primaryColor,
                         ),
                         SW.medium(),
-                        const LabelText(text: "Alarm settings")
+                        LabelText(text: "Alarms setting".tr)
                       ],
                     ),
                   ],
@@ -403,7 +404,7 @@ class _NotificationandAlarmScreenState
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Reprogram reminders")
+                      LabelText(text: "Reprogram reminders".tr)
                     ],
                   ),
                 ],
@@ -421,7 +422,7 @@ class _NotificationandAlarmScreenState
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Reminders not working")
+                      LabelText(text: 'Reminders not working'.tr)
                     ],
                   ),
                 ],

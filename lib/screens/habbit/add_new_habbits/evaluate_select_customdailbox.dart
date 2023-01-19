@@ -26,8 +26,8 @@ void EvaluateCustomDialogBox(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const LabelText(
-                        text: "How do you want to evaluate your progress ?",
+                      LabelText(
+                        text: "How do you want to evaluate your progress ?".tr,
                         isColor: true,
                       ),
                       SH.large(),
@@ -45,9 +45,9 @@ void EvaluateCustomDialogBox(BuildContext context) {
                                 borderRadius:
                                     const BorderRadius.all(Radius.circular(10)),
                                 color: color.primaryColor),
-                            child: const Center(
+                            child: Center(
                               child: LabelText(
-                                text: "WITH A YES OR NO",
+                                text: "WITH A YES OR NO".tr,
                                 isBold: true,
                                 // isColor: true,
                               ),
@@ -56,9 +56,10 @@ void EvaluateCustomDialogBox(BuildContext context) {
                         ),
                       ),
                       // SH.small(),
-                      const DescriptionText(
+                      DescriptionText(
                         text:
-                            "If you just want to record whether you succeed with the activity or not",
+                            "If you just want to record whether you succeed with the activity or not"
+                                .tr,
                         alignment: TextAlign.center,
                       ),
 
@@ -77,7 +78,7 @@ void EvaluateCustomDialogBox(BuildContext context) {
                                 color: color.primaryColor.withOpacity(0.4)),
                             child: Center(
                               child: LabelText(
-                                text: "WITH A CHECKLIST",
+                                text: "WITH A CHECKLIST".tr,
                                 isBold: true,
                                 isColor: true,
                                 color: color.canvasColor.withOpacity(0.4),
@@ -88,16 +89,17 @@ void EvaluateCustomDialogBox(BuildContext context) {
                         ),
                       ),
                       // SH.small(),
-                      const Center(
+                      Center(
                         child: DescriptionText(
-                          text: "Premium feature",
+                          text: "Premium feature".tr,
                           isColor: true,
                           alignment: TextAlign.center,
                         ),
                       ),
-                      const DescriptionText(
+                      DescriptionText(
                         text:
-                            "If you want to evalute your activity based on a set of sub-items",
+                            "If you want to evalute your activity based on a set of sub-items"
+                                .tr,
                         alignment: TextAlign.center,
                       )
                     ]),

@@ -110,8 +110,8 @@ class MainScreen extends StatelessWidget {
                       behavior: HitTestBehavior.translucent,
                       child: Container(
                         alignment: Alignment.center,
-                        child: const LabelText(
-                          text: 'CLOSE',
+                        child: LabelText(
+                          text: 'CLOSE'.tr,
                           isBold: true,
                         ),
                       ),
@@ -123,8 +123,8 @@ class MainScreen extends StatelessWidget {
                       behavior: HitTestBehavior.translucent,
                       child: Container(
                         alignment: Alignment.center,
-                        child: const LabelText(
-                          text: 'TODAY',
+                        child: LabelText(
+                          text: 'TODAY'.tr,
                           isBold: true,
                         ),
                       ),
@@ -188,7 +188,7 @@ class MainScreen extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const DescriptionText(text: "ALL"),
+                                DescriptionText(text: "ALL".tr),
                                 Icon(
                                   Icons.keyboard_arrow_down_sharp,
                                   color: color.disabledColor,
@@ -219,9 +219,9 @@ class MainScreen extends StatelessWidget {
                                           width: 1,
                                           color: color.disabledColor
                                               .withOpacity(0.2)))),
-                              child: const Center(
+                              child: Center(
                                   child: DescriptionText(
-                                      text: "No categories selected")),
+                                      text: "No categories selected".tr)),
                             ),
                           ),
                         ),
@@ -257,7 +257,7 @@ class MainScreen extends StatelessWidget {
 
                                             // enabled: false,
                                             // border: OutlineInputBorder(),
-                                            hintText: 'Enter a search term',
+                                            hintText: 'Enter a search term'.tr,
                                             hintStyle: TextStyle(
                                                 color: color.disabledColor),
                                             labelStyle: TextStyle(
@@ -364,7 +364,7 @@ class MainScreen extends StatelessWidget {
                                   duration: Duration(milliseconds: 350),
                                   height: 0,
                                   child: MainLabelText(
-                                    text: 'Planarize',
+                                    text: 'plannarize'.tr,
                                     isColor: true,
                                     color: controller.tabIndex.value == 0
                                         ? Colors.white
@@ -376,7 +376,7 @@ class MainScreen extends StatelessWidget {
                                   height:
                                       controller.tabIndex.value == 0 ? 20 : 0,
                                   child: MainLabelText(
-                                    text: 'Planarize',
+                                    text: 'plannarize'.tr,
                                     isColor: true,
                                     color: controller.tabIndex.value == 0
                                         ? Colors.white
@@ -388,7 +388,7 @@ class MainScreen extends StatelessWidget {
                                   height:
                                       controller.tabIndex.value == 1 ? 20 : 0,
                                   child: MainLabelText(
-                                      text: 'Tasks',
+                                      text: 'Tasks'.tr,
                                       isColor: true,
                                       color: controller.tabIndex.value == 1
                                           ? Colors.white
@@ -399,7 +399,7 @@ class MainScreen extends StatelessWidget {
                                   height:
                                       controller.tabIndex.value == 2 ? 20 : 0,
                                   child: MainLabelText(
-                                      text: 'Category',
+                                      text: 'Categories'.tr,
                                       isColor: true,
                                       color: controller.tabIndex.value == 2
                                           ? Colors.white
@@ -410,7 +410,7 @@ class MainScreen extends StatelessWidget {
                                   height:
                                       controller.tabIndex.value == 3 ? 20 : 0,
                                   child: MainLabelText(
-                                      text: 'Habit',
+                                      text: 'Habit'.tr,
                                       isColor: true,
                                       color: controller.tabIndex.value == 3
                                           ? Colors.white
@@ -421,7 +421,7 @@ class MainScreen extends StatelessWidget {
                                   height:
                                       controller.tabIndex.value == 4 ? 20 : 0,
                                   child: MainLabelText(
-                                      text: 'Timer',
+                                      text: 'Timer'.tr,
                                       isColor: true,
                                       color: controller.tabIndex.value == 4
                                           ? Colors.white

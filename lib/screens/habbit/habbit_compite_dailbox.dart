@@ -33,9 +33,9 @@ void HabbitCompleteTaskCustomDialogBox(BuildContext context, int index) {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Center(
+                  Center(
                     child: LabelText(
-                      text: "Well Done!",
+                      text: "Well Done!".tr,
                       isColor: true,
                     ),
                   ),
@@ -51,17 +51,17 @@ void HabbitCompleteTaskCustomDialogBox(BuildContext context, int index) {
                     isColor: true,
                   ),
                   SH.large(),
-                  DescriptionText(text: 'New best streak'),
+                  DescriptionText(text: 'New best streak'.tr),
                   SH.small(),
                   MainLabelText(
-                    text: '1 Day',
+                    text: '1 Day'.tr,
                     isColor: true,
                     isBold: true,
                   ),
                   SH.medium(),
                   Divider(),
                   SH.medium(),
-                  DescriptionText(text: 'Next Award: 7 days'),
+                  DescriptionText(text: 'Next Award: 7 days'.tr),
                   SH.medium(),
                   Divider(),
                   SH.medium(),
@@ -74,7 +74,7 @@ void HabbitCompleteTaskCustomDialogBox(BuildContext context, int index) {
                       ),
                       SW.medium(),
                       DescriptionText(
-                        text: 'SHARE',
+                        text: 'SHARE'.tr,
                         isColor: true,
                         isBold: true,
                       ),
@@ -87,7 +87,7 @@ void HabbitCompleteTaskCustomDialogBox(BuildContext context, int index) {
                       onTap: () {
                         Get.back();
                       },
-                      child: DescriptionText(text: 'CLOSE'))
+                      child: DescriptionText(text: 'CLOSE'.tr))
                 ]),
           ),
         );

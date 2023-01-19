@@ -28,9 +28,9 @@ void TimerCustomDialogBox(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Center(
+                    Center(
                         child: LabelText(
-                      text: "Define your habit",
+                      text: "Define your habit".tr,
                       isColor: true,
                       isBold: true,
                     )),
@@ -92,7 +92,7 @@ void TimerCustomDialogBox(BuildContext context) {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: DescriptionText(
-                                text: "a day",
+                                text: "a day".tr,
                                 isColor: true,
                                 color: color.canvasColor,
                               ),
@@ -102,8 +102,9 @@ void TimerCustomDialogBox(BuildContext context) {
                       ],
                     ),
                     SH.medium(),
-                    const DescriptionText(
-                        text: "e.g.. Meet with friend, at least 2 hours a day"),
+                    DescriptionText(
+                        text: "e.g.. Meet with friend, at least 2 hours a day"
+                            .tr),
                     SH.large(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -114,8 +115,8 @@ void TimerCustomDialogBox(BuildContext context) {
                             print(addHabbitSelectController.updateUnit.value);
                             print(addHabbitSelectController.updateGoal.value);
                           },
-                          child: const MainLabelText(
-                            text: "Add",
+                          child: MainLabelText(
+                            text: "Add".tr,
                             isColor: true,
                             isBold: true,
                           ),
@@ -141,9 +142,9 @@ class _TimerDropDownState extends State<TimerDropDown> {
 
 // List of items in our dropdown menu
   var items = [
-    'At least',
-    'Less than',
-    'Any value',
+    'At least'.tr,
+    'Less than'.tr,
+    'Any value'.tr,
   ];
   @override
   Widget build(BuildContext context) {

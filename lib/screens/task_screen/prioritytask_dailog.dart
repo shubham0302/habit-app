@@ -24,7 +24,7 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
               Column(mainAxisAlignment: MainAxisAlignment.start,
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const MainLabelText(text: "Seletct a Priority"),
+                    MainLabelText(text: "Seletct a Priority".tr),
                     SH.large(),
                     Container(
                       width: MediaQuery.of(context).size.width,
@@ -397,7 +397,7 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                                               color: color.primaryColor,
                                             ),
                                     ]),
-                                const LabelText(text: "Default")
+                                LabelText(text: "Default".tr)
                               ],
                             ),
                           ),
@@ -409,8 +409,8 @@ void PriorityTaskCustomDialogBox(BuildContext context) {
                       onTap: () {
                         Get.back();
                       },
-                      child: const LabelText(
-                        text: "Close",
+                      child: LabelText(
+                        text: "Close".tr,
                         isColor: true,
                       ),
                     )

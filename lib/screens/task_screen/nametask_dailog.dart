@@ -27,16 +27,16 @@ void NameTaskCustomDialogBox(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Center(child: LabelText(text: "Add Task Name")),
+                      Center(child: LabelText(text: "Add Task Name".tr)),
                       SH.large(),
                       const Divider(
                         thickness: 1,
                       ),
                       SH.large(),
-                      const LabelText(text: "Name"),
+                      LabelText(text: "Name".tr),
                       SH.medium(),
                       InputField(
-                        hintText: "Name",
+                        hintText: "Name".tr,
                         // controller: addHabbitSelectController.nameCtrl,
                         isWhiteHintText: true,
                         onChange: (p0) {
@@ -58,8 +58,8 @@ void NameTaskCustomDialogBox(BuildContext context) {
                               Get.back();
                               // addTaskController.taskName.refresh();
                             },
-                            child: const MainLabelText(
-                              text: "Add",
+                            child: MainLabelText(
+                              text: "Add".tr,
                               isColor: true,
                               isBold: true,
                             ),

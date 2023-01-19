@@ -59,7 +59,7 @@ Widget buildBottomNavigationMenu(
                         ? Icons.today_outlined
                         : Icons.today_outlined,
                     controller.tabIndex.value == 0,
-                    'Today',
+                    'Today'.tr,
                     context),
               ),
               SW.medium(),
@@ -76,7 +76,7 @@ Widget buildBottomNavigationMenu(
                         ? Icons.task_alt_outlined
                         : Icons.task_alt_outlined,
                     controller.tabIndex.value == 1,
-                    'Tasks',
+                    'Tasks'.tr,
                     context),
               ),
               SW.medium(),
@@ -89,7 +89,7 @@ Widget buildBottomNavigationMenu(
                         ? Icons.category_outlined
                         : Icons.category_outlined,
                     controller.tabIndex.value == 2,
-                    'Categorie',
+                    'Categorie'.tr,
                     context),
               ),
               SW.medium(),
@@ -103,7 +103,7 @@ Widget buildBottomNavigationMenu(
                         ? Icons.workspace_premium
                         : Icons.workspace_premium_outlined,
                     controller.tabIndex.value == 3,
-                    'Habit',
+                    'Habit'.tr,
                     context),
               ),
               SW.medium(),
@@ -115,7 +115,7 @@ Widget buildBottomNavigationMenu(
                         ? Icons.timer_outlined
                         : Icons.timer_outlined,
                     controller.tabIndex.value == 4,
-                    'Timer',
+                    'Timer'.tr,
                     context),
               ),
               SW.medium(),

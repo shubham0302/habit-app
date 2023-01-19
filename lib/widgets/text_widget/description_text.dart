@@ -12,7 +12,7 @@ class DescriptionText extends StatelessWidget {
   final TextAlign? alignment;
   final String? type;
   final bool? isDotDot;
-  
+
   const DescriptionText({
     Key? key,
     required this.text,
@@ -38,7 +38,7 @@ class DescriptionText extends StatelessWidget {
           color: isColor == true ? (this.color ?? color.primaryColor) : null,
           fontWeight: isBold == true ? FontWeight.bold : FontWeight.normal),
       textAlign: alignment,
-      overflow: TextOverflow.ellipsis,
+      overflow: TextOverflow.clip,
     );
   }
 }

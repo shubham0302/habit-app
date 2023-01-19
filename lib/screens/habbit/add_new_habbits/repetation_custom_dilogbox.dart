@@ -28,8 +28,7 @@ void RepetationCustomDialogBox(BuildContext context) {
               Column(mainAxisAlignment: MainAxisAlignment.start,
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const MainLabelText(
-                        text: "How often do you want to do it?"),
+                    MainLabelText(text: "How often do you want to do it?".tr),
                     SH.large(),
                     const Divider(
                       thickness: 1,
@@ -42,7 +41,7 @@ void RepetationCustomDialogBox(BuildContext context) {
                           Get.back();
                         },
                         behavior: HitTestBehavior.translucent,
-                        child: const LabelText(text: "Everyday")),
+                        child: LabelText(text: "Everyday".tr)),
                     SH.large(),
                     const Divider(
                       thickness: 1,
@@ -55,7 +54,7 @@ void RepetationCustomDialogBox(BuildContext context) {
                           DayOfWeekHabbit(context);
                         },
                         behavior: HitTestBehavior.translucent,
-                        child: const LabelText(text: "Some days of the week")),
+                        child: LabelText(text: "Some days of the week".tr)),
                     SH.large(),
                     const Divider(
                       thickness: 1,
@@ -68,8 +67,7 @@ void RepetationCustomDialogBox(BuildContext context) {
                               "Specific days of the month";
                         },
                         behavior: HitTestBehavior.translucent,
-                        child: const LabelText(
-                            text: "Specific day of the month")),
+                        child: LabelText(text: "Specific day of the month".tr)),
                     SH.large(),
                     const Divider(
                       thickness: 1,
@@ -82,8 +80,7 @@ void RepetationCustomDialogBox(BuildContext context) {
                               "Specific day of the year";
                         },
                         behavior: HitTestBehavior.translucent,
-                        child:
-                            const LabelText(text: "Specific days of the year")),
+                        child: LabelText(text: "Specific days of the year".tr)),
                     SH.large(),
                     const Divider(
                       thickness: 1,
@@ -96,7 +93,7 @@ void RepetationCustomDialogBox(BuildContext context) {
                           TimePeriodHabbit(context);
                         },
                         behavior: HitTestBehavior.translucent,
-                        child: const LabelText(text: "Some time per period")),
+                        child: LabelText(text: "Some time per period".tr)),
                     SH.large(),
                     const Divider(
                       thickness: 1,
@@ -109,12 +106,11 @@ void RepetationCustomDialogBox(BuildContext context) {
                               "Repeat";
                         },
                         behavior: HitTestBehavior.translucent,
-                        child: const LabelText(text: "Repeat")),
+                        child: LabelText(text: "Repeat".tr)),
                     SH.large(),
                   ]),
             ],
           ),
         );
       });
-
 }

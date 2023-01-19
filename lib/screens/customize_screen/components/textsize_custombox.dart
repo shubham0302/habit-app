@@ -22,7 +22,7 @@ void TextCustomDialogBox(BuildContext context) {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const DescriptionText(text: "To-do-list items text size"),
+              DescriptionText(text: "TO-do-list items text size".tr),
               SH.medium(),
               const Divider(
                   // thickness: 1,
@@ -35,7 +35,7 @@ void TextCustomDialogBox(BuildContext context) {
                 },
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
-                  text: "Default",
+                  text: "Default".tr,
                   isBold: true,
                   isColor: switchController.textSizing.value == 'Default'
                       ? true
@@ -55,7 +55,7 @@ void TextCustomDialogBox(BuildContext context) {
                 },
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
-                  text: "Large",
+                  text: "Large".tr,
                   isBold: true,
                   isColor: switchController.textSizing.value == 'Large'
                       ? true

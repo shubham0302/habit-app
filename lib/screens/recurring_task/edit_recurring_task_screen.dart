@@ -49,7 +49,7 @@ class EditRecurringTask extends StatelessWidget {
                         ),
                       )),
                   SW.medium(),
-                  const MainLabelText(text: 'Edit Recurring Task'),
+                   MainLabelText(text: 'Edit Recurring Task'.tr),
                 ],
               ),
               SH.large(),
@@ -67,7 +67,7 @@ class EditRecurringTask extends StatelessWidget {
                           color: color.primaryColor,
                         ),
                         SW.small(),
-                        const LabelText(text: "Task Name")
+                        LabelText(text: "Task Name".tr)
                       ],
                     ),
                     GestureDetector(
@@ -92,7 +92,7 @@ class EditRecurringTask extends StatelessWidget {
                                 text: addRecurringTaskController
                                             .updateName.value ==
                                         ''
-                                    ? "name"
+                                    ? "name".tr
                                     : addRecurringTaskController
                                         .updateName.value,
                               ),
@@ -115,7 +115,7 @@ class EditRecurringTask extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Description")
+                      LabelText(text: "Description".tr)
                     ],
                   ),
                   GestureDetector(
@@ -141,7 +141,7 @@ class EditRecurringTask extends StatelessWidget {
                                 text: addRecurringTaskController
                                             .updateDescription.value ==
                                         ''
-                                    ? "Description"
+                                    ? "Description".tr
                                     : addRecurringTaskController
                                         .updateDescription.value,
                                 isDotDot: true,
@@ -165,7 +165,7 @@ class EditRecurringTask extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Evaluate")
+                      LabelText(text: "Evaluate".tr)
                     ],
                   ),
                   GestureDetector(
@@ -209,7 +209,7 @@ class EditRecurringTask extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Category")
+                      LabelText(text: "Category".tr)
                     ],
                   ),
                   GestureDetector(
@@ -269,7 +269,7 @@ class EditRecurringTask extends StatelessWidget {
                                                   addRecurringTaskController
                                                       .categoryId.value)
                                               .name
-                                          : 'Select',
+                                          : 'Select'.tr,
                                 ),
                               ],
                             ),
@@ -291,7 +291,7 @@ class EditRecurringTask extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Start Date")
+                      LabelText(text: "Start Date".tr)
                     ],
                   ),
                   GestureDetector(
@@ -340,7 +340,7 @@ class EditRecurringTask extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "End Date")
+                      LabelText(text: "End Date".tr)
                     ],
                   ),
                   GestureDetector(
@@ -388,7 +388,7 @@ class EditRecurringTask extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Repetation")
+                      LabelText(text: "Repetation".tr)
                     ],
                   ),
                   GestureDetector(
@@ -434,7 +434,7 @@ class EditRecurringTask extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Reminders")
+                      LabelText(text: "Reminders".tr)
                     ],
                   ),
                   GestureDetector(
@@ -478,7 +478,7 @@ class EditRecurringTask extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Priority")
+                      LabelText(text: "Priority".tr)
                     ],
                   ),
                   GestureDetector(
@@ -530,9 +530,9 @@ class EditRecurringTask extends StatelessWidget {
                             const BorderRadius.all(Radius.circular(10)),
                         border: Border.all(width: 2, color: color.primaryColor),
                         color: color.backgroundColor),
-                    child: const Center(
+                    child: Center(
                       child: MainLabelText(
-                        text: "Add Recurring Task",
+                        text: "Add Recurring Task".tr,
                         isColor: true,
                       ),
                     ),

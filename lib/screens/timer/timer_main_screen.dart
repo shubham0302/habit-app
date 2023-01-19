@@ -91,8 +91,8 @@ class _TimerMainScreenState extends State<TimerMainScreen>
                 tabs: [
                   Column(
                     children: [
-                      const Tab(
-                        text: 'Stopwatch',
+                      Tab(
+                        text: 'Stopwatch'.tr,
                       ),
                       Container(
                         height: 2,
@@ -106,8 +106,8 @@ class _TimerMainScreenState extends State<TimerMainScreen>
                   // SizedBox(width: 5,),
                   Column(
                     children: [
-                      const Tab(
-                        text: 'Timer',
+                      Tab(
+                        text: 'Timer'.tr,
                       ),
                       Container(
                         height: 2,
@@ -120,8 +120,8 @@ class _TimerMainScreenState extends State<TimerMainScreen>
                   ),
                   Column(
                     children: [
-                      const Tab(
-                        text: 'Intervals',
+                      Tab(
+                        text: 'Intervals'.tr,
                       ),
                       Container(
                         height: 2,

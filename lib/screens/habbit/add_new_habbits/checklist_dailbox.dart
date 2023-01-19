@@ -27,9 +27,9 @@ void HabbitChecklistCustomDialogBox(BuildContext context) {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Center(
+                  Center(
                     child: LabelText(
-                      text: "Define your habit",
+                      text: "Define your habit".tr,
                       isColor: true,
                     ),
                   ),
@@ -37,14 +37,14 @@ void HabbitChecklistCustomDialogBox(BuildContext context) {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const LabelText(text: "Checklist"),
+                      LabelText(text: "Checklist".tr),
                       GestureDetector(
                           onTap: () {
                             addHabbitSelectController.addcheckbox.value =
                                 addHabbitSelectController.addcheckbox.value + 1;
                             print(addHabbitSelectController.addcheckbox.value);
                           },
-                          child: const LabelText(text: "ADD ITEM"))
+                          child: LabelText(text: "ADD ITEM".tr))
                     ],
                   ),
                   SH.medium(),
@@ -55,8 +55,8 @@ void HabbitChecklistCustomDialogBox(BuildContext context) {
                         separatorBuilder: (context, index) => SH.small(),
                         itemBuilder: (context, index) {
                           return Row(children: [
-                            const Expanded(
-                                child: InputField(hintText: "item name")),
+                            Expanded(
+                                child: InputField(hintText: "item name".tr)),
                             SW.medium(),
                             SW.medium(),
                             SW.medium(),
@@ -92,11 +92,11 @@ void HabbitChecklistCustomDialogBox(BuildContext context) {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const MainLabelText(text: "BACK"),
+                      MainLabelText(text: "BACK".tr),
                       GestureDetector(
                         onTap: () {},
-                        child: const MainLabelText(
-                          text: "ADD",
+                        child: MainLabelText(
+                          text: "ADD".tr,
                           isColor: true,
                         ),
                       ),

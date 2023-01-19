@@ -24,8 +24,9 @@ void ReminderSupportCustomDialogBox(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Center(
-                        child: DescriptionText(text: "Notice about reminders")),
+                    Center(
+                        child:
+                            DescriptionText(text: "Notice about reminders".tr)),
                     SH.medium(),
                     const Divider(),
                     // SH.medium(),
@@ -35,13 +36,15 @@ void ReminderSupportCustomDialogBox(BuildContext context) {
                         fit: BoxFit.cover,
                         repeat: false),
                     Text(
-                      "Your device has an integrated battery optimizer that could disable scheduled alarms and notifications.",
+                      "Your device has an integrated battery optimizer that could disable scheduled alarms and notifications."
+                          .tr,
                       style: TextStyle(fontSize: 15, color: color.canvasColor),
                       textAlign: TextAlign.center,
                     ),
                     SH.large(),
-                    const Text(
-                      "Make sure that HabitNow is excluded from your optimizer to ensure the correct execution of the reminders.",
+                    Text(
+                      "Make sure that HabitNow is excluded from your optimizer to ensure the correct execution of the reminders."
+                          .tr,
                       style: TextStyle(
                         fontSize: 15,
                       ),
@@ -53,8 +56,8 @@ void ReminderSupportCustomDialogBox(BuildContext context) {
                         onTap: () {
                           Get.back();
                         },
-                        child: const LabelText(
-                          text: 'GOT IT!',
+                        child: LabelText(
+                          text: 'GOT IT!'.tr,
                           isColor: true,
                           // color: color.primaryColor,
                         ))

@@ -222,11 +222,11 @@ class _HabbitTabbarState extends State<HabbitTabbar>
                   SH.medium(),
                   const LabelText(
                       text:
-                          'This is to notif thhat tasks are important for you asjdnn dksfn'),
+                          'This is to notif that tasks are important for you asjdnn dksfn'),
                   const Divider(),
                   const LabelText(
                       text:
-                          'This is to notif thhat tasks are important for you asjdnn dksfn')
+                          'This is to notif that tasks are important for you asjdnn dksfn')
                 ],
               ),
             ),

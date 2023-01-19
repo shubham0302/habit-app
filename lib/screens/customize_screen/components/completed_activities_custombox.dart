@@ -22,7 +22,7 @@ void CompActCustomDialogBox(BuildContext context) {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const DescriptionText(text: "Hide completed activities"),
+              DescriptionText(text: "Hide completed activites".tr),
               SH.medium(),
               const Divider(
                   // thickness: 1,
@@ -35,7 +35,7 @@ void CompActCustomDialogBox(BuildContext context) {
                 },
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
-                    text: "Hide",
+                    text: "Hide".tr,
                     isBold: true,
                     isColor: switchController.activitySorting.value == 'Hide'
                         ? true
@@ -53,7 +53,7 @@ void CompActCustomDialogBox(BuildContext context) {
                 },
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
-                    text: "Keep in place",
+                    text: "Keep in place".tr,
                     isBold: true,
                     isColor: switchController.activitySorting.value ==
                             'Keep in place'
@@ -72,7 +72,7 @@ void CompActCustomDialogBox(BuildContext context) {
                 },
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
-                    text: "Send to bottom",
+                    text: "Send to Bottom".tr,
                     isBold: true,
                     isColor: switchController.activitySorting.value ==
                             'Send to bottom'

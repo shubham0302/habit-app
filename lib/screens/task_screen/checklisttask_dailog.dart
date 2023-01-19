@@ -26,9 +26,9 @@ void ChecklistTaskCustomDialogBox(BuildContext context) {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Center(
+                  Center(
                     child: LabelText(
-                      text: "Define your habit",
+                      text: "Define your habit".tr,
                       isColor: true,
                     ),
                   ),
@@ -36,7 +36,7 @@ void ChecklistTaskCustomDialogBox(BuildContext context) {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const LabelText(text: "Checklist"),
+                      LabelText(text: "Checklist".tr),
                       GestureDetector(
                           onTap: () {
                             addHabbitSelectController.checklist
@@ -45,7 +45,7 @@ void ChecklistTaskCustomDialogBox(BuildContext context) {
                             //     addHabbitSelectController.addcheckbox.value + 1;
                             // print(addHabbitSelectController.addcheckbox.value);
                           },
-                          child: const LabelText(text: "ADD ITEM"))
+                          child: LabelText(text: "ADD ITEM".tr))
                     ],
                   ),
                   SH.large(),
@@ -69,7 +69,7 @@ void ChecklistTaskCustomDialogBox(BuildContext context) {
                                           .checklist[index],
                                       // key: ValueKey(addHabbitSelectController
                                       //     .checklist[index]),
-                                      hintText: "item name",
+                                      hintText: "item name".tr,
                                       onChange: (e) {
                                         // addHabbitSelectController
                                         //     .checklist[index] = e;
@@ -114,16 +114,16 @@ void ChecklistTaskCustomDialogBox(BuildContext context) {
                           Get.back();
                         },
                         behavior: HitTestBehavior.translucent,
-                        child: const LabelText(
-                          text: "BACK",
+                        child: LabelText(
+                          text: "BACK".tr,
                           isBold: true,
                         ),
                       ),
                       GestureDetector(
                         onTap: () {},
-                        child: const LabelText(
+                        child: LabelText(
                           isBold: true,
-                          text: "ADD",
+                          text: "ADD".tr,
                           isColor: true,
                         ),
                       ),

@@ -46,7 +46,7 @@ class LockScreen extends StatelessWidget {
                       ),
                     )),
                 SW.medium(),
-                const MainLabelText(text: 'Lock'),
+                MainLabelText(text: 'Lock'.tr),
               ],
             ),
             SH.large(),
@@ -62,7 +62,7 @@ class LockScreen extends StatelessWidget {
                       color: color.primaryColor,
                     ),
                     SW.medium(),
-                    const LabelText(text: "Lock pin")
+                    LabelText(text: "Lock pin".tr)
                   ],
                 ),
                 Obx(
@@ -117,7 +117,7 @@ class LockScreen extends StatelessWidget {
                       color: color.primaryColor,
                     ),
                     SW.medium(),
-                    const LabelText(text: "Enable fingerprint support")
+                    LabelText(text: "Enable fingerprint support".tr)
                   ],
                 ),
                 Obx(() => FlutterSwitch(

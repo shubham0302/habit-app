@@ -163,7 +163,7 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                  const DescriptionText(text: "Intervals"),
+                                  DescriptionText(text: "Intervals".tr),
                                   SH.medium(),
                                   Container(
                                     height: 90,
@@ -183,9 +183,10 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                                                     size: 30,
                                                   ),
                                                   SH.small(),
-                                                  const DescriptionText(
+                                                  DescriptionText(
                                                     text:
-                                                        'There are no custom categories',
+                                                        'There are no custom categories'
+                                                            .tr,
                                                     // isBold: true,
                                                   ),
                                                 ],
@@ -271,11 +272,11 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                                           borderRadius: const BorderRadius.all(
                                               Radius.circular(10)),
                                           color: color.backgroundColor),
-                                      child: const Padding(
+                                      child: Padding(
                                         padding: EdgeInsets.all(8.0),
                                         child: Center(
                                           child: LabelText(
-                                            text: 'ADD INTERVAL',
+                                            text: 'Add Interval'.tr,
                                             isBold: true,
                                             isColor: true,
                                           ),
@@ -294,14 +295,14 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          const LabelText(
-                                            text: 'Loops',
+                                          LabelText(
+                                            text: 'Loops'.tr,
                                             isBold: true,
                                             isColor: true,
                                           ),
                                           SH.small(),
-                                          const DescriptionText(
-                                              text: '0 = Unlimited')
+                                          DescriptionText(
+                                              text: '0 = Unlimited'.tr)
                                         ],
                                       ),
                                       SizedBox(
@@ -349,7 +350,7 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                                   text:
                                       intervalTabController.paused.value == true
                                           ? 'Resume'
-                                          : "Pause",
+                                          : "Pause".tr,
                                   isBold: true,
                                   isColor: true,
                                   color: Colors.white,
@@ -375,9 +376,9 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(10)),
                                   color: color.primaryColor),
-                              child: const Center(
+                              child: Center(
                                 child: LabelText(
-                                  text: "Stop",
+                                  text: "Stop".tr,
                                   isBold: true,
                                   isColor: true,
                                   color: Colors.white,
@@ -398,7 +399,7 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                             intervalTabController.startInterval();
                           } else {
                             CustomSnackbar.errorSnackbar2(
-                                'please add interval', context);
+                                'Please add Interval'.tr, context);
                           }
                         },
                         child: Container(
@@ -409,9 +410,9 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
                               color: color.primaryColor),
-                          child: const Center(
+                          child: Center(
                             child: LabelText(
-                              text: "Start",
+                              text: "Start".tr,
                               isBold: true,
                               isColor: true,
                               color: Colors.white,

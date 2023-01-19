@@ -64,7 +64,7 @@ void snoozeTimeDialog(BuildContext context) {
                                     notifyTimeController.setMinuteData();
                                   }),
                               SH.medium(),
-                              const DescriptionText(text: 'Minutes')
+                              DescriptionText(text: 'Minutes'.tr)
                             ],
                           ),
                         ],
@@ -80,8 +80,8 @@ void snoozeTimeDialog(BuildContext context) {
                               Get.back();
                             },
                             behavior: HitTestBehavior.translucent,
-                            child: const LabelText(
-                              text: 'CLOSE',
+                            child: LabelText(
+                              text: 'CLOSE'.tr,
                               isBold: true,
                             ),
                           ),
@@ -90,8 +90,8 @@ void snoozeTimeDialog(BuildContext context) {
                               Get.back();
                             },
                             behavior: HitTestBehavior.translucent,
-                            child: const LabelText(
-                              text: 'OK',
+                            child: LabelText(
+                              text: 'OK'.tr,
                               isBold: true,
                               isColor: true,
                             ),

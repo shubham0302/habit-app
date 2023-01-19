@@ -21,7 +21,7 @@ class PinScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 InputField(
-                  hintText: "Pin",
+                  hintText: "Pin".tr,
                   controller: lockPinController.pinCtrl,
                   isWhiteHintText: true,
                   textType: TextInputType.phone,
@@ -52,9 +52,9 @@ class PinScreen extends StatelessWidget {
                           border:
                               Border.all(width: 2, color: color.primaryColor),
                           color: color.backgroundColor),
-                      child: const Center(
+                      child: Center(
                         child: MainLabelText(
-                          text: "Enter",
+                          text: "Enter".tr,
                           isColor: true,
                         ),
                       ),

@@ -49,7 +49,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                         ),
                       )),
                   SW.medium(),
-                  const MainLabelText(text: 'Todo and Habit lists'),
+                  MainLabelText(text: 'Todo and Habit Lists'.tr),
                 ],
               ),
               SH.large(),
@@ -67,7 +67,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                           color: color.primaryColor,
                         ),
                         SW.small(),
-                        const LabelText(text: "First day of the week")
+                        LabelText(text: "First day of week".tr)
                       ],
                     ),
                     GestureDetector(
@@ -109,7 +109,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Completed activity sorting")
+                      LabelText(text: "Completed activity sorting".tr)
                     ],
                   ),
                   GestureDetector(
@@ -152,7 +152,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Todo list order sorting")
+                      LabelText(text: "Todo list order Sorting".tr)
                     ],
                   ),
                   GestureDetector(
@@ -194,7 +194,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Habit section order sorting")
+                      LabelText(text: "Habit section order sorting".tr)
                     ],
                   ),
                   GestureDetector(
@@ -236,7 +236,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Text sizing")
+                      LabelText(text: "Text sizing".tr)
                     ],
                   ),
                   GestureDetector(
@@ -280,7 +280,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                           color: color.primaryColor,
                         ),
                         SW.medium(),
-                        const LabelText(text: "Swap tap and long tap")
+                        LabelText(text: "Swap tap and long tap".tr)
                       ],
                     ),
                     Obx(
@@ -326,7 +326,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Vibration")
+                      LabelText(text: "Vibration".tr)
                     ],
                   ),
                   Obx(
@@ -371,7 +371,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Collapse habit cards")
+                      LabelText(text: "Collapse habit cards".tr)
                     ],
                   ),
                   Obx(
@@ -421,7 +421,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Animations")
+                      LabelText(text: "Animation".tr)
                     ],
                   ),
                   Obx(
@@ -467,7 +467,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Show awards")
+                      LabelText(text: "Show awards".tr)
                     ],
                   ),
                   Obx(

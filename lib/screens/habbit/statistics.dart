@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:get/get.dart';
 import 'package:habbit_app/screens/habbit/bargraph.dart';
 import 'package:habbit_app/screens/habbit/bargraph2.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
@@ -29,9 +30,9 @@ class Statistics extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(5)),
                 color: color.disabledColor.withOpacity(0.3)),
-            child: const Padding(
+            child: Padding(
               padding: EdgeInsets.all(5.0),
-              child: DescriptionText(text: "Habit score"),
+              child: DescriptionText(text: "Habit score".tr),
             ),
           ),
         ),
@@ -98,9 +99,9 @@ class Statistics extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(5)),
                 color: color.disabledColor.withOpacity(0.3)),
-            child: const Padding(
+            child: Padding(
               padding: EdgeInsets.all(5.0),
-              child: DescriptionText(text: "Steak"),
+              child: DescriptionText(text: "Steak".tr),
             ),
           ),
         ),
@@ -120,7 +121,7 @@ class Statistics extends StatelessWidget {
                           topRight: Radius.circular(10))),
                   child: Center(
                     child: LabelText(
-                      text: "Current",
+                      text: "Current".tr,
                       isColor: true,
                       color: color.backgroundColor,
                     ),
@@ -134,9 +135,9 @@ class Statistics extends StatelessWidget {
                       borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(10),
                           bottomRight: Radius.circular(10))),
-                  child: const Center(
+                  child: Center(
                     child: MainLabelText(
-                      text: "3 DAYS",
+                      text: "3 DAYS".tr,
                       isColor: true,
                     ),
                   ),
@@ -155,7 +156,7 @@ class Statistics extends StatelessWidget {
                           topRight: Radius.circular(10))),
                   child: Center(
                     child: LabelText(
-                      text: "Best",
+                      text: "Best".tr,
                       isColor: true,
                       color: color.backgroundColor,
                     ),
@@ -169,9 +170,9 @@ class Statistics extends StatelessWidget {
                       borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(10),
                           bottomRight: Radius.circular(10))),
-                  child: const Center(
+                  child: Center(
                     child: MainLabelText(
-                      text: "12 DAYS",
+                      text: "12 DAYS".tr,
                       isColor: true,
                     ),
                   ),
@@ -190,9 +191,9 @@ class Statistics extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(5)),
                 color: color.disabledColor.withOpacity(0.3)),
-            child: const Padding(
+            child: Padding(
               padding: EdgeInsets.all(5.0),
-              child: DescriptionText(text: "Times completed"),
+              child: DescriptionText(text: "Times completed".tr),
             ),
           ),
         ),
@@ -231,7 +232,7 @@ class Statistics extends StatelessWidget {
                   isBold: true,
                 ),
                 SH.small(),
-                const DescriptionText(text: "Times completed")
+                DescriptionText(text: "Times completed".tr)
               ],
             ),
             GestureDetector(
@@ -267,9 +268,9 @@ class Statistics extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(5)),
                 color: color.disabledColor.withOpacity(0.3)),
-            child: const Padding(
+            child: Padding(
               padding: EdgeInsets.all(5.0),
-              child: DescriptionText(text: "Success/Fail"),
+              child: DescriptionText(text: "Success/Fail".tr),
             ),
           ),
         ),
@@ -288,8 +289,8 @@ class Statistics extends StatelessWidget {
               Positioned(
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  DescriptionText(text: 'Total Days'),
+                children: [
+                  DescriptionText(text: 'Total Days'.tr),
                   TitleText(
                     text: '32',
                   ),
@@ -310,7 +311,7 @@ class Statistics extends StatelessWidget {
                   color: const Color(0xFF22CF4B),
                 ),
                 SW.small(),
-                const DescriptionText(text: 'Success -'),
+                DescriptionText(text: 'Success -'.tr),
                 SW.small(),
                 DescriptionText(
                   text: "24",
@@ -329,7 +330,7 @@ class Statistics extends StatelessWidget {
                   color: const Color(0xFFFFD816),
                 ),
                 SW.small(),
-                const DescriptionText(text: 'Skip -'),
+                DescriptionText(text: 'Skip -'.tr),
                 SW.small(),
                 DescriptionText(
                   text: "6",
@@ -348,7 +349,7 @@ class Statistics extends StatelessWidget {
                   color: const Color(0xFFDD2D2D),
                 ),
                 SW.small(),
-                const DescriptionText(text: 'Fail -'),
+                DescriptionText(text: 'Fail -'.tr),
                 SW.small(),
                 DescriptionText(
                   text: "2",
@@ -371,9 +372,9 @@ class Statistics extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(5)),
                 color: color.disabledColor.withOpacity(0.3)),
-            child: const Padding(
+            child: Padding(
               padding: EdgeInsets.all(5.0),
-              child: DescriptionText(text: "Streak challenge"),
+              child: DescriptionText(text: "Streak challenge".tr),
             ),
           ),
         ),
@@ -497,7 +498,7 @@ class Statistics extends StatelessWidget {
                   ),
                   SH.medium(),
                   LabelText(
-                    text: "200\nday",
+                    text: "200\nday".tr,
                     isColor: true,
                     color: color.canvasColor,
                   )

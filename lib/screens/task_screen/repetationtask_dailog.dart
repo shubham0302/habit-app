@@ -25,7 +25,7 @@ void RepetationTaskCustomDialogBox(BuildContext context) {
             child: Column(mainAxisAlignment: MainAxisAlignment.start,
                 // crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const MainLabelText(text: "How often do you want to do it?"),
+                  MainLabelText(text: "How often do you want to do it?".tr),
                   SH.large(),
                   const Divider(
                     thickness: 1,
@@ -37,7 +37,7 @@ void RepetationTaskCustomDialogBox(BuildContext context) {
                             "Everyday";
                         Get.back();
                       },
-                      child: const LabelText(text: "Everyday")),
+                      child: LabelText(text: "Everyday".tr)),
                   SH.large(),
                   const Divider(
                     thickness: 1,
@@ -49,7 +49,7 @@ void RepetationTaskCustomDialogBox(BuildContext context) {
                             "Some days of the week";
                         Get.back();
                       },
-                      child: const LabelText(text: "Some days of the week")),
+                      child: LabelText(text: "Some days of the week".tr)),
                   SH.large(),
                   const Divider(
                     thickness: 1,
@@ -61,8 +61,7 @@ void RepetationTaskCustomDialogBox(BuildContext context) {
                             "Specific days of the month";
                         Get.back();
                       },
-                      child:
-                          const LabelText(text: "Specific days of the month")),
+                      child: LabelText(text: "Specific days of the month".tr)),
                   SH.large(),
                   const Divider(
                     thickness: 1,
@@ -74,8 +73,7 @@ void RepetationTaskCustomDialogBox(BuildContext context) {
                             "Specific days of the year";
                         Get.back();
                       },
-                      child:
-                          const LabelText(text: "Specific days of the year")),
+                      child: LabelText(text: "Specific days of the year".tr)),
                   SH.large(),
                   const Divider(
                     thickness: 1,
@@ -87,7 +85,7 @@ void RepetationTaskCustomDialogBox(BuildContext context) {
                             "Some time per period";
                         Get.back();
                       },
-                      child: const LabelText(text: "Some time per period")),
+                      child: LabelText(text: "Some time per period".tr)),
                   SH.large(),
                   const Divider(
                     thickness: 1,
@@ -99,7 +97,7 @@ void RepetationTaskCustomDialogBox(BuildContext context) {
                             "Repeat";
                         Get.back();
                       },
-                      child: const LabelText(text: "Repeat")),
+                      child: LabelText(text: "Repeat".tr)),
                   SH.large(),
                 ]),
           ),

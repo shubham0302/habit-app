@@ -27,16 +27,16 @@ void LockPinCustomDialogBox(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Center(child: LabelText(text: "Set Lock Pin")),
+                    Center(child: LabelText(text: "Set Lock Pin".tr)),
                     SH.large(),
                     const Divider(
                       thickness: 1,
                     ),
                     SH.large(),
-                    const LabelText(text: "Set Pin"),
+                    LabelText(text: "Set Pin".tr),
                     SH.medium(),
                     InputField(
-                      hintText: "Enter Pin",
+                      hintText: "Enter Pin".tr,
                       controller: lockPinController.pinSetCtrl,
                       isWhiteHintText: true,
                       textType: TextInputType.phone,
@@ -49,10 +49,10 @@ void LockPinCustomDialogBox(BuildContext context) {
                       thickness: 1,
                     ),
                     SH.large(),
-                    const LabelText(text: "Confirm Pin"),
+                    LabelText(text: "Confirm Pin".tr),
                     SH.medium(),
                     InputField(
-                      hintText: "Re-enter Pin",
+                      hintText: "Re-enter Pin".tr,
                       controller: lockPinController.pinconfirmCtrl,
                       isWhiteHintText: true,
                       textType: TextInputType.phone,
@@ -73,8 +73,8 @@ void LockPinCustomDialogBox(BuildContext context) {
                             lockPinController.addPin();
                             Get.back();
                           },
-                          child: const MainLabelText(
-                            text: "Set Pin",
+                          child: MainLabelText(
+                            text: "Set Pin".tr,
                             isColor: true,
                             isBold: true,
                           ),

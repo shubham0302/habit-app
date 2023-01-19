@@ -22,7 +22,7 @@ void HabbitSortDialogBox(BuildContext context) {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const DescriptionText(text: "To-do order Sort"),
+              DescriptionText(text: "To-do order Sort".tr),
               SH.medium(),
               const Divider(
                 thickness: 1,
@@ -38,7 +38,7 @@ void HabbitSortDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "By priority",
+                  text: "By priority".tr,
                   isColor: switchController.habbitSorting.value == 'By priority'
                       ? true
                       : false,
@@ -59,7 +59,7 @@ void HabbitSortDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "By time",
+                  text: "By time".tr,
                   isColor: switchController.habbitSorting.value == 'By time'
                       ? true
                       : false,
@@ -79,7 +79,7 @@ void HabbitSortDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Alphabetical",
+                  text: "Alphabetical".tr,
                   isColor:
                       switchController.habbitSorting.value == 'Alphabetical'
                           ? true
@@ -101,7 +101,7 @@ void HabbitSortDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "By category",
+                  text: "By category".tr,
                   isColor: switchController.habbitSorting.value == 'By category'
                       ? true
                       : false,
@@ -122,7 +122,7 @@ void HabbitSortDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Tasks first",
+                  text: "Tasks first".tr,
                   isColor: switchController.habbitSorting.value == 'Tasks first'
                       ? true
                       : false,
@@ -143,7 +143,7 @@ void HabbitSortDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Habits firsts",
+                  text: "Habits firsts".tr,
                   isColor:
                       switchController.habbitSorting.value == 'Habits firsts'
                           ? true

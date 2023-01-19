@@ -221,7 +221,7 @@ class BrightnessCustomize extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const LabelText(text: "Light"),
+                          LabelText(text: "Light".tr),
                           SW.medium(),
                           Container(
                               padding: const EdgeInsets.all(2),
@@ -424,7 +424,7 @@ class BrightnessCustomize extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const LabelText(text: "Dark"),
+                          LabelText(text: "Dark".tr),
                           SW.medium(),
                           Container(
                               padding: const EdgeInsets.all(2),

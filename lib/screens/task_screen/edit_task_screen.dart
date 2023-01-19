@@ -49,7 +49,7 @@ class EditTask extends StatelessWidget {
                         ),
                       )),
                   SW.medium(),
-                  const MainLabelText(text: 'Edit Task'),
+                  MainLabelText(text: 'Edit Task'.tr),
                 ],
               ),
               SH.large(),
@@ -67,7 +67,7 @@ class EditTask extends StatelessWidget {
                           color: color.primaryColor,
                         ),
                         SW.small(),
-                        const LabelText(text: "Task Name")
+                        LabelText(text: "Task Name".tr)
                       ],
                     ),
                     GestureDetector(
@@ -88,7 +88,7 @@ class EditTask extends StatelessWidget {
                             child: Obx(
                               () => LabelText(
                                 text: addTaskController.taskName.value == ''
-                                    ? "name"
+                                    ? "name".tr
                                     : addTaskController.taskName.value,
                               ),
                             ),
@@ -110,7 +110,7 @@ class EditTask extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Category")
+                      LabelText(text: "Category".tr)
                     ],
                   ),
                   GestureDetector(
@@ -163,7 +163,7 @@ class EditTask extends StatelessWidget {
                                               addTaskController
                                                   .categoryId.value)
                                           .name
-                                      : 'Select',
+                                      : 'Select'.tr,
                                 ),
                               ],
                             ),
@@ -185,7 +185,7 @@ class EditTask extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Date")
+                      LabelText(text: "Date".tr)
                     ],
                   ),
                   GestureDetector(
@@ -226,7 +226,7 @@ class EditTask extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Checklist")
+                      LabelText(text: "Checklist".tr)
                     ],
                   ),
                   GestureDetector(
@@ -269,7 +269,7 @@ class EditTask extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Reminders")
+                      LabelText(text: "Reminders".tr)
                     ],
                   ),
                   GestureDetector(
@@ -311,7 +311,7 @@ class EditTask extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Priority")
+                      LabelText(text: "Priority".tr)
                     ],
                   ),
                   GestureDetector(
@@ -367,7 +367,7 @@ class EditTask extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const LabelText(text: "Pending task"),
+                            LabelText(text: "Pending task".tr),
                             SH.small(),
                             const DescriptionText(
                                 text:
@@ -409,9 +409,9 @@ class EditTask extends StatelessWidget {
                             const BorderRadius.all(Radius.circular(10)),
                         border: Border.all(width: 2, color: color.primaryColor),
                         color: color.backgroundColor),
-                    child: const Center(
+                    child:  Center(
                       child: MainLabelText(
-                        text: "Add Task",
+                        text: "Add Task".tr,
                         isColor: true,
                       ),
                     ),

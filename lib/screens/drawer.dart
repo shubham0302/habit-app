@@ -38,7 +38,7 @@ class Drawerr extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   HeadingText(
-                    text: 'Plannarize',
+                    text: 'plannarize'.tr,
                     color: color.primaryColor,
                     isColor: true,
                   ),
@@ -84,7 +84,7 @@ class Drawerr extends StatelessWidget {
                     ),
                     SW.large(),
                     LabelText(
-                      text: 'Home',
+                      text: 'Home'.tr,
                       color: color.primaryColor,
                       isColor: true,
                     ),
@@ -117,7 +117,7 @@ class Drawerr extends StatelessWidget {
                     ),
                     SW.large(),
                     LabelText(
-                      text: 'Timer',
+                      text: 'Timer'.tr,
                       isColor: true,
                       color: color.disabledColor,
                       // color: color.hoverColor,
@@ -151,7 +151,7 @@ class Drawerr extends StatelessWidget {
                     ),
                     SW.large(),
                     LabelText(
-                      text: 'Categories',
+                      text: 'Categories'.tr,
                       isColor: true,
                       color: color.disabledColor,
                       // color: color.hoverColor,
@@ -193,7 +193,7 @@ class Drawerr extends StatelessWidget {
                     ),
                     SW.large(),
                     LabelText(
-                      text: 'Customize',
+                      text: 'Customize'.tr,
                       isColor: true,
                       color: color.disabledColor,
                       // color: color.hover
@@ -229,7 +229,7 @@ class Drawerr extends StatelessWidget {
                     ),
                     SW.large(),
                     LabelText(
-                      text: 'Settings',
+                      text: 'Settings'.tr,
 
                       isColor: true,
                       color: color.disabledColor,
@@ -265,7 +265,7 @@ class Drawerr extends StatelessWidget {
                     ),
                     SW.large(),
                     LabelText(
-                      text: 'Backups',
+                      text: 'Backups'.tr,
                       isColor: true,
                       color: color.disabledColor,
                       // color: color.hoverColor,
@@ -308,7 +308,7 @@ class Drawerr extends StatelessWidget {
                     LabelText(
                       isColor: true,
                       color: color.disabledColor,
-                      text: 'Get Premium',
+                      text: 'Get Premium'.tr,
                       // color: color.hoverColor,
                     ),
                   ],
@@ -343,7 +343,7 @@ class Drawerr extends StatelessWidget {
                     LabelText(
                       isColor: true,
                       color: color.disabledColor,
-                      text: 'Rate this app',
+                      text: 'Rate this app'.tr,
                       // color: color.hoverColor,
                     ),
                   ],
@@ -380,7 +380,7 @@ class Drawerr extends StatelessWidget {
                     LabelText(
                       isColor: true,
                       color: color.disabledColor,
-                      text: 'Contact us',
+                      text: 'Contact us'.tr,
                       // color: color.hoverColor,
                     ),
                   ],

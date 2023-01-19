@@ -109,8 +109,8 @@ class _TaskScreenState extends State<TaskScreen>
                     tabs: [
                       Column(
                         children: [
-                          const Tab(
-                            text: 'Single tasks',
+                          Tab(
+                            text: 'Single tasks'.tr,
                           ),
                           Container(
                             height: 2,
@@ -124,8 +124,8 @@ class _TaskScreenState extends State<TaskScreen>
                       // SizedBox(width: 5,),
                       Column(
                         children: [
-                          const Tab(
-                            text: 'Recurring tasks',
+                          Tab(
+                            text: 'Recurring tasks'.tr,
                           ),
                           Container(
                             height: 2,
@@ -159,13 +159,13 @@ class _TaskScreenState extends State<TaskScreen>
                                   image: AssetImage('assets/images/tasks.png'),
                                 ),
                                 SH.large(),
-                                const LabelText(
-                                  text: 'No upcoming tasks',
+                                 LabelText(
+                                  text: 'No upcoming tasks'.tr,
                                   isBold: true,
                                 ),
                                 SH.small(),
-                                const DescriptionText(
-                                  text: 'There are no upcoming tasks',
+                                 DescriptionText(
+                                  text: 'There are no upcoming tasks'.tr,
                                   // isBold: true,
                                 ),
                               ],
@@ -395,13 +395,13 @@ class _TaskScreenState extends State<TaskScreen>
                                         AssetImage('assets/images/tasks.png'),
                                   ),
                                   SH.large(),
-                                  const LabelText(
-                                    text: 'No recurring tasks',
+                                   LabelText(
+                                    text: 'No recurring tasks'.tr,
                                     isBold: true,
                                   ),
                                   SH.small(),
-                                  const DescriptionText(
-                                    text: 'There are no recurring tasks',
+                                   DescriptionText(
+                                    text: 'There are no recurring tasks'.tr,
                                     // isBold: true,
                                   ),
                                 ],

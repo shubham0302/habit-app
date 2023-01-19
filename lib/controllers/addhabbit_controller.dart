@@ -56,13 +56,13 @@ class AddHabbitSelectController extends GetxController {
 
   var addcheckbox = 1.obs;
   List<String> weekDayString = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday"
+    "Monday".tr,
+    "Tuesday".tr,
+    "Wednesday".tr,
+    "Thursday".tr,
+    "Friday".tr,
+    "Saturday".tr,
+    "Sunday".tr
   ];
   RxList<int> openHabbits = <int>[].obs;
   List<int> weekIndex = [0].obs;

@@ -184,7 +184,7 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
                             color: color.primaryColor),
                         child: Center(
                             child: LabelText(
-                          text: isPlaying == true ? "PAUSE" : "RESUME",
+                          text: isPlaying == true ? "Pause".tr : "RESUME",
                           isBold: true,
                           isColor: true,
                           color: Colors.white,

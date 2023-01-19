@@ -5,6 +5,7 @@ import 'dart:math';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:habbit_app/widgets/text_widget/des_text.dart';
 
 class BarGraph extends StatefulWidget {
@@ -218,9 +219,9 @@ class BarGraphState extends State<BarGraph> {
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              DesText(text: 'This '),
-              DesText(text: 'week'),
+            children: [
+              DesText(text: 'This '.tr),
+              DesText(text: 'week'.tr),
             ],
           ),
         );
@@ -237,9 +238,9 @@ class BarGraphState extends State<BarGraph> {
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              DesText(text: 'This '),
-              DesText(text: 'month'),
+            children: [
+              DesText(text: 'This '.tr),
+              DesText(text: 'month'.tr),
             ],
           ),
         );
@@ -256,9 +257,9 @@ class BarGraphState extends State<BarGraph> {
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              DesText(text: 'This '),
-              DesText(text: 'year'),
+            children: [
+              DesText(text: 'This '.tr),
+              DesText(text: 'year'.tr),
             ],
           ),
         );
@@ -275,9 +276,9 @@ class BarGraphState extends State<BarGraph> {
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               // SH.small(),
-              DesText(text: 'All '),
+              DesText(text: 'All '.tr),
               // DescriptionText(text: 'week'),
             ],
           ),

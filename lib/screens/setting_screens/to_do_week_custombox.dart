@@ -22,7 +22,7 @@ void ToDoWeekCustomDialogBox(BuildContext context) {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const DescriptionText(text: "First day of week"),
+              DescriptionText(text: "First day of week".tr),
               SH.medium(),
               const Divider(
                 thickness: 1,
@@ -38,7 +38,7 @@ void ToDoWeekCustomDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Sunday",
+                  text: "Sunday".tr,
                   isColor: switchController.dayOfWeek.value == 'Sunday'
                       ? true
                       : false,
@@ -59,7 +59,7 @@ void ToDoWeekCustomDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Monday",
+                  text: "Monday".tr,
                   isColor: switchController.dayOfWeek.value == 'Monday'
                       ? true
                       : false,
@@ -79,7 +79,7 @@ void ToDoWeekCustomDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Tuesday",
+                  text: "Tuesday".tr,
                   isColor: switchController.dayOfWeek.value == 'Tuesday'
                       ? true
                       : false,
@@ -100,7 +100,7 @@ void ToDoWeekCustomDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Wednesday",
+                  text: "Wednesday".tr,
                   isColor: switchController.dayOfWeek.value == 'Wednesday'
                       ? true
                       : false,
@@ -121,7 +121,7 @@ void ToDoWeekCustomDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Thursday",
+                  text: "Thursday".tr,
                   isColor: switchController.dayOfWeek.value == 'Thursday'
                       ? true
                       : false,
@@ -142,7 +142,7 @@ void ToDoWeekCustomDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Friday",
+                  text: "Friday".tr,
                   isColor: switchController.dayOfWeek.value == 'Friday'
                       ? true
                       : false,
@@ -163,7 +163,7 @@ void ToDoWeekCustomDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Saturday",
+                  text: "Saturday".tr,
                   isColor: switchController.dayOfWeek.value == 'Saturday'
                       ? true
                       : false,

@@ -22,7 +22,7 @@ void ToDoSortingDialogBox(BuildContext context) {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const DescriptionText(text: "To-do order Sort"),
+              DescriptionText(text: "To-do order Sort".tr),
               SH.medium(),
               const Divider(
                 thickness: 1,
@@ -38,7 +38,7 @@ void ToDoSortingDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "By priority",
+                  text: "By priority".tr,
                   isColor: switchController.todoSorting.value == 'By priority'
                       ? true
                       : false,
@@ -59,7 +59,7 @@ void ToDoSortingDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "By time",
+                  text: "By time".tr,
                   isColor: switchController.todoSorting.value == 'By time'
                       ? true
                       : false,
@@ -79,7 +79,7 @@ void ToDoSortingDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Alphabetical",
+                  text: "Alphabetical".tr,
                   isColor: switchController.todoSorting.value == 'Alphabetical'
                       ? true
                       : false,
@@ -100,7 +100,7 @@ void ToDoSortingDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "By category",
+                  text: "By category".tr,
                   isColor: switchController.todoSorting.value == 'By category'
                       ? true
                       : false,
@@ -121,7 +121,7 @@ void ToDoSortingDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Tasks first",
+                  text: "Tasks first".tr,
                   isColor: switchController.todoSorting.value == 'Tasks first'
                       ? true
                       : false,
@@ -142,7 +142,7 @@ void ToDoSortingDialogBox(BuildContext context) {
                 behavior: HitTestBehavior.translucent,
                 child: LabelText(
                   isBold: true,
-                  text: "Habits firsts",
+                  text: "Habits firsts".tr,
                   isColor: switchController.todoSorting.value == 'Habits firsts'
                       ? true
                       : false,

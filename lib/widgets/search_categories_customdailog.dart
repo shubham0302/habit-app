@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
@@ -22,8 +23,7 @@ void SearchCategoryCustomDialogBox(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Center(
-                        child: DescriptionText(text: "Select s category")),
+                    Center(child: DescriptionText(text: "Select category".tr)),
                     SH.large(),
                     Container(
                       height: 280,
@@ -53,7 +53,7 @@ void SearchCategoryCustomDialogBox(BuildContext context) {
                                           ),
                                         ),
                                         SW.medium(),
-                                        const LabelText(text: "Exercise")
+                                        LabelText(text: "Exercise".tr)
                                       ],
                                     ),
                                     Container(
@@ -86,14 +86,14 @@ void SearchCategoryCustomDialogBox(BuildContext context) {
                     ),
                     const Divider(),
                     SH.medium(),
-                    const LabelText(
-                      text: "CLEAR SELECTION",
+                    LabelText(
+                      text: "CLEAR SELECTION".tr,
                       isColor: true,
                     ),
                     SH.medium(),
                     const Divider(),
                     SH.medium(),
-                    const LabelText(text: "CLOSE")
+                    LabelText(text: "CLOSE".tr)
                   ]),
             ));
       });

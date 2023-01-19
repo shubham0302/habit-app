@@ -24,7 +24,7 @@ class AlertBoxCustomize extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const GlobalPadding(
+            GlobalPadding(
               child: LabelText(
                 text: CScreenLabels.brightnessText,
                 isBold: false,
@@ -35,7 +35,7 @@ class AlertBoxCustomize extends StatelessWidget {
                 .map((e) => Column(
                       children: [
                         GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             themeController.changeThemeModeBy(e);
                             Navigator.pop(context);
                           },

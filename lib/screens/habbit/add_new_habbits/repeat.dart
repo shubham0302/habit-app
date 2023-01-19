@@ -35,23 +35,23 @@ void repeatBoxHabbit(BuildContext context) {
                               int.parse(e);
                         },
                       ))),
-                  const LabelText(text: '  times per  '),
+                  LabelText(text: '  times per  '.tr),
                   DropdownButton(
-                      items: const [
+                      items: [
                         DropdownMenuItem(
                             value: 'week',
                             child: LabelText(
-                              text: 'Week',
+                              text: 'Week'.tr,
                             )),
                         DropdownMenuItem(
                             value: 'month',
                             child: LabelText(
-                              text: 'Month',
+                              text: 'Month'.tr,
                             )),
                         DropdownMenuItem(
                             value: 'year',
                             child: LabelText(
-                              text: 'Year',
+                              text: 'Year'.tr,
                             )),
                       ],
                       onChanged: (v) {
@@ -83,11 +83,12 @@ void repeatBoxHabbit(BuildContext context) {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const LabelText(text: "Flexible"),
+                            LabelText(text: "Flexible".tr),
                             SH.small(),
-                            const DescriptionText(
+                            DescriptionText(
                                 text:
-                                    "It will be shown each day unit completed  ")
+                                    "It will be shown each day unit completed  "
+                                        .tr)
                           ],
                         )
                       ],

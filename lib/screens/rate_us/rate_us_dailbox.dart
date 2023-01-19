@@ -25,7 +25,7 @@ void RateUsCustomDialogBox(BuildContext context) {
                   children: [
                     Center(
                         child: LabelText(
-                      text: "Notice about reminders",
+                      text: "Notice about reminders".tr,
                       isColor: true,
                       color: color.disabledColor,
                     )),
@@ -51,8 +51,8 @@ void RateUsCustomDialogBox(BuildContext context) {
                                 Get.back();
                               },
                               child: Container(
-                                child: const LabelText(
-                                  text: "NOT REALLY",
+                                child: LabelText(
+                                  text: "NOT REALLY".tr,
                                   isBold: true,
                                 ),
                               ),
@@ -67,8 +67,8 @@ void RateUsCustomDialogBox(BuildContext context) {
                                 // Get.back();
                               },
                               child: Container(
-                                child: const LabelText(
-                                  text: "LOVE IT!",
+                                child: LabelText(
+                                  text: "LOVE IT!".tr,
                                   isBold: true,
                                   isColor: true,
                                 ),

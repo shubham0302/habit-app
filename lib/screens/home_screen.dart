@@ -120,13 +120,13 @@ class _HomePageState extends State<HomePage> {
                             SH.large(),
                             SH.large(),
                             SH.large(),
-                            const Center(
-                                child:
-                                    MainLabelText(text: 'No upcoming plans')),
+                            Center(
+                                child: MainLabelText(
+                                    text: 'No upcoming plans'.tr)),
                             SH.medium(),
-                            const Center(
+                            Center(
                                 child: DescriptionText(
-                                    text: 'Add your upcoming plans')),
+                                    text: 'Add your upcoming plans'.tr)),
                           ],
                         )
                       : Expanded(
@@ -143,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                                 taskController.tasks.isEmpty
                                     ? Container()
                                     : LabelText(
-                                        text: 'All tasks',
+                                        text: 'All tasks'.tr,
                                         isBold: true,
                                         isColor: true,
                                         color: color.primaryColor,
@@ -204,7 +204,7 @@ class _HomePageState extends State<HomePage> {
                                 habbitSelectController.tasks.isEmpty
                                     ? Container()
                                     : LabelText(
-                                        text: 'All habits',
+                                        text: 'All habits'.tr,
                                         isBold: true,
                                         isColor: true,
                                         color: color.primaryColor,
@@ -253,7 +253,7 @@ class _HomePageState extends State<HomePage> {
                                 recurringTaskController.tasks.isEmpty
                                     ? Container()
                                     : LabelText(
-                                        text: 'All recurring tasks',
+                                        text: 'All recurring tasks'.tr,
                                         isBold: true,
                                         isColor: true,
                                         color: color.primaryColor,

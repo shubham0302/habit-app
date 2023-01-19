@@ -38,7 +38,7 @@ class _SetIntervalComponentState extends State<SetIntervalComponent> {
             children: [
               Column(
                 children: [
-                  const DescriptionText(text: "Hour"),
+                  DescriptionText(text: "Hours".tr),
                   SH.small(),
                   NumberPicker(
                     // itemCount: 12,
@@ -66,7 +66,7 @@ class _SetIntervalComponentState extends State<SetIntervalComponent> {
               ),
               Column(
                 children: [
-                  const DescriptionText(text: "Minutes"),
+                  DescriptionText(text: "Minutes".tr),
                   SH.small(),
                   NumberPicker(
                     // itemCount: 12,
@@ -94,7 +94,7 @@ class _SetIntervalComponentState extends State<SetIntervalComponent> {
               ),
               Column(
                 children: [
-                  const DescriptionText(text: "Seconds"),
+                  DescriptionText(text: "Seconds".tr),
                   SH.small(),
                   NumberPicker(
                     // itemCount: 12,
@@ -165,9 +165,9 @@ class _SetIntervalComponentState extends State<SetIntervalComponent> {
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(30)),
                     color: color.primaryColor),
-                child: const Center(
+                child: Center(
                     child: LabelText(
-                  text: "START",
+                  text: "START".tr,
                   isBold: true,
                 )),
               ),

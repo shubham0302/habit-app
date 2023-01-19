@@ -27,21 +27,21 @@ void NameRecurringCustomDialogBox(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Center(
-                          child: LabelText(text: "Name and description")),
+                      Center(child: LabelText(text: "Name and description".tr)),
                       SH.large(),
                       const Divider(
                         thickness: 1,
                       ),
                       SH.large(),
-                      const LabelText(text: "Name"),
+                      LabelText(text: "Name".tr),
                       SH.medium(),
                       InputField(
-                        hintText: "Name",
+                        hintText: "Name".tr,
                         controller: addRecurringTaskController.nameCtrl,
                         isWhiteHintText: true,
                         onChange: (p0) {
-                          addRecurringTaskController.updateName.value = toBeginningOfSentenceCase(p0).toString();
+                          addRecurringTaskController.updateName.value =
+                              toBeginningOfSentenceCase(p0).toString();
                         },
                       ),
                       SH.large(),
@@ -49,10 +49,10 @@ void NameRecurringCustomDialogBox(BuildContext context) {
                         thickness: 1,
                       ),
                       SH.large(),
-                      const LabelText(text: "Description"),
+                      LabelText(text: "Description".tr),
                       SH.medium(),
                       InputField(
-                        hintText: "Description",
+                        hintText: "Description".tr,
                         controller: addRecurringTaskController.descriptionCtrl,
                         isWhiteHintText: true,
                         onChange: (p1) {
@@ -72,8 +72,8 @@ void NameRecurringCustomDialogBox(BuildContext context) {
                             onTap: () {
                               Get.back();
                             },
-                            child: const MainLabelText(
-                              text: "Add",
+                            child: MainLabelText(
+                              text: "Add".tr,
                               isColor: true,
                               isBold: true,
                             ),
@@ -85,6 +85,4 @@ void NameRecurringCustomDialogBox(BuildContext context) {
               ],
             ));
       });
-
 }
-

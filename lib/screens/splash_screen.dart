@@ -18,8 +18,8 @@ class SplashScreen extends StatelessWidget {
     ThemeData color = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const HeadingText(
-          text: 'Plannarize',
+        title: HeadingText(
+          text: 'plannarize'.tr,
         ),
         backgroundColor: color.indicatorColor,
       ),

@@ -30,7 +30,7 @@ class HeaderCustomize extends StatelessWidget {
                 ),
               )),
           SW.medium(),
-          const MainLabelText(text: 'Customize'),
+          MainLabelText(text: 'Customize'.tr),
         ],
       ),
     );

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/app_labels/customize_screen.dart';
@@ -14,24 +13,26 @@ class PrimumBrighnessCustomize extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeController themeController = Get.find<ThemeController>();
     return GlobalPadding(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    LabelText(text: CScreenLabels.premiumBrightnessTitleText),
-                    DescriptionText(text: CScreenLabels.premiumBrightnessSubtitleText)
-                  ],
-                ),
-                Obx(()=>Switch(
-                      value: themeController.isDark,
-                      onChanged: (v) {
-                        themeController.changeThemeMode();
-                      }),
-                ),
-              ],
-            ),
-          );
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              LabelText(text: CScreenLabels.premiumBrightnessTitleText.tr),
+              DescriptionText(
+                  text: CScreenLabels.premiumBrightnessSubtitleText.tr)
+            ],
+          ),
+          Obx(
+            () => Switch(
+                value: themeController.isDark,
+                onChanged: (v) {
+                  themeController.changeThemeMode();
+                }),
+          ),
+        ],
+      ),
+    );
   }
 }

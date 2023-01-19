@@ -182,8 +182,8 @@ void DayOfMonth(BuildContext context) {
                       onTap: () {
                         Get.back();
                       },
-                      child: const MainLabelText(
-                        text: "Add",
+                      child: MainLabelText(
+                        text: "Add".tr,
                         isColor: true,
                         isBold: true,
                       ),

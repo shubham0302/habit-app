@@ -39,7 +39,7 @@ class _SetTimerComponentState extends State<SetTimerComponent> {
             children: [
               Column(
                 children: [
-                  const DescriptionText(text: "Hour"),
+                  DescriptionText(text: "Hours".tr),
                   SH.small(),
                   NumberPicker(
                     // itemCount: 12,
@@ -67,7 +67,7 @@ class _SetTimerComponentState extends State<SetTimerComponent> {
               ),
               Column(
                 children: [
-                  const DescriptionText(text: "Minutes"),
+                  DescriptionText(text: "Minutes".tr),
                   SH.small(),
                   NumberPicker(
                     // itemCount: 12,
@@ -95,7 +95,7 @@ class _SetTimerComponentState extends State<SetTimerComponent> {
               ),
               Column(
                 children: [
-                  const DescriptionText(text: "Seconds"),
+                  DescriptionText(text: "Seconds".tr),
                   SH.small(),
                   NumberPicker(
                     // itemCount: 12,
@@ -187,9 +187,9 @@ class _SetTimerComponentState extends State<SetTimerComponent> {
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(30)),
                     color: color.primaryColor),
-                child: const Center(
+                child: Center(
                     child: LabelText(
-                  text: "START",
+                  text: "START".tr,
                   isBold: true,
                   isColor: true,
                   color: Colors.white,

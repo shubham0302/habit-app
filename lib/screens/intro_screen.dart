@@ -178,14 +178,15 @@ class IntroScreen extends StatelessWidget {
                             Column(
                               // crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const HeadingText(
-                                  text: 'Welcome to Plannarize',
+                                HeadingText(
+                                  text: 'Welcome to Plannarize'.tr,
                                   alignment: TextAlign.center,
                                 ),
                                 SH.medium(),
-                                const DescriptionText(
+                                DescriptionText(
                                   text:
-                                      'This app will help you to keep an organised routine as you build new habits!',
+                                      'This app will help you to keep an organised routine as you build new habits!'
+                                          .tr,
                                   alignment: TextAlign.center,
                                 )
                               ],
@@ -193,14 +194,15 @@ class IntroScreen extends StatelessWidget {
                             Column(
                               // crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const HeadingText(
-                                  text: 'Create a routine',
+                                HeadingText(
+                                  text: 'Create a routine'.tr,
                                   alignment: TextAlign.center,
                                 ),
                                 SH.medium(),
-                                const DescriptionText(
+                                DescriptionText(
                                   text:
-                                      'To start using Plannarize record the habits you want to keep track in your life together with your pending tasks.',
+                                      'To start using Plannarize record the habits you want to keep track in your life together with your pending tasks.'
+                                          .tr,
                                   alignment: TextAlign.center,
                                 )
                               ],
@@ -208,14 +210,15 @@ class IntroScreen extends StatelessWidget {
                             Column(
                               // crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const HeadingText(
-                                  text: 'Check it dailly',
+                                HeadingText(
+                                  text: 'Check it dailly'.tr,
                                   alignment: TextAlign.center,
                                 ),
                                 SH.medium(),
-                                const DescriptionText(
+                                DescriptionText(
                                   text:
-                                      'A list shown every day with all your scheduled activities. Take advantage of customisable reminders to complete then all!',
+                                      'A list shown every day with all your scheduled activities. Take advantage of customisable reminders to complete then all!'
+                                          .tr,
                                   alignment: TextAlign.center,
                                 )
                               ],
@@ -223,14 +226,15 @@ class IntroScreen extends StatelessWidget {
                             Column(
                               // crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const HeadingText(
-                                  text: 'Keep doing it!',
+                                HeadingText(
+                                  text: 'Keep doing it!'.tr,
                                   alignment: TextAlign.center,
                                 ),
                                 SH.medium(),
-                                const DescriptionText(
+                                DescriptionText(
                                   text:
-                                      'Create streaks of success for your habits and complete all your tasks. Use the charts and tools to deeply analyse your progress.',
+                                      'Create streaks of success for your habits and complete all your tasks. Use the charts and tools to deeply analyse your progress.'
+                                          .tr,
                                   alignment: TextAlign.center,
                                 )
                               ],
@@ -238,14 +242,15 @@ class IntroScreen extends StatelessWidget {
                             Column(
                               // crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const HeadingText(
-                                  text: 'Make the app yours',
+                                HeadingText(
+                                  text: 'Make the app yours'.tr,
                                   alignment: TextAlign.center,
                                 ),
                                 SH.medium(),
-                                const DescriptionText(
+                                DescriptionText(
                                   text:
-                                      'Try all the customisation options create a daily journal and protect your data. There are many features to discover!',
+                                      'Try all the customisation options create a daily journal and protect your data. There are many features to discover!'
+                                          .tr,
                                   alignment: TextAlign.center,
                                 ),
                                 SH.large(),
@@ -264,7 +269,7 @@ class IntroScreen extends StatelessWidget {
                                       child: Row(
                                         children: [
                                           DescriptionText(
-                                            text: 'Dark Theme',
+                                            text: 'Dark Theme'.tr,
                                             isColor: true,
                                             color:
                                                 themeController.themeModeData[
@@ -357,7 +362,7 @@ class IntroScreen extends StatelessWidget {
                                               )),
                                           SW.medium(),
                                           DescriptionText(
-                                              text: 'Light Theme',
+                                              text: 'Light Theme'.tr,
                                               isColor: true,
                                               color:
                                                   themeController.themeModeData[
@@ -414,8 +419,8 @@ class IntroScreen extends StatelessWidget {
                                   height: 50,
                                   // width: 50,
                                   // color: color.indicatorColor,
-                                  child: const MainLabelText(
-                                    text: 'Skip',
+                                  child: MainLabelText(
+                                    text: 'Skip'.tr,
                                     isBold: true,
                                     alignment: TextAlign.center,
                                   ),
@@ -557,7 +562,7 @@ class IntroScreen extends StatelessWidget {
                                   // color: color.indicatorColor,
                                   // ignore: prefer_const_constructors
                                   child: MainLabelText(
-                                    text: 'Next',
+                                    text: 'Next'.tr,
                                     isBold: true,
                                   ),
                                 ),

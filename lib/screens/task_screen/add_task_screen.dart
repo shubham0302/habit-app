@@ -49,7 +49,7 @@ class AddTaskScreen extends StatelessWidget {
                         ),
                       )),
                   SW.medium(),
-                  const MainLabelText(text: 'Add New Task'),
+                  MainLabelText(text: 'Add New Task'.tr),
                 ],
               ),
               SH.large(),
@@ -65,7 +65,7 @@ class AddTaskScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.small(),
-                      const LabelText(text: "Task Name")
+                      LabelText(text: "Task Name".tr)
                     ],
                   ),
                   GestureDetector(
@@ -89,7 +89,7 @@ class AddTaskScreen extends StatelessWidget {
                           child: Obx(
                             () => LabelText(
                               text: addTaskController.taskName.value == ''
-                                  ? "name"
+                                  ? "name".tr
                                   : addTaskController.taskName.value,
                             ),
                           ),
@@ -110,7 +110,7 @@ class AddTaskScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Category")
+                      LabelText(text: "Category".tr)
                     ],
                   ),
                   GestureDetector(
@@ -182,7 +182,7 @@ class AddTaskScreen extends StatelessWidget {
                                               addTaskController
                                                   .categoryId.value)
                                           .name
-                                      : 'Select',
+                                      : 'Select'.tr,
                                 ),
                               ],
                             ),
@@ -204,7 +204,7 @@ class AddTaskScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Date")
+                      LabelText(text: "Date".tr)
                     ],
                   ),
                   GestureDetector(
@@ -248,7 +248,7 @@ class AddTaskScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Checklist")
+                      LabelText(text: "Checklist".tr)
                     ],
                   ),
                   GestureDetector(
@@ -294,7 +294,7 @@ class AddTaskScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Reminders")
+                      LabelText(text: "Reminders".tr)
                     ],
                   ),
                   GestureDetector(
@@ -339,7 +339,7 @@ class AddTaskScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      const LabelText(text: "Priority")
+                      LabelText(text: "Priority".tr)
                     ],
                   ),
                   GestureDetector(
@@ -398,11 +398,11 @@ class AddTaskScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const LabelText(text: "Pending task"),
+                            LabelText(text: "Pending task".tr),
                             SH.small(),
-                            const DescriptionText(
+                             DescriptionText(
                                 text:
-                                    "It will be shown each day unit completed")
+                                    "It will be shown each day unit completed".tr)
                           ],
                         )
                       ],
@@ -442,9 +442,9 @@ class AddTaskScreen extends StatelessWidget {
                             const BorderRadius.all(Radius.circular(10)),
                         border: Border.all(width: 2, color: color.primaryColor),
                         color: color.backgroundColor),
-                    child: const Center(
+                    child:  Center(
                       child: MainLabelText(
-                        text: "Add Task",
+                        text: "Add Task".tr,
                         isColor: true,
                       ),
                     ),

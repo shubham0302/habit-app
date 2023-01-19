@@ -64,7 +64,7 @@ void ReminderRecurringCustomDialogBox(BuildContext context) {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Center(child: LabelText(text: "Reminders")),
+                           Center(child: LabelText(text: "Reminders".tr)),
                           SH.medium(),
                           const Divider(
                             thickness: 1,
@@ -86,9 +86,9 @@ void ReminderRecurringCustomDialogBox(BuildContext context) {
                                           .toString()),
                                 ),
                               )),
-                          const Center(
+                           Center(
                             child: LabelText(
-                              text: "Reminder time",
+                              text: "Reminder time".tr,
                               isColor: true,
                             ),
                           ),
@@ -105,7 +105,7 @@ void ReminderRecurringCustomDialogBox(BuildContext context) {
                                     size: 20,
                                   ),
                                   SW.medium(),
-                                  const LabelText(text: "Sound enabled"),
+                                 LabelText(text: "Sound enabled".tr),
                                 ],
                               ),
                               GestureDetector(
@@ -142,7 +142,7 @@ void ReminderRecurringCustomDialogBox(BuildContext context) {
                                     size: 20,
                                   ),
                                   SW.medium(),
-                                  const LabelText(text: "Vibration enabled"),
+                                   LabelText(text: "Vibration enabled".tr),
                                 ],
                               ),
                               GestureDetector(
@@ -181,8 +181,8 @@ void ReminderRecurringCustomDialogBox(BuildContext context) {
                                     size: 20,
                                   ),
                                   SW.medium(),
-                                  const LabelText(
-                                      text: "Enbled for completed activities"),
+                                   LabelText(
+                                      text: "Enbled for completed activities".tr),
                                 ],
                               ),
                               GestureDetector(
@@ -211,8 +211,8 @@ void ReminderRecurringCustomDialogBox(BuildContext context) {
                           SH.medium(),
                           const Divider(),
                           SH.medium(),
-                          const LabelText(
-                            text: "Reminder schedule",
+                           LabelText(
+                            text: "Reminder schedule".tr,
                             isColor: true,
                           ),
                           SH.large(),
@@ -254,7 +254,7 @@ void ReminderRecurringCustomDialogBox(BuildContext context) {
                                 ),
                               ),
                               SW.medium(),
-                              const LabelText(text: "ALways enabled")
+                               LabelText(text: "ALways enabled".tr)
                             ],
                           ),
                           SH.medium(),
@@ -296,7 +296,7 @@ void ReminderRecurringCustomDialogBox(BuildContext context) {
                                 ),
                               ),
                               SW.medium(),
-                              const LabelText(text: "Custom")
+                               LabelText(text: "Custom".tr)
                             ],
                           ),
                           SH.medium(),

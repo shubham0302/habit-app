@@ -70,11 +70,12 @@ void CustomDialogBox(BuildContext context) {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const MainLabelText(text: "Recurring Task"),
+                              MainLabelText(text: "Recurring Task".tr),
                               SH.medium(),
-                              const DescriptionText(
+                              DescriptionText(
                                   text:
-                                      "Activity that repeats over time without tracking or any statistics.")
+                                      "Activity that repeats over time without tracking or any statistics."
+                                          .tr)
                             ],
                           ),
                         ),
@@ -104,11 +105,12 @@ void CustomDialogBox(BuildContext context) {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const MainLabelText(text: "Task"),
+                              MainLabelText(text: "Task".tr),
                               SH.medium(),
-                              const DescriptionText(
+                              DescriptionText(
                                   text:
-                                      "Single instance activity without tracking over time.")
+                                      "Single instance activity without tracking over time."
+                                          .tr)
                             ],
                           ),
                         ),

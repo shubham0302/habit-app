@@ -45,7 +45,7 @@ class GetPremiumScreen extends StatelessWidget {
                             ),
                           )),
                       SW.medium(),
-                      const MainLabelText(text: 'Get Premium'),
+                      MainLabelText(text: 'Get Premium'.tr),
                     ],
                   ),
                 ],
@@ -62,16 +62,17 @@ class GetPremiumScreen extends StatelessWidget {
                     ),
                     SH.medium(),
                     SH.large(),
-                    const HeadingText(
-                      text: 'Get Premium',
+                    HeadingText(
+                      text: 'Get Premium'.tr,
                       alignment: TextAlign.center,
                     ),
                     SH.large(),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(right: 20, left: 20),
                       child: LabelText(
                         text:
-                            'Take your productivity to the next level with Plannarize Premium',
+                            'Take your productivity to the next level with Plannarize Premium'
+                                .tr,
                         alignment: TextAlign.center,
                       ),
                     ),
@@ -88,22 +89,22 @@ class GetPremiumScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const LabelText(
-                            text: "One time purchase plan",
+                          LabelText(
+                            text: "One time purchase plan".tr,
                             isColor: true,
                             color: Colors.white,
                           ),
                           SH.medium(),
                           SH.small(),
-                          const LabelText(text: "SAVE 50%", isColor: true),
+                          LabelText(text: "SAVE 50%".tr, isColor: true),
                           SH.small(),
                           const HeadingText(
                               text: "₹300.00",
                               isColor: true,
                               color: Colors.white),
                           SH.small(),
-                          const DescriptionText(
-                              text: "Price: ₹890.00",
+                          DescriptionText(
+                              text: "Price: ₹890.00".tr,
                               isColor: true,
                               color: Colors.white)
                         ],
@@ -119,7 +120,7 @@ class GetPremiumScreen extends StatelessWidget {
                           size: 23,
                         ),
                         SW.medium(),
-                        const LabelText(text: "Track unlimited habits")
+                        LabelText(text: "Track unlimited habits".tr)
                       ],
                     ),
                     SH.medium(),
@@ -144,7 +145,7 @@ class GetPremiumScreen extends StatelessWidget {
                           size: 23,
                         ),
                         SW.medium(),
-                        const LabelText(text: "Ultra dark theme")
+                        LabelText(text: "Ultra dark theme".tr)
                       ],
                     ),
                     SH.medium(),
@@ -156,9 +157,10 @@ class GetPremiumScreen extends StatelessWidget {
                           size: 23,
                         ),
                         SW.medium(),
-                        const LabelText(
+                        LabelText(
                             text:
-                                "Mark your progress directly on the list widget")
+                                "Mark your progress directly on the list widget"
+                                    .tr)
                       ],
                     ),
                     SH.medium(),
@@ -170,8 +172,8 @@ class GetPremiumScreen extends StatelessWidget {
                           size: 23,
                         ),
                         SW.medium(),
-                        const LabelText(
-                            text: "Fingerprint support for lock screen")
+                        LabelText(
+                            text: "Fingerprint support for lock screen".tr)
                       ],
                     ),
                     SH.medium(),
@@ -183,7 +185,7 @@ class GetPremiumScreen extends StatelessWidget {
                           size: 23,
                         ),
                         SW.medium(),
-                        const LabelText(text: "Premium accent colors")
+                        LabelText(text: "Premium accent colors".tr)
                       ],
                     ),
                     SH.large(),
@@ -194,9 +196,9 @@ class GetPremiumScreen extends StatelessWidget {
                           color: color.primaryColor,
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10))),
-                      child: const Center(
+                      child: Center(
                           child: MainLabelText(
-                        text: "GET PREMIUM",
+                        text: "GET PREMIUM".tr,
                         color: Colors.white,
                         isColor: true,
                       )),

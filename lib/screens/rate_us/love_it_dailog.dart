@@ -28,7 +28,7 @@ void LoveItCustomDialogBox(BuildContext context) {
                   children: [
                     Center(
                         child: LabelText(
-                      text: "Notice about reminders",
+                      text: "Notice about reminders".tr,
                       isColor: true,
                       color: color.disabledColor,
                     )),
@@ -41,12 +41,12 @@ void LoveItCustomDialogBox(BuildContext context) {
                           'assets/images/5star.png',
                           fit: BoxFit.fitWidth,
                         )),
-                    const LabelText(
-                      text: "Your 5 stars would be of great help!",
+                    LabelText(
+                      text: "Your 5 stars would be of great help!".tr,
                       isColor: true,
                     ),
                     SH.small(),
-                    const DescriptionText(text: "It only takes a minute"),
+                    DescriptionText(text: "It only takes a minute".tr),
                     SH.medium(),
                     const Divider(),
                     SH.medium(),
@@ -60,8 +60,8 @@ void LoveItCustomDialogBox(BuildContext context) {
                                 Get.back();
                               },
                               child: Container(
-                                child: const LabelText(
-                                  text: "MAYBE LATER",
+                                child: LabelText(
+                                  text: "MAYBE LATER".tr,
                                   isBold: true,
                                 ),
                               ),
@@ -88,8 +88,8 @@ void LoveItCustomDialogBox(BuildContext context) {
                                 }
                               },
                               child: Container(
-                                child: const LabelText(
-                                  text: "RATE US!",
+                                child: LabelText(
+                                  text: "RATE US!".tr,
                                   isBold: true,
                                   isColor: true,
                                 ),

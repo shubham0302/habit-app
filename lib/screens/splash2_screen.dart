@@ -17,10 +17,10 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     // Future.delayed(const Duration(seconds: 3), () {});
-    return const Scaffold(
+    return Scaffold(
       body: Center(
           child: MainLabelText(
-        text: "Welcome",
+        text: "Welcome".tr,
       )),
     );
   }

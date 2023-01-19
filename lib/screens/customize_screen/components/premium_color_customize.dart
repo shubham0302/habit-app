@@ -22,7 +22,7 @@ class PremiumColor extends StatelessWidget {
         () => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const LabelText(text: CScreenLabels.premiumBrightnessSubtitleText),
+            LabelText(text: CScreenLabels.premiumBrightnessSubtitleText.tr),
             SH.large(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),

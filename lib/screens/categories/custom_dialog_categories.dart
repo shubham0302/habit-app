@@ -28,24 +28,24 @@ void CategoriesCustomDialogBox(BuildContext context, bool fromUpdate) {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Center(
+                    Center(
                       child: MainLabelText(
-                        text: "New Category",
+                        text: "New Category".tr,
                         isColor: true,
                       ),
                     ),
                     SH.large(),
-                    const LabelText(text: "Category Name"),
+                    LabelText(text: "Category Name".tr),
                     SH.large(),
                     InputField(
-                      hintText: "Ex. Travel",
+                      hintText: "Ex. Travel".tr,
                       controller: categoryController.ctrl,
                       onChange: (e) {
                         categoryController.category.value = e;
                       },
                     ),
                     SH.large(),
-                    const LabelText(text: "Category Color"),
+                    LabelText(text: "Category Color".tr),
                     SH.large(),
                     Container(
                       height: 55,
@@ -108,7 +108,7 @@ void CategoriesCustomDialogBox(BuildContext context, bool fromUpdate) {
                       ),
                     ),
                     SH.large(),
-                    const LabelText(text: "Category Icon"),
+                    LabelText(text: "Category Icon".tr),
                     SH.large(),
                     Container(
                       height: 150,
@@ -179,7 +179,7 @@ void CategoriesCustomDialogBox(BuildContext context, bool fromUpdate) {
                               color: color.primaryColor.withOpacity(.2),
                               borderRadius: BorderRadius.circular(5)),
                           child: LabelText(
-                            text: 'Create new Category'.toUpperCase(),
+                            text: 'Create new Category'.tr.toUpperCase(),
                             isColor: true,
                             color: color.primaryColor,
                           ),

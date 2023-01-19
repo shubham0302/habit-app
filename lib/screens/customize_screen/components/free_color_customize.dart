@@ -21,7 +21,7 @@ class FreeColor extends StatelessWidget {
         () => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const LabelText(text: CScreenLabels.freeColorTitleText),
+            LabelText(text: CScreenLabels.freeColorTitleText.tr),
             GlobalPadding(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),

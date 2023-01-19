@@ -41,7 +41,7 @@ class DrawerTimer extends StatelessWidget {
                             ),
                           )),
                       SW.medium(),
-                      const MainLabelText(text: 'Timer'),
+                      MainLabelText(text: 'Timer'.tr),
                     ],
                   ),
                   Container(

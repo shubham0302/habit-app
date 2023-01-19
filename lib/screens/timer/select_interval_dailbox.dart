@@ -33,7 +33,7 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                     children: [
                       Center(
                           child: LabelText(
-                        text: "Add interval",
+                        text: "Add interval".tr,
                         isColor: true,
                         color: color.disabledColor,
                       )),
@@ -66,7 +66,7 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                                         .currentvalueHour.value = value),
                               ),
                               SH.medium(),
-                              const DescriptionText(text: 'Hours')
+                              DescriptionText(text: 'Hours'.tr)
                             ],
                           ),
                           Column(
@@ -92,7 +92,7 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                                         .currentvalueMin.value = value),
                               ),
                               SH.medium(),
-                              const DescriptionText(text: 'Minutes')
+                              DescriptionText(text: 'Minutes'.tr)
                             ],
                           ),
                           Column(
@@ -118,7 +118,7 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                                         .currentvalueSec.value = value),
                               ),
                               SH.medium(),
-                              const DescriptionText(text: 'Secounds')
+                              DescriptionText(text: 'Secounds'.tr)
                             ],
                           ),
                         ],
@@ -127,8 +127,8 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const LabelText(
-                            text: 'Break',
+                          LabelText(
+                            text: 'Break'.tr,
                           ),
                           Obx(
                             () => FlutterSwitch(
@@ -164,8 +164,8 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const LabelText(
-                            text: 'CLOSE',
+                          LabelText(
+                            text: 'CLOSE'.tr,
                             isBold: true,
                           ),
                           GestureDetector(
@@ -178,8 +178,8 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                               Get.back();
                             },
                             behavior: HitTestBehavior.translucent,
-                            child: const LabelText(
-                              text: 'OK',
+                            child: LabelText(
+                              text: 'OK'.tr,
                               isBold: true,
                               isColor: true,
                             ),

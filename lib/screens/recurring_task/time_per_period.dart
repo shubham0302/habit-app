@@ -32,26 +32,26 @@ void TimePeriod(BuildContext context) {
                           addRecurringTaskController.times.value = int.parse(e);
                         },
                       ))),
-                  const LabelText(text: '  times per  '),
+                  LabelText(text: '  times per  '.tr),
                   DropdownButton(
                       value: 'week',
-                      items: const [
+                      items: [
                         DropdownMenuItem(
                             value: "week",
                             child: LabelText(
-                              text: 'Week',
+                              text: 'Week'.tr,
                               isColor: true,
                             )),
                         DropdownMenuItem(
                             value: "month",
                             child: LabelText(
-                              text: 'Month',
+                              text: 'Month'.tr,
                               isColor: true,
                             )),
                         DropdownMenuItem(
                             value: "year",
                             child: LabelText(
-                              text: 'Year',
+                              text: 'Year'.tr,
                               isColor: true,
                             )),
                       ],
