@@ -5,7 +5,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/db_controller.dart';
-import 'package:habbit_app/helpers/local_storage_helper.dart';
 import 'package:habbit_app/infrastructure/db/app_service.dart';
 import 'package:drift/drift.dart' as drift;
 

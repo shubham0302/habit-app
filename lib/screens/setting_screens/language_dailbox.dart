@@ -1,8 +1,7 @@
-// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_print
+// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_print, unused_element
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/controllers/lang_ctrl.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 

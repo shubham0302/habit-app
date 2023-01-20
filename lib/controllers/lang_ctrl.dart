@@ -36,7 +36,7 @@ class LanguageController extends GetxController {
   @override
   void onInit() {
     getLanguage();
-    // TODO: implement onInit
+
     super.onInit();
   }
 }
