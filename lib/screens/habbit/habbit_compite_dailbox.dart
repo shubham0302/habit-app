@@ -1,11 +1,8 @@
 // ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_print
 
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
-import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
@@ -39,7 +36,7 @@ void HabbitCompleteTaskCustomDialogBox(BuildContext context, int index) {
                       isColor: true,
                     ),
                   ),
-                  Divider(),
+                  const Divider(),
                   Container(
                     height: 150,
                     width: MediaQuery.of(context).size.width,
@@ -59,11 +56,11 @@ void HabbitCompleteTaskCustomDialogBox(BuildContext context, int index) {
                     isBold: true,
                   ),
                   SH.medium(),
-                  Divider(),
+                  const Divider(),
                   SH.medium(),
                   DescriptionText(text: 'Next Award: 7 days'.tr),
                   SH.medium(),
-                  Divider(),
+                  const Divider(),
                   SH.medium(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -81,7 +78,7 @@ void HabbitCompleteTaskCustomDialogBox(BuildContext context, int index) {
                     ],
                   ),
                   SH.medium(),
-                  Divider(),
+                  const Divider(),
                   SH.medium(),
                   GestureDetector(
                       onTap: () {

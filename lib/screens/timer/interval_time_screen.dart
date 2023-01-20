@@ -273,7 +273,7 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                                               Radius.circular(10)),
                                           color: color.backgroundColor),
                                       child: Padding(
-                                        padding: EdgeInsets.all(8.0),
+                                        padding: const EdgeInsets.all(8.0),
                                         child: Center(
                                           child: LabelText(
                                             text: 'Add Interval'.tr,

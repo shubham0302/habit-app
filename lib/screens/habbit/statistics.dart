@@ -31,7 +31,7 @@ class Statistics extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(5)),
                 color: color.disabledColor.withOpacity(0.3)),
             child: Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(5.0),
               child: DescriptionText(text: "Habit score".tr),
             ),
           ),
@@ -100,7 +100,7 @@ class Statistics extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(5)),
                 color: color.disabledColor.withOpacity(0.3)),
             child: Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(5.0),
               child: DescriptionText(text: "Steak".tr),
             ),
           ),
@@ -192,7 +192,7 @@ class Statistics extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(5)),
                 color: color.disabledColor.withOpacity(0.3)),
             child: Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(5.0),
               child: DescriptionText(text: "Times completed".tr),
             ),
           ),
@@ -269,7 +269,7 @@ class Statistics extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(5)),
                 color: color.disabledColor.withOpacity(0.3)),
             child: Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(5.0),
               child: DescriptionText(text: "Success/Fail".tr),
             ),
           ),
@@ -291,7 +291,7 @@ class Statistics extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   DescriptionText(text: 'Total Days'.tr),
-                  TitleText(
+                  const TitleText(
                     text: '32',
                   ),
                 ],
@@ -373,7 +373,7 @@ class Statistics extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(5)),
                 color: color.disabledColor.withOpacity(0.3)),
             child: Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(5.0),
               child: DescriptionText(text: "Streak challenge".tr),
             ),
           ),

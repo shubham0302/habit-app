@@ -2,10 +2,8 @@
 
 import 'dart:developer';
 
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:habbit_app/controllers/home_page_controller.dart';
 import 'package:habbit_app/controllers/search_controller.dart';
 import 'package:habbit_app/screens/categories/categories.dart';
@@ -47,7 +45,7 @@ class MainScreen extends StatelessWidget {
         ),
         padding: const EdgeInsets.only(bottom: 3, left: 20, right: 20, top: 20),
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             // mainAxisSize: MainAxisSize.max,
             children: [
@@ -355,13 +353,13 @@ class MainScreen extends StatelessWidget {
                             ),
                           ),
                           SW.large(),
-                          Container(
+                          SizedBox(
                             width: 150,
                             height: 23,
                             child: ListView(
                               children: [
                                 AnimatedContainer(
-                                  duration: Duration(milliseconds: 350),
+                                  duration: const Duration(milliseconds: 350),
                                   height: 0,
                                   child: MainLabelText(
                                     text: 'plannarize'.tr,
@@ -372,7 +370,7 @@ class MainScreen extends StatelessWidget {
                                   ),
                                 ),
                                 AnimatedContainer(
-                                  duration: Duration(milliseconds: 350),
+                                  duration: const Duration(milliseconds: 350),
                                   height:
                                       controller.tabIndex.value == 0 ? 20 : 0,
                                   child: MainLabelText(
@@ -384,7 +382,7 @@ class MainScreen extends StatelessWidget {
                                   ),
                                 ),
                                 AnimatedContainer(
-                                  duration: Duration(milliseconds: 350),
+                                  duration: const Duration(milliseconds: 350),
                                   height:
                                       controller.tabIndex.value == 1 ? 20 : 0,
                                   child: MainLabelText(
@@ -395,7 +393,7 @@ class MainScreen extends StatelessWidget {
                                           : Colors.black),
                                 ),
                                 AnimatedContainer(
-                                  duration: Duration(milliseconds: 350),
+                                  duration: const Duration(milliseconds: 350),
                                   height:
                                       controller.tabIndex.value == 2 ? 20 : 0,
                                   child: MainLabelText(
@@ -406,7 +404,7 @@ class MainScreen extends StatelessWidget {
                                           : Colors.black),
                                 ),
                                 AnimatedContainer(
-                                  duration: Duration(milliseconds: 350),
+                                  duration: const Duration(milliseconds: 350),
                                   height:
                                       controller.tabIndex.value == 3 ? 20 : 0,
                                   child: MainLabelText(
@@ -417,7 +415,7 @@ class MainScreen extends StatelessWidget {
                                           : Colors.black),
                                 ),
                                 AnimatedContainer(
-                                  duration: Duration(milliseconds: 350),
+                                  duration: const Duration(milliseconds: 350),
                                   height:
                                       controller.tabIndex.value == 4 ? 20 : 0,
                                   child: MainLabelText(

@@ -1,7 +1,5 @@
 // ignore_for_file: unused_local_variable, sized_box_for_whitespace
 
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
@@ -12,8 +10,6 @@ import 'package:habbit_app/controllers/recurring_controller.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
-import 'package:habbit_app/screens/notification/notifications.dart';
-import 'package:habbit_app/utilities/notification_utilities.dart';
 import 'package:habbit_app/widgets/date_widget.dart';
 import 'package:habbit_app/widgets/icon_widget.dart';
 import 'package:habbit_app/widgets/padding.dart';
@@ -21,7 +17,6 @@ import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_text_large.dart';
-import 'package:path_provider/path_provider.dart';
 import '../controllers/home_page_controller.dart';
 import '../widgets/text_widget/main_label_text.dart';
 
@@ -107,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                 Container(
                     height: 75,
                     width: MediaQuery.of(context).size.width,
-                    child: DateList()),
+                    child: const DateList()),
                 SH.large(),
                 const Divider(),
                 Obx(

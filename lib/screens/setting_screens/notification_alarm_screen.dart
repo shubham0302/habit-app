@@ -278,7 +278,7 @@ class _NotificationandAlarmScreenState
                         SH.large(),
                       ],
                     )
-                  : SizedBox()),
+                  : const SizedBox()),
               const Divider(
                 thickness: 1,
               ),

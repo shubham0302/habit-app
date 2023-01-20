@@ -24,7 +24,7 @@ class AlertBoxCustomize extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            GlobalPadding(
+            const GlobalPadding(
               child: LabelText(
                 text: CScreenLabels.brightnessText,
                 isBold: false,

@@ -1,9 +1,4 @@
-import 'dart:developer';
-import 'dart:io';
-
-import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
-import 'package:path_provider/path_provider.dart';
 
 import '../infrastructure/db/app_service.dart';
 import 'package:drift/drift.dart' as drift;
@@ -18,8 +13,6 @@ class DBController extends GetxController {
 
   //   return filePath;
   // }
-
-  
 
   List<Map<String, dynamic>> defaultString = [
     {"id": 1, "name": "Quit a habbit", "icon": 0, "color": 0},
@@ -52,7 +45,6 @@ class DBController extends GetxController {
       });
     }
   }
-  
 
   @override
   void onInit() {

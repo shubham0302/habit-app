@@ -4,13 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/recurring_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
-import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/widgets/icon_widget.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
 void CategoryRecurringCustomDialogBox(BuildContext context) {
-  SwitchController switchController =
-      Get.put(SwitchController(), permanent: false);
   AddRecurringTaskController addHabbitSelectController =
       Get.put(AddRecurringTaskController(), permanent: false);
   CategoryController categoryController =

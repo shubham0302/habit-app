@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_widget/button_text.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
@@ -68,7 +67,7 @@ class GetPremiumScreen extends StatelessWidget {
                     ),
                     SH.large(),
                     Padding(
-                      padding: EdgeInsets.only(right: 20, left: 20),
+                      padding: const EdgeInsets.only(right: 20, left: 20),
                       child: LabelText(
                         text:
                             'Take your productivity to the next level with Plannarize Premium'

@@ -1,16 +1,13 @@
-// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace
+// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
-import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/widgets/icon_widget.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
 void CategoryCustomDialogBox(BuildContext context) {
-  SwitchController switchController =
-      Get.put(SwitchController(), permanent: false);
   AddHabbitSelectController addHabbitSelectController =
       Get.put(AddHabbitSelectController(), permanent: false);
   CategoryController categoryController =

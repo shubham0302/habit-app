@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, unused_local_variable
+// ignore_for_file: public_member_api_docs, sort_constructors_first, unused_local_variable, avoid_print
 
 import 'dart:developer';
 
@@ -8,9 +8,6 @@ import 'package:get/get.dart';
 import 'package:drift/drift.dart' as drift;
 import 'package:habbit_app/controllers/db_controller.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
-import 'package:habbit_app/controllers/theme_controller.dart';
-import 'package:habbit_app/helpers/local_storage_helper.dart';
-import 'package:path/path.dart';
 import 'package:vibration/vibration.dart';
 
 import '../infrastructure/db/app_service.dart';
@@ -256,7 +253,7 @@ class AddHabbitSelectController extends GetxController {
     if (colorChange.value == "green") {
       switchController.NotifySwichChange.value == true
           ? FlutterRingtonePlayer.playNotification()
-          : SizedBox();
+          : const SizedBox();
     }
   }
 

@@ -1,23 +1,21 @@
+// ignore_for_file: avoid_unnecessary_containers, avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
-import 'package:habbit_app/controllers/recurring_controller.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/timer_tab_controller.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/priority_custom_dilogbox.dart';
 import 'package:habbit_app/screens/habbit/datechip.dart';
 import 'package:habbit_app/screens/habbit/habbit_compite_dailbox.dart';
-import 'package:habbit_app/widgets/custom_snackbar.dart';
 import 'package:habbit_app/widgets/icon_widget.dart';
 
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/description_text_large.dart';
-import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text_large.dart';
 import 'package:intl/intl.dart';
@@ -27,8 +25,6 @@ class HabbitsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AddRecurringTaskController addRecurringTaskController =
-        Get.put(AddRecurringTaskController(), permanent: false);
     SwitchController switchController = Get.put(SwitchController());
     TimerTabController tabController =
         Get.put(TimerTabController(), permanent: false);

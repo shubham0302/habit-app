@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/db_controller.dart';
+import 'package:habbit_app/helpers/local_storage_helper.dart';
 import 'package:habbit_app/infrastructure/db/app_service.dart';
 import 'package:drift/drift.dart' as drift;
 
@@ -70,12 +71,24 @@ class CategoryController extends GetxController {
   ];
 
   List<Color> iconLightColor = [
-    Color.fromARGB(255, 185, 100, 102),
-    Color.fromARGB(255, 83, 164, 102),
-    Color.fromARGB(255, 168, 106, 124),
-    Color.fromARGB(255, 132, 126, 72),
-    Color.fromARGB(255, 136, 113, 176),
+    const Color.fromARGB(255, 185, 100, 102),
+    const Color.fromARGB(255, 83, 164, 102),
+    const Color.fromARGB(255, 168, 106, 124),
+    const Color.fromARGB(255, 132, 126, 72),
+    const Color.fromARGB(255, 136, 113, 176),
   ];
+
+  // List locale = [
+  //   {'name': 'English', 'locale': const Locale('en', 'US')},
+  //   {'name': 'हिंदी', 'locale': const Locale('hi', 'IN')},
+  //   {'name': 'española', 'locale': const Locale('es', 'ES')},
+  //   {'name': 'Português', 'locale': const Locale('pt', 'PT')},
+  //   {'name': 'Deutsch', 'locale': const Locale('de', 'DE')},
+  //   {'name': 'Italiano', 'locale': const Locale('it', 'IT')},
+  //   {'name': 'Français', 'locale': const Locale('fr', 'FR')},
+  //   {'name': '한국어', 'locale': const Locale('ko', 'KO')},
+  //   {'name': '日本語', 'locale': const Locale('ja', 'JA')},
+  // ];
 
   var category = ''.obs;
   // var color = 0.obs;

@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_shake_animated/flutter_shake_animated.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
-import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/screens/categories/custom_dialog_categories.dart';
 import 'package:habbit_app/widgets/icon_widget.dart';
 import 'package:habbit_app/widgets/padding.dart';

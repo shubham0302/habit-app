@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/widgets/sized_box.dart';
-import 'package:habbit_app/widgets/text_widget/label_text.dart';
-import 'package:intl/intl.dart';
 import 'package:weekly_date_picker/weekly_date_picker.dart';
 
 import '../controllers/home_page_controller.dart';
 
 class DateList extends StatefulWidget {
-  DateList({Key? key}) : super(key: key);
+  const DateList({Key? key}) : super(key: key);
 
   @override
   State<DateList> createState() => _DateListState();

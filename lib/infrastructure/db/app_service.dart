@@ -1,9 +1,10 @@
+// ignore_for_file: avoid_print
+
 import 'dart:developer';
 import 'dart:io';
 
 import 'package:drift/drift.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter_share/flutter_share.dart';
 import 'package:path/path.dart' as path;
 import 'package:get/get.dart' as gt;
 import 'package:habbit_app/infrastructure/db/db_config.dart';

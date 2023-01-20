@@ -45,7 +45,7 @@ void ReminderSupportCustomDialogBox(BuildContext context) {
                     Text(
                       "Make sure that HabitNow is excluded from your optimizer to ensure the correct execution of the reminders."
                           .tr,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 15,
                       ),
                       textAlign: TextAlign.center,

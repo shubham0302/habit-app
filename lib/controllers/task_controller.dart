@@ -29,10 +29,11 @@ class AddTaskController extends GetxController {
           print('object');
         }
       }
-    } catch (err, stack) {
+    } catch (err) {
       print("Cannot get download folder path");
     }
     print(directory?.path);
+    return null;
   }
 
   TextEditingController nameCtrl = TextEditingController();

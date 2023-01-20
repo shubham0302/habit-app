@@ -318,6 +318,9 @@ class LocalString extends Translations {
         },
         // hindi
         'hi_IN': {
+          'Tasks': 'कार्य',
+          'Categories': 'श्रेणियाँ',
+          'Customize': 'अनुकूलित करें',
           'plannarize': 'योजना बनाना',
           'lang': 'भाषा',
           'Welcome to Plannarize': 'Plannarize में आपका स्वागत है',
@@ -368,7 +371,7 @@ class LocalString extends Translations {
           'Stop': 'विराम',
           'Please add Interval': 'कृपया अंतराल जोड़ें',
           'Home': 'घर',
-          'Customize': 'अनुकूलित करें',
+          // 'Customize': 'अनुकूलित करें',
           'Settings': 'समायोजन',
           'Backups': 'बैकअप',
           'Get Premium': 'प्रीमियम प्राप्त करना',
@@ -425,7 +428,7 @@ class LocalString extends Translations {
           'Enabled for completed activities': 'पूर्ण गतिविधियों के लिए सक्षम',
           'Alarms setting': 'अलार्म सेटिंग',
           'Reprogram reminders': 'रेपोग्राम रिमाइंडर्स',
-          'Lock Pin': 'पिन का ताला',
+          'Lock pin': 'पिन का ताला',
           'Enable fingerprint support': 'फिंगरप्रिंट सपोर्ट सक्षम करें',
           'Enable Lock pin first': 'पहले लॉक पिन सक्षम करें',
           'Upload Backup': 'बैकअप अपलोड करें',

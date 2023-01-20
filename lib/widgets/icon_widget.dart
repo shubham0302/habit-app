@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
@@ -30,7 +30,6 @@ class IconWidgetClassic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SwitchController switchController = Get.put(SwitchController());
-    ThemeData color = Theme.of(context);
     return Obx(
       () => Container(
         height: contanerSize == true ? contanerHight : 35,

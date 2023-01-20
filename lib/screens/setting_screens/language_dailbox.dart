@@ -2,22 +2,25 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/category_controller.dart';
+import 'package:habbit_app/controllers/lang_ctrl.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
 void LanguageCustomDialogBox(BuildContext context) {
-  final List locale = [
-    {'name': 'English', 'locale': const Locale('en', 'US')},
-    {'name': 'हिंदी', 'locale': const Locale('hi', 'IN')},
-    {'name': 'española', 'locale': const Locale('es', 'ES')},
-    {'name': 'Português', 'locale': const Locale('pt', 'PT')},
-    {'name': 'Deutsch', 'locale': const Locale('de', 'DE')},
-    {'name': 'Italiano', 'locale': const Locale('it', 'IT')},
-    {'name': 'Français', 'locale': const Locale('fr', 'FR')},
-    {'name': '한국어', 'locale': const Locale('ko', 'KO')},
-    {'name': '日本語', 'locale': const Locale('ja', 'JA')},
-  ];
+  // final List locale = [
+  //   {'name': 'English', 'locale': const Locale('en', 'US')},
+  //   {'name': 'हिंदी', 'locale': const Locale('hi', 'IN')},
+  //   {'name': 'española', 'locale': const Locale('es', 'ES')},
+  //   {'name': 'Português', 'locale': const Locale('pt', 'PT')},
+  //   {'name': 'Deutsch', 'locale': const Locale('de', 'DE')},
+  //   {'name': 'Italiano', 'locale': const Locale('it', 'IT')},
+  //   {'name': 'Français', 'locale': const Locale('fr', 'FR')},
+  //   {'name': '한국어', 'locale': const Locale('ko', 'KO')},
+  //   {'name': '日本語', 'locale': const Locale('ja', 'JA')},
+  // ];
 
   updateLanguage(Locale locale) {
+    Get.back();
     Get.updateLocale(locale);
   }
 
@@ -25,6 +28,9 @@ void LanguageCustomDialogBox(BuildContext context) {
   showDialog(
       context: context,
       builder: (BuildContext context) {
+        LanguageController languageController = Get.find<LanguageController>();
+        // CategoryController categoryController =
+        //     Get.put(CategoryController(), permanent: false);
         return AlertDialog(
           insetPadding: const EdgeInsets.symmetric(horizontal: 2),
           shape: const RoundedRectangleBorder(
@@ -49,15 +55,19 @@ void LanguageCustomDialogBox(BuildContext context) {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                               onTap: () {
-                                print(locale[index]['name']);
-                                updateLanguage(locale[index]['locale']);
+                                print(languageController.locale[index]['name']);
+                                languageController.updateLanguage(
+                                    languageController.locale[index]['locale'],
+                                    languageController.locale[index]['name']);
                               },
-                              child: LabelText(text: locale[index]['name']));
+                              child: LabelText(
+                                  text: languageController.locale[index]
+                                      ['name']));
                         },
                         separatorBuilder: (context, index) {
                           return const Divider();
                         },
-                        itemCount: locale.length),
+                        itemCount: languageController.locale.length),
                   )
                   // SH.large(),
                   // Divider(),
