@@ -167,26 +167,43 @@ class _HomePageState extends State<HomePage> {
                                                 verticalOffset: 50.0,
                                                 child: FadeInAnimation(
                                                   child: HomeCard(
-                                                      icon: categoryController.icon[categoryController
-                                                          .categories
-                                                          .firstWhere((element) =>
-                                                              element.id ==
-                                                              taskController
-                                                                  .tasks[index]
-                                                                  .categoryId)
-                                                          .icon],
-                                                      cardColor: color.brightness ==
-                                                              Brightness.dark
-                                                          ? categoryController.iconColor[categoryController
-                                                              .categories
-                                                              .firstWhere((element) =>
-                                                                  element.id ==
-                                                                  taskController
-                                                                      .tasks[index]
-                                                                      .categoryId)
-                                                              .color]
-                                                          : categoryController.iconLightColor[categoryController.categories.firstWhere((element) => element.id == taskController.tasks[index].categoryId).color],
-                                                      name: taskController.tasks[index].taskName),
+                                                    icon: categoryController
+                                                            .icon[
+                                                        categoryController
+                                                            .categories
+                                                            .firstWhere((element) =>
+                                                                element.id ==
+                                                                taskController
+                                                                    .tasks[
+                                                                        index]
+                                                                    .categoryId)
+                                                            .icon],
+                                                    cardColor: color.brightness ==
+                                                            Brightness.dark
+                                                        ? categoryController.iconColor[
+                                                            categoryController
+                                                                .categories
+                                                                .firstWhere((element) =>
+                                                                    element.id ==
+                                                                    taskController
+                                                                        .tasks[
+                                                                            index]
+                                                                        .categoryId)
+                                                                .color]
+                                                        : categoryController.iconLightColor[
+                                                            categoryController
+                                                                .categories
+                                                                .firstWhere((element) =>
+                                                                    element.id ==
+                                                                    taskController
+                                                                        .tasks[index]
+                                                                        .categoryId)
+                                                                .color],
+                                                    name: taskController
+                                                        .tasks[index].taskName,
+                                                    status: Icons.ac_unit,
+                                                    statusColor: Colors.green,
+                                                  ),
                                                 ),
                                               ),
                                             );
@@ -218,28 +235,113 @@ class _HomePageState extends State<HomePage> {
                                         separatorBuilder: (context, index) =>
                                             SH.medium(),
                                         itemBuilder: (context, index) {
-                                          return HomeCard(
-                                              icon: categoryController.icon[
-                                                  categoryController.categories
-                                                      .firstWhere((element) =>
-                                                          element.id ==
-                                                          habbitSelectController
-                                                              .tasks[index]
-                                                              .categoryId)
-                                                      .icon],
-                                              cardColor: color.brightness == Brightness.dark
-                                                  ? categoryController.iconColor[
-                                                      categoryController
-                                                          .categories
-                                                          .firstWhere((element) =>
-                                                              element.id ==
-                                                              habbitSelectController
-                                                                  .tasks[index]
-                                                                  .categoryId)
-                                                          .color]
-                                                  : categoryController
-                                                      .iconLightColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks[index].categoryId).color],
-                                              name: habbitSelectController.tasks[index].habitName);
+                                          return GestureDetector(
+                                            onTap: () {
+                                              habbitSelectController.habitStatus.value ==
+                                                      ''
+                                                  ? habbitSelectController
+                                                      .habitStatus
+                                                      .value = 'incomplete'
+                                                  : habbitSelectController
+                                                              .habitStatus
+                                                              .value ==
+                                                          'incomplete'
+                                                      ? habbitSelectController
+                                                          .habitStatus
+                                                          .value = 'pending'
+                                                      : habbitSelectController
+                                                                  .habitStatus
+                                                                  .value ==
+                                                              'pending'
+                                                          ? habbitSelectController
+                                                                  .habitStatus
+                                                                  .value =
+                                                              'complete'
+                                                          : habbitSelectController
+                                                                      .habitStatus
+                                                                      .value ==
+                                                                  'complete'
+                                                              ? habbitSelectController
+                                                                      .habitStatus
+                                                                      .value =
+                                                                  'incomplete'
+                                                              : habbitSelectController
+                                                                  .habitStatus
+                                                                  .value = '';
+                                              print(habbitSelectController
+                                                  .habitStatus.value);
+                                            },
+                                            child: Obx(
+                                              () => HomeCard(
+                                                icon: categoryController.icon[
+                                                    categoryController
+                                                        .categories
+                                                        .firstWhere((element) =>
+                                                            element.id ==
+                                                            habbitSelectController
+                                                                .tasks[index]
+                                                                .categoryId)
+                                                        .icon],
+                                                cardColor: color.brightness ==
+                                                        Brightness.dark
+                                                    ? categoryController.iconColor[categoryController
+                                                        .categories
+                                                        .firstWhere((element) =>
+                                                            element.id ==
+                                                            habbitSelectController
+                                                                .tasks[index]
+                                                                .categoryId)
+                                                        .color]
+                                                    : categoryController
+                                                            .iconLightColor[
+                                                        categoryController
+                                                            .categories
+                                                            .firstWhere((element) =>
+                                                                element.id ==
+                                                                habbitSelectController
+                                                                    .tasks[index]
+                                                                    .categoryId)
+                                                            .color],
+                                                name: habbitSelectController
+                                                    .tasks[index].habitName,
+                                                status: habbitSelectController
+                                                            .habitStatus
+                                                            .value ==
+                                                        'incomplete'
+                                                    ? Icons.cancel_outlined
+                                                    : habbitSelectController
+                                                                .habitStatus
+                                                                .value ==
+                                                            'pending'
+                                                        ? Icons.cancel_outlined
+                                                        : habbitSelectController
+                                                                    .habitStatus
+                                                                    .value ==
+                                                                'complete'
+                                                            ? Icons
+                                                                .cancel_outlined
+                                                            : Icons
+                                                                .pending_outlined,
+                                                statusColor: habbitSelectController
+                                                            .habitStatus
+                                                            .value ==
+                                                        'incomplete'
+                                                    ? Colors.redAccent
+                                                    : habbitSelectController
+                                                                .habitStatus
+                                                                .value ==
+                                                            'pending'
+                                                        ? Colors.yellow
+                                                        : habbitSelectController
+                                                                    .habitStatus
+                                                                    .value ==
+                                                                'complete'
+                                                            ? Colors.green
+                                                            : color
+                                                                .backgroundColor,
+                                              ),
+                                            ),
+                                          );
                                         },
                                       ),
                                 recurringTaskController.tasks.isEmpty
@@ -268,27 +370,40 @@ class _HomePageState extends State<HomePage> {
                                             SH.medium(),
                                         itemBuilder: (context, index) {
                                           return HomeCard(
-                                              icon: categoryController.icon[
-                                                  categoryController.categories
-                                                      .firstWhere((element) =>
-                                                          element.id ==
-                                                          recurringTaskController
-                                                              .tasks[index]
-                                                              .categoryId)
-                                                      .icon],
-                                              cardColor: color.brightness ==
-                                                      Brightness.dark
-                                                  ? categoryController.iconColor[
-                                                      categoryController.categories
-                                                          .firstWhere((element) =>
-                                                              element.id ==
-                                                              recurringTaskController
-                                                                  .tasks[index]
-                                                                  .categoryId)
-                                                          .color]
-                                                  : categoryController
-                                                      .iconLightColor[categoryController.categories.firstWhere((element) => element.id == recurringTaskController.tasks[index].categoryId).color],
-                                              name: recurringTaskController.tasks[index].rTaskName);
+                                            icon: categoryController.icon[
+                                                categoryController.categories
+                                                    .firstWhere((element) =>
+                                                        element.id ==
+                                                        recurringTaskController
+                                                            .tasks[index]
+                                                            .categoryId)
+                                                    .icon],
+                                            cardColor: color.brightness ==
+                                                    Brightness.dark
+                                                ? categoryController.iconColor[
+                                                    categoryController
+                                                        .categories
+                                                        .firstWhere((element) =>
+                                                            element.id ==
+                                                            recurringTaskController
+                                                                .tasks[index]
+                                                                .categoryId)
+                                                        .color]
+                                                : categoryController
+                                                        .iconLightColor[
+                                                    categoryController
+                                                        .categories
+                                                        .firstWhere((element) =>
+                                                            element.id ==
+                                                            recurringTaskController
+                                                                .tasks[index]
+                                                                .categoryId)
+                                                        .color],
+                                            name: recurringTaskController
+                                                .tasks[index].rTaskName,
+                                            status: Icons.ac_unit_rounded,
+                                            statusColor: Colors.green,
+                                          );
                                         },
                                       ),
                               ],
@@ -305,12 +420,16 @@ class HomeCard extends StatelessWidget {
   final IconData icon;
   final Color cardColor;
   final String name;
-  const HomeCard(
-      {Key? key,
-      required this.icon,
-      required this.cardColor,
-      required this.name})
-      : super(key: key);
+  final IconData status;
+  final Color statusColor;
+  const HomeCard({
+    Key? key,
+    required this.icon,
+    required this.cardColor,
+    required this.name,
+    required this.status,
+    required this.statusColor,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -357,17 +476,22 @@ class HomeCard extends StatelessWidget {
                       () => switchController.textSizing.value == 'Default'
                           ? MainLabelText(text: name)
                           : MainLabelTextLarge(text: name),
-                    )
+                    ),
                   ],
                 )
               ],
             ),
             Container(
-              height: 30,
-              width: 30,
+              height: 35,
+              width: 35,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: color.backgroundColor),
+                  shape: BoxShape.circle, color: statusColor.withOpacity(0.3)),
+              child: Expanded(
+                  child: Icon(
+                status,
+                size: 25,
+                color: statusColor,
+              )),
             )
           ],
         ),

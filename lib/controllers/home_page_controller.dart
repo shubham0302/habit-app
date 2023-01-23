@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 class HomePageController extends GetxController {
   RxInt SelectedDateIndex = 0.obs;
 
+  RxString habbitComplete = ''.obs;
+
   var tabIndex = 0.obs;
   var selectedDay = DateTime.now();
 

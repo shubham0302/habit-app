@@ -28,6 +28,8 @@ class AddHabbitSelectController extends GetxController {
   // Rx<TimeOfDay> reminderTime = const TimeOfDay(hour: 8, minute: 30).obs;
   Rx<DateTime> endDate = DateTime(2022, 12, 20).obs;
   RxString updateCategory = "Select".obs;
+  // RxList<int> habitStatus = <int>[].obs;
+  RxString habitStatus = ''.obs;
   Rx<Icon> categoryIcon = const Icon(
     Icons.checklist,
   ).obs;
