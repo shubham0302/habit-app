@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_shake_animated/flutter_shake_animated.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/constants/categories.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/screens/categories/custom_dialog_categories.dart';
 import 'package:habbit_app/widgets/icon_widget.dart';
@@ -27,7 +28,7 @@ class CategoriesScreen extends StatelessWidget {
           SH.large(),
           // SH.large(),
           SizedBox(
-            height: 120,
+            height: 100,
             child: Obx(
               () => ListView.separated(
                 physics: const BouncingScrollPhysics(),
@@ -41,52 +42,11 @@ class CategoriesScreen extends StatelessWidget {
                     width: 63,
                     child: Column(
                       children: [
-                        // Container(
-                        //   height: 60,
-                        //   width: 60,
-                        //   decoration: BoxDecoration(
-                        //       borderRadius: BorderRadius.circular(8),
-                        //       color: categoryController.iconColor[
-                        //               categoryController.categories
-                        //                   .where((p0) => p0.isDefault)
-                        //                   .toList()[index]
-                        //                   .color]
-                        //           .withOpacity(0.3)),
-                        //   child: Icon(
-                        //     categoryController.icon[categoryController
-                        //         .categories
-                        //         .where((p0) => p0.isDefault)
-                        //         .toList()[index]
-                        //         .icon],
-                        //     color: categoryController.iconColor[
-                        //         categoryController.categories
-                        //             .where((p0) => p0.isDefault)
-                        //             .toList()[index]
-                        //             .color],
-                        //     size: 40,
-                        //   ),
-                        // ),
-                        Obx(() => IconWidgetClassic(
-                              contanerSize: true,
-                              contanerHight: 60,
-                              contanerWidth: 60,
-                              icon: categoryController.icon[categoryController
-                                  .categories
-                                  .where((p0) => p0.isDefault)
-                                  .toList()[index]
-                                  .icon],
-                              contanerColor: color.brightness == Brightness.dark
-                                  ? categoryController.iconColor[
-                                      categoryController.categories
-                                          .where((p0) => p0.isDefault)
-                                          .toList()[index]
-                                          .color]
-                                  : categoryController.iconLightColor[
-                                      categoryController.categories
-                                          .where((p0) => p0.isDefault)
-                                          .toList()[index]
-                                          .color],
-                            )),
+                        IconWidget(
+                          isBig: true,
+                          color: categoryController.categories.where((p0) => p0.isDefault).toList()[index].color, 
+                          icon: categoryController.categories.where((p0) => p0.isDefault).toList()[index].icon
+                        ),
                         SH.medium(),
                         DescriptionText(
                           isDotDot: true,
@@ -298,35 +258,14 @@ class CategoriesScreen extends StatelessWidget {
                                         //     size: 40,
                                         //   ),
                                         // ),
-                                        Obx(() => IconWidgetClassic(
-                                              contanerSize: true,
-                                              contanerHight: 60,
-                                              contanerWidth: 60,
-                                              icon: categoryController.icon[
-                                                  categoryController.categories
-                                                      .where(
-                                                          (p0) => !p0.isDefault)
-                                                      .toList()[index]
-                                                      .icon],
-                                              contanerColor: color.brightness ==
-                                                      Brightness.dark
-                                                  ? categoryController
-                                                          .iconColor[
-                                                      categoryController
-                                                          .categories
-                                                          .where((p0) =>
-                                                              !p0.isDefault)
-                                                          .toList()[index]
-                                                          .color]
-                                                  : categoryController
-                                                          .iconLightColor[
-                                                      categoryController
-                                                          .categories
-                                                          .where((p0) =>
-                                                              !p0.isDefault)
-                                                          .toList()[index]
-                                                          .color],
-                                            )),
+                                        IconWidget(
+                                          isBig: true,
+                                          color: categoryController.categories
+                                              .where((p0) => !p0.isDefault)
+                                              .toList()[index].color, 
+                                          icon: categoryController.categories
+                                              .where((p0) => !p0.isDefault)
+                                              .toList()[index].icon),
                                         SH.small(),
                                         DescriptionText(
                                           isColor: true,

@@ -44,22 +44,6 @@ class CategoryController extends GetxController {
     {"id": 13, "name": "Home", "icon": 3, "color": 2},
     {"id": 14, "name": "Outdoor", "icon": 4, "color": 3},
     {"id": 15, "name": "Other", "icon": 5, "color": 4},
-    // 'Quit a habbit',
-    // 'Art',
-    // 'Task',
-    // 'Meditation',
-    // 'Study',
-    // 'Sports',
-    // 'Entertainment',
-    // 'Social',
-    // 'Finance',
-    // 'Health',
-    // 'Work',
-    // 'Nutrition',
-    // 'Home',
-    // 'Outdoor',
-    // 'Other',
-    // Icons.abc
   ];
   List<Color> iconColor = [
     const Color(0xffFFCACB),
