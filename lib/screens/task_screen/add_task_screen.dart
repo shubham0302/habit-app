@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/premium_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
+import 'package:habbit_app/getPremium_dailbox.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/reminder_custom_dailbox.dart';
 import 'package:habbit_app/screens/task_screen/catagorytask_dailog.dart';
 import 'package:habbit_app/screens/task_screen/checklisttask_dailog.dart';
@@ -19,6 +21,8 @@ class AddTaskScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PremiumController premiumController =
+        Get.put(PremiumController(), permanent: false);
     AddTaskController addTaskController =
         Get.put(AddTaskController(), permanent: false);
     CategoryController categoryController =
@@ -248,12 +252,29 @@ class AddTaskScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                      LabelText(text: "Checklist".tr)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          LabelText(text: "Checklist".tr),
+                          premiumController.premium.value == false
+                              ? Obx(
+                                  () => DescriptionText(
+                                    text: 'Premium feature',
+                                    isColor: true,
+                                  ),
+                                )
+                              : SizedBox(),
+                        ],
+                      )
                     ],
                   ),
                   GestureDetector(
                     onTap: () {
-                      ChecklistTaskCustomDialogBox(context);
+                      if (premiumController.premium.value == false) {
+                        GetPremiumCustomDialogBox(context);
+                      } else {
+                        ChecklistTaskCustomDialogBox(context);
+                      }
                       // ToDoWeekCustomDialogBox(context);
                     },
                     child: Container(
@@ -400,9 +421,9 @@ class AddTaskScreen extends StatelessWidget {
                           children: [
                             LabelText(text: "Pending task".tr),
                             SH.small(),
-                             DescriptionText(
-                                text:
-                                    "It will be shown each day unit completed".tr)
+                            DescriptionText(
+                                text: "It will be shown each day unit completed"
+                                    .tr)
                           ],
                         )
                       ],
@@ -442,7 +463,7 @@ class AddTaskScreen extends StatelessWidget {
                             const BorderRadius.all(Radius.circular(10)),
                         border: Border.all(width: 2, color: color.primaryColor),
                         color: color.backgroundColor),
-                    child:  Center(
+                    child: Center(
                       child: MainLabelText(
                         text: "Add Task".tr,
                         isColor: true,

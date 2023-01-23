@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/lockpin_controller.dart';
+import 'package:habbit_app/controllers/premium_controller.dart';
 
 import 'package:habbit_app/controllers/swich_controller.dart';
+import 'package:habbit_app/getPremium_dailbox.dart';
 import 'package:habbit_app/widgets/custom_snackbar.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';
@@ -20,6 +22,8 @@ class LockScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PremiumController premiumController =
+        Get.put(PremiumController(), permanent: false);
     LockPinController lockPinController = Get.find<LockPinController>();
     // bool switchChange = true;
     ThemeData color = Theme.of(context);
@@ -86,6 +90,7 @@ class LockScreen extends StatelessWidget {
 
                       // // switchController.LockPinSwichChange.value == true
                       // if (switchController.LockPinSwichChange.value) {
+
                       if (val) {
                         await lockPinController.changeTypeFromScreen(
                             'pin', context);
@@ -133,11 +138,15 @@ class LockScreen extends StatelessWidget {
                       padding: 2.0,
                       // showOnOff: true,
                       onToggle: (val) {
-                        if (val) {
-                          lockPinController.changeTypeFromScreen(
-                              'bio', context);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
                         } else {
-                          lockPinController.changeType('pin');
+                          if (val) {
+                            lockPinController.changeTypeFromScreen(
+                                'bio', context);
+                          } else {
+                            lockPinController.changeType('pin');
+                          }
                         }
 
                         // switchController.FingerSwichChange.value == true

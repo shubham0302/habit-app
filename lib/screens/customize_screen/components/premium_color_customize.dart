@@ -3,10 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/app_labels/customize_screen.dart';
+import 'package:habbit_app/controllers/premium_controller.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 
 import '../../../controllers/theme_controller.dart';
+import '../../../getPremium_dailbox.dart';
 import '../../../theme/color_scheme.dart';
 import '../../../widgets/text_widget/label_text.dart';
 
@@ -15,6 +17,8 @@ class PremiumColor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PremiumController premiumController =
+        Get.put(PremiumController(), permanent: false);
     RxBool isClassic = false.obs;
     ThemeController themeController = Get.find<ThemeController>();
     return GlobalPadding(
@@ -33,8 +37,12 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('red');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          themeController.changeThemeColor('red');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -75,9 +83,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('green');
-                        print(Theme.of(context).brightness);
-                        // Get.toNamed('/intro');
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          themeController.changeThemeColor('green');
+                          print(Theme.of(context).brightness);
+                          // Get.toNamed('/intro');
+                        }
                       },
                       child: Container(
                         padding: const EdgeInsets.all(2),
@@ -117,8 +129,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('blue');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('blue');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -159,8 +176,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('purple');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('purple');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -201,8 +223,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('yellow');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('yellow');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -252,8 +279,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('red');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('red');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -294,8 +326,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('green');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('green');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -336,8 +373,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('blue');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('blue');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -378,8 +420,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('purple');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('purple');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -420,8 +467,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('yellow');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('yellow');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -471,8 +523,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('red');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('red');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -513,8 +570,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('green');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('green');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -555,8 +617,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('blue');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('blue');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -597,8 +664,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('purple');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('purple');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -639,8 +711,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('yellow');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('yellow');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -690,8 +767,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('red');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('red');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -732,8 +814,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('green');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('green');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -774,8 +861,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('blue');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('blue');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -816,8 +908,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('purple');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('purple');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(
@@ -858,8 +955,13 @@ class PremiumColor extends StatelessWidget {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(50),
                       onTap: () {
-                        themeController.changeThemeColor('yellow');
-                        print(Theme.of(context).brightness);
+                        if (premiumController.premium.value == false) {
+                          GetPremiumCustomDialogBox(context);
+                        } else {
+                          // themeController.changeThemeMode();
+                          themeController.changeThemeColor('yellow');
+                          print(Theme.of(context).brightness);
+                        }
                         // Get.toNamed('/intro');
                       },
                       child: Container(

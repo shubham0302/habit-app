@@ -33,7 +33,7 @@ class TimerMainScreen extends StatefulWidget {
 class _TimerMainScreenState extends State<TimerMainScreen>
     with TickerProviderStateMixin {
   TimerTabController tabController =
-      Get.put(TimerTabController(), permanent: false);
+      Get.put(TimerTabController(), permanent: true);
 
   late TabController _controller;
 

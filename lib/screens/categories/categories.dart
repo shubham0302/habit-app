@@ -4,7 +4,9 @@ import 'package:flutter_shake_animated/flutter_shake_animated.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/constants/categories.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
+import 'package:habbit_app/controllers/premium_controller.dart';
 import 'package:habbit_app/screens/categories/custom_dialog_categories.dart';
+import 'package:habbit_app/screens/categories/premiumCategories_dailog.dart';
 import 'package:habbit_app/widgets/icon_widget.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
@@ -16,6 +18,8 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PremiumController premiumController =
+        Get.put(PremiumController(), permanent: false);
     CategoryController categoryController =
         Get.put(CategoryController(), permanent: false);
     ThemeData color = Theme.of(context);
@@ -43,10 +47,15 @@ class CategoriesScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         IconWidget(
-                          isBig: true,
-                          color: categoryController.categories.where((p0) => p0.isDefault).toList()[index].color, 
-                          icon: categoryController.categories.where((p0) => p0.isDefault).toList()[index].icon
-                        ),
+                            isBig: true,
+                            color: categoryController.categories
+                                .where((p0) => p0.isDefault)
+                                .toList()[index]
+                                .color,
+                            icon: categoryController.categories
+                                .where((p0) => p0.isDefault)
+                                .toList()[index]
+                                .icon),
                         SH.medium(),
                         DescriptionText(
                           isDotDot: true,
@@ -112,7 +121,17 @@ class CategoriesScreen extends StatelessWidget {
                   categoryController.colorIndex.value = 0;
                   categoryController.iconType.value = 0;
                   categoryController.ctrl.text = '';
-                  CategoriesCustomDialogBox(context, false);
+
+                  if (premiumController.premium.value == false) {
+                    categoryController.categories
+                                .where((p0) => !p0.isDefault)
+                                .length >
+                            1
+                        ? PremiumCategoriesCustomDialogBox(context)
+                        : CategoriesCustomDialogBox(context, false);
+                  } else {
+                    CategoriesCustomDialogBox(context, false);
+                  }
                 },
                 child: Container(
                   height: 30,
@@ -130,9 +149,11 @@ class CategoriesScreen extends StatelessWidget {
             ],
           ),
           SH.small(),
-          DescriptionText(
-              text:
-                  "${categoryController.categories.where((p0) => !p0.isDefault).length} Available"),
+          Obx(
+            () => DescriptionText(
+                text:
+                    "${categoryController.categories.where((p0) => !p0.isDefault).length} Available"),
+          ),
           // SH.large(),
           SH.large(),
           SizedBox(
@@ -259,13 +280,15 @@ class CategoriesScreen extends StatelessWidget {
                                         //   ),
                                         // ),
                                         IconWidget(
-                                          isBig: true,
-                                          color: categoryController.categories
-                                              .where((p0) => !p0.isDefault)
-                                              .toList()[index].color, 
-                                          icon: categoryController.categories
-                                              .where((p0) => !p0.isDefault)
-                                              .toList()[index].icon),
+                                            isBig: true,
+                                            color: categoryController.categories
+                                                .where((p0) => !p0.isDefault)
+                                                .toList()[index]
+                                                .color,
+                                            icon: categoryController.categories
+                                                .where((p0) => !p0.isDefault)
+                                                .toList()[index]
+                                                .icon),
                                         SH.small(),
                                         DescriptionText(
                                           isColor: true,

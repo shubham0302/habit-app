@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/premium_controller.dart';
+import 'package:habbit_app/screens/customize_screen/components/premium_color_customize.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
@@ -14,6 +16,8 @@ class GetPremiumScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PremiumController premiumController =
+        Get.put(PremiumController(), permanent: false);
     ThemeData color = Theme.of(context);
     return Scaffold(
       body: SafeArea(
@@ -188,20 +192,45 @@ class GetPremiumScreen extends StatelessWidget {
                       ],
                     ),
                     SH.large(),
-                    Container(
-                      height: 50,
-                      width: 320,
-                      decoration: BoxDecoration(
-                          color: color.primaryColor,
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10))),
-                      child: Center(
-                          child: MainLabelText(
-                        text: "GET PREMIUM".tr,
-                        color: Colors.white,
-                        isColor: true,
-                      )),
-                    ),
+                    GestureDetector(
+                        onTap: () {
+                          premiumController.premium.value == false
+                              ? premiumController.premium.value = true
+                              : premiumController.premium.value = false;
+                          premiumController.setPremium();
+                          print(premiumController.premium.value);
+                        },
+                        child:
+                            Obx(() => premiumController.premium.value == false
+                                ? Container(
+                                    height: 50,
+                                    width: 320,
+                                    decoration: BoxDecoration(
+                                        color: color.primaryColor,
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(10))),
+                                    child: Center(
+                                        child: MainLabelText(
+                                      text: "GET PREMIUM".tr,
+                                      color: Colors.white,
+                                      isColor: true,
+                                    )),
+                                  )
+                                : Container(
+                                    height: 50,
+                                    width: 320,
+                                    child: Column(children: [
+                                      LabelText(
+                                          text:
+                                              'You are already a premium user'),
+                                      SH.medium(),
+                                      LabelText(
+                                        text:
+                                            'Thank you for supporting our work!',
+                                        isColor: true,
+                                      )
+                                    ]),
+                                  ))),
                   ]),
                 ),
               ),

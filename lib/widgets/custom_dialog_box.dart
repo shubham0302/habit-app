@@ -2,12 +2,19 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/premium_controller.dart';
+import 'package:habbit_app/controllers/recurring_controller.dart';
+import 'package:habbit_app/premiumHabit_dailbox.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 void CustomDialogBox(BuildContext context) {
+  PremiumController premiumController =
+      Get.put(PremiumController(), permanent: false);
+  AddRecurringTaskController recurringTaskController =
+      Get.put(AddRecurringTaskController(), permanent: false);
   ThemeData color = Theme.of(context);
   showDialog(
       context: context,
@@ -51,7 +58,13 @@ void CustomDialogBox(BuildContext context) {
                 // const Divider(thickness: 1),
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed('/recurringTask-detail');
+                    if (premiumController.premium.value == false) {
+                      recurringTaskController.tasks.length > 3
+                          ? PremiumHabitCustomDialogBox(context)
+                          : Get.toNamed('/recurringTask-detail');
+                    } else {
+                      Get.toNamed('/recurringTask-detail');
+                    }
                   },
                   behavior: HitTestBehavior.translucent,
                   child: Row(

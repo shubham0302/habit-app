@@ -49,7 +49,7 @@ class AddHabbitsScreen extends StatelessWidget {
                         ),
                       )),
                   SW.medium(),
-                   MainLabelText(text: 'Add New Habbit'.tr),
+                  MainLabelText(text: 'Add New Habbit'.tr),
                 ],
               ),
               SH.large(),
@@ -67,7 +67,7 @@ class AddHabbitsScreen extends StatelessWidget {
                           color: color.primaryColor,
                         ),
                         SW.small(),
-                         LabelText(text: "Task Name".tr)
+                        LabelText(text: "Task Name".tr)
                       ],
                     ),
                     GestureDetector(
@@ -113,7 +113,7 @@ class AddHabbitsScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                       LabelText(text: "Description".tr)
+                      LabelText(text: "Description".tr)
                     ],
                   ),
                   GestureDetector(
@@ -163,7 +163,7 @@ class AddHabbitsScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                       LabelText(text: "Evaluate".tr)
+                      LabelText(text: "Evaluate".tr)
                     ],
                   ),
                   GestureDetector(
@@ -207,7 +207,7 @@ class AddHabbitsScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                       LabelText(text: "Category".tr)
+                      LabelText(text: "Category".tr)
                     ],
                   ),
                   GestureDetector(
@@ -305,7 +305,7 @@ class AddHabbitsScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                       LabelText(text: "Start Date".tr)
+                      LabelText(text: "Start Date".tr)
                     ],
                   ),
                   GestureDetector(
@@ -354,7 +354,7 @@ class AddHabbitsScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                       LabelText(text: "End Date".tr)
+                      LabelText(text: "End Date".tr)
                     ],
                   ),
                   GestureDetector(
@@ -402,7 +402,7 @@ class AddHabbitsScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                       LabelText(text: "Repetation".tr)
+                      LabelText(text: "Repetation".tr)
                     ],
                   ),
                   GestureDetector(
@@ -448,7 +448,7 @@ class AddHabbitsScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                       LabelText(text: "Reminders".tr)
+                      LabelText(text: "Reminders".tr)
                     ],
                   ),
                   GestureDetector(
@@ -492,7 +492,7 @@ class AddHabbitsScreen extends StatelessWidget {
                         color: color.primaryColor,
                       ),
                       SW.medium(),
-                       LabelText(text: "Priority".tr)
+                      LabelText(text: "Priority".tr)
                     ],
                   ),
                   GestureDetector(
@@ -544,7 +544,7 @@ class AddHabbitsScreen extends StatelessWidget {
                             const BorderRadius.all(Radius.circular(10)),
                         border: Border.all(width: 2, color: color.primaryColor),
                         color: color.backgroundColor),
-                    child:  Center(
+                    child: Center(
                       child: MainLabelText(
                         text: "Add Habbit".tr,
                         isColor: true,

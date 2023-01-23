@@ -4,6 +4,7 @@ import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/interval_controller.dart';
+import 'package:habbit_app/controllers/premium_controller.dart';
 import 'package:habbit_app/screens/timer/select_interval_dailbox.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:habbit_app/widgets/custom_snackbar.dart';
@@ -23,7 +24,7 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
     with TickerProviderStateMixin {
   AnimationController? animationController;
   IntervalTabController intervalTabController =
-      Get.put(IntervalTabController(), permanent: false);
+      Get.put(IntervalTabController(), permanent: true);
 
   late TabController _controller;
 
@@ -91,6 +92,8 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
     final CountDownController _controller = CountDownController();
     IntervalTabController intervalTabController =
         Get.put(IntervalTabController(), permanent: false);
+    PremiumController premiumController =
+        Get.put(PremiumController(), permanent: false);
     var color = Theme.of(context);
     return SingleChildScrollView(
       child: Container(
@@ -263,7 +266,10 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                                   SH.medium(),
                                   GestureDetector(
                                     onTap: () {
-                                      SelectInterTimeCustomDialogBox(context);
+                                      premiumController.premium.value == true
+                                          ? SelectInterTimeCustomDialogBox(
+                                              context)
+                                          : Get.toNamed('/getpremium');
                                     },
                                     child: Container(
                                       height: 50,
