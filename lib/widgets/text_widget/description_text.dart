@@ -38,7 +38,7 @@ class DescriptionText extends StatelessWidget {
           color: isColor == true ? (this.color ?? color.primaryColor) : null,
           fontWeight: isBold == true ? FontWeight.bold : FontWeight.normal),
       textAlign: alignment,
-      overflow: TextOverflow.clip,
+      overflow: isDotDot==true? TextOverflow.ellipsis:TextOverflow.clip,
     );
   }
 }

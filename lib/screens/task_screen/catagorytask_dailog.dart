@@ -36,75 +36,60 @@ void CategoryTaskCustomDialogBox(BuildContext context) {
                             crossAxisCount: 2, childAspectRatio: 2),
                     itemCount: categoryController.categories.length,
                     itemBuilder: (context, index) {
-                      return Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              addHabbitSelectController.categoryId.value =
-                                  categoryController.categories[index].id;
-                              Get.back();
-                            },
-                            child: Container(
-                              height: 60,
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
-                                  border: Border.all(
-                                      color:
-                                          color.primaryColor.withOpacity(0.3))),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Expanded(
-                                      child: LabelText(
-                                          text: categoryController
-                                              .categories[index].name),
-                                    ),
-                                    // Container(
-                                    //   height: 30,
-                                    //   width: 30,
-                                    //   decoration: BoxDecoration(
-                                    //       borderRadius: const BorderRadius.all(
-                                    //         Radius.circular(10),
-                                    //       ),
-                                    //       color: categoryController.iconColor[
-                                    //               categoryController
-                                    //                   .categories[index].color]
-                                    //           .withOpacity(0.3)),
-                                    //   child: Icon(
-                                    //     categoryController.icon[
-                                    //         categoryController
-                                    //             .categories[index].icon],
-                                    //     size: 23,
-                                    //     color: categoryController.iconColor[
-                                    //         categoryController
-                                    //             .categories[index].color],
-                                    //   ),
-                                    // ),
-                                    Obx(() => IconWidgetClassic(
-                                          contanerSize: true,
-                                          contanerHight: 30,
-                                          contanerWidth: 30,
-                                          icon: categoryController.icon[
-                                              categoryController
-                                                  .categories[index].icon],
-                                          contanerColor: color.brightness ==
-                                                  Brightness.dark
-                                              ? categoryController.iconColor[
-                                                  categoryController
-                                                      .categories[index].color]
-                                              : categoryController
-                                                      .iconLightColor[
-                                                  categoryController
-                                                      .categories[index].color],
-                                        )),
-                                  ],
-                                ),
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            addHabbitSelectController.categoryId.value =
+                                categoryController.categories[index].id;
+                            Get.back();
+                          },
+                          child: Container(
+                            height: 60,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(10)),
+                                border: Border.all(
+                                    color:
+                                        color.primaryColor.withOpacity(0.3))),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: LabelText(
+                                        text: categoryController
+                                            .categories[index].name,isDotDot: true,),
+                                  ),
+                                  // Container(
+                                  //   height: 30,
+                                  //   width: 30,
+                                  //   decoration: BoxDecoration(
+                                  //       borderRadius: const BorderRadius.all(
+                                  //         Radius.circular(10),
+                                  //       ),
+                                  //       color: categoryController.iconColor[
+                                  //               categoryController
+                                  //                   .categories[index].color]
+                                  //           .withOpacity(0.3)),
+                                  //   child: Icon(
+                                  //     categoryController.icon[
+                                  //         categoryController
+                                  //             .categories[index].icon],
+                                  //     size: 23,
+                                  //     color: categoryController.iconColor[
+                                  //         categoryController
+                                  //             .categories[index].color],
+                                  //   ),
+                                  // ),
+                                IconWidget(color: categoryController
+                                                .categories[index].color, icon: categoryController
+                                                .categories[index].icon),
+                                  
+                                ],
                               ),
                             ),
                           ),

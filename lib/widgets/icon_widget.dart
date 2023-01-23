@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/constants/categories.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
 
 class IconWidgetClassic extends StatelessWidget {
@@ -29,6 +30,7 @@ class IconWidgetClassic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var color  = Theme.of(context);
     SwitchController switchController = Get.put(SwitchController());
     return Obx(
       () => Container(
@@ -50,9 +52,9 @@ class IconWidgetClassic extends StatelessWidget {
                   fit: BoxFit.fill,
                   child: Icon(
                     icon,
-                    size: iconSized == true ? iconSize : 23,
+                    size: iconSized == true ? iconSize : 10,
                     color: switchController.isClassic.value == true
-                        ? Colors.white
+                        ? color.backgroundColor
                         : contanerColor,
                   ),
                 ),
@@ -123,3 +125,28 @@ class IconWidgetClassic extends StatelessWidget {
 //     );
 //   }
 // }
+
+
+
+class IconWidget extends StatelessWidget {
+  final int color;
+  final int icon;
+  final bool? isBig;
+  const IconWidget({super.key, required this.color, required this.icon, this.isBig=false});
+
+  @override
+  Widget build(BuildContext context) {
+    SwitchController switchController = Get.find<SwitchController>();
+    var theme = Theme.of(context);
+    return Obx(()=>Container(
+      height: isBig==true? 60:30,
+      width: isBig==true? 60:30,
+      decoration: BoxDecoration(
+          color: switchController.isClassic.value? theme.brightness==Brightness.dark? iconColor[color]:iconLightColor[color]:theme.dividerColor,
+        borderRadius: BorderRadius.all(Radius.circular(isBig==true? 20:10)),
+      ),
+      child: Icon(iconData[icon],color:switchController.isClassic.value? theme.backgroundColor:iconColor[color],size: isBig==true? 40:20,),
+    ),
+    );
+  }
+}
