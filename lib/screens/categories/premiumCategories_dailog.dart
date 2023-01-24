@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
-import 'package:lottie/lottie.dart';
 
 void PremiumCategoriesCustomDialogBox(BuildContext context) {
   ThemeData color = Theme.of(context);

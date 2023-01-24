@@ -27,64 +27,140 @@ void SuggestionSupportCustomDialogBox(BuildContext context) {
   EmailSendController emailSendController =
       Get.put(EmailSendController(), permanent: false);
   ThemeData color = Theme.of(context);
-  showDialog(
+
+  showGeneralDialog(
+      barrierColor: Colors.black.withOpacity(0.5),
+      transitionBuilder: (context, a1, a2, widget) {
+        return Transform.scale(
+          scale: a1.value,
+          child: Opacity(
+              opacity: a1.value,
+              child: AlertDialog(
+                  insetPadding: const EdgeInsets.symmetric(horizontal: 2),
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                  backgroundColor: color.backgroundColor,
+                  content: Container(
+                    width: 220,
+                    height: 220,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Center(
+                              child:
+                                  DescriptionText(text: "Send suggestions".tr)),
+                          SH.medium(),
+                          const Divider(),
+                          SH.medium(),
+                          InputField(
+                            hintText: "Write your comments here".tr,
+                            isDescription: true,
+                            controller: emailSendController.controllerMessage,
+                          ),
+                          SH.large(),
+                          DescriptionText(
+                              text: "Your feedback is very valuable to us".tr),
+                          SH.large(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Get.back();
+                                },
+                                child: LabelText(
+                                  text: "CANCEL".tr,
+                                  isBold: true,
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  LaunchEmail(
+                                      toEmail: emailSendController.controllerTo,
+                                      toSubject: emailSendController
+                                          .controllerSubjectSuggestions,
+                                      toMessage: emailSendController
+                                          .controllerMessage.text);
+                                },
+                                child: LabelText(
+                                  text: "SEND".tr,
+                                  isColor: true,
+                                  isBold: true,
+                                ),
+                              )
+                            ],
+                          )
+                        ]),
+                  ))),
+        );
+      },
+      transitionDuration: Duration(milliseconds: 200),
+      barrierDismissible: true,
+      barrierLabel: '',
       context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-            insetPadding: const EdgeInsets.symmetric(horizontal: 2),
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20.0))),
-            backgroundColor: color.backgroundColor,
-            content: Container(
-              width: 220,
-              height: 220,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Center(child: DescriptionText(text: "Send suggestions".tr)),
-                    SH.medium(),
-                    const Divider(),
-                    SH.medium(),
-                    InputField(
-                      hintText: "Write your comments here".tr,
-                      isDescription: true,
-                      controller: emailSendController.controllerMessage,
-                    ),
-                    SH.large(),
-                    DescriptionText(
-                        text: "Your feedback is very valuable to us".tr),
-                    SH.large(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Get.back();
-                          },
-                          child: LabelText(
-                            text: "CANCEL".tr,
-                            isBold: true,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            LaunchEmail(
-                                toEmail: emailSendController.controllerTo,
-                                toSubject: emailSendController
-                                    .controllerSubjectSuggestions,
-                                toMessage:
-                                    emailSendController.controllerMessage.text);
-                          },
-                          child: LabelText(
-                            text: "SEND".tr,
-                            isColor: true,
-                            isBold: true,
-                          ),
-                        )
-                      ],
-                    )
-                  ]),
-            ));
+      pageBuilder: (context, animation1, animation2) {
+        return SizedBox();
       });
+
+  // showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //   return AlertDialog(
+  //       insetPadding: const EdgeInsets.symmetric(horizontal: 2),
+  //       shape: const RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.all(Radius.circular(20.0))),
+  //       backgroundColor: color.backgroundColor,
+  //       content: Container(
+  //         width: 220,
+  //         height: 220,
+  //         child: Column(
+  //             mainAxisAlignment: MainAxisAlignment.start,
+  //             crossAxisAlignment: CrossAxisAlignment.center,
+  //             children: [
+  //               Center(child: DescriptionText(text: "Send suggestions".tr)),
+  //               SH.medium(),
+  //               const Divider(),
+  //               SH.medium(),
+  //               InputField(
+  //                 hintText: "Write your comments here".tr,
+  //                 isDescription: true,
+  //                 controller: emailSendController.controllerMessage,
+  //               ),
+  //               SH.large(),
+  //               DescriptionText(
+  //                   text: "Your feedback is very valuable to us".tr),
+  //               SH.large(),
+  //               Row(
+  //                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //                 children: [
+  //                   GestureDetector(
+  //                     onTap: () {
+  //                       Get.back();
+  //                     },
+  //                     child: LabelText(
+  //                       text: "CANCEL".tr,
+  //                       isBold: true,
+  //                     ),
+  //                   ),
+  //                   GestureDetector(
+  //                     onTap: () {
+  //                       LaunchEmail(
+  //                           toEmail: emailSendController.controllerTo,
+  //                           toSubject: emailSendController
+  //                               .controllerSubjectSuggestions,
+  //                           toMessage:
+  //                               emailSendController.controllerMessage.text);
+  //                     },
+  //                     child: LabelText(
+  //                       text: "SEND".tr,
+  //                       isColor: true,
+  //                       isBold: true,
+  //                     ),
+  //                   )
+  //                 ],
+  //               )
+  //             ]),
+  //       ));
+  // });
 }

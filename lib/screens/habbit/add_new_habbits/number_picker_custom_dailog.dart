@@ -10,70 +10,145 @@ import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 void NumberPickerCustomDialogBox(BuildContext context) {
+  AddHabbitSelectController addHabbitSelectController =
+      Get.put(AddHabbitSelectController(), permanent: false);
   ThemeData color = Theme.of(context);
-  showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        AddHabbitSelectController addHabbitSelectController =
-            Get.put(AddHabbitSelectController(), permanent: false);
-        return AlertDialog(
-            insetPadding: const EdgeInsets.symmetric(horizontal: 2),
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20.0))),
-            backgroundColor: color.backgroundColor,
-            content: Container(
-              width: 300,
-              height: 260,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Center(
-                        child: LabelText(
-                      text: "Enter Value",
-                      isColor: true,
-                      isBold: true,
-                    )),
-                    SH.medium(),
-                    const Divider(
-                      thickness: 1,
-                    ),
-                    SH.medium(),
-                    _IntegerExample(),
-                    SH.large(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GestureDetector(
-                            onTap: () {
-                              addHabbitSelectController.currentvalueSec.value =
-                                  0;
-                              addHabbitSelectController.currentvalueMin.value =
-                                  0;
-                              addHabbitSelectController.currentvalueHour.value =
-                                  0;
-                              Get.back();
-                            },
-                            child: const MainLabelText(text: "CLOSE")),
-                        // Icon(
-                        //   Icons.refresh,
-                        //   size: 25,
-                        //   color: color.canvasColor,
-                        // ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.back();
-                          },
-                          child: const MainLabelText(
-                            text: "OK",
+
+  showGeneralDialog(
+      barrierColor: Colors.black.withOpacity(0.5),
+      transitionBuilder: (context, a1, a2, widget) {
+        return Transform.scale(
+          scale: a1.value,
+          child: Opacity(
+              opacity: a1.value,
+              child: AlertDialog(
+                  insetPadding: const EdgeInsets.symmetric(horizontal: 2),
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                  backgroundColor: color.backgroundColor,
+                  content: Container(
+                    width: 300,
+                    height: 260,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Center(
+                              child: LabelText(
+                            text: "Enter Value",
                             isColor: true,
+                            isBold: true,
+                          )),
+                          SH.medium(),
+                          const Divider(
+                            thickness: 1,
                           ),
-                        )
-                      ],
-                    )
-                  ]),
-            ));
+                          SH.medium(),
+                          _IntegerExample(),
+                          SH.large(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              GestureDetector(
+                                  onTap: () {
+                                    addHabbitSelectController
+                                        .currentvalueSec.value = 0;
+                                    addHabbitSelectController
+                                        .currentvalueMin.value = 0;
+                                    addHabbitSelectController
+                                        .currentvalueHour.value = 0;
+                                    Get.back();
+                                  },
+                                  child: const MainLabelText(text: "CLOSE")),
+                              // Icon(
+                              //   Icons.refresh,
+                              //   size: 25,
+                              //   color: color.canvasColor,
+                              // ),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.back();
+                                },
+                                child: const MainLabelText(
+                                  text: "OK",
+                                  isColor: true,
+                                ),
+                              )
+                            ],
+                          )
+                        ]),
+                  ))),
+        );
+      },
+      transitionDuration: Duration(milliseconds: 200),
+      barrierDismissible: true,
+      barrierLabel: '',
+      context: context,
+      pageBuilder: (context, animation1, animation2) {
+        return SizedBox();
       });
+
+  // showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //   return AlertDialog(
+  //       insetPadding: const EdgeInsets.symmetric(horizontal: 2),
+  //       shape: const RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.all(Radius.circular(20.0))),
+  //       backgroundColor: color.backgroundColor,
+  //       content: Container(
+  //         width: 300,
+  //         height: 260,
+  //         child: Column(
+  //             mainAxisAlignment: MainAxisAlignment.start,
+  //             crossAxisAlignment: CrossAxisAlignment.center,
+  //             children: [
+  //               const Center(
+  //                   child: LabelText(
+  //                 text: "Enter Value",
+  //                 isColor: true,
+  //                 isBold: true,
+  //               )),
+  //               SH.medium(),
+  //               const Divider(
+  //                 thickness: 1,
+  //               ),
+  //               SH.medium(),
+  //               _IntegerExample(),
+  //               SH.large(),
+  //               Row(
+  //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                 children: [
+  //                   GestureDetector(
+  //                       onTap: () {
+  //                         addHabbitSelectController.currentvalueSec.value =
+  //                             0;
+  //                         addHabbitSelectController.currentvalueMin.value =
+  //                             0;
+  //                         addHabbitSelectController.currentvalueHour.value =
+  //                             0;
+  //                         Get.back();
+  //                       },
+  //                       child: const MainLabelText(text: "CLOSE")),
+  //                   // Icon(
+  //                   //   Icons.refresh,
+  //                   //   size: 25,
+  //                   //   color: color.canvasColor,
+  //                   // ),
+  //                   GestureDetector(
+  //                     onTap: () {
+  //                       Get.back();
+  //                     },
+  //                     child: const MainLabelText(
+  //                       text: "OK",
+  //                       isColor: true,
+  //                     ),
+  //                   )
+  //                 ],
+  //               )
+  //             ]),
+  //       ));
+  // });
 }
 
 class _IntegerExample extends StatefulWidget {

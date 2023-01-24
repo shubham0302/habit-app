@@ -10,123 +10,255 @@ import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 void TimerCustomDialogBox(BuildContext context) {
+  AddHabbitSelectController addHabbitSelectController =
+      Get.put(AddHabbitSelectController(), permanent: false);
   ThemeData color = Theme.of(context);
-  showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        AddHabbitSelectController addHabbitSelectController =
-            Get.put(AddHabbitSelectController(), permanent: false);
-        return AlertDialog(
-            insetPadding: const EdgeInsets.symmetric(horizontal: 2),
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20.0))),
-            backgroundColor: color.backgroundColor,
-            content: Container(
-              width: 280,
-              height: 220,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Center(
-                        child: LabelText(
-                      text: "Define your habit".tr,
-                      isColor: true,
-                      isBold: true,
-                    )),
-                    SH.medium(),
-                    const Divider(
-                      thickness: 1,
-                    ),
-                    SH.medium(),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              height: 40,
-                              decoration: BoxDecoration(
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
-                                  border:
-                                      Border.all(color: color.disabledColor)),
-                              child: const Padding(
-                                padding: EdgeInsets.only(left: 8.0, right: 8.0),
-                                child: TimerDropDown(),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SW.medium(),
-                      ],
-                    ),
-                    SH.large(),
-                    Row(
-                      children: [
-                        Expanded(
-                            child: GestureDetector(
-                          onTap: () {
-                            NumberPickerCustomDialogBox(context);
-                          },
-                          child: Container(
-                            height: 35,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    width: 0.5, color: color.canvasColor),
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(10))),
-                            child: Center(
-                              child: Obx(
-                                () => DescriptionText(
-                                  text:
-                                      "${addHabbitSelectController.currentvalueHour}:${addHabbitSelectController.currentvalueMin}:${addHabbitSelectController.currentvalueSec}",
-                                ),
-                              ),
-                            ),
-                          ),
-                        )),
-                        Expanded(
-                          child: Container(
-                            height: 35,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: DescriptionText(
-                                text: "a day".tr,
-                                isColor: true,
-                                color: color.canvasColor,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SH.medium(),
-                    DescriptionText(
-                        text: "e.g.. Meet with friend, at least 2 hours a day"
-                            .tr),
-                    SH.large(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Get.back();
-                            print(addHabbitSelectController.updateUnit.value);
-                            print(addHabbitSelectController.updateGoal.value);
-                          },
-                          child: MainLabelText(
-                            text: "Add".tr,
+
+  showGeneralDialog(
+      barrierColor: Colors.black.withOpacity(0.5),
+      transitionBuilder: (context, a1, a2, widget) {
+        return Transform.scale(
+          scale: a1.value,
+          child: Opacity(
+              opacity: a1.value,
+              child: AlertDialog(
+                  insetPadding: const EdgeInsets.symmetric(horizontal: 2),
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                  backgroundColor: color.backgroundColor,
+                  content: Container(
+                    width: 280,
+                    height: 220,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Center(
+                              child: LabelText(
+                            text: "Define your habit".tr,
                             isColor: true,
                             isBold: true,
+                          )),
+                          SH.medium(),
+                          const Divider(
+                            thickness: 1,
                           ),
-                        ),
-                        SW.large()
-                      ],
-                    )
-                  ]),
-            ));
+                          SH.medium(),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(10)),
+                                        border: Border.all(
+                                            color: color.disabledColor)),
+                                    child: const Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 8.0, right: 8.0),
+                                      child: TimerDropDown(),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SW.medium(),
+                            ],
+                          ),
+                          SH.large(),
+                          Row(
+                            children: [
+                              Expanded(
+                                  child: GestureDetector(
+                                onTap: () {
+                                  NumberPickerCustomDialogBox(context);
+                                },
+                                child: Container(
+                                  height: 35,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 0.5, color: color.canvasColor),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(10))),
+                                  child: Center(
+                                    child: Obx(
+                                      () => DescriptionText(
+                                        text:
+                                            "${addHabbitSelectController.currentvalueHour}:${addHabbitSelectController.currentvalueMin}:${addHabbitSelectController.currentvalueSec}",
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )),
+                              Expanded(
+                                child: Container(
+                                  height: 35,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: DescriptionText(
+                                      text: "a day".tr,
+                                      isColor: true,
+                                      color: color.canvasColor,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SH.medium(),
+                          DescriptionText(
+                              text:
+                                  "e.g.. Meet with friend, at least 2 hours a day"
+                                      .tr),
+                          SH.large(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Get.back();
+                                  print(addHabbitSelectController
+                                      .updateUnit.value);
+                                  print(addHabbitSelectController
+                                      .updateGoal.value);
+                                },
+                                child: MainLabelText(
+                                  text: "Add".tr,
+                                  isColor: true,
+                                  isBold: true,
+                                ),
+                              ),
+                              SW.large()
+                            ],
+                          )
+                        ]),
+                  ))),
+        );
+      },
+      transitionDuration: Duration(milliseconds: 200),
+      barrierDismissible: true,
+      barrierLabel: '',
+      context: context,
+      pageBuilder: (context, animation1, animation2) {
+        return SizedBox();
       });
+
+  // showDialog(
+  //     context: context,
+  // builder: (BuildContext context) {
+  //   return AlertDialog(
+  //       insetPadding: const EdgeInsets.symmetric(horizontal: 2),
+  //       shape: const RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.all(Radius.circular(20.0))),
+  //       backgroundColor: color.backgroundColor,
+  //       content: Container(
+  //         width: 280,
+  //         height: 220,
+  //         child: Column(
+  //             mainAxisAlignment: MainAxisAlignment.start,
+  //             crossAxisAlignment: CrossAxisAlignment.center,
+  //             children: [
+  //               Center(
+  //                   child: LabelText(
+  //                 text: "Define your habit".tr,
+  //                 isColor: true,
+  //                 isBold: true,
+  //               )),
+  //               SH.medium(),
+  //               const Divider(
+  //                 thickness: 1,
+  //               ),
+  //               SH.medium(),
+  //               Row(
+  //                 children: [
+  //                   Expanded(
+  //                     child: GestureDetector(
+  //                       onTap: () {},
+  //                       child: Container(
+  //                         height: 40,
+  //                         decoration: BoxDecoration(
+  //                             borderRadius: const BorderRadius.all(
+  //                                 Radius.circular(10)),
+  //                             border:
+  //                                 Border.all(color: color.disabledColor)),
+  //                         child: const Padding(
+  //                           padding: EdgeInsets.only(left: 8.0, right: 8.0),
+  //                           child: TimerDropDown(),
+  //                         ),
+  //                       ),
+  //                     ),
+  //                   ),
+  //                   SW.medium(),
+  //                 ],
+  //               ),
+  //               SH.large(),
+  //               Row(
+  //                 children: [
+  //                   Expanded(
+  //                       child: GestureDetector(
+  //                     onTap: () {
+  //                       NumberPickerCustomDialogBox(context);
+  //                     },
+  //                     child: Container(
+  //                       height: 35,
+  //                       decoration: BoxDecoration(
+  //                           border: Border.all(
+  //                               width: 0.5, color: color.canvasColor),
+  //                           borderRadius: const BorderRadius.all(
+  //                               Radius.circular(10))),
+  //                       child: Center(
+  //                         child: Obx(
+  //                           () => DescriptionText(
+  //                             text:
+  //                                 "${addHabbitSelectController.currentvalueHour}:${addHabbitSelectController.currentvalueMin}:${addHabbitSelectController.currentvalueSec}",
+  //                           ),
+  //                         ),
+  //                       ),
+  //                     ),
+  //                   )),
+  //                   Expanded(
+  //                     child: Container(
+  //                       height: 35,
+  //                       child: Padding(
+  //                         padding: const EdgeInsets.all(8.0),
+  //                         child: DescriptionText(
+  //                           text: "a day".tr,
+  //                           isColor: true,
+  //                           color: color.canvasColor,
+  //                         ),
+  //                       ),
+  //                     ),
+  //                   ),
+  //                 ],
+  //               ),
+  //               SH.medium(),
+  //               DescriptionText(
+  //                   text: "e.g.. Meet with friend, at least 2 hours a day"
+  //                       .tr),
+  //               SH.large(),
+  //               Row(
+  //                 mainAxisAlignment: MainAxisAlignment.end,
+  //                 children: [
+  //                   GestureDetector(
+  //                     onTap: () {
+  //                       Get.back();
+  //                       print(addHabbitSelectController.updateUnit.value);
+  //                       print(addHabbitSelectController.updateGoal.value);
+  //                     },
+  //                     child: MainLabelText(
+  //                       text: "Add".tr,
+  //                       isColor: true,
+  //                       isBold: true,
+  //                     ),
+  //                   ),
+  //                   SW.large()
+  //                 ],
+  //               )
+  //             ]),
+  //       ));
+  // });
 }
 
 class TimerDropDown extends StatefulWidget {

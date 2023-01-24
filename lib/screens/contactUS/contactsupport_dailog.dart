@@ -12,9 +12,9 @@ import 'package:url_launcher/url_launcher_string.dart';
 void ContactSupportCustomDialogBox(BuildContext context) {
   ThemeData color = Theme.of(context);
 
-  showDialog(
-      context: context,
-      builder: (BuildContext context) {
+  showGeneralDialog(
+      barrierColor: Colors.black.withOpacity(0.5),
+      transitionBuilder: (context, a1, a2, widget) {
         Future LaunchEmail({
           required String toEmail,
           required String toSubject,
@@ -30,64 +30,155 @@ void ContactSupportCustomDialogBox(BuildContext context) {
 
         EmailSendController emailSendController =
             Get.put(EmailSendController(), permanent: false);
-        return AlertDialog(
-            insetPadding: const EdgeInsets.symmetric(horizontal: 2),
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20.0))),
-            backgroundColor: color.backgroundColor,
-            content: Container(
-              width: 220,
-              // height: 220,
-              child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Center(child: DescriptionText(text: "Contact us".tr)),
-                    SH.medium(),
-                    const Divider(),
-                    SH.medium(),
-                    InputField(
-                      hintText: "Write your comments here".tr,
-                      isDescription: true,
-                      controller: emailSendController.controllerMessage,
-                    ),
-                    SH.large(),
-                    DescriptionText(
-                      text: "Your feedback is very valuable to us".tr,
-                      isDotDot: false,
-                    ),
-                    SH.large(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Get.back();
-                          },
-                          child: LabelText(
-                            text: "CANCEL".tr,
-                            isBold: true,
+        return Transform.scale(
+          scale: a1.value,
+          child: Opacity(
+              opacity: a1.value,
+              child: AlertDialog(
+                  insetPadding: const EdgeInsets.symmetric(horizontal: 2),
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                  backgroundColor: color.backgroundColor,
+                  content: Container(
+                    width: 220,
+                    // height: 220,
+                    child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Center(child: DescriptionText(text: "Contact us".tr)),
+                          SH.medium(),
+                          const Divider(),
+                          SH.medium(),
+                          InputField(
+                            hintText: "Write your comments here".tr,
+                            isDescription: true,
+                            controller: emailSendController.controllerMessage,
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            LaunchEmail(
-                                toEmail: emailSendController.controllerTo,
-                                toSubject:
-                                    emailSendController.controllerSubject,
-                                toMessage:
-                                    emailSendController.controllerMessage.text);
-                          },
-                          child: LabelText(
-                            text: "SEND".tr,
-                            isColor: true,
-                            isBold: true,
+                          SH.large(),
+                          DescriptionText(
+                            text: "Your feedback is very valuable to us".tr,
+                            isDotDot: false,
                           ),
-                        )
-                      ],
-                    )
-                  ]),
-            ));
+                          SH.large(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Get.back();
+                                },
+                                child: LabelText(
+                                  text: "CANCEL".tr,
+                                  isBold: true,
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  LaunchEmail(
+                                      toEmail: emailSendController.controllerTo,
+                                      toSubject:
+                                          emailSendController.controllerSubject,
+                                      toMessage: emailSendController
+                                          .controllerMessage.text);
+                                },
+                                child: LabelText(
+                                  text: "SEND".tr,
+                                  isColor: true,
+                                  isBold: true,
+                                ),
+                              )
+                            ],
+                          )
+                        ]),
+                  ))),
+        );
+      },
+      transitionDuration: Duration(milliseconds: 200),
+      barrierDismissible: true,
+      barrierLabel: '',
+      context: context,
+      pageBuilder: (context, animation1, animation2) {
+        return SizedBox();
       });
+
+  // showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       Future LaunchEmail({
+  //         required String toEmail,
+  //         required String toSubject,
+  //         required String toMessage,
+  //       }) async {
+  //         final url1 =
+  //             'mailto:$toEmail?subject=${Uri.encodeFull(toSubject)}&body=${Uri.encodeFull(toMessage)}';
+
+  //         if (await canLaunchUrlString(url1)) {
+  //           await launchUrlString(url1);
+  //         }
+  //       }
+
+  //       EmailSendController emailSendController =
+  //           Get.put(EmailSendController(), permanent: false);
+  //       return AlertDialog(
+  //           insetPadding: const EdgeInsets.symmetric(horizontal: 2),
+  //           shape: const RoundedRectangleBorder(
+  //               borderRadius: BorderRadius.all(Radius.circular(20.0))),
+  //           backgroundColor: color.backgroundColor,
+  //           content: Container(
+  //             width: 220,
+  //             // height: 220,
+  //             child: Column(
+  //                 mainAxisSize: MainAxisSize.min,
+  //                 mainAxisAlignment: MainAxisAlignment.start,
+  //                 crossAxisAlignment: CrossAxisAlignment.center,
+  //                 children: [
+  //                   Center(child: DescriptionText(text: "Contact us".tr)),
+  //                   SH.medium(),
+  //                   const Divider(),
+  //                   SH.medium(),
+  //                   InputField(
+  //                     hintText: "Write your comments here".tr,
+  //                     isDescription: true,
+  //                     controller: emailSendController.controllerMessage,
+  //                   ),
+  //                   SH.large(),
+  //                   DescriptionText(
+  //                     text: "Your feedback is very valuable to us".tr,
+  //                     isDotDot: false,
+  //                   ),
+  //                   SH.large(),
+  //                   Row(
+  //                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //                     children: [
+  //                       GestureDetector(
+  //                         onTap: () {
+  //                           Get.back();
+  //                         },
+  //                         child: LabelText(
+  //                           text: "CANCEL".tr,
+  //                           isBold: true,
+  //                         ),
+  //                       ),
+  //                       GestureDetector(
+  //                         onTap: () {
+  //                           LaunchEmail(
+  //                               toEmail: emailSendController.controllerTo,
+  //                               toSubject:
+  //                                   emailSendController.controllerSubject,
+  //                               toMessage:
+  //                                   emailSendController.controllerMessage.text);
+  //                         },
+  //                         child: LabelText(
+  //                           text: "SEND".tr,
+  //                           isColor: true,
+  //                           isBold: true,
+  //                         ),
+  //                       )
+  //                     ],
+  //                   )
+  //                 ]),
+  //           ));
+  //     });
 }

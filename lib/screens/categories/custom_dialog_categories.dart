@@ -13,184 +13,384 @@ void CategoriesCustomDialogBox(BuildContext context, bool fromUpdate) {
   CategoryController categoryController =
       Get.put(CategoryController(), permanent: false);
   ThemeData color = Theme.of(context);
-  showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return GlobalPadding(
-          child: AlertDialog(
-            insetPadding: const EdgeInsets.symmetric(horizontal: 2),
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20.0))),
-            backgroundColor: color.backgroundColor,
-            content: Wrap(
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Center(
-                      child: MainLabelText(
-                        text: "New Category".tr,
-                        isColor: true,
-                      ),
-                    ),
-                    SH.large(),
-                    LabelText(text: "Category Name".tr),
-                    SH.large(),
-                    InputField(
-                      hintText: "Ex. Travel".tr,
-                      controller: categoryController.ctrl,
-                      onChange: (e) {
-                        categoryController.category.value = e;
-                      },
-                    ),
-                    SH.large(),
-                    LabelText(text: "Category Color".tr),
-                    SH.large(),
-                    Container(
-                      height: 55,
-                      width: MediaQuery.of(context).size.width,
-                      child: GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 5),
-                        itemCount: categoryController.iconColor.length,
-                        itemBuilder: (context, index) {
-                          return Center(
-                            child: InkWell(
-                              borderRadius: BorderRadius.circular(50),
-                              onTap: () {
-                                categoryController.colorIndex.value = index;
-                                // themeController.changeThemeColor('blue');
-                                // print(Theme.of(context).brightness);
-                                // Get.toNamed('/intro');
-                              },
-                              child: Obx(
-                                () => Container(
-                                  padding: const EdgeInsets.all(2),
-                                  height: 44,
-                                  width: 44,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                        width: 2,
-                                        color: categoryController
-                                                    .colorIndex.value ==
-                                                index
-                                            ? categoryController
-                                                .iconColor[index]
-                                            : Colors.transparent,
-                                        // color: themeController.mode == 'blue'
-                                        //     ? (Theme.of(context).brightness ==
-                                        //             Brightness.light
-                                        //         ? ColorSchemeData.themeData[
-                                        //             'blue']!['primaryColor']
-                                        //         : ColorSchemeData.darkThemeData[
-                                        //             'blue']!['primaryColor'])!
-                                        //     : Colors.transparent,
-                                      ),
-                                      borderRadius: BorderRadius.circular(22)),
-                                  child: Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(25),
-                                        color: categoryController
-                                            .iconColor[index]),
-                                    // child: Icon(Icons.arrow_forward_ios_rounded),
-                                  ),
-                                ),
-                              ),
+
+  showGeneralDialog(
+      barrierColor: Colors.black.withOpacity(0.5),
+      transitionBuilder: (context, a1, a2, widget) {
+        return Transform.scale(
+          scale: a1.value,
+          child: Opacity(
+              opacity: a1.value,
+              child: GlobalPadding(
+                child: AlertDialog(
+                  insetPadding: const EdgeInsets.symmetric(horizontal: 2),
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                  backgroundColor: color.backgroundColor,
+                  content: Wrap(
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Center(
+                            child: MainLabelText(
+                              text: "New Category".tr,
+                              isColor: true,
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                    SH.large(),
-                    LabelText(text: "Category Icon".tr),
-                    SH.large(),
-                    Container(
-                      height: 150,
-                      width: MediaQuery.of(context).size.width,
-                      child: GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisSpacing: 5,
-                                mainAxisSpacing: 5,
-                                crossAxisCount: 5),
-                        itemCount: categoryController.icon.length,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              categoryController.iconType.value = index;
+                          ),
+                          SH.large(),
+                          LabelText(text: "Category Name".tr),
+                          SH.large(),
+                          InputField(
+                            hintText: "Ex. Travel".tr,
+                            controller: categoryController.ctrl,
+                            onChange: (e) {
+                              categoryController.category.value = e;
                             },
-                            behavior: HitTestBehavior.translucent,
-                            child: Obx(
-                              () => Container(
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                        width: 2,
+                          ),
+                          SH.large(),
+                          LabelText(text: "Category Color".tr),
+                          SH.large(),
+                          Container(
+                            height: 55,
+                            width: MediaQuery.of(context).size.width,
+                            child: GridView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 5),
+                              itemCount: categoryController.iconColor.length,
+                              itemBuilder: (context, index) {
+                                return Center(
+                                  child: InkWell(
+                                    borderRadius: BorderRadius.circular(50),
+                                    onTap: () {
+                                      categoryController.colorIndex.value =
+                                          index;
+                                      // themeController.changeThemeColor('blue');
+                                      // print(Theme.of(context).brightness);
+                                      // Get.toNamed('/intro');
+                                    },
+                                    child: Obx(
+                                      () => Container(
+                                        padding: const EdgeInsets.all(2),
+                                        height: 44,
+                                        width: 44,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                              width: 2,
+                                              color: categoryController
+                                                          .colorIndex.value ==
+                                                      index
+                                                  ? categoryController
+                                                      .iconColor[index]
+                                                  : Colors.transparent,
+                                              // color: themeController.mode == 'blue'
+                                              //     ? (Theme.of(context).brightness ==
+                                              //             Brightness.light
+                                              //         ? ColorSchemeData.themeData[
+                                              //             'blue']!['primaryColor']
+                                              //         : ColorSchemeData.darkThemeData[
+                                              //             'blue']!['primaryColor'])!
+                                              //     : Colors.transparent,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(22)),
+                                        child: Container(
+                                          height: 40,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                              color: categoryController
+                                                  .iconColor[index]),
+                                          // child: Icon(Icons.arrow_forward_ios_rounded),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                          SH.large(),
+                          LabelText(text: "Category Icon".tr),
+                          SH.large(),
+                          Container(
+                            height: 150,
+                            width: MediaQuery.of(context).size.width,
+                            child: GridView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisSpacing: 5,
+                                      mainAxisSpacing: 5,
+                                      crossAxisCount: 5),
+                              itemCount: categoryController.icon.length,
+                              itemBuilder: (context, index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    categoryController.iconType.value = index;
+                                  },
+                                  behavior: HitTestBehavior.translucent,
+                                  child: Obx(
+                                    () => Container(
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                              width: 2,
+                                              color: categoryController
+                                                          .iconType.value ==
+                                                      index
+                                                  ? categoryController
+                                                          .iconColor[
+                                                      categoryController
+                                                          .colorIndex.value]
+                                                  : Colors.transparent)),
+                                      // height: 30,
+                                      // width: 30,
+                                      // color: Colors.amber,
+                                      child: Icon(
+                                        categoryController.icon[index],
                                         color:
                                             categoryController.iconType.value ==
                                                     index
                                                 ? categoryController.iconColor[
                                                     categoryController
                                                         .colorIndex.value]
-                                                : Colors.transparent)),
-                                // height: 30,
-                                // width: 30,
-                                // color: Colors.amber,
-                                child: Icon(
-                                  categoryController.icon[index],
-                                  color: categoryController.iconType.value ==
-                                          index
-                                      ? categoryController.iconColor[
-                                          categoryController.colorIndex.value]
-                                      : color.disabledColor,
-                                  size: 35,
+                                                : color.disabledColor,
+                                        size: 35,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                          SH.small(),
+                          Center(
+                            child: GestureDetector(
+                              onTap: () {
+                                if (fromUpdate) {
+                                  categoryController.updateCategory();
+                                } else {
+                                  categoryController.addCategory();
+                                }
+                              },
+                              behavior: HitTestBehavior.translucent,
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                  vertical: 8,
+                                ),
+                                decoration: BoxDecoration(
+                                    color: color.primaryColor.withOpacity(.2),
+                                    borderRadius: BorderRadius.circular(5)),
+                                child: LabelText(
+                                  text: 'Create new Category'.tr.toUpperCase(),
+                                  isColor: true,
+                                  color: color.primaryColor,
                                 ),
                               ),
                             ),
-                          );
-                        },
+                          )
+                        ],
                       ),
-                    ),
-                    SH.small(),
-                    Center(
-                      child: GestureDetector(
-                        onTap: () {
-                          if (fromUpdate) {
-                            categoryController.updateCategory();
-                          } else {
-                            categoryController.addCategory();
-                          }
-                        },
-                        behavior: HitTestBehavior.translucent,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 8,
-                          ),
-                          decoration: BoxDecoration(
-                              color: color.primaryColor.withOpacity(.2),
-                              borderRadius: BorderRadius.circular(5)),
-                          child: LabelText(
-                            text: 'Create new Category'.tr.toUpperCase(),
-                            isColor: true,
-                            color: color.primaryColor,
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
-              ],
-            ),
-          ),
+              )),
         );
+      },
+      transitionDuration: Duration(milliseconds: 200),
+      barrierDismissible: true,
+      barrierLabel: '',
+      context: context,
+      pageBuilder: (context, animation1, animation2) {
+        return SizedBox();
       });
+
+  // showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //   return GlobalPadding(
+  //     child: AlertDialog(
+  //       insetPadding: const EdgeInsets.symmetric(horizontal: 2),
+  //       shape: const RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.all(Radius.circular(20.0))),
+  //       backgroundColor: color.backgroundColor,
+  //       content: Wrap(
+  //         children: [
+  //           Column(
+  //             mainAxisAlignment: MainAxisAlignment.start,
+  //             crossAxisAlignment: CrossAxisAlignment.start,
+  //             children: [
+  //               Center(
+  //                 child: MainLabelText(
+  //                   text: "New Category".tr,
+  //                   isColor: true,
+  //                 ),
+  //               ),
+  //               SH.large(),
+  //               LabelText(text: "Category Name".tr),
+  //               SH.large(),
+  //               InputField(
+  //                 hintText: "Ex. Travel".tr,
+  //                 controller: categoryController.ctrl,
+  //                 onChange: (e) {
+  //                   categoryController.category.value = e;
+  //                 },
+  //               ),
+  //               SH.large(),
+  //               LabelText(text: "Category Color".tr),
+  //               SH.large(),
+  //               Container(
+  //                 height: 55,
+  //                 width: MediaQuery.of(context).size.width,
+  //                 child: GridView.builder(
+  //                   physics: const NeverScrollableScrollPhysics(),
+  //                   shrinkWrap: true,
+  //                   gridDelegate:
+  //                       const SliverGridDelegateWithFixedCrossAxisCount(
+  //                           crossAxisCount: 5),
+  //                   itemCount: categoryController.iconColor.length,
+  //                   itemBuilder: (context, index) {
+  //                     return Center(
+  //                       child: InkWell(
+  //                         borderRadius: BorderRadius.circular(50),
+  //                         onTap: () {
+  //                           categoryController.colorIndex.value = index;
+  //                           // themeController.changeThemeColor('blue');
+  //                           // print(Theme.of(context).brightness);
+  //                           // Get.toNamed('/intro');
+  //                         },
+  //                         child: Obx(
+  //                           () => Container(
+  //                             padding: const EdgeInsets.all(2),
+  //                             height: 44,
+  //                             width: 44,
+  //                             decoration: BoxDecoration(
+  //                                 border: Border.all(
+  //                                   width: 2,
+  //                                   color: categoryController
+  //                                               .colorIndex.value ==
+  //                                           index
+  //                                       ? categoryController
+  //                                           .iconColor[index]
+  //                                       : Colors.transparent,
+  //                                   // color: themeController.mode == 'blue'
+  //                                   //     ? (Theme.of(context).brightness ==
+  //                                   //             Brightness.light
+  //                                   //         ? ColorSchemeData.themeData[
+  //                                   //             'blue']!['primaryColor']
+  //                                   //         : ColorSchemeData.darkThemeData[
+  //                                   //             'blue']!['primaryColor'])!
+  //                                   //     : Colors.transparent,
+  //                                 ),
+  //                                 borderRadius: BorderRadius.circular(22)),
+  //                             child: Container(
+  //                               height: 40,
+  //                               width: 40,
+  //                               decoration: BoxDecoration(
+  //                                   borderRadius: BorderRadius.circular(25),
+  //                                   color: categoryController
+  //                                       .iconColor[index]),
+  //                               // child: Icon(Icons.arrow_forward_ios_rounded),
+  //                             ),
+  //                           ),
+  //                         ),
+  //                       ),
+  //                     );
+  //                   },
+  //                 ),
+  //               ),
+  //               SH.large(),
+  //               LabelText(text: "Category Icon".tr),
+  //               SH.large(),
+  //               Container(
+  //                 height: 150,
+  //                 width: MediaQuery.of(context).size.width,
+  //                 child: GridView.builder(
+  //                   physics: const NeverScrollableScrollPhysics(),
+  //                   shrinkWrap: true,
+  //                   gridDelegate:
+  //                       const SliverGridDelegateWithFixedCrossAxisCount(
+  //                           crossAxisSpacing: 5,
+  //                           mainAxisSpacing: 5,
+  //                           crossAxisCount: 5),
+  //                   itemCount: categoryController.icon.length,
+  //                   itemBuilder: (context, index) {
+  //                     return GestureDetector(
+  //                       onTap: () {
+  //                         categoryController.iconType.value = index;
+  //                       },
+  //                       behavior: HitTestBehavior.translucent,
+  //                       child: Obx(
+  //                         () => Container(
+  //                           decoration: BoxDecoration(
+  //                               shape: BoxShape.circle,
+  //                               border: Border.all(
+  //                                   width: 2,
+  //                                   color:
+  //                                       categoryController.iconType.value ==
+  //                                               index
+  //                                           ? categoryController.iconColor[
+  //                                               categoryController
+  //                                                   .colorIndex.value]
+  //                                           : Colors.transparent)),
+  //                           // height: 30,
+  //                           // width: 30,
+  //                           // color: Colors.amber,
+  //                           child: Icon(
+  //                             categoryController.icon[index],
+  //                             color: categoryController.iconType.value ==
+  //                                     index
+  //                                 ? categoryController.iconColor[
+  //                                     categoryController.colorIndex.value]
+  //                                 : color.disabledColor,
+  //                             size: 35,
+  //                           ),
+  //                         ),
+  //                       ),
+  //                     );
+  //                   },
+  //                 ),
+  //               ),
+  //               SH.small(),
+  //               Center(
+  //                 child: GestureDetector(
+  //                   onTap: () {
+  //                     if (fromUpdate) {
+  //                       categoryController.updateCategory();
+  //                     } else {
+  //                       categoryController.addCategory();
+  //                     }
+  //                   },
+  //                   behavior: HitTestBehavior.translucent,
+  //                   child: Container(
+  //                     padding: const EdgeInsets.symmetric(
+  //                       horizontal: 20,
+  //                       vertical: 8,
+  //                     ),
+  //                     decoration: BoxDecoration(
+  //                         color: color.primaryColor.withOpacity(.2),
+  //                         borderRadius: BorderRadius.circular(5)),
+  //                     child: LabelText(
+  //                       text: 'Create new Category'.tr.toUpperCase(),
+  //                       isColor: true,
+  //                       color: color.primaryColor,
+  //                     ),
+  //                   ),
+  //                 ),
+  //               )
+  //             ],
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // });
 }

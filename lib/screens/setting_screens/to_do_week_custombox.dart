@@ -11,166 +11,342 @@ void ToDoWeekCustomDialogBox(BuildContext context) {
   SwitchController switchController =
       Get.put(SwitchController(), permanent: false);
   ThemeData color = Theme.of(context);
-  showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          insetPadding: const EdgeInsets.symmetric(horizontal: 2),
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20.0))),
-          backgroundColor: color.backgroundColor,
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              DescriptionText(text: "First day of week".tr),
-              SH.medium(),
-              const Divider(
-                thickness: 1,
-              ),
-              SH.medium(),
-              GestureDetector(
-                onTap: () {
-                  switchController.dayOfWeek.value = 'Sunday';
-                  switchController.setDayOfWeekData();
 
-                  Get.back();
-                },
-                behavior: HitTestBehavior.translucent,
-                child: LabelText(
-                  isBold: true,
-                  text: "Sunday".tr,
-                  isColor: switchController.dayOfWeek.value == 'Sunday'
-                      ? true
-                      : false,
-                ),
-              ),
-              SH.medium(),
-              const Divider(
-                thickness: 1,
-              ),
-              SH.medium(),
-              GestureDetector(
-                onTap: () {
-                  switchController.dayOfWeek.value = 'Monday';
-                  switchController.setDayOfWeekData();
+  showGeneralDialog(
+      barrierColor: Colors.black.withOpacity(0.5),
+      transitionBuilder: (context, a1, a2, widget) {
+        return Transform.scale(
+          scale: a1.value,
+          child: Opacity(
+              opacity: a1.value,
+              child: AlertDialog(
+                insetPadding: const EdgeInsets.symmetric(horizontal: 2),
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                backgroundColor: color.backgroundColor,
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    DescriptionText(text: "First day of week".tr),
+                    SH.medium(),
+                    const Divider(
+                      thickness: 1,
+                    ),
+                    SH.medium(),
+                    GestureDetector(
+                      onTap: () {
+                        switchController.dayOfWeek.value = 'Sunday';
+                        switchController.setDayOfWeekData();
 
-                  Get.back();
-                },
-                behavior: HitTestBehavior.translucent,
-                child: LabelText(
-                  isBold: true,
-                  text: "Monday".tr,
-                  isColor: switchController.dayOfWeek.value == 'Monday'
-                      ? true
-                      : false,
-                ),
-              ),
-              SH.medium(),
-              const Divider(
-                thickness: 1,
-              ),
-              SH.medium(),
-              GestureDetector(
-                onTap: () {
-                  switchController.dayOfWeek.value = 'Tuesday';
-                  switchController.setDayOfWeekData();
-                  Get.back();
-                },
-                behavior: HitTestBehavior.translucent,
-                child: LabelText(
-                  isBold: true,
-                  text: "Tuesday".tr,
-                  isColor: switchController.dayOfWeek.value == 'Tuesday'
-                      ? true
-                      : false,
-                ),
-              ),
-              SH.medium(),
-              const Divider(
-                thickness: 1,
-              ),
-              SH.medium(),
-              GestureDetector(
-                onTap: () {
-                  switchController.dayOfWeek.value = 'Wednesday';
-                  switchController.setDayOfWeekData();
+                        Get.back();
+                      },
+                      behavior: HitTestBehavior.translucent,
+                      child: LabelText(
+                        isBold: true,
+                        text: "Sunday".tr,
+                        isColor: switchController.dayOfWeek.value == 'Sunday'
+                            ? true
+                            : false,
+                      ),
+                    ),
+                    SH.medium(),
+                    const Divider(
+                      thickness: 1,
+                    ),
+                    SH.medium(),
+                    GestureDetector(
+                      onTap: () {
+                        switchController.dayOfWeek.value = 'Monday';
+                        switchController.setDayOfWeekData();
 
-                  Get.back();
-                },
-                behavior: HitTestBehavior.translucent,
-                child: LabelText(
-                  isBold: true,
-                  text: "Wednesday".tr,
-                  isColor: switchController.dayOfWeek.value == 'Wednesday'
-                      ? true
-                      : false,
-                ),
-              ),
-              SH.medium(),
-              const Divider(
-                thickness: 1,
-              ),
-              SH.medium(),
-              GestureDetector(
-                onTap: () {
-                  switchController.dayOfWeek.value = 'Thursday';
-                  switchController.setDayOfWeekData();
+                        Get.back();
+                      },
+                      behavior: HitTestBehavior.translucent,
+                      child: LabelText(
+                        isBold: true,
+                        text: "Monday".tr,
+                        isColor: switchController.dayOfWeek.value == 'Monday'
+                            ? true
+                            : false,
+                      ),
+                    ),
+                    SH.medium(),
+                    const Divider(
+                      thickness: 1,
+                    ),
+                    SH.medium(),
+                    GestureDetector(
+                      onTap: () {
+                        switchController.dayOfWeek.value = 'Tuesday';
+                        switchController.setDayOfWeekData();
+                        Get.back();
+                      },
+                      behavior: HitTestBehavior.translucent,
+                      child: LabelText(
+                        isBold: true,
+                        text: "Tuesday".tr,
+                        isColor: switchController.dayOfWeek.value == 'Tuesday'
+                            ? true
+                            : false,
+                      ),
+                    ),
+                    SH.medium(),
+                    const Divider(
+                      thickness: 1,
+                    ),
+                    SH.medium(),
+                    GestureDetector(
+                      onTap: () {
+                        switchController.dayOfWeek.value = 'Wednesday';
+                        switchController.setDayOfWeekData();
 
-                  Get.back();
-                },
-                behavior: HitTestBehavior.translucent,
-                child: LabelText(
-                  isBold: true,
-                  text: "Thursday".tr,
-                  isColor: switchController.dayOfWeek.value == 'Thursday'
-                      ? true
-                      : false,
-                ),
-              ),
-              SH.medium(),
-              const Divider(
-                thickness: 1,
-              ),
-              SH.medium(),
-              GestureDetector(
-                onTap: () {
-                  switchController.dayOfWeek.value = 'Friday';
-                  switchController.setDayOfWeekData();
+                        Get.back();
+                      },
+                      behavior: HitTestBehavior.translucent,
+                      child: LabelText(
+                        isBold: true,
+                        text: "Wednesday".tr,
+                        isColor: switchController.dayOfWeek.value == 'Wednesday'
+                            ? true
+                            : false,
+                      ),
+                    ),
+                    SH.medium(),
+                    const Divider(
+                      thickness: 1,
+                    ),
+                    SH.medium(),
+                    GestureDetector(
+                      onTap: () {
+                        switchController.dayOfWeek.value = 'Thursday';
+                        switchController.setDayOfWeekData();
 
-                  Get.back();
-                },
-                behavior: HitTestBehavior.translucent,
-                child: LabelText(
-                  isBold: true,
-                  text: "Friday".tr,
-                  isColor: switchController.dayOfWeek.value == 'Friday'
-                      ? true
-                      : false,
-                ),
-              ),
-              SH.medium(),
-              const Divider(
-                thickness: 1,
-              ),
-              SH.medium(),
-              GestureDetector(
-                onTap: () {
-                  switchController.dayOfWeek.value = 'Saturday';
-                  switchController.setDayOfWeekData();
+                        Get.back();
+                      },
+                      behavior: HitTestBehavior.translucent,
+                      child: LabelText(
+                        isBold: true,
+                        text: "Thursday".tr,
+                        isColor: switchController.dayOfWeek.value == 'Thursday'
+                            ? true
+                            : false,
+                      ),
+                    ),
+                    SH.medium(),
+                    const Divider(
+                      thickness: 1,
+                    ),
+                    SH.medium(),
+                    GestureDetector(
+                      onTap: () {
+                        switchController.dayOfWeek.value = 'Friday';
+                        switchController.setDayOfWeekData();
 
-                  Get.back();
-                },
-                behavior: HitTestBehavior.translucent,
-                child: LabelText(
-                  isBold: true,
-                  text: "Saturday".tr,
-                  isColor: switchController.dayOfWeek.value == 'Saturday'
-                      ? true
-                      : false,
+                        Get.back();
+                      },
+                      behavior: HitTestBehavior.translucent,
+                      child: LabelText(
+                        isBold: true,
+                        text: "Friday".tr,
+                        isColor: switchController.dayOfWeek.value == 'Friday'
+                            ? true
+                            : false,
+                      ),
+                    ),
+                    SH.medium(),
+                    const Divider(
+                      thickness: 1,
+                    ),
+                    SH.medium(),
+                    GestureDetector(
+                      onTap: () {
+                        switchController.dayOfWeek.value = 'Saturday';
+                        switchController.setDayOfWeekData();
+
+                        Get.back();
+                      },
+                      behavior: HitTestBehavior.translucent,
+                      child: LabelText(
+                        isBold: true,
+                        text: "Saturday".tr,
+                        isColor: switchController.dayOfWeek.value == 'Saturday'
+                            ? true
+                            : false,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
+              )),
         );
+      },
+      transitionDuration: Duration(milliseconds: 200),
+      barrierDismissible: true,
+      barrierLabel: '',
+      context: context,
+      pageBuilder: (context, animation1, animation2) {
+        return SizedBox();
       });
+
+  // showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //   return AlertDialog(
+  //     insetPadding: const EdgeInsets.symmetric(horizontal: 2),
+  //     shape: const RoundedRectangleBorder(
+  //         borderRadius: BorderRadius.all(Radius.circular(20.0))),
+  //     backgroundColor: color.backgroundColor,
+  //     content: Column(
+  //       mainAxisSize: MainAxisSize.min,
+  //       children: [
+  //         DescriptionText(text: "First day of week".tr),
+  //         SH.medium(),
+  //         const Divider(
+  //           thickness: 1,
+  //         ),
+  //         SH.medium(),
+  //         GestureDetector(
+  //           onTap: () {
+  //             switchController.dayOfWeek.value = 'Sunday';
+  //             switchController.setDayOfWeekData();
+
+  //             Get.back();
+  //           },
+  //           behavior: HitTestBehavior.translucent,
+  //           child: LabelText(
+  //             isBold: true,
+  //             text: "Sunday".tr,
+  //             isColor: switchController.dayOfWeek.value == 'Sunday'
+  //                 ? true
+  //                 : false,
+  //           ),
+  //         ),
+  //         SH.medium(),
+  //         const Divider(
+  //           thickness: 1,
+  //         ),
+  //         SH.medium(),
+  //         GestureDetector(
+  //           onTap: () {
+  //             switchController.dayOfWeek.value = 'Monday';
+  //             switchController.setDayOfWeekData();
+
+  //             Get.back();
+  //           },
+  //           behavior: HitTestBehavior.translucent,
+  //           child: LabelText(
+  //             isBold: true,
+  //             text: "Monday".tr,
+  //             isColor: switchController.dayOfWeek.value == 'Monday'
+  //                 ? true
+  //                 : false,
+  //           ),
+  //         ),
+  //         SH.medium(),
+  //         const Divider(
+  //           thickness: 1,
+  //         ),
+  //         SH.medium(),
+  //         GestureDetector(
+  //           onTap: () {
+  //             switchController.dayOfWeek.value = 'Tuesday';
+  //             switchController.setDayOfWeekData();
+  //             Get.back();
+  //           },
+  //           behavior: HitTestBehavior.translucent,
+  //           child: LabelText(
+  //             isBold: true,
+  //             text: "Tuesday".tr,
+  //             isColor: switchController.dayOfWeek.value == 'Tuesday'
+  //                 ? true
+  //                 : false,
+  //           ),
+  //         ),
+  //         SH.medium(),
+  //         const Divider(
+  //           thickness: 1,
+  //         ),
+  //         SH.medium(),
+  //         GestureDetector(
+  //           onTap: () {
+  //             switchController.dayOfWeek.value = 'Wednesday';
+  //             switchController.setDayOfWeekData();
+
+  //             Get.back();
+  //           },
+  //           behavior: HitTestBehavior.translucent,
+  //           child: LabelText(
+  //             isBold: true,
+  //             text: "Wednesday".tr,
+  //             isColor: switchController.dayOfWeek.value == 'Wednesday'
+  //                 ? true
+  //                 : false,
+  //           ),
+  //         ),
+  //         SH.medium(),
+  //         const Divider(
+  //           thickness: 1,
+  //         ),
+  //         SH.medium(),
+  //         GestureDetector(
+  //           onTap: () {
+  //             switchController.dayOfWeek.value = 'Thursday';
+  //             switchController.setDayOfWeekData();
+
+  //             Get.back();
+  //           },
+  //           behavior: HitTestBehavior.translucent,
+  //           child: LabelText(
+  //             isBold: true,
+  //             text: "Thursday".tr,
+  //             isColor: switchController.dayOfWeek.value == 'Thursday'
+  //                 ? true
+  //                 : false,
+  //           ),
+  //         ),
+  //         SH.medium(),
+  //         const Divider(
+  //           thickness: 1,
+  //         ),
+  //         SH.medium(),
+  //         GestureDetector(
+  //           onTap: () {
+  //             switchController.dayOfWeek.value = 'Friday';
+  //             switchController.setDayOfWeekData();
+
+  //             Get.back();
+  //           },
+  //           behavior: HitTestBehavior.translucent,
+  //           child: LabelText(
+  //             isBold: true,
+  //             text: "Friday".tr,
+  //             isColor: switchController.dayOfWeek.value == 'Friday'
+  //                 ? true
+  //                 : false,
+  //           ),
+  //         ),
+  //         SH.medium(),
+  //         const Divider(
+  //           thickness: 1,
+  //         ),
+  //         SH.medium(),
+  //         GestureDetector(
+  //           onTap: () {
+  //             switchController.dayOfWeek.value = 'Saturday';
+  //             switchController.setDayOfWeekData();
+
+  //             Get.back();
+  //           },
+  //           behavior: HitTestBehavior.translucent,
+  //           child: LabelText(
+  //             isBold: true,
+  //             text: "Saturday".tr,
+  //             isColor: switchController.dayOfWeek.value == 'Saturday'
+  //                 ? true
+  //                 : false,
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // });
 }
