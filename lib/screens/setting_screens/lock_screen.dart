@@ -7,7 +7,7 @@ import 'package:habbit_app/controllers/lockpin_controller.dart';
 import 'package:habbit_app/controllers/premium_controller.dart';
 
 import 'package:habbit_app/controllers/swich_controller.dart';
-import 'package:habbit_app/getPremium_dailbox.dart';
+import 'package:habbit_app/screens/getPremium_dailbox.dart';
 import 'package:habbit_app/widgets/custom_snackbar.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';

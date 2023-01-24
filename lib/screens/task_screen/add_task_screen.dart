@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:habbit_app/controllers/premium_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
-import 'package:habbit_app/getPremium_dailbox.dart';
+import 'package:habbit_app/screens/getPremium_dailbox.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/reminder_custom_dailbox.dart';
 import 'package:habbit_app/screens/task_screen/catagorytask_dailog.dart';
 import 'package:habbit_app/screens/task_screen/checklisttask_dailog.dart';
@@ -257,11 +257,9 @@ class AddTaskScreen extends StatelessWidget {
                         children: [
                           LabelText(text: "Checklist".tr),
                           premiumController.premium.value == false
-                              ? Obx(
-                                  () => DescriptionText(
-                                    text: 'Premium feature',
-                                    isColor: true,
-                                  ),
+                              ? DescriptionText(
+                                  text: 'Premium feature',
+                                  isColor: true,
                                 )
                               : SizedBox(),
                         ],

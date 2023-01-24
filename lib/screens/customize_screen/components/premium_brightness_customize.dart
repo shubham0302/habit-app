@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:habbit_app/app_labels/customize_screen.dart';
 import 'package:habbit_app/controllers/premium_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
-import 'package:habbit_app/getPremium_dailbox.dart';
+import 'package:habbit_app/screens/getPremium_dailbox.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';

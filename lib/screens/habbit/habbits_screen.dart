@@ -9,7 +9,7 @@ import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/controllers/premium_controller.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/timer_tab_controller.dart';
-import 'package:habbit_app/premiumHabit_dailbox.dart';
+import 'package:habbit_app/screens/premiumHabit_dailbox.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/priority_custom_dilogbox.dart';
 import 'package:habbit_app/screens/habbit/datechip.dart';
 import 'package:habbit_app/screens/habbit/habbit_compite_dailbox.dart';

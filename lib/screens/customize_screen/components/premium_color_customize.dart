@@ -8,7 +8,7 @@ import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 
 import '../../../controllers/theme_controller.dart';
-import '../../../getPremium_dailbox.dart';
+import '../../getPremium_dailbox.dart';
 import '../../../theme/color_scheme.dart';
 import '../../../widgets/text_widget/label_text.dart';
 

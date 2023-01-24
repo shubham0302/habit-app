@@ -14,7 +14,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
 import '../controllers/premium_controller.dart';
-import '../getPremium_dailbox.dart';
+import 'getPremium_dailbox.dart';
 
 class BackUpScreen extends StatelessWidget {
   const BackUpScreen({super.key});
