@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/instance_manager.dart';
+import 'package:habbit_app/controllers/theme_controller.dart';
+import 'package:path/path.dart';
 
 class ColorSchemeData {
+  ThemeController themeController = Get.put(ThemeController(), permanent: true);
   static Map<String, Color> defaultBrightColors = {
     'primaryText': Colors.black,
     'secondaryText': Colors.grey.shade800,
@@ -12,21 +16,21 @@ class ColorSchemeData {
     'backgroundColor': const Color(0xff151515),
   };
   static Map<String, Map<String, Color>> themeData = {
-    'red': {
-      "primaryColor": Colors.red,
-      "lightPrimary": Colors.red.shade100,
+    'orange': {
+      "primaryColor": const Color(0xFFFF9665),
+      "lightPrimary": const Color(0xFFFF9665).withOpacity(0.2),
     },
     'green': {
-      "primaryColor": Colors.green,
-      "lightPrimary": Colors.green.shade100,
+      "primaryColor": const Color(0xFF3E898D),
+      "lightPrimary": const Color(0xFF3E898D).withOpacity(0.2),
     },
-    'blue': {
-      "primaryColor": Colors.blue,
-      "lightPrimary": Colors.blue.shade100,
+    'red': {
+      "primaryColor": const Color(0xFFB34666),
+      "lightPrimary": const Color(0xFFB34666).withOpacity(0.2),
     },
     'purple': {
-      "primaryColor": Colors.purple,
-      "lightPrimary": Colors.purple.shade100,
+      "primaryColor": const Color(0xFF533A79),
+      "lightPrimary": const Color(0xFF533A79).withOpacity(0.2),
     },
     'yellow': {
       "primaryColor": const Color(0xFFFBFF76),
@@ -34,7 +38,7 @@ class ColorSchemeData {
     },
   };
   static Map<String, Map<String, Color>> darkThemeData = {
-    'red': {
+    'orange': {
       "primaryColor": const Color(0xFFFF9665),
       "lightPrimary": const Color(0xFFFF9665).withOpacity(0.2),
     },
@@ -42,13 +46,13 @@ class ColorSchemeData {
       "primaryColor": Colors.lightGreen,
       "lightPrimary": Colors.lightGreen.shade100,
     },
-    'blue': {
-      "primaryColor": Colors.lightBlue,
-      "lightPrimary": Colors.lightBlue.shade100,
+    'red': {
+      "primaryColor": const Color(0xFFE03F6C),
+      "lightPrimary": const Color(0xFFE03F6C).withOpacity(0.2),
     },
     'purple': {
-      "primaryColor": Colors.pink,
-      "lightPrimary": Colors.pink.shade100,
+      "primaryColor": const Color(0xFF533A79),
+      "lightPrimary": const Color(0xFF533A79).withOpacity(0.2),
     },
     'yellow': {
       "primaryColor": const Color(0xFFFBFF76),

@@ -6,6 +6,8 @@ import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/premium_controller.dart';
 import 'package:habbit_app/screens/getPremium_dailbox.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/checklist_dailbox.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/numeric_custom_dialbox.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/timer_custom_dialog.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
@@ -69,6 +71,72 @@ void EvaluateCustomDialogBox(BuildContext context) {
                       ),
 
                       SH.large(),
+                      GestureDetector(
+                        onTap: () {
+                          addRecurringTaskController.selectEvaluate.value =
+                              "Numeric";
+                          NumericCustomDialogBox(context);
+                          // Get.back();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                                color: color.primaryColor),
+                            child: Center(
+                              child: LabelText(
+                                text: "WITH A NUMRIC VALUE",
+                                isBold: true,
+                                // isColor: true,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      // SH.small(),
+                      DescriptionText(
+                        text:
+                            "If you want to establish a value as a daily goal or limit for the habit",
+                        alignment: TextAlign.center,
+                      ),
+
+                      SH.large(),
+                      GestureDetector(
+                        onTap: () {
+                          TimerCustomDialogBox(context);
+                          addRecurringTaskController.selectEvaluate.value =
+                              "Timer";
+                          // Get.back();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                                color: color.primaryColor),
+                            child: Center(
+                              child: LabelText(
+                                text: "WITH A TIMER",
+                                isBold: true,
+                                // isColor: true,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      // SH.small(),
+                      DescriptionText(
+                        text:
+                            "If you want to establish a time value as a daily goal or limit for the habit",
+                        alignment: TextAlign.center,
+                      ),
+
+                      SH.large(),
                       premiumController.premium.value == false
                           ? Column(
                               children: [
@@ -113,6 +181,8 @@ void EvaluateCustomDialogBox(BuildContext context) {
                               padding: const EdgeInsets.all(10.0),
                               child: GestureDetector(
                                 onTap: () {
+                                  addRecurringTaskController
+                                      .selectEvaluate.value = "Checklist";
                                   HabbitChecklistCustomDialogBox(context);
                                 },
                                 child: Container(

@@ -53,7 +53,7 @@ void CategoriesCustomDialogBox(BuildContext context, bool fromUpdate) {
                           LabelText(text: "Category Color".tr),
                           SH.large(),
                           Container(
-                            height: 55,
+                            height: 90,
                             width: MediaQuery.of(context).size.width,
                             child: GridView.builder(
                               physics: const NeverScrollableScrollPhysics(),

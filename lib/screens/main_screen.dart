@@ -4,6 +4,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/home_page_controller.dart';
 import 'package:habbit_app/controllers/search_controller.dart';
 import 'package:habbit_app/screens/categories/categories.dart';
@@ -13,6 +14,7 @@ import 'package:habbit_app/screens/habbit/habbits_screen.dart';
 import 'package:habbit_app/screens/home_screen.dart';
 import 'package:habbit_app/screens/task_screen/screen.dart';
 import 'package:habbit_app/widgets/padding.dart';
+import 'package:habbit_app/widgets/search_widget.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
@@ -24,6 +26,8 @@ import 'package:table_calendar/table_calendar.dart';
 
 // ignore: must_be_immutable
 class MainScreen extends StatelessWidget {
+  AddHabbitSelectController habbitSelectController =
+      Get.put(AddHabbitSelectController(), permanent: false);
   HomePageController controller =
       Get.put(HomePageController(), permanent: false);
   SearchController searchController =
@@ -171,6 +175,7 @@ class MainScreen extends StatelessWidget {
                           height:
                               searchController.childrenAnimation.value ? 50 : 0,
                           width: 120,
+                          padding: EdgeInsets.all(7),
                           // color: color.canvasColor,
                           decoration: BoxDecoration(
                               border: Border(
@@ -182,21 +187,7 @@ class MainScreen extends StatelessWidget {
                                       width: 1,
                                       color: color.disabledColor
                                           .withOpacity(0.2)))),
-                          child: GlobalPadding(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                DescriptionText(text: "ALL".tr),
-                                Icon(
-                                  Icons.keyboard_arrow_down_sharp,
-                                  color: color.disabledColor,
-                                  size: searchController.childrenAnimation.value
-                                      ? 25
-                                      : 0,
-                                )
-                              ],
-                            ),
-                          ),
+                          child: Expanded(child: SesrchAllDropDown()),
                         ),
                         Expanded(
                           child: GestureDetector(
@@ -250,6 +241,8 @@ class MainScreen extends StatelessWidget {
                                     Expanded(
                                       child: TextField(
                                         showCursor: false,
+                                        // onChanged: searchController
+                                        //     .searchLetter(query, index),
                                         decoration: InputDecoration(
                                             border: InputBorder.none,
 
@@ -504,6 +497,57 @@ class MainScreen extends StatelessWidget {
             ),
           )),
       bottomNavigationBar: buildBottomNavigationMenu(context, 0, controller),
+    );
+  }
+}
+
+class SesrchAllDropDown extends StatefulWidget {
+  const SesrchAllDropDown({Key? key}) : super(key: key);
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _SesrchAllDropDownState createState() => _SesrchAllDropDownState();
+}
+
+class _SesrchAllDropDownState extends State<SesrchAllDropDown> {
+// Initial Selected Value
+  String dropdownvalue = 'All';
+
+// List of items in our dropdown menu
+  var items = [
+    'All',
+    'Habit',
+    'Task',
+    'Recurring Task',
+  ];
+  @override
+  Widget build(BuildContext context) {
+    SearchController searchController = Get.put(
+      SearchController(),
+    );
+    ThemeData color = Theme.of(context);
+    return DropdownButton(
+      // Initial Value
+      value: searchController.searchDropDown.value,
+      dropdownColor: color.backgroundColor,
+
+      // Down Arrow Icon
+      icon: const Icon(Icons.keyboard_arrow_down),
+
+      // Array list of items
+      items: items.map((String items) {
+        return DropdownMenuItem(
+          value: items,
+          child: Text(items),
+        );
+      }).toList(),
+      // After selecting the desired option,it will
+      // change button value to selected value
+      onChanged: (String? newValue) {
+        setState(() {
+          searchController.searchDropDown.value = newValue!;
+        });
+      },
     );
   }
 }

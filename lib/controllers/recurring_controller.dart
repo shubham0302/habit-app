@@ -7,10 +7,13 @@ import 'package:drift/drift.dart' as drift;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/db_controller.dart';
+import 'package:habbit_app/controllers/swich_controller.dart';
 
 import '../infrastructure/db/app_service.dart';
 
 class AddRecurringTaskController extends GetxController {
+  SwitchController switchController =
+      Get.put(SwitchController(), permanent: false);
   DBController dbController = Get.find<DBController>();
   TextEditingController nameCtrl = TextEditingController();
 
@@ -180,6 +183,32 @@ class AddRecurringTaskController extends GetxController {
       tasks.value = [];
       dbController.appDB.streamRecurringTasks().forEach((element) {
         tasks.value = element;
+        if (switchController.todoSorting.value == 'Alphabetical') {
+          tasks.sort(
+            (a, b) => a.rTaskName.compareTo(b.rTaskName),
+          );
+        } else if (switchController.todoSorting.value == 'By priority') {
+          tasks.sort(
+            (a, b) => b.priority.compareTo(a.priority),
+          );
+        } else if (switchController.todoSorting.value == 'By time') {
+          tasks.sort(
+            (a, b) => a.endDate.compareTo(b.endDate),
+          );
+        } else if (switchController.todoSorting.value == 'By category') {
+          tasks.sort(
+            (a, b) => a.categoryId.compareTo(b.categoryId),
+          );
+        }
+        // else if (switchController.todoSorting.value == 'Habits firsts') {
+        //   tasks.sort(
+        //     (a, b) => a.habbitId..compareTo(b.habbitId),
+        //   );
+        //   tasks.refresh();
+        // }
+        else {
+          print('hahahahahh sorting error');
+        }
         tasks.refresh();
         log(tasks.length.toString());
       });

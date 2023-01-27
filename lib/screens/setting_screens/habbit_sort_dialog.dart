@@ -119,46 +119,55 @@ void HabbitSortDialogBox(BuildContext context) {
                     const Divider(
                       thickness: 1,
                     ),
+                    // SH.medium(),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     switchController.habbitSorting.value = 'Tasks first';
+                    //     switchController.setHabbitSortingData();
+
+                    //     Get.back();
+                    //   },
+                    //   behavior: HitTestBehavior.translucent,
+                    //   child: LabelText(
+                    //     isBold: true,
+                    //     text: "Tasks first".tr,
+                    //     isColor: switchController.habbitSorting.value ==
+                    //             'Tasks first'
+                    //         ? true
+                    //         : false,
+                    //   ),
+                    // ),
+                    // SH.medium(),
+                    // const Divider(
+                    //   thickness: 1,
+                    // ),
                     SH.medium(),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     switchController.habbitSorting.value = 'Habits firsts';
+                    //     switchController.setHabbitSortingData();
+
+                    //     Get.back();
+                    //   },
+                    //   behavior: HitTestBehavior.translucent,
+                    //   child: LabelText(
+                    //     isBold: true,
+                    //     text: "Habits firsts".tr,
+                    //     isColor: switchController.habbitSorting.value ==
+                    //             'Habits firsts'
+                    //         ? true
+                    //         : false,
+                    //   ),
+                    // ),
                     GestureDetector(
                       onTap: () {
-                        switchController.habbitSorting.value = 'Tasks first';
-                        switchController.setHabbitSortingData();
-
                         Get.back();
                       },
-                      behavior: HitTestBehavior.translucent,
                       child: LabelText(
-                        isBold: true,
-                        text: "Tasks first".tr,
-                        isColor: switchController.habbitSorting.value ==
-                                'Tasks first'
-                            ? true
-                            : false,
+                        text: 'CLOSE'.tr,
+                        isColor: true,
                       ),
-                    ),
-                    SH.medium(),
-                    const Divider(
-                      thickness: 1,
-                    ),
-                    SH.medium(),
-                    GestureDetector(
-                      onTap: () {
-                        switchController.habbitSorting.value = 'Habits firsts';
-                        switchController.setHabbitSortingData();
-
-                        Get.back();
-                      },
-                      behavior: HitTestBehavior.translucent,
-                      child: LabelText(
-                        isBold: true,
-                        text: "Habits firsts".tr,
-                        isColor: switchController.habbitSorting.value ==
-                                'Habits firsts'
-                            ? true
-                            : false,
-                      ),
-                    ),
+                    )
                   ],
                 ),
               )),

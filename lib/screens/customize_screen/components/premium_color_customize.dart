@@ -40,7 +40,7 @@ class PremiumColor extends StatelessWidget {
                         if (premiumController.premium.value == false) {
                           GetPremiumCustomDialogBox(context);
                         } else {
-                          themeController.changeThemeColor('red');
+                          themeController.changeThemeColor('orange');
                           print(Theme.of(context).brightness);
                         }
                         // Get.toNamed('/intro');
@@ -52,13 +52,13 @@ class PremiumColor extends StatelessWidget {
                         decoration: BoxDecoration(
                             border: Border.all(
                               width: 2,
-                              color: themeController.mode == 'red'
+                              color: themeController.mode == 'orange'
                                   ? (Theme.of(context).brightness ==
                                           Brightness.light
                                       ? ColorSchemeData
-                                          .themeData['red']!['primaryColor']
-                                      : ColorSchemeData.darkThemeData['red']![
-                                          'primaryColor'])!
+                                          .themeData['orange']!['primaryColor']
+                                      : ColorSchemeData.darkThemeData[
+                                          'orange']!['primaryColor'])!
                                   : Colors.transparent,
                             ),
                             borderRadius: BorderRadius.circular(22)),
@@ -67,12 +67,12 @@ class PremiumColor extends StatelessWidget {
                           width: 40,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25),
-                            color:
-                                Theme.of(context).brightness == Brightness.light
-                                    ? ColorSchemeData
-                                        .themeData['red']!['primaryColor']
-                                    : ColorSchemeData
-                                        .darkThemeData['red']!['primaryColor'],
+                            color: Theme.of(context).brightness ==
+                                    Brightness.light
+                                ? ColorSchemeData
+                                    .themeData['orange']!['primaryColor']
+                                : ColorSchemeData
+                                    .darkThemeData['orange']!['primaryColor'],
                           ),
                           // child: Icon(Icons.arrow_forward_ios_rounded),
                         ),
@@ -133,7 +133,7 @@ class PremiumColor extends StatelessWidget {
                           GetPremiumCustomDialogBox(context);
                         } else {
                           // themeController.changeThemeMode();
-                          themeController.changeThemeColor('blue');
+                          themeController.changeThemeColor('red');
                           print(Theme.of(context).brightness);
                         }
                         // Get.toNamed('/intro');
@@ -145,12 +145,12 @@ class PremiumColor extends StatelessWidget {
                         decoration: BoxDecoration(
                             border: Border.all(
                               width: 2,
-                              color: themeController.mode == 'blue'
+                              color: themeController.mode == 'red'
                                   ? (Theme.of(context).brightness ==
                                           Brightness.light
                                       ? ColorSchemeData
-                                          .themeData['blue']!['primaryColor']
-                                      : ColorSchemeData.darkThemeData['blue']![
+                                          .themeData['red']!['primaryColor']
+                                      : ColorSchemeData.darkThemeData['red']![
                                           'primaryColor'])!
                                   : Colors.transparent,
                             ),
@@ -163,9 +163,9 @@ class PremiumColor extends StatelessWidget {
                             color:
                                 Theme.of(context).brightness == Brightness.light
                                     ? ColorSchemeData
-                                        .themeData['blue']!['primaryColor']
+                                        .themeData['red']!['primaryColor']
                                     : ColorSchemeData
-                                        .darkThemeData['blue']!['primaryColor'],
+                                        .darkThemeData['red']!['primaryColor'],
                           ),
                           // child: Icon(Icons.arrow_forward_ios_rounded),
                         ),
@@ -377,7 +377,7 @@ class PremiumColor extends StatelessWidget {
                           GetPremiumCustomDialogBox(context);
                         } else {
                           // themeController.changeThemeMode();
-                          themeController.changeThemeColor('blue');
+                          themeController.changeThemeColor('red');
                           print(Theme.of(context).brightness);
                         }
                         // Get.toNamed('/intro');
@@ -389,12 +389,12 @@ class PremiumColor extends StatelessWidget {
                         decoration: BoxDecoration(
                             border: Border.all(
                               width: 2,
-                              color: themeController.mode == 'blue'
+                              color: themeController.mode == 'red'
                                   ? (Theme.of(context).brightness ==
                                           Brightness.light
                                       ? ColorSchemeData
-                                          .themeData['blue']!['primaryColor']
-                                      : ColorSchemeData.darkThemeData['blue']![
+                                          .themeData['red']!['primaryColor']
+                                      : ColorSchemeData.darkThemeData['red']![
                                           'primaryColor'])!
                                   : Colors.transparent,
                             ),
@@ -407,9 +407,9 @@ class PremiumColor extends StatelessWidget {
                             color:
                                 Theme.of(context).brightness == Brightness.light
                                     ? ColorSchemeData
-                                        .themeData['blue']!['primaryColor']
+                                        .themeData['red']!['primaryColor']
                                     : ColorSchemeData
-                                        .darkThemeData['blue']!['primaryColor'],
+                                        .darkThemeData['red']!['primaryColor'],
                           ),
                           // child: Icon(Icons.arrow_forward_ios_rounded),
                         ),
@@ -621,7 +621,7 @@ class PremiumColor extends StatelessWidget {
                           GetPremiumCustomDialogBox(context);
                         } else {
                           // themeController.changeThemeMode();
-                          themeController.changeThemeColor('blue');
+                          themeController.changeThemeColor('red');
                           print(Theme.of(context).brightness);
                         }
                         // Get.toNamed('/intro');
@@ -633,12 +633,12 @@ class PremiumColor extends StatelessWidget {
                         decoration: BoxDecoration(
                             border: Border.all(
                               width: 2,
-                              color: themeController.mode == 'blue'
+                              color: themeController.mode == 'red'
                                   ? (Theme.of(context).brightness ==
                                           Brightness.light
                                       ? ColorSchemeData
-                                          .themeData['blue']!['primaryColor']
-                                      : ColorSchemeData.darkThemeData['blue']![
+                                          .themeData['red']!['primaryColor']
+                                      : ColorSchemeData.darkThemeData['red']![
                                           'primaryColor'])!
                                   : Colors.transparent,
                             ),
@@ -651,9 +651,9 @@ class PremiumColor extends StatelessWidget {
                             color:
                                 Theme.of(context).brightness == Brightness.light
                                     ? ColorSchemeData
-                                        .themeData['blue']!['primaryColor']
+                                        .themeData['red']!['primaryColor']
                                     : ColorSchemeData
-                                        .darkThemeData['blue']!['primaryColor'],
+                                        .darkThemeData['red']!['primaryColor'],
                           ),
                           // child: Icon(Icons.arrow_forward_ios_rounded),
                         ),
@@ -865,7 +865,7 @@ class PremiumColor extends StatelessWidget {
                           GetPremiumCustomDialogBox(context);
                         } else {
                           // themeController.changeThemeMode();
-                          themeController.changeThemeColor('blue');
+                          themeController.changeThemeColor('red');
                           print(Theme.of(context).brightness);
                         }
                         // Get.toNamed('/intro');
@@ -877,12 +877,12 @@ class PremiumColor extends StatelessWidget {
                         decoration: BoxDecoration(
                             border: Border.all(
                               width: 2,
-                              color: themeController.mode == 'blue'
+                              color: themeController.mode == 'red'
                                   ? (Theme.of(context).brightness ==
                                           Brightness.light
                                       ? ColorSchemeData
-                                          .themeData['blue']!['primaryColor']
-                                      : ColorSchemeData.darkThemeData['blue']![
+                                          .themeData['red']!['primaryColor']
+                                      : ColorSchemeData.darkThemeData['red']![
                                           'primaryColor'])!
                                   : Colors.transparent,
                             ),
@@ -895,9 +895,9 @@ class PremiumColor extends StatelessWidget {
                             color:
                                 Theme.of(context).brightness == Brightness.light
                                     ? ColorSchemeData
-                                        .themeData['blue']!['primaryColor']
+                                        .themeData['red']!['primaryColor']
                                     : ColorSchemeData
-                                        .darkThemeData['blue']!['primaryColor'],
+                                        .darkThemeData['red']!['primaryColor'],
                           ),
                           // child: Icon(Icons.arrow_forward_ios_rounded),
                         ),

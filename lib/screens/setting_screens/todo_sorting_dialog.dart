@@ -36,6 +36,7 @@ void ToDoSortingDialogBox(BuildContext context) {
                     GestureDetector(
                       onTap: () {
                         switchController.todoSorting.value = 'By priority';
+                        switchController.habbitSorting.value = 'By priority';
                         switchController.setTodoSortingData();
 
                         Get.back();
@@ -58,6 +59,7 @@ void ToDoSortingDialogBox(BuildContext context) {
                     GestureDetector(
                       onTap: () {
                         switchController.todoSorting.value = 'By time';
+                        switchController.habbitSorting.value = 'By time';
                         switchController.setTodoSortingData();
 
                         Get.back();
@@ -79,6 +81,7 @@ void ToDoSortingDialogBox(BuildContext context) {
                     GestureDetector(
                       onTap: () {
                         switchController.todoSorting.value = 'Alphabetical';
+                        switchController.habbitSorting.value = 'Alphabetical';
                         switchController.setTodoSortingData();
                         Get.back();
                       },
@@ -100,6 +103,7 @@ void ToDoSortingDialogBox(BuildContext context) {
                     GestureDetector(
                       onTap: () {
                         switchController.todoSorting.value = 'By category';
+                        switchController.habbitSorting.value = 'By category';
                         switchController.setTodoSortingData();
 
                         Get.back();

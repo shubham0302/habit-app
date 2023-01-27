@@ -121,6 +121,8 @@ void EvaluateRecurringDialogBox(BuildContext context) {
                                     padding: const EdgeInsets.all(10.0),
                                     child: GestureDetector(
                                       onTap: () {
+                                        addRecurringTaskController
+                                            .selectEvaluate.value = "Checklist";
                                         ChecklistCustomDialogBox(context);
                                       },
                                       child: Container(

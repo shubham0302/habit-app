@@ -12,6 +12,8 @@ void ChecklistTaskCustomDialogBox(BuildContext context) {
 
   AddTaskController addHabbitSelectController =
       Get.put(AddTaskController(), permanent: false);
+  AddTaskController addTaskController =
+      Get.put(AddTaskController(), permanent: false);
   showGeneralDialog(
       barrierColor: Colors.black.withOpacity(0.5),
       transitionBuilder: (context, a1, a2, widget) {
@@ -128,7 +130,10 @@ void ChecklistTaskCustomDialogBox(BuildContext context) {
                               ),
                             ),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                addTaskController.selectEvaluate.value =
+                                    'Checklist';
+                              },
                               child: LabelText(
                                 isBold: true,
                                 text: "ADD".tr,

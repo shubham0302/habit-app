@@ -7,9 +7,11 @@ import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/controllers/db_controller.dart';
 import 'package:habbit_app/controllers/recurring_controller.dart';
+import 'package:habbit_app/controllers/search_controller.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
+import 'package:habbit_app/screens/taskHabbit_screen.dart';
 import 'package:habbit_app/widgets/date_widget.dart';
 import 'package:habbit_app/widgets/icon_widget.dart';
 import 'package:habbit_app/widgets/padding.dart';
@@ -71,6 +73,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    SearchController searchController =
+        Get.put(SearchController(), permanent: false);
     DBController dbController = Get.put(DBController(), permanent: false);
     AddTaskController taskController =
         Get.put(AddTaskController(), permanent: false);
@@ -80,6 +84,8 @@ class _HomePageState extends State<HomePage> {
         Get.put(AddHabbitSelectController(), permanent: false);
     CategoryController categoryController =
         Get.put(CategoryController(), permanent: false);
+    SwitchController switchController =
+        Get.put(SwitchController(), permanent: false);
 
     ThemeController themeController = Get.find<ThemeController>();
 
@@ -132,280 +138,329 @@ class _HomePageState extends State<HomePage> {
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                taskController.tasks.isEmpty
-                                    ? Container()
-                                    : SH.large(),
-                                taskController.tasks.isEmpty
-                                    ? Container()
-                                    : LabelText(
-                                        text: 'All tasks'.tr,
-                                        isBold: true,
-                                        isColor: true,
-                                        color: color.primaryColor,
-                                      ),
-                                taskController.tasks.isEmpty
-                                    ? Container()
-                                    : SH.medium(),
-                                taskController.tasks.isEmpty
-                                    ? Container()
-                                    : AnimationLimiter(
-                                        child: ListView.separated(
-                                          physics:
-                                              const NeverScrollableScrollPhysics(),
-                                          shrinkWrap: true,
-                                          itemCount:
-                                              taskController.tasks.length,
-                                          separatorBuilder: (context, index) =>
-                                              SH.medium(),
-                                          itemBuilder: (context, index) {
-                                            return AnimationConfiguration
-                                                .staggeredList(
-                                              position: index,
-                                              duration: const Duration(
-                                                  milliseconds: 375),
-                                              child: SlideAnimation(
-                                                verticalOffset: 50.0,
-                                                child: FadeInAnimation(
-                                                  child: HomeCard(
-                                                    icon: categoryController
-                                                            .icon[
-                                                        categoryController
-                                                            .categories
-                                                            .firstWhere((element) =>
-                                                                element.id ==
-                                                                taskController
-                                                                    .tasks[
-                                                                        index]
-                                                                    .categoryId)
-                                                            .icon],
-                                                    cardColor: color.brightness ==
-                                                            Brightness.dark
-                                                        ? categoryController.iconColor[
-                                                            categoryController
-                                                                .categories
-                                                                .firstWhere((element) =>
-                                                                    element.id ==
-                                                                    taskController
-                                                                        .tasks[
-                                                                            index]
-                                                                        .categoryId)
-                                                                .color]
-                                                        : categoryController.iconLightColor[
-                                                            categoryController
-                                                                .categories
-                                                                .firstWhere((element) =>
-                                                                    element.id ==
-                                                                    taskController
-                                                                        .tasks[index]
-                                                                        .categoryId)
-                                                                .color],
-                                                    name: taskController
-                                                        .tasks[index].taskName,
-                                                    status: Icons.ac_unit,
-                                                    statusColor: Colors.green,
+                                searchController.searchDropDown.value == 'Task'
+                                    ? Column(
+                                        children: const [
+                                          FirstTaskScreen(),
+                                          // FirstHabitScreen(),
+                                          // FirstRecurringScreen()
+                                        ],
+                                      )
+                                    : searchController.searchDropDown.value ==
+                                            'Habit'
+                                        ? Column(
+                                            children: const [
+                                              // FirstTaskScreen(),
+                                              FirstHabitScreen(),
+                                              // FirstRecurringScreen()
+                                            ],
+                                          )
+                                        : searchController
+                                                    .searchDropDown.value ==
+                                                'Recurring Task'
+                                            ? Column(
+                                                children: const [
+                                                  // FirstTaskScreen(),
+                                                  // FirstHabitScreen(),
+                                                  FirstRecurringScreen()
+                                                ],
+                                              )
+                                            : switchController
+                                                        .todoSorting.value ==
+                                                    'Tasks first'
+                                                ? Column(
+                                                    children: const [
+                                                      FirstTaskScreen(),
+                                                      FirstHabitScreen(),
+                                                      FirstRecurringScreen()
+                                                    ],
+                                                  )
+                                                : Column(
+                                                    children: const [
+                                                      FirstHabitScreen(),
+                                                      FirstTaskScreen(),
+                                                      FirstRecurringScreen()
+                                                    ],
                                                   ),
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                habbitSelectController.tasks.isEmpty
-                                    ? Container()
-                                    : SH.large(),
-                                habbitSelectController.tasks.isEmpty
-                                    ? Container()
-                                    : LabelText(
-                                        text: 'All habits'.tr,
-                                        isBold: true,
-                                        isColor: true,
-                                        color: color.primaryColor,
-                                      ),
-                                habbitSelectController.tasks.isEmpty
-                                    ? Container()
-                                    : SH.medium(),
-                                habbitSelectController.tasks.isEmpty
-                                    ? Container()
-                                    : ListView.separated(
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        shrinkWrap: true,
-                                        itemCount:
-                                            habbitSelectController.tasks.length,
-                                        separatorBuilder: (context, index) =>
-                                            SH.medium(),
-                                        itemBuilder: (context, index) {
-                                          return GestureDetector(
-                                            onTap: () {
-                                              habbitSelectController.habitStatus.value ==
-                                                      ''
-                                                  ? habbitSelectController
-                                                      .habitStatus
-                                                      .value = 'incomplete'
-                                                  : habbitSelectController
-                                                              .habitStatus
-                                                              .value ==
-                                                          'incomplete'
-                                                      ? habbitSelectController
-                                                          .habitStatus
-                                                          .value = 'pending'
-                                                      : habbitSelectController
-                                                                  .habitStatus
-                                                                  .value ==
-                                                              'pending'
-                                                          ? habbitSelectController
-                                                                  .habitStatus
-                                                                  .value =
-                                                              'complete'
-                                                          : habbitSelectController
-                                                                      .habitStatus
-                                                                      .value ==
-                                                                  'complete'
-                                                              ? habbitSelectController
-                                                                      .habitStatus
-                                                                      .value =
-                                                                  'incomplete'
-                                                              : habbitSelectController
-                                                                  .habitStatus
-                                                                  .value = '';
-                                              print(habbitSelectController
-                                                  .habitStatus.value);
-                                            },
-                                            child: Obx(
-                                              () => HomeCard(
-                                                icon: categoryController.icon[
-                                                    categoryController
-                                                        .categories
-                                                        .firstWhere((element) =>
-                                                            element.id ==
-                                                            habbitSelectController
-                                                                .tasks[index]
-                                                                .categoryId)
-                                                        .icon],
-                                                cardColor: color.brightness ==
-                                                        Brightness.dark
-                                                    ? categoryController.iconColor[categoryController
-                                                        .categories
-                                                        .firstWhere((element) =>
-                                                            element.id ==
-                                                            habbitSelectController
-                                                                .tasks[index]
-                                                                .categoryId)
-                                                        .color]
-                                                    : categoryController
-                                                            .iconLightColor[
-                                                        categoryController
-                                                            .categories
-                                                            .firstWhere((element) =>
-                                                                element.id ==
-                                                                habbitSelectController
-                                                                    .tasks[index]
-                                                                    .categoryId)
-                                                            .color],
-                                                name: habbitSelectController
-                                                    .tasks[index].habitName,
-                                                status: habbitSelectController
-                                                            .habitStatus
-                                                            .value ==
-                                                        'incomplete'
-                                                    ? Icons.cancel_outlined
-                                                    : habbitSelectController
-                                                                .habitStatus
-                                                                .value ==
-                                                            'pending'
-                                                        ? Icons.cancel_outlined
-                                                        : habbitSelectController
-                                                                    .habitStatus
-                                                                    .value ==
-                                                                'complete'
-                                                            ? Icons
-                                                                .cancel_outlined
-                                                            : Icons
-                                                                .pending_outlined,
-                                                statusColor: habbitSelectController
-                                                            .habitStatus
-                                                            .value ==
-                                                        'incomplete'
-                                                    ? Colors.redAccent
-                                                    : habbitSelectController
-                                                                .habitStatus
-                                                                .value ==
-                                                            'pending'
-                                                        ? Colors.yellow
-                                                        : habbitSelectController
-                                                                    .habitStatus
-                                                                    .value ==
-                                                                'complete'
-                                                            ? Colors.green
-                                                            : color
-                                                                .backgroundColor,
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                recurringTaskController.tasks.isEmpty
-                                    ? Container()
-                                    : SH.large(),
-                                recurringTaskController.tasks.isEmpty
-                                    ? Container()
-                                    : LabelText(
-                                        text: 'All recurring tasks'.tr,
-                                        isBold: true,
-                                        isColor: true,
-                                        color: color.primaryColor,
-                                      ),
-                                recurringTaskController.tasks.isEmpty
-                                    ? Container()
-                                    : SH.medium(),
-                                recurringTaskController.tasks.isEmpty
-                                    ? Container()
-                                    : ListView.separated(
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        shrinkWrap: true,
-                                        itemCount: recurringTaskController
-                                            .tasks.length,
-                                        separatorBuilder: (context, index) =>
-                                            SH.medium(),
-                                        itemBuilder: (context, index) {
-                                          return HomeCard(
-                                            icon: categoryController.icon[
-                                                categoryController.categories
-                                                    .firstWhere((element) =>
-                                                        element.id ==
-                                                        recurringTaskController
-                                                            .tasks[index]
-                                                            .categoryId)
-                                                    .icon],
-                                            cardColor: color.brightness ==
-                                                    Brightness.dark
-                                                ? categoryController.iconColor[
-                                                    categoryController
-                                                        .categories
-                                                        .firstWhere((element) =>
-                                                            element.id ==
-                                                            recurringTaskController
-                                                                .tasks[index]
-                                                                .categoryId)
-                                                        .color]
-                                                : categoryController
-                                                        .iconLightColor[
-                                                    categoryController
-                                                        .categories
-                                                        .firstWhere((element) =>
-                                                            element.id ==
-                                                            recurringTaskController
-                                                                .tasks[index]
-                                                                .categoryId)
-                                                        .color],
-                                            name: recurringTaskController
-                                                .tasks[index].rTaskName,
-                                            status: Icons.ac_unit_rounded,
-                                            statusColor: Colors.green,
-                                          );
-                                        },
-                                      ),
+                                // switchController.todoSorting.value ==
+                                //         'Tasks first'
+                                //     ? FirstHabitScreen()
+                                //     : FirstTaskScreen(),
+
+                                // taskController.tasks.isEmpty
+                                //     ? Container()
+                                //     : SH.large(),
+                                // taskController.tasks.isEmpty
+                                //     ? Container()
+                                //     : LabelText(
+                                //         text: 'All tasks'.tr,
+                                //         isBold: true,
+                                //         isColor: true,
+                                //         color: color.primaryColor,
+                                //       ),
+                                // taskController.tasks.isEmpty
+                                //     ? Container()
+                                //     : SH.medium(),
+                                // taskController.tasks.isEmpty
+                                //     ? Container()
+                                //     : AnimationLimiter(
+                                //         child: ListView.separated(
+                                //           physics:
+                                //               const NeverScrollableScrollPhysics(),
+                                //           shrinkWrap: true,
+                                //           itemCount:
+                                //               taskController.tasks.length,
+                                //           separatorBuilder: (context, index) =>
+                                //               SH.medium(),
+                                //           itemBuilder: (context, index) {
+                                //             return AnimationConfiguration
+                                //                 .staggeredList(
+                                //               position: index,
+                                //               duration: const Duration(
+                                //                   milliseconds: 375),
+                                //               child: SlideAnimation(
+                                //                 verticalOffset: 50.0,
+                                //                 child: FadeInAnimation(
+                                //                   child: HomeCard(
+                                //                     icon: categoryController
+                                //                             .icon[
+                                //                         categoryController
+                                //                             .categories
+                                //                             .firstWhere((element) =>
+                                //                                 element.id ==
+                                //                                 taskController
+                                //                                     .tasks[
+                                //                                         index]
+                                //                                     .categoryId)
+                                //                             .icon],
+                                //                     cardColor: color.brightness ==
+                                //                             Brightness.dark
+                                //                         ? categoryController.iconColor[
+                                //                             categoryController
+                                //                                 .categories
+                                //                                 .firstWhere((element) =>
+                                //                                     element.id ==
+                                //                                     taskController
+                                //                                         .tasks[
+                                //                                             index]
+                                //                                         .categoryId)
+                                //                                 .color]
+                                //                         : categoryController.iconLightColor[
+                                //                             categoryController
+                                //                                 .categories
+                                //                                 .firstWhere((element) =>
+                                //                                     element.id ==
+                                //                                     taskController
+                                //                                         .tasks[index]
+                                //                                         .categoryId)
+                                //                                 .color],
+                                //                     name: taskController
+                                //                         .tasks[index].taskName,
+                                //                     status: Icons.ac_unit,
+                                //                     statusColor: Colors.green,
+                                //                   ),
+                                //                 ),
+                                //               ),
+                                //             );
+                                //           },
+                                //         ),
+                                //       ),
+                                // habbitSelectController.tasks.isEmpty
+                                //     ? Container()
+                                //     : SH.large(),
+                                // habbitSelectController.tasks.isEmpty
+                                //     ? Container()
+                                //     : LabelText(
+                                //         text: 'All habits'.tr,
+                                //         isBold: true,
+                                //         isColor: true,
+                                //         color: color.primaryColor,
+                                //       ),
+                                // habbitSelectController.tasks.isEmpty
+                                //     ? Container()
+                                //     : SH.medium(),
+                                // habbitSelectController.tasks.isEmpty
+                                //     ? Container()
+                                //     : ListView.separated(
+                                //         physics:
+                                //             const NeverScrollableScrollPhysics(),
+                                //         shrinkWrap: true,
+                                //         itemCount:
+                                //             habbitSelectController.tasks.length,
+                                //         separatorBuilder: (context, index) =>
+                                //             SH.medium(),
+                                //         itemBuilder: (context, index) {
+                                //           return GestureDetector(
+                                //             onTap: () {
+                                //               habbitSelectController.habitStatus.value ==
+                                //                       ''
+                                //                   ? habbitSelectController
+                                //                       .habitStatus
+                                //                       .value = 'incomplete'
+                                //                   : habbitSelectController
+                                //                               .habitStatus
+                                //                               .value ==
+                                //                           'incomplete'
+                                //                       ? habbitSelectController
+                                //                           .habitStatus
+                                //                           .value = 'pending'
+                                //                       : habbitSelectController
+                                //                                   .habitStatus
+                                //                                   .value ==
+                                //                               'pending'
+                                //                           ? habbitSelectController
+                                //                                   .habitStatus
+                                //                                   .value =
+                                //                               'complete'
+                                //                           : habbitSelectController
+                                //                                       .habitStatus
+                                //                                       .value ==
+                                //                                   'complete'
+                                //                               ? habbitSelectController
+                                //                                       .habitStatus
+                                //                                       .value =
+                                //                                   'incomplete'
+                                //                               : habbitSelectController
+                                //                                   .habitStatus
+                                //                                   .value = '';
+                                //               print(habbitSelectController
+                                //                   .habitStatus.value);
+                                //             },
+                                //             child: Obx(
+                                //               () => HomeCard(
+                                //                 icon: categoryController.icon[
+                                //                     categoryController
+                                //                         .categories
+                                //                         .firstWhere((element) =>
+                                //                             element.id ==
+                                //                             habbitSelectController
+                                //                                 .tasks[index]
+                                //                                 .categoryId)
+                                //                         .icon],
+                                //                 cardColor: color.brightness ==
+                                //                         Brightness.dark
+                                //                     ? categoryController.iconColor[categoryController
+                                //                         .categories
+                                //                         .firstWhere((element) =>
+                                //                             element.id ==
+                                //                             habbitSelectController
+                                //                                 .tasks[index]
+                                //                                 .categoryId)
+                                //                         .color]
+                                //                     : categoryController
+                                //                             .iconLightColor[
+                                //                         categoryController
+                                //                             .categories
+                                //                             .firstWhere((element) =>
+                                //                                 element.id ==
+                                //                                 habbitSelectController
+                                //                                     .tasks[index]
+                                //                                     .categoryId)
+                                //                             .color],
+                                //                 name: habbitSelectController
+                                //                     .tasks[index].habitName,
+                                //                 status: habbitSelectController
+                                //                             .habitStatus
+                                //                             .value ==
+                                //                         'incomplete'
+                                //                     ? Icons.cancel_outlined
+                                //                     : habbitSelectController
+                                //                                 .habitStatus
+                                //                                 .value ==
+                                //                             'pending'
+                                //                         ? Icons.cancel_outlined
+                                //                         : habbitSelectController
+                                //                                     .habitStatus
+                                //                                     .value ==
+                                //                                 'complete'
+                                //                             ? Icons
+                                //                                 .cancel_outlined
+                                //                             : Icons
+                                //                                 .pending_outlined,
+                                //                 statusColor: habbitSelectController
+                                //                             .habitStatus
+                                //                             .value ==
+                                //                         'incomplete'
+                                //                     ? Colors.redAccent
+                                //                     : habbitSelectController
+                                //                                 .habitStatus
+                                //                                 .value ==
+                                //                             'pending'
+                                //                         ? Colors.yellow
+                                //                         : habbitSelectController
+                                //                                     .habitStatus
+                                //                                     .value ==
+                                //                                 'complete'
+                                //                             ? Colors.green
+                                //                             : color
+                                //                                 .backgroundColor,
+                                //               ),
+                                //             ),
+                                //           );
+                                //         },
+                                //       ),
+                                // recurringTaskController.tasks.isEmpty
+                                //     ? Container()
+                                //     : SH.large(),
+                                // recurringTaskController.tasks.isEmpty
+                                //     ? Container()
+                                //     : LabelText(
+                                //         text: 'All recurring tasks'.tr,
+                                //         isBold: true,
+                                //         isColor: true,
+                                //         color: color.primaryColor,
+                                //       ),
+                                // recurringTaskController.tasks.isEmpty
+                                //     ? Container()
+                                //     : SH.medium(),
+                                // recurringTaskController.tasks.isEmpty
+                                //     ? Container()
+                                //     : ListView.separated(
+                                //         physics:
+                                //             const NeverScrollableScrollPhysics(),
+                                //         shrinkWrap: true,
+                                //         itemCount: recurringTaskController
+                                //             .tasks.length,
+                                //         separatorBuilder: (context, index) =>
+                                //             SH.medium(),
+                                //         itemBuilder: (context, index) {
+                                //           return HomeCard(
+                                //             icon: categoryController.icon[
+                                //                 categoryController.categories
+                                //                     .firstWhere((element) =>
+                                //                         element.id ==
+                                //                         recurringTaskController
+                                //                             .tasks[index]
+                                //                             .categoryId)
+                                //                     .icon],
+                                //             cardColor: color.brightness ==
+                                //                     Brightness.dark
+                                //                 ? categoryController.iconColor[
+                                //                     categoryController
+                                //                         .categories
+                                //                         .firstWhere((element) =>
+                                //                             element.id ==
+                                //                             recurringTaskController
+                                //                                 .tasks[index]
+                                //                                 .categoryId)
+                                //                         .color]
+                                //                 : categoryController
+                                //                         .iconLightColor[
+                                //                     categoryController
+                                //                         .categories
+                                //                         .firstWhere((element) =>
+                                //                             element.id ==
+                                //                             recurringTaskController
+                                //                                 .tasks[index]
+                                //                                 .categoryId)
+                                //                         .color],
+                                //             name: recurringTaskController
+                                //                 .tasks[index].rTaskName,
+                                //             status: Icons.ac_unit_rounded,
+                                //             statusColor: Colors.green,
+                                //           );
+                                //         },
+                                //       ),
                               ],
                             ),
                           ),

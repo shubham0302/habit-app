@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:weekly_date_picker/weekly_date_picker.dart';
 
 import '../controllers/home_page_controller.dart';
@@ -15,6 +16,8 @@ class _DateListState extends State<DateList> {
   // var datenow = DateTime.now().day;
   final HomePageController controller =
       Get.put(HomePageController(), permanent: false);
+  final AddHabbitSelectController controllerHabit =
+      Get.put(AddHabbitSelectController(), permanent: false);
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +109,8 @@ class _DateListState extends State<DateList> {
       selectedDay: controller.selectedDay, // DateTime
       changeDay: (value) => setState(() {
         controller.selectedDay = value;
+        // controllerHabit.selectedDay.value = value;
+        controllerHabit.getTasks();
       }),
     );
   }

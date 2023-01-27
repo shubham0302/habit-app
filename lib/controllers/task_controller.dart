@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/infrastructure/db/app_service.dart';
 import 'package:drift/drift.dart' as drift;
 import 'package:path_provider/path_provider.dart';
@@ -13,6 +14,8 @@ import 'db_controller.dart';
 
 class AddTaskController extends GetxController {
   DBController dbcontroller = Get.find<DBController>();
+  SwitchController switchController =
+      Get.put(SwitchController(), permanent: false);
   var editIndex = 0.obs;
 
   Future<String?> getDownloadPath() async {
@@ -256,6 +259,32 @@ class AddTaskController extends GetxController {
         // taskTimes.value = element.map((e) => e.taskDate).toList();
 
         element.forEach((ele) {
+          if (switchController.todoSorting.value == 'Alphabetical') {
+            tasks.sort(
+              (a, b) => a.taskName.compareTo(b.taskName),
+            );
+          } else if (switchController.todoSorting.value == 'By priority') {
+            tasks.sort(
+              (a, b) => b.priority.compareTo(a.priority),
+            );
+          } else if (switchController.todoSorting.value == 'By time') {
+            tasks.sort(
+              (a, b) => a.taskDate.compareTo(b.taskDate),
+            );
+          } else if (switchController.todoSorting.value == 'By category') {
+            tasks.sort(
+              (a, b) => a.categoryId.compareTo(b.categoryId),
+            );
+          }
+          // else if (switchController.todoSorting.value == 'Habits firsts') {
+          //   tasks.sort(
+          //     (a, b) => a.habbitId..compareTo(b.habbitId),
+          //   );
+          //   tasks.refresh();
+          // }
+          else {
+            print('hahahahahh sorting error');
+          }
           if (!taskTimes.contains(
               '${ele.taskDate.year}-${ele.taskDate.month}-${ele.taskDate.day}')) {
             taskTimes.add(
