@@ -541,12 +541,11 @@ class HomeCard extends StatelessWidget {
               width: 35,
               decoration: BoxDecoration(
                   shape: BoxShape.circle, color: statusColor.withOpacity(0.3)),
-              child: Expanded(
-                  child: Icon(
+              child: Icon(
                 status,
                 size: 25,
                 color: statusColor,
-              )),
+              ),
             )
           ],
         ),
