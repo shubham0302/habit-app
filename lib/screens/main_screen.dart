@@ -8,6 +8,7 @@ import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/home_page_controller.dart';
 import 'package:habbit_app/controllers/search_controller.dart';
 import 'package:habbit_app/screens/categories/categories.dart';
+import 'package:habbit_app/screens/habit_archive.dart';
 import 'package:habbit_app/widgets/search_categories_customdailog.dart';
 import 'package:habbit_app/screens/timer/timer_main_screen.dart';
 import 'package:habbit_app/screens/habbit/habbits_screen.dart';
@@ -54,7 +55,13 @@ class MainScreen extends StatelessWidget {
             // mainAxisSize: MainAxisSize.max,
             children: [
               TableCalendar(
-                currentDay: DateTime.now(),
+                currentDay: controller.selectedDay,
+                onDaySelected: (selectedDay, focusedDay) {
+                  controller.selectedDay = selectedDay;
+                  // controller.selectedDay.obs;
+                },
+
+                // selectedDayPredicate: (day) => true,
 
                 calendarStyle: CalendarStyle(
                     weekendDecoration: BoxDecoration(
@@ -175,7 +182,7 @@ class MainScreen extends StatelessWidget {
                           height:
                               searchController.childrenAnimation.value ? 50 : 0,
                           width: 120,
-                          padding: EdgeInsets.all(7),
+                          padding: const EdgeInsets.all(7),
                           // color: color.canvasColor,
                           decoration: BoxDecoration(
                               border: Border(
@@ -187,7 +194,7 @@ class MainScreen extends StatelessWidget {
                                       width: 1,
                                       color: color.disabledColor
                                           .withOpacity(0.2)))),
-                          child: Expanded(child: SesrchAllDropDown()),
+                          child: const Expanded(child: SesrchAllDropDown()),
                         ),
                         Expanded(
                           child: GestureDetector(
@@ -460,20 +467,39 @@ class MainScreen extends StatelessWidget {
                                   ? openBottomSheet()
                                   : null;
                             },
-                            child: Icon(
-                              controller.tabIndex.value == 0
-                                  ? Icons.calendar_month
-                                  : controller.tabIndex.value == 1
-                                      ? Icons.move_to_inbox
-                                      : controller.tabIndex.value == 2
-                                          ? Icons.category
-                                          : controller.tabIndex.value == 3
-                                              ? Icons.move_to_inbox_sharp
-                                              : controller.tabIndex.value == 4
-                                                  ? Icons.notifications_active
-                                                  : Icons.not_accessible,
-                              color: color.disabledColor,
-                              size: 30,
+                            child: GestureDetector(
+                              onTap: () {
+                                controller.tabIndex.value == 3
+                                    ? habbitSelectController
+                                                .habitArcive.value ==
+                                            false
+                                        ? habbitSelectController
+                                            .habitArcive.value = true
+                                        : habbitSelectController
+                                            .habitArcive.value = false
+                                    : const SizedBox();
+                                print(habbitSelectController.habitArcive.value);
+                              },
+                              child: Icon(
+                                controller.tabIndex.value == 0
+                                    ? Icons.calendar_month
+                                    : controller.tabIndex.value == 1
+                                        ? Icons.move_to_inbox
+                                        : controller.tabIndex.value == 2
+                                            ? Icons.category
+                                            : controller.tabIndex.value == 3
+                                                ? (habbitSelectController
+                                                            .habitArcive
+                                                            .value ==
+                                                        false
+                                                    ? Icons.archive_outlined
+                                                    : Icons.archive_rounded)
+                                                : controller.tabIndex.value == 4
+                                                    ? Icons.notifications_active
+                                                    : Icons.not_accessible,
+                                color: color.disabledColor,
+                                size: 30,
+                              ),
                             ),
                           ),
                         ],
@@ -484,12 +510,14 @@ class MainScreen extends StatelessWidget {
                 Expanded(
                   child: IndexedStack(
                     index: controller.tabIndex.value,
-                    children: const [
-                      HomePage(),
-                      TaskScreen(),
-                      CategoriesScreen(),
-                      HabbitsScreen(),
-                      TimerMainScreen(),
+                    children: [
+                      const HomePage(),
+                      const TaskScreen(),
+                      const CategoriesScreen(),
+                      habbitSelectController.habitArcive.value == false
+                          ? const HabbitsScreen()
+                          : const HabbitsArciveScreen(),
+                      const TimerMainScreen(),
                     ],
                   ),
                 ),

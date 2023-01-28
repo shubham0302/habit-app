@@ -29,5 +29,6 @@ class HabbitModel extends Table {
   DateTimeColumn get startDate => dateTime().named('habbit_start_date')();
   DateTimeColumn get endDate => dateTime().named('habbit_end_date')();
 
-
+  BoolColumn get archive =>
+      boolean().named('habit_archive').withDefault(const Constant(false))();
 }

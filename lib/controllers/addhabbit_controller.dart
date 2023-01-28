@@ -30,10 +30,11 @@ class AddHabbitSelectController extends GetxController {
   Rx<DateTime> endDate = DateTime(2022, 12, 20).obs;
   RxString updateCategory = "Select".obs;
   // RxList<int> habitStatus = <int>[].obs;
-  RxString habitStatus = ''.obs;
+  RxString habitStatus = 'pending'.obs;
   Rx<Icon> categoryIcon = const Icon(
     Icons.checklist,
   ).obs;
+  RxBool isArcive = false.obs;
   RxString updateRepetation = "Everyday".obs;
   RxInt updatePriority = 0.obs;
   RxString updateName = "".obs;
@@ -43,6 +44,7 @@ class AddHabbitSelectController extends GetxController {
   RxString selectEvaluate = "YES OR NO".obs;
   RxBool alwaysenabled = true.obs;
   RxList<String> customDays = <String>[].obs;
+  RxBool habitArcive = false.obs;
 
   RxBool customSound = true.obs;
   RxBool customVibration = true.obs;
@@ -90,17 +92,17 @@ class AddHabbitSelectController extends GetxController {
   addHabbit(int reminder, int repetition) async {
     try {
       var entity = HabbitModelCompanion(
-        repetitonId: drift.Value(repetition),
-        // repetition: drift.Value(updateRepetation.value),
-        habitName: drift.Value(updateName.value),
-        categoryId: drift.Value(categoryId.value == 0 ? 1 : categoryId.value),
-        startDate: drift.Value(startDate.value),
-        endDate: drift.Value(endDate.value),
-        evaluate: drift.Value(selectEvaluate.value),
-        habbitDescription: drift.Value(updateDescription.value),
-        priority: drift.Value(updatePriority.value),
-        reminderId: drift.Value(reminder),
-      );
+          repetitonId: drift.Value(repetition),
+          // repetition: drift.Value(updateRepetation.value),
+          habitName: drift.Value(updateName.value),
+          categoryId: drift.Value(categoryId.value == 0 ? 1 : categoryId.value),
+          startDate: drift.Value(startDate.value),
+          endDate: drift.Value(endDate.value),
+          evaluate: drift.Value(selectEvaluate.value),
+          habbitDescription: drift.Value(updateDescription.value),
+          priority: drift.Value(updatePriority.value),
+          reminderId: drift.Value(reminder),
+          archive: drift.Value(false));
 
       var data = await dbController.appDB.insertHabbit(entity);
 
@@ -139,6 +141,21 @@ class AddHabbitSelectController extends GetxController {
     } catch (e) {
       log('hahaha error ${e}');
     }
+  }
+
+  updateArchive(
+      bool dt,
+      int id,
+      int pri,
+      int reminderid,
+      int catid,
+      String hname,
+      String eva,
+      String hdes,
+      DateTime startD,
+      DateTime endD) async {
+    await dbController.appDB.updateArchive(
+        dt, id, pri, reminderid, catid, hname, eva, hdes, startD, endD);
   }
 
   RxList<TextEditingController> habbitChecklist =
@@ -292,32 +309,32 @@ class AddHabbitSelectController extends GetxController {
       tasks.value = [];
       dbController.appDB.streamHabbits().forEach((element) {
         tasks.value = element;
-        if (switchController.todoSorting.value == 'Alphabetical') {
-          tasks.sort(
-            (a, b) => a.habitName.compareTo(b.habitName),
-          );
-        } else if (switchController.todoSorting.value == 'By priority') {
-          tasks.sort(
-            (a, b) => b.priority.compareTo(a.priority),
-          );
-        } else if (switchController.todoSorting.value == 'By time') {
-          tasks.sort(
-            (a, b) => a.endDate.compareTo(b.endDate),
-          );
-        } else if (switchController.todoSorting.value == 'By category') {
-          tasks.sort(
-            (a, b) => a.categoryId.compareTo(b.categoryId),
-          );
-        }
-        // else if (switchController.todoSorting.value == 'Habits firsts') {
+        // if (switchController.todoSorting.value == 'Alphabetical') {
         //   tasks.sort(
-        //     (a, b) => a.habbitId..compareTo(b.habbitId),
+        //     (a, b) => a.habitName.compareTo(b.habitName),
         //   );
-        //   tasks.refresh();
+        // } else if (switchController.todoSorting.value == 'By priority') {
+        //   tasks.sort(
+        //     (a, b) => b.priority.compareTo(a.priority),
+        //   );
+        // } else if (switchController.todoSorting.value == 'By time') {
+        //   tasks.sort(
+        //     (a, b) => a.endDate.compareTo(b.endDate),
+        //   );
+        // } else if (switchController.todoSorting.value == 'By category') {
+        //   tasks.sort(
+        //     (a, b) => a.categoryId.compareTo(b.categoryId),
+        //   );
         // }
-        else {
-          print('hahahahahh sorting error');
-        }
+        // // else if (switchController.todoSorting.value == 'Habits firsts') {
+        // //   tasks.sort(
+        // //     (a, b) => a.habbitId..compareTo(b.habbitId),
+        // //   );
+        // //   tasks.refresh();
+        // // }
+        // else {
+        //   print('hahahahahh sorting error');
+        // }
 
         tasks.refresh();
         log("tasks ${tasks.length.toString()}");

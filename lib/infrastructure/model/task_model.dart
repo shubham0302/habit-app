@@ -17,6 +17,7 @@ class TaskModel extends Table {
       .references(CategoryModel, #id,
           onDelete: KeyAction.setDefault, onUpdate: KeyAction.cascade)();
   TextColumn get taskName => text().named('task_name')();
+  TextColumn get taskStatus => text().named('task_status')();
   DateTimeColumn get taskDate => dateTime().named('task_date')();
   BoolColumn get pendingTask =>
       boolean().named('task_pending').withDefault(const Constant(false))();

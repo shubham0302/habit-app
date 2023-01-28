@@ -9,6 +9,7 @@ import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/controllers/premium_controller.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/timer_tab_controller.dart';
+import 'package:habbit_app/screens/habit_archive.dart';
 import 'package:habbit_app/screens/premiumHabit_dailbox.dart';
 import 'package:habbit_app/screens/habbit/add_new_habbits/priority_custom_dilogbox.dart';
 import 'package:habbit_app/screens/habbit/datechip.dart';
@@ -47,6 +48,7 @@ class HabbitsScreen extends StatelessWidget {
           } else {
             Get.toNamed("/addhabbit");
           }
+          // Get.to(HabbitsArciveScreen());
         },
         backgroundColor: color.primaryColor,
         child: const Icon(Icons.add),
@@ -55,7 +57,9 @@ class HabbitsScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Obx(
-            () => habbitSelectController.tasks.isEmpty
+            () => habbitSelectController.tasks
+                    .where((p0) => p0.archive == false)
+                    .isEmpty
                 ? Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -84,7 +88,7 @@ class HabbitsScreen extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         return GestureDetector(
                           onTap: () {
-                            // HabbitCompleteTaskCustomDialogBox(context, index);
+                            HabbitCompleteTaskCustomDialogBox(context, index);
                             Get.toNamed('/habbit-detail');
                           },
                           child: AnimationConfiguration.staggeredList(
@@ -102,7 +106,61 @@ class HabbitsScreen extends StatelessWidget {
                                         SlidableAction(
                                           autoClose: true,
                                           onPressed: (context) {
-                                            PriorityCustomDialogBox(context);
+                                            habbitSelectController
+                                                .updateArchive(
+                                              true,
+                                              habbitSelectController.tasks
+                                                  .where((p0) =>
+                                                      p0.archive == false)
+                                                  .toList()[index]
+                                                  .habbitId,
+                                              habbitSelectController.tasks
+                                                  .where((p0) =>
+                                                      p0.archive == false)
+                                                  .toList()[index]
+                                                  .priority,
+                                              habbitSelectController.tasks
+                                                  .where((p0) =>
+                                                      p0.archive == false)
+                                                  .toList()[index]
+                                                  .reminderId,
+                                              habbitSelectController.tasks
+                                                  .where((p0) =>
+                                                      p0.archive == false)
+                                                  .toList()[index]
+                                                  .categoryId,
+                                              habbitSelectController.tasks
+                                                  .where((p0) =>
+                                                      p0.archive == false)
+                                                  .toList()[index]
+                                                  .habitName,
+                                              habbitSelectController.tasks
+                                                  .where((p0) =>
+                                                      p0.archive == false)
+                                                  .toList()[index]
+                                                  .evaluate,
+                                              habbitSelectController.tasks
+                                                  .where((p0) =>
+                                                      p0.archive == false)
+                                                  .toList()[index]
+                                                  .habbitDescription,
+                                              habbitSelectController.tasks
+                                                  .where((p0) =>
+                                                      p0.archive == false)
+                                                  .toList()[index]
+                                                  .startDate,
+                                              habbitSelectController.tasks
+                                                  .where((p0) =>
+                                                      p0.archive == false)
+                                                  .toList()[index]
+                                                  .endDate,
+                                            );
+                                            print(habbitSelectController.tasks
+                                                .where(
+                                                    (p0) => p0.archive == false)
+                                                .toList()[index]
+                                                .archive);
+                                            // PriorityCustomDialogBox(context);
                                           },
                                           backgroundColor: color.brightness ==
                                                   Brightness.dark
@@ -111,20 +169,23 @@ class HabbitsScreen extends StatelessWidget {
                                                       .firstWhere((element) =>
                                                           element.id ==
                                                           habbitSelectController
-                                                              .tasks[index]
+                                                              .tasks
+                                                              .where((p0) =>
+                                                                  p0.archive ==
+                                                                  false)
+                                                              .toList()
+                                                              .where((p0) =>
+                                                                  p0.archive ==
+                                                                  false)
+                                                              .toList()[index]
                                                               .categoryId)
                                                       .color]
-                                              : categoryController
-                                                      .iconLightColor[
+                                              : categoryController.iconLightColor[
                                                   categoryController.categories
-                                                      .firstWhere((element) =>
-                                                          element.id ==
-                                                          habbitSelectController
-                                                              .tasks[index]
-                                                              .categoryId)
+                                                      .firstWhere((element) => element.id == habbitSelectController.tasks.where((p0) => p0.archive == false).toList().where((p0) => p0.archive == false).toList()[index].categoryId)
                                                       .color],
                                           foregroundColor: color.hintColor,
-                                          icon: Icons.flag_outlined,
+                                          icon: Icons.archive,
                                           borderRadius: const BorderRadius.only(
                                               bottomLeft: Radius.circular(20),
                                               topLeft: Radius.circular(20)),
@@ -147,17 +208,20 @@ class HabbitsScreen extends StatelessWidget {
                                                       .firstWhere((element) =>
                                                           element.id ==
                                                           habbitSelectController
-                                                              .tasks[index]
+                                                              .tasks
+                                                              .where((p0) =>
+                                                                  p0.archive ==
+                                                                  false)
+                                                              .toList()
+                                                              .where((p0) =>
+                                                                  p0.archive ==
+                                                                  false)
+                                                              .toList()[index]
                                                               .categoryId)
                                                       .color]
-                                              : categoryController
-                                                      .iconLightColor[
+                                              : categoryController.iconLightColor[
                                                   categoryController.categories
-                                                      .firstWhere((element) =>
-                                                          element.id ==
-                                                          habbitSelectController
-                                                              .tasks[index]
-                                                              .categoryId)
+                                                      .firstWhere((element) => element.id == habbitSelectController.tasks.where((p0) => p0.archive == false).toList().where((p0) => p0.archive == false).toList()[index].categoryId)
                                                       .color],
                                           foregroundColor: color.hintColor,
                                           icon: Icons.edit,
@@ -188,23 +252,23 @@ class HabbitsScreen extends StatelessWidget {
                                                     height: 50,
                                                     width: 5,
                                                     decoration: BoxDecoration(
-                                                        color: color.brightness ==
-                                                                Brightness.dark
+                                                        color: color.brightness == Brightness.dark
                                                             ? categoryController.iconColor[categoryController
                                                                 .categories
                                                                 .firstWhere((element) =>
                                                                     element.id ==
-                                                                    habbitSelectController
-                                                                        .tasks[
+                                                                    habbitSelectController.tasks
+                                                                        .where((p0) =>
+                                                                            p0.archive ==
+                                                                            false)
+                                                                        .toList()[
                                                                             index]
                                                                         .categoryId)
                                                                 .color]
-                                                            : categoryController
-                                                                    .iconLightColor[
+                                                            : categoryController.iconLightColor[
                                                                 categoryController
                                                                     .categories
-                                                                    .firstWhere((element) =>
-                                                                        element.id == habbitSelectController.tasks[index].categoryId)
+                                                                    .firstWhere((element) => element.id == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].categoryId)
                                                                     .color]),
                                                   ),
                                                   SW.medium(),
@@ -220,14 +284,22 @@ class HabbitsScreen extends StatelessWidget {
                                                                 'Default'
                                                             ? LabelText(
                                                                 text: habbitSelectController
-                                                                    .tasks[
+                                                                    .tasks
+                                                                    .where((p0) =>
+                                                                        p0.archive ==
+                                                                        false)
+                                                                    .toList()[
                                                                         index]
                                                                     .habitName,
                                                                 isBold: true,
                                                               )
                                                             : LabelTextLarge(
                                                                 text: habbitSelectController
-                                                                    .tasks[
+                                                                    .tasks
+                                                                    .where((p0) =>
+                                                                        p0.archive ==
+                                                                        false)
+                                                                    .toList()[
                                                                         index]
                                                                     .habitName,
                                                                 // isBold: true,
@@ -249,7 +321,7 @@ class HabbitsScreen extends StatelessWidget {
                                                                 border: Border.all(
                                                                     color:
                                                                         //categoryController.iconColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks[index].categoryId).color],
-                                                                        color.brightness == Brightness.dark ? categoryController.iconColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks[index].categoryId).color] : categoryController.iconLightColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks[index].categoryId).color],
+                                                                        color.brightness == Brightness.dark ? categoryController.iconColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].categoryId).color] : categoryController.iconLightColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].categoryId).color],
                                                                     width: 2),
                                                                 borderRadius:
                                                                     const BorderRadius
@@ -273,9 +345,9 @@ class HabbitsScreen extends StatelessWidget {
                                                                             .categories
                                                                             .firstWhere((element) =>
                                                                                 element.id ==
-                                                                                habbitSelectController.tasks[index].categoryId)
+                                                                                habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].categoryId)
                                                                             .color]
-                                                                        : categoryController.iconLightColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks[index].categoryId).color],
+                                                                        : categoryController.iconLightColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].categoryId).color],
                                                               ),
                                                               child: switchController
                                                                           .textSizing
@@ -286,7 +358,7 @@ class HabbitsScreen extends StatelessWidget {
                                                                           .repetitionsData
                                                                           .firstWhere((element) =>
                                                                               element.id ==
-                                                                              habbitSelectController.tasks[index].repetitonId)
+                                                                              habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].repetitonId)
                                                                           .type,
                                                                       isBold:
                                                                           true,
@@ -300,7 +372,7 @@ class HabbitsScreen extends StatelessWidget {
                                                                           .repetitionsData
                                                                           .firstWhere((element) =>
                                                                               element.id ==
-                                                                              habbitSelectController.tasks[index].repetitonId)
+                                                                              habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].repetitonId)
                                                                           .type,
                                                                       isBold:
                                                                           true,
@@ -329,13 +401,17 @@ class HabbitsScreen extends StatelessWidget {
                                                                         //         element.id ==
                                                                         //         habbitSelectController.tasks[index].categoryId)
                                                                         //     .color],
-                                                                        color.brightness == Brightness.dark ? categoryController.iconColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks[index].categoryId).color] : categoryController.iconLightColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks[index].categoryId).color],
+                                                                        color.brightness == Brightness.dark ? categoryController.iconColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].categoryId).color] : categoryController.iconLightColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].categoryId).color],
                                                                     width: 2)),
                                                             child: Row(
                                                               children: [
                                                                 DescriptionText(
                                                                   text: habbitSelectController
-                                                                      .tasks[
+                                                                      .tasks
+                                                                      .where((p0) =>
+                                                                          p0.archive ==
+                                                                          false)
+                                                                      .toList()[
                                                                           index]
                                                                       .priority
                                                                       .toString(),
@@ -355,9 +431,9 @@ class HabbitsScreen extends StatelessWidget {
                                                                                   .dark
                                                                           ? categoryController.iconColor[categoryController
                                                                               .categories
-                                                                              .firstWhere((element) => element.id == habbitSelectController.tasks[index].categoryId)
+                                                                              .firstWhere((element) => element.id == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].categoryId)
                                                                               .color]
-                                                                          : categoryController.iconLightColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks[index].categoryId).color],
+                                                                          : categoryController.iconLightColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].categoryId).color],
                                                                 ),
                                                                 Icon(
                                                                   Icons
@@ -377,9 +453,9 @@ class HabbitsScreen extends StatelessWidget {
                                                                                   .dark
                                                                           ? categoryController.iconColor[categoryController
                                                                               .categories
-                                                                              .firstWhere((element) => element.id == habbitSelectController.tasks[index].categoryId)
+                                                                              .firstWhere((element) => element.id == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].categoryId)
                                                                               .color]
-                                                                          : categoryController.iconLightColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks[index].categoryId).color],
+                                                                          : categoryController.iconLightColor[categoryController.categories.firstWhere((element) => element.id == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].categoryId).color],
                                                                 ),
                                                               ],
                                                             ),
@@ -429,7 +505,11 @@ class HabbitsScreen extends StatelessWidget {
                                                             .firstWhere((element) =>
                                                                 element.id ==
                                                                 habbitSelectController
-                                                                    .tasks[
+                                                                    .tasks
+                                                                    .where((p0) =>
+                                                                        p0.archive ==
+                                                                        false)
+                                                                    .toList()[
                                                                         index]
                                                                     .categoryId)
                                                             .icon],
@@ -439,19 +519,19 @@ class HabbitsScreen extends StatelessWidget {
                                                             .categories
                                                             .firstWhere((element) =>
                                                                 element.id ==
-                                                                habbitSelectController
-                                                                    .tasks[
+                                                                habbitSelectController.tasks
+                                                                    .where((p0) =>
+                                                                        p0.archive ==
+                                                                        false)
+                                                                    .toList()[
                                                                         index]
                                                                     .categoryId)
                                                             .color]
                                                         : categoryController
                                                                 .iconLightColor[
-                                                            categoryController.categories
-                                                                .firstWhere((element) =>
-                                                                    element.id ==
-                                                                    habbitSelectController
-                                                                        .tasks[index]
-                                                                        .categoryId)
+                                                            categoryController
+                                                                .categories
+                                                                .firstWhere((element) => element.id == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].categoryId)
                                                                 .color],
                                                   ))
                                             ],
@@ -761,27 +841,25 @@ class HabbitsScreen extends StatelessWidget {
                                                         //         .color]
                                                         color.brightness ==
                                                                 Brightness.dark
-                                                            ? categoryController
-                                                                    .iconColor[
-                                                                categoryController
-                                                                    .categories
-                                                                    .firstWhere((element) =>
-                                                                        element.id ==
-                                                                        habbitSelectController
-                                                                            .tasks[
-                                                                                index]
-                                                                            .categoryId)
-                                                                    .color]
+                                                            ? categoryController.iconColor[categoryController
+                                                                .categories
+                                                                .firstWhere((element) =>
+                                                                    element.id ==
+                                                                    habbitSelectController
+                                                                        .tasks
+                                                                        .where((p0) =>
+                                                                            p0.archive ==
+                                                                            false)
+                                                                        .toList()[
+                                                                            index]
+                                                                        .categoryId)
+                                                                .color]
                                                             : categoryController
                                                                     .iconLightColor[
                                                                 categoryController
                                                                     .categories
-                                                                    .firstWhere((element) =>
-                                                                        element
-                                                                            .id ==
-                                                                        habbitSelectController
-                                                                            .tasks[index]
-                                                                            .categoryId)
+                                                                    .firstWhere(
+                                                                        (element) => element.id == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].categoryId)
                                                                     .color],
                                                     size: 25,
                                                   ),
@@ -809,27 +887,25 @@ class HabbitsScreen extends StatelessWidget {
                                                         //         .color]
                                                         color.brightness ==
                                                                 Brightness.dark
-                                                            ? categoryController
-                                                                    .iconColor[
-                                                                categoryController
-                                                                    .categories
-                                                                    .firstWhere((element) =>
-                                                                        element.id ==
-                                                                        habbitSelectController
-                                                                            .tasks[
-                                                                                index]
-                                                                            .categoryId)
-                                                                    .color]
+                                                            ? categoryController.iconColor[categoryController
+                                                                .categories
+                                                                .firstWhere((element) =>
+                                                                    element.id ==
+                                                                    habbitSelectController
+                                                                        .tasks
+                                                                        .where((p0) =>
+                                                                            p0.archive ==
+                                                                            false)
+                                                                        .toList()[
+                                                                            index]
+                                                                        .categoryId)
+                                                                .color]
                                                             : categoryController
                                                                     .iconLightColor[
                                                                 categoryController
                                                                     .categories
-                                                                    .firstWhere((element) =>
-                                                                        element
-                                                                            .id ==
-                                                                        habbitSelectController
-                                                                            .tasks[index]
-                                                                            .categoryId)
+                                                                    .firstWhere(
+                                                                        (element) => element.id == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].categoryId)
                                                                     .color],
                                                     size: 25,
                                                   ),
@@ -857,6 +933,8 @@ class HabbitsScreen extends StatelessWidget {
                                                           '/habbit-detail');
                                                       tabController
                                                           .tabIndex.value = 1;
+                                                      // habbitSelectController
+                                                      //     .updateArchive(true);
                                                     },
                                                     behavior: HitTestBehavior
                                                         .translucent,
@@ -931,8 +1009,17 @@ class HabbitsScreen extends StatelessWidget {
                                                     onTap: () {},
                                                     child: Icon(
                                                       Icons.more_vert,
-                                                      color:
-                                                          color.disabledColor,
+                                                      color: habbitSelectController
+                                                                  .tasks
+                                                                  .where((p0) =>
+                                                                      p0.archive ==
+                                                                      false)
+                                                                  .toList()[
+                                                                      index]
+                                                                  .archive ==
+                                                              true
+                                                          ? color.primaryColor
+                                                          : color.disabledColor,
                                                       size: 25,
                                                     ),
                                                   ),
@@ -950,7 +1037,9 @@ class HabbitsScreen extends StatelessWidget {
                           ),
                         );
                       },
-                      itemCount: habbitSelectController.tasks.length,
+                      itemCount: habbitSelectController.tasks
+                          .where((p0) => p0.archive == false)
+                          .length,
                       separatorBuilder: (context, index) => SH.large(),
                     ),
                   ),

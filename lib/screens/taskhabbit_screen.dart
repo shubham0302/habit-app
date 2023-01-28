@@ -11,6 +11,7 @@ import 'package:habbit_app/controllers/search_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/screens/home_screen.dart';
+import 'package:habbit_app/screens/recurring_task/home_edit_recurringtask_dailog.dart';
 import 'package:habbit_app/screens/task_screen/home_edit_task_dailog.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 
@@ -48,8 +49,7 @@ class FirstHabitScreen extends StatelessWidget {
             : ListView.separated(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: 
-                habbitSelectController.tasks.length,
+                itemCount: habbitSelectController.tasks.length,
                 separatorBuilder: (context, index) => SH.medium(),
                 itemBuilder: (context, index) {
                   return GestureDetector(
@@ -119,6 +119,7 @@ class FirstHabitScreen extends StatelessWidget {
                                         'complete'
                                     ? Colors.green
                                     : color.backgroundColor,
+                        timeText: '06:00',
                       ),
                     ),
                   );
@@ -265,6 +266,7 @@ class FirstTaskScreen extends StatelessWidget {
                               name: taskController.tasks[index].taskName,
                               status: Icons.ac_unit,
                               statusColor: Colors.green,
+                              timeText: '06:00',
                             ),
                           ),
                         ),
@@ -318,7 +320,7 @@ class FirstRecurringScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      taskHomeEditCustomDialogBox(context, index);
+                      recurringTaskHomeEditCustomDialogBox(context, index);
                     },
                     child: HomeCard(
                       icon: categoryController.icon[categoryController
@@ -345,6 +347,7 @@ class FirstRecurringScreen extends StatelessWidget {
                       name: recurringTaskController.tasks[index].rTaskName,
                       status: Icons.ac_unit_rounded,
                       statusColor: Colors.green,
+                      timeText: '06:00',
                     ),
                   );
                 },

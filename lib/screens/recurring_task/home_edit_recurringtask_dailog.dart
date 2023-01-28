@@ -87,7 +87,7 @@ void recurringTaskHomeEditCustomDialogBox(BuildContext context, int index) {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(5))),
                                       child: DescriptionText(
-                                        text: recurringTaskController.repeatTime
+                                        text: recurringTaskController.times
                                             .toString(),
                                         isColor: true,
                                         color: categoryController.iconColor[
@@ -140,45 +140,91 @@ void recurringTaskHomeEditCustomDialogBox(BuildContext context, int index) {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Expanded(
-                                    child: Container(
-                                        height: 50,
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              height: 25,
-                                              width: 25,
-                                              decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color:
-                                                      color.bottomAppBarColor),
-                                            ),
-                                            SH.small(),
-                                            LabelText(text: 'Pending')
-                                          ],
-                                        )),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        recurringTaskController
+                                            .recurringTaskStatus
+                                            .value = 'pending';
+                                      },
+                                      behavior: HitTestBehavior.translucent,
+                                      child: Container(
+                                          height: 50,
+                                          child: Column(
+                                            children: [
+                                              Obx(
+                                                () => Container(
+                                                  height: 25,
+                                                  width: 25,
+                                                  decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: recurringTaskController
+                                                                  .recurringTaskStatus
+                                                                  .value ==
+                                                              'pending'
+                                                          ? Colors
+                                                              .yellow.shade200
+                                                          : color
+                                                              .bottomAppBarColor),
+                                                  child: Icon(
+                                                    Icons.pending_outlined,
+                                                    size: 20,
+                                                    color: recurringTaskController
+                                                                .recurringTaskStatus
+                                                                .value ==
+                                                            'pending'
+                                                        ? Colors.black
+                                                        : color.disabledColor,
+                                                  ),
+                                                ),
+                                              ),
+                                              SH.small(),
+                                              LabelText(text: 'Pending')
+                                            ],
+                                          )),
+                                    ),
                                   ),
                                   Expanded(
-                                    child: Container(
-                                        height: 50,
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              height: 25,
-                                              width: 25,
-                                              decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color:
-                                                      color.bottomAppBarColor),
-                                              child: Icon(
-                                                Icons.done,
-                                                size: 20,
-                                                color: color.disabledColor,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        recurringTaskController
+                                            .recurringTaskStatus.value = 'done';
+                                      },
+                                      behavior: HitTestBehavior.translucent,
+                                      child: Container(
+                                          height: 50,
+                                          child: Column(
+                                            children: [
+                                              Obx(
+                                                () => Container(
+                                                  height: 25,
+                                                  width: 25,
+                                                  decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: recurringTaskController
+                                                                  .recurringTaskStatus
+                                                                  .value ==
+                                                              'done'
+                                                          ? Colors
+                                                              .green.shade200
+                                                          : color
+                                                              .bottomAppBarColor),
+                                                  child: Icon(
+                                                    Icons.done,
+                                                    size: 20,
+                                                    color: recurringTaskController
+                                                                .recurringTaskStatus
+                                                                .value ==
+                                                            'done'
+                                                        ? Colors.green
+                                                        : color.disabledColor,
+                                                  ),
+                                                ),
                                               ),
-                                            ),
-                                            SH.small(),
-                                            LabelText(text: 'Done')
-                                          ],
-                                        )),
+                                              SH.small(),
+                                              LabelText(text: 'Done')
+                                            ],
+                                          )),
+                                    ),
                                   ),
                                 ],
                               )

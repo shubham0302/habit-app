@@ -136,45 +136,90 @@ void taskHomeEditCustomDialogBox(BuildContext context, int index) {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Expanded(
-                                    child: Container(
-                                        height: 50,
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              height: 25,
-                                              width: 25,
-                                              decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color:
-                                                      color.bottomAppBarColor),
-                                            ),
-                                            SH.small(),
-                                            LabelText(text: 'Pending')
-                                          ],
-                                        )),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        taskController.taskStatus.value =
+                                            'pending';
+                                      },
+                                      behavior: HitTestBehavior.translucent,
+                                      child: Container(
+                                          height: 50,
+                                          child: Column(
+                                            children: [
+                                              Obx(
+                                                () => Container(
+                                                  height: 25,
+                                                  width: 25,
+                                                  decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: taskController
+                                                                  .taskStatus
+                                                                  .value ==
+                                                              'pending'
+                                                          ? Colors
+                                                              .yellow.shade200
+                                                          : color
+                                                              .bottomAppBarColor),
+                                                  child: Icon(
+                                                    Icons.pending_outlined,
+                                                    size: 20,
+                                                    color: taskController
+                                                                .taskStatus
+                                                                .value ==
+                                                            'pending'
+                                                        ? Colors.black
+                                                        : color.disabledColor,
+                                                  ),
+                                                ),
+                                              ),
+                                              SH.small(),
+                                              LabelText(text: 'Pending')
+                                            ],
+                                          )),
+                                    ),
                                   ),
                                   Expanded(
-                                    child: Container(
-                                        height: 50,
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              height: 25,
-                                              width: 25,
-                                              decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color:
-                                                      color.bottomAppBarColor),
-                                              child: Icon(
-                                                Icons.done,
-                                                size: 20,
-                                                color: color.disabledColor,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        taskController.taskStatus.value =
+                                            'done';
+                                      },
+                                      behavior: HitTestBehavior.translucent,
+                                      child: Container(
+                                          height: 50,
+                                          child: Column(
+                                            children: [
+                                              Obx(
+                                                () => Container(
+                                                  height: 25,
+                                                  width: 25,
+                                                  decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: taskController
+                                                                  .taskStatus
+                                                                  .value ==
+                                                              'done'
+                                                          ? Colors
+                                                              .green.shade200
+                                                          : color
+                                                              .bottomAppBarColor),
+                                                  child: Icon(
+                                                    Icons.done,
+                                                    size: 20,
+                                                    color: taskController
+                                                                .taskStatus
+                                                                .value ==
+                                                            'done'
+                                                        ? Colors.green
+                                                        : color.disabledColor,
+                                                  ),
+                                                ),
                                               ),
-                                            ),
-                                            SH.small(),
-                                            LabelText(text: 'Done')
-                                          ],
-                                        )),
+                                              SH.small(),
+                                              LabelText(text: 'Done')
+                                            ],
+                                          )),
+                                    ),
                                   ),
                                 ],
                               )

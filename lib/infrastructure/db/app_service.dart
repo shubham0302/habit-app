@@ -192,6 +192,30 @@ class AppDB extends _$AppDB {
     return await update(habbitModel).replace(entity);
   }
 
+  Future<bool> updateArchive(
+      bool isArchived,
+      int id,
+      int pri,
+      int reminderid,
+      int catid,
+      String hname,
+      String eva,
+      String hdes,
+      DateTime startD,
+      DateTime endD) async {
+    return await update(habbitModel).replace(HabbitModelCompanion(
+        habbitId: Value(id),
+        archive: Value(isArchived),
+        priority: Value(pri),
+        reminderId: Value(reminderid),
+        categoryId: Value(catid),
+        habitName: Value(hname),
+        evaluate: Value(eva),
+        habbitDescription: Value(hdes),
+        startDate: Value(startD),
+        endDate: Value(endD)));
+  }
+
   Future<int> insertHabbit(HabbitModelCompanion entity) async {
     return await into(habbitModel).insert(entity);
   }
