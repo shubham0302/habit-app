@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:drift/drift.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:habbit_app/infrastructure/model/status_model.dart';
 import 'package:path/path.dart' as path;
 import 'package:get/get.dart' as gt;
 import 'package:habbit_app/infrastructure/db/db_config.dart';
@@ -31,7 +32,10 @@ part 'app_service.g.dart';
   RecurringChecklistModel,
   RecurringRepetitionModel,
   HabbitModel,
-  HabbitChecklistModel
+  HabbitChecklistModel,
+  HabitStatusModel,
+  TaskStatusModel,
+  RecurringStatusModel,
 ])
 class AppDB extends _$AppDB {
   AppDB() : super(openConnection());

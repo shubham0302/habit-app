@@ -274,7 +274,7 @@ class EditTask extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      ReminderCustomDialogBox(context);
+                      reminderCustomDialogBox(context);
                       // ToDoWeekCustomDialogBox(context);
                     },
                     child: Container(

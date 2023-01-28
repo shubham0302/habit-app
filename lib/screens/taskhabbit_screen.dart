@@ -1,20 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/controllers/recurring_controller.dart';
-import 'package:habbit_app/controllers/search_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/screens/home_screen.dart';
 import 'package:habbit_app/screens/task_screen/home_edit_task_dailog.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
-
-import '../controllers/db_controller.dart';
 import '../widgets/text_widget/label_text.dart';
 import 'habbit/home_edit_habit_dailogbox.dart';
 
@@ -23,8 +17,8 @@ class FirstHabitScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SearchController searchController =
-        Get.put(SearchController(), permanent: false);
+    // SearchController searchController =
+    //     Get.put(SearchController(), permanent: false);
     AddHabbitSelectController habbitSelectController =
         Get.put(AddHabbitSelectController(), permanent: false);
     CategoryController categoryController =
@@ -196,17 +190,17 @@ class FirstTaskScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DBController dbController = Get.put(DBController(), permanent: false);
+    // DBController dbController = Get.find<DBController>();
     AddTaskController taskController =
         Get.put(AddTaskController(), permanent: false);
-    AddRecurringTaskController recurringTaskController =
-        Get.put(AddRecurringTaskController(), permanent: false);
-    AddHabbitSelectController habbitSelectController =
-        Get.put(AddHabbitSelectController(), permanent: false);
+    // AddRecurringTaskController recurringTaskController =
+    //     Get.put(AddRecurringTaskController(), permanent: false);
+    // AddHabbitSelectController habbitSelectController =
+    //     Get.put(AddHabbitSelectController(), permanent: false);
     CategoryController categoryController =
         Get.put(CategoryController(), permanent: false);
 
-    ThemeController themeController = Get.find<ThemeController>();
+    // ThemeController themeController = Get.find<ThemeController>();
 
     ThemeData color = Theme.of(context);
     return Column(
@@ -283,13 +277,13 @@ class FirstRecurringScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DBController dbController = Get.put(DBController(), permanent: false);
-    AddTaskController taskController =
-        Get.put(AddTaskController(), permanent: false);
+    // DBController dbController = Get.find<DBController>();
+    // AddTaskController taskController =
+    //     Get.put(AddTaskController(), permanent: false);
     AddRecurringTaskController recurringTaskController =
         Get.put(AddRecurringTaskController(), permanent: false);
-    AddHabbitSelectController habbitSelectController =
-        Get.put(AddHabbitSelectController(), permanent: false);
+    // AddHabbitSelectController habbitSelectController =
+    //     Get.put(AddHabbitSelectController(), permanent: false);
     CategoryController categoryController =
         Get.put(CategoryController(), permanent: false);
 

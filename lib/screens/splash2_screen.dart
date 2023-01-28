@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/db_controller.dart';
 import 'package:habbit_app/controllers/lang_ctrl.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
 
@@ -17,6 +18,7 @@ class _SplashState extends State<Splash> {
       Get.put(LockPinController(), permanent: true);
   LanguageController languageController =
       Get.put(LanguageController(), permanent: true);
+  DBController ctrl = Get.put(DBController(),permanent: true);
   @override
   Widget build(BuildContext context) {
     // Future.delayed(const Duration(seconds: 3), () {});

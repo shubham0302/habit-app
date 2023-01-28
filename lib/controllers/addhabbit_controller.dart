@@ -16,18 +16,15 @@ class AddHabbitSelectController extends GetxController {
   DBController dbcontroller = Get.find<DBController>();
   SwitchController switchController =
       Get.put(SwitchController(), permanent: false);
-  // AddHabbitSelectController habbitSelectController =
-  //     Get.put(AddHabbitSelectController(), permanent: true);
-  DBController dbController = Get.find<DBController>();
   TextEditingController nameCtrl = TextEditingController();
 
   RxBool flexible = false.obs;
   TextEditingController descriptionCtrl = TextEditingController();
   TextEditingController goal = TextEditingController();
   TextEditingController unit = TextEditingController();
-  Rx<DateTime> startDate = DateTime(2022, 12, 20).obs;
+  Rx<DateTime> startDate = DateTime.now().obs;
   // Rx<TimeOfDay> reminderTime = const TimeOfDay(hour: 8, minute: 30).obs;
-  Rx<DateTime> endDate = DateTime(2022, 12, 20).obs;
+  Rx<DateTime> endDate = DateTime.now().obs;
   RxString updateCategory = "Select".obs;
   // RxList<int> habitStatus = <int>[].obs;
   RxString habitStatus = ''.obs;
@@ -102,7 +99,7 @@ class AddHabbitSelectController extends GetxController {
         reminderId: drift.Value(reminder),
       );
 
-      var data = await dbController.appDB.insertHabbit(entity);
+      var data = await dbcontroller.appDB.insertHabbit(entity);
 
       await addCheckLists(data);
     } catch (e) {
@@ -151,7 +148,7 @@ class AddHabbitSelectController extends GetxController {
           var entity = HabbitChecklistModelCompanion(
               rChecklistName: drift.Value(element.text),
               habbitId: drift.Value(taskId));
-          var data = await dbController.appDB.insertHabbitChecklist(entity);
+          var data = await dbcontroller.appDB.insertHabbitChecklist(entity);
         },
       );
       habbitChecklist.value = [TextEditingController(text: '')];
@@ -198,7 +195,7 @@ class AddHabbitSelectController extends GetxController {
           isCompletedAc: drift.Value(customAlarm.value),
           days: drift.Value(customDays.join(',')));
 
-      var data = await dbController.appDB.insertReminder(entity);
+      var data = await dbcontroller.appDB.insertReminder(entity);
 
       reminderTime.value = DateTime.now();
       alwaysenabled.value = true;
@@ -256,7 +253,7 @@ class AddHabbitSelectController extends GetxController {
         type: drift.Value(updateRepetation.value),
       );
 
-      var data = await dbController.appDB.insertRecurringRepetition(entity);
+      var data = await dbcontroller.appDB.insertRecurringRepetition(entity);
 
       await addReminder(data);
     } catch (e) {
@@ -277,7 +274,7 @@ class AddHabbitSelectController extends GetxController {
         type: drift.Value(updateRepetation.value),
       );
 
-      var data = await dbController.appDB.insertRecurringRepetition(entity);
+      var data = await dbcontroller.appDB.insertRecurringRepetition(entity);
 
       await editHabit();
     } catch (e) {
@@ -290,7 +287,7 @@ class AddHabbitSelectController extends GetxController {
   getTasks() {
     try {
       tasks.value = [];
-      dbController.appDB.streamHabbits().forEach((element) {
+      dbcontroller.appDB.streamHabbits().forEach((element) {
         tasks.value = element;
         if (switchController.todoSorting.value == 'Alphabetical') {
           tasks.sort(
@@ -333,7 +330,7 @@ class AddHabbitSelectController extends GetxController {
   getRepetitions() {
     try {
       repetitionsData.value = [];
-      dbController.appDB.streamRecurringRepetition().forEach((element) {
+      dbcontroller.appDB.streamRecurringRepetition().forEach((element) {
         repetitionsData.value = element;
         repetitionsData.refresh();
         log(repetitionsData.length.toString());
@@ -347,7 +344,7 @@ class AddHabbitSelectController extends GetxController {
       <HabbitChecklistModelData>[].obs;
   getChecklistss() {
     try {
-      dbController.appDB.streamHabbitChecklist().forEach((element) {
+      dbcontroller.appDB.streamHabbitChecklist().forEach((element) {
         checklists.value = element;
         checklists.refresh();
         log(checklists.length.toString());

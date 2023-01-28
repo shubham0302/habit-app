@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     SearchController searchController =
         Get.put(SearchController(), permanent: false);
-    DBController dbController = Get.put(DBController(), permanent: false);
+    DBController dbController = Get.find<DBController>();
     AddTaskController taskController =
         Get.put(AddTaskController(), permanent: false);
     AddRecurringTaskController recurringTaskController =
