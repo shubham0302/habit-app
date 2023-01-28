@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, unused_local_variable, avoid_print
 
 import 'dart:developer';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
@@ -185,6 +186,26 @@ class AddHabbitSelectController extends GetxController {
   Rx<DateTime> reminderTime = DateTime(0000, 00, 00, 08, 30).obs;
 
   var taskReminderId = 0.obs;
+
+
+  RxList<ReminderModelTemp> remList = <ReminderModelTemp>[].obs;
+
+  var remType = "notification".obs;
+  var remTime = TimeOfDay.now().obs;
+  var always = true.obs;
+  RxList<String> remDays = <String>[].obs;
+  var remId = 1.obs;
+
+  addReminderToList(){
+    remList.add(ReminderModelTemp(always: always.value,days: remDays.value,id: remId.value,time: remTime.value,type: remType.value));
+    remType.value = "notification";
+    remTime.value = TimeOfDay.now();
+    always.value = true;
+    remDays.value = [];
+    remId.value = remId.value +1;
+  }
+
+
   addReminder(int repetition) async {
     try {
       var entity = TaskReminderModelCompanion(
@@ -391,4 +412,15 @@ class AddHabbitSelectController extends GetxController {
       Vibration.vibrate();
     }
   }
+}
+
+
+
+class ReminderModelTemp {
+  int? id = 0;
+  TimeOfDay? time = TimeOfDay.now();
+  String? type = "notification";
+  bool? always = true;
+  List<String>? days = <String>[];
+  ReminderModelTemp({this.always=true,this.time,this.days,this.type="notification",this.id=0});
 }
