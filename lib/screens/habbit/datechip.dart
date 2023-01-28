@@ -38,10 +38,10 @@ class DateChip extends StatelessWidget {
                 decoration: BoxDecoration(
                     border: Border.all(
                         color:
-                            isColor != null ? selectColor! : Colors.transparent,
+                            isColor == true ? selectColor! : Colors.transparent,
                         width: 2),
                     shape: BoxShape.circle,
-                    color: isColor != null
+                    color: isColor == true
                         ? selectColor!.withOpacity(.2)
                         : color.dialogBackgroundColor),
                 child: Center(

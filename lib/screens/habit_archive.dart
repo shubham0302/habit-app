@@ -106,11 +106,7 @@ class HabbitsArciveScreen extends StatelessWidget {
                                                           p0.archive == true)
                                                       .toList()[index]
                                                       .priority,
-                                                  habbitSelectController.tasks
-                                                      .where((p0) =>
-                                                          p0.archive == true)
-                                                      .toList()[index]
-                                                      .reminderId,
+                                                  0,
                                                   habbitSelectController.tasks
                                                       .where((p0) =>
                                                           p0.archive == true)

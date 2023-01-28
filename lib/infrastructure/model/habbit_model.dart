@@ -7,11 +7,11 @@ import 'repetition_model.dart';
 class HabbitModel extends Table {
   IntColumn get habbitId => integer().autoIncrement()();
   IntColumn get priority => integer().named('habbit_priority')();
-  IntColumn get reminderId => integer()
-      .named('habbit_reminder_id')
-      .withDefault(const Constant(1))
-      .references(TaskReminderModel, #id,
-          onDelete: KeyAction.setDefault, onUpdate: KeyAction.cascade)();
+  // IntColumn get reminderId => integer()
+  //     .named('habbit_reminder_id')
+  //     .withDefault(const Constant(1))
+  //     .references(TaskReminderModel, #id,
+  //         onDelete: KeyAction.setDefault, onUpdate: KeyAction.cascade)();
   IntColumn get categoryId => integer()
       .named('habbit_category_id')
       .withDefault(const Constant(1))

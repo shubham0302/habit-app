@@ -119,11 +119,7 @@ class HabbitsScreen extends StatelessWidget {
                                                       p0.archive == false)
                                                   .toList()[index]
                                                   .priority,
-                                              habbitSelectController.tasks
-                                                  .where((p0) =>
-                                                      p0.archive == false)
-                                                  .toList()[index]
-                                                  .reminderId,
+                                              0,
                                               habbitSelectController.tasks
                                                   .where((p0) =>
                                                       p0.archive == false)
@@ -497,9 +493,8 @@ class HabbitsScreen extends StatelessWidget {
                                               //         //           .color],
                                               //         // ),
                                               // ),
-                                              Obx(() => IconWidgetClassic(
-                                                    icon: categoryController
-                                                            .icon[
+                                              Obx(() => IconWidget(
+                                                    icon: 
                                                         categoryController
                                                             .categories
                                                             .firstWhere((element) =>
@@ -512,10 +507,8 @@ class HabbitsScreen extends StatelessWidget {
                                                                     .toList()[
                                                                         index]
                                                                     .categoryId)
-                                                            .icon],
-                                                    contanerColor: color.brightness ==
-                                                            Brightness.dark
-                                                        ? categoryController.iconColor[categoryController
+                                                            .icon,
+                                                    color: categoryController
                                                             .categories
                                                             .firstWhere((element) =>
                                                                 element.id ==
@@ -526,22 +519,13 @@ class HabbitsScreen extends StatelessWidget {
                                                                     .toList()[
                                                                         index]
                                                                     .categoryId)
-                                                            .color]
-                                                        : categoryController
-                                                                .iconLightColor[
-                                                            categoryController
-                                                                .categories
-                                                                .firstWhere((element) => element.id == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].categoryId)
-                                                                .color],
+                                                            .color
+                                                       
                                                   ))
                                             ],
                                           ),
                                           SH.large(),
                                           Obx(() =>
-                                              //  switchController
-                                              //             .CollapseSwichChange.value ==
-                                              //         true
-                                              //     ?
                                               switchController.isOpen.value ==
                                                           true ||
                                                       switchController
@@ -550,265 +534,71 @@ class HabbitsScreen extends StatelessWidget {
                                                           false
                                                   ? Container(
                                                       child:
-                                                          //  habbitSelectController
-                                                          //         .openHabbits
-                                                          //         .contains(habbitSelectController
-                                                          //             .tasks[index].habbitId)
-                                                          //     ?
-                                                          Row(
-                                                      children: [
-                                                        DateChip(
-                                                          day: DateFormat(
-                                                                  'EEEE')
-                                                              .format(DateTime(
-                                                                  DateTime.now()
-                                                                      .year,
-                                                                  DateTime.now()
-                                                                      .month,
-                                                                  DateTime.now()
-                                                                      .add(const Duration(
-                                                                          days:
-                                                                              -6))
-                                                                      .day
-                                                                  // DateTime.now()
-                                                                  //     .add(Duration(days: index))
-                                                                  //     .weekday
-
-                                                                  ))
-                                                              .toString()
-                                                              .substring(0, 3),
-                                                          date: (DateTime.now()
-                                                                  .add(const Duration(
-                                                                      days: -6))
-                                                                  .day)
-                                                              .toString(),
-                                                          isColor: true,
-                                                          selectColor:
-                                                              Colors.red,
-                                                          op: () {},
-                                                        ),
-                                                        SW.small(),
-                                                        DateChip(
-                                                          day: DateFormat(
-                                                                  'EEEE')
-                                                              .format(DateTime(
-                                                                  DateTime.now()
-                                                                      .year,
-                                                                  DateTime.now()
-                                                                      .month,
-                                                                  DateTime.now()
-                                                                      .add(const Duration(
-                                                                          days:
-                                                                              -5))
-                                                                      .day
-                                                                  // DateTime.now()
-                                                                  //     .add(Duration(days: index))
-                                                                  //     .weekday
-
-                                                                  ))
-                                                              .toString()
-                                                              .substring(0, 3),
-                                                          date: (DateTime.now()
-                                                                  .add(const Duration(
-                                                                      days: -5))
-                                                                  .day)
-                                                              .toString(),
-                                                          isColor: true,
-                                                          selectColor:
-                                                              Colors.red,
-                                                          op: () {},
-                                                        ),
-                                                        SW.small(),
-                                                        DateChip(
-                                                          day: DateFormat(
-                                                                  'EEEE')
-                                                              .format(DateTime(
-                                                                  DateTime.now()
-                                                                      .year,
-                                                                  DateTime.now()
-                                                                      .month,
-                                                                  DateTime.now()
-                                                                      .add(const Duration(
-                                                                          days:
-                                                                              -4))
-                                                                      .day
-                                                                  // DateTime.now()
-                                                                  //     .add(Duration(days: index))
-                                                                  //     .weekday
-
-                                                                  ))
-                                                              .toString()
-                                                              .substring(0, 3),
-                                                          date: (DateTime.now()
-                                                                  .add(const Duration(
-                                                                      days: -4))
-                                                                  .day)
-                                                              .toString(),
-                                                          isColor: true,
-                                                          selectColor:
-                                                              Colors.yellow,
-                                                          op: () {},
-                                                        ),
-                                                        SW.small(),
-                                                        DateChip(
-                                                          day: DateFormat(
-                                                                  'EEEE')
-                                                              .format(DateTime(
-                                                                  DateTime.now()
-                                                                      .year,
-                                                                  DateTime.now()
-                                                                      .month,
-                                                                  DateTime.now()
-                                                                      .add(const Duration(
-                                                                          days:
-                                                                              -3))
-                                                                      .day
-                                                                  // DateTime.now()
-                                                                  //     .add(Duration(days: index))
-                                                                  //     .weekday
-
-                                                                  ))
-                                                              .toString()
-                                                              .substring(0, 3),
-                                                          date: (DateTime.now()
-                                                                  .add(const Duration(
-                                                                      days: -3))
-                                                                  .day)
-                                                              .toString(),
-                                                          op: () {},
-                                                        ),
-                                                        SW.small(),
-                                                        DateChip(
-                                                          day: DateFormat(
-                                                                  'EEEE')
-                                                              .format(DateTime(
-                                                                  DateTime.now()
-                                                                      .year,
-                                                                  DateTime.now()
-                                                                      .month,
-                                                                  DateTime.now()
-                                                                      .add(const Duration(
-                                                                          days:
-                                                                              -2))
-                                                                      .day
-                                                                  // DateTime.now()
-                                                                  //     .add(Duration(days: index))
-                                                                  //     .weekday
-
-                                                                  ))
-                                                              .toString()
-                                                              .substring(0, 3),
-                                                          date: (DateTime.now()
-                                                                  .add(const Duration(
-                                                                      days: -2))
-                                                                  .day)
-                                                              .toString(),
-                                                          op: () {},
-                                                        ),
-                                                        SW.small(),
-                                                        DateChip(
-                                                          day: DateFormat(
-                                                                  'EEEE')
-                                                              .format(DateTime(
-                                                                  DateTime.now()
-                                                                      .year,
-                                                                  DateTime.now()
-                                                                      .month,
-                                                                  DateTime.now()
-                                                                      .add(const Duration(
-                                                                          days:
-                                                                              -1))
-                                                                      .day
-                                                                  // DateTime.now()
-                                                                  //     .add(Duration(days: index))
-                                                                  //     .weekday
-
-                                                                  ))
-                                                              .toString()
-                                                              .substring(0, 3),
-                                                          date: (DateTime.now()
-                                                                  .add(const Duration(
-                                                                      days: -1))
-                                                                  .day)
-                                                              .toString(),
-                                                          isColor: true,
-                                                          selectColor:
-                                                              Colors.red,
-                                                          op: () {},
-                                                        ),
-
-                                                        SW.small(),
-                                                        Obx(
-                                                          () => DateChip(
-                                                            day: DateFormat(
-                                                                    'EEEE')
-                                                                .format(DateTime(
-                                                                    DateTime.now()
-                                                                        .year,
-                                                                    DateTime.now()
-                                                                        .month,
-                                                                    DateTime.now()
-                                                                        .day
-                                                                    // DateTime.now()
-                                                                    //     .add(Duration(days: index))
-                                                                    //     .weekday
-
-                                                                    ))
-                                                                .toString()
-                                                                .substring(
-                                                                    0, 3),
-                                                            date:
-                                                                (DateTime.now()
-                                                                        .day)
-                                                                    .toString(),
-                                                            isColor: true,
-                                                            selectColor: habbitSelectController
-                                                                        .colorChange
-                                                                        .value ==
-                                                                    'red'
-                                                                ? Colors.red
-                                                                : habbitSelectController
-                                                                            .colorChange
-                                                                            .value ==
-                                                                        'yellow'
-                                                                    ? Colors
-                                                                        .yellow
-                                                                    : habbitSelectController.colorChange.value ==
-                                                                            'green'
-                                                                        ? Colors
-                                                                            .green
-                                                                        : Colors
-                                                                            .white,
-                                                            op: () {
-                                                              habbitSelectController
-                                                                          .colorChange
-                                                                          .value ==
-                                                                      'yellow'
-                                                                  ? HabbitCompleteTaskCustomDialogBox(
-                                                                      context,
-                                                                      index)
-                                                                  : null;
-                                                              habbitSelectController
-                                                                  .colorChangeTap();
-                                                              habbitSelectController
-                                                                  .notifiy();
-                                                              habbitSelectController
-                                                                  .isVibration();
-                                                              // habbitSelectController
-                                                              //     .colorChange1();
-                                                              print(habbitSelectController
-                                                                  .colorChange
-                                                                  .value);
-                                                              // print(
-                                                              //     habbitSelectController
-                                                              //         .selectColor
-                                                              //         .value);
+                                                          Obx(()=> Row(
+                                                                                                                children: [
+                                                                                                                  ...habbitSelectController.statusListOfDay.map((e) => DateChip(
+                                                            date: e.day.toString(),
+                                                            day: habbitSelectController.giveDay(e.weekday).toString().capitalize!,
+                                                            op: (){
+                                                              if(habbitSelectController.status.where((p0) => p0.habitId==habbitSelectController.tasks
+                                                                      .where((p0) =>
+                                                                          p0.archive ==
+                                                                          false)
+                                                                      .toList()[
+                                                                          index].habbitId).toList().indexWhere((element) => habbitSelectController.checkDate(e, element.date))==-1){
+                                                          
+                                                                habbitSelectController.addStatus(habbitSelectController.tasks
+                                                                      .where((p0) =>
+                                                                          p0.archive ==
+                                                                          false)
+                                                                      .toList()[
+                                                                          index].habbitId, 'initial', e,0);
+                                                          
+                                                              }else{
+                                                                  habbitSelectController.addStatus(habbitSelectController.tasks
+                                                                      .where((p0) =>
+                                                                          p0.archive ==
+                                                                          false)
+                                                                      .toList()[
+                                                                          index].habbitId, 
+                                                            habbitSelectController.status.where((p0) => p0.habitId==habbitSelectController.tasks
+                                                                      .where((p0) =>
+                                                                          p0.archive ==
+                                                                          false)
+                                                                      .toList()[
+                                                                          index].habbitId).toList().firstWhere((element) => habbitSelectController.checkDate(e, element.date)).status, e, 
+                                                            habbitSelectController.status.where((p0) => p0.habitId==habbitSelectController.tasks
+                                                                      .where((p0) =>
+                                                                          p0.archive ==
+                                                                          false)
+                                                                      .toList()[
+                                                                          index].habbitId).toList().firstWhere((element) => habbitSelectController.checkDate(e, element.date)).statusId);
+                                                              }
+                                                          
+                                                          
                                                             },
-                                                          ),
-                                                        ),
-                                                        // SW.small(),
-                                                      ],
-                                                    )
+                                                            isColor: habbitSelectController.checkDate(e, DateTime.now())?true: habbitSelectController.status.where((p0) => p0.habitId==habbitSelectController.tasks
+                                                                      .where((p0) =>
+                                                                          p0.archive ==
+                                                                          false)
+                                                                      .toList()[
+                                                                          index].habbitId).toList().indexWhere((element) => habbitSelectController.checkDate(e, element.date))!=-1,
+                                                            selectColor: habbitSelectController.status.where((p0) => p0.habitId==habbitSelectController.tasks
+                                                                      .where((p0) =>
+                                                                          p0.archive ==
+                                                                          false)
+                                                                      .toList()[
+                                                                          index].habbitId).toList().indexWhere((element) => habbitSelectController.checkDate(e, element.date))!=-1?
+                                                                      habbitSelectController.getColorByStatus(habbitSelectController.status.where((p0) => p0.habitId==habbitSelectController.tasks
+                                                                      .where((p0) =>
+                                                                          p0.archive ==
+                                                                          false)
+                                                                      .toList()[
+                                                                          index].habbitId).toList().firstWhere((element) => habbitSelectController.checkDate(e, element.date)).status,e):habbitSelectController.getColorByStatus('status', e),
+                                                                                                                  )).toList(),
+                                                                                                                ],
+                                                                                                              ),
+                                                          )
                                                       // : const SizedBox(),
                                                       )
                                                   : const SizedBox()),

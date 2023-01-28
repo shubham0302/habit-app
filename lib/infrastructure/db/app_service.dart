@@ -36,6 +36,7 @@ part 'app_service.g.dart';
   HabitStatusModel,
   TaskStatusModel,
   RecurringStatusModel,
+  HabitReminderModel
 ])
 class AppDB extends _$AppDB {
   AppDB() : super(openConnection());
@@ -186,6 +187,9 @@ class AppDB extends _$AppDB {
   Stream<List<HabbitModelData>> streamHabbits() {
     return select(habbitModel).watch();
   }
+  Stream<List<HabitStatusModelData>> streamHabbitStatus() {
+    return select(habitStatusModel).watch();
+  }
 
   Future<HabbitModelData> getHabbit(int id) async {
     return await (select(habbitModel)..where((tbl) => tbl.habbitId.equals(id)))
@@ -211,7 +215,7 @@ class AppDB extends _$AppDB {
         habbitId: Value(id),
         archive: Value(isArchived),
         priority: Value(pri),
-        reminderId: Value(reminderid),
+        // reminderId: Value(reminderid),
         categoryId: Value(catid),
         habitName: Value(hname),
         evaluate: Value(eva),
@@ -222,6 +226,13 @@ class AppDB extends _$AppDB {
 
   Future<int> insertHabbit(HabbitModelCompanion entity) async {
     return await into(habbitModel).insert(entity);
+  }
+
+  Future<int> insertHabbitStatus(HabitStatusModelCompanion entity) async {
+    return await into(habitStatusModel).insert(entity);
+  }
+  Future<bool> updateHabbitStatus(HabitStatusModelCompanion entity) async {
+    return await update(habitStatusModel).replace(entity);
   }
 
   Future<int> deleteHabbit(int id) async {
@@ -313,6 +324,10 @@ class AppDB extends _$AppDB {
   Future<int> insertHabbitChecklist(
       HabbitChecklistModelCompanion entity) async {
     return await into(habbitChecklistModel).insert(entity);
+  }
+  Future<int> insertHabitReminder(
+      HabitReminderModelCompanion entity) async {
+    return await into(habitReminderModel).insert(entity);
   }
 
   Future<int> deleteHabbitChecklist(int id) async {
