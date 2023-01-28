@@ -29,6 +29,7 @@ class AddRecurringTaskController extends GetxController {
     Icons.checklist,
   ).obs;
   RxString updateRepetation = "Everyday".obs;
+  RxString recurringTaskStatus = 'pending'.obs;
   RxInt updatePriority = 0.obs;
   RxString updateName = "".obs;
   RxString updateDescription = "".obs;

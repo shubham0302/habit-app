@@ -58,6 +58,7 @@ class AddTaskController extends GetxController {
   RxString updateUnit = "".obs;
   RxString selectEvaluate = "YES OR NO".obs;
   RxBool alwaysenabled = true.obs;
+  RxString taskStatus = 'pending'.obs;
   RxList<String> customDays = <String>[].obs;
   RxMap<String, List<TaskModelData>> dataTasks =
       <String, List<TaskModelData>>{}.obs;

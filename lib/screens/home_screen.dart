@@ -21,6 +21,7 @@ import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_text_large.dart';
 import '../controllers/home_page_controller.dart';
 import '../widgets/text_widget/main_label_text.dart';
+import 'home_flot_dailbox.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -94,6 +95,7 @@ class _HomePageState extends State<HomePage> {
         floatingActionButton: FloatingActionButton(
           heroTag: 'Today',
           onPressed: () {
+            HomeFlottingCustomDialogBox(context);
             //
             // taskController.getDownloadPath();
           },
@@ -478,6 +480,7 @@ class HomeCard extends StatelessWidget {
   final String name;
   final IconData status;
   final Color statusColor;
+  final String timeText;
   const HomeCard({
     Key? key,
     required this.icon,
@@ -485,10 +488,15 @@ class HomeCard extends StatelessWidget {
     required this.name,
     required this.status,
     required this.statusColor,
+    required this.timeText,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
+    AddHabbitSelectController habbitSelectController =
+        Get.put(AddHabbitSelectController(), permanent: false);
     SwitchController switchController =
         Get.put(SwitchController(), permanent: false);
     var color = Theme.of(context);
@@ -525,7 +533,7 @@ class HomeCard extends StatelessWidget {
                 // ),
                 SW.large(),
                 Column(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Obx(
@@ -533,6 +541,30 @@ class HomeCard extends StatelessWidget {
                           ? MainLabelText(text: name)
                           : MainLabelTextLarge(text: name),
                     ),
+                    Container(
+                      padding: EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          color: color.disabledColor.withOpacity(0.1)),
+                      child: Row(children: [
+                        Icon(
+                          Icons.message_outlined,
+                          color: color.disabledColor,
+                        ),
+                        SW.small(),
+                        Icon(
+                          Icons.repeat,
+                          color: color.disabledColor,
+                        ),
+                        SH.small(),
+                        Icon(
+                          Icons.notifications_none,
+                          color: color.disabledColor,
+                        ),
+                        SH.small(),
+                        DescriptionText(text: timeText),
+                      ]),
+                    )
                   ],
                 )
               ],
