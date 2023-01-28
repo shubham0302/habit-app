@@ -318,7 +318,7 @@ class AddTaskScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      ReminderCustomDialogBox(context);
+                      reminderCustomDialogBox(context);
                       // ToDoWeekCustomDialogBox(context);
                     },
                     child: Container(
@@ -337,7 +337,7 @@ class AddTaskScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const [
                               LabelText(
-                                text: "0",
+                                text: "custom",
                               ),
                             ],
                           ),

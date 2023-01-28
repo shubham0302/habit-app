@@ -30,7 +30,7 @@ class IconWidgetClassic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var color  = Theme.of(context);
+    var color = Theme.of(context);
     SwitchController switchController = Get.put(SwitchController());
     return Obx(
       () => Container(
@@ -126,27 +126,38 @@ class IconWidgetClassic extends StatelessWidget {
 //   }
 // }
 
-
-
 class IconWidget extends StatelessWidget {
   final int color;
   final int icon;
   final bool? isBig;
-  const IconWidget({super.key, required this.color, required this.icon, this.isBig=false});
+  const IconWidget(
+      {super.key, required this.color, required this.icon, this.isBig = false});
 
   @override
   Widget build(BuildContext context) {
     SwitchController switchController = Get.find<SwitchController>();
     var theme = Theme.of(context);
-    return Obx(()=>Container(
-      height: isBig==true? 60:30,
-      width: isBig==true? 60:30,
-      decoration: BoxDecoration(
-          color: switchController.isClassic.value? theme.brightness==Brightness.dark? iconColor[color]:iconLightColor[color]:theme.dividerColor,
-        borderRadius: BorderRadius.all(Radius.circular(isBig==true? 20:10)),
+    return Obx(
+      () => Container(
+        height: isBig == true ? 60 : 30,
+        width: isBig == true ? 60 : 30,
+        decoration: BoxDecoration(
+          color: switchController.isClassic.value
+              ? theme.brightness == Brightness.dark
+                  ? iconColor[color]
+                  : iconLightColor[color]
+              : theme.dividerColor,
+          borderRadius:
+              BorderRadius.all(Radius.circular(isBig == true ? 20 : 10)),
+        ),
+        child: Icon(
+          iconData[icon],
+          color: switchController.isClassic.value
+              ? theme.backgroundColor
+              : iconColor[color],
+          size: isBig == true ? 40 : 20,
+        ),
       ),
-      child: Icon(iconData[icon],color:switchController.isClassic.value? theme.backgroundColor:iconColor[color],size: isBig==true? 40:20,),
-    ),
     );
   }
 }

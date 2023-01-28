@@ -31,4 +31,6 @@ class HabbitModel extends Table {
 
   BoolColumn get archive =>
       boolean().named('habit_archive').withDefault(const Constant(false))();
+  BoolColumn get archived =>
+      boolean().named('archived').withDefault(const Constant(false))();
 }

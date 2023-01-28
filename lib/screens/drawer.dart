@@ -92,40 +92,40 @@ class Drawerr extends StatelessWidget {
                 ),
               ),
             ),
-            InkWell(
-              onTap: () {
-                Get.toNamed("/timer");
-              },
-              customBorder: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(21),
-              ),
-              child: Container(
-                height: 45,
-                padding: const EdgeInsets.only(left: 21),
-                alignment: Alignment.centerLeft,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    // color: color.disabledColor,
-                    borderRadius: BorderRadius.circular(25)),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.timer_outlined,
-                      size: 25,
-                      // color: color.disabledColor,
-                      color: color.disabledColor,
-                    ),
-                    SW.large(),
-                    LabelText(
-                      text: 'Timer'.tr,
-                      isColor: true,
-                      color: color.disabledColor,
-                      // color: color.hoverColor,
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // InkWell(
+            //   onTap: () {
+            //     Get.toNamed("/timer");
+            //   },
+            //   customBorder: RoundedRectangleBorder(
+            //     borderRadius: BorderRadius.circular(21),
+            //   ),
+            //   child: Container(
+            //     height: 45,
+            //     padding: const EdgeInsets.only(left: 21),
+            //     alignment: Alignment.centerLeft,
+            //     width: double.infinity,
+            //     decoration: BoxDecoration(
+            //         // color: color.disabledColor,
+            //         borderRadius: BorderRadius.circular(25)),
+            //     child: Row(
+            //       children: [
+            //         Icon(
+            //           Icons.timer_outlined,
+            //           size: 25,
+            //           // color: color.disabledColor,
+            //           color: color.disabledColor,
+            //         ),
+            //         SW.large(),
+            //         LabelText(
+            //           text: 'Timer'.tr,
+            //           isColor: true,
+            //           color: color.disabledColor,
+            //           // color: color.hoverColor,
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
             InkWell(
               onTap: () {
                 Get.toNamed('/categoriesdrawer');

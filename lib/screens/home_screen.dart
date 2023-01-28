@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     SearchController searchController =
         Get.put(SearchController(), permanent: false);
-    DBController dbController = Get.put(DBController(), permanent: false);
+    DBController dbController = Get.find<DBController>();
     AddTaskController taskController =
         Get.put(AddTaskController(), permanent: false);
     AddRecurringTaskController recurringTaskController =
@@ -93,6 +93,7 @@ class _HomePageState extends State<HomePage> {
     ThemeData color = Theme.of(context);
     return Scaffold(
         floatingActionButton: FloatingActionButton(
+          heroTag: 'Today',
           onPressed: () {
             HomeFlottingCustomDialogBox(context);
             //
@@ -573,12 +574,11 @@ class HomeCard extends StatelessWidget {
               width: 35,
               decoration: BoxDecoration(
                   shape: BoxShape.circle, color: statusColor.withOpacity(0.3)),
-              child: Expanded(
-                  child: Icon(
+              child: Icon(
                 status,
                 size: 25,
                 color: statusColor,
-              )),
+              ),
             )
           ],
         ),

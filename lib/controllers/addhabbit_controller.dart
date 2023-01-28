@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, unused_local_variable, avoid_print
 
 import 'dart:developer';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
@@ -16,18 +17,15 @@ class AddHabbitSelectController extends GetxController {
   DBController dbcontroller = Get.find<DBController>();
   SwitchController switchController =
       Get.put(SwitchController(), permanent: false);
-  // AddHabbitSelectController habbitSelectController =
-  //     Get.put(AddHabbitSelectController(), permanent: true);
-  DBController dbController = Get.find<DBController>();
   TextEditingController nameCtrl = TextEditingController();
 
   RxBool flexible = false.obs;
   TextEditingController descriptionCtrl = TextEditingController();
   TextEditingController goal = TextEditingController();
   TextEditingController unit = TextEditingController();
-  Rx<DateTime> startDate = DateTime(2022, 12, 20).obs;
+  Rx<DateTime> startDate = DateTime.now().obs;
   // Rx<TimeOfDay> reminderTime = const TimeOfDay(hour: 8, minute: 30).obs;
-  Rx<DateTime> endDate = DateTime(2022, 12, 20).obs;
+  Rx<DateTime> endDate = DateTime.now().obs;
   RxString updateCategory = "Select".obs;
   // RxList<int> habitStatus = <int>[].obs;
   RxString habitStatus = 'pending'.obs;
@@ -104,7 +102,7 @@ class AddHabbitSelectController extends GetxController {
           reminderId: drift.Value(reminder),
           archive: drift.Value(false));
 
-      var data = await dbController.appDB.insertHabbit(entity);
+      var data = await dbcontroller.appDB.insertHabbit(entity);
 
       await addCheckLists(data);
     } catch (e) {
@@ -168,7 +166,7 @@ class AddHabbitSelectController extends GetxController {
           var entity = HabbitChecklistModelCompanion(
               rChecklistName: drift.Value(element.text),
               habbitId: drift.Value(taskId));
-          var data = await dbController.appDB.insertHabbitChecklist(entity);
+          var data = await dbcontroller.appDB.insertHabbitChecklist(entity);
         },
       );
       habbitChecklist.value = [TextEditingController(text: '')];
@@ -205,6 +203,26 @@ class AddHabbitSelectController extends GetxController {
   Rx<DateTime> reminderTime = DateTime(0000, 00, 00, 08, 30).obs;
 
   var taskReminderId = 0.obs;
+
+
+  RxList<ReminderModelTemp> remList = <ReminderModelTemp>[].obs;
+
+  var remType = "notification".obs;
+  var remTime = TimeOfDay.now().obs;
+  var always = true.obs;
+  RxList<String> remDays = <String>[].obs;
+  var remId = 1.obs;
+
+  addReminderToList(){
+    remList.add(ReminderModelTemp(always: always.value,days: remDays.value,id: remId.value,time: remTime.value,type: remType.value));
+    remType.value = "notification";
+    remTime.value = TimeOfDay.now();
+    always.value = true;
+    remDays.value = [];
+    remId.value = remId.value +1;
+  }
+
+
   addReminder(int repetition) async {
     try {
       var entity = TaskReminderModelCompanion(
@@ -215,7 +233,7 @@ class AddHabbitSelectController extends GetxController {
           isCompletedAc: drift.Value(customAlarm.value),
           days: drift.Value(customDays.join(',')));
 
-      var data = await dbController.appDB.insertReminder(entity);
+      var data = await dbcontroller.appDB.insertReminder(entity);
 
       reminderTime.value = DateTime.now();
       alwaysenabled.value = true;
@@ -273,7 +291,7 @@ class AddHabbitSelectController extends GetxController {
         type: drift.Value(updateRepetation.value),
       );
 
-      var data = await dbController.appDB.insertRecurringRepetition(entity);
+      var data = await dbcontroller.appDB.insertRecurringRepetition(entity);
 
       await addReminder(data);
     } catch (e) {
@@ -294,7 +312,7 @@ class AddHabbitSelectController extends GetxController {
         type: drift.Value(updateRepetation.value),
       );
 
-      var data = await dbController.appDB.insertRecurringRepetition(entity);
+      var data = await dbcontroller.appDB.insertRecurringRepetition(entity);
 
       await editHabit();
     } catch (e) {
@@ -307,7 +325,7 @@ class AddHabbitSelectController extends GetxController {
   getTasks() {
     try {
       tasks.value = [];
-      dbController.appDB.streamHabbits().forEach((element) {
+      dbcontroller.appDB.streamHabbits().forEach((element) {
         tasks.value = element;
         // if (switchController.todoSorting.value == 'Alphabetical') {
         //   tasks.sort(
@@ -350,7 +368,7 @@ class AddHabbitSelectController extends GetxController {
   getRepetitions() {
     try {
       repetitionsData.value = [];
-      dbController.appDB.streamRecurringRepetition().forEach((element) {
+      dbcontroller.appDB.streamRecurringRepetition().forEach((element) {
         repetitionsData.value = element;
         repetitionsData.refresh();
         log(repetitionsData.length.toString());
@@ -364,7 +382,7 @@ class AddHabbitSelectController extends GetxController {
       <HabbitChecklistModelData>[].obs;
   getChecklistss() {
     try {
-      dbController.appDB.streamHabbitChecklist().forEach((element) {
+      dbcontroller.appDB.streamHabbitChecklist().forEach((element) {
         checklists.value = element;
         checklists.refresh();
         log(checklists.length.toString());
@@ -411,4 +429,15 @@ class AddHabbitSelectController extends GetxController {
       Vibration.vibrate();
     }
   }
+}
+
+
+
+class ReminderModelTemp {
+  int? id = 0;
+  TimeOfDay? time = TimeOfDay.now();
+  String? type = "notification";
+  bool? always = true;
+  List<String>? days = <String>[];
+  ReminderModelTemp({this.always=true,this.time,this.days,this.type="notification",this.id=0});
 }

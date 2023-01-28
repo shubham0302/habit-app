@@ -194,7 +194,7 @@ class MainScreen extends StatelessWidget {
                                       width: 1,
                                       color: color.disabledColor
                                           .withOpacity(0.2)))),
-                          child: const Expanded(child: SesrchAllDropDown()),
+                          child: SesrchAllDropDown(),
                         ),
                         Expanded(
                           child: GestureDetector(
@@ -365,8 +365,8 @@ class MainScreen extends StatelessWidget {
                                     text: 'plannarize'.tr,
                                     isColor: true,
                                     color: controller.tabIndex.value == 0
-                                        ? Colors.white
-                                        : Colors.black,
+                                        ? color.cardColor
+                                        : color.backgroundColor,
                                   ),
                                 ),
                                 AnimatedContainer(
@@ -377,8 +377,8 @@ class MainScreen extends StatelessWidget {
                                     text: 'plannarize'.tr,
                                     isColor: true,
                                     color: controller.tabIndex.value == 0
-                                        ? Colors.white
-                                        : Colors.black,
+                                        ? color.cardColor
+                                        : color.backgroundColor,
                                   ),
                                 ),
                                 AnimatedContainer(
@@ -389,8 +389,8 @@ class MainScreen extends StatelessWidget {
                                       text: 'Tasks'.tr,
                                       isColor: true,
                                       color: controller.tabIndex.value == 1
-                                          ? Colors.white
-                                          : Colors.black),
+                                          ? color.cardColor
+                                          : color.backgroundColor),
                                 ),
                                 AnimatedContainer(
                                   duration: const Duration(milliseconds: 350),
@@ -400,8 +400,8 @@ class MainScreen extends StatelessWidget {
                                       text: 'Categories'.tr,
                                       isColor: true,
                                       color: controller.tabIndex.value == 2
-                                          ? Colors.white
-                                          : Colors.black),
+                                          ? color.cardColor
+                                          : color.backgroundColor),
                                 ),
                                 AnimatedContainer(
                                   duration: const Duration(milliseconds: 350),
@@ -411,8 +411,8 @@ class MainScreen extends StatelessWidget {
                                       text: 'Habit'.tr,
                                       isColor: true,
                                       color: controller.tabIndex.value == 3
-                                          ? Colors.white
-                                          : Colors.black),
+                                          ? color.cardColor
+                                          : color.backgroundColor),
                                 ),
                                 AnimatedContainer(
                                   duration: const Duration(milliseconds: 350),
@@ -422,8 +422,8 @@ class MainScreen extends StatelessWidget {
                                       text: 'Timer'.tr,
                                       isColor: true,
                                       color: controller.tabIndex.value == 4
-                                          ? Colors.white
-                                          : Colors.black),
+                                          ? color.cardColor
+                                          : color.backgroundColor),
                                 ),
                               ],
                             ),
@@ -556,6 +556,7 @@ class _SesrchAllDropDownState extends State<SesrchAllDropDown> {
     ThemeData color = Theme.of(context);
     return DropdownButton(
       // Initial Value
+      underline: SizedBox(),
       value: searchController.searchDropDown.value,
       dropdownColor: color.backgroundColor,
 

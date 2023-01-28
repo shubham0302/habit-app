@@ -18,7 +18,7 @@ class StopWatch extends StatefulWidget {
 }
 
 class _StopWatchState extends State<StopWatch>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin , AutomaticKeepAliveClientMixin{
   late AnimationController _animationController;
   bool started = false;
   RxBool startStopwatch = false.obs;
@@ -104,6 +104,7 @@ class _StopWatchState extends State<StopWatch>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     TimerTabController timerTabController =
         Get.put(TimerTabController(), permanent: false);
     var color = Theme.of(context);
@@ -282,4 +283,8 @@ class _StopWatchState extends State<StopWatch>
       ])
     ]);
   }
+  
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

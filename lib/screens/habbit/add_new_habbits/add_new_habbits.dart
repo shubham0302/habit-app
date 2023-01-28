@@ -315,7 +315,8 @@ class AddHabbitsScreen extends StatelessWidget {
                           initialDate:
                               addRecurringTaskController.startDate.value,
                           firstDate: DateTime(1997),
-                          lastDate: DateTime(2030));
+                          lastDate: addRecurringTaskController.endDate.value
+                          );
                       if (newDate == null) return;
                       addRecurringTaskController.startDate.value = newDate;
                       // ToDoWeekCustomDialogBox(context);
@@ -362,7 +363,7 @@ class AddHabbitsScreen extends StatelessWidget {
                       DateTime? newDate = await showDatePicker(
                           context: context,
                           initialDate: addRecurringTaskController.endDate.value,
-                          firstDate: DateTime(1997),
+                          firstDate: addRecurringTaskController.startDate.value,
                           lastDate: DateTime(2030));
                       if (newDate == null) return;
                       addRecurringTaskController.endDate.value = newDate;
@@ -453,7 +454,7 @@ class AddHabbitsScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      ReminderCustomDialogBox(context);
+                      reminderCustomDialogBox(context);
                       // ToDoWeekCustomDialogBox(context);
                     },
                     child: Container(
