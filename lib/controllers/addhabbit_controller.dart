@@ -87,7 +87,7 @@ class AddHabbitSelectController extends GetxController {
 
   // weekDay
 
-  addHabbit(int reminder, int repetition) async {
+  addHabbit(int repetition) async {
     try {
       var entity = HabbitModelCompanion(
           repetitonId: drift.Value(repetition),
@@ -99,7 +99,7 @@ class AddHabbitSelectController extends GetxController {
           evaluate: drift.Value(selectEvaluate.value),
           habbitDescription: drift.Value(updateDescription.value),
           priority: drift.Value(updatePriority.value),
-          reminderId: drift.Value(reminder),
+          // reminderId: drift.Value(reminder),
           archive: drift.Value(false));
 
       var data = await dbcontroller.appDB.insertHabbit(entity);
@@ -158,6 +158,7 @@ class AddHabbitSelectController extends GetxController {
 
   RxList<TextEditingController> habbitChecklist =
       <TextEditingController>[TextEditingController(text: '')].obs;
+  
   addCheckLists(int taskId) async {
     try {
       await Future.forEach(
@@ -170,7 +171,39 @@ class AddHabbitSelectController extends GetxController {
         },
       );
       habbitChecklist.value = [TextEditingController(text: '')];
+      await addReminder(taskId);
+      // getTask(editIndexTemp)
+      // Get.back();
+    } catch (e) {
+      log('hahaha error $e');
+    }
+  }
 
+  addReminders(int taskId) async {
+    try {
+      await Future.forEach(
+        remList,
+        (element) async {
+          var entity = HabitReminderModelCompanion(
+              reminderTime: drift.Value(DateTime(
+                DateTime.now().toLocal().year,
+                DateTime.now().toLocal().month,
+                DateTime.now().toLocal().day,
+                element.time!.hour,
+                element.time!.minute,
+              )
+              ),
+              type: drift.Value(element.type!),
+              always: drift.Value(element.always!),
+              days: drift.Value(element.days!.join('-')),
+              habitId: drift.Value(taskId),
+              );
+          var data = await dbcontroller.appDB.insertHabitReminder(entity);
+        },
+      );
+      habbitChecklist.value = [TextEditingController(text: '')];
+      remId.value = 1;
+      remList.value = [];
       // getTask(editIndexTemp)
       Get.back();
     } catch (e) {
@@ -267,10 +300,112 @@ class AddHabbitSelectController extends GetxController {
       customVibration.value = true;
       customAlarm.value = true;
       customDays.value = [];
-
-      await addHabbit(data, repetition);
+      remList.value = [];
+    Get.back();
+      // await addHabbit(data, repetition);
     } catch (e) {
       log('hahaha error $e');
+    }
+  }
+
+  var statusListOfDay = [
+  DateTime.now().add(Duration(days: -6)),
+  DateTime.now().add(Duration(days: -5)),
+  DateTime.now().add(Duration(days: -4)),
+  DateTime.now().add(Duration(days: -3)),
+  DateTime.now().add(Duration(days: -2)),
+  DateTime.now().add(Duration(days: -1)),
+  DateTime.now(),
+  ];
+
+  RxList<HabitStatusModelData> status = <HabitStatusModelData>[].obs;
+
+
+  getStatusOfHabit(){
+    dbcontroller.appDB.streamHabbitStatus().forEach((element) {
+      status.value = element;
+      status.refresh();
+    });
+  }
+
+
+  addStatus(int habitId,String statusP,DateTime dateP,int id) async{
+    var statusD = 'initial';
+    switch (statusP) {
+      case 'initial':
+        statusD = 'success';
+        break;
+      case 'success':
+        statusD = 'cancel';
+        break;
+      case 'cancel':
+        statusD = 'initial';
+        break;
+      default:
+    }
+    
+    if(id==0){
+    var entity = HabitStatusModelCompanion(
+      habitId: drift.Value(habitId),
+      status: drift.Value(statusD),
+      date: drift.Value(dateP)
+    );
+    var result = await dbcontroller.appDB.insertHabbitStatus(entity);
+    }else{
+    var entity = HabitStatusModelCompanion(
+      statusId: drift.Value(id),
+      habitId: drift.Value(habitId),
+      status: drift.Value(statusD),
+      date: drift.Value(dateP)
+    );
+    var result = await dbcontroller.appDB.updateHabbitStatus(entity);
+    }
+
+
+
+
+
+  }
+
+  getColorByStatus(String status, DateTime date){
+    switch (status) {
+      case 'initial':
+        return checkDate(date, DateTime.now())? Colors.white: Colors.amber;
+      case 'success':
+        return Colors.green;
+      case 'cancel':
+        return Colors.red;
+      default:
+        return checkDate(date, DateTime.now())? Colors.white: Colors.amber;
+    }
+  }
+
+  checkDate(DateTime a, DateTime b){
+    if(a.year == b.year && a.month == b.month && a.day == b.day){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  giveDay(int day){
+    switch (day) {
+      case 0:
+        return 'sun';
+      case 1:
+        return 'mon';
+      case 2:
+        return 'tue';
+      case 3:
+        return 'wed';
+      case 4:
+        return 'thu';
+      case 5:
+        return 'fri';
+      case 6:
+        return 'sat';
+      default:
+        return 'sun';
     }
   }
 
@@ -319,7 +454,7 @@ class AddHabbitSelectController extends GetxController {
 
       var data = await dbcontroller.appDB.insertRecurringRepetition(entity);
 
-      await addReminder(data);
+      await addHabbit(data);
     } catch (e) {
       log('hahaha error $e');
     }
@@ -383,6 +518,7 @@ class AddHabbitSelectController extends GetxController {
         tasks.refresh();
         log("tasks ${tasks.length.toString()}");
       });
+      getStatusOfHabit();
     } catch (e) {
       log('hahaha error $e');
     }
