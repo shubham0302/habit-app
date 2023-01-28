@@ -152,7 +152,7 @@ class AddHabbitSelectController extends GetxController {
       String hdes,
       DateTime startD,
       DateTime endD) async {
-    await dbController.appDB.updateArchive(
+    await dbcontroller.appDB.updateArchive(
         dt, id, pri, reminderid, catid, hname, eva, hdes, startD, endD);
   }
 
@@ -204,7 +204,6 @@ class AddHabbitSelectController extends GetxController {
 
   var taskReminderId = 0.obs;
 
-
   RxList<ReminderModelTemp> remList = <ReminderModelTemp>[].obs;
 
   var remType = "notification".obs;
@@ -213,15 +212,19 @@ class AddHabbitSelectController extends GetxController {
   RxList<String> remDays = <String>[].obs;
   var remId = 1.obs;
 
-  addReminderToList(){
-    remList.add(ReminderModelTemp(always: always.value,days: remDays.value,id: remId.value,time: remTime.value,type: remType.value));
+  addReminderToList() {
+    remList.add(ReminderModelTemp(
+        always: always.value,
+        days: remDays.value,
+        id: remId.value,
+        time: remTime.value,
+        type: remType.value));
     remType.value = "notification";
     remTime.value = TimeOfDay.now();
     always.value = true;
     remDays.value = [];
-    remId.value = remId.value +1;
+    remId.value = remId.value + 1;
   }
-
 
   addReminder(int repetition) async {
     try {
@@ -431,13 +434,16 @@ class AddHabbitSelectController extends GetxController {
   }
 }
 
-
-
 class ReminderModelTemp {
   int? id = 0;
   TimeOfDay? time = TimeOfDay.now();
   String? type = "notification";
   bool? always = true;
   List<String>? days = <String>[];
-  ReminderModelTemp({this.always=true,this.time,this.days,this.type="notification",this.id=0});
+  ReminderModelTemp(
+      {this.always = true,
+      this.time,
+      this.days,
+      this.type = "notification",
+      this.id = 0});
 }
