@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/timer_tab_controller.dart';
 import 'package:habbit_app/screens/timer/timer_main_screen.dart';
+import 'package:habbit_app/widgets/custom_snackbar.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
@@ -176,7 +177,12 @@ class _SetTimerComponentState extends State<SetTimerComponent> {
           Center(
             child: GestureDetector(
               onTap: () {
-                widget.changeAnimation();
+                tabController.currentvalueHour.value == 0 &&
+                        tabController.currentvalueSec.value == 0 &&
+                        tabController.currentvalueSec.value == 0
+                    ? CustomSnackbar.errorSnackbar2(
+                        'please selece time', context)
+                    : widget.changeAnimation();
                 // tabController.changeFirst();
                 // print(tabController.changeFirst());
                 // print(tabController.totalSeconds);
