@@ -403,17 +403,36 @@ class MainScreen extends StatelessWidget {
                                           ? color.cardColor
                                           : color.backgroundColor),
                                 ),
-                                AnimatedContainer(
-                                  duration: const Duration(milliseconds: 350),
-                                  height:
-                                      controller.tabIndex.value == 3 ? 20 : 0,
-                                  child: MainLabelText(
-                                      text: 'Habit'.tr,
-                                      isColor: true,
-                                      color: controller.tabIndex.value == 3
-                                          ? color.cardColor
-                                          : color.backgroundColor),
-                                ),
+                                habbitSelectController.habitArcive.value ==
+                                        false
+                                    ? AnimatedContainer(
+                                        duration:
+                                            const Duration(milliseconds: 350),
+                                        height: controller.tabIndex.value == 3
+                                            ? 20
+                                            : 0,
+                                        child: MainLabelText(
+                                            text: 'Habit'.tr,
+                                            isColor: true,
+                                            color:
+                                                controller.tabIndex.value == 3
+                                                    ? color.cardColor
+                                                    : color.backgroundColor),
+                                      )
+                                    : AnimatedContainer(
+                                        duration:
+                                            const Duration(milliseconds: 350),
+                                        height: controller.tabIndex.value == 3
+                                            ? 20
+                                            : 0,
+                                        child: MainLabelText(
+                                            text: 'Arcive'.tr,
+                                            isColor: true,
+                                            color:
+                                                controller.tabIndex.value == 3
+                                                    ? color.cardColor
+                                                    : color.backgroundColor),
+                                      ),
                                 AnimatedContainer(
                                   duration: const Duration(milliseconds: 350),
                                   height:
