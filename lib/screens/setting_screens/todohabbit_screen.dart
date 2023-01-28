@@ -129,7 +129,7 @@ class ToDoHabbitListScreen extends StatelessWidget {
                                 const BorderRadius.all(Radius.circular(10)),
                             color: color.backgroundColor),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 5),
+                          padding: const EdgeInsets.only(left: 10),
                           child: Obx(
                             () => LabelText(
                               text: switchController.activitySorting.value,
