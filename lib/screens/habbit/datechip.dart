@@ -23,42 +23,44 @@ class DateChip extends StatelessWidget {
     return Expanded(
       child: GestureDetector(
         onTap: op,
-        child: Column(
-          children: [
-            DesText(
-              text: day,
-              isWhite: true,
-            ),
-            SH.small(),
-            Container(
-              // alignment: Alignment.center,
-              height: 35,
-              width: 35,
-              decoration: BoxDecoration(
-                  border: Border.all(
-                      color:
-                          isColor != null ? selectColor! : Colors.transparent,
-                      width: 2),
-                  shape: BoxShape.circle,
-                  color: isColor != null
-                      ? selectColor!.withOpacity(.2)
-                      : color.dialogBackgroundColor),
-              child: Center(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      // SH.small(),
-
-                      // SH.medium(),
-                      LabelText(
-                        text: date,
-                        isBold: true,
-                        isWhite: true,
-                      )
-                    ]),
+        child: Container(
+          child: Column(
+            children: [
+              DesText(
+                text: day,
+                isWhite: true,
               ),
-            ),
-          ],
+              SH.small(),
+              Container(
+                // alignment: Alignment.center,
+                height: 35,
+                width: 35,
+                decoration: BoxDecoration(
+                    border: Border.all(
+                        color:
+                            isColor != null ? selectColor! : Colors.transparent,
+                        width: 2),
+                    shape: BoxShape.circle,
+                    color: isColor != null
+                        ? selectColor!.withOpacity(.2)
+                        : color.dialogBackgroundColor),
+                child: Center(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // SH.small(),
+
+                        // SH.medium(),
+                        LabelText(
+                          text: date,
+                          isBold: true,
+                          isWhite: true,
+                        )
+                      ]),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

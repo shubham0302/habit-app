@@ -92,6 +92,7 @@ class _HomePageState extends State<HomePage> {
     ThemeData color = Theme.of(context);
     return Scaffold(
         floatingActionButton: FloatingActionButton(
+          heroTag: 'Today',
           onPressed: () {
             //
             // taskController.getDownloadPath();
@@ -541,12 +542,11 @@ class HomeCard extends StatelessWidget {
               width: 35,
               decoration: BoxDecoration(
                   shape: BoxShape.circle, color: statusColor.withOpacity(0.3)),
-              child: Expanded(
-                  child: Icon(
+              child: Icon(
                 status,
                 size: 25,
                 color: statusColor,
-              )),
+              ),
             )
           ],
         ),

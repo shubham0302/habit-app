@@ -42,60 +42,35 @@ void LanguageCustomDialogBox(BuildContext context) {
                     borderRadius: BorderRadius.all(Radius.circular(20.0))),
                 backgroundColor: color.backgroundColor,
                 content: Container(
-                  width: 360,
-                  height: 480,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Center(
-                          child: LabelText(
-                            text: "Check it daily".tr,
-                            isColor: true,
-                          ),
-                        ),
-                        Container(
-                          height: 300,
-                          child: ListView.separated(
-                              itemBuilder: (context, index) {
-                                return GestureDetector(
-                                    onTap: () {
-                                      print(languageController.locale[index]
-                                          ['name']);
-                                      languageController.updateLanguage(
-                                          languageController.locale[index]
-                                              ['locale'],
-                                          languageController.locale[index]
-                                              ['name']);
-                                    },
-                                    child: LabelText(
-                                        text: languageController.locale[index]
-                                            ['name']));
+                  width: MediaQuery.of(context).size.width * .7,
+                  // constraints: BoxConstraints(maxHeight: 300),
+                  child: Column(mainAxisSize: MainAxisSize.min, children: [
+                    Center(
+                      child: LabelText(
+                        text: "Check it daily".tr,
+                        isColor: true,
+                      ),
+                    ),
+                    ListView.separated(
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                              onTap: () {
+                                print(languageController.locale[index]['name']);
+                                languageController.updateLanguage(
+                                    languageController.locale[index]['locale'],
+                                    languageController.locale[index]['name']);
                               },
-                              separatorBuilder: (context, index) {
-                                return const Divider();
-                              },
-                              itemCount: languageController.locale.length),
-                        )
-                        // SH.large(),
-                        // Divider(),
-                        // SH.large(),
-                        // GestureDetector(child: LabelText(text: "English")),
-                        // SH.large(),
-                        // Divider(),
-                        // SH.large(),
-                        // GestureDetector(
-                        //     onTap: () {
-                        //       var locale = Locale("hi", "IN");
-                        //       Get.updateLocale(locale);
-                        //     },
-                        //     child: LabelText(text: "Hindi")),
-                        // SH.large(),
-                        // LabelText(text: "Kannada"),
-                        // SH.large(),
-                        // LabelText(text: "Hindi"),
-                        // SH.large(),
-                      ]),
+                              behavior: HitTestBehavior.translucent,
+                              child: LabelText(
+                                  text: languageController.locale[index]
+                                      ['name']));
+                        },
+                        separatorBuilder: (context, index) {
+                          return const Divider();
+                        },
+                        itemCount: languageController.locale.length)
+                  ]),
                 ),
               )),
         );

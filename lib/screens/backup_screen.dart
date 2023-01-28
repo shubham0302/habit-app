@@ -75,6 +75,7 @@ class BackUpScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () {},
                   child: Container(
+                    padding: EdgeInsets.all(8),
                     height: 120,
                     width: 120,
                     decoration: BoxDecoration(
@@ -102,6 +103,7 @@ class BackUpScreen extends StatelessWidget {
                 Container(
                   height: 120,
                   width: 120,
+                  padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
                       color: color.disabledColor.withOpacity(.3),
                       borderRadius:
