@@ -1,5 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:habbit_app/helpers/local_storage_helper.dart';
 
@@ -20,6 +22,7 @@ class SwitchController extends GetxController {
   RxBool LockPinSwichChange = true.obs;
   RxBool FingerSwichChange = true.obs;
   RxBool isClassic = true.obs;
+  RxBool introOff = false.obs;
 
   setAwardData() async {
     await LocalStorageHelper.setItem(
@@ -72,6 +75,10 @@ class SwitchController extends GetxController {
         "wantSwap", SwipSwichChange.value.toString());
   }
 
+  setIntro() async {
+    await LocalStorageHelper.setItem('introtrue', introOff.value.toString());
+  }
+
   getFromLoacal() async {
     var val = await LocalStorageHelper.getItem('wantAward');
     var animation = await LocalStorageHelper.getItem('wantAnimation');
@@ -89,6 +96,7 @@ class SwitchController extends GetxController {
     var textsize = await LocalStorageHelper.getItem('textsize');
     textSizing.value = textsize ?? 'Default';
     var isIconType = await LocalStorageHelper.getItem('icontype');
+    var isIntroTrue = await LocalStorageHelper.getItem('introtrue');
 
     if (val == 'false') {
       AwardsSwichChange.value = false;
@@ -119,6 +127,12 @@ class SwitchController extends GetxController {
       isClassic.value = false;
     } else {
       isClassic.value = true;
+    }
+
+    if (isIntroTrue == 'true') {
+      introOff.value = true;
+    } else {
+      introOff.value = false;
     }
   }
 

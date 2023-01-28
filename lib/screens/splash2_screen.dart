@@ -18,15 +18,13 @@ class _SplashState extends State<Splash> {
       Get.put(LockPinController(), permanent: true);
   LanguageController languageController =
       Get.put(LanguageController(), permanent: true);
-  DBController ctrl = Get.put(DBController(),permanent: true);
+  DBController ctrl = Get.put(DBController(), permanent: true);
   @override
   Widget build(BuildContext context) {
     // Future.delayed(const Duration(seconds: 3), () {});
     return Scaffold(
-      body: Center(
-          child: MainLabelText(
-        text: "Welcome".tr,
-      )),
+      backgroundColor: Colors.black,
+      body: Center(child: Image.asset('assets/images/Logo.png')),
     );
   }
 }

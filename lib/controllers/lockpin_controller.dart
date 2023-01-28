@@ -3,12 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/helpers/local_storage_helper.dart';
 import 'package:habbit_app/screens/pin/lock_pin_dailbox.dart';
 import 'package:habbit_app/widgets/custom_snackbar.dart';
 import 'package:local_auth/local_auth.dart';
 
 class LockPinController extends GetxController {
+  SwitchController switchController =
+      Get.put(SwitchController(), permanent: false);
   TextEditingController pinSetCtrl = TextEditingController();
   RxString setpin = "".obs;
   TextEditingController pinconfirmCtrl = TextEditingController();
@@ -83,6 +86,9 @@ class LockPinController extends GetxController {
           localizedReason: 'Please authenticate to go to your app',
           options: const AuthenticationOptions(biometricOnly: true));
       if (done) {
+        // switchController.introOff.value == true
+        //     ? Get.toNamed('/home')
+        //     :
         Get.offAllNamed('/intro');
       } else {
         print('skc');
@@ -124,6 +130,9 @@ class LockPinController extends GetxController {
     if (lockType.value != 'bio') {
       var pind = await LocalStorageHelper.getItem('pin');
       if (pin.value == pind) {
+        // switchController.introOff.value == true
+        //     ? Get.toNamed('/home')
+        //     :
         Get.offAllNamed('/intro');
       } else {
         print('le');
@@ -158,7 +167,9 @@ class LockPinController extends GetxController {
         await authenticate();
       }
     } else {
-      Get.offAllNamed('/intro');
+      switchController.introOff.value == false
+          ? Get.offAllNamed('/intro')
+          : Get.offAllNamed('/home');
     }
   }
 
@@ -171,6 +182,9 @@ class LockPinController extends GetxController {
         await authenticateResume();
       }
     } else {
+      // switchController.introOff.value == true
+      //     ? Get.toNamed('/home')
+      //     :
       Get.offAllNamed('/intro');
     }
   }

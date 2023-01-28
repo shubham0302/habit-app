@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/app_labels/customize_screen.dart';
+import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
@@ -31,6 +32,8 @@ class IntroScreen extends StatelessWidget {
       'assets/images/statistics.png',
       'assets/images/paintBrush.png'
     ];
+    SwitchController switchController =
+        Get.put(SwitchController(), permanent: false);
     Size size = MediaQuery.of(context).size;
     ThemeController themeController = Get.find<ThemeController>();
     PageCntrl pageCntrl = Get.put(PageCntrl());
@@ -410,6 +413,8 @@ class IntroScreen extends StatelessWidget {
                             Expanded(
                               child: InkWell(
                                 onTap: () {
+                                  switchController.introOff.value = true;
+                                  switchController.setIntro();
                                   Get.offAllNamed('/home');
                                 },
                                 child: Container(
@@ -549,7 +554,10 @@ class IntroScreen extends StatelessWidget {
                                     pageCntrl.selectedIndex.value =
                                         pageCntrl.selectedIndex.value + 1;
                                   } else {
+                                    switchController.introOff.value = true;
+                                    switchController.setIntro();
                                     Get.offAllNamed('/home');
+                                    print(switchController.introOff.value);
                                   }
                                 },
                                 child: Container(

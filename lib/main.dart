@@ -3,6 +3,7 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/language/localString.dart';
 import 'package:habbit_app/screens/categories/categories.dart';
@@ -70,6 +71,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+  SwitchController switchController =
+      Get.put(SwitchController(), permanent: false);
   // LockPinController lockPinController = Get.find<LockPinController>();
   @override
   void initState() {
