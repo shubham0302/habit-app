@@ -195,6 +195,7 @@ class AddHabbitSelectController extends GetxController {
   var always = true.obs;
   RxList<String> remDays = <String>[].obs;
   var remId = 1.obs;
+  var remEditId = 0.obs;
 
   addReminderToList(){
     remList.add(ReminderModelTemp(always: always.value,days: remDays.value,id: remId.value,time: remTime.value,type: remType.value));
@@ -203,6 +204,28 @@ class AddHabbitSelectController extends GetxController {
     always.value = true;
     remDays.value = [];
     remId.value = remId.value +1;
+    Get.back();
+  }
+
+  editReminderToList(){
+    remList[remList.indexWhere((element) => element.id==remEditId.value)] = ReminderModelTemp(always: always.value,days: remDays.value,id: remEditId.value,time: remTime.value,type: remType.value);
+    // remList.add();
+    remList.refresh();
+    remType.value = "notification";
+    remTime.value = TimeOfDay.now();
+    always.value = true;
+    remDays.value = [];
+    remEditId.value = 0;
+    Get.back();
+  }
+
+  cancelReminderToList(){
+    // remList.add(ReminderModelTemp(always: always.value,days: remDays.value,id: remId.value,time: remTime.value,type: remType.value));
+    remType.value = "notification";
+    remTime.value = TimeOfDay.now();
+    always.value = true;
+    remDays.value = [];
+    Get.back();
   }
 
 
