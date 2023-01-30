@@ -74,6 +74,34 @@ class AddRecurringTaskController extends GetxController {
     // ToDoWeekCustomDialogBox(context);
   }
 
+  updateArchive(
+      int id,
+      bool isArchived,
+      bool archived,
+      int catID,
+      DateTime endDate,
+      String evaluate,
+      int priority,
+      String rDes,
+      String rName,
+      int reminderID,
+      int repetition,
+      DateTime startDate) async {
+    dbController.appDB.updateRecurringArchive(
+        id,
+        isArchived,
+        archived,
+        catID,
+        endDate,
+        evaluate,
+        priority,
+        rDes,
+        rName,
+        reminderID,
+        repetition,
+        startDate);
+  }
+
   // weekDay
   var categoryId = 0.obs;
   addTask(int reminder, int repetition) async {

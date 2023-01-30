@@ -105,9 +105,12 @@ void HabbitChecklistCustomDialogBox(BuildContext context) {
                             MainLabelText(text: "BACK".tr),
                             GestureDetector(
                               onTap: () {},
-                              child: MainLabelText(
-                                text: "ADD".tr,
-                                isColor: true,
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: MainLabelText(
+                                  text: "ADD".tr,
+                                  isColor: true,
+                                ),
                               ),
                             ),
                           ],

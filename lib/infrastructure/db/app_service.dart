@@ -148,6 +148,33 @@ class AppDB extends _$AppDB {
         .go();
   }
 
+  Future<bool> updateTaskArchive(
+      bool isArchived,
+      int id,
+      int pri,
+      int catid,
+      String tname,
+      DateTime taskDate,
+      String taskStatus,
+      bool pending,
+      bool archived,
+      int reminderId) async {
+    return await update(taskModel).replace(TaskModelCompanion(
+        taskId: Value(id),
+        taskName: Value(tname),
+        taskDate: Value(taskDate),
+        categoryId: Value(catid),
+        archive: Value(isArchived),
+        priority: Value(pri),
+        archived: Value(archived),
+        pendingTask: Value(pending),
+        reminderId: Value(reminderId),
+        taskStatus: Value(taskStatus)
+
+        // reminderId: Value(reminderid),
+        ));
+  }
+
 //recurringService
 
   Future<List<RecurringTaskModelData>> getRecurringTasks() async {
@@ -178,6 +205,36 @@ class AppDB extends _$AppDB {
         .go();
   }
 
+  Future<bool> updateRecurringArchive(
+      int id,
+      bool isArchived,
+      bool archived,
+      int catID,
+      DateTime endDate,
+      String evaluate,
+      int priority,
+      String rDes,
+      String rName,
+      int reminderID,
+      int repetition,
+      DateTime startDate) async {
+    return await update(recurringTaskModel).replace(RecurringTaskModelCompanion(
+      rTaskId: Value(id),
+      archive: Value(isArchived),
+      archived: Value(archived),
+      categoryId: Value(catID),
+      endDate: Value(endDate),
+      evaluate: Value(evaluate),
+      priority: Value(priority),
+      rDescription: Value(rDes),
+      rTaskName: Value(rName),
+      reminderId: Value(reminderID),
+      repetitonId: Value(repetition),
+      startDate: Value(startDate),
+      // reminderId: Value(reminderid),
+    ));
+  }
+
 //habbitService
 
   Future<List<HabbitModelData>> getHabbits() async {
@@ -187,6 +244,7 @@ class AppDB extends _$AppDB {
   Stream<List<HabbitModelData>> streamHabbits() {
     return select(habbitModel).watch();
   }
+
   Stream<List<HabitStatusModelData>> streamHabbitStatus() {
     return select(habitStatusModel).watch();
   }
@@ -231,6 +289,7 @@ class AppDB extends _$AppDB {
   Future<int> insertHabbitStatus(HabitStatusModelCompanion entity) async {
     return await into(habitStatusModel).insert(entity);
   }
+
   Future<bool> updateHabbitStatus(HabitStatusModelCompanion entity) async {
     return await update(habitStatusModel).replace(entity);
   }
@@ -325,8 +384,8 @@ class AppDB extends _$AppDB {
       HabbitChecklistModelCompanion entity) async {
     return await into(habbitChecklistModel).insert(entity);
   }
-  Future<int> insertHabitReminder(
-      HabitReminderModelCompanion entity) async {
+
+  Future<int> insertHabitReminder(HabitReminderModelCompanion entity) async {
     return await into(habitReminderModel).insert(entity);
   }
 

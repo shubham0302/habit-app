@@ -21,6 +21,10 @@ class TaskModel extends Table {
   DateTimeColumn get taskDate => dateTime().named('task_date')();
   BoolColumn get pendingTask =>
       boolean().named('task_pending').withDefault(const Constant(false))();
+  BoolColumn get archive =>
+      boolean().named('task_archive').withDefault(const Constant(false))();
+  BoolColumn get archived =>
+      boolean().named('task_archived').withDefault(const Constant(false))();
   // IntColumn get color => integer().named('category_color')();
   // IntColumn get icon => integer().named('category_icon')();
 }

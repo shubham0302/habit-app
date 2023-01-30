@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/home_page_controller.dart';
 import 'package:habbit_app/controllers/search_controller.dart';
+import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/screens/categories/categories.dart';
 import 'package:habbit_app/screens/habit_archive.dart';
 import 'package:habbit_app/widgets/search_categories_customdailog.dart';
@@ -27,6 +28,8 @@ import 'package:table_calendar/table_calendar.dart';
 
 // ignore: must_be_immutable
 class MainScreen extends StatelessWidget {
+  AddTaskController taskController =
+      Get.put(AddTaskController(), permanent: false);
   AddHabbitSelectController habbitSelectController =
       Get.put(AddHabbitSelectController(), permanent: false);
   HomePageController controller =
@@ -496,6 +499,12 @@ class MainScreen extends StatelessWidget {
                                             .habitArcive.value = true
                                         : habbitSelectController
                                             .habitArcive.value = false
+                                    : const SizedBox();
+                                controller.tabIndex.value == 1
+                                    ? taskController.taskArcive.value == false
+                                        ? taskController.taskArcive.value = true
+                                        : taskController.taskArcive.value =
+                                            false
                                     : const SizedBox();
                                 print(habbitSelectController.habitArcive.value);
                               },

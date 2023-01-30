@@ -28,6 +28,11 @@ class RecurringTaskModel extends Table {
   TextColumn get rDescription => text().named('r_description')();
   DateTimeColumn get startDate => dateTime().named('r_start_date')();
   DateTimeColumn get endDate => dateTime().named('r_end_date')();
+  BoolColumn get archive =>
+      boolean().named('recurring_archive').withDefault(const Constant(false))();
+
+  BoolColumn get archived =>
+      boolean().named('reurring_archived').withDefault(const Constant(false))();
 
   // IntColumn get color => integer().named('category_color')();
   // IntColumn get icon => integer().named('category_icon')();

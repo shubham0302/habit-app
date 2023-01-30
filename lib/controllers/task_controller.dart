@@ -51,6 +51,7 @@ class AddTaskController extends GetxController {
     Icons.checklist,
   ).obs;
   RxString updateRepetation = "Everyday".obs;
+  RxBool isArcive = false.obs;
   var updatePriority = 0.obs;
   RxString updateName = "".obs;
   RxString updateDescription = "".obs;
@@ -62,6 +63,7 @@ class AddTaskController extends GetxController {
   RxList<String> customDays = <String>[].obs;
   RxMap<String, List<TaskModelData>> dataTasks =
       <String, List<TaskModelData>>{}.obs;
+  RxBool taskArcive = false.obs;
 
   RxBool customSound = true.obs;
   RxBool customVibration = true.obs;
@@ -89,6 +91,7 @@ class AddTaskController extends GetxController {
         pendingTask: drift.Value(isPending.value),
         priority: drift.Value(updatePriority.value),
         reminderId: drift.Value(reminder),
+        taskStatus: const drift.Value('pending'),
       );
 
       var data = await dbcontroller.appDB.insertTask(entity);
@@ -97,6 +100,8 @@ class AddTaskController extends GetxController {
       date.value = DateTime.now();
       isPending.value = false;
       updatePriority.value = 0;
+      archive:
+      drift.Value(false);
 
       // category.value = '';
       // iconType.value = 0;
@@ -108,6 +113,21 @@ class AddTaskController extends GetxController {
     } catch (e) {
       log('hahaha error ${e}');
     }
+  }
+
+  updateArcive(
+      bool isArchived,
+      int id,
+      int pri,
+      int catid,
+      String tname,
+      DateTime taskDate,
+      String taskStatus,
+      bool pending,
+      bool archived,
+      int reminderId) async {
+    await dbcontroller.appDB.updateTaskArchive(isArchived, id, pri, catid,
+        tname, taskDate, taskStatus, archived, pending, reminderId);
   }
 
   editTask() async {

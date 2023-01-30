@@ -33,8 +33,7 @@ class HabitReminderModel extends Table {
   BoolColumn get always =>
       boolean().named('always').withDefault(const Constant(true))();
   TextColumn get days => text().named('day')();
+
   // IntColumn get color => integer().named('category_color')();
   // IntColumn get icon => integer().named('category_icon')();
 }
-
-

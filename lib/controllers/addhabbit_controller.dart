@@ -35,6 +35,10 @@ class AddHabbitSelectController extends GetxController {
   RxBool isArcive = false.obs;
   RxString updateRepetation = "Everyday".obs;
   RxInt updatePriority = 0.obs;
+  RxInt numaricStatus = 0.obs;
+  RxInt timeMinStatus = 0.obs;
+  RxInt timeHourStatus = 0.obs;
+  RxInt timeSecStatus = 0.obs;
   RxString updateName = "".obs;
   RxString updateDescription = "".obs;
   RxString updateGoal = "".obs;
@@ -158,7 +162,7 @@ class AddHabbitSelectController extends GetxController {
 
   RxList<TextEditingController> habbitChecklist =
       <TextEditingController>[TextEditingController(text: '')].obs;
-  
+
   addCheckLists(int taskId) async {
     try {
       await Future.forEach(
@@ -179,25 +183,34 @@ class AddHabbitSelectController extends GetxController {
     }
   }
 
+  addNumaric() {
+    numaricStatus.value = numaricStatus.value + 1;
+  }
+
+  subNumaric() {
+    if (numaricStatus.value >= 1) {
+      numaricStatus.value = numaricStatus.value - 1;
+    } else {}
+  }
+
   addReminders(int taskId) async {
     try {
       await Future.forEach(
         remList,
         (element) async {
           var entity = HabitReminderModelCompanion(
-              reminderTime: drift.Value(DateTime(
-                DateTime.now().toLocal().year,
-                DateTime.now().toLocal().month,
-                DateTime.now().toLocal().day,
-                element.time!.hour,
-                element.time!.minute,
-              )
-              ),
-              type: drift.Value(element.type!),
-              always: drift.Value(element.always!),
-              days: drift.Value(element.days!.join('-')),
-              habitId: drift.Value(taskId),
-              );
+            reminderTime: drift.Value(DateTime(
+              DateTime.now().toLocal().year,
+              DateTime.now().toLocal().month,
+              DateTime.now().toLocal().day,
+              element.time!.hour,
+              element.time!.minute,
+            )),
+            type: drift.Value(element.type!),
+            always: drift.Value(element.always!),
+            days: drift.Value(element.days!.join('-')),
+            habitId: drift.Value(taskId),
+          );
           var data = await dbcontroller.appDB.insertHabitReminder(entity);
         },
       );
@@ -257,12 +270,18 @@ class AddHabbitSelectController extends GetxController {
     remTime.value = TimeOfDay.now();
     always.value = true;
     remDays.value = [];
-    remId.value = remId.value +1;
+    remId.value = remId.value + 1;
     Get.back();
   }
 
-  editReminderToList(){
-    remList[remList.indexWhere((element) => element.id==remEditId.value)] = ReminderModelTemp(always: always.value,days: remDays.value,id: remEditId.value,time: remTime.value,type: remType.value);
+  editReminderToList() {
+    remList[remList.indexWhere((element) => element.id == remEditId.value)] =
+        ReminderModelTemp(
+            always: always.value,
+            days: remDays.value,
+            id: remEditId.value,
+            time: remTime.value,
+            type: remType.value);
     // remList.add();
     remList.refresh();
     remType.value = "notification";
@@ -273,7 +292,7 @@ class AddHabbitSelectController extends GetxController {
     Get.back();
   }
 
-  cancelReminderToList(){
+  cancelReminderToList() {
     // remList.add(ReminderModelTemp(always: always.value,days: remDays.value,id: remId.value,time: remTime.value,type: remType.value));
     remType.value = "notification";
     remTime.value = TimeOfDay.now();
@@ -301,7 +320,7 @@ class AddHabbitSelectController extends GetxController {
       customAlarm.value = true;
       customDays.value = [];
       remList.value = [];
-    Get.back();
+      Get.back();
       // await addHabbit(data, repetition);
     } catch (e) {
       log('hahaha error $e');
@@ -309,27 +328,25 @@ class AddHabbitSelectController extends GetxController {
   }
 
   var statusListOfDay = [
-  DateTime.now().add(Duration(days: -6)),
-  DateTime.now().add(Duration(days: -5)),
-  DateTime.now().add(Duration(days: -4)),
-  DateTime.now().add(Duration(days: -3)),
-  DateTime.now().add(Duration(days: -2)),
-  DateTime.now().add(Duration(days: -1)),
-  DateTime.now(),
+    DateTime.now().add(Duration(days: -6)),
+    DateTime.now().add(Duration(days: -5)),
+    DateTime.now().add(Duration(days: -4)),
+    DateTime.now().add(Duration(days: -3)),
+    DateTime.now().add(Duration(days: -2)),
+    DateTime.now().add(Duration(days: -1)),
+    DateTime.now(),
   ];
 
   RxList<HabitStatusModelData> status = <HabitStatusModelData>[].obs;
 
-
-  getStatusOfHabit(){
+  getStatusOfHabit() {
     dbcontroller.appDB.streamHabbitStatus().forEach((element) {
       status.value = element;
       status.refresh();
     });
   }
 
-
-  addStatus(int habitId,String statusP,DateTime dateP,int id) async{
+  addStatus(int habitId, String statusP, DateTime dateP, int id) async {
     var statusD = 'initial';
     switch (statusP) {
       case 'initial':
@@ -343,52 +360,45 @@ class AddHabbitSelectController extends GetxController {
         break;
       default:
     }
-    
-    if(id==0){
-    var entity = HabitStatusModelCompanion(
-      habitId: drift.Value(habitId),
-      status: drift.Value(statusD),
-      date: drift.Value(dateP)
-    );
-    var result = await dbcontroller.appDB.insertHabbitStatus(entity);
-    }else{
-    var entity = HabitStatusModelCompanion(
-      statusId: drift.Value(id),
-      habitId: drift.Value(habitId),
-      status: drift.Value(statusD),
-      date: drift.Value(dateP)
-    );
-    var result = await dbcontroller.appDB.updateHabbitStatus(entity);
+
+    if (id == 0) {
+      var entity = HabitStatusModelCompanion(
+          habitId: drift.Value(habitId),
+          status: drift.Value(statusD),
+          date: drift.Value(dateP));
+      var result = await dbcontroller.appDB.insertHabbitStatus(entity);
+    } else {
+      var entity = HabitStatusModelCompanion(
+          statusId: drift.Value(id),
+          habitId: drift.Value(habitId),
+          status: drift.Value(statusD),
+          date: drift.Value(dateP));
+      var result = await dbcontroller.appDB.updateHabbitStatus(entity);
     }
-
-
-
-
-
   }
 
-  getColorByStatus(String status, DateTime date){
+  getColorByStatus(String status, DateTime date) {
     switch (status) {
       case 'initial':
-        return checkDate(date, DateTime.now())? Colors.white: Colors.amber;
+        return checkDate(date, DateTime.now()) ? Colors.white : Colors.amber;
       case 'success':
         return Colors.green;
       case 'cancel':
         return Colors.red;
       default:
-        return checkDate(date, DateTime.now())? Colors.white: Colors.amber;
+        return checkDate(date, DateTime.now()) ? Colors.white : Colors.amber;
     }
   }
 
-  checkDate(DateTime a, DateTime b){
-    if(a.year == b.year && a.month == b.month && a.day == b.day){
+  checkDate(DateTime a, DateTime b) {
+    if (a.year == b.year && a.month == b.month && a.day == b.day) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
 
-  giveDay(int day){
+  giveDay(int day) {
     switch (day) {
       case 0:
         return 'sun';
