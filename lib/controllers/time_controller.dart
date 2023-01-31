@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:habbit_app/helpers/local_storage_helper.dart';
 
 class NotifyTimeController extends GetxController {
+  RxString listSelect = 'Habit'.obs;
   RxBool dailyProgram = true.obs;
   RxBool appNoti = true.obs;
   RxBool completedActivities = true.obs;

@@ -548,13 +548,11 @@ class HabbitsScreen extends StatelessWidget {
                                                                               'Timer') {
                                                                             TimeStatusCustomDialogBox(context,
                                                                                 index);
-                                                                          }
-                                                                          else if (habbitSelectController.tasks[index].evaluate ==
+                                                                          } else if (habbitSelectController.tasks[index].evaluate ==
                                                                               'Checklist') {
                                                                             ChecklistStatusCustomDialogBox(context,
                                                                                 index);
-                                                                          }
-                                                                           else {
+                                                                          } else {
                                                                             if (habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().indexWhere((element) => habbitSelectController.checkDate(e, element.date)) ==
                                                                                 -1) {
                                                                               habbitSelectController.addStatus(habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId, 'initial', e, 0);

@@ -36,6 +36,7 @@ class AddHabbitSelectController extends GetxController {
   RxString updateRepetation = "Everyday".obs;
   RxInt updatePriority = 0.obs;
   RxInt numaricStatus = 0.obs;
+  RxInt numaricStatus2 = 20.obs;
   RxInt timeMinStatus = 0.obs;
   RxInt timeHourStatus = 0.obs;
   RxInt timeSecStatus = 0.obs;

@@ -129,8 +129,12 @@ void NumericStatusCustomDialogBox(BuildContext context, int index) {
                                     Get.back();
                                   },
                                   child: Center(
-                                    child: Container(
-                                        child: DescriptionText(text: 'OK'.tr)),
+                                    child: GestureDetector(
+                                      onTap: () {},
+                                      child: Container(
+                                          child:
+                                              DescriptionText(text: 'OK'.tr)),
+                                    ),
                                   )),
                             ),
                           ],

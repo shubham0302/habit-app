@@ -5,10 +5,7 @@ import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
-import 'package:habbit_app/widgets/text_widget/label_text_large.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
-import 'package:habbit_app/widgets/text_widget/title_text.dart';
-import 'package:lottie/lottie.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
 void ChecklistStatusCustomDialogBox(BuildContext context, int index) {
@@ -93,7 +90,7 @@ void ChecklistStatusCustomDialogBox(BuildContext context, int index) {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    LabelText(text: 'NAme of checklist'),
+                                    const LabelText(text: 'NAme of checklist'),
                                     Container(
                                       height: 25,
                                       width: 25,
@@ -112,12 +109,12 @@ void ChecklistStatusCustomDialogBox(BuildContext context, int index) {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.add,
                               size: 20,
                             ),
                             SW.small(),
-                            MainLabelText(
+                            const MainLabelText(
                               text: 'Add List',
                               isColor: true,
                             )
@@ -158,11 +155,11 @@ void ChecklistStatusCustomDialogBox(BuildContext context, int index) {
               )),
         );
       },
-      transitionDuration: Duration(milliseconds: 200),
+      transitionDuration: const Duration(milliseconds: 200),
       barrierDismissible: true,
       barrierLabel: '',
       context: context,
       pageBuilder: (context, animation1, animation2) {
-        return SizedBox();
+        return const SizedBox();
       });
 }

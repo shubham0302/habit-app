@@ -12,6 +12,7 @@ import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
 import 'package:habbit_app/screens/taskHabbit_screen.dart';
+import 'package:habbit_app/screens/timer/add_habit_time.dart';
 import 'package:habbit_app/widgets/date_widget.dart';
 import 'package:habbit_app/widgets/icon_widget.dart';
 import 'package:habbit_app/widgets/padding.dart';
@@ -95,7 +96,8 @@ class _HomePageState extends State<HomePage> {
         floatingActionButton: FloatingActionButton(
           heroTag: 'Today',
           onPressed: () {
-            HomeFlottingCustomDialogBox(context);
+            addTimeHabitCustomDialogBox(context);
+            // HomeFlottingCustomDialogBox(context);
             //
             // taskController.getDownloadPath();
           },
