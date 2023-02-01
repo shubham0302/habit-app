@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1051301948467-n14tj20jm0jot86fip8uedfl8ia81rpn.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1051301948467-n14tj20jm0jot86fip8uedfl8ia81rpn</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCYR_SCrT0vdsQH8IsrzdknopwEQaPuYI8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1051301948467</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.habbitApp</string>
+	<key>PROJECT_ID</key>
+	<string>habbitapp-2b833</string>
+	<key>STORAGE_BUCKET</key>
+	<string>habbitapp-2b833.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1051301948467:ios:1d2819956e982b163cc746</string>
+</dict>
+</plist>
