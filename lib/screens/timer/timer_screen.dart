@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/timer_tab_controller.dart';
+import 'package:habbit_app/screens/timer/save_dailog.dart';
 import 'package:habbit_app/screens/timer/set_timer_component.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
@@ -47,7 +48,8 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
   double progress = 1.0;
 
   void notifiy() {
-    if (countText == "0:00:00") {
+    if (countText == "0:00:01") {
+      // SaveTimeCustomDialogBox(context);
       FlutterRingtonePlayer.playNotification();
     }
   }
@@ -194,6 +196,12 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
                     GestureDetector(
                       onTap: () {
                         animationController.reset();
+                        tabController.currentvalueHour.value =
+                            tabController.stopWatchHour.value;
+                        tabController.currentvalueMin.value =
+                            tabController.stopWatchMin.value;
+                        tabController.currentvalueSec.value =
+                            tabController.stopWatchSec.value;
                         tabController.currentvalueHour.value = 0;
                         tabController.currentvalueMin.value = 0;
                         tabController.currentvalueSec.value = 0;
@@ -201,6 +209,7 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
                           isPlaying = false;
                         });
                         tabController.changeFirst2();
+                        SaveTimeCustomDialogBox(context);
                       },
                       child: Container(
                         height: 35,

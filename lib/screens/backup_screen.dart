@@ -1,11 +1,19 @@
 // ignore_for_file: file_names, unused_local_variable, depend_on_referenced_packages, sized_box_for_whitespace
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:habbit_app/controllers/db_controller.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
+import 'package:habbit_app/screens/backup_logout_dailog.dart';
+import 'package:habbit_app/screens/home_screen.dart';
 import 'package:habbit_app/screens/intro_screen.dart';
+import 'package:habbit_app/screens/timer/save_dailog.dart';
+import 'package:habbit_app/services/firebase_services.dart';
+import 'package:habbit_app/widgets/custom_snackbar.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
@@ -21,6 +29,7 @@ class BackUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     PremiumController premiumController =
         Get.put(PremiumController(), permanent: false);
     DBController dbController = Get.find<DBController>();
@@ -159,20 +168,32 @@ class BackUpScreen extends StatelessWidget {
                 ),
                 SW.medium(),
                 Expanded(
-                    child: Container(
-                        alignment: Alignment.centerLeft,
-                        height: 35,
-                        width: 110,
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10)),
-                            color: color.disabledColor.withOpacity(.3)),
-                        child: const Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: LabelText(
-                            text: "hello@gmail.com",
-                          ),
-                        )))
+                    child: GestureDetector(
+                  onTap: () async {
+                    if (user == null) {
+                      await FirerbaseServices().signInWithGoggle();
+                      // Get.to(HomePage());
+                    } else {
+                      BackupLogoutCustomDialogBox(context);
+                    }
+                  },
+                  child: Container(
+                      alignment: Alignment.centerLeft,
+                      height: 35,
+                      width: 110,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: color.disabledColor.withOpacity(.3)),
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 10),
+                        child: LabelText(
+                          text: user == null
+                              ? "Click to sing in"
+                              : user.email.toString(),
+                        ),
+                      )),
+                ))
               ],
             ),
             SH.large(),

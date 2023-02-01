@@ -8,6 +8,7 @@ import 'package:habbit_app/screens/contactUS/contactsupport_dailog.dart';
 import 'package:habbit_app/screens/contactUS/reminder_dailbox.dart';
 import 'package:habbit_app/screens/contactUS/report_dailog.dart';
 import 'package:habbit_app/screens/contactUS/sendsuggestion_dailbox.dart';
+import 'package:habbit_app/screens/habbit/add_note_dailog.dart';
 import 'package:habbit_app/widgets/icon_widget.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
@@ -400,16 +401,21 @@ void habitHomeEditCustomDialogBox(BuildContext context, int index) {
                         SH.small(),
                         Divider(),
                         SH.small(),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.message,
-                              size: 25,
-                              color: color.disabledColor,
-                            ),
-                            SW.small(),
-                            LabelText(text: 'Add note....')
-                          ],
+                        GestureDetector(
+                          onTap: () {
+                            addNoteCustomDialogBox(context);
+                          },
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.message,
+                                size: 25,
+                                color: color.disabledColor,
+                              ),
+                              SW.small(),
+                              LabelText(text: 'Add note....')
+                            ],
+                          ),
                         ),
                         SH.small(),
                         Divider(),

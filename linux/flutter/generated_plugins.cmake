@@ -4,6 +4,7 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   awesome_notifications
+  flutter_secure_storage_linux
   sqlite3_flutter_libs
   url_launcher_linux
 )

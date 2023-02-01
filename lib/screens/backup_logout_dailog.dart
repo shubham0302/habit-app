@@ -2,12 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/screens/backup_screen.dart';
+import 'package:habbit_app/services/firebase_services.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
-import 'add_habit_time.dart';
-
-void SaveTimeCustomDialogBox(BuildContext context) {
+void BackupLogoutCustomDialogBox(BuildContext context) {
   ThemeData color = Theme.of(context);
 
   showGeneralDialog(
@@ -29,7 +29,9 @@ void SaveTimeCustomDialogBox(BuildContext context) {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          LabelText(text: 'Save record?'),
+                          LabelText(
+                              text:
+                                  'To change account you have to log out first. Proceed?'),
                           SH.large(),
                           Divider(),
                           SH.large(),
@@ -40,10 +42,11 @@ void SaveTimeCustomDialogBox(BuildContext context) {
                                   onTap: () {
                                     Get.back();
                                   },
-                                  child: LabelText(text: 'NO')),
+                                  child: LabelText(text: 'CANCEL')),
                               GestureDetector(
-                                onTap: () {
-                                  addTimeHabitCustomDialogBox(context);
+                                onTap: () async {
+                                  await FirerbaseServices().logOut();
+                                  Get.back();
                                 },
                                 child: LabelText(
                                   text: 'YES',
