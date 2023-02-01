@@ -9,6 +9,9 @@ class TimerTabController extends GetxController {
   var currentvalueHour = 0.obs;
   var currentvalueMin = 0.obs;
   var currentvalueSec = 0.obs;
+  var stopWatchSec = 0.obs;
+  var stopWatchMin = 0.obs;
+  var stopWatchHour = 0.obs;
   var isFirst = true.obs;
 
   int get totalSeconds =>

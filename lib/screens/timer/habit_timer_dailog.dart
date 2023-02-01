@@ -6,6 +6,8 @@ import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/category_controller.dart';
 import 'package:habbit_app/controllers/recurring_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
+import 'package:habbit_app/controllers/timer_tab_controller.dart';
+import 'package:habbit_app/screens/timer/timer_screen.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text_large.dart';
@@ -19,6 +21,8 @@ import '../habbit/numeric_status_dailogbox.dart';
 import '../habbit/time_status.dart';
 
 void HabitTimerCustomDialogBox(BuildContext context, int index) {
+  TimerTabController timerTabController =
+      Get.put(TimerTabController(), permanent: false);
   AddHabbitSelectController habbitSelectController =
       Get.put(AddHabbitSelectController(), permanent: false);
   CategoryController categoryController =
@@ -105,7 +109,9 @@ void HabitTimerCustomDialogBox(BuildContext context, int index) {
                             ? Column(
                                 children: [
                                   SH.large(),
-                                  const LabelTextLarge(text: '00:00'),
+                                  LabelTextLarge(
+                                      text:
+                                          '${timerTabController.stopWatchHour.value}:${timerTabController.stopWatchMin.value}:${timerTabController.stopWatchSec.value}'),
                                   SH.small(),
                                   const DescriptionText(text: 'Total Time'),
                                   SH.large(),

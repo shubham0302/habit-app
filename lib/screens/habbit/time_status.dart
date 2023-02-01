@@ -31,7 +31,7 @@ void TimeStatusCustomDialogBox(BuildContext context, int index) {
                       borderRadius: BorderRadius.all(Radius.circular(20.0))),
                   backgroundColor: color.backgroundColor,
                   content: Container(
-                    width: 350,
+                    // width: 350,
                     // height: 480,
                     child: Column(
                         mainAxisSize: MainAxisSize.min,

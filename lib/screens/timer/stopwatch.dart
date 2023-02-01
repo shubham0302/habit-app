@@ -4,11 +4,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/screens/timer/save_dailog.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/title_text.dart';
 
 import '../../controllers/timer_tab_controller.dart';
+import 'add_habit_time.dart';
 
 class StopWatch extends StatefulWidget {
   const StopWatch({super.key});
@@ -18,7 +20,7 @@ class StopWatch extends StatefulWidget {
 }
 
 class _StopWatchState extends State<StopWatch>
-    with SingleTickerProviderStateMixin , AutomaticKeepAliveClientMixin{
+    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   late AnimationController _animationController;
   bool started = false;
   RxBool startStopwatch = false.obs;
@@ -231,10 +233,15 @@ class _StopWatchState extends State<StopWatch>
                   // ),
                   GestureDetector(
                     onTap: () {
-                      reset();
                       laps.length = 0;
                       timerTabController.animation.value = false;
                       startStopwatch.value = false;
+                      timerTabController.stopWatchHour.value = hours;
+                      timerTabController.stopWatchMin.value = minutes;
+                      timerTabController.stopWatchSec.value = second;
+                      print(timerTabController.stopWatchSec);
+                      SaveTimeCustomDialogBox(context);
+                      reset();
                     },
                     child: Container(
                       height: 35,
@@ -283,7 +290,7 @@ class _StopWatchState extends State<StopWatch>
       ])
     ]);
   }
-  
+
   @override
   // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
