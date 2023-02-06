@@ -1,6 +1,20 @@
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:get/get.dart';
 
 class TimerTabController extends GetxController {
+  RxBool paused = false.obs;
+  pause() {
+    controller.pause();
+    paused.value = true;
+  }
+
+  resumed() {
+    controller.resume();
+    paused.value = false;
+  }
+
+  final CountDownController controller = CountDownController();
+
   RxBool animation = false.obs;
   var tabIndex = 0.obs;
 

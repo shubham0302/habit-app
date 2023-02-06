@@ -116,6 +116,7 @@ class _StopWatchState extends State<StopWatch>
         timerTabController.animation.value == true
             ? Container(
                 decoration: BoxDecoration(
+                  // border: Border.all(width: 10),
                   shape: BoxShape.circle,
                   gradient: SweepGradient(
                       // startAngle: 1,

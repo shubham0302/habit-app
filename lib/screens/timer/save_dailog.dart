@@ -1,8 +1,10 @@
 // ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_unnecessary_containers
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
+import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
 import 'add_habit_time.dart';
@@ -29,25 +31,34 @@ void SaveTimeCustomDialogBox(BuildContext context) {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          LabelText(text: 'Save record?'),
-                          SH.large(),
+                          LabelText(text: 'Save record?', isBold: true),
+                          // SH.large(),
                           Divider(),
-                          SH.large(),
+                          // SH.large(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              GestureDetector(
+                              Expanded(
+                                child: GestureDetector(
+                                    onTap: () {
+                                      Get.back();
+                                    },
+                                    behavior: HitTestBehavior.translucent,
+                                    child: DescriptionText(text: 'NO')),
+                              ),
+                              Expanded(
+                                child: GestureDetector(
                                   onTap: () {
-                                    Get.back();
+                                    addTimeHabitCustomDialogBox(context);
                                   },
-                                  child: LabelText(text: 'NO')),
-                              GestureDetector(
-                                onTap: () {
-                                  addTimeHabitCustomDialogBox(context);
-                                },
-                                child: LabelText(
-                                  text: 'YES',
-                                  isColor: true,
+                                  behavior: HitTestBehavior.translucent,
+                                  child: Container(
+                                    alignment: Alignment.centerRight,
+                                    child: DescriptionText(
+                                      text: 'YES',
+                                      isColor: true,
+                                    ),
+                                  ),
                                 ),
                               )
                             ],

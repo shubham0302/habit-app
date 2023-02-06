@@ -8,6 +8,8 @@ import 'package:habbit_app/infrastructure/model/interval_model.dart';
 class IntervalTabController extends GetxController {
   final CountDownController controller = CountDownController();
   RxBool paused = false.obs;
+  RxBool isSound = false.obs;
+  RxBool isVibration = false.obs;
   pause() {
     controller.pause();
     paused.value = true;
