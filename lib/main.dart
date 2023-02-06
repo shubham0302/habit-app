@@ -47,6 +47,13 @@ void main() async {
       channelShowBadge: true,
     ),
     NotificationChannel(
+        channelKey: 'scheduledHabit_channel',
+        channelName: 'scheduledHabit Notifications',
+        channelDescription: 'Notification for schedualed test',
+        defaultColor: Colors.red,
+        importance: NotificationImportance.High,
+        channelShowBadge: true),
+    NotificationChannel(
         channelKey: 'scheduled_channel',
         channelName: 'scheduled Notifications',
         channelDescription: 'Notification for schedualed test',

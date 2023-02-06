@@ -3,58 +3,57 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
+import 'package:habbit_app/screens/notification/notifications.dart';
+import 'package:habbit_app/utilities/notification_utilities.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
+import 'package:lottie/lottie.dart';
 
 void reminderCustomDialogBox(BuildContext context) {
   // TimeOfDay _timeOfDay = TimeOfDay(hour: 12, minute: 30);
   AddHabbitSelectController addHabbitSelectController =
       Get.put(AddHabbitSelectController(), permanent: false);
-  void _showTimePicker() async{
+  void _showTimePicker() async {
     try {
-      
-    ThemeData color = Theme.of(context);
-    var time = await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay(
-          hour: addHabbitSelectController.reminderTime.value.hour,
-          minute: addHabbitSelectController.reminderTime.value.minute),
-      builder: (context, child) {
-        return Theme(
-            data: Theme.of(context).copyWith(
-                //  textButtonTheme: ,
-                // textButtonTheme: TextButtonThemeData(style: ButtonStyle(textStyle:)),
-                colorScheme: ColorScheme.light(
-                    primary: color.primaryColor,
-                    onPrimary: color.hintColor,
-                    onSurface: color.hintColor,
-                    background: color.backgroundColor,
-                    onBackground: color.backgroundColor,
-                    primaryContainer: color.backgroundColor)),
-            child: child!);
-      },
-    );
-    if(time!=null){
-      addHabbitSelectController.remTime.value = time;
-    }
-    // .then((v) {
-    //   addHabbitSelectController.reminderTime.value = DateTime(
-    //       addHabbitSelectController.startDate.value.year,
-    //       addHabbitSelectController.startDate.value.month,
-    //       addHabbitSelectController.startDate.value.day,
-    //       v!.hour,
-    //       v.minute,
-    //       00);
+      ThemeData color = Theme.of(context);
+      var time = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay(
+            hour: addHabbitSelectController.reminderTime.value.hour,
+            minute: addHabbitSelectController.reminderTime.value.minute),
+        builder: (context, child) {
+          return Theme(
+              data: Theme.of(context).copyWith(
+                  //  textButtonTheme: ,
+                  // textButtonTheme: TextButtonThemeData(style: ButtonStyle(textStyle:)),
+                  colorScheme: ColorScheme.light(
+                      primary: color.primaryColor,
+                      onPrimary: color.hintColor,
+                      onSurface: color.hintColor,
+                      background: color.backgroundColor,
+                      onBackground: color.backgroundColor,
+                      primaryContainer: color.backgroundColor)),
+              child: child!);
+        },
+      );
+      if (time != null) {
+        addHabbitSelectController.remTime.value = time;
+      }
+      // .then((v) {
+      //   addHabbitSelectController.reminderTime.value = DateTime(
+      //       addHabbitSelectController.startDate.value.year,
+      //       addHabbitSelectController.startDate.value.month,
+      //       addHabbitSelectController.startDate.value.day,
+      //       v!.hour,
+      //       v.minute,
+      //       00);
 
-      
-    //   // addHabbitSelectController.
-    // });
-    } catch (e) {
-      
-    }
+      //   // addHabbitSelectController.
+      // });
+    } catch (e) {}
   }
 
   ThemeData color = Theme.of(context);
@@ -74,127 +73,208 @@ void reminderCustomDialogBox(BuildContext context) {
                   content: Wrap(
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
-                      
                       Center(child: LabelText(text: 'Reminders')),
                       SH.medium(),
                       Divider(),
                       SH.medium(),
-                      Obx(()=> 
-                      Container(
-                        // height: 100,
-                        // decoration: BoxDecoration(),
-                        // constraints: BoxConstraints(
-                        //   maxHeight: 100
-                        // ),
-                        child: 
-                        // ListView.separated(
-                        //   // shrinkWrap: true,
-                        //   itemBuilder: (context, index) {
-                        //   return Row(
-                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     children: [
-                        //       Icon(Icons.notifications),
-                        //       Column(
-                        //         children: [
-                        //           MainLabelText(text: '12:00 PM'),
-                        //           SH.small(),
-                        //           LabelText(text: 'Always'),
-                        //         ],
-                        //       ),
-                        //       Icon(Icons.delete_outline),
-                        //     ],
-                        //   );
-                        // }, separatorBuilder: (context, index) {
-                        //   return Divider();
-                        // }, 
-                        // itemCount: addHabbitSelectController.remList.length
-                        // ),
-                      Column(
-                          children: [
-                            ...addHabbitSelectController.remList.isNotEmpty?addHabbitSelectController.remList.map((element) => Column(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  child: GestureDetector(
-                                    onTap: (){
-                                      // addHabbitSelectController.remId.value = element.id!;
-                                      addHabbitSelectController.remTime.value = element.time!;
-                                      addHabbitSelectController.remType.value = element.type!;
-                                      addHabbitSelectController.always.value = element.always!;
-                                      addHabbitSelectController.remDays.value = element.days!;
-                                      addHabbitSelectController.remEditId.value = element.id!;
-                                      reminderCustomDialogTimerBox(context,true);
-                                    },
-                                    child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        width: 40,
-                                        height: 40,
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: color.primaryColor.withOpacity(0.2),
-                                        ),
-                                        child: Icon(element.type=="notification"?Icons.notifications:element.type=="noremind"?Icons.notifications_off:Icons.alarm,size: 20,)),
-                                      Column(
-                                        children: [
-                                          MainLabelText(text: element.time!
-                                                  .format(context)
-                                                  .toString()),
-                                          // SH.small(),
-                                          DescriptionText(text: element.always==true? 'Always Enabled':element.days!.map((e) => e.toLowerCase().capitalize).join(' - '),isColor: true,),
-                                        ],
-                                      ),
-                                      GestureDetector(
-                                        onTap: (){
-                                          addHabbitSelectController.remList.remove(element);
-                                          addHabbitSelectController.remList.refresh();
-                                        },
-                                        child: Container(
-                                          width: 40,
-                                          height: 40,
-                                          alignment: Alignment.center,
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: color.dividerColor.withOpacity(0.2),
-                                          ),
-                                          child: Icon(Icons.delete_outline,size: 20,color: color.cardColor,)),
-                                      ),
-                                    ],
+                      Obx(
+                        () => Container(
+                          // height: 100,
+                          // decoration: BoxDecoration(),
+                          // constraints: BoxConstraints(
+                          //   maxHeight: 100
+                          // ),
+                          child:
+                              // ListView.separated(
+                              //   // shrinkWrap: true,
+                              //   itemBuilder: (context, index) {
+                              //   return Row(
+                              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              //     children: [
+                              //       Icon(Icons.notifications),
+                              //       Column(
+                              //         children: [
+                              //           MainLabelText(text: '12:00 PM'),
+                              //           SH.small(),
+                              //           LabelText(text: 'Always'),
+                              //         ],
+                              //       ),
+                              //       Icon(Icons.delete_outline),
+                              //     ],
+                              //   );
+                              // }, separatorBuilder: (context, index) {
+                              //   return Divider();
+                              // },
+                              // itemCount: addHabbitSelectController.remList.length
+                              // ),
+                              Column(
+                            children: [
+                              ...addHabbitSelectController.remList.isNotEmpty
+                                  ? addHabbitSelectController.remList
+                                      .map((element) => Column(
+                                            children: [
+                                              Container(
+                                                padding: EdgeInsets.all(10),
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    // addHabbitSelectController.remId.value = element.id!;
+                                                    addHabbitSelectController
+                                                        .remTime
+                                                        .value = element.time!;
+                                                    addHabbitSelectController
+                                                        .remType
+                                                        .value = element.type!;
+                                                    addHabbitSelectController
+                                                            .always.value =
+                                                        element.always!;
+                                                    addHabbitSelectController
+                                                        .remDays
+                                                        .value = element.days!;
+                                                    addHabbitSelectController
+                                                        .remEditId
+                                                        .value = element.id!;
+                                                    reminderCustomDialogTimerBox(
+                                                        context, true);
+                                                  },
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Container(
+                                                          width: 40,
+                                                          height: 40,
+                                                          alignment:
+                                                              Alignment.center,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            color: color
+                                                                .primaryColor
+                                                                .withOpacity(
+                                                                    0.2),
+                                                          ),
+                                                          child: Icon(
+                                                            element.type ==
+                                                                    "notification"
+                                                                ? Icons
+                                                                    .notifications
+                                                                : element.type ==
+                                                                        "noremind"
+                                                                    ? Icons
+                                                                        .notifications_off
+                                                                    : Icons
+                                                                        .alarm,
+                                                            size: 20,
+                                                          )),
+                                                      Column(
+                                                        children: [
+                                                          MainLabelText(
+                                                              text: element
+                                                                  .time!
+                                                                  .format(
+                                                                      context)
+                                                                  .toString()),
+                                                          // SH.small(),
+                                                          DescriptionText(
+                                                            text: element
+                                                                        .always ==
+                                                                    true
+                                                                ? 'Always Enabled'
+                                                                : element.days!
+                                                                    .map((e) => e
+                                                                        .toLowerCase()
+                                                                        .capitalize)
+                                                                    .join(
+                                                                        ' - '),
+                                                            isColor: true,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          addHabbitSelectController
+                                                              .remList
+                                                              .remove(element);
+                                                          addHabbitSelectController
+                                                              .remList
+                                                              .refresh();
+                                                        },
+                                                        child: Container(
+                                                            width: 40,
+                                                            height: 40,
+                                                            alignment: Alignment
+                                                                .center,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                              color: color
+                                                                  .dividerColor
+                                                                  .withOpacity(
+                                                                      0.2),
                                                             ),
-                                  ),
-                                ),
-                                Divider()
-                              ],
-                            )).toList():[SizedBox(
-                              child: LabelText(text: 'No habit'),
-                            )]
-                          ],
+                                                            child: Icon(
+                                                              Icons
+                                                                  .delete_outline,
+                                                              size: 20,
+                                                              color: color
+                                                                  .cardColor,
+                                                            )),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              Divider()
+                                            ],
+                                          ))
+                                      .toList()
+                                  : [
+                                      Center(
+                                        child: Column(
+                                          children: [
+                                            SizedBox(
+                                              height: 140,
+                                              width: 140,
+                                              child: Lottie.asset(
+                                                  'assets/lottie/bell.json',
+                                                  repeat: false,
+                                                  fit: BoxFit.fill),
+                                            ),
+                                            DescriptionText(
+                                                text:
+                                                    'No reminders for this activity')
+                                          ],
+                                        ),
+                                      ),
+                                      SH.medium(),
+                                    ]
+                            ],
+                          ),
                         ),
-                      ),
                       ),
                       // SH.medium(),
                       // Divider(),
                       SH.medium(),
                       GestureDetector(
                         behavior: HitTestBehavior.translucent,
-                        onTap: (){
-                          reminderCustomDialogTimerBox(context,false);
+                        onTap: () {
+                          reminderCustomDialogTimerBox(context, false);
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              width: 20,
-                              height: 20,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(color: color.primaryColor)
-                              ),
-                              child: Icon(Icons.add)
-                            ),
+                                width: 20,
+                                height: 20,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border:
+                                        Border.all(color: color.primaryColor)),
+                                child: Icon(Icons.add)),
                             SW.medium(),
                             LabelText(text: 'NEW REMINDER')
                           ],
@@ -205,7 +285,10 @@ void reminderCustomDialogBox(BuildContext context) {
                       SH.medium(),
                       Row(
                         children: [
-                          Expanded(child: Container(child: Center(child: LabelText(text: 'CLOSE')))),
+                          Expanded(
+                              child: Container(
+                                  child:
+                                      Center(child: LabelText(text: 'CLOSE')))),
                         ],
                       ),
                     ],
@@ -219,60 +302,63 @@ void reminderCustomDialogBox(BuildContext context) {
       pageBuilder: (context, animation1, animation2) {
         return SizedBox();
       });
-
 }
 
-void reminderCustomDialogTimerBox(BuildContext context,bool isEdit) {
+void reminderCustomDialogTimerBox(BuildContext context, bool isEdit) {
   // TimeOfDay _timeOfDay = TimeOfDay(hour: 12, minute: 30);
   AddHabbitSelectController addHabbitSelectController =
       Get.put(AddHabbitSelectController(), permanent: false);
-  void _showTimePicker() async{
+  void _showTimePicker() async {
     try {
-      
-    ThemeData color = Theme.of(context);
-    var time = await showTimePicker(
-      context: context,
-      initialTime: addHabbitSelectController.remTime.value,
-      builder: (context, child) {
-        return Theme(
-            data: Theme.of(context).copyWith(
-                //  textButtonTheme: ,
-                // textButtonTheme: TextButtonThemeData(style: ButtonStyle(textStyle:)),
-                colorScheme: ColorScheme.light(
-                    primary: color.primaryColor,
-                    onPrimary: color.hintColor,
-                    onSurface: color.hintColor,
-                    background: color.backgroundColor,
-                    onBackground: color.backgroundColor,
-                    primaryContainer: color.backgroundColor)),
-            child: child!);
-      },
-    );
-    if(time!=null){
-      addHabbitSelectController.remTime.value = time;
-    }
-    // .then((v) {
-    //   addHabbitSelectController.reminderTime.value = DateTime(
-    //       addHabbitSelectController.startDate.value.year,
-    //       addHabbitSelectController.startDate.value.month,
-    //       addHabbitSelectController.startDate.value.day,
-    //       v!.hour,
-    //       v.minute,
-    //       00);
+      ThemeData color = Theme.of(context);
+      var time = await showTimePicker(
+        context: context,
+        initialTime: addHabbitSelectController.remTime.value,
+        builder: (
+          context,
+          child,
+        ) {
+          return Theme(
+              data: Theme.of(context).copyWith(
+                  //  textButtonTheme: ,
+                  // textButtonTheme: TextButtonThemeData(style: ButtonStyle(textStyle:)),
+                  colorScheme: ColorScheme.light(
+                      primary: color.primaryColor,
+                      onPrimary: color.hintColor,
+                      onSurface: color.hintColor,
+                      background: color.backgroundColor,
+                      onBackground: color.backgroundColor,
+                      primaryContainer: color.backgroundColor)),
+              child: child!);
+        },
+      );
+      if (time != null) {
+        addHabbitSelectController.remTime.value = time;
+      }
+      // .then((v) {
+      //   addHabbitSelectController.reminderTime.value = DateTime(
+      //       addHabbitSelectController.startDate.value.year,
+      //       addHabbitSelectController.startDate.value.month,
+      //       addHabbitSelectController.startDate.value.day,
+      //       v!.hour,
+      //       v.minute,
+      //       00);
 
-      
-    //   // addHabbitSelectController.
-    // });
-    } catch (e) {
-      
-    }
+      //   // addHabbitSelectController.
+      // });
+    } catch (e) {}
   }
 
   ThemeData color = Theme.of(context);
 
   showGeneralDialog(
       barrierColor: Colors.black.withOpacity(0.5),
-      transitionBuilder: (context, a1, a2, widget) {
+      transitionBuilder: (
+        context,
+        a1,
+        a2,
+        widget,
+      ) {
         return Transform.scale(
           scale: a1.value,
           child: Opacity(
@@ -307,9 +393,7 @@ void reminderCustomDialogTimerBox(BuildContext context,bool isEdit) {
                                             text: TimeOfDay(
                                                     hour:
                                                         addHabbitSelectController
-                                                            .remTime
-                                                            .value
-                                                            .hour,
+                                                            .remTime.value.hour,
                                                     minute:
                                                         addHabbitSelectController
                                                             .remTime
@@ -335,32 +419,64 @@ void reminderCustomDialogTimerBox(BuildContext context,bool isEdit) {
 
                                 SH.medium(),
 
-                                Obx(()=> Container(
+                                Obx(
+                                  () => Container(
                                     padding: EdgeInsets.zero,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      border: Border.all(color: color.dividerColor),
-                                      color: color.dividerColor.withOpacity(0.2)
-                                    ),
+                                        borderRadius: BorderRadius.circular(20),
+                                        border: Border.all(
+                                            color: color.dividerColor),
+                                        color: color.dividerColor
+                                            .withOpacity(0.2)),
                                     child: Row(
                                       children: [
                                         Expanded(
                                           child: GestureDetector(
-                                            behavior: HitTestBehavior.translucent,
-                                            onTap:(){
-                                              addHabbitSelectController.remType.value = "noremind";
-                                            } ,
+                                            behavior:
+                                                HitTestBehavior.translucent,
+                                            onTap: () {
+                                              addHabbitSelectController
+                                                  .remType.value = "noremind";
+                                            },
                                             child: Container(
                                               decoration: BoxDecoration(
-                                              color:  addHabbitSelectController.remType.value=="noremind"?color.primaryColor.withOpacity(0.2):Colors.transparent,
-                                              borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomLeft: Radius.circular(20)),
+                                                color: addHabbitSelectController
+                                                            .remType.value ==
+                                                        "noremind"
+                                                    ? color.primaryColor
+                                                        .withOpacity(0.2)
+                                                    : Colors.transparent,
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(20),
+                                                    bottomLeft:
+                                                        Radius.circular(20)),
                                               ),
-                                              padding: EdgeInsets.symmetric(vertical: 10),
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: 10),
                                               child: Column(
                                                 children: [
-                                                  Icon(Icons.notifications_off_outlined,size: 25,color: addHabbitSelectController.remType.value=="noremind"?color.primaryColor:color.cardColor,),
+                                                  Icon(
+                                                    Icons
+                                                        .notifications_off_outlined,
+                                                    size: 25,
+                                                    color:
+                                                        addHabbitSelectController
+                                                                    .remType
+                                                                    .value ==
+                                                                "noremind"
+                                                            ? color.primaryColor
+                                                            : color.cardColor,
+                                                  ),
                                                   SH.small(),
-                                                  LabelText(text: 'Don\'t remind',isColor: addHabbitSelectController.remType.value=="noremind",)
+                                                  LabelText(
+                                                    text: 'Don\'t remind',
+                                                    isColor:
+                                                        addHabbitSelectController
+                                                                .remType
+                                                                .value ==
+                                                            "noremind",
+                                                  )
                                                 ],
                                               ),
                                             ),
@@ -369,22 +485,52 @@ void reminderCustomDialogTimerBox(BuildContext context,bool isEdit) {
                                         Divider(),
                                         Expanded(
                                           child: GestureDetector(
-                                            behavior: HitTestBehavior.translucent,
-                                            onTap:(){
-                                              addHabbitSelectController.remType.value = "notification";
-                                            } ,
+                                            behavior:
+                                                HitTestBehavior.translucent,
+                                            onTap: () {
+                                              addHabbitSelectController.remType
+                                                  .value = "notification";
+                                            },
                                             child: Container(
                                               decoration: BoxDecoration(
-                                              color:  addHabbitSelectController.remType.value=="notification"?color.primaryColor.withOpacity(0.2):Colors.transparent,
-                                                border: Border.symmetric(vertical: BorderSide(color: color.dividerColor))
-                                              ),
-                                              padding: EdgeInsets.symmetric(vertical: 10),
+                                                  color:
+                                                      addHabbitSelectController
+                                                                  .remType
+                                                                  .value ==
+                                                              "notification"
+                                                          ? color.primaryColor
+                                                              .withOpacity(0.2)
+                                                          : Colors.transparent,
+                                                  border: Border.symmetric(
+                                                      vertical: BorderSide(
+                                                          color: color
+                                                              .dividerColor))),
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: 10),
                                               // color: color.primaryColor.withOpacity(0.2),
                                               child: Column(
                                                 children: [
-                                                  Icon(Icons.notifications_outlined,size: 25,color: addHabbitSelectController.remType.value=="notification"?color.primaryColor:color.cardColor,),
+                                                  Icon(
+                                                    Icons
+                                                        .notifications_outlined,
+                                                    size: 25,
+                                                    color:
+                                                        addHabbitSelectController
+                                                                    .remType
+                                                                    .value ==
+                                                                "notification"
+                                                            ? color.primaryColor
+                                                            : color.cardColor,
+                                                  ),
                                                   SH.small(),
-                                                  LabelText(text: 'Notification',isColor: addHabbitSelectController.remType.value=="notification",)
+                                                  LabelText(
+                                                    text: 'Notification',
+                                                    isColor:
+                                                        addHabbitSelectController
+                                                                .remType
+                                                                .value ==
+                                                            "notification",
+                                                  )
                                                 ],
                                               ),
                                             ),
@@ -393,23 +539,52 @@ void reminderCustomDialogTimerBox(BuildContext context,bool isEdit) {
                                         Divider(),
                                         Expanded(
                                           child: GestureDetector(
-                                            behavior: HitTestBehavior.translucent,
-                                            onTap:(){
-                                              addHabbitSelectController.remType.value = "alarm";
-                                            } ,
+                                            behavior:
+                                                HitTestBehavior.translucent,
+                                            onTap: () {
+                                              addHabbitSelectController
+                                                  .remType.value = "alarm";
+                                            },
                                             child: Container(
                                               decoration: BoxDecoration(
-                                              color:  addHabbitSelectController.remType.value=="alarm"?color.primaryColor.withOpacity(0.2):Colors.transparent,
-                                              borderRadius: BorderRadius.only(topRight: Radius.circular(20),bottomRight: Radius.circular(20)),
+                                                color: addHabbitSelectController
+                                                            .remType.value ==
+                                                        "alarm"
+                                                    ? color.primaryColor
+                                                        .withOpacity(0.2)
+                                                    : Colors.transparent,
+                                                borderRadius: BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(20),
+                                                    bottomRight:
+                                                        Radius.circular(20)),
                                                 // border: Border.symmetric(vertical: BorderSide(color: color.dividerColor))
                                               ),
-                                              padding: EdgeInsets.symmetric(vertical: 10),
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: 10),
                                               // color: color.primaryColor.withOpacity(0.2),
                                               child: Column(
                                                 children: [
-                                                  Icon(Icons.alarm,size: 25,color: addHabbitSelectController.remType.value=="alarm"?color.primaryColor:color.cardColor,),
+                                                  Icon(
+                                                    Icons.alarm,
+                                                    size: 25,
+                                                    color:
+                                                        addHabbitSelectController
+                                                                    .remType
+                                                                    .value ==
+                                                                "alarm"
+                                                            ? color.primaryColor
+                                                            : color.cardColor,
+                                                  ),
                                                   SH.small(),
-                                                  LabelText(text: 'Alarm',isColor: addHabbitSelectController.remType.value=="alarm",)
+                                                  LabelText(
+                                                    text: 'Alarm',
+                                                    isColor:
+                                                        addHabbitSelectController
+                                                                .remType
+                                                                .value ==
+                                                            "alarm",
+                                                  )
                                                 ],
                                               ),
                                             ),
@@ -538,7 +713,8 @@ void reminderCustomDialogTimerBox(BuildContext context,bool isEdit) {
                                     GestureDetector(
                                       behavior: HitTestBehavior.translucent,
                                       onTap: () {
-                                        addHabbitSelectController.always.value = true;
+                                        addHabbitSelectController.always.value =
+                                            true;
                                         // addHabbitSelectController
                                         //     .alwaysenabled.value = false;
                                       },
@@ -550,10 +726,11 @@ void reminderCustomDialogTimerBox(BuildContext context,bool isEdit) {
                                               shape: BoxShape.circle,
                                               // color: color.primaryColor,
                                               border: Border.all(
-                                                color: !addHabbitSelectController
-                                                        .always.value
-                                                    ? color.disabledColor
-                                                    : color.primaryColor,
+                                                color:
+                                                    !addHabbitSelectController
+                                                            .always.value
+                                                        ? color.disabledColor
+                                                        : color.primaryColor,
                                                 width: 2,
                                                 //   strokeAlign: StrokeAlign.outside,
                                               )),
@@ -562,10 +739,11 @@ void reminderCustomDialogTimerBox(BuildContext context,bool isEdit) {
                                             child: Container(
                                               decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
-                                                color: !addHabbitSelectController
-                                                        .always.value
-                                                    ? Colors.transparent
-                                                    : color.primaryColor,
+                                                color:
+                                                    !addHabbitSelectController
+                                                            .always.value
+                                                        ? Colors.transparent
+                                                        : color.primaryColor,
                                               ),
                                             ),
                                           ),
@@ -582,8 +760,8 @@ void reminderCustomDialogTimerBox(BuildContext context,bool isEdit) {
                                     GestureDetector(
                                       behavior: HitTestBehavior.translucent,
                                       onTap: () {
-                                        addHabbitSelectController
-                                            .always.value = false;
+                                        addHabbitSelectController.always.value =
+                                            false;
                                       },
                                       child: Obx(
                                         () => Container(
@@ -593,11 +771,10 @@ void reminderCustomDialogTimerBox(BuildContext context,bool isEdit) {
                                               shape: BoxShape.circle,
                                               // color: color.primaryColor,
                                               border: Border.all(
-                                                color:
-                                                    addHabbitSelectController
-                                                            .always.value
-                                                        ? color.disabledColor
-                                                        : color.primaryColor,
+                                                color: addHabbitSelectController
+                                                        .always.value
+                                                    ? color.disabledColor
+                                                    : color.primaryColor,
                                                 width: 2,
                                                 // strokeAlign: StrokeAlign.outside,
                                               )),
@@ -606,11 +783,10 @@ void reminderCustomDialogTimerBox(BuildContext context,bool isEdit) {
                                             child: Container(
                                               decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
-                                                color:
-                                                    addHabbitSelectController
-                                                            .always.value
-                                                        ? Colors.transparent
-                                                        : color.primaryColor,
+                                                color: addHabbitSelectController
+                                                        .always.value
+                                                    ? Colors.transparent
+                                                    : color.primaryColor,
                                               ),
                                             ),
                                           ),
@@ -625,120 +801,157 @@ void reminderCustomDialogTimerBox(BuildContext context,bool isEdit) {
                                 const Divider(),
                                 SH.medium(),
                                 Obx(
-                                  () =>
-                                      !addHabbitSelectController
-                                              .always.value
-                                          ? Column(
+                                  () => !addHabbitSelectController.always.value
+                                      ? Column(
+                                          children: [
+                                            Row(
                                               children: [
-                                                Row(
-                                                  children: [
-                                                    ...['SUN','MON','TUE','WED','THU','FRI','SAT'].map((e)=>
-                    
-                                                    Expanded(
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          if (addHabbitSelectController
-                                                              .remDays
-                                                              .contains(
-                                                                  e)) {
-                                                            addHabbitSelectController
+                                                ...[
+                                                  'SUN',
+                                                  'MON',
+                                                  'TUE',
+                                                  'WED',
+                                                  'THU',
+                                                  'FRI',
+                                                  'SAT'
+                                                ]
+                                                    .map(
+                                                      (e) => Expanded(
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            if (addHabbitSelectController
                                                                 .remDays
-                                                                .remove(e);
-                                                          } else {
-                                                            addHabbitSelectController
-                                                                .remDays
-                                                                .add(e);
-                                                          }
-                                                        },
-                                                        child: Obx(
-                                                          () => Container(
-                                                            height: 60,
-                                                            width: 50,
-                                                            decoration: BoxDecoration(
-                                                                border: Border.all(
-                                                                    color: color
-                                                                        .disabledColor
-                                                                        .withOpacity(
-                                                                            0.1),
-                                                                    width: 1)),
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(1.0),
-                                                              child: Column(
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .end,
-                                                                children: [
-                                                                  Expanded(
-                                                                      child: Center(
-                                                                          child: DescriptionText(
-                                                                    text: e,
-                                                                    isColor: addHabbitSelectController
-                                                                        .remDays
-                                                                        .contains(
-                                                                            e),
-                                                                  ))),
-                                                                  Container(
-                                                                    height: 5,
-                                                                    color: addHabbitSelectController
-                                                                            .remDays
-                                                                            .contains(
-                                                                                e)
-                                                                        ? color
-                                                                            .primaryColor
-                                                                        : color
-                                                                            .disabledColor,
-                                                                  )
-                                                                ],
+                                                                .contains(e)) {
+                                                              addHabbitSelectController
+                                                                  .remDays
+                                                                  .remove(e);
+                                                            } else {
+                                                              addHabbitSelectController
+                                                                  .remDays
+                                                                  .add(e);
+                                                            }
+                                                          },
+                                                          child: Obx(
+                                                            () => Container(
+                                                              height: 60,
+                                                              width: 50,
+                                                              decoration: BoxDecoration(
+                                                                  border: Border.all(
+                                                                      color: color
+                                                                          .disabledColor
+                                                                          .withOpacity(
+                                                                              0.1),
+                                                                      width:
+                                                                          1)),
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        1.0),
+                                                                child: Column(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .end,
+                                                                  children: [
+                                                                    Expanded(
+                                                                        child: Center(
+                                                                            child: DescriptionText(
+                                                                      text: e,
+                                                                      isColor: addHabbitSelectController
+                                                                          .remDays
+                                                                          .contains(
+                                                                              e),
+                                                                    ))),
+                                                                    Container(
+                                                                      height: 5,
+                                                                      color: addHabbitSelectController.remDays.contains(
+                                                                              e)
+                                                                          ? color
+                                                                              .primaryColor
+                                                                          : color
+                                                                              .disabledColor,
+                                                                    )
+                                                                  ],
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                    
-                                                    ).toList(),
-                                        
-                                                  
-                                                  ],
-                                                ),
+                                                    )
+                                                    .toList(),
                                               ],
-                                            )
-                                          : const SizedBox(),
+                                            ),
+                                          ],
+                                        )
+                                      : const SizedBox(),
                                 ),
-                                          SH.medium(),
-                                          Divider(),
-                                          // SH.medium(),
-                                          Container(
-                                            padding: EdgeInsets.zero,
-                                            margin: EdgeInsets.zero,
-                                            decoration: BoxDecoration(
-                                              // color: color.primaryColor.withOpacity(0.2)
-                                              // border: Border.symmetric(horizontal: Border)
-                                            ),
-                                            height: 30,
-                                            child: Row(
-                                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                                              children: [
-                                                Expanded(child: GestureDetector(
-                                                  onTap: (){
-                                                    addHabbitSelectController.cancelReminderToList();
-                                                  },
-                                                  child: Center(child: LabelText(text: 'CANCEL')))),
-                                                Container(width: 0.5,color: color.dividerColor,),
-                                                Expanded(child: GestureDetector(
-                                                  onTap: (){
-                                                    if(isEdit){
-                                                      addHabbitSelectController.editReminderToList();
-                                                    }else{
-                                                    addHabbitSelectController.addReminderToList();
-                                                    }
-                                                  },
-                                                  child: Center(child: LabelText(text: 'CONFIRM',isColor: true,)))),
-                                              ],
-                                            ),
-                                          )
+                                SH.medium(),
+                                Divider(),
+                                // SH.medium(),
+                                Container(
+                                  padding: EdgeInsets.zero,
+                                  margin: EdgeInsets.zero,
+                                  decoration: BoxDecoration(
+                                      // color: color.primaryColor.withOpacity(0.2)
+                                      // border: Border.symmetric(horizontal: Border)
+                                      ),
+                                  height: 30,
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: [
+                                      Expanded(
+                                          child: GestureDetector(
+                                              onTap: () {
+                                                addHabbitSelectController
+                                                    .cancelReminderToList();
+                                              },
+                                              child: Center(
+                                                  child: LabelText(
+                                                      text: 'CANCEL')))),
+                                      Container(
+                                        width: 0.5,
+                                        color: color.dividerColor,
+                                      ),
+                                      Expanded(
+                                          child: GestureDetector(
+                                              onTap: () async {
+                                                if (isEdit) {
+                                                  addHabbitSelectController
+                                                      .editReminderToList();
+                                                } else {
+                                                  addHabbitSelectController
+                                                      .addReminderToList();
+                                                }
+                                                // print(addHabbitSelectController
+                                                //     .remTime.value.hour
+                                                //     .toString());
+                                                // print(addHabbitSelectController
+                                                //     .remTime.value.minute
+                                                //     .toString());
+                                                // NotificationHabitReminder?
+                                                //     pickedSchedule =
+                                                //     await pickHabitReminder(
+                                                //         context, i);
+
+                                                // if (pickedSchedule != null) {
+                                                //   habitReminderNotification(
+                                                //     pickedSchedule,
+                                                //   );
+                                                // }
+                                                // addHabbitSelectController
+                                                //     .addReminderNotification(
+                                                //         context);
+                                              },
+                                              child: Center(
+                                                  child: LabelText(
+                                                text: 'CONFIRM',
+                                                isColor: true,
+                                              )))),
+                                    ],
+                                  ),
+                                )
                               ]),
                         ),
                       ],
@@ -750,8 +963,11 @@ void reminderCustomDialogTimerBox(BuildContext context,bool isEdit) {
       barrierDismissible: true,
       barrierLabel: '',
       context: context,
-      pageBuilder: (context, animation1, animation2) {
+      pageBuilder: (
+        context,
+        animation1,
+        animation2,
+      ) {
         return SizedBox();
       });
-
 }
