@@ -112,6 +112,8 @@ class AddHabbitSelectController extends GetxController {
 
       var data = await dbcontroller.appDB.insertHabbit(entity);
       await addCheckLists(data);
+      // await addReminderNotification(data);
+
       // await addReminderNotification(context);
     } catch (e) {
       log('hahaha error $e');
@@ -180,6 +182,7 @@ class AddHabbitSelectController extends GetxController {
       );
       habbitChecklist.value = [TextEditingController(text: '')];
       await addReminder(taskId);
+      // await addReminderNotification(taskId);
       // getTask(editIndexTemp)
       // Get.back();
     } catch (e) {
@@ -216,7 +219,7 @@ class AddHabbitSelectController extends GetxController {
             habitId: drift.Value(taskId),
           );
           var data = await dbcontroller.appDB.insertHabitReminder(entity);
-          // await addReminderNotification(context);
+
           // log(addReminderNotification(context).toString());
         },
       );
@@ -342,6 +345,7 @@ class AddHabbitSelectController extends GetxController {
       customAlarm.value = true;
       customDays.value = [];
       remList.value = [];
+      // await addReminderNotification(repetition);
       Get.back();
       // await addHabbit(data, repetition);
     } catch (e) {

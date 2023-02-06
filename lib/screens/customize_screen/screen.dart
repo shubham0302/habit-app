@@ -11,7 +11,9 @@ class CustomizeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData color = Theme.of(context);
     return Scaffold(
+      backgroundColor: color.backgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
