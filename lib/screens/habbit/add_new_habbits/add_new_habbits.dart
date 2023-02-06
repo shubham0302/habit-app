@@ -315,8 +315,7 @@ class AddHabbitsScreen extends StatelessWidget {
                           initialDate:
                               addRecurringTaskController.startDate.value,
                           firstDate: DateTime(1997),
-                          lastDate: addRecurringTaskController.endDate.value
-                          );
+                          lastDate: addRecurringTaskController.endDate.value);
                       if (newDate == null) return;
                       addRecurringTaskController.startDate.value = newDate;
                       // ToDoWeekCustomDialogBox(context);
@@ -454,7 +453,9 @@ class AddHabbitsScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      reminderCustomDialogBox(context);
+                      reminderCustomDialogBox(
+                        context,
+                      );
                       // ToDoWeekCustomDialogBox(context);
                     },
                     child: Container(
@@ -537,6 +538,7 @@ class AddHabbitsScreen extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {
                     addRecurringTaskController.addRepetition();
+                    addRecurringTaskController.addReminderNotification(context);
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 10),
