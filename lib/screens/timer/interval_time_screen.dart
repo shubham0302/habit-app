@@ -125,6 +125,7 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                                 height: 250,
                                 width: 250,
                                 child: CircularCountDownTimer(
+                                  // initialDuration: 2,
                                   strokeWidth: 10,
                                   controller: intervalTabController.controller,
                                   isReverse: true,
@@ -152,6 +153,7 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                                   width: 100,
                                   onComplete: () {
                                     intervalTabController.startInterval();
+                                    print('object');
                                   },
                                   fillColor: color.disabledColor,
                                   ringColor: color.primaryColor,
@@ -371,6 +373,8 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                           child: GestureDetector(
                             onTap: () {
                               intervalTabController.indexPos.value = 0;
+                              intervalTabController.loopI.value = 0;
+                              intervalTabController.intervalInd.value = 0;
                               intervalTabController.controller.reset();
                               intervalTabController.start.value = false;
                             },
@@ -400,6 +404,7 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                       padding: const EdgeInsets.all(10.0),
                       child: GestureDetector(
                         onTap: () {
+                          // intervalTabController.startInterval();
                           if (intervalTabController.intervals.length > 0) {
                             intervalTabController.start.value = true;
                             intervalTabController.startInterval();

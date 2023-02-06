@@ -18,41 +18,80 @@ class IntervalTabController extends GetxController {
     paused.value = false;
   }
 
+  var intervalInd = 0.obs;
   var indexPos = 0.obs;
   startInterval() {
     if (loopI.value == 0) {
       if (indexPos.value < intervals.length) {
-        log('ere');
         controller.restart(
             duration: intervals[indexPos.value].getTotalSceconds());
+        print(intervals[indexPos.value].getTotalSceconds());
         indexPos.value = indexPos.value + 1;
-        loopIterator.value = loopIterator.value + 1;
       } else {
         indexPos.value = 0;
-        controller.restart(
-            duration: intervals[indexPos.value].getTotalSceconds());
+        intervalInd.value = intervalInd.value + 1;
+        print('here');
+        startInterval();
+        // controller.start();
       }
-    } else if (loopI.value >= loopIterator.value) {
-      if (indexPos.value < intervals.length) {
-        log('ere fjfj ${indexPos.value} ${loopI.value} ${loopIterator.value}');
-        controller.restart(
-            duration: intervals[indexPos.value].getTotalSceconds());
-        indexPos.value = indexPos.value + 1;
-      } else {
-        log('ere fjfjf ddffd ${indexPos.value} ${loopI.value} ${loopIterator.value}');
-        indexPos.value = 1;
-        controller.restart(duration: intervals[0].getTotalSceconds());
-        loopIterator.value = loopIterator.value + 1;
-      }
-      // loopIterator.value = loopIterator.value + 1;
+      // controller.start();
+      print('objecdt');
     } else {
-      log('ere fjfjf ddffd fdfd ${indexPos.value} ${loopI.value} ${loopIterator.value}');
-      controller.reset();
-      start.value = false;
-      indexPos.value = 0;
-      loopIterator.value = 0;
+      if (intervalInd.value < loopI.value) {
+        if (indexPos.value < intervals.length) {
+          controller.restart(
+              duration: intervals[indexPos.value].getTotalSceconds());
+          print(intervals[indexPos.value].getTotalSceconds());
+          indexPos.value = indexPos.value + 1;
+        } else {
+          indexPos.value = 0;
+          intervalInd.value = intervalInd.value + 1;
+          print('here');
+          startInterval();
+          // controller.start();
+        }
+      } else {
+        indexPos.value = 0;
+        intervalInd.value = 0;
+        loopI.value = 0;
+        print('exit');
+      }
     }
   }
+  // startInterval() {
+  //   if (loopI.value == 0) {
+  //     if (indexPos.value < intervals.length) {
+  //       log('ere');
+  //       controller.restart(
+  //           duration: intervals[indexPos.value].getTotalSceconds());
+  //       indexPos.value = indexPos.value + 1;
+  //       loopIterator.value = loopIterator.value + 1;
+  //     } else {
+  //       indexPos.value = 0;
+  //       controller.restart(
+  //           duration: intervals[indexPos.value].getTotalSceconds());
+  //     }
+  //   } else if (loopI.value >= loopIterator.value) {
+  //     if (indexPos.value < intervals.length) {
+  //       log('ere fjfj ${indexPos.value} ${loopI.value} ${loopIterator.value}');
+  //       controller.restart(
+  //           duration: intervals[indexPos.value].getTotalSceconds());
+  //       indexPos.value = indexPos.value + 1;
+  //     } else {
+  //       log('ere fjfjf ddffd ${indexPos.value} ${loopI.value} ${loopIterator.value}');
+  //       indexPos.value = 1;
+  //       controller.restart(duration: intervals[0].getTotalSceconds());
+  //       loopIterator.value = loopIterator.value + 1;
+  //     }
+  //     // loopIterator.value = loopIterator.value + 1;
+  //   } else {
+  //     log('ere fjfjf ddffd fdfd ${indexPos.value} ${loopI.value} ${loopIterator.value}');
+  //     controller.reset();
+  //     start.value = false;
+  //     indexPos.value = 0;
+  //     loopIterator.value = 0;
+  //   }
+  // }
 
   var loopI = 0.obs;
   var loopIterator = 0.obs;
