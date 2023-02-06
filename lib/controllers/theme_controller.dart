@@ -7,7 +7,7 @@ import 'package:habbit_app/helpers/local_storage_helper.dart';
 class ThemeController extends GetxController {
   RxBool _isDark = false.obs;
   var _themeModeData = CScreenLabels.oprionsForBrightness[0].obs;
-  RxString _mode = 'red'.obs;
+  RxString _mode = 'free1'.obs;
 
   bool get isDark => _isDark.value;
   String get mode => _mode.value;

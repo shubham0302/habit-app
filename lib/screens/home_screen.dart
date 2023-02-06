@@ -101,7 +101,7 @@ class _HomePageState extends State<HomePage> {
             //
             // taskController.getDownloadPath();
           },
-          backgroundColor: color.primaryColor,
+          backgroundColor: color.primaryColorLight,
           child: const Icon(Icons.add),
         ),
         backgroundColor: color.backgroundColor,
