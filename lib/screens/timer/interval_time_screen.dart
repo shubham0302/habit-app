@@ -2,6 +2,7 @@
 
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/interval_controller.dart';
 import 'package:habbit_app/controllers/premium_controller.dart';
@@ -12,6 +13,7 @@ import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_field/input_fields.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
+import 'package:vibration/vibration.dart';
 
 class IntervalTimeScreen extends StatefulWidget {
   const IntervalTimeScreen({super.key});
@@ -125,6 +127,7 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                                 height: 250,
                                 width: 250,
                                 child: CircularCountDownTimer(
+                                  // initialDuration: 2,
                                   strokeWidth: 10,
                                   controller: intervalTabController.controller,
                                   isReverse: true,
@@ -150,8 +153,21 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                                       .getTotalSceconds(),
                                   height: 100,
                                   width: 100,
-                                  onComplete: () {
+                                  onComplete: () async {
+                                    if (intervalTabController
+                                        .isVibration.value) {
+                                      if (await Vibration.hasVibrator() ==
+                                          true) {
+                                        Vibration.vibrate();
+                                      }
+                                    }
+                                    print(intervalTabController.isSound.value);
+                                    if (intervalTabController.isSound.value) {
+                                      FlutterRingtonePlayer.playNotification();
+                                    }
+
                                     intervalTabController.startInterval();
+                                    print('object');
                                   },
                                   fillColor: color.disabledColor,
                                   ringColor: color.primaryColor,
@@ -188,7 +204,7 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                                                   SH.small(),
                                                   DescriptionText(
                                                     text:
-                                                        'There are no custom categories'
+                                                        'There are no custom intervals'
                                                             .tr,
                                                     // isBold: true,
                                                   ),
@@ -371,6 +387,8 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                           child: GestureDetector(
                             onTap: () {
                               intervalTabController.indexPos.value = 0;
+                              intervalTabController.loopI.value = 0;
+                              intervalTabController.intervalInd.value = 0;
                               intervalTabController.controller.reset();
                               intervalTabController.start.value = false;
                             },
@@ -400,6 +418,7 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                       padding: const EdgeInsets.all(10.0),
                       child: GestureDetector(
                         onTap: () {
+                          // intervalTabController.startInterval();
                           if (intervalTabController.intervals.length > 0) {
                             intervalTabController.start.value = true;
                             intervalTabController.startInterval();

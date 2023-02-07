@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/controllers/home_page_controller.dart';
+import 'package:habbit_app/controllers/interval_controller.dart';
 import 'package:habbit_app/controllers/search_controller.dart';
 import 'package:habbit_app/controllers/task_controller.dart';
 import 'package:habbit_app/screens/categories/categories.dart';
@@ -28,6 +29,8 @@ import 'package:table_calendar/table_calendar.dart';
 
 // ignore: must_be_immutable
 class MainScreen extends StatelessWidget {
+  IntervalTabController tabController =
+      Get.put(IntervalTabController(), permanent: false);
   AddTaskController taskController =
       Get.put(AddTaskController(), permanent: false);
   AddHabbitSelectController habbitSelectController =
@@ -491,6 +494,10 @@ class MainScreen extends StatelessWidget {
                             },
                             child: GestureDetector(
                               onTap: () {
+                                controller.tabIndex.value == 4
+                                    ? tabController.isSound.value =
+                                        !tabController.isSound.value
+                                    : null;
                                 controller.tabIndex.value == 3
                                     ? habbitSelectController
                                                 .habitArcive.value ==
@@ -508,28 +515,51 @@ class MainScreen extends StatelessWidget {
                                     : const SizedBox();
                                 print(habbitSelectController.habitArcive.value);
                               },
-                              child: Icon(
-                                controller.tabIndex.value == 0
-                                    ? Icons.calendar_month
-                                    : controller.tabIndex.value == 1
-                                        ? Icons.move_to_inbox
-                                        : controller.tabIndex.value == 2
-                                            ? Icons.category
-                                            : controller.tabIndex.value == 3
-                                                ? (habbitSelectController
-                                                            .habitArcive
-                                                            .value ==
-                                                        false
-                                                    ? Icons.archive_outlined
-                                                    : Icons.archive_rounded)
-                                                : controller.tabIndex.value == 4
-                                                    ? Icons.notifications_active
-                                                    : Icons.not_accessible,
-                                color: color.disabledColor,
-                                size: 30,
+                              child: Obx(
+                                () => Icon(
+                                  controller.tabIndex.value == 0
+                                      ? Icons.calendar_month
+                                      : controller.tabIndex.value == 1
+                                          ? Icons.move_to_inbox
+                                          : controller.tabIndex.value == 2
+                                              ? Icons.category
+                                              : controller.tabIndex.value == 3
+                                                  ? (habbitSelectController
+                                                              .habitArcive
+                                                              .value ==
+                                                          false
+                                                      ? Icons.archive_outlined
+                                                      : Icons.archive_rounded)
+                                                  : controller.tabIndex.value ==
+                                                          4
+                                                      ? Icons
+                                                          .notifications_active
+                                                      : Icons.not_accessible,
+                                  color: controller.tabIndex.value == 4 &&
+                                          tabController.isSound.value == true
+                                      ? color.cardColor
+                                      : color.disabledColor,
+                                  size: 30,
+                                ),
                               ),
                             ),
                           ),
+                          SW.medium(),
+                          controller.tabIndex.value == 4
+                              ? Obx(() => GestureDetector(
+                                    onTap: () {
+                                      tabController.isVibration.value =
+                                          !tabController.isVibration.value;
+                                    },
+                                    child: Icon(
+                                      Icons.vibration,
+                                      size: 30,
+                                      color: tabController.isVibration.value
+                                          ? color.cardColor
+                                          : color.disabledColor,
+                                    ),
+                                  ))
+                              : Container()
                         ],
                       )
                     ],

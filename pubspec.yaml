@@ -66,6 +66,13 @@ dependencies:
   weekly_date_picker: ^1.3.0
   flutter_staggered_animations: ^1.1.1
   animated_text_kit: ^4.2.2
+  firebase_auth: ^4.2.5
+  google_sign_in: ^5.4.4
+  firebase_core: ^2.4.1
+  googleapis: ^10.0.0
+  googleapis_auth: ^1.3.1
+  flutter_secure_storage: ^7.0.1
+  # vibration: ^1.7.6
 
 
 

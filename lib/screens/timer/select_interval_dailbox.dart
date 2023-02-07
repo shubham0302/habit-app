@@ -173,33 +173,40 @@ void SelectInterTimeCustomDialogBox(BuildContext context) {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    Get.back();
-                                  },
-                                  child: LabelText(
-                                    text: 'CLOSE'.tr,
-                                    isBold: true,
+                                Expanded(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Get.back();
+                                    },
+                                    child: LabelText(
+                                      text: 'CLOSE'.tr,
+                                      isBold: true,
+                                    ),
                                   ),
                                 ),
-                                GestureDetector(
-                                  onTap: () {
-                                    intervalTabController.addInterval(
-                                        intervalTabController
-                                            .currentvalueHour.value,
-                                        intervalTabController
-                                            .currentvalueMin.value,
-                                        intervalTabController
-                                            .currentvalueSec.value,
-                                        intervalTabController
-                                            .breakSwitch.value);
-                                    Get.back();
-                                  },
-                                  behavior: HitTestBehavior.translucent,
-                                  child: LabelText(
-                                    text: 'OK'.tr,
-                                    isBold: true,
-                                    isColor: true,
+                                Expanded(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      intervalTabController.addInterval(
+                                          intervalTabController
+                                              .currentvalueHour.value,
+                                          intervalTabController
+                                              .currentvalueMin.value,
+                                          intervalTabController
+                                              .currentvalueSec.value,
+                                          intervalTabController
+                                              .breakSwitch.value);
+                                      Get.back();
+                                    },
+                                    behavior: HitTestBehavior.translucent,
+                                    child: Container(
+                                      alignment: Alignment.centerRight,
+                                      child: LabelText(
+                                        text: 'OK'.tr,
+                                        isBold: true,
+                                        isColor: true,
+                                      ),
+                                    ),
                                   ),
                                 )
                               ],

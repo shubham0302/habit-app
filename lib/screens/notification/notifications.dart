@@ -1,4 +1,6 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:get/get.dart';
+import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/utilities/notification_utilities.dart';
 
 Future<void> createFirstNotification() async {
@@ -58,6 +60,33 @@ Future<void> createDailyNotification(
           // weekday: notificationSchedule.dayOfTheWeek,
           hour: notificationSchedule.timeOfDay.hour,
           minute: notificationSchedule.timeOfDay.minute,
+          second: 0,
+          millisecond: 0,
+          repeats: true));
+}
+
+Future<void> habitReminderNotification(
+    NotificationHabitReminder notificationScheduled, index) async {
+  AddHabbitSelectController habbitSelectController =
+      Get.put(AddHabbitSelectController(), permanent: false);
+  await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+          id: createUniqueId(),
+          channelKey: 'scheduledHabit_channel',
+          title: "${habbitSelectController.tasks[index].habitName}",
+          body: 'Lodunvfkj ',
+          // bigPicture: 'assets://assets/images/middle.jpeg',
+          notificationLayout: NotificationLayout.Default),
+      actionButtons: [
+        NotificationActionButton(
+          key: 'MARK_DONE',
+          label: 'Mark Done',
+        ),
+      ],
+      schedule: NotificationCalendar(
+          // weekday: notificationSchedule.dayOfTheWeek,
+          hour: notificationScheduled.timeOfDay.hour,
+          minute: notificationScheduled.timeOfDay.minute,
           second: 0,
           millisecond: 0,
           repeats: true));

@@ -177,21 +177,24 @@ class _SetTimerComponentState extends State<SetTimerComponent> {
           Center(
             child: GestureDetector(
               onTap: () {
-                tabController.currentvalueHour.value == 0 &&
-                        tabController.currentvalueSec.value == 0 &&
-                        tabController.currentvalueSec.value == 0
-                    ? CustomSnackbar.errorSnackbar2(
-                        'please selece time', context)
-                    : widget.changeAnimation();
+                if (tabController.currentvalueHour.value == 0 &&
+                    tabController.currentvalueSec.value == 0 &&
+                    tabController.currentvalueMin.value == 0) {
+                  CustomSnackbar.errorSnackbar2('please selece time', context);
+                } else {
+                  widget.changeAnimation();
+                }
+
                 // tabController.changeFirst();
                 // print(tabController.changeFirst());
                 // print(tabController.totalSeconds);
               },
               child: Container(
-                height: 35,
-                width: 90,
+                height: 40,
+                width: 100,
+                padding: const EdgeInsets.symmetric(vertical: 8),
                 decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(30)),
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
                     color: color.primaryColor),
                 child: Center(
                     child: LabelText(

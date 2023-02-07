@@ -9,9 +9,12 @@ import 'package:get/get.dart';
 import 'package:drift/drift.dart' as drift;
 import 'package:habbit_app/controllers/db_controller.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
+import 'package:path/path.dart';
 import 'package:vibration/vibration.dart';
 
 import '../infrastructure/db/app_service.dart';
+import '../screens/notification/notifications.dart';
+import '../utilities/notification_utilities.dart';
 
 class AddHabbitSelectController extends GetxController {
   DBController dbcontroller = Get.find<DBController>();
@@ -111,8 +114,10 @@ class AddHabbitSelectController extends GetxController {
           archive: drift.Value(false));
 
       var data = await dbcontroller.appDB.insertHabbit(entity);
-
       await addCheckLists(data);
+      // await addReminderNotification(data);
+
+      // await addReminderNotification(context);
     } catch (e) {
       log('hahaha error $e');
     }
@@ -180,6 +185,7 @@ class AddHabbitSelectController extends GetxController {
       );
       habbitChecklist.value = [TextEditingController(text: '')];
       await addReminder(taskId);
+      // await addReminderNotification(taskId);
       // getTask(editIndexTemp)
       // Get.back();
     } catch (e) {
@@ -216,11 +222,14 @@ class AddHabbitSelectController extends GetxController {
             habitId: drift.Value(taskId),
           );
           var data = await dbcontroller.appDB.insertHabitReminder(entity);
+
+          // log(addReminderNotification(context).toString());
         },
       );
       habbitChecklist.value = [TextEditingController(text: '')];
       remId.value = 1;
       remList.value = [];
+      // addReminderNotification(context);
       // getTask(editIndexTemp)
       Get.back();
     } catch (e) {
@@ -278,6 +287,21 @@ class AddHabbitSelectController extends GetxController {
     Get.back();
   }
 
+  addReminderNotification(
+    context,
+  ) async {
+    for (var i = 0; i <= remList.length; i++) {
+      // print(remList.time.toString());
+      print(remTime.value.minute.toString());
+      NotificationHabitReminder? pickedSchedule =
+          await pickHabitReminder(context, i);
+
+      if (pickedSchedule != null) {
+        habitReminderNotification(pickedSchedule, i);
+      }
+    }
+  }
+
   editReminderToList() {
     remList[remList.indexWhere((element) => element.id == remEditId.value)] =
         ReminderModelTemp(
@@ -324,6 +348,7 @@ class AddHabbitSelectController extends GetxController {
       customAlarm.value = true;
       customDays.value = [];
       remList.value = [];
+      // await addReminderNotification(repetition);
       Get.back();
       // await addHabbit(data, repetition);
     } catch (e) {

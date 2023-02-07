@@ -73,15 +73,13 @@ void NumericStatusCustomDialogBox(BuildContext context, int index,DateTime day,S
                                 Expanded(
                                     child: Container(
                                   height: MediaQuery.of(context).size.height,
-                                  color: color.disabledColor.withOpacity(0.9),
+                                  color: color.backgroundColor.withOpacity(0.4),
                                   child: Center(
                                       child: Obx(
                                     () => LabelTextLarge(
                                       text: habbitSelectController
                                           .numaricStatus.value
                                           .toString(),
-                                      isColor: true,
-                                      color: Colors.black,
                                     ),
                                   )),
                                 )),

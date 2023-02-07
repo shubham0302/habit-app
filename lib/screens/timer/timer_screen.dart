@@ -1,9 +1,11 @@
 // ignore_for_file: depend_on_referenced_packages, sized_box_for_whitespace, avoid_print
 
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/timer_tab_controller.dart';
+import 'package:habbit_app/screens/timer/save_dailog.dart';
 import 'package:habbit_app/screens/timer/set_timer_component.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
@@ -47,7 +49,8 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
   double progress = 1.0;
 
   void notifiy() {
-    if (countText == "0:00:00") {
+    if (countText == "0:00:01") {
+      // SaveTimeCustomDialogBox(context);
       FlutterRingtonePlayer.playNotification();
     }
   }
@@ -95,6 +98,7 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
               },
             )
           : Column(
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -104,54 +108,88 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
                   width: MediaQuery.of(context).size.width,
                   // color: color.cardColor,
                   child: Column(children: [
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        SizedBox(
-                            width: 300,
-                            height: 300,
-                            child: CircularProgressIndicator(
-                              color: color.primaryColor,
-                              backgroundColor:
-                                  color.disabledColor.withOpacity(0.6),
-                              value: progress,
-                              strokeWidth: 10,
-                            )),
-                        GestureDetector(
-                          onTap: () {
-                            if (animationController.isDismissed) {
-                              showModalBottomSheet(
-                                  context: context,
-                                  builder: (context) => Container(
-                                        height: 300,
-                                        child: CupertinoTimerPicker(
-                                          initialTimerDuration:
-                                              animationController.duration!,
-                                          backgroundColor:
-                                              color.backgroundColor,
-                                          onTimerDurationChanged: (time) {
-                                            setState(() {
-                                              animationController.duration =
-                                                  time;
-                                            });
-                                          },
-                                        ),
-                                      ));
-                            }
-                          },
-                          child: AnimatedBuilder(
-                            animation: animationController,
-                            builder: (context, child) => Text(
-                              countText,
-                              style: TextStyle(
-                                  fontSize: 60,
-                                  fontWeight: FontWeight.bold,
-                                  color: color.primaryColor),
-                            ),
-                          ),
-                        ),
-                      ],
+                    Container(
+                      height: 250,
+                      width: 250,
+                      child: CircularCountDownTimer(
+                        // initialDuration: 2,
+                        strokeWidth: 10,
+                        controller: tabController.controller,
+                        isReverse: true,
+                        // autoStart: false,
+                        textStyle: const TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                        // textFormat: ,
+                        
+                        textFormat: tabController.totalSeconds >= 3600
+                            ? CountdownTextFormat.HH_MM_SS
+                            : tabController.totalSeconds >= 60
+                                ? CountdownTextFormat.MM_SS
+                                : CountdownTextFormat.SS,
+                        duration: tabController.totalSeconds,
+                        height: 100,
+                        width: 100,
+                        onComplete: () {
+                          tabController.changeFirst2();
+                          FlutterRingtonePlayer.playNotification();
+                          SaveTimeCustomDialogBox(context);
+                          // intervalTabController.startInterval();
+                          print('object');
+                        },
+                        fillColor: color.disabledColor,
+                        ringColor: color.primaryColor,
+                      ),
                     ),
+                    // Stack(
+                    //   alignment: Alignment.center,
+                    //   children: [
+                    //     SizedBox(
+                    //         width: 300,
+                    //         height: 300,
+                    //         child: CircularProgressIndicator(
+                    //           color: color.primaryColor,
+                    //           backgroundColor:
+                    //               color.disabledColor.withOpacity(0.6),
+                    //           value: progress,
+                    //           strokeWidth: 10,
+                    //         )),
+                    //     GestureDetector(
+                    //       onTap: () {
+                    //         if (animationController.isDismissed) {
+                    //           showModalBottomSheet(
+                    //               context: context,
+                    //               builder: (context) => Container(
+                    //                     height: 300,
+                    //                     child: CupertinoTimerPicker(
+                    //                       initialTimerDuration:
+                    //                           animationController.duration!,
+                    //                       backgroundColor:
+                    //                           color.backgroundColor,
+                    //                       onTimerDurationChanged: (time) {
+                    //                         setState(() {
+                    //                           animationController.duration =
+                    //                               time;
+                    //                         });
+                    //                       },
+                    //                     ),
+                    //                   ));
+                    //         }
+                    //       },
+                    //       child: AnimatedBuilder(
+                    //         animation: animationController,
+                    //         builder: (context, child) => Text(
+                    //           countText,
+                    //           style: TextStyle(
+                    //               fontSize: 60,
+                    //               fontWeight: FontWeight.bold,
+                    //               color: color.primaryColor),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
                   ]),
                 ),
                 Row(
@@ -159,59 +197,58 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        print(tabController.totalSeconds);
-                        if (animationController.isAnimating) {
-                          animationController.stop();
-                          setState(() {
-                            isPlaying = false;
-                          });
-                        } else {
-                          animationController.reverse(
-                              from: animationController.value == 0
-                                  ? 1.0
-                                  : animationController.value);
-                          setState(() {
-                            isPlaying = true;
-                          });
-                        }
+                        tabController.paused.value == true
+                            ? tabController.resumed()
+                            : tabController.pause();
                       },
                       child: Container(
-                        height: 35,
-                        width: 90,
+                        height: 40,
+                        width: 100,
+                        padding: const EdgeInsets.symmetric(vertical: 8),
                         decoration: BoxDecoration(
                             borderRadius:
-                                const BorderRadius.all(Radius.circular(30)),
+                                const BorderRadius.all(Radius.circular(10)),
                             color: color.primaryColor),
                         child: Center(
-                            child: LabelText(
-                          text: isPlaying == true ? "Pause".tr : "RESUME",
-                          isBold: true,
-                          isColor: true,
-                          color: Colors.white,
+                            child: Obx(
+                          () => LabelText(
+                            text: tabController.paused.value == true
+                                ? 'Resume'
+                                : "Pause".tr,
+                            isBold: true,
+                            isColor: true,
+                            color: Colors.white,
+                          ),
                         )),
                       ),
                     ),
                     GestureDetector(
                       onTap: () {
                         animationController.reset();
+                        tabController.currentvalueHour.value =
+                            tabController.stopWatchHour.value;
+                        tabController.currentvalueMin.value =
+                            tabController.stopWatchMin.value;
+                        tabController.currentvalueSec.value =
+                            tabController.stopWatchSec.value;
                         tabController.currentvalueHour.value = 0;
                         tabController.currentvalueMin.value = 0;
                         tabController.currentvalueSec.value = 0;
-                        setState(() {
-                          isPlaying = false;
-                        });
+                        // tabController.controller.reset();
                         tabController.changeFirst2();
+                        SaveTimeCustomDialogBox(context);
                       },
                       child: Container(
-                        height: 35,
-                        width: 90,
+                        height: 40,
+                        width: 100,
+                        padding: const EdgeInsets.symmetric(vertical: 8),
                         decoration: BoxDecoration(
                             borderRadius:
-                                const BorderRadius.all(Radius.circular(30)),
-                            color: color.disabledColor.withOpacity(0.5)),
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: color.primaryColor),
                         child: const Center(
                             child: LabelText(
-                          text: "DELETE",
+                          text: "Stop",
                           isColor: true,
                           color: Colors.white,
                           isBold: true,

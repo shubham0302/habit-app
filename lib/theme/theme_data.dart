@@ -77,6 +77,9 @@ class Styles {
 
       primaryColor: ColorSchemeData.themeData[mode]!['primaryColor'],
       primaryColorDark: ColorSchemeData.defaultBrightColors['primaryText'],
+      primaryColorLight: ColorSchemeData.themeData[mode]!['lightPrimary'],
+      shadowColor: ColorSchemeData.themeData[mode]!['lightbackgroung'],
+
       hintColor: Colors.black,
       textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
@@ -183,6 +186,8 @@ class Styles {
 
       indicatorColor: ColorSchemeData.darkThemeData[mode]!['primaryColor'],
       primaryColor: ColorSchemeData.darkThemeData[mode]!['primaryColor'],
+      primaryColorLight: ColorSchemeData.darkThemeData[mode]!['lightPrimary'],
+      // shadowColor: ColorSchemeData.darkThemeData[mode]!['lightbackgroung'],
 
       hintColor: Colors.black,
 
