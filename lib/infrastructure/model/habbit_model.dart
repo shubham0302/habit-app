@@ -23,6 +23,9 @@ class HabbitModel extends Table {
       .references(RecurringRepetitionModel, #id,
           onDelete: KeyAction.setDefault, onUpdate: KeyAction.cascade)();
   TextColumn get habitName => text().named('habbit_name')();
+  TextColumn get habitSucess => text().named('habbit_sucess')();
+  TextColumn get habitSucessType => text().named('habbit_sucess_type')();
+  TextColumn get habitSucessUnit => text().named('habbit_sucess_unit')();
   TextColumn get evaluate => text().named('r_evaluate')();
 
   TextColumn get habbitDescription => text().named('habbit_description')();

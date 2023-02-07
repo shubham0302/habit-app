@@ -11,7 +11,7 @@ import 'package:habbit_app/widgets/text_widget/title_text.dart';
 import 'package:lottie/lottie.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
-void NumericStatusCustomDialogBox(BuildContext context, int index) {
+void NumericStatusCustomDialogBox(BuildContext context, int index,DateTime day,String status,int statusId) {
   AddHabbitSelectController habbitSelectController =
       Get.put(AddHabbitSelectController(), permanent: false);
   ThemeData color = Theme.of(context);
@@ -105,6 +105,7 @@ void NumericStatusCustomDialogBox(BuildContext context, int index) {
                         ),
                         SH.medium(),
                         DescriptionText(text: 'Daily goal'),
+                        LabelText(text: habbitSelectController.tasks[index].habitSucessType+' '+habbitSelectController.tasks[index].habitSucess+' '+habbitSelectController.tasks[index].habitSucessUnit),
                         SH.small(),
                         // LabelText(text: 'Less than 20.0 ${habbitSelectController.tasks[index].}'),
                         SH.medium(),
@@ -130,7 +131,9 @@ void NumericStatusCustomDialogBox(BuildContext context, int index) {
                                   },
                                   child: Center(
                                     child: GestureDetector(
-                                      onTap: () {},
+                                      onTap: () {
+                                        habbitSelectController.addStatus(habbitSelectController.tasks.where((p0) => p0.archive==false).toList()[index].habbitId, status, day, statusId, habbitSelectController.numaricStatus.value.toString(), habbitSelectController.tasks.where((p0) => p0.archive==false).toList()[index].evaluate, status);
+                                      },
                                       child: Container(
                                           child:
                                               DescriptionText(text: 'OK'.tr)),

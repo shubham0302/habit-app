@@ -84,6 +84,7 @@ showGeneralDialog(
                         Expanded(
                           child: InputField(
                             hintText: "Goal",
+                            textType: TextInputType.number,
                             controller: addHabbitSelectController.goal,
                             isWhiteHintText: true,
                             onChange: (p4) {

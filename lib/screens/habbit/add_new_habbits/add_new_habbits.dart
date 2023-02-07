@@ -470,9 +470,10 @@ class AddHabbitsScreen extends StatelessWidget {
                         child: Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              LabelText(
-                                text: "0",
+                            children:  [
+                              Obx(()=> LabelText(
+                                  text: addRecurringTaskController.remList.length.toString(),
+                                ),
                               ),
                             ],
                           ),

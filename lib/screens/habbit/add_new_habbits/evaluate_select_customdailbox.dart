@@ -22,6 +22,7 @@ void EvaluateCustomDialogBox(BuildContext context) {
   showGeneralDialog(
       barrierColor: Colors.black.withOpacity(0.5),
       transitionBuilder: (context, a1, a2, widget) {
+        
         return Transform.scale(
           scale: a1.value,
           child: Opacity(

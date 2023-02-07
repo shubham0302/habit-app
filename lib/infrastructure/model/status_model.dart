@@ -13,6 +13,8 @@ class HabitStatusModel extends Table {
       .references(HabbitModel, #habbitId,
           onDelete: KeyAction.setDefault, onUpdate: KeyAction.cascade)();
   TextColumn get status => text().named('habit_status')();
+  TextColumn get value => text().named('habit_value')();
+  TextColumn get type => text().named('habit_evaluate_type')();
   DateTimeColumn get date => dateTime().named('status_date')();
 }
 
