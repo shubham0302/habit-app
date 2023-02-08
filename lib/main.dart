@@ -66,6 +66,15 @@ void main() async {
         channelDescription: 'Notification for schedualed test',
         defaultColor: Colors.red,
         importance: NotificationImportance.High,
+        channelShowBadge: true),
+    NotificationChannel(
+        channelKey: 'scheduledHabitDays_channel',
+        channelName: 'scheduledHabitAlarm Notifications',
+        channelDescription: 'Notification for schedualed test',
+        defaultColor: Colors.red,
+        // vibrationPattern: highVibrationPattern,
+        importance: NotificationImportance.High,
+        // soundSource: "resource://raw/still_dre",
         channelShowBadge: true)
   ]);
   runApp(const MyApp());
