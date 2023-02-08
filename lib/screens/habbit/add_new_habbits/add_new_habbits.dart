@@ -471,9 +471,12 @@ class AddHabbitsScreen extends StatelessWidget {
                         child: Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children:  [
-                              Obx(()=> LabelText(
-                                  text: addRecurringTaskController.remList.length.toString(),
+                            children: [
+                              Obx(
+                                () => LabelText(
+                                  text: addRecurringTaskController
+                                      .remList.length
+                                      .toString(),
                                 ),
                               ),
                             ],
@@ -540,6 +543,8 @@ class AddHabbitsScreen extends StatelessWidget {
                   onTap: () {
                     addRecurringTaskController.addRepetition();
                     // addRecurringTaskController.addReminderNotification(context);
+                    addRecurringTaskController
+                        .addReminderAlarmNotification(context);
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 10),

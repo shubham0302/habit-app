@@ -924,6 +924,16 @@ void reminderCustomDialogTimerBox(BuildContext context, bool isEdit) {
                                                   addHabbitSelectController
                                                       .addReminderToList();
                                                 }
+
+                                                // NotificationHabitAlarm?
+                                                //     pickedSchedule =
+                                                //     await pickHabitAlarm(
+                                                //         context, 0);
+
+                                                // if (pickedSchedule != null) {
+                                                //   createHabitAlarmNotification(
+                                                //       pickedSchedule);
+                                                // }
                                                 // print(addHabbitSelectController
                                                 //     .remTime.value.hour
                                                 //     .toString());

@@ -92,6 +92,38 @@ Future<void> habitReminderNotification(
           repeats: true));
 }
 
+Future<void> createHabitAlarmNotification(
+    NotificationHabitAlarm notificationScheduled, index) async {
+  await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+          id: createUniqueId(),
+          channelKey: 'scheduledHabitDays_channel',
+          title: 'Alarm',
+          body: 'fuck you',
+          // customSound: 'resource://raw/still_dre',
+          displayOnBackground: true,
+          displayOnForeground: true,
+          // bigPicture: 'assets://assets/images/middle.jpeg',
+          notificationLayout: NotificationLayout.Default),
+      actionButtons: [
+        NotificationActionButton(
+          key: 'MARK_DONE',
+          label: 'Mark Done',
+        ),
+        NotificationActionButton(
+          key: 'MARK_SNOOZE',
+          label: 'Mark Snooze',
+        ),
+      ],
+      schedule: NotificationCalendar(
+          // weekday: notificationSchedule.dayOfTheWeek,
+          hour: notificationScheduled.timeOfDay.hour,
+          minute: notificationScheduled.timeOfDay.minute,
+          second: 0,
+          millisecond: 0,
+          repeats: true));
+}
+
 Future<void> cancelReminderNotification() async {
   await AwesomeNotifications().cancelAllSchedules();
 }
