@@ -542,8 +542,12 @@ class HabbitsScreen extends StatelessWidget {
                                                                         op: () {
                                                                           if (habbitSelectController.tasks[index].evaluate ==
                                                                               'Numeric') {
-                                                                            // NumericStatusCustomDialogBox(context,
-                                                                            //     index,);
+                                                                            NumericStatusCustomDialogBox(
+                                                                                context,
+                                                                                index,
+                                                                                e,
+                                                                                'initial',
+                                                                                habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().firstWhere((element) => habbitSelectController.checkDate(e, element.date)).statusId );
                                                                           } else if (habbitSelectController.tasks[index].evaluate ==
                                                                               'Timer') {
                                                                             TimeStatusCustomDialogBox(context,
@@ -555,9 +559,9 @@ class HabbitsScreen extends StatelessWidget {
                                                                           } else {
                                                                             if (habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().indexWhere((element) => habbitSelectController.checkDate(e, element.date)) ==
                                                                                 -1) {
-                                                                              habbitSelectController.addStatus(habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId, 'initial', e, 0,'false',habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].evaluate,'initial');
+                                                                              habbitSelectController.addStatus(habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId, 'initial', e, 0, 'false', habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].evaluate, 'initial');
                                                                             } else {
-                                                                              habbitSelectController.addStatus(habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId, habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().firstWhere((element) => habbitSelectController.checkDate(e, element.date)).status, e, habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().firstWhere((element) => habbitSelectController.checkDate(e, element.date)).statusId,'false',habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].evaluate,'initial');
+                                                                              habbitSelectController.addStatus(habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId, habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().firstWhere((element) => habbitSelectController.checkDate(e, element.date)).status, e, habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().firstWhere((element) => habbitSelectController.checkDate(e, element.date)).statusId, 'false', habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].evaluate, 'initial');
                                                                             }
                                                                           }
                                                                         },

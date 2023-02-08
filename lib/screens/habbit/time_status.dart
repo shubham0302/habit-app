@@ -177,7 +177,7 @@ void TimeStatusCustomDialogBox(BuildContext context, int index) {
                               Expanded(
                                 child: GestureDetector(
                                     onTap: () {
-                                      Get.back();
+                                      
                                     },
                                     child: Center(
                                       child: Container(

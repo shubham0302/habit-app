@@ -445,7 +445,7 @@ class AddHabbitSelectController extends GetxController {
       var entity = HabitStatusModelCompanion(
           statusId: drift.Value(id),
           habitId: drift.Value(habitId),
-          status: drift.Value(statusD),
+          status: drift.Value(status),
           value: drift.Value(statusValue),
           type: drift.Value(type),
           date: drift.Value(dateP));

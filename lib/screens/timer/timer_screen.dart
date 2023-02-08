@@ -4,11 +4,13 @@ import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/interval_controller.dart';
 import 'package:habbit_app/controllers/timer_tab_controller.dart';
 import 'package:habbit_app/screens/timer/save_dailog.dart';
 import 'package:habbit_app/screens/timer/set_timer_component.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
+import 'package:vibration/vibration.dart';
 
 class TimerTab extends StatefulWidget {
   const TimerTab({super.key});
@@ -59,6 +61,7 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
   void initState() {
     // ignore: todo
     // TODO: implement initState
+
     TimerTabController tabController =
         Get.put(TimerTabController(), permanent: false);
     super.initState();
@@ -87,6 +90,8 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    IntervalTabController intervalTabController =
+        Get.put(IntervalTabController(), permanent: false);
     var color = Theme.of(context);
     return Obx(
       () => tabController.isFirst.value
@@ -117,12 +122,12 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
                         controller: tabController.controller,
                         isReverse: true,
                         // autoStart: false,
-                        textStyle: const TextStyle(
+                        textStyle: TextStyle(
                             fontSize: 20.0,
-                            color: Colors.white,
+                            color: color.canvasColor,
                             fontWeight: FontWeight.bold),
                         // textFormat: ,
-                        
+
                         textFormat: tabController.totalSeconds >= 3600
                             ? CountdownTextFormat.HH_MM_SS
                             : tabController.totalSeconds >= 60
@@ -131,9 +136,19 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
                         duration: tabController.totalSeconds,
                         height: 100,
                         width: 100,
-                        onComplete: () {
+                        onComplete: () async {
                           tabController.changeFirst2();
-                          FlutterRingtonePlayer.playNotification();
+
+                          if (intervalTabController.isVibration.value) {
+                            if (await Vibration.hasVibrator() == true) {
+                              Vibration.vibrate();
+                            }
+                          }
+                          print(intervalTabController.isSound.value);
+                          if (intervalTabController.isSound.value) {
+                            FlutterRingtonePlayer.playNotification();
+                          }
+
                           SaveTimeCustomDialogBox(context);
                           // intervalTabController.startInterval();
                           print('object');

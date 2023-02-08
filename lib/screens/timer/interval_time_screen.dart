@@ -132,9 +132,9 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                                   controller: intervalTabController.controller,
                                   isReverse: true,
                                   // autoStart: false,
-                                  textStyle: const TextStyle(
+                                  textStyle: TextStyle(
                                       fontSize: 20.0,
-                                      color: Colors.white,
+                                      color: color.canvasColor,
                                       fontWeight: FontWeight.bold),
                                   // textFormat: intervalTabController.intervals[
                                   //                 intervalTabController

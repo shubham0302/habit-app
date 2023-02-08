@@ -11,7 +11,8 @@ import 'package:habbit_app/widgets/text_widget/title_text.dart';
 import 'package:lottie/lottie.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
-void NumericStatusCustomDialogBox(BuildContext context, int index,DateTime day,String status,int statusId) {
+void NumericStatusCustomDialogBox(BuildContext context, int index, DateTime day,
+    String status, int statusId) {
   AddHabbitSelectController habbitSelectController =
       Get.put(AddHabbitSelectController(), permanent: false);
   ThemeData color = Theme.of(context);
@@ -43,19 +44,18 @@ void NumericStatusCustomDialogBox(BuildContext context, int index,DateTime day,S
                           ),
                         ),
                         SH.medium(),
-                        Divider(),
+                        const Divider(),
                         SH.medium(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
-                              // color: color.primaryColor,
                               height: 50,
                               width: 200,
                               decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(20)),
                                   color: color.primaryColor),
                               child: Row(children: [
                                 SW.small(),
@@ -102,8 +102,10 @@ void NumericStatusCustomDialogBox(BuildContext context, int index,DateTime day,S
                           ],
                         ),
                         SH.medium(),
-                        DescriptionText(text: 'Daily goal'),
-                        LabelText(text: habbitSelectController.tasks[index].habitSucessType+' '+habbitSelectController.tasks[index].habitSucess+' '+habbitSelectController.tasks[index].habitSucessUnit),
+                        const DescriptionText(text: 'Daily goal'),
+                        LabelText(
+                            text:
+                                '${habbitSelectController.tasks[index].habitSucessType} ${habbitSelectController.tasks[index].habitSucess} ${habbitSelectController.tasks[index].habitSucessUnit}'),
                         SH.small(),
                         // LabelText(text: 'Less than 20.0 ${habbitSelectController.tasks[index].}'),
                         SH.medium(),
@@ -116,6 +118,7 @@ void NumericStatusCustomDialogBox(BuildContext context, int index,DateTime day,S
                                   onTap: () {
                                     Get.back();
                                   },
+                                  behavior: HitTestBehavior.translucent,
                                   child: Center(
                                     child: Container(
                                         child:
@@ -127,10 +130,43 @@ void NumericStatusCustomDialogBox(BuildContext context, int index,DateTime day,S
                                   onTap: () {
                                     Get.back();
                                   },
+                                  behavior: HitTestBehavior.translucent,
                                   child: Center(
                                     child: GestureDetector(
                                       onTap: () {
-                                        habbitSelectController.addStatus(habbitSelectController.tasks.where((p0) => p0.archive==false).toList()[index].habbitId, status, day, statusId, habbitSelectController.numaricStatus.value.toString(), habbitSelectController.tasks.where((p0) => p0.archive==false).toList()[index].evaluate, status);
+                                        print('ok');
+                                        habbitSelectController.addStatus(
+                                            habbitSelectController.tasks
+                                                .where(
+                                                    (p0) => p0.archive == false)
+                                                .toList()[index]
+                                                .habbitId,
+                                            status,
+                                            day,
+                                            statusId,
+                                            habbitSelectController
+                                                .numaricStatus.value
+                                                .toString(),
+                                            habbitSelectController.tasks
+                                                .where(
+                                                    (p0) => p0.archive == false)
+                                                .toList()[index]
+                                                .evaluate,
+                                            habbitSelectController
+                                                        .numaricStatus.value >=
+                                                    int.parse(
+                                                        habbitSelectController
+                                                            .tasks[index]
+                                                            .habitSucess
+                                                            .toString())
+                                                ? 'success'
+                                                : 'initial');
+                                        print(habbitSelectController
+                                                .numaricStatus.value >=
+                                            int.parse(habbitSelectController
+                                                .tasks[index].habitSucess
+                                                .toString()));
+                                        Get.back();
                                       },
                                       child: Container(
                                           child:
@@ -145,11 +181,11 @@ void NumericStatusCustomDialogBox(BuildContext context, int index,DateTime day,S
               )),
         );
       },
-      transitionDuration: Duration(milliseconds: 200),
+      transitionDuration: const Duration(milliseconds: 200),
       barrierDismissible: true,
       barrierLabel: '',
       context: context,
       pageBuilder: (context, animation1, animation2) {
-        return SizedBox();
+        return const SizedBox();
       });
 }

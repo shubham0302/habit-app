@@ -537,8 +537,8 @@ class MainScreen extends StatelessWidget {
                                                       : Icons.not_accessible,
                                   color: controller.tabIndex.value == 4 &&
                                           tabController.isSound.value == true
-                                      ? color.cardColor
-                                      : color.disabledColor,
+                                      ? color.primaryColor
+                                      : color.disabledColor.withOpacity(.2),
                                   size: 30,
                                 ),
                               ),
@@ -555,8 +555,8 @@ class MainScreen extends StatelessWidget {
                                       Icons.vibration,
                                       size: 30,
                                       color: tabController.isVibration.value
-                                          ? color.cardColor
-                                          : color.disabledColor,
+                                          ? color.primaryColor
+                                          : color.disabledColor.withOpacity(.2),
                                     ),
                                   ))
                               : Container()
