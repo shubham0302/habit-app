@@ -154,7 +154,7 @@ class _TimerTabState extends State<TimerTab> with TickerProviderStateMixin {
                           print('object');
                         },
                         fillColor: color.disabledColor,
-                        ringColor: color.primaryColor,
+                        ringColor: color.primaryColorLight,
                       ),
                     ),
                     // Stack(

@@ -95,7 +95,7 @@ class AddHabbitSelectController extends GetxController {
 
   // weekDay
 
-  addHabbit(int repetition) async {
+  addHabbit(int repetition, BuildContext context) async {
     try {
       var entity = HabbitModelCompanion(
           repetitonId: drift.Value(repetition),
@@ -121,9 +121,9 @@ class AddHabbitSelectController extends GetxController {
 
       var data = await dbcontroller.appDB.insertHabbit(entity);
       await addCheckLists(data);
-      // await addReminderNotification(data);
-
-      // await addReminderNotification(context);
+      // await addReminderNotification();
+      await addReminders(data);
+      await addReminderNotification(context, updateName.value);
     } catch (e) {
       log('hahaha error $e');
     }
@@ -293,9 +293,7 @@ class AddHabbitSelectController extends GetxController {
     Get.back();
   }
 
-  addReminderNotification(
-    context,
-  ) async {
+  addReminderNotification(context, name) async {
     for (var i = 0; i <= remList.length; i++) {
       // print(remList.time.toString());
       print(remTime.value.minute.toString());
@@ -303,14 +301,12 @@ class AddHabbitSelectController extends GetxController {
           await pickHabitReminder(context, i);
 
       if (pickedSchedule != null) {
-        habitReminderNotification(pickedSchedule, i);
+        habitReminderNotification(pickedSchedule, name);
       }
     }
   }
 
-  addReminderAlarmNotification(
-    context,
-  ) async {
+  addReminderAlarmNotification(context) async {
     for (var i = 0; i <= remList.length; i++) {
       // print(remList.time.toString());
       print(remTime.value.minute.toString());
@@ -548,7 +544,7 @@ class AddHabbitSelectController extends GetxController {
   var repeatPeriod = ''.obs;
 
   var timeWeek = ''.obs;
-  addRepetition() async {
+  addRepetition(BuildContext context) async {
     try {
       var entity = RecurringRepetitionModelCompanion(
         daysMonth: drift.Value(monthIndex.join(',')),
@@ -562,7 +558,7 @@ class AddHabbitSelectController extends GetxController {
 
       var data = await dbcontroller.appDB.insertRecurringRepetition(entity);
 
-      await addHabbit(data);
+      await addHabbit(data, context);
     } catch (e) {
       log('hahaha error $e');
     }

@@ -17,6 +17,7 @@ import 'package:habbit_app/screens/habbit/add_new_habbits/priority_custom_dilogb
 import 'package:habbit_app/screens/habbit/datechip.dart';
 import 'package:habbit_app/screens/habbit/habbit_compite_dailbox.dart';
 import 'package:habbit_app/widgets/icon_widget.dart';
+import 'package:screenshot/screenshot.dart';
 
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
@@ -54,7 +55,7 @@ class HabbitsScreen extends StatelessWidget {
           }
           // Get.to(HabbitsArciveScreen());
         },
-        backgroundColor: color.primaryColor,
+        backgroundColor: color.primaryColorLight,
         child: const Icon(Icons.add),
       ),
       body: SafeArea(
@@ -93,8 +94,12 @@ class HabbitsScreen extends StatelessWidget {
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                               onTap: () {
+<<<<<<< HEAD
                                 // HabbitCompleteTaskCustomDialogBox(
                                 //     context, index);
+=======
+                                HabbitCompleteTaskCustomDialogBox(context, index, ScreenshotController());
+>>>>>>> 9fa59df5963b66a6e91509cee9a028bb4fe8dadc
                                 Get.toNamed('/habbit-detail');
                               },
                               child: AnimationConfiguration.staggeredList(

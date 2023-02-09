@@ -61,7 +61,7 @@ class BackUpScreen extends StatelessWidget {
                           width: 30,
                           child: Icon(
                             Icons.arrow_back_ios_new_rounded,
-                            color: color.primaryColor,
+                            color: color.primaryColorLight,
                           ),
                         )),
                     SW.medium(),
@@ -98,7 +98,7 @@ class BackUpScreen extends StatelessWidget {
                         Icon(
                           Icons.backup,
                           size: 50,
-                          color: color.primaryColor,
+                          color: color.primaryColorLight,
                         ),
                         // SH.small(),
                         LabelText(
@@ -124,7 +124,7 @@ class BackUpScreen extends StatelessWidget {
                       Icon(
                         Icons.cloud_download,
                         size: 50,
-                        color: color.primaryColor,
+                        color: color.primaryColorLight,
                       ),
                       // SH.small(),
                       LabelText(

@@ -541,10 +541,10 @@ class AddHabbitsScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: GestureDetector(
                   onTap: () {
-                    addRecurringTaskController.addRepetition();
+                    addRecurringTaskController.addRepetition(context);
                     // addRecurringTaskController.addReminderNotification(context);
-                    addRecurringTaskController
-                        .addReminderAlarmNotification(context);
+                    // addRecurringTaskController
+                    //     .addReminderAlarmNotification(context);
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 10),

@@ -121,8 +121,8 @@ class _StopWatchState extends State<StopWatch>
                   gradient: SweepGradient(
                       // startAngle: 1,
                       colors: [
-                        color.primaryColor.withOpacity(0.5),
-                        color.primaryColor
+                        color.primaryColorLight.withOpacity(0.5),
+                        color.primaryColorLight
                       ],
                       transform:
                           GradientRotation(_animationController.value * 6)),
@@ -153,7 +153,7 @@ class _StopWatchState extends State<StopWatch>
               )
             : Container(
                 decoration: BoxDecoration(
-                    shape: BoxShape.circle, color: color.primaryColor
+                    shape: BoxShape.circle, color: color.primaryColorLight
                     // gradient: SweepGradient(
                     //     // startAngle: 1,
                     //     colors: [

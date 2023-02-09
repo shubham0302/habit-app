@@ -71,7 +71,7 @@ class _TaskScreenState extends State<TaskScreen>
             CustomDialogBox(context);
             addTaskController.selectEvaluate.value = 'YES OR NO';
           },
-          backgroundColor: color.primaryColor,
+          backgroundColor: color.primaryColorLight,
           child: const Icon(Icons.add),
         ),
         backgroundColor: color.backgroundColor,

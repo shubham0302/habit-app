@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, no_leading_underscores_for_local_identifiers, sized_box_for_whitespace, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_alarm_clock/flutter_alarm_clock.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/screens/notification/notifications.dart';
@@ -932,7 +933,7 @@ void reminderCustomDialogTimerBox(BuildContext context, bool isEdit) {
 
                                                 // if (pickedSchedule != null) {
                                                 //   createHabitAlarmNotification(
-                                                //       pickedSchedule);
+                                                //       pickedSchedule, 0);
                                                 // }
                                                 // print(addHabbitSelectController
                                                 //     .remTime.value.hour
