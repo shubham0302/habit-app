@@ -12,7 +12,8 @@ import 'package:lottie/lottie.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:numberpicker/numberpicker.dart';
 
-void TimeStatusCustomDialogBox(BuildContext context, int index) {
+void TimeStatusCustomDialogBox(BuildContext context, int index, DateTime day,
+    String status, int statusId) {
   AddHabbitSelectController habbitSelectController =
       Get.put(AddHabbitSelectController(), permanent: false);
   ThemeData color = Theme.of(context);
@@ -157,7 +158,9 @@ void TimeStatusCustomDialogBox(BuildContext context, int index) {
                           SH.medium(),
                           DescriptionText(text: 'Daily goal'),
                           SH.small(),
-                          LabelText(text: 'at Least 00:03'),
+                          LabelText(
+                              text:
+                                  '${habbitSelectController.tasks[index].habitSucessType} ${habbitSelectController.tasks[index].habitSucess} '),
                           SH.medium(),
                           const Divider(),
                           SH.medium(),
@@ -177,7 +180,55 @@ void TimeStatusCustomDialogBox(BuildContext context, int index) {
                               Expanded(
                                 child: GestureDetector(
                                     onTap: () {
-                                      
+                                      // print(int.parse(habbitSelectController
+                                      //             .tasks[index].habitSucess
+                                      //             .split(':')[0] *
+                                      //         3600) +
+                                      //     int.parse(habbitSelectController
+                                      //             .tasks[index].habitSucess
+                                      //             .split(':')[1]) *
+                                      //         60);
+
+                                      habbitSelectController.addStatus(
+                                          habbitSelectController.tasks
+                                              .where(
+                                                  (p0) => p0.archive == false)
+                                              .toList()[index]
+                                              .habbitId,
+                                          status,
+                                          day,
+                                          statusId,
+                                          habbitSelectController
+                                                  .timeHourStatus.value
+                                                  .toString() +
+                                              ' ' +
+                                              habbitSelectController
+                                                  .timeMinStatus.value
+                                                  .toString() +
+                                              ' ' +
+                                              habbitSelectController
+                                                  .timeSecStatus.value
+                                                  .toString(),
+                                          habbitSelectController.tasks
+                                              .where(
+                                                  (p0) => p0.archive == false)
+                                              .toList()[index]
+                                              .evaluate,
+                                          habbitSelectController.timeHourStatus.value * 3600 +
+                                                      habbitSelectController
+                                                              .timeMinStatus
+                                                              .value *
+                                                          60 +
+                                                      habbitSelectController
+                                                          .timeSecStatus
+                                                          .value >=
+                                                  int.parse(habbitSelectController.tasks[index].habitSucess.split(':')[0]) *
+                                                          3600 +
+                                                      int.parse(habbitSelectController.tasks[index].habitSucess.split(':')[1]) * 60 +
+                                                      int.parse(habbitSelectController.tasks[index].habitSucess.split(':')[2])
+                                              ? 'success'
+                                              : 'initial');
+                                              Get.back();
                                     },
                                     child: Center(
                                       child: Container(

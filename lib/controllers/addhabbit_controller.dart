@@ -415,63 +415,63 @@ class AddHabbitSelectController extends GetxController {
       default:
     }
 
-    if(type=="YES OR NO"){
-    if (id == 0) {
-      var entity = HabitStatusModelCompanion(
-          habitId: drift.Value(habitId),
-          status: drift.Value(statusD),
-          value: drift.Value(statusValue),
-          type: drift.Value(type),
-          date: drift.Value(dateP));
-      var result = await dbcontroller.appDB.insertHabbitStatus(entity);
-    } else {
-      var entity = HabitStatusModelCompanion(
-          statusId: drift.Value(id),
-          habitId: drift.Value(habitId),
-          status: drift.Value(statusD),
-          value: drift.Value(statusValue),
-          type: drift.Value(type),
-          date: drift.Value(dateP));
-      var result = await dbcontroller.appDB.updateHabbitStatus(entity);
-    }
-    }else if(type == "Numeric"){
-    if (id == 0) {
-      var entity = HabitStatusModelCompanion(
-          habitId: drift.Value(habitId),
-          status: drift.Value(status),
-          value: drift.Value(value),
-          type: drift.Value(type),
-          date: drift.Value(dateP));
-      var result = await dbcontroller.appDB.insertHabbitStatus(entity);
-    } else {
-      var entity = HabitStatusModelCompanion(
-          statusId: drift.Value(id),
-          habitId: drift.Value(habitId),
-          status: drift.Value(statusD),
-          value: drift.Value(statusValue),
-          type: drift.Value(type),
-          date: drift.Value(dateP));
-      var result = await dbcontroller.appDB.updateHabbitStatus(entity);
-    }
-    }else if(type == "Timer"){
-    if (id == 0) {
-      var entity = HabitStatusModelCompanion(
-          habitId: drift.Value(habitId),
-          status: drift.Value(status),
-          value: drift.Value(value),
-          type: drift.Value(type),
-          date: drift.Value(dateP));
-      var result = await dbcontroller.appDB.insertHabbitStatus(entity);
-    } else {
-      var entity = HabitStatusModelCompanion(
-          statusId: drift.Value(id),
-          habitId: drift.Value(habitId),
-          status: drift.Value(statusD),
-          value: drift.Value(statusValue),
-          type: drift.Value(type),
-          date: drift.Value(dateP));
-      var result = await dbcontroller.appDB.updateHabbitStatus(entity);
-    }
+    if (type == "YES OR NO") {
+      if (id == 0) {
+        var entity = HabitStatusModelCompanion(
+            habitId: drift.Value(habitId),
+            status: drift.Value(statusD),
+            value: drift.Value(statusValue),
+            type: drift.Value(type),
+            date: drift.Value(dateP));
+        var result = await dbcontroller.appDB.insertHabbitStatus(entity);
+      } else {
+        var entity = HabitStatusModelCompanion(
+            statusId: drift.Value(id),
+            habitId: drift.Value(habitId),
+            status: drift.Value(statusD),
+            value: drift.Value(statusValue),
+            type: drift.Value(type),
+            date: drift.Value(dateP));
+        var result = await dbcontroller.appDB.updateHabbitStatus(entity);
+      }
+    } else if (type == "Numeric") {
+      if (id == 0) {
+        var entity = HabitStatusModelCompanion(
+            habitId: drift.Value(habitId),
+            status: drift.Value(status),
+            value: drift.Value(value),
+            type: drift.Value(type),
+            date: drift.Value(dateP));
+        var result = await dbcontroller.appDB.insertHabbitStatus(entity);
+      } else {
+        var entity = HabitStatusModelCompanion(
+            statusId: drift.Value(id),
+            habitId: drift.Value(habitId),
+            status: drift.Value(statusD),
+            value: drift.Value(statusValue),
+            type: drift.Value(type),
+            date: drift.Value(dateP));
+        var result = await dbcontroller.appDB.updateHabbitStatus(entity);
+      }
+    } else if (type == "Timer") {
+      if (id == 0) {
+        var entity = HabitStatusModelCompanion(
+            habitId: drift.Value(habitId),
+            status: drift.Value(status),
+            value: drift.Value(value),
+            type: drift.Value(type),
+            date: drift.Value(dateP));
+        var result = await dbcontroller.appDB.insertHabbitStatus(entity);
+      } else {
+        var entity = HabitStatusModelCompanion(
+            statusId: drift.Value(id),
+            habitId: drift.Value(habitId),
+            status: drift.Value(statusD),
+            value: drift.Value(statusValue),
+            type: drift.Value(type),
+            date: drift.Value(dateP));
+        var result = await dbcontroller.appDB.updateHabbitStatus(entity);
+      }
     }
   }
 
@@ -488,7 +488,7 @@ class AddHabbitSelectController extends GetxController {
     }
   }
 
-  checkDate(DateTime a, DateTime b) {
+  bool checkDate(DateTime a, DateTime b) {
     if (a.year == b.year && a.month == b.month && a.day == b.day) {
       return true;
     } else {

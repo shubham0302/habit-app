@@ -93,8 +93,8 @@ class HabbitsScreen extends StatelessWidget {
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                               onTap: () {
-                                HabbitCompleteTaskCustomDialogBox(
-                                    context, index);
+                                // HabbitCompleteTaskCustomDialogBox(
+                                //     context, index);
                                 Get.toNamed('/habbit-detail');
                               },
                               child: AnimationConfiguration.staggeredList(
@@ -540,18 +540,24 @@ class HabbitsScreen extends StatelessWidget {
                                                                             .toString()
                                                                             .capitalize!,
                                                                         op: () {
+                                                                          print(
+                                                                              (habbitSelectController.tasks[index].startDate.difference(e).inHours / 24).round());
                                                                           if (habbitSelectController.tasks[index].evaluate ==
                                                                               'Numeric') {
-                                                                            NumericStatusCustomDialogBox(
-                                                                                context,
-                                                                                index,
-                                                                                e,
-                                                                                'initial',
-                                                                                habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().firstWhere((element) => habbitSelectController.checkDate(e, element.date)).statusId );
+                                                                            if (habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().indexWhere((element) => habbitSelectController.checkDate(e, element.date)) ==
+                                                                                -1) {
+                                                                              NumericStatusCustomDialogBox(context, index, e, 'e', 0);
+                                                                            } else {
+                                                                              NumericStatusCustomDialogBox(context, index, e, 'initial', habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().firstWhere((element) => habbitSelectController.checkDate(e, element.date)).statusId);
+                                                                            }
                                                                           } else if (habbitSelectController.tasks[index].evaluate ==
                                                                               'Timer') {
-                                                                            TimeStatusCustomDialogBox(context,
-                                                                                index);
+                                                                            if (habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().indexWhere((element) => habbitSelectController.checkDate(e, element.date)) ==
+                                                                                -1) {
+                                                                              TimeStatusCustomDialogBox(context, index, e, 'e', 0);
+                                                                            } else {
+                                                                              TimeStatusCustomDialogBox(context, index, e, 'initial', habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().firstWhere((element) => habbitSelectController.checkDate(e, element.date)).statusId);
+                                                                            }
                                                                           } else if (habbitSelectController.tasks[index].evaluate ==
                                                                               'Checklist') {
                                                                             ChecklistStatusCustomDialogBox(context,
@@ -565,15 +571,15 @@ class HabbitsScreen extends StatelessWidget {
                                                                             }
                                                                           }
                                                                         },
-                                                                        isColor: habbitSelectController.checkDate(e, DateTime.now())
-                                                                            ? true
-                                                                            : habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().indexWhere((element) => habbitSelectController.checkDate(e, element.date)) !=
-                                                                                -1,
+                                                                        isColor:
+                                                                            true,
                                                                         selectColor: habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().indexWhere((element) => habbitSelectController.checkDate(e, element.date)) !=
                                                                                 -1
                                                                             ? habbitSelectController.getColorByStatus(habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().firstWhere((element) => habbitSelectController.checkDate(e, element.date)).status,
                                                                                 e)
-                                                                            : habbitSelectController.getColorByStatus('status', e),
+                                                                            : (habbitSelectController.tasks[index].startDate.difference(e).inHours / 24).round() >= 1
+                                                                                ? Colors.white
+                                                                                : habbitSelectController.getColorByStatus('status', e),
                                                                       ))
                                                               .toList(),
                                                         ],

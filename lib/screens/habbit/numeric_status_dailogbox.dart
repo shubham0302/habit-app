@@ -135,32 +135,53 @@ void NumericStatusCustomDialogBox(BuildContext context, int index, DateTime day,
                                     child: GestureDetector(
                                       onTap: () {
                                         print('ok');
-                                        habbitSelectController.addStatus(
-                                            habbitSelectController.tasks
-                                                .where(
-                                                    (p0) => p0.archive == false)
-                                                .toList()[index]
-                                                .habbitId,
-                                            status,
-                                            day,
-                                            statusId,
-                                            habbitSelectController
-                                                .numaricStatus.value
-                                                .toString(),
-                                            habbitSelectController.tasks
-                                                .where(
-                                                    (p0) => p0.archive == false)
-                                                .toList()[index]
-                                                .evaluate,
-                                            habbitSelectController
-                                                        .numaricStatus.value >=
-                                                    int.parse(
-                                                        habbitSelectController
-                                                            .tasks[index]
-                                                            .habitSucess
-                                                            .toString())
-                                                ? 'success'
-                                                : 'initial');
+
+                                        status == 'e'
+                                            ? habbitSelectController.addStatus(
+                                                habbitSelectController.tasks
+                                                    .where((p0) =>
+                                                        p0.archive == false)
+                                                    .toList()[index]
+                                                    .habbitId,
+                                                'initial',
+                                                day,
+                                                0,
+                                                habbitSelectController
+                                                    .numaricStatus.value
+                                                    .toString(),
+                                                habbitSelectController.tasks
+                                                    .where((p0) =>
+                                                        p0.archive == false)
+                                                    .toList()[index]
+                                                    .evaluate,
+                                                'initial')
+                                            : habbitSelectController.addStatus(
+                                                habbitSelectController.tasks
+                                                    .where((p0) =>
+                                                        p0.archive == false)
+                                                    .toList()[index]
+                                                    .habbitId,
+                                                status,
+                                                day,
+                                                statusId,
+                                                habbitSelectController
+                                                    .numaricStatus.value
+                                                    .toString(),
+                                                habbitSelectController.tasks
+                                                    .where((p0) =>
+                                                        p0.archive == false)
+                                                    .toList()[index]
+                                                    .evaluate,
+                                                habbitSelectController
+                                                            .numaricStatus
+                                                            .value >=
+                                                        int.parse(
+                                                            habbitSelectController
+                                                                .tasks[index]
+                                                                .habitSucess
+                                                                .toString())
+                                                    ? 'success'
+                                                    : 'initial');
                                         print(habbitSelectController
                                                 .numaricStatus.value >=
                                             int.parse(habbitSelectController

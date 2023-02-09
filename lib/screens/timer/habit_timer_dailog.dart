@@ -126,7 +126,7 @@ void HabitTimerCustomDialogBox(BuildContext context, int index) {
                                   SH.medium(),
                                   GestureDetector(
                                     onTap: () {
-                                      TimeStatusCustomDialogBox(context, index);
+                                      // TimeStatusCustomDialogBox(context, index);
                                     },
                                     child: Row(
                                       children: [

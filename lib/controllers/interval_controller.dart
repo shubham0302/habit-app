@@ -7,6 +7,7 @@ import 'package:habbit_app/infrastructure/model/interval_model.dart';
 
 class IntervalTabController extends GetxController {
   final CountDownController controller = CountDownController();
+
   RxBool paused = false.obs;
   RxBool isSound = false.obs;
   RxBool isVibration = false.obs;
@@ -22,6 +23,7 @@ class IntervalTabController extends GetxController {
 
   var intervalInd = 0.obs;
   var indexPos = 0.obs;
+  // var isStop = false.obs;
   startInterval() {
     if (loopI.value == 0) {
       if (indexPos.value < intervals.length) {
@@ -41,6 +43,7 @@ class IntervalTabController extends GetxController {
     } else {
       if (intervalInd.value < loopI.value) {
         if (indexPos.value < intervals.length) {
+          print('enter');
           controller.restart(
               duration: intervals[indexPos.value].getTotalSceconds());
           print(intervals[indexPos.value].getTotalSceconds());
@@ -48,6 +51,7 @@ class IntervalTabController extends GetxController {
         } else {
           indexPos.value = 0;
           intervalInd.value = intervalInd.value + 1;
+
           print('here');
           startInterval();
           // controller.start();
@@ -57,6 +61,10 @@ class IntervalTabController extends GetxController {
         intervalInd.value = 0;
         loopI.value = 0;
         print('exit');
+
+        // start.value = false;
+        controller.reset();
+        // var isStop = false.obs;
       }
     }
   }
@@ -136,23 +144,28 @@ class IntervalTabController extends GetxController {
     isFirst.value = true;
   }
 
-  var loopSeconds = 0.obs;
-  var loopIndex = 0.obs;
-  late AnimationController animationController;
-  startLoop(TickerProvider vsync, AnimationController ctrl) {
-    if (loopIndex.value == 0) {
-      return;
-    } else {
-      ctrl = AnimationController(
-          vsync: vsync,
-          duration:
-              Duration(seconds: intervals[loopIndex.value].getTotalSceconds()));
-      if (loopIndex.value < intervals.length - 1) {
-        loopIndex.value = loopIndex.value + 1;
-      } else {
-        loopIndex.value = 0;
-      }
-      startLoop(vsync, ctrl);
-    }
+  // var loopSeconds = 0.obs;
+  // var loopIndex = 0.obs;
+  // late AnimationController animationController;
+  // startLoop(TickerProvider vsync, AnimationController ctrl) {
+  //   if (loopIndex.value == 0) {
+  //     return;
+  //   } else {
+  //     ctrl = AnimationController(
+  //         vsync: vsync,
+  //         duration:
+  //             Duration(seconds: intervals[loopIndex.value].getTotalSceconds()));
+  //     if (loopIndex.value < intervals.length - 1) {
+  //       loopIndex.value = loopIndex.value + 1;
+  //     } else {
+  //       loopIndex.value = 0;
+  //     }
+  //     startLoop(vsync, ctrl);
+  //   }
+  // }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }

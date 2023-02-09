@@ -24,7 +24,7 @@ class IntervalTimeScreen extends StatefulWidget {
 
 class _IntervalTimeScreenState extends State<IntervalTimeScreen>
     with TickerProviderStateMixin {
-  AnimationController? animationController;
+  // AnimationController? animationController;
   IntervalTabController intervalTabController =
       Get.put(IntervalTabController(), permanent: true);
 
@@ -37,27 +37,27 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
   //   return;
   // }
 
-  String get countText {
-    Duration count =
-        animationController!.duration! * animationController!.value;
-    return animationController!.isDismissed
-        ? '${animationController!.duration!.inHours}:${(animationController!.duration!.inMinutes % 60).toString().padLeft(2, '0')}:${(animationController!.duration!.inSeconds % 60).toString().padLeft(2, '0')}'
-        : '${count.inHours}:${(count.inMinutes % 60).toString().padLeft(2, '0')}:${(count.inSeconds % 60).toString().padLeft(2, '0')}';
-  }
+  // String get countText {
+  //   Duration count =
+  //       animationController!.duration! * animationController!.value;
+  //   return animationController!.isDismissed
+  //       ? '${animationController!.duration!.inHours}:${(animationController!.duration!.inMinutes % 60).toString().padLeft(2, '0')}:${(animationController!.duration!.inSeconds % 60).toString().padLeft(2, '0')}'
+  //       : '${count.inHours}:${(count.inMinutes % 60).toString().padLeft(2, '0')}:${(count.inSeconds % 60).toString().padLeft(2, '0')}';
+  // }
 
-  @override
-  void dispose() {
-    animationController!.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   animationController!.dispose();
+  //   super.dispose();
+  // }
 
   double progress = 1.0;
 
-  void notifiy() {
-    if (countText == "0:00:00") {
-      FlutterRingtonePlayer.playNotification();
-    }
-  }
+  // void notifiy() {
+  //   if (countText == "0:00:00") {
+  //     FlutterRingtonePlayer.playNotification();
+  //   }
+  // }
 
   @override
   void initState() {
@@ -72,21 +72,21 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
       // print(tabController.tabIndex.value);
     });
     super.initState();
-    animationController = AnimationController(
-        vsync: this, duration: Duration(seconds: tabController.totalSeconds));
-    animationController!.addListener(() {
-      notifiy();
-      if (animationController!.isAnimating) {
-        setState(() {
-          progress = animationController!.value;
-        });
-      } else {
-        setState(() {
-          progress = 1.0;
-          isPlaying = false;
-        });
-      }
-    });
+    // animationController = AnimationController(
+    //     vsync: this, duration: Duration(seconds: tabController.totalSeconds));
+    // animationController!.addListener(() {
+    //   notifiy();
+    // if (animationController!.isAnimating) {
+    //   setState(() {
+    //     progress = animationController!.value;
+    //   });
+    // } else {
+    //   setState(() {
+    //     progress = 1.0;
+    //     isPlaying = false;
+    //   });
+    // }
+    // });
   }
 
   @override
@@ -161,13 +161,13 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                                         Vibration.vibrate();
                                       }
                                     }
-                                    print(intervalTabController.isSound.value);
+                                    // print(intervalTabController.isSound.value);
                                     if (intervalTabController.isSound.value) {
                                       FlutterRingtonePlayer.playNotification();
                                     }
 
+                                    print('complete');
                                     intervalTabController.startInterval();
-                                    print('object');
                                   },
                                   fillColor: color.disabledColor,
                                   ringColor: color.primaryColor,
@@ -419,6 +419,9 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                       child: GestureDetector(
                         onTap: () {
                           // intervalTabController.startInterval();
+                          intervalTabController.indexPos.value = 0;
+                          intervalTabController.intervalInd.value = 0;
+                          intervalTabController.controller.reset();
                           if (intervalTabController.intervals.length > 0) {
                             intervalTabController.start.value = true;
                             intervalTabController.startInterval();
