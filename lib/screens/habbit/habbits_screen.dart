@@ -94,12 +94,10 @@ class HabbitsScreen extends StatelessWidget {
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                               onTap: () {
-<<<<<<< HEAD
                                 // HabbitCompleteTaskCustomDialogBox(
                                 //     context, index);
-=======
-                                HabbitCompleteTaskCustomDialogBox(context, index, ScreenshotController());
->>>>>>> 9fa59df5963b66a6e91509cee9a028bb4fe8dadc
+                                HabbitCompleteTaskCustomDialogBox(
+                                    context, index, ScreenshotController());
                                 Get.toNamed('/habbit-detail');
                               },
                               child: AnimationConfiguration.staggeredList(
