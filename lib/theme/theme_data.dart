@@ -187,6 +187,7 @@ class Styles {
       indicatorColor: ColorSchemeData.darkThemeData[mode]!['primaryColor'],
       primaryColor: ColorSchemeData.darkThemeData[mode]!['primaryColor'],
       primaryColorLight: ColorSchemeData.darkThemeData[mode]!['lightPrimary'],
+
       // shadowColor: ColorSchemeData.darkThemeData[mode]!['lightbackgroung'],
 
       hintColor: Colors.black,

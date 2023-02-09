@@ -14,6 +14,7 @@ import 'package:habbit_app/screens/habbit/add_new_habbits/priority_custom_dilogb
 import 'package:habbit_app/screens/habbit/datechip.dart';
 import 'package:habbit_app/screens/habbit/habbit_compite_dailbox.dart';
 import 'package:habbit_app/widgets/icon_widget.dart';
+import 'package:screenshot/screenshot.dart';
 
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
@@ -75,7 +76,7 @@ class HabbitsArciveScreen extends StatelessWidget {
                             return GestureDetector(
                               onTap: () {
                                 HabbitCompleteTaskCustomDialogBox(
-                                    context, index);
+                                    context, index, ScreenshotController());
                                 Get.toNamed('/habbit-detail');
                               },
                               child: AnimationConfiguration.staggeredList(

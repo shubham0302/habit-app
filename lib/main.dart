@@ -68,7 +68,7 @@ void main() async {
         importance: NotificationImportance.High,
         channelShowBadge: true),
     NotificationChannel(
-        channelKey: 'scheduledHabitDays_channel',
+        channelKey: 'scheduledHabitAlarm_channel',
         channelName: 'scheduledHabitAlarm Notifications',
         channelDescription: 'Notification for schedualed test',
         defaultColor: Colors.red,

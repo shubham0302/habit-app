@@ -134,7 +134,7 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                                   // autoStart: false,
                                   textStyle: TextStyle(
                                       fontSize: 20.0,
-                                      color: color.canvasColor,
+                                      color: color.primaryColor,
                                       fontWeight: FontWeight.bold),
                                   // textFormat: intervalTabController.intervals[
                                   //                 intervalTabController
@@ -170,7 +170,7 @@ class _IntervalTimeScreenState extends State<IntervalTimeScreen>
                                     print('object');
                                   },
                                   fillColor: color.disabledColor,
-                                  ringColor: color.primaryColor,
+                                  ringColor: color.primaryColorLight,
                                 ),
                               )
                             : const SizedBox(),

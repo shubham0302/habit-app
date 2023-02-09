@@ -38,7 +38,7 @@ class LicScreen extends StatelessWidget {
                         width: 30,
                         child: Icon(
                           Icons.arrow_back_ios_new_rounded,
-                          color: color.primaryColor,
+                          color: color.primaryColorLight,
                         ),
                       )),
                   SW.medium(),

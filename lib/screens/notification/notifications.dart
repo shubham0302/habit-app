@@ -66,14 +66,14 @@ Future<void> createDailyNotification(
 }
 
 Future<void> habitReminderNotification(
-    NotificationHabitReminder notificationScheduled, index) async {
+    NotificationHabitReminder notificationScheduled, name) async {
   AddHabbitSelectController habbitSelectController =
       Get.put(AddHabbitSelectController(), permanent: false);
   await AwesomeNotifications().createNotification(
       content: NotificationContent(
           id: createUniqueId(),
           channelKey: 'scheduledHabit_channel',
-          title: "${habbitSelectController.tasks[index].habitName}",
+          title: "${name}",
           body: 'Lodunvfkj ',
           // bigPicture: 'assets://assets/images/middle.jpeg',
           notificationLayout: NotificationLayout.Default),
@@ -97,7 +97,7 @@ Future<void> createHabitAlarmNotification(
   await AwesomeNotifications().createNotification(
       content: NotificationContent(
           id: createUniqueId(),
-          channelKey: 'scheduledHabitDays_channel',
+          channelKey: 'scheduledHabitAlarm_channel',
           title: 'Alarm',
           body: 'fuck you',
           // customSound: 'resource://raw/still_dre',
