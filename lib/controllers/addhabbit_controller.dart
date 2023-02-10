@@ -336,6 +336,74 @@ class AddHabbitSelectController extends GetxController {
     Get.back();
   }
 
+  var ss = ''.obs;
+  // var loopDate = ;
+  List<DateTime> sevenDays = [
+    DateTime.now(),
+    DateTime.now().add(Duration(days: -1)),
+    DateTime.now().add(Duration(days: -2)),
+    DateTime.now().add(Duration(days: -3)),
+    DateTime.now().add(Duration(days: -4)),
+    DateTime.now().add(Duration(days: -5)),
+    DateTime.now().add(Duration(days: -6)),
+  ].obs;
+  List<DateTime> loopDay = <DateTime>[].obs;
+  DateTime lessdate = DateTime.now();
+  sevenDayStreak(int index, context) {
+    for (var i = -6; i <= 0; i++) {
+      loopDay.add(DateTime.now().add(Duration(days: i)));
+    }
+    loopDay.forEach((elements) {
+      ss.value = status
+                  .where((p0) =>
+                      p0.habitId ==
+                      tasks
+                          .where((p0) => p0.archive == false)
+                          .toList()[index]
+                          .habbitId)
+                  .toList()
+                  .firstWhere((element) => checkDate(elements, element.date))
+                  .status ==
+              'success'
+          ? 'true'
+          : 'false';
+    });
+    // if (ss.value == '-8') {
+    // HabbitCompleteTaskCustomDialogBox(context, index, ScreenshotController());
+    // } else {}
+    // log(loopDay.toString());
+    // ss.value = status
+    //             .where((p0) =>
+    //                 p0.habitId ==
+    //                 tasks
+    //                     .where((p0) => p0.archive == false)
+    //                     .toList()[index]
+    //                     .habbitId)
+    //             .toList()
+    //             .firstWhere((element) => checkDate(lessdate, element.date))
+    //             .status ==
+    //         'success'
+    //     ? 'true'
+    //     : 'false';
+    log(ss.value);
+    log(DateTime.now().add(Duration(days: -1)).toString());
+    // ss.value = status
+    //             .where((p0) =>
+    //                 p0.habitId ==
+    //                 tasks
+    //                     .where((p0) => p0.archive == false)
+    //                     .toList()[index]
+    //                     .habbitId)
+    //             .toList()
+    //             .firstWhere((element) => checkDate(lessdate, element.date))
+    //             .status ==
+    //         'success'
+    //     ? 'true'
+    //     : 'false';
+    // log(ss.value);
+    // log(DateTime.now().add(Duration(days: -1)).toString());
+  }
+
   cancelReminderToList() {
     // remList.add(ReminderModelTemp(always: always.value,days: remDays.value,id: remId.value,time: remTime.value,type: remType.value));
     remType.value = "notification";

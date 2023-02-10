@@ -573,6 +573,14 @@ class HabbitsScreen extends StatelessWidget {
                                                                               habbitSelectController.addStatus(habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId, habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().firstWhere((element) => habbitSelectController.checkDate(e, element.date)).status, e, habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().firstWhere((element) => habbitSelectController.checkDate(e, element.date)).statusId, 'false', habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].evaluate, 'initial');
                                                                             }
                                                                           }
+                                                                           if (habbitSelectController.status.where((p0) => p0.habitId == habbitSelectController.tasks.where((p0) => p0.archive == false).toList()[index].habbitId).toList().indexWhere((element) => habbitSelectController.checkDate(e, element.date)) ==
+                                                                              -1) {
+                                                                            // habbitSelectController.sevenDayStreak(index);
+                                                                            print('sd');
+                                                                          } else {
+                                                                            habbitSelectController.sevenDayStreak(index, context);
+                                                                          }
+                                                                           
                                                                         },
                                                                         isColor:
                                                                             true,
