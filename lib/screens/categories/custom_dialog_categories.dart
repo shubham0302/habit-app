@@ -51,34 +51,32 @@ void CategoriesCustomDialogBox(BuildContext context, bool fromUpdate) {
                           ),
                           SH.large(),
                           LabelText(text: "Category Color".tr),
-                          SH.large(),
+                          SH.small(),
                           Container(
-                            height: 90,
+                            height: 55,
                             width: MediaQuery.of(context).size.width,
-                            child: GridView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 5),
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
                               itemCount: categoryController.iconColor.length,
                               itemBuilder: (context, index) {
                                 return Center(
-                                  child: InkWell(
-                                    borderRadius: BorderRadius.circular(50),
-                                    onTap: () {
-                                      categoryController.colorIndex.value =
-                                          index;
-                                      // themeController.changeThemeColor('blue');
-                                      // print(Theme.of(context).brightness);
-                                      // Get.toNamed('/intro');
-                                    },
-                                    child: Obx(
-                                      () => Container(
-                                        padding: const EdgeInsets.all(2),
-                                        height: 44,
-                                        width: 44,
-                                        decoration: BoxDecoration(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(6),
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(50),
+                                      onTap: () {
+                                        categoryController.colorIndex.value =
+                                            index;
+                                        // themeController.changeThemeColor('blue');
+                                        // print(Theme.of(context).brightness);
+                                        // Get.toNamed('/intro');
+                                      },
+                                      child: Obx(
+                                        () => Container(
+                                          padding: const EdgeInsets.all(2),
+                                          height: 44,
+                                          width: 44,
+                                          decoration: BoxDecoration(
                                             border: Border.all(
                                               width: 2,
                                               color: categoryController
@@ -87,26 +85,21 @@ void CategoriesCustomDialogBox(BuildContext context, bool fromUpdate) {
                                                   ? categoryController
                                                       .iconColor[index]
                                                   : Colors.transparent,
-                                              // color: themeController.mode == 'blue'
-                                              //     ? (Theme.of(context).brightness ==
-                                              //             Brightness.light
-                                              //         ? ColorSchemeData.themeData[
-                                              //             'blue']!['primaryColor']
-                                              //         : ColorSchemeData.darkThemeData[
-                                              //             'blue']!['primaryColor'])!
-                                              //     : Colors.transparent,
                                             ),
                                             borderRadius:
-                                                BorderRadius.circular(22)),
-                                        child: Container(
-                                          height: 40,
-                                          width: 40,
-                                          decoration: BoxDecoration(
+                                                BorderRadius.circular(22),
+                                          ),
+                                          child: Container(
+                                            height: 40,
+                                            width: 40,
+                                            decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(25),
                                               color: categoryController
-                                                  .iconColor[index]),
-                                          // child: Icon(Icons.arrow_forward_ios_rounded),
+                                                  .iconColor[index],
+                                            ),
+                                            // child: Icon(Icons.arrow_forward_ios_rounded),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -119,7 +112,7 @@ void CategoriesCustomDialogBox(BuildContext context, bool fromUpdate) {
                           LabelText(text: "Category Icon".tr),
                           SH.large(),
                           Container(
-                            height: 150,
+                            height: 210,
                             width: MediaQuery.of(context).size.width,
                             child: GridView.builder(
                               physics: const NeverScrollableScrollPhysics(),
