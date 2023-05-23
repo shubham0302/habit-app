@@ -4,8 +4,17 @@ import 'dart:async';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/addhabbit_controller.dart';
+import 'package:habbit_app/controllers/category_controller.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/category_custom_dialog.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/evaluate_select_customdailbox.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/name_custom_dailogbox.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/priority_custom_dilogbox.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/reminder_custom_dailbox.dart';
+import 'package:habbit_app/screens/habbit/add_new_habbits/repetation_custom_dilogbox.dart';
 import 'package:habbit_app/screens/habbit/bargraph.dart';
 import 'package:habbit_app/screens/habbit/bargraph2.dart';
+import 'package:habbit_app/screens/habbit/edit_task_tab_bar.dart';
 import 'package:habbit_app/screens/habbit/statistics.dart';
 import 'package:habbit_app/widgets/theme_config.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -87,159 +96,162 @@ class _HabbitTabbarState extends State<HabbitTabbar>
 
     ThemeData color = Theme.of(context);
     return Scaffold(
-        body: GlobalPadding(
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        // SH.med(),
-        Obx(() {
-          // tabController.tabIndex.value = _controller.index;
-          return Container(
-            height: 55,
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.circular(
-                10.0,
-              ),
-            ),
-            child: TabBar(
-              onTap: (index) {},
-              overlayColor: MaterialStateProperty.all(Colors.transparent),
-              controller: _controller,
-              splashFactory: NoSplash.splashFactory,
-              indicatorColor: Colors.transparent,
-              indicator: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  10.0,
-                ),
-                color: Colors.transparent,
-              ),
-
-              labelColor: color.cardColor,
-
-              unselectedLabelColor: color.disabledColor,
-              // indicatorSize: TabBarIndicatorSize.label,
-              tabs: [
-                Column(
-                  children: [
-                    const Tab(
-                      text: 'Calender',
-                    ),
-                    Container(
-                      height: 2,
-                      // width: ,
-                      color: tabController.tabIndex.value == 0
-                          ? color.primaryColor
-                          : Colors.transparent,
-                    )
-                  ],
-                ),
-                // SizedBox(width: 5,),
-                Column(
-                  children: [
-                    const Tab(
-                      text: 'Statistics',
-                    ),
-                    Container(
-                      height: 2,
-                      // width: ,
-                      color: tabController.tabIndex.value == 1
-                          ? color.primaryColor
-                          : Colors.transparent,
-                    )
-                  ],
-                ),
-                Column(
-                  children: [
-                    const Tab(
-                      text: 'Edits',
-                    ),
-                    Container(
-                      height: 2,
-                      // width: ,
-                      color: tabController.tabIndex.value == 2
-                          ? color.primaryColor
-                          : Colors.transparent,
-                    )
-                  ],
-                ),
-              ],
-            ),
-          );
-        }),
-
-        SH.large(),
-        Expanded(
-            child: TabBarView(
-          controller: _controller,
+      body: GlobalPadding(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TableCalendar(
-                    calendarStyle: CalendarStyle(
-                        weekendTextStyle: TextStyle(color: color.cardColor),
-                        outsideTextStyle: TextStyle(
-                          color: color.disabledColor,
-                        )),
-                    daysOfWeekStyle: DaysOfWeekStyle(
-                      weekdayStyle: TextStyle(color: color.cardColor),
-                      weekendStyle: TextStyle(color: color.cardColor),
+            // SH.med(),
+            Obx(() {
+              // tabController.tabIndex.value = _controller.index;
+              return Container(
+                height: 55,
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(
+                    10.0,
+                  ),
+                ),
+                child: TabBar(
+                  onTap: (index) {},
+                  overlayColor: MaterialStateProperty.all(Colors.transparent),
+                  controller: _controller,
+                  splashFactory: NoSplash.splashFactory,
+                  indicatorColor: Colors.transparent,
+                  indicator: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                      10.0,
                     ),
-                    // calendarStyle: CalendarStyle(),
-                    calendarBuilders: CalendarBuilders(
-                      markerBuilder: (context, day, events) {
-                        return;
-                      },
-                    ),
-                    daysOfWeekHeight: 55,
-                    headerStyle: const HeaderStyle(
-                      formatButtonVisible: false,
-                      titleCentered: true,
-                      // titleTextFormatter: (date, locale) => Column(children: [],),
-                    ),
+                    color: Colors.transparent,
+                  ),
 
-                    headerVisible: true,
-                    firstDay: DateTime.utc(2010, 10, 16),
-                    lastDay: DateTime.utc(2030, 3, 14),
-                    focusedDay: DateTime.now(),
-                  ),
-                  const Divider(
-                    thickness: 1,
-                  ),
-                  SH.large(),
-                  Center(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 5, vertical: 2),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(2),
-                          color: color.disabledColor.withOpacity(.3)),
-                      child: const DescriptionText(
-                        text: 'Notes',
-                      ),
+                  labelColor: color.cardColor,
+
+                  unselectedLabelColor: color.disabledColor,
+                  // indicatorSize: TabBarIndicatorSize.label,
+                  tabs: [
+                    Column(
+                      children: [
+                        const Tab(
+                          text: 'Calender',
+                        ),
+                        Container(
+                          height: 2,
+                          // width: ,
+                          color: tabController.tabIndex.value == 0
+                              ? color.primaryColor
+                              : Colors.transparent,
+                        )
+                      ],
+                    ),
+                    // SizedBox(width: 5,),
+                    Column(
+                      children: [
+                        const Tab(
+                          text: 'Statistics',
+                        ),
+                        Container(
+                          height: 2,
+                          // width: ,
+                          color: tabController.tabIndex.value == 1
+                              ? color.primaryColor
+                              : Colors.transparent,
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        const Tab(
+                          text: 'Edits',
+                        ),
+                        Container(
+                          height: 2,
+                          // width: ,
+                          color: tabController.tabIndex.value == 2
+                              ? color.primaryColor
+                              : Colors.transparent,
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            }),
+
+            SH.large(),
+            Expanded(
+              child: TabBarView(
+                controller: _controller,
+                children: [
+                  SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TableCalendar(
+                          calendarStyle: CalendarStyle(
+                              weekendTextStyle:
+                                  TextStyle(color: color.cardColor),
+                              outsideTextStyle: TextStyle(
+                                color: color.disabledColor,
+                              )),
+                          daysOfWeekStyle: DaysOfWeekStyle(
+                            weekdayStyle: TextStyle(color: color.cardColor),
+                            weekendStyle: TextStyle(color: color.cardColor),
+                          ),
+                          // calendarStyle: CalendarStyle(),
+                          calendarBuilders: CalendarBuilders(
+                            markerBuilder: (context, day, events) {
+                              return;
+                            },
+                          ),
+                          daysOfWeekHeight: 55,
+                          headerStyle: const HeaderStyle(
+                            formatButtonVisible: false,
+                            titleCentered: true,
+                            // titleTextFormatter: (date, locale) => Column(children: [],),
+                          ),
+
+                          headerVisible: true,
+                          firstDay: DateTime.utc(2010, 10, 16),
+                          lastDay: DateTime.utc(2030, 3, 14),
+                          focusedDay: DateTime.now(),
+                        ),
+                        const Divider(
+                          thickness: 1,
+                        ),
+                        SH.large(),
+                        Center(
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 5, vertical: 2),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2),
+                                color: color.disabledColor.withOpacity(.3)),
+                            child: const DescriptionText(
+                              text: 'Notes',
+                            ),
+                          ),
+                        ),
+                        SH.medium(),
+                        const LabelText(
+                            text:
+                                'This is to notif that tasks are important for you asjdnn dksfn'),
+                        const Divider(),
+                        const LabelText(
+                            text:
+                                'This is to notif that tasks are important for you asjdnn dksfn')
+                      ],
                     ),
                   ),
-                  SH.medium(),
-                  const LabelText(
-                      text:
-                          'This is to notif that tasks are important for you asjdnn dksfn'),
-                  const Divider(),
-                  const LabelText(
-                      text:
-                          'This is to notif that tasks are important for you asjdnn dksfn')
+                  // index2
+                  const Statistics(),
+                  const EditTaskTabBar(),
                 ],
               ),
             ),
-            // index2
-            const Statistics(),
-            GlobalPadding(
-                child: Column(
-              children: const [],
-            )),
           ],
-        ))
-      ]),
-    ));
+        ),
+      ),
+    );
   }
 }

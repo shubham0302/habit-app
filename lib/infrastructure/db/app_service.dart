@@ -388,7 +388,9 @@ class AppDB extends _$AppDB {
   Future<int> insertHabitReminder(HabitReminderModelCompanion entity) async {
     return await into(habitReminderModel).insert(entity);
   }
-
+  Future<void> insertHabitReminderAll(List<HabitReminderModelCompanion> entity) async {
+     await batch((batch) => batch.insertAll(habitReminderModel, entity));
+  }
   Future<int> deleteHabbitChecklist(int id) async {
     return await (delete(habbitChecklistModel)
           ..where((tbl) => tbl.id.equals(id)))
@@ -405,11 +407,15 @@ class AppDB extends _$AppDB {
     return select(recurringRepetitionModel).watch();
   }
 
-  Future<List<RecurringRepetitionModelData>> getRecurringRepetition(
+  Future<RecurringRepetitionModelData?> getRecurringRepetition(
       int id) async {
-    return await (select(recurringRepetitionModel)
+    var listOfRecurringRepetitionModelData = await (select(recurringRepetitionModel)
           ..where((tbl) => tbl.id.equals(id)))
         .get();
+    if(listOfRecurringRepetitionModelData.isNotEmpty){
+      return listOfRecurringRepetitionModelData.first;
+    }
+    return null;
   }
 
   Future<bool> updateRecurringRepetition(
@@ -430,10 +436,13 @@ class AppDB extends _$AppDB {
 
 //reminderService
 
+
   Future<List<TaskReminderModelData>> getReminders() async {
     return await select(taskReminderModel).get();
   }
-
+  Future<List<HabitReminderModelData>> getRemindersHabbit() async {
+    return await select(habitReminderModel).get();
+  }
   Stream<List<TaskReminderModelData>> streamReminders() {
     return select(taskReminderModel).watch();
   }
