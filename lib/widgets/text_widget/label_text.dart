@@ -28,8 +28,10 @@ class LabelText extends StatelessWidget {
     return Text(
       text,
       style: color.textTheme.bodyText1!.copyWith(
-          color: isColor == true ? (this.color ?? color.primaryColor) : null,
-          fontWeight: isBold == true ? FontWeight.bold : FontWeight.normal),
+        color: isColor == true ? (this.color ?? color.primaryColor) : null,
+        fontWeight: isBold == true ? FontWeight.bold : FontWeight.normal,
+        overflow: TextOverflow.fade,
+      ),
       textAlign: alignment,
       overflow: TextOverflow.clip,
     );

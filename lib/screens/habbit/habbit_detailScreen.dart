@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habbit_app/controllers/addhabbit_controller.dart';
 import 'package:habbit_app/screens/habbit/Habbit_tabbar.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
@@ -13,6 +14,11 @@ class HabbitDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var color = Theme.of(context);
+
+    AddHabbitSelectController habbitSelectController =
+        Get.put(AddHabbitSelectController());
+    var index = habbitSelectController.selectedTaskIndex.value;
+
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -42,7 +48,12 @@ class HabbitDetailScreen extends StatelessWidget {
                               ),
                             )),
                         SW.medium(),
-                        const MainLabelText(text: 'Cooking'),
+                        MainLabelText(
+                          text: habbitSelectController.tasks
+                              .where((task) => task.archive == false)
+                              .toList()[index]
+                              .habitName,
+                        ),
                       ],
                     ),
                     Container(
