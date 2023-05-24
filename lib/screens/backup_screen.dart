@@ -1,22 +1,20 @@
-// ignore_for_file: file_names, unused_local_variable, depend_on_referenced_packages, sized_box_for_whitespace
+// ignore_for_file: file_names, unused_local_variable, depend_on_referenced_packages, sized_box_for_whitespace, use_build_context_synchronously
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:habbit_app/controllers/db_controller.dart';
 import 'package:habbit_app/controllers/swich_controller.dart';
 import 'package:habbit_app/controllers/theme_controller.dart';
+import 'package:habbit_app/helpers/local_storage_helper.dart';
+import 'package:habbit_app/infrastructure/db/app_service.dart';
 import 'package:habbit_app/screens/backup_logout_dailog.dart';
-import 'package:habbit_app/screens/home_screen.dart';
 import 'package:habbit_app/screens/intro_screen.dart';
-import 'package:habbit_app/screens/timer/save_dailog.dart';
 import 'package:habbit_app/services/firebase_services.dart';
-import 'package:habbit_app/widgets/custom_snackbar.dart';
 import 'package:habbit_app/widgets/padding.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/description_text.dart';
+import 'package:habbit_app/widgets/text_widget/heading_text.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:habbit_app/widgets/text_widget/main_label_text.dart';
@@ -84,7 +82,7 @@ class BackUpScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () {},
                   child: Container(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     height: 120,
                     width: 120,
                     decoration: BoxDecoration(
@@ -112,7 +110,7 @@ class BackUpScreen extends StatelessWidget {
                 Container(
                   height: 120,
                   width: 120,
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                       color: color.disabledColor.withOpacity(.3),
                       borderRadius:
@@ -159,11 +157,11 @@ class BackUpScreen extends StatelessWidget {
                       text: "Cloud Backups Account".tr,
                     ),
                     premiumController.premium.value == false
-                        ? DescriptionText(
+                        ? const DescriptionText(
                             text: 'Only for premium users',
                             isColor: true,
                           )
-                        : SizedBox()
+                        : const SizedBox()
                   ],
                 ),
                 SW.medium(),
@@ -186,7 +184,7 @@ class BackUpScreen extends StatelessWidget {
                               const BorderRadius.all(Radius.circular(10)),
                           color: color.disabledColor.withOpacity(.3)),
                       child: Padding(
-                        padding: EdgeInsets.only(left: 10),
+                        padding: const EdgeInsets.only(left: 10),
                         child: LabelText(
                           text: user == null
                               ? "Click to sing in"
@@ -257,8 +255,16 @@ class BackUpScreen extends StatelessWidget {
             SH.large(),
 
             GestureDetector(
-              onTap: () {
-                dbController.appDB.exportInto('assets/my_database.db');
+              onTap: () async {
+                var pathOfTheLocalStorage =
+                    await LocalStorageHelper.getStoredPathOfTheDatabase();
+                if (pathOfTheLocalStorage != null ||
+                    pathOfTheLocalStorage!.isNotEmpty) {
+                  // dbController.appDB.exportInto(pathOfTheLocalStorage);
+                  await createBackupAndDuplicate(pathOfTheLocalStorage);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Backup successful')));
+                }
               },
               child: Row(
                 children: [
@@ -279,7 +285,10 @@ class BackUpScreen extends StatelessWidget {
 
             GestureDetector(
               onTap: () {
-                dbController.appDB.importDB();
+                showImportBackupAlert(
+                  context: context,
+                  dbController: dbController,
+                );
               },
               child: Row(
                 children: [
@@ -298,6 +307,45 @@ class BackUpScreen extends StatelessWidget {
           ]),
         ),
       ),
+    );
+  }
+
+  // Function to display the alert box for import database
+  void showImportBackupAlert({
+    required BuildContext context,
+    required DBController dbController,
+  }) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const HeadingText(text: 'Import Backup'),
+          content: const LabelText(
+              text:
+                  'Are you sure you want to import the backup? If yes, your current changes will be lost.'),
+          actions: [
+            TextButton(
+              onPressed: () async {
+                await dbController.appDB.importDB();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text(
+                        'Successfully imported, If you do not see the previous data, Please restart the app'),
+                  ),
+                );
+                Navigator.of(context).pop();
+              },
+              child: const LabelText(text: 'Yes, import it anyways'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const LabelText(text: 'No, don\'t import'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

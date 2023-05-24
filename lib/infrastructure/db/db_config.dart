@@ -3,7 +3,8 @@ import 'dart:io';
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:path_provider/path_provider.dart';
+import 'package:habbit_app/helpers/local_storage_helper.dart';
+import 'package:habbit_app/utilities/file_utils.dart';
 import 'package:path/path.dart' as path;
 
 LazyDatabase openConnection() {
@@ -11,8 +12,9 @@ LazyDatabase openConnection() {
   return LazyDatabase(() async {
     // put the database file, called db.sqlite here, into the documents folder
     // for your app.
-    final dbFolder = await getApplicationDocumentsDirectory();
-    final file = File(path.join(dbFolder.path, 'db.sqlite'));
+    final dbFolder = await getDownloadsDirectoryToSaveData();
+    final file = File(path.join(dbFolder!.path, 'db.sqlite'));
+    LocalStorageHelper.storeCreatedDatabasePath(pathOfTheDatabase: file.path);
     if (!await file.exists()) {
       // Extract the pre-populated database file from assets
       final blob = await rootBundle.load('assets/my_database.db');
