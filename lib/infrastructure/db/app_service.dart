@@ -5,7 +5,9 @@ import 'dart:io';
 
 import 'package:drift/drift.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:habbit_app/helpers/local_storage_helper.dart';
 import 'package:habbit_app/infrastructure/model/status_model.dart';
+import 'package:intl/intl.dart';
 import 'package:path/path.dart' as path;
 import 'package:get/get.dart' as gt;
 import 'package:habbit_app/infrastructure/db/db_config.dart';
@@ -14,7 +16,6 @@ import 'package:habbit_app/infrastructure/model/habbit_model.dart';
 import 'package:habbit_app/infrastructure/model/recurring_checklist_model.dart';
 import 'package:habbit_app/infrastructure/model/task_model.dart';
 import 'package:habbit_app/infrastructure/model/task_reminder_model.dart';
-import 'package:path_provider/path_provider.dart';
 
 import '../model/checklist_model.dart';
 import '../model/habbit_checklist_model.dart';
@@ -66,14 +67,22 @@ class AppDB extends _$AppDB {
   }
 
   Future<void> importDB() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    FilePickerResult? backUpFile = await FilePicker.platform.pickFiles();
 
-    if (result != null) {
-      File? file = File(result.files.single.path!);
-      final dbFolder = await getApplicationDocumentsDirectory();
-      final dbFile = File(path.join(dbFolder.path, 'db.sqlite'));
+    if (backUpFile != null) {
+      File? file = File(backUpFile.files.single.path!);
 
-      dbFile.writeAsBytesSync(file.readAsBytesSync());
+      final contentOfBackedUpFile = await file.readAsBytes();
+      var actualDatabaseFilePath =
+          await LocalStorageHelper.getStoredPathOfTheDatabase();
+
+      File actualDBFile = File(actualDatabaseFilePath!);
+
+      await actualDBFile.writeAsBytes(contentOfBackedUpFile, flush: true);
+      // final dbFolder = await getApplicationDocumentsDirectory();
+      // final dbFile = File(path.join(dbFolder.path, 'db.sqlite'));
+      //
+      // dbFile.writeAsBytesSync(file.readAsBytesSync());
       // if (dbFile.existsSync()) {
       //   dbFile.deleteSync();
       // }
@@ -436,7 +445,6 @@ class AppDB extends _$AppDB {
 
 //reminderService
 
-
   Future<List<TaskReminderModelData>> getReminders() async {
     return await select(taskReminderModel).get();
   }
@@ -463,5 +471,36 @@ class AppDB extends _$AppDB {
   Future<int> deleteReminder(int id) async {
     return await (delete(taskReminderModel)..where((tbl) => tbl.id.equals(id)))
         .go();
+  }
+}
+
+String getFormattedBackupName() {
+  DateTime now = DateTime.now();
+  DateFormat dateFormat = DateFormat('dd-MM');
+  String formattedDate = dateFormat.format(now);
+  String backupName = '$formattedDate-backup';
+  return backupName;
+}
+
+Future<void> createBackupAndDuplicate(String filePath) async {
+  try {
+    File originalFile = File(filePath);
+
+    // Create backup file name
+    String backupFileName = getFormattedBackupName();
+    String backupFilePath = path.join(originalFile.parent.path, backupFileName);
+
+    // Create duplicate file name
+    String duplicateFileName = '$backupFileName${path.extension(filePath)}';
+    String duplicateFilePath =
+        path.join(originalFile.parent.path, duplicateFileName);
+
+    // Copy the original file to the duplicate file
+    originalFile.copySync(duplicateFilePath);
+
+    print('Backup file created: $backupFilePath');
+    print('Duplicate file created: $duplicateFilePath');
+  } catch (e) {
+    print('Error creating backup and duplicate: $e');
   }
 }
