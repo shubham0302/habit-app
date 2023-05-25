@@ -29,10 +29,13 @@ import 'package:habbit_app/screens/intro_screen.dart';
 import 'package:habbit_app/theme/theme_data.dart';
 import 'screens/backup_screen.dart';
 import 'screens/main_screen.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
   ));

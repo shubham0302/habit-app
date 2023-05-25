@@ -1,10 +1,10 @@
-import 'package:flutter/rendering.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/state_manager.dart';
 import 'package:habbit_app/helpers/local_storage_helper.dart';
 
 class PremiumController extends GetxController {
   RxBool premium = false.obs;
+  var user = FirebaseAuth.instance.currentUser.obs;
 
   setPremium() async {
     await LocalStorageHelper.setItem('premium', premium.value.toString());
@@ -18,6 +18,10 @@ class PremiumController extends GetxController {
     } else {
       premium.value = true;
     }
+  }
+
+  void refreshUser() {
+    user.value = FirebaseAuth.instance.currentUser;
   }
 
   @override

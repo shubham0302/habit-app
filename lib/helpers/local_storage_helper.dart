@@ -19,11 +19,13 @@ class LocalStorageHelper {
   static removeItem(String key) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(key);
+    debugPrint('Removed Item Successfully');
   }
 
-  static Future<void> storeCreatedDatabasePath({required String pathOfTheDatabase}) async {
-    bool saved =
-        await setItem(LocalStorageConstants.pathOfTheDatabase, pathOfTheDatabase);
+  static Future<void> storeCreatedDatabasePath(
+      {required String pathOfTheDatabase}) async {
+    bool saved = await setItem(
+        LocalStorageConstants.pathOfTheDatabase, pathOfTheDatabase);
     if (saved) {
       debugPrint('Path is saved to the shared preference');
     } else {
@@ -33,7 +35,8 @@ class LocalStorageHelper {
   }
 
   static Future<String?> getStoredPathOfTheDatabase() async {
-    var pathOfTheDatabase = await getItem(LocalStorageConstants.pathOfTheDatabase);
+    var pathOfTheDatabase =
+        await getItem(LocalStorageConstants.pathOfTheDatabase);
     if (pathOfTheDatabase == null || pathOfTheDatabase.isEmpty) {
       debugPrint('Path did not found in the shared preferences');
       return null;
@@ -42,5 +45,17 @@ class LocalStorageHelper {
           'Database path is founded at from the shared preference --- $pathOfTheDatabase');
       return pathOfTheDatabase;
     }
+  }
+
+  static Future<void> saveLoggedInUserIdToLocalStorage({
+    required String userId,
+  }) async {
+    await setItem(LocalStorageConstants.firebaseUserId, userId);
+    debugPrint('Firebase user successfully saved to the local storage');
+  }
+
+  static Future<String> getStoredFirebaseUserIdFromTheLocalStorage() async {
+    final firebaseUserId = await getItem(LocalStorageConstants.firebaseUserId);
+    return firebaseUserId;
   }
 }

@@ -13,7 +13,7 @@ LazyDatabase openConnection() {
     // put the database file, called db.sqlite here, into the documents folder
     // for your app.
     final dbFolder = await getDownloadsDirectoryToSaveData();
-    final file = File(path.join(dbFolder!.path, 'db.sqlite'));
+    final file = File(path.join(dbFolder!.path, 'habbit_app_database.sqlite'));
     LocalStorageHelper.storeCreatedDatabasePath(pathOfTheDatabase: file.path);
     if (!await file.exists()) {
       // Extract the pre-populated database file from assets
