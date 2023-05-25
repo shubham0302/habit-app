@@ -1,13 +1,16 @@
-// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_unnecessary_containers
+// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_unnecessary_containers, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:habbit_app/screens/backup_screen.dart';
+import 'package:habbit_app/controllers/premium_controller.dart';
+import 'package:habbit_app/helpers/local_storage_constants.dart';
+import 'package:habbit_app/helpers/local_storage_helper.dart';
 import 'package:habbit_app/services/firebase_services.dart';
 import 'package:habbit_app/widgets/sized_box.dart';
 import 'package:habbit_app/widgets/text_widget/label_text.dart';
 
 void BackupLogoutCustomDialogBox(BuildContext context) {
+  PremiumController premiumController = Get.find<PremiumController>();
   ThemeData color = Theme.of(context);
 
   showGeneralDialog(
@@ -29,11 +32,11 @@ void BackupLogoutCustomDialogBox(BuildContext context) {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          LabelText(
+                          const LabelText(
                               text:
                                   'To change account you have to log out first. Proceed?'),
                           SH.large(),
-                          Divider(),
+                          const Divider(),
                           SH.large(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -42,13 +45,15 @@ void BackupLogoutCustomDialogBox(BuildContext context) {
                                   onTap: () {
                                     Get.back();
                                   },
-                                  child: LabelText(text: 'CANCEL')),
+                                  child: const LabelText(text: 'CANCEL')),
                               GestureDetector(
                                 onTap: () async {
+                                  await LocalStorageHelper.removeItem(LocalStorageConstants.firebaseUserId);
                                   await FirerbaseServices().logOut();
+                                  premiumController.refreshUser();
                                   Get.back();
                                 },
-                                child: LabelText(
+                                child: const LabelText(
                                   text: 'YES',
                                   isColor: true,
                                 ),

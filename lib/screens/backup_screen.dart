@@ -1,6 +1,8 @@
-// ignore_for_file: file_names, unused_local_variable, depend_on_referenced_packages, sized_box_for_whitespace, use_build_context_synchronously
+// ignore_for_file: file_names, unused_local_variable, depend_on_referenced_packages, sized_box_for_whitespace, use_build_context_synchronously, deprecated_member_use, unnecessary_null_comparison
 
-import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habbit_app/controllers/db_controller.dart';
@@ -27,7 +29,6 @@ class BackUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser;
     PremiumController premiumController =
         Get.put(PremiumController(), permanent: false);
     DBController dbController = Get.find<DBController>();
@@ -80,7 +81,42 @@ class BackUpScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () async {
+                    if (premiumController.user.value == null) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            'To take the back-up you need to add cloud backup account',
+                          ),
+                        ),
+                      );
+                    } else {
+                      FilePickerResult? backUpFile =
+                          await FilePicker.platform.pickFiles();
+                      if (!(backUpFile!.files.single.path!
+                          .contains('.sqlite'))) {
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: Text(
+                                'File not supported please select valid file')));
+                      } else if (backUpFile != null) {
+                        File? file = File(backUpFile.files.single.path!);
+                        bool uploaded =
+                            await FirerbaseServices().saveBackUpToTheFirebase(
+                          fileName: 'habbit_app_database.sqlite',
+                          backupFile: file,
+                        );
+                        if (uploaded) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text('Backup taken successfully')));
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                              content: Text(
+                                  'Something went wrong while taking the back-up, Please try after some time')));
+                        }
+                      }
+                    }
+                  },
                   child: Container(
                     padding: const EdgeInsets.all(8),
                     height: 120,
@@ -107,30 +143,70 @@ class BackUpScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  height: 120,
-                  width: 120,
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                      color: color.disabledColor.withOpacity(.3),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(20))),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.cloud_download,
-                        size: 50,
-                        color: color.primaryColorLight,
-                      ),
-                      // SH.small(),
-                      LabelText(
-                        alignment: TextAlign.center,
-                        text: "Import from cloud".tr,
-                        isBold: true,
-                      )
-                    ],
+                GestureDetector(
+                  onTap: () async {
+                    if (premiumController.user.value == null) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            'To import the backup you need to sign-in into your cloud backup account',
+                          ),
+                        ),
+                      );
+                    } else {
+                      showImportBackupAlert(
+                        context: context,
+                        dbController: dbController,
+                        yesImport: () async{
+                          bool downloaded =
+                          await FirerbaseServices().getBackUpFromTheFirebase();
+                          if (downloaded) {
+                            Navigator.of(context).pop();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'Imported back-up successfully, If you still don\'t see updates,Please restart the app',
+                                ),
+                              ),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'Something went wrong while getting the backup',
+                                ),
+                              ),
+                            );
+                          }
+                        }
+                      );
+                    }
+                  },
+                  child: Container(
+                    height: 120,
+                    width: 120,
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                        color: color.disabledColor.withOpacity(.3),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(20))),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.cloud_download,
+                          size: 50,
+                          color: color.primaryColorLight,
+                        ),
+                        // SH.small(),
+                        LabelText(
+                          alignment: TextAlign.center,
+                          text: "Import from cloud".tr,
+                          isBold: true,
+                        )
+                      ],
+                    ),
                   ),
                 )
               ],
@@ -168,8 +244,10 @@ class BackUpScreen extends StatelessWidget {
                 Expanded(
                     child: GestureDetector(
                   onTap: () async {
-                    if (user == null) {
-                      await FirerbaseServices().signInWithGoggle();
+                    if (premiumController.user.value == null) {
+                      await FirerbaseServices()
+                          .signInWithGoggle(context: context);
+                      premiumController.refreshUser();
                       // Get.to(HomePage());
                     } else {
                       BackupLogoutCustomDialogBox(context);
@@ -185,10 +263,13 @@ class BackUpScreen extends StatelessWidget {
                           color: color.disabledColor.withOpacity(.3)),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10),
-                        child: LabelText(
-                          text: user == null
-                              ? "Click to sing in"
-                              : user.email.toString(),
+                        child: Obx(
+                          () => LabelText(
+                            text: premiumController.user.value == null
+                                ? "Click to sing in"
+                                : premiumController.user.value!.email
+                                    .toString(),
+                          ),
                         ),
                       )),
                 ))
@@ -288,6 +369,16 @@ class BackUpScreen extends StatelessWidget {
                 showImportBackupAlert(
                   context: context,
                   dbController: dbController,
+                  yesImport: () async {
+                    await dbController.appDB.importDB();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(
+                            'Successfully imported, If you do not see the previous data, Please restart the app'),
+                      ),
+                    );
+                    Navigator.of(context).pop();
+                  },
                 );
               },
               child: Row(
@@ -314,6 +405,7 @@ class BackUpScreen extends StatelessWidget {
   void showImportBackupAlert({
     required BuildContext context,
     required DBController dbController,
+    required void  Function()? yesImport,
   }) {
     showDialog(
       context: context,
@@ -325,16 +417,7 @@ class BackUpScreen extends StatelessWidget {
                   'Are you sure you want to import the backup? If yes, your current changes will be lost.'),
           actions: [
             TextButton(
-              onPressed: () async {
-                await dbController.appDB.importDB();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text(
-                        'Successfully imported, If you do not see the previous data, Please restart the app'),
-                  ),
-                );
-                Navigator.of(context).pop();
-              },
+              onPressed: yesImport,
               child: const LabelText(text: 'Yes, import it anyways'),
             ),
             TextButton(
