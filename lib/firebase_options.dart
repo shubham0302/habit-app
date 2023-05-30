@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyD8wKaddd9AXsKZNLpRsZcvj-lakvDfZYw',
-    appId: '1:9591880827:android:9c0af6076d9ddcfe00b6de',
+    appId: '1:9591880827:android:7dcedc1804e24e5a00b6de',
     messagingSenderId: '9591880827',
     projectId: 'plannerize-83ddd',
     storageBucket: 'plannerize-83ddd.appspot.com',
@@ -59,12 +59,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCNZppTRIl5v1OIaFXuQ5MVRePKRERppSU',
-    appId: '1:9591880827:ios:843e9b313b146f2e00b6de',
+    appId: '1:9591880827:ios:d00f5df343ad95d200b6de',
     messagingSenderId: '9591880827',
     projectId: 'plannerize-83ddd',
     storageBucket: 'plannerize-83ddd.appspot.com',
     androidClientId: '9591880827-d7rjtl49utrlfp72bsk4jcdkaoips0fh.apps.googleusercontent.com',
-    iosClientId: '9591880827-1qli35cl2n0uf555vcnnuva9ftilrb0h.apps.googleusercontent.com',
-    iosBundleId: 'com.example.habbitApp',
+    iosClientId: '9591880827-rav4js0k0dt9cmrcfdug3qvv5i0ev1me.apps.googleusercontent.com',
+    iosBundleId: 'com.plannerize.app',
   );
 }
